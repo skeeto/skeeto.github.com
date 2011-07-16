@@ -3,11 +3,11 @@ body {
     background-color: #ecffdc;
 }
 
-#top {
+header {
     text-align: center;
 }
 
-#side {
+nav {
     border: solid #ccc;
     border-width: 1px 1px 1px 1px;
     color: black;
@@ -26,6 +26,16 @@ body {
     margin: 0 0 10px 13em;
     padding: 1em;
     background-color: white;
+}
+
+footer {
+    font-size: 75%;
+    color: inherit;
+    background-color: #F6F6FF;
+    border: solid #ccc;
+    border-width: 1px 1px 1px 1px;
+    margin: 0 0 10px 17.3em;
+    padding: 1em 2em 1em 2em;
 }
 
 address {
