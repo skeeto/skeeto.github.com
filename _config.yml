@@ -1,0 +1,2 @@
+permalink: /blog/:year/:month/:day/
+paginate: 10

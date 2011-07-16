@@ -1,0 +1,114 @@
+---
+title: South Park Downloader
+layout: post
+---
+
+<!-- 5 December 2007 -->
+<p style="font-style: italic;">
+Notice: This software is not affiliated with the South Park Zone nor
+South Park. In fact, this bypasses all of the South Park Zone's
+advertising, so they may not like it. I have do not have anyone's
+approval, nor do I know about any of the legal implications of this
+tool. Use at your own risk.
+</p>
+<p>
+Get the
+program: <a href="/download/spd.perl">spd.pl</a>
+(3.8KB) GPLv3<br /> Requires <a href="http://www.perl.org/">Perl</a>
+and <a href="http://www.gnu.org/software/wget/">GNU <code>
+wget</code></a>
+</p>
+<p>
+This was an afternoon project the other day. I found out about a
+website called the <a href="http://www.southparkzone.com/">South Park
+Zone</a>. This website has information on where to fetch South Park
+episodes from different hosts, such as MySpace and YouTube. These
+videos are stored in the Flash video format. You see, I don't have the
+proprietary Flash software installed and the free versions aren't
+quite ready for use yet. I use
+<a href="/blog/2007/09/05#free-youtube">
+other means</a> of watching videos on sites like YouTube. This means
+that I normally have to either
+use <a href="https://addons.mozilla.org/en-US/firefox/addon/3590">a
+tool</a> to find the <code>.flv</code> file or search through the
+site's HTML code manually.
+</p>
+<p>
+In this case, I couldn't find an existing tool that could grab the
+videos pointed to by the South Park Zone. I was able to find it
+manually, but trying to watch several videos takes a bit of
+digging. Anyway, if I really want to become
+a <a href="http://www.catb.org/jargon/html/introduction.html">
+hacker</a> sometime (I feel I am not yet worthy of this name), what do
+I do? Well, I write a program to do it for me!
+</p>
+<p>
+I stretched my Perl legs a bit and wrote a script that will grab the
+video location from the South Park Zone and download the video. The
+only thing you need other than Perl is
+<a href="http://www.gnu.org/software/wget/">GNU <code>wget</code></a>. This
+is the program that does all the hard work. My Perl script just scans
+the HTML and XML for the data.
+</p>
+<p>
+Here is an example session,
+</p>
+<pre>
+$ spd 807
+Getting mirror number ...
+Getting episode URL ...
+Downloading episode: The Jeffersons (125)
+--20:21:21--  http://content.movies.myspace.com/0008289/24/25/828935242.flv
+           => `South Park - 0807 The Jeffersons.flv'
+Resolving content.movies.myspace.com... 204.16.34.216
+Connecting to content.movies.myspace.com|204.16.34.216|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 43,350,604 (41M) [application/octet-stream]
+
+100%[====================================>] 43,350,604   890.43K/s    ETA 00:00
+
+20:22:14 (823.14 KB/s) - `South Park - 0807 The Jeffersons.flv' saved [43350604/43350604]
+</pre>
+<p>
+The program accepts episode numbers, episode ranges, and search
+terms. For example, assuming you have installed the program and
+removed the <code>.pl</code> extension, this will download season 2,
+episode 3 and season 10, episode 10,
+</p>
+<pre>
+$ spd 203 1010
+</pre>
+<p>
+You can also provide a range of episodes with a dash,
+</p>
+<pre>
+$ spd 405-410
+</pre>
+<p>
+With that command, season 4, episodes 5 through 10 will be
+fetched. The range will <i>not</i> work across seasons! This is
+because I didn't see a convenient way to find out how many episodes
+were in each season. Right now the tool should be fine until season
+100 (3 digit seasons) or South Park Zone goes away. It knows nothing
+about South Park: it only fetches the data on request.
+</p>
+<p>
+And finally, one of the coolest parts, it will do searches for you
+too. Right now, it just grabs the first search result, but this seems
+to work pretty well. For example, this grabs the famous <i>Make Love,
+Not Warcraft</i> episode,
+</p>
+<pre>
+$ spd warcraft
+</pre>
+<p>
+I have used it a bit myself, but there may still be bugs. It also
+assumes that all of these videos are <code>.flv</code> files, but the
+South Park Zone is prepared for these things to be in any format. If
+its popular enough, perhaps I will turn it into a "project" and version
+it. It could also use a better front end for parsing option
+flags. Perhaps a quiet <code>-q</code> flag,
+</p>
+<pre>
+$ spd -q 506-510 708 710
+</pre>

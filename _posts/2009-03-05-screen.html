@@ -1,0 +1,35 @@
+---
+title: GNU Screen
+layout: post
+---
+
+<!-- 5 March 2009 -->
+<p>
+  <img src="/img/screen.jpg"
+       alt="Byobu" title="Japanese folding screen"
+       class="right" width="200" />
+
+Another useful program I use every week is <a
+href="http://www.gnu.org/software/screen/"> GNU Screen</a>. It
+provides virtual terminals at a single terminal. It's a bit like a
+window manager for a text terminal. If you are a command line junkie
+(and if you are at all serious about computing, you should be), this
+is an essential piece of software.
+</p>
+<p>
+The main reason I use screen is for its persistence. If I am running a
+long-running job on a remote machine (i.e. over ssh), like a large
+<code>apt-get upgrade</code>, I'll put it in a screen session. This
+way I can log out and, later, log in from anywhere and check on it. I
+have even used it to persist <a href="/blog/2008/09"> nethack</a>
+sessions, though this isn't really necessary.
+</p>
+<p>
+The only annoying part is that all of it's mappings are underneath C-a
+(ctrl+a), which is a very common Emacs/bash command, which I use a
+lot. To get the effect of C-a inside screen, you have to do it twice
+in a row because screen captures the first one.
+</p>
+<p>
+If you don't already use it, try it out sometime.
+</p>

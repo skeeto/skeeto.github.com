@@ -1,0 +1,63 @@
+---
+title: Emacs Set Window to 80 Columns
+layout: post
+---
+
+<!-- 6 October 2010 -->
+<p>
+When I'm coding, I maximize Emacs and enable
+<a href="http://www.emacswiki.org/emacs/WinnerMode">
+<code>winner-mode</code></a>, turning my display into something much
+like a <a href="http://en.wikipedia.org/wiki/Tiling_window_manager">
+tiling window manager</a>. Then I try not to leave Emacs until it's
+necessary. It's a really nice way to work: no mouse touching needed.
+</p>
+<p>
+At work they gave me a nice 24" monitor, 1920 pixels across. That's
+just about enough to fit three Emacs' windows side-by-side at 78
+columns each. The leftmost one contains my active work buffer where I
+do most of my typing. The center one is usually split
+horizontally. The top half is the <code>*compilation*</code> buffer
+and the bottom half is either <a href="/blog/2009/06/23/">Emacs
+calculator</a> or an <code>*ansi-term*</code> buffer. The rightmost
+buffer contains something more static, like some sort of reference
+material.
+</p>
+<p>
+However, I like my main editing window to be 80 columns wide. 78
+columns cuts just too short. For awhile I was creating 80 dashes
+(<code>C-u 80 -</code>) and adjusting the window width manually to
+size. After doing it a few times I decided to extend Emacs to do it
+instead. First define a function to set the current window width.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">set-window-width</span> (n)
+  <span class="doc">"Set the selected window's width."</span>
+  (adjust-window-trailing-edge (selected-window) (- n (window-width)) t))
+</pre>
+<p>
+Wrap it with an interactive function and bind it.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">set-80-columns</span> ()
+  <span class="doc">"Set the selected window to 80 columns."</span>
+  (interactive)
+  (set-window-width 80))
+
+(global-set-key <span class="string">"\C-x~"</span> 'set-80-columns)
+</pre>
+<p>
+For those paying extra attention: instead of writing the extra
+function, you could
+use <a href="/blog/2010/09/29/">my <code>expose</code> function from
+the other day</a>.
+</p>
+<pre>
+(global-set-key <span class="string">"\C-x~"</span> (expose (apply-partially 'set-window-width 80)))
+</pre>
+<p>
+The problem with this, though, is the dynamically generated function
+doesn't have a name or a docstring. Someone
+using <code>describe-key</code> would have little information to go
+on.
+</p>

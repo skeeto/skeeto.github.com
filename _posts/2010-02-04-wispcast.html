@@ -1,0 +1,84 @@
+---
+title: Wisp Screencasts
+layout: post
+---
+
+<!-- 4 February 2010 -->
+<p>
+I've been chugging away on <a href="http://wisp.nullprogram.com/">
+Wisp</a>, <a href="/blog/2010/01/24/">announced in my last post</a>,
+every day since I started it a few weeks ago, and it's becoming a
+pretty solid system. There's now an exception system, reference
+counting for dealing with garbage, and a reentrant parser. It's no
+replacement for any other lisps, but I've found it to be very fun to
+work on. I've put what exists so far of
+the <a href="http://wisp.nullprogram.com/wisp-guide.html"> Wisp User
+Guide</a> up for viewing. The AsciiDoc source is in the Git
+repository, which is here,
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=wisp.git;a=summary">http://git.nullprogram.com/wisp.git</a>
+</pre>
+<p>
+I wanted to show off some of the new features of Wisp, and since I was
+inspired by <a href="http://vimeo.com/channels/fulldisclojure"> Full
+Disclojure</a>, since it's so damn slick, I decided to make some
+screencasts of Wisp in action. All of the screencast software for
+GNU/Linux is pretty poor, but after a few hours of head-banging I
+managed to hobble something together for you. Enjoy!
+</p>
+<p>
+  <video src="/video/wisp/wisp-memoize.ogv" controls>
+    Since your browser doesn't seem to support the video tag, here's a
+    link to the video: <a href="/video/wisp/wisp-memoize.ogv">
+    wisp-memoize.ogv</a>.
+  </video>
+</p>
+<p>
+That video demonstrated the memoization function. It can be pulled in
+from the <code>memoize</code> library. You give it a symbol, which
+should have a function definition stored in it, and it will installed a
+wrapper around it. In the video I used the Fibonacci function from
+the <code>examples</code> library.
+</p>
+<pre>
+(require 'examples)
+(fib 30) ; Slooooow ...
+(memoize 'fib)
+(fib 100) ; Fast!
+</pre>
+<p>
+  <video src="/video/wisp/wisp-detach.ogv" controls>
+    Since your browser doesn't seem to support the video tag, here's a
+    link to the video: <a href="/video/wisp/wisp-detach.ogv">
+    wisp-detach.ogv</a>.
+  </video>
+</p>
+<p>
+This demonstrated the "detachment" feature of Wisp, which is similar
+to "futures" in Clojure. It forks off a new process, which executes
+the given function. The <code>send</code> function can be used in the
+detached process to send any lisp objects back to the parents, which
+can receive them with the <code>receive</code>
+function. The <code>send</code> function can be called any number of
+times to continually send data back. The <code>receive</code> function
+will block if there is no lisp object to receive yet.
+</p>
+<pre>
+(require 'examples)
+(setq d (detach (lambda () (send (fib)))))
+(receive d) ; Gets value from child process
+</pre>
+<p>
+  <video src="/video/wisp/wisp-point-free.ogv" controls>
+    Since your browser doesn't seem to support the video tag, here's a
+    link to the video: <a href="/video/wisp/wisp-point-free.ogv">
+    wisp-point-free.ogv</a>.
+  </video>
+</p>
+<p>
+This video shows off the point-free functions that have been defined:
+function composition and partial application (I accidentally say
+"partial evaluation" in the video). These are actually just simple
+macros that any lisp could do.
+</p>

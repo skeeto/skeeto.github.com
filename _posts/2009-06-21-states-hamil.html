@@ -1,0 +1,87 @@
+---
+title: United States Hamiltonian Paths
+layout: post
+---
+
+<!-- 21 June 2009 -->
+<p>
+Awhile ago I wanted to <a
+href="http://threesixty360.wordpress.com/2009/04/22/traveling-the-lower-48/">
+find every Hamiltonian path in the contiguous 48 states</a>. That is,
+trips that visit each state exactly once. Writing a program to search
+for Hamiltonian paths is easy (<a href="/blog/2009/05/27"> I did this
+already</a>). The most time consuming part was actually putting
+together the data that specified the graph to be searched. I hope
+someone somewhere finds it useful. Here is a map for reference,
+</p>
+<p class="center">
+<a href="/img/us48.png">
+  <img src="/img/us48-small.png"
+       alt="Map us the lower 48 United States"
+       title="I should have labeled the states :-/" />
+</a>
+</p>
+<p>
+It took me several passes before I stopped finding errors. I
+<i>think</i> I have it all right now, but there could still be some
+mistakes. If you see one, leave a comment and I'll fix it here. Here
+is the graph as an S-expression <a
+href="http://en.wikipedia.org/wiki/Association_list#Association_lists">
+alist</a>; the car (first) element in each list is a state, and the
+cdr (rest) is the unordered list of states that can be reached from
+it.
+</p>
+<pre>
+((me nh)
+ (nh vt ma me)
+ (vt ny ma nh)
+ (ma ri ct ny nh vt)
+ (ny pa nj ma ct vt)
+ (ri ma ct)
+ (ct ri ma ny)
+ (nj pa ny de)
+ (de md pa nj)
+ (pa nj ny de md wv oh)
+ (md pa de va wv)
+ (va md wv ky tn nc)
+ (nc va tn ga sc)
+ (sc nc ga)
+ (ga fl sc al nc tn)
+ (al ms fl ga tn)
+ (ms la ar tn al)
+ (tn ms al ga nc va ky mo ar)
+ (ky wv va tn mo il in oh)
+ (wv md pa oh ky va)
+ (oh pa wv ky in mi)
+ (fl al ga)
+ (mi wi oh in)
+ (wi mn ia il mi)
+ (il in ky mo ia wi)
+ (in oh ky il mi)
+ (mo il ky tn ar ok ks ne ia)
+ (ar mo tn ms la tx ok)
+ (la ms ar tx)
+ (tx ok nm ar la)
+ (ok ks mo ar tx nm co)
+ (ks ok co ne mo)
+ (ne sd ia mo ks co wy)
+ (sd nd mn ia ne wy mt)
+ (nd mt sd mn)
+ (ia ne mo il wi mn sd)
+ (mn wi ia sd nd)
+ (mt id wy sd nd)
+ (wy id ut co ne sd mt)
+ (co ne ks ok nm ut wy)
+ (nm co ok tx az)
+ (az nm ut ca nv)
+ (ut nv id wy co az)
+ (id mt wy ut nv or wa)
+ (wa or id)
+ (or wa id nv ca)
+ (nv or id ut az ca)
+ (ca az nv or))
+</pre>
+<p>
+Note that all paths must start or end in Maine because it connects to
+only one other state.
+</p>

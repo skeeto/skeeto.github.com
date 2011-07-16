@@ -1,0 +1,174 @@
+---
+title: Sudoku Solver
+layout: post
+---
+
+<!-- 20 July 2008 -->
+<p>
+<img src="/img/sudoku/toilet.jpg"
+     alt="My 'Thinking Chair'" class="right" />
+I was at my fiancee's parent's house over Fourth of July weekend. Her
+family likes to leave plenty of reading material right by the toilet,
+which is something fairly new to me. They take their time on the john
+quite seriously.
+</p>
+<p>
+While I was in there I saw a large book
+of <a href="http://en.wikipedia.org/wiki/Sudoku"> Sudoku</a>
+puzzles. Since the toilet is a good spot to think (I like to call it
+my
+"<a href="http://everything-more.blogspot.com/2008/04/that-t-shirt-is-wrong-color.html">
+thinking chair</a>"), I thought out an algorithm for solving
+Sudokus. I then left the bathroom and implemented it in order to
+verify that it worked.
+</p>
+<p>
+The method is trial-and-error, which it does recursively: fill in the
+next available spot with a valid number as defined by the rules
+(cannot have the same number in a column, row, or partition), and
+recurse. The function reports success (true) when a solution was
+found, or failure (false), which means we try the next available
+number. If no more valid numbers are available for testing at the
+current position, then the puzzle is not solvable (we made an error at
+a previous position), so we stop recursing and return failure.
+</p>
+<p>
+More formally,
+</p>
+<ul>
+  <li>Find an open position.</li>
+  <li>Look at that position's row, column, and partition to find valid
+  numbers to fill in.</li>
+  <li>Fill the position with one of the valid choices.</li>
+  <li>Recurse using the new change.</li>
+  <li>If the recursion reports a problem (returns false), try the next
+  valid number and repeat.</li>
+  <li>If recursion reports success (true), stop guessing and return
+  success.</li>
+  <li>If the list of valid numbers is exhausted, return failure (false).</li>
+</ul>
+<p>
+Note that the recursion depth does not exceed 81, as it only recurses
+once per blank square. The "game tree" is broad rather than deep. It
+doesn't have to duplicate the puzzle matrix in memory either because
+all operations can be done in place.
+</p>
+<p>
+Here is the implementation in C I typed up just after I left the
+bathroom,
+</p>
+<pre>
+int solve (char matrix[9][9])
+{
+  /* Find an empty spot. */
+  int x, y, i, j, s = 0;
+  for (i = 0; i &lt; 9 &amp;&amp; !s; i++)
+    for (j = 0; j &lt; 9 &amp;&amp; !s; j++)
+      if (matrix[i][j] == 0)
+	{
+	  x = i; y = j; s = 1;
+	}
+
+  /* No empty spots, we found a solution! */
+  if (!s)
+    return 1;
+
+  /* Determine legal numbers for this spot. */
+  char nums[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+  for (i = 0, j = y; i &lt; 9; i++)
+    nums[(int)matrix[i][j]] = 0; /* Vertically */
+  for (i = x, j = 0; j &lt; 9; j++)
+    nums[(int)matrix[i][j]] = 0; /* Horizontally */
+  for (i = 0; i &lt; 3; i++)
+    for (j = 0; j &lt; 3; j++)
+      nums[(int)matrix
+	   [i + ((int)(x / 3)) * 3]
+	   [j + ((int)(y / 3)) * 3]
+	   ] = 0;                /* Within the partition */
+
+  /* Try each possible number and recurse for each. */
+  for (i = 1; i &lt; 10; i++)
+    if (nums[i] &gt; 0)
+      {
+	matrix[x][y] = i;
+	if (solve (matrix))
+	  return 1;
+      }
+
+  /* Each attempt failed: reset this position and report failure. */
+  matrix[x][y] = 0;
+  return 0;
+}
+</pre>
+<p>
+I assumed that it would be slow solving the puzzles, having to search
+a wide tree, but it turns out to be very fast. It solves normal
+human-solvable puzzles in a couple of milliseconds. Wikipedia has a
+near-worst case Sudoku that is designed to make algorithms like mine
+perform their worst.
+</p>
+<p>
+  <a href="/img/sudoku/worst-case.svg">
+    <img src="/img/sudoku/worst-case.png"
+	 alt="Worst-case Sudoku" />
+  </a>
+</p>
+<pre>
+char worst_case[9][9] =
+  {
+    {0, 0, 0,   0, 0, 0,   0, 0, 0},
+    {0, 0, 0,   0, 0, 3,   0, 8, 5},
+    {0, 0, 1,   0, 2, 0,   0, 0, 0},
+
+    {0, 0, 0,   5, 0, 7,   0, 0, 0},
+    {0, 0, 4,   0, 0, 0,   1, 0, 0},
+    {0, 9, 0,   0, 0, 0,   0, 0, 0},
+
+    {5, 0, 0,   0, 0, 0,   0, 7, 3},
+    {0, 0, 2,   0, 1, 0,   0, 0, 0},
+    {0, 0, 0,   0, 4, 0,   0, 0, 9}
+  };
+</pre>
+<p>
+On my laptop, my program solves this in 15 seconds, which means that
+it should take no more than 15 seconds to solve any given Sudoku
+puzzle. This provides me a nice upper limit.
+</p>
+<p>
+There is a way to "defeat" this particular puzzle. For example, say an
+attacker was trying to perform a
+<a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">
+denial-of-service</a> (DoS) attack on your Sudoku solver by giving it
+puzzles like this one (making your server spend lots of time solving
+only a few puzzles). However, these puzzles assume a certain guessing
+order. By simply randomizing the order of guessing, both in choosing
+positions and the order that numbers are guessed, the attacker will
+have a much harder time creating a difficult puzzle. The worst case
+could very well be the best case. This is very similar to how
+Perl <a href="http://www.ayni.com/perldoc/perlsec.html#Algorithmic-Complexity-Attacks">
+randomizes its hash array hash functions</a>.
+</p>
+<p>
+Now suppose we kept our guess order random then "solved" an empty
+Sudoku puzzle. What we have is a solution to a randomly generated
+Sudoku. To turn it into a puzzle, we just back it off a bit. A Sudoku
+is only supposed to have a single unambiguous solution, so we can only
+back off until just before the point where two solutions becomes
+possible. If you imagine a solution tree, this would be backing up a
+branch until you hit a fork.
+</p>
+<p>
+Normally, Sudokus are symmetric (in the matrix sense), but completely
+randomizing the position guessing order won't achieve this. To make
+this work, the randomizing process can be adjusted to only select
+random points on the upper triangle (including the diagonal). For each
+point it selects <i>not</i> on the diagonal, the mirror point is
+automatically selected next. This will preserve symmetry when
+generating puzzles.
+</p>
+<p>
+One issue remains: there seems to be no way to control the difficulty
+of the puzzles it generates. Maybe a number of open spaces left behind
+is a good metric? This will require some further study (and another
+post!).
+</p>

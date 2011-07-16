@@ -1,0 +1,45 @@
+---
+title: Elisp Printed Hash Tables
+layout: post
+---
+
+<!-- 7 June 2010 -->
+<p>
+A printed hash table representation is pretty new to Elisp, and a bit
+late. As far as I know Elisp didn't come with a way to print, and read
+back in, a hash table without rolling your own
+(like <a href="http://curiousprogrammer.wordpress.com/2010/06/07/data-dumper-in-emacs-lisp/">
+Jared Dilettante was doing with a Data::Dumper style output</a>),
+until 23.1 in July 2009. This is
+when <a href="http://www.gnu.org/software/emacs/NEWS.23.1">
+<code>json.el</code> was first included with Emacs</a>, for dumping to
+and reading from <a href="http://en.wikipedia.org/wiki/JSON">JSON</a>.
+</p>
+<pre>
+(<span class="keyword">require</span> '<span class="constant">json</span>)
+
+(setq hash (make-hash-table))
+(puthash <span class="string">"key1"</span> <span class="string">"data1"</span> hash)
+(puthash <span class="string">"key2"</span> <span class="string">"data2"</span> hash)
+
+(insert <span class="string">"\n;; "</span> (json-encode hash))
+<span class="comment-delimiter">;; </span><span class="comment">{"key2":"data2", "key1":"data1"}
+</span>
+</pre>
+<p>
+Just a month ago Emacs 23.2 came out, very silently
+including <a href="http://www.gnu.org/software/emacs/NEWS.23.2">a new
+printed representation for hash tables</a> with a <code>#s</code> hash
+notation.
+</p>
+<pre>
+#s(hash-table data (<span class="string">"key1"</span> <span class="string">"data1"</span> <span class="string">"key2"</span> <span class="string">"data2"</span>))
+</pre>
+<p>
+With this hash tables can be printed and read as part of normal
+s-expressions with the standard lisp reader and printer functions.  It
+seems heavy, having to write out "<code>hash-table</code>" in there,
+but I think it's because the <code>#s</code> notation will be used to
+create printed forms of other lisp objects that currently do not have
+one.
+</p>

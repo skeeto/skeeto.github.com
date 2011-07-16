@@ -1,0 +1,95 @@
+The Great Tab Mistake
+---<title: !-- 12 January 2
+layout: post
+---
+
+011 -->
+<p>
+I'm a window manager vagrant, wondering from window manager to window
+manager over the years. When I started using GNU/Linux about 7 years
+ago, I was using KDE. Years later, Gnome, then Xfce, a short time with
+FVWM, a couple years of IceWM. I spent most of 2010 with xmonad. And I
+recently started using Fluxbox.
+</p>
+<p>
+Now that I've learned how to make effective use of Fluxbox I can't
+help but think that a disheartening mistake was made years ago when
+the window manager concepts were established. Just like title bars and
+the iconic minimize, maximize, and close buttons, I think tabs should
+have been a staple of all window managers, with a common accompanying
+API. This is the Great Tab Mistake.
+</p>
+<p>
+Tabs are now an important feature of browsers, and is probably where
+tabs have the most recognition among casual computer users. You'll
+also find them in some terminal emulators, text editors, spreadsheets,
+and word processors.
+</p>
+<p>
+I don't really know much of the true history of tabs, but this is my
+guess. Tabs really made their big debut in the browser wars of the
+1990's. The web browsers of the day competed for market share, two of
+them in particular. Just as you'd expect many kinds of competing
+software, they differentiated themselves on features (which actually
+still causes problems to this day).
+</p>
+<p>
+One major feature to pop up was tabbed browsing. Exploring the
+hyperlink graph of the web from multiple positions at once became a
+lot cheaper with tabs. The only way to do it otherwise would be to
+open multiple windows, which required interacting with the frequently
+clumsy windowing systems (i.e. alt-tabbing). Even though the web is an
+arbitrary directed graph, in practice we explore its hierarchical
+sub-graph tree.
+</p>
+<p>
+With only one page open at a time, there's a lot of backing in and out
+to explore the full hierarchy. It's more of a depth-first search. Easy
+to get lost.
+</p>
+<p class="center">
+  <img src="/img/tabs/one-tab.png" alt=""/>
+</p>
+<p>
+With multiple pages open in different tabs, we have a hold of several
+points of the hierarchy at once. We can advance further down each part
+of the hierarchy, creating more page instances as needed, at
+leisure. It's more of a breadth first search.
+</p>
+<p class="center">
+  <img src="/img/tabs/multi-tab.png" alt=""/>
+</p>
+<p>
+However, the early tab paradigm was flawed, which may have party
+caused the Great Tab Mistake. Though this flaw was has recently begun
+to be corrected with newer browsers like Chromium. The tabs are meant
+to analogous to the tabs in a real-world booklet. The tab hangs off
+the end and switching tabs changes the entire page. Those early tabs
+were placed <i>below</i> elements that were tied to the page,
+particularly the address bar. Changing tabs changed content
+above <i>and</i> below the tab.
+</p>
+<p class="center">
+  <img src="/img/tabs/tabs-small.png" alt="">
+</p>
+<p>
+These tabs were too low! They should have been higher, just below the
+title bar, if not part of the title bar itself. This brings me back to
+my point: tabs are <i>really</i> a feature of the window manager,
+because it's really a way to manage separate, but associated, windows!
+</p>
+<p>
+Why am I only realizing this now? One of the features of Fluxbox is
+tabs as part of the window manager. Any window's title bar can be
+dragged into another window's title bar and they'll be combined as a
+single tabbed window. Key bindings can be assigned to move between
+tabs in the same way as a browser. If Firefox had hooks into this
+system that would allow me to substitute window manager tabs in place
+of its tabs, that's definitely what I'd be doing. Instead, I've got
+two different tab systems serving the same purpose.
+</p>
+<p>
+Why have everyone re-invent the wheel, each with their own quirks and
+configuration, that is redundant with a system that already exists
+solely for that purpose? It's a mistake!
+</p>

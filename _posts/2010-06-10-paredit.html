@@ -1,0 +1,76 @@
+---
+title: Emacs ParEdit and IELM
+layout: post
+---
+
+<!-- 10 June 2010 -->
+<p>
+<a href="http://www.emacswiki.org/emacs/ParEdit">ParEdit</a> is a
+powerful extension to Emacs that I've just begun using recently. It's
+a minor mode that forces all parenthesis, square brackets, and quotes
+to be balanced at all times. While it's useful for any programming
+language it's especially suited for Lisps, because it's designed for
+manipulating nested parenthesis -- i.e. s-expressions. It's not
+currently part of Emacs so you have to drop the script in
+your <code>load-path</code> somewhere.
+</p>
+<p>
+I've frequently thought that a Lisp-based shell would be an
+interesting and powerful tool, much like a normal Lisp REPL. Programs
+would be treated like Lisp functions. For example,
+</p>
+<pre>
+wellons@luna:~$ (ls -l .emacs)
+-rw------- 1 wellons wellons 4859 2010-06-10 23:20 .emacs
+wellons@luna:~$
+</pre>
+<p>
+But typing all those parenthesis all the time would be quite the
+nuisance. I know this from experience typing at Lisp REPLs. I imagined
+something that works exactly like ParEdit would be needed to make all
+that work go away. To save even more time each prompt would begin with
+a nested pair, with the cursor placed between them. Then typing a
+quick command is no different than a normal shell.
+</p>
+<pre>
+wellons@luna:~$ ()
+</pre>
+<p>
+Well, in Emacs we have both ParEdit and REPLs, so we can compose these
+features together with just a little advice. Here's how to do it with
+the Interactive Emacs-Lisp Mode (IELM) REPL. First tell IELM to use
+ParEdit,
+</p>
+<pre>
+(add-hook 'ielm-mode-hook (<span class="keyword">lambda</span> () (paredit-mode 1)))
+</pre>
+<p>
+The function in IELM that spits out the next prompt
+is <code>ielm-eval-input</code>, so we give it the advice to call the
+ParEdit function afterwards to insert a parenthesis pair.
+</p>
+<pre>
+(<span class="keyword">defadvice</span> <span class="function-name">ielm-eval-input</span> (after ielm-paredit activate)
+  <span class="string">"Begin each IELM prompt with a ParEdit parenthesis pair."</span>
+  (paredit-open-round))
+</pre>
+<p>
+And that's it! Note that the first IELM prompt is not placed by this
+function so it won't appear until the second prompt.
+</p>
+<pre>
+<span class="comment">*** Welcome to IELM ***</span><span class="constant">  Type (describe-mode) for help.</span>
+<span class="comint-highlight-prompt">ELISP&gt; </span>
+<span class="comint-highlight-prompt">ELISP&gt; </span>()
+</pre>
+<p>
+If you want to enter a single atom and don't need parenthesis, just
+hit backspace once. This is much less common so it gets the extra
+keystroke.
+</p>
+<p>
+This can be done for <code>inferior-lisp</code>
+and <a href="http://nullprogram.com/blog/2010/01/15/"> SLIME</a> to
+enhance those REPLs as well. You just have to figure out which defun
+to advise.
+</p>

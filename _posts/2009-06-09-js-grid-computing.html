@@ -1,0 +1,97 @@
+---
+title: Javascript Distributed Computing
+layout: post
+---
+
+<!-- 9 June 2009 -->
+<p>
+<img src="/img/js-grid.png"
+     alt="Diagram of Javascript/browser computing grid."
+     title="Browser computing grid."
+     class="right" />
+
+I'm not the first to come across this idea: the browser could be used
+as part of a distributed computing system. A web server hands out
+Javascript and the browser runs the script and reports the results
+back to the server. The browser is a portable, widely available
+platform so just about anyone can easily contribute, possibly without
+even knowing.
+</p>
+<p>
+Browsers aren't really expecting this sort of thing. They will
+complain if a script is running for too long. If you tell Firefox to
+continue running the script anyway, it will lock up until the script
+is done (or when it complains again). This can be worked around by <a
+href="http://www.julienlecomte.net/blog/2007/10/28/">writing a simple
+scheduler with <code>setTimeout()</code></a>.
+</p>
+<p>
+This could also potentially be used as an alternative to
+advertising. Instead of selling advertising space, a website operator
+could sell visitor's CPU time by including a little snippet of
+code. This may be more successful, because most visitors would be
+unaware of it, making it less intrusive. It will be less likely to be
+blocked. Of course, there ethical issues about this. <a
+href="http://www.pluraprocessing.com/">In fact, there is already a
+company doing this with secret Java applets</a>.
+</p>
+<p>
+There are two serious constraints on using Javascript in a browser as
+a distributed computing platform:
+</p>
+<p>
+<b>Low bandwidth</b>. There isn't a lot of opportunity to transfer data
+between the server and the node, and nodes can't talk to
+each other. The data needed by a node must be small. The results data
+must also be small.
+</p>
+<p>
+<b>Short computational units</b>. The Javascript in the browser has no
+way to store its running state between browser sessions, so it must
+rely on the server for this. This means that the units of work must be
+able to be completed within a short period of time. A few minutes at
+the most on a normal computer.
+</p>
+<p>
+A lot of problems won't fit inside these limitations. One that I
+thought might was a <a
+href="http://en.wikipedia.org/wiki/Mersenne_primes">Mersenne prime</a>
+search. A Mersenne prime is a prime of the form,
+</p>
+<p>
+2<sup>n</sup> - 1
+</p>
+<p>
+So even though the largest known Mersenne prime has nearly 13 million
+digits (about 5 MB just to store the entire number), it can be
+described by it's exponent, <code>43,112,609</code>, which is small
+enough to fit in a 4-byte integer. The result of a calculation, a
+probabilistic primality test, is a "yes" or "no". One bit. It fits the
+first constraint very well.
+</p>
+<p>
+However, the smallest amount of work a node can do is an entire
+primality test. If we break it down any further, the prime will have
+been expanded and we will not fit the first constraint. There will be
+too much data. To see how possible it might be, I implemented it,
+which you can try out here,
+</p>
+<p>
+<a href="/download/mersenne/">/download/mersenne/</a> (sloppy code warning!)
+</p>
+<p>
+I modified an <a href="http://www.leemon.com/crypto/BigInt.html">
+existing Javascript bigint library</a> which allowed me to get it up
+running quickly. After you receive the page, your browser will run the
+<a
+href="http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">
+Miller-Rabin primality test</a> on <code>2^9941 - 1</code>. You can
+edit the source HTML to try a different exponent. Running it on
+several of my computers on different browsers it took anywhere from an
+hour to 8 hours. And that's only with an exponent of
+<code>9941</code>. It's an unsuitable problem.
+</p>
+<p>
+It would be neat to see a browser computing grid in action, but I
+can't think of a problem to solve with it.
+</p>

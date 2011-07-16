@@ -1,0 +1,97 @@
+---
+title: Torrent File Strip
+layout: post
+---
+
+<!-- 19 February 2011 -->
+<p class="abstract">
+You can skip my explanation and download the tool here,
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=btstrip.git">http://git.nullprogram.com/btstrip.git</a>
+</pre>
+<p>
+My main computer recently stopped working for me, and, until I have a
+replacement, I've been using my wife's old 2004-era desktop, with only
+500MB of memory. That has required me to make use of a lighter-weight
+BitTorrent client than I have in the
+past: <a href="http://libtorrent.rakshasa.no/">rTorrent</a>.
+</p>
+<p>
+Because rTorrent's interface is built on ncurses, when combined
+with <a href="/blog/2009/03/05/">GNU Screen</a> it behaves very much
+like a daemon. I have configured it to watch a certain directory for
+new torrent files. When I want to start downloading a new torrent, I
+just put the torrent file there and rTorrent gets to work on it. Share
+this watched directory on a network, and rTorrent becomes a network
+service.
+</p>
+<pre>
+# rTorrent configuration
+directory = /torrents/
+session = /torrents/.session/
+schedule = watch_directory,5,5,load_start=/torrents/watch/*.torrent
+schedule = untied_directory,5,5,stop_untied=
+schedule = tied_directory,5,5,start_tied=
+</pre>
+<p>
+Unfortunately, the rTorrent documentation has not been kept up to
+date, and appears to be inaccurate. I prefer to rely completely on
+the distributed hash table (DHT) rather than use normal trackers
+(<a href="/blog/2009/10/26/">so long as the torrent is free of
+DRM</a>). My last BitTorrent client allowed me to do this, but the
+documented rTorrent option for doing
+this, <code>enable_trackers</code>, doesn't seem to work at all.
+</p>
+<pre>
+enable_trackers = no
+</pre>
+<p>
+My current workaround is to strip away all of the tracker information
+from the torrent file before giving it to rTorrent. It's a Perl
+script, with all the hard work being done by
+the <a href="http://search.cpan.org/dist/Bencode/lib/Bencode.pm">
+Bencode module</a>. Stripping out the trackers is trivial,
+</p>
+<pre>
+<span class="type">my</span> $<span class="variable-name">decoded</span> = bdecode <span class="keyword">do</span> { <span class="type">local</span> $/; &lt;<span class="constant">STDIN</span>&gt; };
+$$<span class="variable-name">decoded</span>{<span class="string">'announce'</span>} = <span class="string">"http://127.0.0.1/"</span>;
+delete $$<span class="variable-name">decoded</span>{<span class="string">'announce-list'</span>};
+print( bencode $<span class="variable-name">decoded</span> );
+</pre>
+<p>
+The encoding of a torrent file is of critical importance, due to
+the <code>info_hash</code>: the hash of all of the torrent data and
+metadata, which uniquely identifies that torrent. If any aspect of
+the <code>info</code> field in the torrent file changes, you get a
+different hash and will not be able to participate in the original
+torrent. The reason the above code guaranteed to work properly is
+because, for any possible bencode data structure, there
+is <i>exactly</i> one possible way to bencode it.
+</p>
+<p>
+There are four data types in the bencode format: integers, byte
+strings, lists, and associative arrays. Integers are encoded in ASCII
+as base-10 (making it unaffected by endianess). Byte strings are
+stored as an integer indicating its length, followed by the literal
+string itself. Lists are stored as a list of objects in order, with
+sentinel. And associative arrays are stored as a list of key
+pairs. Most importantly, those key pairs are stored in alphabetical
+order, enforcing a single encoding for any given associative array.
+</p>
+<p>
+The simple code above only works on stdin to stdout, but it would be
+more convenient to edit torrent files in place. So I buffed it up a
+bit in my working version. It has two command line switches: one for
+operating on the file in-place (<code>-i</code>), and one for setting
+the tracker URL manually, rather than inserting a dummy value
+(<code>-t</code>). It also strips out some of the extra, optional
+fields, cutting the torrent file down to its minimal size.
+</p>
+<p>
+<a href="http://git.nullprogram.com/?p=btstrip.git;a=blob_plain;f=btstrip.pl;hb=4a12c57e2525061f4f7eeb040d14bb42b4a4083f">btstrip.pl</a>
+</p>
+<p>
+Once you've installed the Bencode module, drop that script in
+your <code>PATH</code> somewhere and you're ready to go.
+</p>

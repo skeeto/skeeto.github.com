@@ -1,0 +1,32 @@
+---
+title: E-mail Obfuscater Perl One-liner
+layout: post
+---
+
+<!-- 2 June 2009 -->
+<p>
+If you look at the page sources around here you might notice that
+there are no bare e-mail addresses around. This is because I obfuscate
+them into a series of HTML entities. So far this has been pretty
+effective at hiding from address-scraping, web-crawling spam
+bots. They don't seem to try very hard at decoding HTML entities.
+</p>
+<p>
+When I added the comment system, I needed to obfuscate addresses
+automatically. I quickly realized that this is yet another perl
+one-liner (and implemented as one line in the comment system). It can
+be used on the command line to obfuscate a file/pipe containing a list
+of addresses.
+</p>
+<pre>
+perl -lpe '$_ = join "", map {"&amp;#" . ord() . ";"} split //'
+</pre>
+<p>
+All of the spaces are really only there for us humans,
+</p>
+<pre>
+perl -lpe '$_=join"",map{"&amp;#".ord.";"}split//'
+</pre>
+<p>
+I keep running into these one-liners.
+</p>

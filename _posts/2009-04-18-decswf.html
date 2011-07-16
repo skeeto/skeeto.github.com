@@ -1,0 +1,72 @@
+---
+title: SWF Decompression Perl One-liner
+layout: post
+---
+
+<!-- 18 April 2009 -->
+<p>
+<img src="/img/magnify.png"
+     alt="Magnifying glass" title="Careful inspection"
+     class="right" />
+
+Flash seems to be the popular way of playing videos online. This is a
+bit better than the bad old days of online video where a user had to
+select from a few buggy media player plug-ins. Things have improved.
+</p>
+<p>
+However, if you don't use Flash, or if you want to watch the videos in
+your own media player, you are stuck. A download link for the video is
+almost never provided. The video is always somewhere, though, to be
+fetched via http. I <a href="/blog/2007/09/05">mentioned this
+before</a> for downloading YouTube videos using <a
+href="http://bitbucket.org/rg3/youtube-dl/wiki/Home"> youtube-dl</a>.
+</p>
+<p>
+The trick is finding the URL. Sometimes you can derive it from the
+HTML code, sometimes you have to dig a little deeper by inspecting the
+Flash player itself. <a
+href="http://en.wikipedia.org/wiki/Strings_(Unix)"><code>
+strings</code></a> can be invaluable here.
+</p>
+<p>
+There could be an extra layer of stuff to work out, which is explained
+below. My main reason for posting this is so I can refer back to it
+later when I need to do it again.
+</p>
+<p>
+So, the other day I ran into a Flash video player that contained part
+of the URL of its video. I began by studying the <code>embed</code>
+tag in the HTML, which gave me some information about where to find
+the video (the video ID number). I downloaded the Flash player SWF
+file for the purpose of running <code>strings</code> on it.
+</p>
+<p>
+I ran into a problem here. I wasn't finding any non-garbage strings
+inside the file. <code>file</code> told me it was <i>compressed</i>.
+</p>
+<pre>
+$ file player.swf
+player.swf: Macromedia Flash data (compressed), version 9
+</pre>
+<p>
+Searching online quickly revealed that a compressed Flash file is just
+zlib compression after an 8-byte header. Decompression can actually be
+done with a Perl one-liner,
+</p>
+<pre>
+perl -MCompress::Zlib -0777 -e \
+      'print uncompress substr &lt;&gt;, 8;' player.swf &gt; player
+</pre>
+<p>
+I ran <code>strings</code> and <code>grep</code>ed for "http",
+revealing the location of the video. That was it!
+</p>
+<p>
+I actually came across <a
+href="http://www.brooksandrus.com/blog/2006/08/10/"> a Java program
+</a> that does the same thing. It is 115 lines of code. Java programs
+always seem to be bloated like this.
+</p>
+<p>
+I hope you find this useful!
+</p>

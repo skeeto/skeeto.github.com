@@ -1,0 +1,128 @@
+---
+title: BrianScheme Update: Bootstrapping and Images
+layout: post
+---
+
+<!-- 30 January 2011 -->
+<p>
+I <a href="/blog/2011/01/11/">previously talked about BrianScheme</a>
+(BS) and we've had some exciting updates since then. I've since caught
+up with Brian so we're committing code at about the same rate. It's
+really coming together to be something bigger than we both
+expected. We're adding what we feel is the best of Common List and
+Scheme. The Git repository log reveals just how much time we've spent
+hacking at this.
+</p>
+<p>
+The first big milestone was full bootstrapping. BS has both an
+interpreter, written in C, and a compiler written in BS. The compiler
+targets a VM, which is written in C. The interpreter is no longer used
+directly; it's there simply for bootstrapping the compiler. It sets up
+an initial environment, then loads and runs the compiler which
+immediately compiles itself, and then compiles its environment, and
+then compiles the main user environment. Afterward the whole thing is
+lifted up on top of the VM and the interpreter is abandonded.
+</p>
+<p>
+Once everything was bootstrapped and running in the VM, continuations
+became a practical possibility, and Brian soon added them. So now
+BrianScheme now has all the major components of a Scheme.
+</p>
+<p>
+I began ramping up my contributions by adding a really solid random
+number generator,
+the <a href="http://en.wikipedia.org/wiki/Mersenne_twister"> Mersenne
+twister</a>, and providing functions to generate numbers on all sorts
+of distributions: normal, Poisson, gamma, exponential, beta, and
+Chi-squared. It's pretty reasonable at seeding itself, too.
+</p>
+<p>
+In the meantime, this bootstrap process, while incredibly useful, was
+<i>really</i> slowing down development. It was taking BS about 10
+seconds to boot itself every time it was started. That can really kill
+the usefulness of the system. I started to look into ways to mitigate
+this, perhaps through FASLs or some kind of image dump.
+</p>
+<p>
+After discussing it with Brian I decided to try for a memory dump,
+<a href="http://www.sbcl.org/manual/Saving-a-Core-Image.html">
+SBCL-style</a>. My old <a href="/blog/2007/09/14/">memory pool
+allocator</a>, which I thought I've never use again, really came in
+handy, and now has a home -- modified of course -- in BS. It no longer
+uses malloc(), instead using mmap() to get more memory, and now has
+the ability to free() memory, completely replacing malloc(),
+realloc(), and free(). So with BrianScheme no longer use the libc
+allocator we had complete control over the program's memory. It was
+just a matter of dumping the handful of big mmap() chunks to disk, and
+in another process, loading them back in to the same location, and
+finally hooking the environment back up.
+</p>
+<p>
+Just as the SBCL documentation warns about, there are complicated
+issues still to be resolved (and may never be). The two big ones are
+alien objects and open file handles, neither of which can make it into
+the image. Aliens could be in there potentially, if the foreign
+library let us select its allocator. Brian made a change that gives
+the FFI a hook to rebind its symbols after load, so <i>some</i> of the
+FFI can survive the jump. The three stdin, stdout, and stderr file
+handles are reconnected on load, but the old, dead handles can
+potentially linger in places, waiting to cause errors when someone
+tries to read them.
+</p>
+<p>
+It was really, really exciting to see the images come back to life for
+the first time. With that success the lengthy bootstrap process was no
+longer a big problem because it could be bypassed much of the
+time. Saving images is really simple to do, too.
+</p>
+<pre>
+(save-image "brianscheme.img")
+</pre>
+<p>
+This will create the image "brianscheme.img", which can be loaded
+again later with the <code>-l</code> switch. Once loaded, it will
+either execute a script if given one on the command line, or it will
+provide a new REPL. Because the image is <code>mmapp()</code>ed into
+place, loading is practically instantaneous, even if the image is
+dozens of megabytes (which can happen easily).
+</p>
+<pre>
+bsch -l brianscheme.img
+</pre>
+<p>
+The BS image in its booted state is about 15MB right now on 64-bit
+systems, and 7MB on 32-bit systems. They are low entropy and compress
+down to about 2MB, so it's not <i>too</i> bad. If you write a large
+program in BrianScheme and save it as an image it may be even larger.
+</p>
+<p>
+Over the weekend I took this even further, continuing to follow in the
+footsteps of SBCL: I added a feature to wrap the image in the BS
+executable, so that the image itself is a standalone executable. To
+make this more useful, a toplevel function can be selected to run
+after the image loads, rather than a REPL. If you wrote a game in BS
+and wanted to compile to a standalone program,
+</p>
+<pre>
+(load "my-game.sch")
+(save-image "my-game" 'executable #t 'toplevel play-my-game)
+</pre>
+<p>
+The user would execute the file <code>my-game</code>, which would load
+BS and run the function <code>play-my-game</code>. Because a 15MB
+binary is a little unwieldy to hand out, you could compress it
+beforehand with a tool like <code>gzexe</code>, which transparently
+compresses an executable.
+</p>
+<p>
+The wrapper is actually very simple. It's a very slightly modified BS
+executable, padded out to the system's page size (4kB, generally),
+ending with a special marker. The image is concatenated to this
+binary. When run, the program scans itself looking for the marker
+(<code>0xdeadbeef</code>), and then mmap()s the portion behind it (you
+can only mmap() page-size offsets, which is why padding was
+necessary).
+</p>
+<p>
+BrianScheme should have an interesting future ahead of it.
+</p>

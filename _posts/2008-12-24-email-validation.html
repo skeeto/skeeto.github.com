@@ -1,0 +1,109 @@
+---
+title: Don't Write Your Own E-mail Validator
+layout: post
+---
+
+<!-- 24 December 2008 -->
+<p>
+  <img src="/img/disapprove.jpg"
+       alt="This man disapproves of your e-mail validator."
+       title="This man disapproves of your e-mail validator."
+       class="left" width="150" />
+
+Gmail has a nice feature: when delivering e-mail, everything including
+and after a <code>+</code> in a Gmail address is ignored. For example,
+mail arriving at all of these addresses would go to the same place if
+they were Gmail addresses,
+</p>
+<pre>
+account@example.com
+account+nullprogram@example.com
+account+slashdot@example.com
+</pre>
+<p>
+Thanks to this feature, when a user acquires a Gmail account, Google
+is actually providing about a googol (as in the number
+10<sup>100</sup>) different e-mail addresses to that user! Quite
+appropriate, really.
+</p>
+<p>
+I have seen other mailers do similar things, like ignoring everything
+after dashes. A nice advantage to this is when registering at a new
+website I can customize my e-mail address for them by, say, throwing
+the website name in it. Because I have a google of e-mail addresses
+available, it is impossible to run out, so I can give every person I
+meet their own version of my address. The custom address can come in
+handy for sorting and filtering, and it will also tell me who is
+selling out my e-mail address. This, of course, assumes that someone
+isn't stripping out the extra text in my address to counter the Gmail
+feature.
+</p>
+<p>
+However, in my personal experience, most websites will not permit
+<code>+</code>'s in addresses. This is completely ridiculous, because
+it means that <b>virtually every website will incorrectly invalidate
+perfectly valid e-mail addresses</b>. Even major websites, like
+<i>coca-cola.com</i>, screw this up. They see the <code>+</code> in
+the address and give up.
+</p>
+<p>
+In fact, if I do a Google search for "email validation regex" right
+now, 9 of the first 10 results return websites with regular
+expressions that are complete garbage and will toss out many common,
+valid addresses. The only useful result was at the fifth spot (linked
+below).
+</p>
+<p>
+For the love of Stallman's beard, <b>stop writing your own e-mail
+address validators!</b>
+</p>
+<p>
+Why shouldn't you even bother writing your own? Because the proper
+Perl regular expression for <a
+href="http://www.ietf.org/rfc/rfc0822.txt?number=822">RFC822</a> is <a
+href="http://ex-parrot.com/~pdw/Mail-RFC822-Address.html">over 6
+kilobytes in length</a>! Follow that link and look at that. This is
+the <i>smallest</i> regular expression you would need to get it right.
+</p>
+<p>
+If you <i>really</i> insist on having a nice short one and don't want
+to use a validation library, which, again, is a stupid idea and you
+<i>should</i> be using a library, then use the dumbest, most liberal
+expression you can. (Just don't forget the security issues.) Like
+this,
+</p>
+<pre>
+.+@.+
+</pre>
+<p>
+Seriously, if you add anything else you most almost surely make it
+incorrectly reject valid addresses. Note that e-mail addresses can
+contain spaces, and even more than one <code>@</code>! These are
+valid addresses,
+</p>
+<pre>
+"John Doe"@example.com
+"@TheBeach"@example.com
+</pre>
+<p>
+I have not yet found a website that will accept either of these, even
+though both are completely valid addresses. Even MS Outlook, which I
+use at work (allowing me to verify this), will refuse to send e-mail
+to these addresses (Gmail accepts it just fine). Hmmm... maybe having
+an address like these is a good anti-spam measure!
+</p>
+<p>
+So if your e-mail address is <code>"John Doe"@example.com</code> no
+one using Outlook can send you e-mail, which sounds like a feature to
+me, really.
+</p>
+<p>
+So, everyone, please stop writing e-mail validation regular
+expressions. The work has been done, and you will only get it wrong,
+guaranteed.
+</p>
+<p>
+This is a similar rant I came across while writing mine: <a
+href="http://www.santosj.name/general/stop-doing-email-validation-the-wrong-way/">
+Stop Doing Email Validation the Wrong Way</a>.
+</p>

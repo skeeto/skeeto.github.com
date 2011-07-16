@@ -1,0 +1,61 @@
+---
+title: Emacs cat-safe
+layout: post
+---
+
+<!-- 31 March 2010 -->
+<p>
+<img src="/img/cat-safe/cat-paw.jpg" class="right"
+     alt="" title="Calvin's front right paw."/>
+
+I was inspired by an item
+in <a href="http://www.terminally-incoherent.com/blog/">
+Luke's</a> <a href="http://random.terminally-incoherent.com/post/484785491">
+Tumblr blog</a> last night. It was a screenshot of a program
+called <a href="http://www.bitboost.com/pawsense/">PawSense</a>, which
+monitors a computer's keyboard for cat activity. (I don't know if it's
+any good, but it's funny.) As anyone with cats knows, it's not unusual
+to leave a computer only to come back later to see garbage typed in by
+a wandering cat. I wrote a version for Emacs today.
+</p>
+<pre>
+git clone http://git.nullprogram.com/cat-safe.git
+</pre>
+<p>
+Or you can download a
+snapshot: <a href="http://git.nullprogram.com/?p=cat-safe.git;a=snapshot;h=master">
+cat-safe-master.tar.gz</a>.
+</p>
+<p>
+Put it (<code>cat-safe.el</code>) somewhere in
+your <code>load-path</code> (like <code>~/.emacs.d/</code>) and put
+this line in your <code>.emacs</code> file,
+</p>
+<pre>
+(require 'cat-safe)
+</pre>
+<p class="center">
+<img src="/img/cat-safe/cat-safe-thumb.png" title="cat-safe in action"
+     alt="Emacs switches focus to a new buffer to stop cat damage."/>
+</p>
+<p>
+This only monitors Emacs itself; it should help protect your buffers
+but not your web browser. When cat interference is detected Emacs
+switches focus to a junk buffer and lets the cat make a mess there
+instead. In case your
+cat <a href="http://en.wikipedia.org/wiki/Infinite_monkey_theorem">happens
+to type out some Shakespeare</a> you will be able to read it in the
+junk buffer. Just kill the junk buffer to return to work.
+</p>
+<p>
+It could still use some improvement. Right now it looks for a single
+key being help down, excepting keys humans tend to hold down like
+backspace, delete, and space. If you play around with it you'll notice
+if you press several keys at once Emacs will sometimes create a
+pattern with them. I need to figure out a good way to detect this.
+</p>
+<p>
+I'm going to run it at home for awhile to make sure it remains
+transparent, but still does its job. It will probably incur a
+performance penalty on frequently repeated keyboard macros.
+</p>

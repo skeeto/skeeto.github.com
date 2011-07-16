@@ -1,0 +1,129 @@
+---
+title: Distributed Computing with Emacs
+layout: post
+---
+
+<!-- 7 August 2010 -->
+<p>
+I got an Elisp idea today and even went as far as implementing a proof
+of concept for it: distributed computing with Emacs Lisp. As usual for
+me the idea takes advantage of Lisp features to make the task pretty
+simple, very specifically Elisp's implementation. In this case it's
+the Lisp reader, printer, and the fact that Elisp functions have a
+printed representation, both byte-compiled and not.
+</p>
+<p>
+Here's the proof of concept code: <a href="/download/dist-emacs.el">dist-emacs.el</a>
+</p>
+<p>
+A central server listens for TCP connections. Clients offering their
+CPU for use connect to the server and await instructions. The server
+sends a single, no-argument, anonymous function to the client. The
+client calls the function, returning the resulting form back to the
+server. In order to transmit the function it's encoded into a string
+using the Lisp printer, and the client turns it back into an
+executable function with the Lisp reader.
+</p>
+<p>
+For some simple security there is a shared password between the client
+and server. When the server sends a function it includes a signature,
+and the client only runs code that matches the signature. To create a
+signature the string encoded version of the function is appended with
+the password (both strings) and hashed with a secure hashing
+algorithm. Only someone who knows the password -- including other
+clients -- can create the signature.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">sign-sexp</span> (password sexp)
+  <span class="doc">"Return signature of the given s-exp."</span>
+  (sha1 (format <span class="string">"%s%s"</span> password sexp))
+</pre>
+<p>
+To make it easy for the client to read in both the signature and the
+function we just cons them together before encoding them as text.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">encode</span> (password sexp)
+  <span class="doc">"Encode a s-exp for transmission to client."</span>
+  (prin1-to-string (cons (sign-sexp password sexp) sexp)))
+</pre>
+<p>
+The client calls the Lisp reader on the string, then checks the
+signature in the <code>car</code> cell against the s-expression in
+the <code>cdr</code> cell. This will return the function if it's
+legitimate, otherwise <code>nil</code>.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">decode</span> (password str)
+  <span class="doc">"Decode string into s-exp, checking the signature in the process."</span>
+  (<span class="keyword">let*</span> ((cons (read str))
+         (sig  (car cons))
+         (sexp (cdr cons)))
+    (<span class="keyword">if</span> (equal sig (sign-sexp password sexp))
+        sexp
+      nil)))
+</pre>
+<p>
+And that's the core of it. It just needs some network code to move the
+string between computers. That part can be found in the linked source
+above.
+</p>
+<p>
+To demo this, I'll use the <code>whiten</code> function from
+my <a href="/blog/2010/07/26/">previous post</a>. I'll run it with
+three different strings on three different computers. Assume we
+started the dist-emacs server (<code>dist-start</code>) and connected
+three clients (<code>dist-connect</code>) from three computers to
+it. The clients were fired up from scratch so there's
+no <code>whiten</code> function on them yet, but there <i>is</i> one
+defined on the server. First we'll send the function definition to the
+clients. The <code>dist-dist</code> function takes a list of functions
+and passes each one to a client. Ideally I'd want this function to be
+more intelligent, managing a work queue so that an arbitrary length
+list of functions will be fed one at a time to each client. That's not
+the case here.
+</p>
+<pre>
+(dist-dist (mapcar (<span class="keyword">lambda</span> (p)
+                          `(<span class="keyword">lambda</span> ()
+                             (fset 'whiten ,(symbol-function 'whiten))))
+                      dist-clients))
+</pre>
+<p>
+Also like in the previous post, this is an abstraction leak with the
+Emacs implementation. But I like this trick so I'm going to use it
+anyway. :-) Next we call it on each client with a different string.
+</p>
+<pre>
+(dist-dist (list (<span class="keyword">lambda</span> () (whiten <span class="string">"good"</span>))
+                 (<span class="keyword">lambda</span> () (whiten <span class="string">"news"</span>))
+                 (<span class="keyword">lambda</span> () (whiten <span class="string">"everyone"</span>))))
+</pre>
+<p>
+The way I have it set up for my proof of concept the results are just
+spit back into the server's <code>*Messages*</code> buffer. If we
+watch that buffer we can see each results come back in one at a time
+as each machine finishes. I can watch Emacs saturate the CPU on every
+client machine simultaneously as it works.
+</p>
+<pre>
+"2577343027adf7817185db876032d8ed"
+"46a65dac2c0040afde175adf1e9a81fd"
+"f39baf9e74475dd5be7d5495a025fe84"
+</pre>
+<p>
+This isn't the same order as the clients, but the order in which the
+jobs were completed.
+</p>
+<p>
+As for the practicality, I doubt there really is one. It's really only
+a neat concept (or maybe not even that). For almost the exact same
+reasons as my <a href="/blog/2009/06/09/">distributed JavaScript</a>
+idea, this is a solution looking for a problem. The problem needs to
+be able to be broken into small computation units, because Emacs has
+no threading, and it has to be low bandwidth, because it has to be
+parsed all at once from a string. If you want to pass large data sets
+it needs to be done out-of-band, which probably defeats the
+purpose. There seem to be few to no problems that fit these
+limitations.
+</p>

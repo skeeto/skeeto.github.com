@@ -1,0 +1,136 @@
+---
+title: AES Random Number Generator
+layout: post
+---
+
+<!-- 16 January 2009 -->
+<p>
+<a href="/img/aesrng/die.jpg">
+  <img src="/img/aesrng/die-thumb.jpg"
+       alt="Doubling Die" title="Random number generator"
+       class="left" width="150" />
+</a>
+
+I came across the <a href="https://www.grc.com/passwords.htm">Ultra
+High Security Password Generator</a> the other day, which uses a very
+high quality pseudo-random number generator to generate passwords and
+keys. The idea is not to use the full 63 characters as a password, but
+rather a contiguous subset, such as the first 8 characters.
+</p>
+<p>
+The website is served securely, so no middle man can sniff at it. If
+you trust the maintainer not to store the generated numbers somewhere,
+which he claims not to be doing, then you can use it as a nice
+password generation service. If you are nervous about matching
+password possibilities to your IP, then grab a batch through the <a
+href="http://www.torproject.org"> Tor</a> network.
+</p>
+<p>
+In terms of brute-force attacks, each letter from hexadecimal
+characters is worth 4 bits, from random printable ASCII characters is
+worth about 6.6 bits, and alpha-numeric is worth about 6 bits.
+</p>
+<p>
+If you go with the set of printable ASCII characters, 6 to 8
+characters (39 to 52 bits) should be good enough for an account
+password, where an attacker must guess through an attempt-limiting
+authentication system. 8 to 12 characters (53 to 79 bits) should be
+plenty for a passphrase used as an encryption key, where an attacker
+can brute force passphrase attempts at his leisure.
+</p>
+<p>
+I wouldn't use this website for any serious encryption, though. If he
+is logging generated passwords, he will have a nice short list of
+possible passphrases to try against your encryption. So don't use it
+for your GPG passphrase. Generate those locally.
+</p>
+<p>
+This is where the purpose of my post comes in! He describes the
+pseudo-random number generator he uses to generate the random numbers
+at the top of the page. It's the <a
+href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"> AES
+block cipher</a> in <a
+href="http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher-block_chaining_.28CBC.29">
+cipher-block chaining</a> (CBC) mode encrypting a 128-bit counter. A
+picture (well, diagram) is worth a thousand words,
+</p>
+<p class="center">
+<a href="/img/aesrng/aesrng.svg">
+  <img src="/img/aesrng/aesrng.png"
+       alt="AES RNG diagram" />
+</a>
+</p>
+<p>
+Note that the diagram is actually being explicit about CBC mode, so
+the AES cipher in the diagram is in electronic codebook (ECB) mode. I
+missed this myself when initially interpreting the diagram and writing
+my implementation. Here is the same diagram with the AES cipher
+already in CBC mode,
+</p>
+<p class="center">
+<a href="/img/aesrng/aesrng-simple.svg">
+  <img src="/img/aesrng/aesrng-simple.png"
+       alt="AES (CBC) RNG diagram" />
+</a>
+</p>
+<p>
+I don't know if he designed this himself or not. I implemented it in C
+to study it a bit. You can grab it here with git (or follow the link
+and get a snapshot),
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=aesrng.git;a=summary">http://git.nullprogram.com/aesrng.git</a>
+</pre>
+<p>
+To build it, you will need <a
+href="http://www.gnupg.org/related_software/libraries.en.html#lib-libgcrypt">
+libgcrypt</a> installed (with headers).
+</p>
+<p>
+Here is about 100 megabytes analyzed with <a
+href="http://www.fourmilab.ch/random/">ent</a>, a pseudo-random number
+sequence test program.
+</p>
+<pre>
+Entropy = 7.999998 bits per byte.
+
+Optimum compression would reduce the size
+of this 100000000 byte file by 0 percent.
+
+Chi square distribution for 100000000 samples is 275.58, and randomly
+would exceed this value 25.00 percent of the times.
+
+Arithmetic mean value of data bytes is 127.5095 (127.5 = random).
+Monte Carlo value for Pi is 3.141182766 (error 0.01 percent).
+Serial correlation coefficient is 0.000005 (totally uncorrelated = 0.0).
+</pre>
+<p>
+Wow! These results are great! This is exactly what you would see if
+you ran 100 megabytes of <code>/dev/random</code>, a <i>true</i>
+random number generator, through ent. It is also pretty fast,
+generating that 100 megabytes on my laptop in about 7 seconds. That's
+much faster than Linux's <code>/dev/urandom</code> (over a minute
+here), whose ent results aren't quite as good, either.
+</p>
+<p>
+<b>Note</b>: Before you go using this somewhere important you should
+make sure this PRNG has been peer reviewed and carefully studied by
+professionals with cryptanalysis. It may have fundamentals flaws. I
+only found this on a website somewhere!
+</p>
+<p>
+Still, that's a pretty damn cool pseudo-random number generator.
+</p>
+<p>
+The generator is only useful if you want to generate more than 512
+bits worth of numbers, because it takes 512 bits of randomly generated
+numbers to initialize the generator. If you want to generate a single
+password if the same strength, give this a shot,
+</p>
+<pre>
+head -c 50 /dev/random | tr -cd "A-Za-z0-9@#\!\$%^&amp;*()_+=-~;,.&lt;&gt;/[]{}|?:'\\\`" &amp;&amp; echo
+</pre>
+<p>
+It uses a true random number generator and selects from 94 printable
+ASCII characters (space not included).
+</p>

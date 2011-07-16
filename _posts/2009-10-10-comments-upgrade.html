@@ -1,0 +1,85 @@
+---
+title: Comments Upgrade with Avatars
+layout: post
+---
+
+<!-- 10 October 2009 -->
+<p>
+<img src="/img/spam.jpg" alt=""
+     title="Spam with cans: cc-by-sa http://en.wikipedia.org/wiki/File:Spam_with_cans.jpeg"
+     class="right"/>
+
+I started getting Asian spam in my comments in the last couple
+days. If you are subscribed to the comments feed you probably noticed
+this. The spammer was manually filling out captchas, so this wasn't a
+bot but rather a patient human being. Getting tired of removing these,
+I set up some filters to silently drop messages that fit certain
+criteria. By "silently" I mean the server tells the client everything
+went fine but the comment never actually gets written to the database.
+</p>
+<p>
+The spammer gained nothing except annoying us because all links in
+comments get a <code>rel="nofollow"</code> attribute, which tells
+search engines to ignore it. That, plus small readership and
+captcha-solving gives little incentive for spamming.
+</p>
+<p>
+Well anyway, while I had my sleeves rolled up and my hands on the code
+I decided to make some upgrades I have been wanting to do. The e-mail
+address is no longer displayed (stupid idea in the first place) but
+instead used for a <a href="http://en.gravatar.com/">Gravatar</a>
+image. You can also specify a home URL, which will be linked from your
+name. This makes my comment system work very similarly to what you
+find around the web, except that I don't require anything from you but
+a captcha and a comment.
+</p>
+<p>
+I also fixed a small usability issue: when you preview a comment now
+it takes you right down to the form rather than leaving you at the top
+of the page. The back-end database was also adjusted from the original
+pollxn design to scale better as the website grows.
+</p>
+<p>
+Now, Gravatar is a neat concept but I have two complaints. One, I
+don't like centralized systems. It's a single point of failure and a
+single point of control. It has privacy issues. It's anti-web. It's
+inelegant. Decentralized systems built around self-enforcing protocols
+are more robust and democratic.
+</p>
+<p>
+Luckily, a decentralized version does exist! It's a specification
+called <a href="http://pavatar.com/">Pavatar</a>. The avatar is tied
+to a URL rather than an e-mail address. However, it's a bit less
+flexible, since it needs to remain simple on the server side. It's
+harder to set up and I doubt 99% of the users on the web would be
+capable of doing it. What would help Pavatar gain a wider audience
+would be Pavatar provider services. Hmmm...
+</p>
+<p>
+So, I think might switch it to Pavatar sometime, with a possible
+fall-back to Gravatar. That takes significantly more work to set up
+than Gravatar does, so it's a future project. And, well, no one uses
+it yet either. I actually thought the project was dead until just now
+because their website was down the first time I visited it a couple
+months ago.
+</p>
+<p>
+My second complaint is that Gravatar incorrectly assumes e-mail
+addresses are not case-sensitive. The domain part is, but the alias
+part is not. These two addresses could technically arrive to two
+different e-mail inboxes,
+</p>
+<pre>
+chris@example.com
+Chris@example.com
+</pre>
+<p>
+Pretty much every e-mail server will treat these as the same address
+as a convenience, because treating these differently would just be
+confusing, but it's not necessarily the case. Gravatar specifically
+says to hash the e-mail in lowercase form, so the unique address
+<code>Chris@example.com</code> can't be used with the service.
+</p>
+<p>
+So, go ahead and play in the comments a bit.
+</p>

@@ -1,0 +1,28 @@
+---
+title: Simple Hash Table Correction
+layout: post
+---
+
+<!-- 24 February 2008 -->
+<p>
+In December I made
+a <a href="/blog/2007/12/14#hashtab">post
+about a simple hash table</a> I had written in C. I got an e-mail
+from <a href="mailto:&#098;&#114;&#111;&#117;&#105;&#116;&#115;&#064;&#102;&#114;&#101;&#101;&#046;&#102;&#114;">Benoit
+Rouits</a> (<a href="http://brouits.free.fr/">
+http://brouits.free.fr/</a>) pointing out a memory leak
+in <code>ht_destroy()</code> that he found
+with <a href="http://valgrind.org/">Valgrind</a>. I had failed to free
+the main array in the hashtable when it was being destroyed,
+</p>
+<pre>
+free (hashtable->arr);
+</pre>
+<p>
+I added the fix and updated my e-mail address in the source tarball,
+which
+is <a href="/download/hashtab.tar.gz">in the
+same location</a> as before. There are no version numbers involved, so
+I guess this is version "now" and the old one is version "then", with
+names subject to change.
+</p>

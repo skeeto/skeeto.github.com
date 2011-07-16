@@ -1,0 +1,84 @@
+---
+title: Middleman Parallelization
+layout: post
+---
+
+<!-- 8 September 2010 -->
+<p>
+I recently discovered a very clever tool
+called <a href="http://mdm.berlios.de/usage.html">Middleman</a>. It's
+a quick way to set up and manage multiple-process workload queue. The
+process output and display is done inside of a screen session, so if
+it's going to take awhile you can just detach and check on it again
+later. In the past I used <code>make</code>'s <code>-j</code> option
+to do this, but that's always a pain to set up.
+</p>
+<p>
+It is composed of three
+programs: <code>mdm.screen</code>, <code>mdm-run</code>,
+and <code>mdm-sync</code>. The first is the top level supervisor that
+you use to launch the enhanced shell script. The second prefixes every
+command to be run in parallel. The third is prefixes the final command
+that depends on all of the individual processes.
+</p>
+<p>
+The linked Middleman page has a good example, but I'll share my own
+anyway. I used it over the weekend to download a long series of videos
+with <a href="http://bitbucket.org/rg3/youtube-dl/wiki/Home">
+youtube-dl</a>. Because the transfer rate for a single video is
+throttled I wanted to grab several at a time, but I also didn't want
+to grab them <i>all</i> at the same time. Here's the dumb version of
+the script, <code>download.sh</code>, that does them all at once.
+</p>
+<pre>
+#!/bin.sh
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX0</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX1</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX2</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX3</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX4</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX5</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX6</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX7</i> &amp;
+youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX8</i> &amp;
+</pre>
+<p>
+With Middleman all I had to do was this,
+</p>
+<pre>
+#!/bin/sh
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX0</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX1</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX2</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX3</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX4</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX5</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX6</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX7</i>
+<b>mdm-run</b> youtube-dl -t http://www.youtube.com/watch?v=<i>XXXXXXXXXX8</i>
+</pre>
+<p>
+Then just launch the script with <code>mdm.screen</code>. It defaults
+to 6 processes at a time, but you can adjust it to whatever you want
+with the <code>-n</code> switch. I used 4.
+</p>
+<pre>
+$ mdm.screen -n 4 ./download.sh
+</pre>
+<p>
+There is a screen window that lists the process queue and highlights
+the currently active jobs. I could switch between screen windows to
+see the output from individual processes and see how they were doing.
+</p>
+<p>
+From the perspective of the shell script, the first four commands
+finish instantly but fifth command will block. As soon as Middleman
+sees one of the first four processes complete the fifth one will begin
+work, returning control to the shell script, and the sixth command
+will block, since the queue is full again.
+</p>
+<p>
+I'm sure I'll be using this more in the future, especially for tasks
+like batch audio and video encoding. I bet this could be useful on
+a <a href="/blog/2007/09/17/">cluster</a>.
+</p>

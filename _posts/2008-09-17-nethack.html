@@ -1,0 +1,210 @@
+---
+title: Play NetHack
+layout: post
+---
+
+<!-- 17 September 2008 -->
+<p>
+  <img src="/img/nethack-cat.jpg"
+       alt="Your ally in your search for The Amulet"
+       class="right" width="250" />
+
+Patience. NetHack is all about patience. Never be too hasty, as the
+game is extremely unforgiving. If you let your guard down for just a
+few turns, you can easily lose everything. Death is permanent
+(with <a href="http://nethackwiki.com/wiki/Amulet_of_life_saving">
+some exceptions</a>), so dying means starting it all over with a new
+character.
+</p>
+<p>
+I got into <a href="http://www.nethack.org/">NetHack</a> a couple of
+years ago. I play it in cycles, playing heavily for a couple of months
+at a time, then take a break for a couple months after I tire of
+getting stuck at the same point each game. I generally return a better
+player. The game is very complex, taking probably a hundred hours of
+play just to nail down the basic gameplay and techniques.
+</p>
+<p>
+This is what my typical session looks like. I like it almost as simple
+as it comes. By default, color is off, but I like to have it on (a lot
+more information is available with color). The graphics may seem
+crappy, but
+<a href="http://www.battlereports.com/users/johnny_vegas2/artius1/Report/report.html">
+it is said</a>,
+</p>
+<blockquote>
+  <p>
+    While the graphics may seem primitive by today's standards,
+    today's gameplay seems primitive by NetHack standards.
+  </p>
+</blockquote>
+<pre style="background-color: #000000; color: #FFFFFF;">
+The dingo is blinded by the flash!  The dingo turns to flee!
+
+                                                                       -------
+                                                                       |<span style="color: #0000FF;">+</span><span style="color: #00FF00;">+</span>...|
+       --------------                               ----------         |.+...|
+       |............|              --------         |&gt;........#        ---|---
+       |............|              |......|         |........|#           #
+       |.........&lt;...#            #.......|         |........|#         ###
+       |...<span style="color: #0000FF;">^</span>........|           ###|......|         --.-------#         #
+       --.----.------           #  ------.-#          #       ###       #
+         #######              ###        ###          ###       #       #
+            ####              #           #             #       ###     #
+               ###          ###           ####          ###       #     #
+                 #          #               #  #          #       ###---.----
+                 ##       ###               #########     #         #.......|
+                 -.----   #                      # -.-----<span style="color: #AA5500;">|</span>--        |@.....|
+                 |.`...####                      ##<span style="color: #AA5500;">-</span>........|        |...<span style="color: #0000FF;">[</span>..|
+                 |....|                            |........|        |......|
+                 |<span style="color: #0000FF;">{</span>...|         0##################<span style="color: #AA5500;">-</span>........|########-......|
+                 ------                            |........|#       --------
+                                                   ----------#
+
+wellons the Sightseer       St:12 Dx:12 Co:18 In:12 Wi:8 Ch:16  Neutral S:1967
+Dlvl:6  $:1329 HP:48(48) Pw:17(17) AC:7  Xp:5/185 T:3717
+</pre>
+<p>
+Like most rogue-like games, playing NetHack is a rewarding experience,
+so if you never tried it out before, I suggest taking a look at
+the <a href="http://www.nethack.org/v343/Guidebook.html">NetHack
+Guidebook</a> and firing it up for yourself! If you don't want to
+install it, but you have a telnet client available, you can connect to
+the <a href="http://www.alt.org/nethack/">nethack.alt.org</a> server
+to play and watch others play, which is a good way to learn
+more. Building it from source can be a little tricky (took me a little
+while to figure it out the first time), so using your package manager
+is advised if you do choose to install it to try it out.
+</p>
+<p>
+Another good resource is the NetHack
+wiki <a href="http://nethackwiki.com/">NetHackWiki</a>. However, if you
+don't want to "spoil" yourself, don't go there. Learning things about
+the game outside of the game is not considered cheating, but rather
+spoiling. I don't mind spoiling myself. I will run into plenty of
+things I have not yet spoiled myself on. The game is hard enough as it
+is!
+</p>
+<p>
+There is a theory that if someone ever completely beats NetHack under
+the hardest conditions, the source code will be thrown out and
+replaced with something even harder and more unforgiving. There is
+another theory which states that this has already happened.
+</p>
+<p>
+When play for the first time, start with a Valkyrie or a Barbarian as
+these classes are pretty tough against baddies, simpler to play, and
+more foolproof than some of the squishier classes, like wizards.
+</p>
+<p>
+<b>WARNING: SPOILERS FOLLOW</b>
+</p>
+<p>
+To give an idea of some of the interesting gameplay, I have a couple
+examples.
+</p>
+<pre style="background-color: #000000; color: #FFFFFF;">
+               #
+          -----.--
+          |....<span style="color: #FFFF00;">y</span>.|     ##
+          |......|     #
+          |.<span style="color: #0000FF;">n</span>....@f######
+          |......|
+          |....<span style="color: #00FF00;">n</span>.|
+          --------
+</pre>
+<p>
+I am the <code>@</code> symbol, which is how NetHack represents the
+player. I am entering the room with two
+awakened <a href="http://nethackwiki.com/wiki/Nymph">nymphs</a>
+(<code>n</code>) and a
+<a href="http://nethackwiki.com/wiki/Yellow_light">yellow light</a>
+(<code>y</code>). Behind me is my cat who fights alongside me and
+assists me. Nymphs do not do damage, but rather steal your
+equipment. They approach you, charm you into giving them something
+from your inventory, which includes weapons and armor, and teleport
+away. This means that you generally want to kill them before they
+close in.
+</p>
+<p>
+Yellow lights also do no damage. They run up to you and explode,
+causing you to be blind for a number of turns. Normally, this can be a
+really bad situation if you do not have the right tools available to
+you, which is typical for early in the game. In the worst case, which
+also happens to be the most likely, while I work on the nymphs the
+yellow light will run up to be blinding me. Now, since I cannot see
+the nymphs, I cannot attack them at range and they run up to me each
+stealing one item. If I remain blind for long enough, they may find me
+again and steal something else while I am helpless. They would rob me
+blind! It would be up to my cat to dispatch them.
+</p>
+<p>
+However, I did have some good tools available. I happened to get
+extremely lucky
+(the <a href="http://nethackwiki.com/wiki/RNG">Random Number God</a>
+was nice to me that day) and find both
+a <a href="http://nethackwiki.com/wiki/Cloak_of_displacement">cloak
+of displacement</a> and
+<a href="http://nethackwiki.com/wiki/Jumping_boots">jumping
+boots</a> at a store at dungeon level 1. The cloak makes me appear to
+be in a different place than I really am while the jumping boots let
+me travel several squares in a single turn. I was also playing a
+rogue, so my main attack was already a ranged one: throwing daggers.
+</p>
+<p>
+The yellow light ran up to my displaced image and exploded, causing no
+blindness to me. One down. Next, I threw my plentiful supply of
+daggers at the nymphs, keeping my distance by jumping around the
+room. I managed to prevent a deadly situation, being stuck naked with
+no weapon, by applying my resources well. With NetHack, I had plenty
+of time to plan out each move I made. There is no timer. NetHack moves
+at <i>my</i> pace.
+</p>
+<p>
+There was a another situation a couple months ago (which I will not
+bother drawing) where I was attacked in the middle of a room by a
+<a href="http://nethackwiki.com/wiki/Canine">werewolf</a>. The
+werewolf summoned help immediately and I was surrounded by winter
+wolves and coyotes and such. Winter wolves can be dangerous because
+they shoot deadly frost bolts, and I had not yet have the
+<a href="http://nethackwiki.com/wiki/Cold_resistance">cold
+resistance</a> intrinsic.
+</p>
+<p>
+I cut a hole through the canines towards the hallway where I could
+fight them one at a time, and I lost most of my health in the
+process. Then
+I <a href="http://nethackwiki.com/wiki/Prayer">prayed</a> to recover
+my health. Then I starting hacking away at the canines. Again, I was
+low on health and running out of options. The winter wolves were
+firing bolts down the hallway at
+me. Engraving <a href="http://nethackwiki.com/wiki/Elbereth">Elbereth</a>
+on the floor was not going to save me from the ranged frost
+bolts. Things were looking quite grim for me. The end seemed near.
+</p>
+<p>
+I did the only thing I could think to do at this point: I reached down
+and took a bite into one of the dead frost wolves that was resting on
+the floor beneath me.
+</p>
+<p>
+Take a moment and picture this. Frost bolts are zipping down a dark
+cold hallway at a nearly dead Valkyrie. There are shattered potions
+and frozen liquids all over the floor. The winter wolves have caused
+the temperature to plummet. Her breath hangs visibly in the air. She
+quickly crouches down and shoves her face into a dead wolf, taking a
+nasty bite right into its furry, bloodied side. Between her clenched
+teeth she tears off a piece dripping with blood. Desperately, she
+stuffs her face with the fresh kill, trying to eat as much as fast as
+she can as she dodges more frost bolts.
+</p>
+<p>
+At this moment, the Random Number God blessed me with good fortune,
+and I was granted the cold resistance intrinsic just before the next
+frost bolt was going to kill me, allowing me to harmlessly absorb it
+and continue hacking away the remaining canines. Her reward for
+victory was a canine feast!
+</p>
+<p>
+So, yes, the simple looking NetHack can be quite exciting. :-)
+</p>

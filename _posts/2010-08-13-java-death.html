@@ -1,0 +1,99 @@
+---
+title: Java is Death By A Thousand Paper Cuts
+layout: post
+---
+
+<!-- 13 August 2010 -->
+<p>
+At least it is for me. This past week at work I've been furiously
+rushing work on a project written in Java. It's completely my fault
+that I'm using Java since I'm the one who picked the language. I
+wanted to use Java the platform, but I don't know any other JVM
+languages well enough to use them in place of Java the language for a
+project at work.
+</p>
+<p>
+It's all sorts of little things that make writing Java so exhausting
+for me. At the end of the day it I just feel irritated. I hate the
+absolute lack of functional programming and that I have to specify
+everything at such a low level. The whole reason we program in
+high-level languages is so we can express algorithms more concisely,
+but Java fails at this.
+</p>
+<p>
+Here's an example of what I'm talking about, something I basically did
+a few times today. Let's say you have an array of
+floats, <code>nums</code> and you want to sum them and return the
+result (or maybe use it in another expression). In Lisp it's very
+straightforward.
+</p>
+<pre>
+(reduce '+ nums)
+</pre>
+<p>
+"Reduce the sequence <code>nums</code> by addition." Notice that it's
+more about saying <i>what</i> I want to do rather than <i>how</i> to
+do it. I don't have to introduce any temporary storage or
+iterators. To do the same thing in Java it will look something like
+this.
+</p>
+<pre>
+<span class="type">int</span> <span class="variable-name">sum</span> = 0;
+<span class="keyword">for</span> (<span class="type">double</span> <span class="variable-name">num</span> : nums) {
+    sum += num;
+}
+<span class="keyword">return</span> sum;
+</pre>
+<p>
+If you're using an older Java without the enhanced looping construct
+it gets even uglier. I had to introduce a variable for accumulation
+and a second variable for iteration. This sort of thing has to be
+done <i>all over the place</i> in Java, and it greatly increases the
+cognitive overload when reading Java code.
+</p>
+<p>
+This instruction is more about telling the computer the <i>how</i>
+rather than my overall intention. One problem with telling it
+the <i>how</i> is that I've unnecessarily locked in a specific
+algorithm and ordering. The literal instruction says that the
+numbers <i>must</i> be added in order, sequentially. My Lisp
+instruction doesn't do that.
+</p>
+<p>
+It gets even worse when you complicate it slightly by adding a second
+array and, say, multiplying it pairwise with the first.
+</p>
+<pre>
+<span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">i</span> = 0; i &lt; nums1.length; i++) {
+    sum += nums1[i] * nums2[i];
+}
+<span class="keyword">return</span> sum;
+</pre>
+<p>
+Now the loop gets more complex. I have to tell it <i>how</i> to
+increment the iterator. I have to tell it to check the bounds of the
+array. The iterator is a misdirection because the actual number stored
+in it isn't what's important. Again, the Lisp method is much more
+concise.
+</p>
+<pre>
+(reduce '+ (map 'list '* nums1 nums2))
+</pre>
+<p>
+"Map the two sequences by multiplication into a list, then reduce it
+by addition." Unfortunately we start to leak a little bit into
+the <i>how</i> here. I am telling it that the intermediate structure
+should be a list, because <code>map</code> forces me to pick a
+representation. Besides that, I am <i>only</i> describing my overall
+intention and not the obvious details.
+</p>
+<p>
+So with Java my days become filled with the tedious low-level
+algorithm descriptions that I have to hammer out over and over and
+over. Death by a thousand paper cuts.
+</p>
+<p>
+Lisp isn't the only language that has a (generally) much better
+approach; it's just my favorite. :-) Most languages with at least some
+decent functional facilities will also do the above concisely.
+</p>

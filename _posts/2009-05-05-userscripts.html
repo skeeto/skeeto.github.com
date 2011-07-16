@@ -1,0 +1,76 @@
+---
+title: Greasemonkey User Scripts
+layout: post
+---
+
+<!-- 5 May 2009 -->
+<p>
+<img src="/img/script-thumb.jpg"
+     alt="Old manuscript" title="An ancient Greasemonkey user script"
+     class="right" />
+
+I have recently been playing around with <a
+href="http://www.greasespot.net/"> Greasemonkey</a>, a great Firefox
+add-on that gives users a lot of control over how a website is
+displayed. It works by having the user providing a bit of Javascript
+that runs when a website is rendered. The user doesn't actually have
+to write the script, but can find them in various script repositories.
+</p>
+<p>
+When I looked around, I couldn't find scripts to do some things I
+wanted, so I started writing my own. Now that I have started that
+habit I see uses for user scripts all over the place. Suddenly I can
+fix anything I find annoying on the web. It's very empowering.
+</p>
+<p>
+Of course, Firefox add-ons can do anything a user script can do. But
+Greasemonkey user scripts are lightweight, more secure (due to being
+less powerful), easier to write, and don't require a browser restart
+to install and uninstall.
+</p>
+<p>
+I posted my scripts on <a href="http://userscripts.org/users/88171">
+userscripts.org</a> so that people could find them easily, but I
+always like to host these things locally, too. You can find it under
+<a href="/userscripts">/userscripts</a> here. Don't forget to review
+the source before you install it! That is, unless you automatically
+trust me and my website's security. I, or an infiltrator, could slip
+something sneaky in there.
+</p>
+<p>
+I actually first used Greasemonkey back in 2005, but they had some <a
+href="http://www.greasespot.net/2005/07/mandatory-greasemonkey-update.html">
+very serious security issues</a> back in those days. It was bad enough
+that I just uninstalled it, which was actually recommended by the
+Greasemonkey people themselves. So, four years later I am back to
+check it out.
+</p>
+<p>
+The first user script I wrote was in response to a "feature" on <a
+href="http://tvtropes.org">TV Tropes</a>. In addition to the overall
+cruddiness of the website, they started adding "folders" to the
+information on long pages. It folds up all of the information behind
+little clickable widgets. It uses CSS to hide the information and
+Javascript to reveal it by adjusting those styles on the fly. If you
+have a browser with CSS support but not Javascript (or have it
+disabled like I did), you won't ever be able to see the information in
+the browser. As of this writing the <a
+href="http://tvtropes.org/pmwiki/pmwiki.php/Main/JumpingTheShark">
+Jumping the Shark</a> article uses this. Take a look.
+</p>
+<p>
+This is an awful idea! It critically breaks the usability of the
+page. And what's the point? We already have a vertical scrollbar to
+control the display. Unfortunately, a lot of clueless people seem to
+like this sort of behavior -- because it's flashy -- so we will
+probably only see more of it on the web in the future.
+</p>
+<p>
+My TV Tropes user script is simple: it scrapes off some of the
+CSS. Specifically, the "folder" CSS. That's it! Someone who already
+knows how to make user scripts could probably put this together in
+less than 15 minutes.
+</p>
+<p>
+If you want to tackle web annoyances, learn Greasemonkey!
+</p>

@@ -1,0 +1,276 @@
+---
+title: Lisp Number Representations
+layout: post
+---
+
+<!-- 15 March 2008 -->
+<p>
+This exercise partly comes from a couple different chapters in the
+book <a href="http://www.ccs.neu.edu/home/matthias/BTLS/"><i>The
+Little Schemer</i></a>. The book is an introduction to the Scheme
+programming language, a dialect of Lisp. The purpose to to teach basic
+programming concepts in a way that anyone can follow along just as
+well as someone with a degree in, say, computer science. It is still
+very useful for us programmer types because there are some good
+practice you get from reading and playing along.
+</p>
+<p>
+First of all, Lisp is famous (infamous?) for lacking syntax. Any Lisp
+program is simply
+an <a href="http://en.wikipedia.org/wiki/S-expression">S-expression</a>,
+put simply, a list of lists. There is no operator precedence because
+operators are treated just like functions. This leads to prefix
+notation for mathematical expressions,
+</p>
+<pre>
+(+ 4 5)
+=&gt; 9
+</pre>
+<p>
+where the <code>=&gt;</code> indicates the result of evaluating the
+expression. We can apply as many operands as we want,
+</p>
+<pre>
+(+ 2 3 4 5 10)
+=&gt; 24
+</pre>
+<p>
+We can put another list right in there as an operand,
+</p>
+<pre>
+(+ 3 (* 2 5) 4)
+=&gt; 17
+</pre>
+<p>
+You get the idea. In a function, the value of the last expression is
+the return value. For example, here is the <code>square</code>
+function in Scheme, which squares its input,
+</p>
+<pre>
+(define (square x)
+  (* x x))
+</pre>
+<p>
+Then we can use it,
+</p>
+<pre>
+(+ (square 2) (square 5))
+=&gt; 29
+</pre>
+<p>
+There are three important list operators to understand as
+well: <code>car</code>, <code>cdr</code>,
+and <code>cons</code>. <code>car</code> returns the first element in a
+list. In the example below, the <code>'</code>, a single quote, tells
+the interpreter or compiler that the list is to be treated as data and
+not to be executed. This is shorthand, or syntactic sugar, for
+the <code>quote</code> operator: <code>(quote (stallman
+moglen))</code> is the same as <code>'(stallman moglen)</code>.
+</p>
+<pre>
+(car '(stallman moglen lessig))
+=&gt; stallman
+</pre>
+<p>
+<code>cdr</code> returns the "rest" of a list (everything <i>but</i>
+the <code>car</code> of the list). When passing a list with only one
+element <code>cdr</code> returns the empty list: <code>()</code>.
+</p>
+<pre>
+(cdr '(stallman moglen lessig))
+=&gt; (moglen lessig)
+(cdr '(stallman))
+=&gt; ()
+</pre>
+<p>
+We can ask if a list is empty or not
+with <code>null?</code>. <code>#t</code> and <code>#f</code> are true
+and false.
+</p>
+<pre>
+(null? '(stallman moglen lessig))
+=&gt; #f
+(null? '())
+=&gt; #t
+</pre>
+<p>
+And finally, for lists, we have <code>cons</code>. This function
+allows us to build a list. It glues the first argument to the front of
+the list in the second argument,
+</p>
+<pre>
+(cons 'stallman '(moglen lessig))
+=&gt; (stallman moglen lessig)
+(cons 'stallman '())
+=&gt; (stallman)
+</pre>
+<p>
+And one last function you need to know: <code>eq?</code>. It
+determines the two atoms are the same atom,
+</p>
+<pre>
+(eq? 'stallman 'moglen)
+=&gt; #f
+(eq? 'stallman 'stallman)
+=&gt; #t
+</pre>
+<p>
+Now, for this exercise we will pretend that the basic arithmetic
+functions have not been defined for us. Instead all we have
+is <code>add1</code> and <code>sub1</code>, each of which adds or
+subtracts 1 from its argument respectively.
+</p>
+<pre>
+(add1 5)
+=&gt; 6
+(sub1 5)
+=&gt; 4
+</pre>
+<p>
+Oh, I almost forgot. We also have the <code>zero?</code> function
+defined for us, which tells us if its argument is 0 or not. Notice
+that functions that return true or false, called predicates, have
+a <code>?</code> on the end.
+</p>
+<pre>
+(zero? 2)
+=&gt; #f
+(zero? 0)
+=&gt; #t
+</pre>
+<p>
+To make things simple, these definitions will only consider positive
+numbers. We can define the <code>+</code> function (for only two
+arguments) in terms of the three basic functions shown above. It might
+be interesting to try to write this yourself before you look any
+further. (Hint: define it recursively!)
+</p>
+<pre>
+;; Adds together n and m
+(define (+ n m)
+  (if (zero? m) n
+      (add1 (+ n (sub1 m)))))
+</pre>
+<p>
+If the second argument is 0 we are done and simply return the first
+argument. If not, we add 1 to <code>n + (m -
+1)</code>. The <code>-</code> function is defined similarly.
+</p>
+<pre>
+;; Subtracts m from n
+(define (- n m)
+  (if (zero? m) n
+      (sub1 (- n (sub1 m)))))
+</pre>
+<p>
+Multiplication is the act of performing addition many times. We can go
+on defining it in terms of addition,
+</p>
+<pre>
+(define (* n m)
+  (if (zero? m) 0
+      (+ n (* n (sub1 m)))))
+</pre>
+<p>
+(We'll leave division as an exercise for the reader as it gets a
+little more complicated than I need to go in order to get my overall
+point across.)
+</p>
+<p>
+We will leave math behind for a moment take a look at
+<a href="http://www.paulgraham.com/rootsofLisp.html">The Roots of
+Lisp</a>. In that link is an excellent paper written by Paul Graham
+about John McCarthy, the inventor (or perhaps discoverer?) of Lisp,
+and how Lisp came to be. It turns out that in order to have a fully
+functional Lisp engine we only need seven primitive operators:
+operators defined outside of the language itself as building blocks
+for the language. For Lisp these seven operators are (Scheme-ized for
+our purposes): <code>eq?</code>, <code>atom?</code>, <code>car</code>,
+<code>cdr</code>, <code>cons</code>, <code>quote</code>, and
+<code>if</code>.
+</p>
+<p>
+Notice how none of these are math operators. You may wonder how we can
+possibly perform mathematical operations when we lack these
+facilities. The answer: we have to define our own representation for
+numbers! Let's try this, define a number as a list of empty lists. So,
+the number 3 is,
+</p>
+<pre>
+'(() () ())
+</pre>
+<p>
+And here is 0, 2, and 4,
+</p>
+<pre>
+'()
+'(() ())
+'(() () () ())
+</pre>
+<p>
+See how that works? Before, when we wanted to define addition and
+subtraction, we needed three other
+functions: <code>zero?</code>, <code>add1</code>,
+and <code>sub1</code>. With our number representation, how could we
+define <code>add1</code> with our seven primitive operators? Our
+numbers are defined as lists, so we can use our list operators. To add
+1 to a number, we append another empty list. Hey, that sounds a lot
+like <code>cons</code>!
+</p>
+<pre>
+(define (add1 n)
+  (cons '() n))
+</pre>
+<p>
+Subtraction is removing an element from the list, which sounds a lot
+like <code>cdr</code>,
+</p>
+<pre>
+(define (sub1 n)
+  (cdr n))
+</pre>
+<p>
+And to define <code>zero?</code> we need to check for an empty
+list. Notice this will also be the definition for <code>null?</code>.
+</p>
+<pre>
+(define (zero? n)
+  (eq? '() n))
+</pre>
+<p>
+And now we are back where we started. In fact, you can use the exact
+definitions above to define <code>+</code>, <code>-</code>,
+and <code>*</code>. Our entire method number representation depends on
+how we define <code>add1</code>, <code>sub1</code>,
+and <code>zero?</code>. Let's try it out,
+</p>
+<pre>
+;; 3 + 4
+(+ '(() () ()) '(() () () ()))
+=&gt; (() () () () () () ())
+
+;; 5 - 2
+(- '(() () () () ()) '(() ()))
+=&gt; (() () ())
+
+;; 2 * 2
+(* '(() ()) '(() ()))
+=&gt; (() () () ())
+
+;; 3 + 4 * 2   bolded for clarity
+(+ (* '(<b>() () () ()</b>) '(<b>() ()</b>)) '(<b>() () ()</b>))
+=&gt; (() () () () () () () () () () ())
+</pre>
+<p>
+Pretty cool, huh? We just added arithmetic (albeit extremely simple)
+to our basic Lisp engine. With some modifications we should be able to
+define and operate on negative integers and even define any rational
+number (limited by how much memory your computer's hardware can
+provide).
+</p>
+<p>
+Now, thank goodness this isn't how real Lisp implementations actually
+handle numbers. It would be incredibly slow and impractical, not to
+mention annoying to read. Normally, numbers and math operators are
+primitive so that they are fast.
+</p>

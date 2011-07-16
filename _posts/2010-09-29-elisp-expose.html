@@ -1,0 +1,65 @@
+---
+title: Elisp Higher-order Conversion to Interactive
+layout: post
+---
+
+<!-- 29 September 2010 -->
+<p>
+For those not familiar with extending Emacs, when you create a
+function in Elisp it cannot be called directly by the user
+("interactively") without declaring the function interactive. The
+simplest way to do this is by adding <code>(interactive)</code> to the
+top of the function definition. The <code>interactive</code> call can
+be made more complex, if needed, to ask the user interactively for
+input.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">hello-world</span> ()
+  <span class="doc">"Example function."</span>
+  <b>(interactive)</b>
+  (message <span class="string">"hello"</span>))
+</pre>
+<p>
+There are some handy higher-order functions in Elisp, such
+as <code>compose</code> and <code>apply-partially</code>. Today I
+wanted to bind the output of <code>apply-partially</code> to a key. My
+situation was this: I use <code>revert-buffer</code> often enough that
+it needs a binding. Also because I use it so much, I wanted it to
+stop asking me for confirmation. (Yes,
+there <a href="http://www.emacswiki.org/emacs/YesOrNoP"> are other
+ways to do this</a> including <code>revert-without-query</code>, but I
+wanted a general solution.) Using <code>apply-partially</code> I could
+supply the needed function arguments at keybind time.
+</p>
+<p>
+The problem is that you can only bind interactive functions, and the
+output of <code>apply-partially</code> is not interactive. A quick way
+to work around this is to wrap it in an anonymous function, which also
+takes away the need for <code>apply-partially</code>.
+</p>
+<pre>
+(<span class="keyword">lambda</span> () (interactive) (revert-buffer nil t))
+</pre>
+<p>
+I'd rather there be <i>another</i> higher-order function that takes a
+non-interactive function and creates an interactive version. Here it is,
+</p>
+<pre>
+<span class="comment-delimiter">;; </span><span class="comment">ID: c7db6dec-e7ab-3b0f-bf26-0fa268674c6c</span>
+(<span class="keyword">defun</span> <span class="function-name">expose</span> (function)
+  <span class="doc">"Return an interactive version of FUNCTION."</span>
+  (<span class="keyword">lexical-let</span> ((lex-func function))
+    (<span class="keyword">lambda</span> ()
+      (interactive)
+      (funcall lex-func))))
+</pre>
+<p>
+Now the binding looks like this,
+</p>
+<pre>
+(global-set-key [f2] (expose (apply-partially 'revert-buffer nil t)))
+</pre>
+<p>
+I think this more clearly expresses my intention than
+the <code>lambda</code> wrapper would. Maybe?
+</p>

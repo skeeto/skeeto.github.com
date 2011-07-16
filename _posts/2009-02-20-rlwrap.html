@@ -1,0 +1,40 @@
+---
+title: Readline Wrap
+layout: post
+---
+
+<!-- 20 February 2009 -->
+<p>
+I came across a very interesting tool the other day called <a
+href="http://utopia.knoware.nl/~hlub/rlwrap/">rlwrap</a>. It wraps the
+readline library over just about any interactive text input
+program. The readline library provides basic editing and history. It's
+handy for those programs that don't provide their own line editing
+facilities.
+</p>
+<p>
+It tries to be as transparent as possible, detecting yes/no prompts
+and passwords, so it should still be reasonable under those
+conditions.
+</p>
+<p>
+If you can't think of anything to try it with, try it with
+<code>cat</code>. Instant line editor!
+</p>
+<pre>
+rlwrap cat > some-file.txt
+</pre>
+<p>
+Or with Festival.
+</p>
+<pre>
+rlwrap festival --tts
+</pre>
+<p>
+It will also turn incorrectly compiled shells on your system into
+something usable. On my system (Debian GNU/Linux), <code>csh</code>
+isn't usable without <code>rlwrap</code>.
+</p>
+<pre>
+rlwrap csh
+</pre>

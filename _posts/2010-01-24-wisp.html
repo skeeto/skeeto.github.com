@@ -1,0 +1,188 @@
+---
+title: Wisp Lisp
+layout: post
+---
+
+<!-- 24 January 2010 -->
+<p class="abstract">
+Update 2010-2-04: A lot of the information below is out of date. There
+is an update here: <a href="/blog/2010/02/04/">Wisp Screencasts</a>.
+</p>
+<p>
+<img src="/img/wisp.png" alt="" title="A wisp of a lisp" class="right"/>
+
+This is a project I've been wanting to do for some time, and I finally
+got around to doing it. I spent the last few days implementing my own
+lisp interpreter in C. Today, after sinking in about 48 hours of work,
+I believe I completed enough of it to consider it in a working state,
+with a code base stable enough that other interested people could
+contribute. It was <i>really</i> exciting to see everything come together
+today.
+</p>
+<p>
+You can make a clone of the Wisp repository with Git. Go ahead; don't
+be shy,
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=wisp.git;a=summary">http://git.nullprogram.com/wisp.git</a>
+</pre>
+<p>
+To build it, all you need is a C99 compiler, make, yacc
+(i.e. <a href="http://www.gnu.org/software/bison/"> Bison</a>), and
+lex (i.e. <a href="http://flex.sourceforge.net/"> Flex</a>).
+</p>
+<p>
+It doesn't use the readline library or one of it's clones to make a
+nice interaction command line, so it's a good idea to run it
+with <a href="http://utopia.knoware.nl/~hlub/uck/rlwrap/">rlwrap</a>. That's
+what I've been doing. If you plan on writing Wisp code in Emacs,
+putting this in your <code>.emacs</code> will give you all the syntax
+niceties,
+</p>
+<pre>
+(add-to-list 'auto-mode-alist '(<span class="string">".wisp\\'"</span> . lisp-mode))
+</pre>
+<p>
+You should also be able to run it as an inferior lisp and send code to
+it like a normal lisp. I haven't done this yet myself.
+</p>
+<p>
+I think the name is apt, because it really is a wisp of a lisp. As of
+this writing, it weighs in at 1500 lines of code and is still very
+feature-light. I haven't actually read any material about writing lisp
+interpreters, so I've been winging it based on my experience with
+it. It's already taught me a lot of subtle things about lisp that I
+hadn't been aware of before.
+</p>
+<p>
+Right know it's very simple. It doesn't yet support any syntax beyond
+parenthesis (no <code>'</code> quoting). No closures. No garbage
+collection, as I'm still working out how I'm going to do
+that. Dynamically scoped, since that's a lot easier to do. And, like
+Scheme, it's a lisp-1, meaning functions and variables share a common
+namespace. I hope to expand it to include some features from other
+lisps like Arc (particularly the anonymous function syntactical
+sugar), Common Lisp, and Scheme.
+</p>
+<p>
+However, it <i>does</i> have already anonymous functions, which many
+popular languages <i>still</i> don't have. :-) It's far enough along
+to let you define crazy stuff like this,
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">example</span> (n)
+  (<span class="keyword">if</span> (&lt;= n 0)
+      (<span class="keyword">lambda</span> (x) (* x 10))
+    (<span class="keyword">lambda</span> (x) (* x 2.0))))
+</pre>
+<p>
+Which you can call, interactively in this case, like so,
+</p>
+<pre>
+wisp> ((example  1) 20)
+40.000000
+wisp> ((example -1) 20)
+200
+</pre>
+<p>
+Because there's no garbage collection yet, it leaks memory like a
+sieve. For garbage collection, I think I'll do a mark-and-sweep,
+marking objects based on their reachability from the symbol
+table. That still leaves some corner cases -- such as worrying about
+objects in limbo in the evaluator -- that I'm not sure about. I need
+to be careful not to free objects still in use. Still working that one
+out.
+</p>
+<p>
+It has the multiplication, addition, subtraction, and division
+implemented, as well as the greater-than and less-than operators. Lisp
+macros are implemented. A number of special forms are defined, like
+let, if, set, defun, defmacro, car, cdr, not, progn, lambda, and
+while. All of the predicates are implemented. It has a C interface,
+which is how all the above got defined. I already have some functions
+and macros defined in terms of Wisp code, too. Most of the needed
+functions at this point are trivial to add, though a bit tedious, so
+I'm mostly trying to focus on the core parts of the interpreter right
+now.
+</p>
+<p>
+It's amazing how much the internal code looks like lisp written in a C
+dialect. I have CAR and CDR macros defined, which get used all over
+the place, and code frequently uses them to walk lists like lisp code
+would.
+</p>
+<p>
+The core struct that everything works with the the object struct. It's
+defined as such,
+</p>
+<pre>
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">object</span>
+{
+  <span class="type">type_t</span> <span class="variable-name">type</span>;
+  <span class="type">void</span> *<span class="variable-name">val</span>;
+} <span class="variable-name">object_t</span>;
+</pre>
+<p>
+The <code>type_t</code> field comes from this enumeration,
+</p>
+<pre>
+<span class="keyword">typedef</span> <span class="keyword">enum</span> <span class="type">types</span>
+  { INT, FLOAT, STRING, SYMBOL, CONS, CFUNC, SPECIAL } <span class="variable-name">type_t</span>;
+</pre>
+<p>
+The type indicates what type of data the void pointer points to,
+making it sort-of polymorphic. Note the CONS type, the cons cell, used
+to create lists,
+</p>
+<pre>
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">cons</span>
+{
+  <span class="type">object_t</span> *<span class="variable-name">car</span>;
+  <span class="type">object_t</span> *<span class="variable-name">cdr</span>;
+} <span class="variable-name">cons_t</span>;
+</pre>
+<p>
+There's the familiar car and cdr pointers. There are a bunch of helper
+functions to manipulate and build these. For
+example, <code>c_cons()</code> creates a cons cell,
+</p>
+<pre>
+<span class="type">object_t</span> *<span class="function-name">c_cons</span> (<span class="type">object_t</span> * <span class="variable-name">car</span>, <span class="type">object_t</span> * <span class="variable-name">cdr</span>);
+</pre>
+<p>
+Look familiar? Yup, that's the lisp <code>cons</code> function. Since
+the <code>nil</code> symbol is available in C code as <code>NIL</code>
+you can chain these together in C to make a list,
+</p>
+<pre>
+object_t *lst = c_cons (c_int(10), c_cons (c_str ("hello"), NIL));
+</pre>
+<p>
+Which puts together the simple list,
+</p>
+<pre>
+(10 "hello")
+</pre>
+<p>
+Since that's so cumbersome to write out, there's a parser that can
+read nice lisp code and use all those same functions to make the
+lists. Hence, the lisp reader.
+</p>
+<p>
+If you want to help, it's pretty easy to add more CFUNCs, C functions
+that are exposed to Wisp lisp code. Right now, I'd like to expose the
+whole C math.h library, provide a nice I/O interface, and expose a
+bunch of string functions. The <code>TODO</code> file in the
+repository contains more things to be done.
+</p>
+<p>
+Wisp will probably be getting it's own "project page" here at some
+point in the future. When it does, I'll update this post to point to
+it.
+</p>
+<p>
+Oh, and I decided to make this available under a 2-clause BSD license,
+so someone could easily plug it into another program as an extension
+language (once Wisp has matured first, of course). That would be
+cool.
+</p>

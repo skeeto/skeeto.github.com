@@ -1,0 +1,64 @@
+---
+title: Jump to Java Documentation from Emacs
+layout: post
+---
+
+<!-- 14 October 2010 -->
+<p>
+I keep running to either a search engine or, when offline, manually
+browsing to Java API documentation when I need to look something
+up. When I'm using Emacs this is stupid, so I fixed it. I put together
+a <code>java-docs</code> package that let's me quickly jump to
+documentation from within Emacs.
+</p>
+<p>
+Download: <a href="http://git.nullprogram.com/?p=emacs-java.git;a=blob_plain;f=java-docs.el;hb=master">java-docs.el</a>
+</p>
+<p>
+Repository: <code>git clone <a href="http://git.nullprogram.com/?p=emacs-java.git">http://git.nullprogram.com/emacs-java.git</a></code>
+</p>
+<p>
+Unfortunately it launches it in a web browser right now because there
+doesn't seem to be a reasonable way to render the
+documentation <i>inside</i> Emacs itself. So
+you'll <a href="http://www.emacswiki.org/emacs/BrowseUrl"> need to
+have <code>browse-url</code> set up properly</a> in your
+configuration.
+</p>
+<p>
+I strongly recommend you use this
+with <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">
+Ido</a>, which comes with Emacs. If you do, you'll want to load
+it <i>after</i> you enable <code>ido-mode</code>, which will enable
+the Ido minibuffer completion in <code>java-docs</code>.
+</p>
+<p>
+So, after you <code>require</code> <code>java-docs</code>, you give it
+a list of places to look for documentation.
+</p>
+<pre>
+<span class="paren">(</span><span class="keyword">require</span> '<span class="constant">java-docs</span><span class="paren">)</span>
+<span class="paren">(</span>java-docs <span class="string">"/usr/share/doc/openjdk-6-jdk/api"</span> <span class="string">"~/src/project/doc"</span><span class="paren">)</span>
+</pre>
+<p>
+It will scan these locations and build up an index of
+classes. <a href="/blog/2010/06/07/">If you're using a recent enough
+version of Emacs</a> it will cache that index for faster loading in
+the future, since on <i>certain</i> systems it can needlessly take a
+bit of time.
+</p>
+<p>
+After that you can jump to documentation with <code>C-h j</code>
+(<code>java-docs-lookup</code>). It will ask you what you want to look
+up and offer completion with your preferred completion function.
+</p>
+<p class="center">
+  <img src="/img/java-docs.png" alt=""/>
+</p>
+<p>
+If you don't want to open it up in an external browser, you can set
+Emacs to run a text-based browser inside itself.
+</p>
+<pre>
+(setq browse-url-browser-function 'browse-url-text-emacs)
+</pre>

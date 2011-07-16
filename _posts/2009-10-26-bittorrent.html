@@ -1,0 +1,109 @@
+---
+title: Your BitTorrent Client is Probably Defective by Design
+layout: post
+---
+
+<!-- 26 October 2009 -->
+<p>
+<img src="/img/lock.png" alt="" title="BitTorrent DRM" class="right"/>
+
+Your BitTorrent client probably has DRM in it, even if it's Free
+software. Torrent files (<code>.torrent</code>) may contain a special,
+but unofficial, "private" flag. When it does, clients are supposed to
+disable decentralized tracking features, regardless of the user's
+desires. This is a direct analog to the copy-prevention flag that PDFs
+may have set, which tell PDF viewers to cripple themselves, except
+that your Free PDF reader is actually more likely to ignore it.
+</p>
+<p>
+It's impossible to simply open the torrent file and turn off the
+flag. The client has to be modified, fixing the purposeful defect, to
+ignore it. Note, simpler clients that don't have these features in the
+first place don't have this problem, since they don't have any
+features to disable.
+</p>
+<p>
+The private flag exists because modern BitTorrent trackers can
+function without a central tracker. If the central tracker is down, or
+if the user doesn't want to use it, the client can fetch a list of
+peers in the torrent from a worldwide <a
+href="http://en.wikipedia.org/wiki/Distributed_hash_table">
+distributed hash table</a>. It's one big decentralized BitTorrent
+tracker (though any arbitrary data can be inserted into it). Clients
+also have the ability to tell each other about peers when they are
+doing their normal data exchange. Thanks to this, clients can
+transcend central trackers and join the larger global torrent of
+peers. It makes for healthier torrents.
+</p>
+<p>
+Anyone who knows a few peers involved with a torrent can join in,
+regardless of their ability to talk to the central tracker. But
+private tracker sites don't want their torrents to be available
+outside to those outside of their control, so they proposed an
+addition to the BitTorrent spec for a "private" flag. Clients with
+decentralized capabilities are advised cripple that ability when the
+flag is on, so no peer lists will leak outside the private
+tracker. This flag was never accepted into the official spec, and I
+hope it never is.
+</p>
+<p>
+Unfortunately the private trackers set an ultimatum: obey the private
+flag or find your client banned. The client developers fell in line
+and, and as far as I am aware, no publicly available clients will use
+decentralized tracking while the flag is on. At one point, the
+BitComet client ignored the flag and was banned for some time until it
+was "fixed".
+</p>
+<p>
+The private flag wasn't placed in front with the rest of the metadata
+where it belonged. It's intentionally placed at the end of the torrent
+file inside of the info section. This means that the flag is part of
+the info_hash property of the torrent, which is the global identifier
+for the torrent. Unset or remove the private flag and the hash
+changes, creating a whole new torrent without any seeds.
+</p>
+<p>
+This is DRM, an artificial restriction imposed on the user. It's
+insulting. Users should be the ones that control what happens with
+their computers. The reasonable approach to a private flag is that,
+when the private flag is enabled, decentralized tracking is turned off
+by default, but can be re-enabled by the user should they desire. That
+way the desired behavior is indicated but the user has the final say,
+not some unrelated website operator.
+</p>
+<p>
+I rarely use private trackers, since they are nearly pointless, but I
+still find this private flag set on public torrents, probably from
+someone simply reposting the torrent file from a private site. It's
+annoying to run into. It makes the torrents weaker.
+</p>
+<p>
+Debian, which is my distribution of choice, is generally good about
+removing DRM from the software it distributes. For example, the PDF
+readers in the repositories have their DRM disabled (i.e. xpdf). So
+why not do the same thing for all the intentionally defective
+BitTorrent clients?
+</p>
+<p>
+I went on the Debian IRC channel on <a href="http://freenode.net/">
+Freenode</a> and brought up the issue only to find out that everyone
+thought a little DRM was reasonable. So then I <a
+href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=549607"> filed
+a bug report on it</a>, which was simply closed <a
+href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=549607#10">citing
+that the DRM is a beneficial "feature"</a> and that removing the
+intentional defect would make the clients "poorer". They also insisted
+that it's part of the spec <a
+href="http://wiki.theory.org/BitTorrentSpecification"> when it's
+not</a>. I'm really disappointed in Debian now.
+</p>
+<p>
+Now, I <i>could</i> modify a client to ignore the flag, but it's not
+useful if I am the only one not running DRM. It takes two to tango. A
+client used by many people would have to be fixed before it becomes
+beneficial.
+</p>
+<p>
+So when someone asks for an example of Free Software or Open Source
+software with DRM in it, you can point to BitTorrent clients.
+</p>

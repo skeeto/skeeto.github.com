@@ -1,0 +1,245 @@
+---
+title: Pth and ncurses
+layout: post
+---
+
+<!-- 21 December 2010 -->
+<p>
+I've learned how to use the
+curses/<a href="http://www.gnu.org/software/ncurses/">ncurses</a>
+library recently, and I decided to experiment with threading while
+using ncurses. This posed another learning opportunity: a chance to
+learn more about <a href="http://www.gnu.org/software/pth/">GNU
+Pth</a>, a non-preemptive, userspace threading library. It's a really
+cool trick to get threading into any C program on any platform. I've
+used POSIX threads, Pthreads, before, so Pth is totally new to me.
+</p>
+<p>
+The idea was this: a ticking timestamp string that I can move around
+the screen with the arrow keys. One thread will keep the clock up to
+date, and the other listens for user input and changes the clock
+coordinates.
+</p>
+<p>
+The ncurses function for getting a key from the user
+is <code>getch()</code>. By default, it blocks waiting for the user to
+press a key, which is returned. Unfortunately, this doesn't interact
+with Pth well at all.
+</p>
+<p>
+Pth threads are userspace threads rather than system threads. This
+means the operating system kernel is completely unaware of them, so
+they are managed by a userspace scheduler and the Pth threads all run
+inside a single system thread. Because of this, Pth threads can never
+take advantage of hardware parallelism. This disadvantage comes with
+the advantage of portability (hence the name "portable threads"). It
+can be used on systems that provide no threading support.
+</p>
+<p>
+Pth threads are also non-preemptive. This means the thread currently in
+control must eventually choose to yield control to other threads,
+cooperating with them. Preemptive threads <i>take</i> control from
+each other, so they never have to yield. Fortunately, the Pth library
+sneaks in implicit yielding, so you usually don't have to worry about
+this when using Pth. You can generally treat the Pth threads as if
+they were preemptive.
+</p>
+<p>
+As I was saying, Pth wasn't behaving well with ncurses. When I
+called <code>getch()</code> my entire program, all threads, were
+getting blocked too, which defeats the whole purpose of threading. I
+switched to Pthreads to see if it was a mistake on my part, or an
+issue with Pth. Pthreads was working just fine, so I had to figure out
+what I was doing wrong with Pth.
+</p>
+<p>
+I did manage to get Pth to behave the same was as the Pthreads, but it
+took two significant extra changes. Here's a code listing. There's
+also a mutex synchronized <code>draw_clock()</code> function not shown
+here. I've written it so that I could easily switch back and forth
+between the two threading libraries.
+</p>
+<pre>
+<span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;ncurses.h&gt;</span>
+<span class="preprocessor">#if</span> USE_PTH
+<span class="preprocessor">#include</span> <span class="string">&lt;pth.h&gt;</span>
+<span class="preprocessor">#else</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;unistd.h&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;pthread.h&gt;</span>
+<span class="preprocessor">#endif</span>
+
+<span class="type">int</span> <span class="variable-name">clockx</span> = 0, <span class="variable-name">clocky</span> = 0;
+
+<span class="type">void</span> *<span class="function-name">run_clock</span> (<span class="type">void</span> *<span class="variable-name">v</span>)
+{
+  <span class="keyword">while</span> (1)
+    {
+      draw_clock ();
+      sleep (1);
+    }
+  <span class="keyword">return</span> <span class="constant">v</span>;
+}
+
+<span class="type">int</span> <span class="function-name">main</span> ()
+{
+  <span class="comment-delimiter">/* </span><span class="comment">ncurses init </span><span class="comment-delimiter">*/</span>
+  initscr ();
+  noecho ();
+  cbreak ();
+  keypad (stdscr, TRUE);
+
+<span class="preprocessor">#if</span> USE_PTH
+  <b>halfdelay (1);</b>
+  pth_init ();
+  pth_spawn (<span class="constant">NULL</span>, &amp;run_clock, <span class="constant">NULL</span>);
+<span class="preprocessor">#else</span>
+  <span class="type">pthread_t</span> <span class="variable-name">thread</span>;
+  pthread_create (&amp;thread, <span class="constant">NULL</span>, &amp;run_clock, <span class="constant">NULL</span>);
+<span class="preprocessor">#endif</span>
+
+  <span class="type">int</span> <span class="variable-name">ch</span>;
+  <span class="keyword">while</span> ((ch = getch ()) != <span class="string">'q'</span>)
+    {
+<span class="preprocessor">#if</span> USE_PTH
+      <b>pth_yield (<span class="constant">NULL</span>);</b>
+<span class="preprocessor">#endif</span>
+      <span class="keyword">switch</span> (ch)
+        {
+        <span class="keyword">case</span> ERR:
+          <span class="keyword">continue</span>;
+        <span class="keyword">case</span> <span class="string">'h'</span>:
+        <span class="keyword">case</span> KEY_LEFT:
+        <span class="comment-delimiter">/* </span><span class="comment">more switch code here. </span><span class="comment-delimiter">*/</span>
+        }
+    }
+
+<span class="preprocessor">#if</span> USE_PTH
+  pth_kill ();
+<span class="preprocessor">#endif</span>
+  endwin ();
+  <span class="keyword">return</span> 0;
+}
+</pre>
+<p>
+Notice the two (bolded) differences in the code between Pth and
+Pthreads, in the <code>USE_PTH</code> sections. The Pth implementation
+uses the <code>halfdelay()</code> function, which
+tells <code>getch()</code> to be less blocking. The argument tells it
+to return with an error if nothing happens within one tenth of a
+second. This means our main polling loop will execute about 10 times a
+second when nothing is happening.
+</p>
+<p>
+The second change is an explicit yield, because Pth doesn't place any
+implicit yields in the loop. Without the yield the same problem
+remains.
+</p>
+<p>
+I'm not happy with either of these
+changes. Making <code>getch()</code> behave like non-blocking input is
+very hackish. If I extend my program I'll always have to be careful
+when I call <code>getch()</code>, since it's (essentially)
+non-blocking. I'll also have to make sure I always yield when polling
+with <code>getch()</code>. So how do I fix this? First, let's see why
+we need that explicit yield. Pth is supposed to be hiding that from
+me.
+</p>
+<p>
+How does Pth insert implicit yielding? I've been aware of Pth for
+years, and I've always wondered about this, but never bothered to
+look. I dug into the Pth sources.
+</p>
+<p>
+Pth inserts yields before some of the common blocking operations. It
+has its own definitions for functions such as <code>read()</code>,
+<code>write()</code>, <code>fork()</code>,
+and <code>system()</code>. This is where the implicit yielding is
+injected. It steals your calls to these functions, using its own
+functions. Here's the relevant section of <code>pth.h</code>, where
+the "soft" version of this happens (the "hard" version
+uses <code>syscall()</code>, operating at a lower level),
+</p>
+    <pre>
+<span class="preprocessor">#define</span> <span class="variable-name">fork</span>          pth_fork
+<span class="preprocessor">#define</span> <span class="variable-name">waitpid</span>       pth_waitpid
+<span class="preprocessor">#define</span> <span class="variable-name">system</span>        pth_system
+<span class="preprocessor">#define</span> <span class="variable-name">nanosleep</span>     pth_nanosleep
+<span class="preprocessor">#define</span> <span class="variable-name">usleep</span>        pth_usleep
+<span class="preprocessor">#define</span> <span class="variable-name">sleep</span>         pth_sleep
+<span class="preprocessor">#define</span> <span class="variable-name">sigprocmask</span>   pth_sigmask
+<span class="preprocessor">#define</span> <span class="variable-name">sigwait</span>       pth_sigwait
+<span class="preprocessor">#define</span> <span class="variable-name">select</span>        pth_select
+<span class="preprocessor">#define</span> <span class="variable-name">pselect</span>       pth_pselect
+<span class="preprocessor">#define</span> <span class="variable-name">poll</span>          pth_poll
+<span class="preprocessor">#define</span> <span class="variable-name">connect</span>       pth_connect
+<span class="preprocessor">#define</span> <span class="variable-name">accept</span>        pth_accept
+<span class="preprocessor">#define</span> <span class="variable-name">read</span>          pth_read
+<span class="preprocessor">#define</span> <span class="variable-name">write</span>         pth_write
+<span class="preprocessor">#define</span> <span class="variable-name">readv</span>         pth_readv
+<span class="preprocessor">#define</span> <span class="variable-name">writev</span>        pth_writev
+<span class="preprocessor">#define</span> <span class="variable-name">recv</span>          pth_recv
+<span class="preprocessor">#define</span> <span class="variable-name">send</span>          pth_send
+<span class="preprocessor">#define</span> <span class="variable-name">recvfrom</span>      pth_recvfrom
+<span class="preprocessor">#define</span> <span class="variable-name">sendto</span>        pth_sendto
+<span class="preprocessor">#define</span> <span class="variable-name">pread</span>         pth_pread
+<span class="preprocessor">#define</span> <span class="variable-name">pwrite</span>        pth_pwrite
+</pre>
+<p>
+Its own functions wrap the real deal, but suspend themselves on an
+awaiting event and yield. Any time the scheduler runs, it polls for
+these events, using <code>select()</code> in the case of input/output,
+and will wake these threads back up if the required event occurs.
+</p>
+<p>
+The problem with <code>getch()</code> is that Pth doesn't know about
+it, so it doesn't get a chance to handle it properly. After taking a
+look at the implementation for <code>pth_read()</code>, I
+fixed <code>getch()</code> for my program,
+</p>
+<pre>
+<span class="preprocessor">#if</span> USE_PTH
+<span class="type">int</span> <span class="function-name">pth_getch</span> ()
+{
+  <span class="type">pth_event_t</span> <span class="variable-name">ev</span>;
+  ev = pth_event (PTH_EVENT_FD | PTH_UNTIL_FD_READABLE, 0);
+  pth_wait (ev);
+  <span class="keyword">return</span> getch ();
+}
+<span class="preprocessor">#undef</span> getch
+<span class="preprocessor">#define</span> <span class="variable-name">getch</span> pth_getch
+<span class="preprocessor">#endif</span>
+</pre>
+<p>
+It tells the Pth scheduler that the thread wants to be suspended until
+there's something to read on <code>stdin</code> (file descriptor
+<code>0</code>). This prevents the system thread that everyone is
+counting on from blocking. With this redefinition I went back and
+removed the two Pth additions, <code>halfdelay()</code> and the yield,
+and it now behaves exactly the same way as the Pthreads version. Fixed!
+</p>
+<p>
+If you use any other libraries, you'll need to do this for any
+long-blocking function that Pth doesn't already catch.
+</p>
+<p>
+If you want to see this in action, here's the full
+source: <a href="/download/clock.c"><code>clock.c</code></a>. You can
+choose the threading library to use,
+</p>
+<pre>
+gcc -lncurses -lpth -DUSE_PTH clock.c -o clock_pth
+gcc -lncurses -pthread clock.c -o clock_pthread
+</pre>
+<p>
+Update: I've just discovered that Debian and Debian-based
+systems <a href="http://lists.gnupg.org/pipermail/gnupg-devel/2006-November/023372.html">
+have implicit yeilding disabled</a> by default. You may have needed to
+add this before the <code>pth.h</code> include.
+</p>
+<pre>
+#define PTH_SYSCALL_SOFT 1
+</pre>
+<p>
+This is now in the linked source.
+</p>

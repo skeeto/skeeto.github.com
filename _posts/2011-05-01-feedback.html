@@ -1,0 +1,122 @@
+---
+title: Feedback Loop Applet
+layout: post
+---
+
+<!-- 1 May 2011 -->
+<p class="abstract">
+You can skip all this and try it out
+here: <a href="http://git.nullprogram.com/Feedback.git/applet.html">Feedback
+applet</a>. Note: it requires modern hardware to run smoothly. The
+source repository is here,
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=Feedback.git">http://git.nullprogram.com/Feedback.git</a>
+</pre>
+<p>
+I was watching the BBC's <i>The Secret Life of Chaos</i>, which is a
+very interesting documentary about
+chaos, <a href="/blog/2007/10/01/">fractals</a>, and emergent
+behavior. There
+is <a href="http://www.youtube.com/watch?v=AMbua0BGfFE#t=6m">a part
+where emergent behavior is demonstrated using a video camera feedback
+loop</a> (6 minutes in). A camera, pointed at a projector screen, has
+it's output projected onto that same screen. A match is lit, moved
+around a bit, and removed from the camera's vision. At the center of
+the camera's focus a pattern dances around for awhile in an
+unpredictable pattern, as the pattern is fed back into itself.
+</p>
+<p>
+That's the key to fractals and emergent behavior right there: a
+feedback loop. Apply some simple rules to a feedback loop and you
+might have a fractal on your hands. More examples,
+</p>
+<ul>
+  <li><a href="http://www.youtube.com/watch?v=Jj9pbs-jjis">
+      How to make fractals without a computer</a></li>
+  <li><a href="http://www.youtube.com/watch?v=xzJVbmqcj7k">
+      video feedback experiment 4</a></li>
+</ul>
+<p>
+I was inspired to simulate this with software (and
+I <a href="http://devrand.org/view/emergentFeedback"> passed that on
+to Gavin too</a>). Take an image, rescale it, rotate it, compose it
+with itself, repeat.
+</p>
+<p>
+<a href="http://git.nullprogram.com/Feedback.git/applet.html">Feedback
+applet</a>
+</p>
+<p>
+Here are some images I created with it.
+</p>
+<p class="center">
+  <img src="/img/feedback/dense-tunnel.png" alt=""/>
+  <img src="/img/feedback/single-spiral.png" alt=""/>
+  <img src="/img/feedback/sun2.png" alt=""/>
+  <img src="/img/feedback/jagged-spiral.png" alt=""/>
+</p>
+<p>
+You can interact with the mouse -- like the lit match. And that really
+is a feedback loop. In this video, you can see the mouse hop travel
+down through the iterations.
+</p>
+<p class="center">
+  <video src="/img/feedback/hop.ogv" controls width="640" height="640">
+    Download: <a href="/img/feedback/hop.avi">hop.avi</a>
+  </video>
+</p>
+<p>
+Unfortunately I didn't seem to be able to achieve emergent
+behavior. The image operators too aggressively blur out fine details
+way down in the center. Bit that's fine: it turned out more visually
+appealing than I expected!
+</p>
+<p>
+Here's a gallery of image captures from the applet. To achieve some of
+the effects try adjusting the rotation angle (press r or R) and scale
+factor (press g or G) while running the app. A couple of these were
+made using an experimental fractal-like image operator that can only
+be turned on in the source code.
+</p>
+<p class="center">
+  <a href="/img/feedback/fractal.png">
+    <img src="/img/feedback/fractal-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/gimpy.png">
+    <img src="/img/feedback/gimpy-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/green-spots.png">
+    <img src="/img/feedback/green-spots-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/halo.png">
+    <img src="/img/feedback/halo-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/orange-star.png">
+    <img src="/img/feedback/orange-star-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/pink-spiral.png">
+    <img src="/img/feedback/pink-spiral-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/spin-blur.png">
+    <img src="/img/feedback/spin-blur-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/spin-spiral.png">
+    <img src="/img/feedback/spin-spiral-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/spiral.png">
+    <img src="/img/feedback/spiral-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/star.png">
+    <img src="/img/feedback/star-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/sun.png">
+    <img src="/img/feedback/sun-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/tunnel.png">
+    <img src="/img/feedback/tunnel-thumb.png" alt=""/>
+  </a>
+  <a href="/img/feedback/gear.png">
+    <img src="/img/feedback/gear-thumb.png" alt=""/>
+  </a>
+</p>

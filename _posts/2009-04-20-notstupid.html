@@ -1,0 +1,61 @@
+---
+title: A Not So Stupid C Mistake
+layout: post
+---
+
+<!-- 20 April 2009 -->
+<p>
+I was reading through a website of "<a
+href="http://www.rinkworks.com/stupid/cs_programming.shtml"> computer
+stupidities</a>" today when I came across this,
+</p>
+<pre>
+if (a)
+  {
+    /* do something */
+    return x;
+  }
+else if (!a)
+  {
+    /* do something else */
+    return y;
+  }
+else
+  {
+    /* do something entirely different */
+    return z;
+  }
+</pre>
+<p>
+This was quickly dismissed as being an obvious beginner mistake. I
+don't think this can be dismissed so quickly without thinking it
+through for a moment. Yes, in the example above we will never reach
+the last condition where we <code>return z</code>, but consider the
+following,
+</p>
+<pre>
+if (a &lt; b)
+  printf ("foo\n");
+else if (a &gt; b)
+  printf ("bar\n");
+else if (a == b)
+  printf ("baz\n");
+else
+  printf ("faz\n");
+</pre>
+<p>
+The same quick dismissal might drop the last "faz" print statement as
+being an impossible condition. Can you think of a situation where the
+program would print "faz"?
+</p>
+<p>
+Our final condition will be reached if <code>a</code> or
+<code>b</code> is equal to <code>NAN</code>, which is defined by the
+<a href="http://en.wikipedia.org/wiki/IEEE_floating-point_standard">
+IEEE floating-point standard</a>. It is available in C99 from
+<code>math.h</code>. A <code>NAN</code> in any of the comparisons
+above will evaluate to false.
+</p>
+<p>
+So don't be so quick to dismiss code like this.
+</p>

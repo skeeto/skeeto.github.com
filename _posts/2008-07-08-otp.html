@@ -1,0 +1,145 @@
+---
+title: One-Time Pads
+layout: post
+---
+
+<!-- 8 July 2008 -->
+<p>
+Example code:
+<a href="/download/otp/otp.c">otp.c</a>,
+<a href="/download/otp/Makefile">Makefile</a>
+(this Makefile may be useful)
+</p>
+<p>
+The <a href="http://en.wikipedia.org/wiki/One-time_pad">one-time
+pad</a> (OTP) is an encryption algorithm that provides <i>perfect</i>
+secrecy, provided it is implemented properly. The pad, which is
+essentially a key that is the same length as the message, must be used
+only once (hence the name), kept secret, and, the hard part, generated
+using some <a href="http://www.random.org/randomness/">truly random
+method</a>. It works by <code>XOR</code>ing the pad and the message
+together, which makes the ciphertext indistinguishable from randomly
+generated data.
+</p>
+<p>
+  <a href="/img/otp/otp.svg">
+    <img src="/img/otp/otp.png"
+	 alt="One-time pad diagram" />
+  </a>
+</p>
+<p>
+I want to be clear with the terms here. A one-time pad is not
+"random". Numbers aren't random. It's just not a property numbers can
+have. To be pedantic, what is random is the method by which the
+numbers are generated. Think "random number-generators", not
+"random-number generators".
+</p>
+<p>
+A pseudo-random number generator (PRNG), like what your computer
+normally uses to randomly generate numbers for games, will not work
+here. Your computer is mindlessly deterministic and is not capable of
+being a true random number generator by itself. PRNGs exhibit patterns
+and eventually loop, spitting out the same numbers in the same order
+as it did when it started. When the pad is generated randomly, each
+bit in the pad will be
+<a href="http://en.wikipedia.org/wiki/Statistical_independence">
+statistically independent</a> from every other bit. That is, one value
+of one bit has no affect on the value on other bits. Because of this,
+the ciphertext encrypted from a one-time pad is equally likely to
+decipher into any possible plaintext of the same length. This makes it
+immune to brute-force attacks.  The bits in a PRNG are not
+statistically independent, making them vulnerable to attack. If you
+know the value of one bit of the key, you also know something about
+other bits in the key.
+</p>
+<p>
+Generally, two parties wanting to communicate using a one-time pad
+will exchange a large pad, such as a CD filled with randomly generated
+data, in person before one of them travels somewhere, say another
+country, where data needs to be sent back securely. As bytes from the
+pad are used, they are destroyed and never used again. If the pad is
+100kB in length, only up to 100kB in data can be transmitted
+securely. Like most forms of encryption, key management is one of the
+trickiest parts.
+</p>
+<p>
+I have provided a simple little C program for encrypting a message
+using a one-time pad (download link at the top). It
+encrypts <code>stdin</code> using the one-time pad provided in the
+file indicated as the first argument. Ciphertext is sent
+to <code>stdout</code>. As an added bonus, when a second argument is
+provided, the used bits of the key are written to the file provided in
+the second filename. I will show you why I added this in a moment.
+</p>
+<p>
+I have provided an example pad for you, generated from my
+own <a href="http://en.wikipedia.org/wiki//dev/random">/dev/random</a>,
+which provides a true random number generator (RNG).
+</p>
+<p>
+Get it: <a href="/download/otp/random.data">
+random.data</a> (207kB). It looks kind of like this
+(<a href="http://gd.tuwien.ac.at/softeng/Aegis/hexdump.html">hexdump</a>),
+</p>
+<pre>
+f0a0 382b fdaf 6dff 5f15 0f2a 4634 f1c9
+bf36 67f3 b896 7237 ac82 836b c906 e28f
+2cea 8f06 b6a5 56f9 1faa 6dcb 06e6 f1e2
+779f 728e ead1 b5ad fbb3 e615 9906 2006
+f245 db61 8231 a2b7 2b10 37bb 5e48 8970
+49b7 0856 c0e3 440f fde4 9e78 7384 3f5f
+05c5 fed9 1c6e e5ac b85d cc7e fd20 a280
+1688 3206 ddb5 5c47 9dfe df53 18ea df52
+9b95 7e6b b76e c6c7 061c 43b8 f4f7 b3e3
+4948 e543 d8f1 476d 0daf 400f d345 60f4
+[...]
+</pre>
+<p>
+Here is how you put it to use in encrypting the source code for this
+program,
+</p>
+<pre>
+otp random.data &lt; otp.c &gt; otp.c.otp
+</pre>
+<p>
+If you shared the pad <code>random.data</code> with your friend, whom
+you are trying to communicate with, she can decrypt it with a similar
+command,
+</p>
+<pre>
+otp random.data &lt; otp.c.otp &gt; otp.c
+</pre>
+<p>
+<code>random.data</code> is only 207kB, so your message cannot be any
+longer than that. Additionally, once 207kB has been sent, you must
+exchange a new pad before more ciphertext can be transmitted. If you
+re-use your pad, you compromise the security of the new ciphertext as
+well as the old ciphertext.
+</p>
+<p>
+The reason I provided the second option was this: you can
+use <code>/dev/random</code> directly without losing the pad (assuming
+you have a operating system that has a <code>/dev/random</code>, as
+all decent operating systems do).
+</p>
+<pre>
+# encrypt
+otp /dev/random random.pad &lt; otp.c &gt; otp.c.otp
+
+# decrypt
+otp random.pad &lt; otp.c.opt &gt; otp.c
+</pre>
+<p>
+This is only academic, as the one-time pad is generally exchanged
+before the plaintext exists. Otherwise you can just exchange the
+plaintext when you would have normally exchanged the one-time pad!
+Also, <code>/dev/random</code> is <i>slow</i>. It generates numbers
+using environmental noise, which is only available at a trickle. If
+you want to encrypt a 1MB message, it could take days. With shorter
+messages you can usually speed things up by moving the mouse around or
+mashing the keyboard (this can be fun).
+</p>
+<p>
+More on one-time pads next. In particular, I will present two tricks:
+one that works and one that does not work.
+</p>

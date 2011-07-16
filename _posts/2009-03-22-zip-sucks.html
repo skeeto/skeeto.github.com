@@ -1,0 +1,127 @@
+---
+title: Avoid Zip Archives
+layout: post
+---
+
+<!-- 22 March 2009 -->
+<p>
+<img src="/img/onion.jpg"
+     alt="An onion" title="Onion on Lettuce by swatjester, cc-by-sa 2.0"
+     class="right" />
+
+In a <a href="/blog/2009/03/16"> previous post</a> about the LZMA
+compression algorithm, I made a negative comment about zip archives
+and moved on. I would like to go into more detail about it now.
+</p>
+<p>
+A zip archive serves three functions all-in-one: compression, archive,
+and encryption. On a unix-like system, these functions would normally
+provided by three separate tools, like tar, gzip/bzip2, and GnuPG. The
+unix philosophy says to "write programs that do one thing and do it
+well".
+</p>
+<p>
+So in the case of zip archives, we are doing three things poorly when,
+instead, we should be using three separate tools that each do one
+thing well.
+</p>
+<p>
+When we use three different tools, our encrypted archive is a lot like
+an onion. On the outside we have encryption. After we peel that off by
+decrypting it, we have compression, and after removing that lair,
+finally the archive. This is reflected in the filename:
+<code>.tar.gz.gpg</code>. As a side note, if GPG didn't already
+support it, we could add base-64 encoding if needed as another layer
+on the onion: <code>.tar.gz.gpg.b64</code>.
+</p>
+<p>
+By using separate tools, we can also swap different tools in and out
+without breaking any spec. Previously I mentioned using LZMA, which
+could be used in place of gzip or bzip2. Instead of
+<code>.tar.gz.gpg</code> you can have <code>.tar.lzma.gpg</code>. Or
+you can swap out GPG for encryption and use, say, <a
+href="http://ciphersaber.gurus.org/">CipherSaber</a> as
+<code>.tar.lzma.cs2</code>. If we use a single one-size-fits-all
+format, we are limited by the spec.
+</p>
+<h4>Compression</h4>
+<p>
+Both zip and gzip basically use the same compression algorithm. The
+zip spec actually allows for a variety of other compression
+algorithms, but you cannot rely on other tools to support them.
+</p>
+<p>
+Zip archives are also inside out. Instead of <a
+href="http://en.wikipedia.org/wiki/Solid_archive"> solid
+compression</a>, which is what happens in tarballs, each file is
+compressed individually. Redundancy between different files cannot be
+exploited. The equivalent would be an inside out tarball:
+<code>.gz.tar</code>. This would be produced by first individually
+gzipping each file in a directory tree, then archiving them with
+tar. This results in larger archive sizes.
+</p>
+<p>
+However, there is an advantage to inside out archives: random
+access. We can access a file in the middle of the archive without
+having to take the whole thing apart. In general use, this sort of
+thing isn't really needed, and solid compression would be more useful.
+</p>
+<h4>Archive</h4>
+<p>
+In a zip archive, timestamp resolution is limited to 2 seconds, which
+is based on the old FAT filesystem time resolution. If your system
+supports finer timestamps, you will lose information. But really, this
+isn't a big deal.
+</p>
+<p>
+It also does not store file ownership information, but this is also
+not a big deal. It may even be desirable as a privacy measure.
+</p>
+<p>
+Actually, the archive part of zip seems to be pretty reasonable, and
+better than I thought it was. There don't seem to be any really
+annoying problems with it.
+</p>
+<p>
+Tar is still has advantages over zip. Zip doesn't quite allow the same
+range of filenames as unix-like systems do, but it does allow
+characters like * and ?. What happens when you extract files with
+names containing these characters on an inferior operating system that
+forbids them will depend on the tool.
+</p>
+<h4>Encryption</h4>
+<p>
+Encryption is where zip has been awful in the past. The original
+spec's encryption algorithm had serious flaws and no one should even
+consider using them today.
+</p>
+<p>
+Since then, AES encryption has been worked into the standard and
+implemented differently by different tools. Unless the same zip tool
+is used on each end, you can't be sure AES encryption will work.
+</p>
+<p>
+By placing encryption as part of the file spec, each tool has to
+implement its own encryption, probably leaving out considerations like
+using secure memory. These tools are concentrating on archiving and
+compression, and so encryption will likely not be given a solid
+effort.
+</p>
+<p>
+In the implementations I know of, the archive index isn't encrypted,
+so someone could open it up and see lots of file metadata, including
+filenames.
+</p>
+<p>
+When you encrypt a tarball with GnuPG, you have all the flexibility of
+PGP available. Asymmetric encryption, web of trust, multiple strong
+encryption algorithms, digital signatures, strong key management,
+etc. It would be unreasonable for an archive format to have this kind
+of thing built in.
+</p>
+<h4>Conclusion</h4>
+<p>
+You are almost always better off using a tarball rather than a zip
+archive. Unfortunately the receiver of an archive will often be unable
+to open anything else, so you may have no choice.
+</p>

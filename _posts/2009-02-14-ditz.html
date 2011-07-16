@@ -1,0 +1,71 @@
+---
+title: Distributed Issue Tracking
+layout: post
+---
+
+<!-- 14 February 2009 -->
+<p>
+<img src="/img/tracks.png"
+     alt="Oublic domain tacks image" title="Issue tracking"
+     class="left" />
+
+In a <a href="/blog/2009/02/12#git-is-better">previous post</a> I
+discussed decentralized version control systems, Git in
+particular. Because decentralized version control is becoming so
+popular, we now have an exciting new area of development: distributed
+issue tracking.
+</p>
+<p>
+Decentralized issue tracking seems to have popped into existance in
+the last year or so. A number of projects have appeared (cil, ticgit,
+ditz, to name some), but the one that really stands out for me is <a
+href="http://ditz.rubyforge.org/">ditz</a>. Keep an eye on that
+one. It's fairly active and mostly usable.
+</p>
+<p>
+Decentralized trackers generally work by storing the issue tracking
+database within the repository itself. One possibility is to have it
+sit in its own branch, which I think is the Wrong Way. A second
+possibility is to have it sit right next to the code in its own
+directory. Yet another possibility is to put the issue tracker in its
+own repository. Git could even include this repository as a submodule
+(this is a lot like the Wrong Way, though).
+</p>
+<p>
+First of all, everyone gets their own copy of the issue tracker
+database and its history. Second of all, it <i>has</i> history. It's
+tracked the same way the code is. And, in the second case usage, one
+of the coolest advantages is that issues follow the code very closely.
+</p>
+<p>
+When a branch is created, it takes its own copy of the issue tracking
+database with it. If a bug is fixed in the main branch, the issue
+tracking database in the main branch is updated. The bug will remain
+in the side branch and the issue will still be open in the side branch
+reflecting this. If a merge occurs later, the issue tracking database
+also gets merged automatically. I think that's damn cool.
+</p>
+<p>
+There are some issues that still need to be hammered out. How does a
+non-developer enter a ticker? They would need to work the version
+control system to do this, then be able to share that change. That's a
+pretty large barrier.
+</p>
+<p>
+Perhaps a web interface could be set up for setting up
+issues. Developers could then cherry-pick/pull the issues from that
+repository and push ticket updates back out.
+</p>
+<p>
+Then there is overhead incurred by moving tickets around with
+code. How bad is this overhead? How can this be dealt with in the most
+transparent way? This all needs to be tested still.
+</p>
+<p>
+Could the issue database get too big? People like to attach
+screenshots to issues. Having many screenshots would make the
+repository very big. How do we deal with this?
+</p>
+<p>
+It's an exciting, new realm to explore.
+</p>

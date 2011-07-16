@@ -1,0 +1,59 @@
+---
+title: I Finally Have Comments
+layout: post
+---
+
+<!-- 12 May 2009 -->
+<p>
+I finally have a comment system, thanks to <a
+href="http://www.nukekiller.net/pollxn/">pollxn</a>, a <a
+href="http://www.blosxom.com/">blosxom</a> comment system that
+actually works. There is a link to it, indicating the number of
+comments, in the bottom of each post. Try it out and say hello.
+</p>
+<p>
+Unfortunately, pollxn doesn't have any sort of anti-spam or <a
+href="http://en.wikipedia.org/wiki/Captcha"> CAPTCHA</a> system. If
+you look around the Interwebs where other people are using pollxn, you
+will see everyone has their own little CAPTCHA thing. Well, I am not
+different. I hacked together my own to keep away automated spammers.
+</p>
+<p>
+It selects words from the dictionary (of 40,000 words in this case)
+and encrypts them with Blowfish in CBC mode, with a unique IV each
+time. This is to passed to the user, who passes it to an image
+generator which decrypts the word and uses GD in Perl to render it,
+apply some transforms, and drop a line randomly over it. The user
+submits the guess of the image along with the encrypted version
+(hidden field), which is decrypted and compared on the other end. The
+same encrypted ID cannot be used twice, but thanks to the IV the same
+word <i>can</i> be used twice.
+</p>
+<p>
+Here are some samples. If you hit refresh, they will render
+differently.
+</p>
+<p>
+<img src="http://nullprogram.com/captcha.pl?id=U2FsdGVkX18gGbUwj6gFGNDQZSR7xaDP98HvTjSXHbo=" alt="CAPTCHA sample: ormolus"/>
+<img src="http://nullprogram.com/captcha.pl?id=U2FsdGVkX1-GkwYkp8E4lTfghBsmc5R1" alt="CAPTCHA sample: morons" />
+<img src="http://nullprogram.com/captcha.pl?id=U2FsdGVkX1_aEEIt2qWiPwK5DVWQcG-g" alt="CAPTCHA sample: softer" />
+<img src="http://nullprogram.com/captcha.pl?id=U2FsdGVkX196Fv5e1VjtanvRJuZMS3Xf4Aq_olqvWhw=" alt="CAPTCHA sample: zanucks" />
+<img src="http://nullprogram.com/captcha.pl?id=U2FsdGVkX1_lLtOoDuk5bTMk79FgjV2lXH0YjaIqCj4=" alt="CAPTCHA sample: grumble" />
+<img src="http://nullprogram.com/captcha.pl?id=U2FsdGVkX1_y4SPF_TRud99cuYCAq5dO" alt="CAPTCHA sample: nozzle" />
+</p>
+<p>
+It's not a great CAPTCHA, but it should be good enough for the low
+volume of traffic I see here. As I inevitably collect small amounts of
+spam (by spammers manually passing the CAPTCHA), I will gradually
+create the needed tools to combat it. I can also easily update the
+CAPTCHA image algorithm without disrupting the functioning of the
+website.
+</p>
+<p>
+I'm sure I will be making improvements to the comment system over time
+as well. I should make it obfuscate e-mail addresses, for one. Maybe
+add a preview. And better blosxom integration.
+</p>
+<p>
+So say hello below! I am excited to finally have a <i>real</i> blog.
+</p>

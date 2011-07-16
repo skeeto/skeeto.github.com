@@ -1,0 +1,97 @@
+---
+title: SampleJavaProject
+layout: post
+---
+
+<!-- 4 October 2010 -->
+<p>
+Here's a little on-going project I put together recently. It's mostly
+for my own future reference, but perhaps someone else may find it
+useful.
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=SampleJavaProject.git;a=summary">http://git.nullprogram.com/SampleJavaProject.git</a>
+</pre>
+<p>
+If you couldn't guess already, I'm strongly against tying a project's
+development to a particular IDE. It happens too much: someone starts
+the project by firing up their favorite IDE, clicking "Create new
+project", and checks in whatever it spits out. It usually creates a
+build system integrated tightly into that particular IDE. At work I've
+seen it happen on two different large Java projects. There are some
+ways around it, like maintaining two build systems side-by-side, but
+it's not very pretty. Sometimes the Java IDE can spit out some Ant
+build files for the sake of continuous integration, but it remains a
+second-class citizen for development.
+</p>
+<p>
+I prefer the other direction: start with a standalone build system,
+then stick your own development environment on top of that. Each
+developer picks and is responsible for whatever IDE or editor they
+want, with the standalone build system providing the canonical build
+(and, in my experience, if you <i>must</i> use an IDE, NetBeans has
+the smoothest integration with Ant). So in the case of Java, this
+means setting up an Ant-based build.
+</p>
+<p>
+I've said before that <a href="/blog/2010/08/13/">I like the Java
+platform</a>, I just find the primary language
+disappointing. Similarly, I like Ant, I just find the build script
+language disappointing (XML). It seems other people like it too, at
+least for Java development,
+because <a href="http://www.google.com/search?q=ant+sucks">I haven't
+been able to find any serious criticisms</a> of it outside of hating
+the XML (notice the first result in that search is written by someone
+who is Doing It All Wrong). I love that it works on filesets and not
+files. It's like getting atomic commits for my build system. If I add
+a new source file to my project I don't need to adjust the Ant build
+script in any way.
+</p>
+<p>
+One downside of Ant is that, while it's commonly used in a very
+standard way, it doesn't guide you in that direction or provide
+special shortcuts to make the common cases easier. It's typical to
+have a <code>src/</code> directory containing all your source and
+a <code>build/</code> directory, created by Ant, that contains all the
+built and generated files. With Ant you basically say, "Compile these
+sources to here, then jar that directory up." Ant alone doesn't make
+this very obvious. Give it to someone standed on a desert island and I
+bet they won't derive the same best practice as the rest of the world.
+</p>
+<p>
+Take <code>make</code>, for example. Because building object files
+from source is so common, (depending on the implementation) it has
+built-in rules for it. This is all you need to say,
+and <code>make</code> knows how to do the rest.
+</p>
+<pre>
+<span class="makefile-targets">file.o</span> : file.c
+</pre>
+<p>
+Same for linking, it's so common you don't have to type anything more
+than necessary.
+</p>
+<pre>
+<span class="makefile-targets">program</span> : main.o common.o file.o
+</pre>
+<p>
+It guides you in creating good Makefiles. If you want to learn the
+best practice for Ant, you have to either buy a book on Ant or look at
+what lots of other people are doing. And so I provide my
+SampleJavaProject for this exact purpose.
+</p>
+<p>
+You can use that as a skeleton when creating your own project, and
+you'll barely have to customize the build file. It's a big mass of
+boilerplate, the kind of stuff that Ant should have built-in by
+default. I'll be expanding it over time as I learn more about how to
+effectively use Ant.
+</p>
+<p>
+So far, I included two things that you normally won't see: a target to
+run a Java indenter
+(<a href="http://astyle.sourceforge.net/">AStyle</a>) on your code,
+and a target to run the
+bureaucratic <a href="http://checkstyle.sourceforge.net/">
+Checkstyle</a> on your code.
+</p>

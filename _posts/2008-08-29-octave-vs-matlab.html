@@ -1,0 +1,75 @@
+---
+title: A GNU Octave Feature
+layout: post
+---
+
+<!-- 29 August 2008 -->
+<p>
+At work they recently moved me to a new project. It is a Matlab-based
+data analysis thing. I haven't really touched Matlab in over a year
+(the last time I used Matlab at work), and, instead, use GNU Octave at
+home when the language is appropriate. I got so used to Octave that I
+found a pretty critical feature missing from Matlab's implementation:
+treat an expression as if it were of the type of its output.
+</p>
+<p>
+Let's say we want to index into the result of a function. Take, for
+example, the magic square function, <code>magic()</code>. This spits
+out a
+<a href="http://en.wikipedia.org/wiki/Magic_square">magic square</a>
+of the given size. In Octave we can generate a 4x4 magic square and
+chop out the middle 2x2 portion in one line.
+</p>
+<pre>
+octave> magic(4)(2:3,2:3)
+ans =
+
+   11   10
+    7    6
+</pre>
+<p>
+Or more possibly clearly,
+</p>
+<pre>
+octave> [magic(4)](2:3,2:3)
+ans =
+
+   11   10
+    7    6
+</pre>
+<p>
+Try this in Matlab and you will get a big, fat error. You have to
+assign the magic square to a temporary variable to do the same
+thing. I kept trying to do this sort of thing in Matlab and was
+thinking to myself, "I <i>know</i> I can do this somehow!". Nope, I
+was just used to having Octave.
+</p>
+<p>
+Where this really shows is when you want to reshape a matrix into a
+nice, simple vector. If you have a matrix <code>M</code> and want to
+count the number of NaN's it has, you can't just apply
+the <code>sum()</code> function over <code>isnan()</code> because it
+only does sums of columns. You can get around this with a special
+index, <code>(:)</code>.
+</p>
+<p>
+So, to sum all elements in <code>M</code> directly,
+</p>
+<pre>
+octave> sum(M(:))
+</pre>
+<p>
+In Octave, to count NaN's with <code>isnan()</code>,
+</p>
+<pre>
+octave> sum(isnan(M)(:))
+</pre>
+<p>
+Again, Matlab won't let you index the result of <code>isnan()</code>
+directly. Stupid. I guess the Matlab way to do this is to
+apply <code>sum()</code> twice.
+</p>
+<p> Every language I can think of handles this properly. C, C++, Perl,
+Ruby, etc. It is strange that Matlab itself doesn't have it. Score one
+more for Octave.
+</p>

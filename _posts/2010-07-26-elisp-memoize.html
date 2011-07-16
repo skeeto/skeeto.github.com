@@ -1,0 +1,106 @@
+---
+title: Elisp Memoize
+layout: post
+---
+
+<!-- 26 July 2010 -->
+<p>
+<a href="/blog/2008/03/25/">Memoization</a> is something I think
+should be packaged as a standard function for just about every
+language. That's not generally the case, but luckily this is easy to
+fix in Lisps. I needed memoization recently for an Elisp project I'm
+working on. I could have hand-written one but a generic memoization
+function would have worked just fine. Since I didn't find any generic
+Elisp memoization on-line I wrote my own.
+</p>
+<p>
+<b>Download: <a href="/download/memoize.el">memoize.el</a></b>
+</p>
+<p>
+Just put it in your path
+and <code>(<span class="keyword">require</span>
+'<span class="constant">memoize</span>)</code> it. Here's the core
+function.
+</p>
+<pre>
+<span class="comment-delimiter">;; </span><span class="comment">ID: 83bae208-da65-3e26-2ecb-4941fb310848
+</span>(<span class="keyword">defun</span> <span class="function-name">memoize-wrap</span> (func)
+  <span class="doc">"Return the memoized version of the given function."</span>
+  (<span class="keyword">let</span> ((table-sym (gensym))
+        (val-sym (gensym))
+        (args-sym (gensym)))
+    (set table-sym (make-hash-table <span class="builtin">:test</span> 'equal))
+    `(<span class="keyword">lambda</span> (<span class="type">&amp;rest</span> ,args-sym)
+       ,(concat (documentation func) <span class="string">"\n(memoized function)"</span>)
+       (<span class="keyword">let</span> ((,val-sym (gethash ,args-sym ,table-sym)))
+          (<span class="keyword">if</span> ,val-sym
+              ,val-sym
+            (puthash ,args-sym (apply ,func ,args-sym) ,table-sym))))))
+</pre>
+<p>
+Normally the hash table would be stored inside of a closure, but Elisp
+doesn't have closures. Instead, the hash table is stored in an
+uninterned symbol, which will only (generally) be accessible to the
+memoization wrapper (in order for external code to access the table it
+would need to directly inspect the memoized function object). It's not
+quite a scope but it's close enough.
+</p>
+<p>
+Note that it keeps the original function documentation intact. I want
+the memoization wrapper to be an unobtrusive as possible.
+</p>
+<p>
+This is a bit of an abstraction leak. It's creating new code at <i>run
+time</i> taking advantage of the specific low-level way Emacs executes
+s-expressions. If Emacs ever stopped directly evaluating s-expressions
+then this code would break. A more <i>proper</i> way to do this would
+be at compile time with a macro, where this exact sort of code
+generation is expected. Rather than <code>defun</code> we would use a
+macro called something like <code>defmemoized</code>.
+</p>
+<p>
+Here's a demo of it in action. This <code>whiten</code> function is
+computationally expensive: it performs key whitening. It repeats a
+hash function thousands of times to produce an expensive value. This
+isn't something you generally want to memoize, but stick with me.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">whiten</span> (key)
+  <span class="doc">"Perform key whitening with the md5 hash function."</span>
+  (<span class="keyword">dotimes</span> (i 100000 key)
+    (setq key (md5 key))))
+
+(whiten <span class="string">"password"</span>)   <span class="comment-delimiter">; </span><span class="comment">takes a couple of seconds</span>
+</pre>
+<p>
+On my laptop that takes a couple of seconds to run. Increase that
+counter if it's quick on your computer. My memoize package provides
+a <code>memoize</code> function which will create a new function that
+wraps the original, then installs the new function in place of the old
+one if we give it the function symbol.
+</p>
+<pre>
+(memoize 'whiten)
+</pre>
+<p>
+The first time you run it after memoization it will be slow, but after
+that the memoization kicks in for a quick return.
+</p>
+<p>
+There are two Elisp specific issues at hand. First is that memoizing
+an interactive function will produce a non-interactive function. It
+would be easy to fix this problem when it comes to non-byte-compiled
+functions, but recovering the interactive definition from a
+byte-compiled function is more complex than I care to deal
+with. Besides, interactive functions are always used for their side
+effects so there's no reason to memoize them.
+</p>
+<p>
+Second is a limitation of Elisp hash tables. There's no way to
+distinguish a nil value and no value. The hash table returns nil for
+both. This means you cannot memoize nil returns. But a computationally
+expensive function shouldn't be returning nil anyway.
+</p>
+<p>
+Hopefully someone else will find good use for this as well.
+</p>

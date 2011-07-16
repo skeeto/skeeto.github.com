@@ -1,0 +1,171 @@
+---
+title: Setting up a Common Lisp Environment
+layout: post
+---
+
+<!-- 15 January 2010 -->
+<p>
+Common Lisp is possibly the most advanced programming language. Think
+of pretty much any programming language feature and Common Lisp
+probably has it. Since lisp is the programmable programming language,
+when someone invents a new language feature it can probably be added
+to Common Lisp without even touching the language core.
+</p>
+<p>
+<img src="/img/emacs-slime.png" alt="" title="SBCL SLIME REPL"
+     class="right"/>
+
+However, if you're interested in digging into Common Lisp to try it
+out, you may find yourself quickly running into walls just getting
+started. It's a lot different than other programming environments you
+may be used to. The Common Lisp tutorials generally skip this step,
+assuming the user has an environment, or leaving that setup for the
+"vendor" to handle. So, here's a guide to setting up a great Common
+Lisp environment with <a href="http://www.gnu.org/software/emacs/">
+Emacs</a> and <a href="http://common-lisp.net/project/slime/">
+SLIME</a>. It should work with any Common Lisp implementation and any
+operating system that can run Emacs (i.e. most of them). Even a much
+less capable one like Windows.
+</p>
+<p>
+First, you need to pick a Common Lisp implementation and install
+it. Ideally, it should end up in your PATH. Like C, the language is
+defined solely by its standardized specification, rather than some
+canonical implementation. <a href="http://www.sbcl.org/"> Steel Bank
+Common Lisp</a> (SBCL) is currently
+the <a href="http://www.cliki.net/Benchmarks">
+highest</a> <a href="http://john.freml.in/sbcl-optimise">
+performing</a> implementation, it's Free Software, and it runs on a
+wide variety of platforms, so take a look at that one if you're not
+sure.
+</p>
+<p>
+Next, install Emacs. We're using Emacs not just because it's the best
+text editor ever created. <code>:-D</code> It's because that's what
+SLIME is written for, and Emacs is a lisp-aware editor. Really, Emacs
+is a lisp interpreter that <i>happens</i> to be geared towards
+text-editing. It's accused of breaking the rules of unix by being a
+single, monolithic program, but it's really a whole bunch of small
+lisp programs. You can even have a lisp REPL in Emacs
+(<code>ielm</code>), similar to what we will have once we're done
+here. It's plays very well with Common Lisp.
+</p>
+<p>
+If you're unfamiliar with Emacs, you should stop here and familiarize
+yourself with it a bit. Really, you could spend a decade learning
+Emacs and still have more to learn. The tutorial should be good enough
+for now. Fire up Emacs and run the tutorial by pressing
+<code>control+h</code> then <code>t</code>. In Emacs notation,
+that's <code>C-h t</code>. <code>C-h</code> is the help/documentation
+prefix, which can be used to look up variables/symbols
+(<code>v</code>), functions (<code>f</code>), key bindings
+(<code>k</code>), info manuals (<code>i</code>), the current mode
+(<code>m</code>), and apropos (searching) (<code>a</code>). In the
+info manuals, you should be able to find the full Emacs manual, Elisp
+reference, and Elisp tutorial, since they are generally installed
+alongside Emacs these days. Nearly anything you might need to know can
+be found inside the included documentation.
+</p>
+<p>
+Next, install SLIME. I'll be a bit more specific for this one. Make
+a <code>.emacs.d</code> directory in your home directory (whatever
+your HOME environmental variable is set to). This is a common place to
+put user-installed Emacs extensions. You will be putting
+your <code>slime</code> directory in here. There are two basic ways to
+obtain SLIME, as indicated right on their main page. You can do a CVS
+checkout of the SLIME repository, which allows you to follow it and
+run the latest version. Or you can grab a snapshot of the repository,
+which is provided, and dump it in there. Since I like you so much,
+I'll give you a third option. Here's a Git repository, maintained by
+someone very kind, that follows SLIME's CVS repository,
+</p>
+<pre>
+git clone git://git.boinkor.net/slime.git
+</pre>
+<p>
+Ultimately, you should have a directory <code>~/.emacs.d/slime/</code>
+that contains a bunch of SLIME source files directly inside.
+</p>
+<p>
+Now, we tell Emacs where SLIME is and how to use it. Make
+a <code>.emacs</code> file in your home directory, if you haven't
+already, and put this in it,
+</p>
+<pre>
+(add-to-list 'load-path <span class="string">"~/.emacs.d/slime/"</span>)
+(<span class="keyword">require</span> '<span class="constant">slime</span>)
+(slime-setup '(slime-repl))
+</pre>
+<p>
+Once it's saved, either restart Emacs, or simply evaluate those lines
+by putting the cursor after each them in turn and typing <code>C-x
+C-e</code>. If you did everything right so far, you shouldn't have any
+errors. (If you did, go back up and see what you did wrong.) If your
+Common Lisp installation didn't end up in your PATH as
+"<code>lisp</code>" (not uncommon) for some reason, you may need to
+tell Emacs where it is. For example, I can point directly to my SBCL
+installation with this line,
+</p>
+<pre>
+(setq inferior-lisp-program <span class="string">"/usr/bin/sbcl"</span>)
+</pre>
+<p>
+If everything is set up right, fire up SLIME with "<code>M-x
+slime</code>". It should compile the back-end, called swank, and run a
+Common Lisp REPL as an inferior process to Emacs. You should end up
+with a nice prompt like this,
+</p>
+<pre>
+CL-USER>
+</pre>
+<p>
+At this line, you can start evaluating lisp expressions as you
+please. But this isn't where the true power of SLIME comes in
+yet. I'll give you an example: make a new file with
+a <code>.lisp</code> extension and open it. Throw some lisp in there,
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">adder</span> (x)
+  (<span class="keyword">lambda</span> (y) (+ x y)))
+</pre>
+<p>
+Type <code>C-x C-k</code> and it will send the current buffer over to
+be compiled and loaded. This code here uses a closure, so you know you
+aren't accidentally using Emacs lisp, as it doesn't have closures. At
+the REPL you can call it,
+</p>
+<pre>
+CL-USER> (funcall (adder 5) 6)
+</pre>
+<p>
+Which will print the return value, <code>11</code>. That's all there
+is to it. You write code in the buffer, then with a simple keystroke
+send it to the Common Lisp system to be evaluated and loaded. Because
+the SLIME key bindings eclipse the Emacs lisp key bindings, you can
+type this same line in the lisp source buffer place the cursor at the
+end, and type C-x C-e, which will send it out to Common Lisp to be
+evaluated. Look at the mode help (<code>C-h m</code>) to see all the
+key bindings made available.
+</p>
+<p>
+This is a great programming environment that makes Common Lisp all the
+more fun to use. You run a single, continuous instance if your program
+growing it gradually. (This is exactly how I
+built <a href="/blog/2009/05/17/">my Emacs web server</a> with elisp.)
+You can test your code as soon as soon as it's written.
+</p>
+<p>
+The setup can get even more advanced. The Common Lisp REPL need not be
+running on the same computer. It can be running on another computer,
+as long as SLIME is able to connect to it over the network. Several
+developers could even share a single Common Lisp process running on a
+common machine. Lots of possibilities.
+</p>
+<p>
+If you don't have a Common Lisp book yet,
+there's <a href="http://gigamonkeys.com/book/">Practical Common
+Lisp</a>, which you can read at no cost online
+or <a href="http://www.computer-books.us/lisp_0004.php">download</a>
+for reading offline. It's based on an Emacs and SLIME setup, so you'll
+be right on track.
+</p>

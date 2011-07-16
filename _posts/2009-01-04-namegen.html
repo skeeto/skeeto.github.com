@@ -1,0 +1,144 @@
+---
+title: Fantasy Name Generator : Request for Patterns
+layout: post
+---
+
+<!-- 4 January 2009 -->
+<p style="font-style: italic;">
+Try it out right now if you don't feel like reading: my <a
+href="/namegen/">fantasy name generator</a>. I need your help
+designing some name patterns.
+</p>
+<p>
+  <img src="/img/name-generation.jpg"
+       alt="Medieval writing desk" title="Old fashioned name generator"
+       class="right" width="200" />
+
+Whether choosing a name for my character in a fantasy game or
+populating a world which I pretend to myself that I will one day DM, I
+have always gone to the <a href="http://www.rinkworks.com/namegen/">
+RinkWorks Fantasy Name Generator</a>. The author of this tool, Samuel
+Stoddard, gives <a
+href="http://www.rinkworks.com/namegen/history.shtml"> some
+history</a> on how he came to design and develop it.
+</p>
+<p>
+It works by using pattern to select sets of letters to put together
+into a name. There is a thorough, <a
+href="http://www.rinkworks.com/namegen/instr.shtml">long
+description</a> on the website. Unfortunately, he didn't share his
+source code and so we can see how he did it.
+</p>
+<p>
+Therefore, I used his description to duplicate his generator.
+</p>
+<p>
+You can grab a copy here with <a href="http://git.or.cz/">git</a>,
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=fantasyname.git;a=summary">http://git.nullprogram.com/fantasyname.git</a>
+</pre>
+<p>
+It includes a command line interface as well as a web interface, which
+I am running and linked to at the beginning of this post for you to
+use. The code is available under the same license as Perl itself.
+</p>
+<p>
+I used Perl and the <a
+href="http://search.cpan.org/dist/Parse-RecDescent/lib/Parse/RecDescent.pm">
+Parse::RecDescent</a> parser generator. Thanks to this module, it
+essentially comes down to about 40 lines of code. The name pattern is
+executed, just like a computer program, to generate a name. Here is
+the BNF grammar I came up with,
+</p>
+<pre>
+LITERAL ::= /[^|()&lt;&gt;]+/
+
+TEMPLATE ::= /[-svVcBCimMDd']/
+
+literal_set ::= LITERAL | group
+
+template_set ::= TEMPLATE | group
+
+literal_exp ::= literal_set literal_exp | literal_set
+
+template_exp ::= template_set template_exp | template_set
+
+literal_list ::= literal_exp "|" literal_list | literal_exp "|" | literal_exp
+
+template_list ::= template_exp "|" template_list | template_exp "|" | template_exp
+
+group ::= "&lt;" template_list "&gt;" | "(" literal_list ")"
+
+name ::= template_list | group
+</pre>
+<p>
+The program is just that, decorated with some bits of Perl. Since I
+came up with it, I have found that it is slightly different than
+Mr. Stoddard's generator, in that his allows empty sets anywhere.
+Mine only allows them at the end of lists. For example, this is valid
+for his generator,
+</p>
+<pre>
+&lt;|B|C&gt;(ikk)
+</pre>
+<p>
+But to work in mine, the empty item must be moved to the end,
+</p>
+<pre>
+&lt;B|C|&gt;(ikk)
+</pre>
+<p>
+This can be adjusted my making the proper changes to the grammar,
+which I haven't figured out yet.
+</p>
+<p>
+Another problem with mine is that Parse::RecDescent is
+<i>slooooowwwww</i>. Ridiculously slow. Maybe I designed the grammar
+poorly? This is probably the biggest problem. Even simple patterns can
+take several seconds to generate names, specifically with deeply
+nested patterns. For example, this can take minutes,
+</p>
+<pre>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;s&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</pre>
+<p>
+Before you go thinking you are going to tank my server, I have written
+the web interface so that it limits the running time of the
+generator. If you want to do something fancy, use your own hardware. ;-)
+</p>
+<p>
+There is also a problem that it will silently drop invalid pattern
+characters at the end of the pattern. This has to do with me not quite
+understanding how to apply Parse::RecDescent yet.
+</p>
+<p>
+And this is where I need your help. I have had some trouble coming up
+with good patterns. I don't even have a good default, generic fantasy
+name pattern. Here are some of mine,
+</p>
+<pre>
+&lt;s|B|Bv|v&gt;&lt;V|s|'|V&gt;&lt;s|V|C&gt; # default
+&lt;i|Cd&gt;D&lt;d|i&gt; # idiot
+&lt;V|B&gt;&lt;V|vs|Vs&gt; # short
+</pre>
+<p>
+None of which I am very satisfied.
+</p>
+<p>
+You can design patterns for Nordic names, Gallic names,
+Tolkienesque Middle Earth names, orc names, idiot names, dragon names,
+dwarf names, elf names, Wheel of Time names, and so on. There is so
+much potential available with this tool.
+</p>
+<p>
+You can see what patterns people have been trying in <a
+href="/namegen/patterns.log">the log
+file</a>. To suggest one to me, e-mail me some patterns, or even
+better, clone my git repository and add one to it yourself (then ask
+me to pull from you). This way your credit will stay directly attached
+to it with a commit.
+</p>
+<p>
+Good luck!
+</p>

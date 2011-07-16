@@ -1,0 +1,44 @@
+---
+title: Emacs Find All Files
+layout: post
+---
+
+<!-- 30 September 2010 -->
+<p>
+Here's another bit of code I started using recently. I often find
+myself wanting to open -- or reopen
+after <code>kill-matching-buffers</code> -- all the files under a
+specific point in the file system. I'm using it at work now to open up
+all the source files in a deep Java source tree on small-ish
+project. Once it's all open I can switch to any file quickly
+with <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">
+ido's fuzzy matching</a>, flattening out the directory structure a
+bit. (And the ridiculous "security" software at work imposes a
+3-second I/O block when opening files, so I get to pay this all up
+front at once rather than having it later
+<a href="http://c2.com/cgi/wiki?MentalStateCalledFlow"> break my
+flow</a>.)
+</p>
+<p>
+This just recursively travels down the sub-directories opening a
+buffer for everything it comes across. It ignores dot-files, like the
+ones your source control might litter.
+</p>
+<pre>
+<span class="comment-delimiter">;; </span><span class="comment">ID: 72dc0a9e-c41c-31f8-c8f5-d9db8482de1e
+</span>(<span class="keyword">defun</span> <span class="function-name">find-all-files</span> (dir)
+  <span class="doc">"Open all files and sub-directories below the given directory."</span>
+  (interactive <span class="string">"DBase directory: "</span>)
+  (<span class="keyword">let*</span> ((list (directory-files dir t <span class="string">"^[</span><span class="string"><span class="negation-char">^</span></span><span class="string">.]"</span>))
+         (files (remove-if 'file-directory-p list))
+         (dirs (remove-if-not 'file-directory-p list)))
+    (<span class="keyword">dolist</span> (file files)
+      (find-file-noselect file))
+    (<span class="keyword">dolist</span> (dir dirs)
+      (find-file-noselect dir)
+      (find-all-files dir))))
+</pre>
+<p>
+One caveat: if you have a symbolic link that creates a file system
+loop, this will probably get hung on it.
+</p>

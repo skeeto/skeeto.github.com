@@ -1,0 +1,78 @@
+---
+title: Knight's Tour
+layout: post
+---
+
+<!-- 27 May 2009 -->
+<p>
+<img src="/img/knight/knight.png" alt="An Ugly  Chess Knight"
+     title="This ugly guy is ready to go on a tour."
+     class="right" />
+
+A <a href="http://en.wikipedia.org/wiki/Knight%27s_tour">Knight's
+Tour</a> is a path on a chess board such that a knight moving
+according to the rules of chess will visit each square exactly
+once. Here is a program that solves the Knight's Tour for various
+board sizes.
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=knight.git;a=summary">http://git.nullprogram.com/knight.git</a>
+</pre>
+<p>
+I wrote it purely for speed, and so in cases where the algorithm
+doesn't blow up (taking possibly thousands of years to complete) it
+only takes a few milliseconds to complete. The algorithm is recursive
+and goes like so,
+</p>
+<ol>
+  <li>Given a board marked with visited spaces and a position create a
+      list of valid moves.</li>
+  <li>If the list is empty, return failure.</li>
+  <li>Sort of the list ascendingly according to the opportunities of
+      the target space. That is, sort by the number of valid moves
+      that are available from the target space.</li>
+  <li>Mark the current space as visited, then recurse from the new
+      position with the new board starting with the first target in
+      the list.</li>
+  <li>If the recursion returns success, return success.</li>
+  <li>If the recursion returns failure, recurse with the next target
+      in the list, and so on. If all the targets on the list have been
+      tried, return failure.</li>
+</ol>
+<p>
+The purpose of going towards targets with few opportunities is so that
+we don't leave any stranded spaces that will not be detected until
+much later. When it <i>does</i> run into a dead end, it usually only
+has to back out a short ways and try again.
+</p>
+<p>
+The algorithm breaks down on certain board sizes. For example, try a
+120 by 120 board. Instead of nearly instantaneous solution like 120 by
+119 would get, it takes enormous amounts of time. I don't yet know
+why.
+</p>
+<p>
+Also included in the repository is a Perl script for creating frames
+for a video. Here are two videos, one for an 8x8 board, one for a
+80x80 board. They are in <a href="http://theora.org/">Ogg
+Theora</a>. <b>Update</b>: if your browser supports HTML 5 you can now
+watch these videos inline thanks to the <code>video</code> tag.
+</p>
+<p class="center">
+<video src="/download/knight/8x8.ogv" controls="" width="400">
+  <a href="/download/knight/8x8.ogv">
+    <img src="/img/knight/8x8-cap-small.png"
+         alt="8x8 knight's tour" />
+  </a>
+</video>
+<video src="/download/knight/80x80.ogv" controls="">
+  <a href="/download/knight/80x80.ogv">
+    <img src="/img/knight/80x80-cap-small.png"
+         alt="80x80 knight's tour" />
+  </a>
+</video>
+</p>
+<p>
+It's interesting how on the large one the behavior seems to be random
+at some places, but all it's doing is following that simple algorithm.
+</p>

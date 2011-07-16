@@ -1,0 +1,115 @@
+---
+title: Controlling a Minefield
+layout: post
+---
+
+<!-- 16 December 2008 -->
+<p>
+  <img src="/img/naval-mine.jpg"
+       alt="Naval Mine (this is not a space mine)"
+       class="left" width="250" />
+
+Some time ago I was watching through the entire series of <a
+href="http://en.wikipedia.org/wiki/Deep_Space_Nine">Deep Space
+9</a>. It was a Star Trek television show about a space station that
+rests next a <a href="http://en.wikipedia.org/wiki/Wormhole">
+wormhole</a> that connects to the other side of the galaxy (The Delta
+quadrant).
+</p>
+<p>
+The Delta quadrant is ruled by a group called the Dominion, and they
+are looking to conquer the Federation side of the galaxy (the Alpha
+quadrant). At one point during the series, the Federation needs to
+temporarily disable the wormhole to prevent Dominion ships from
+crossing through. They do this by <a
+href="http://startrek.wikia.com/wiki/Second_Battle_of_Deep_Space_9">
+mining the wormhole</a> with identical, cloaked, self-replicating
+mines.
+</p>
+<p>
+If a mine is destroyed, the neighboring mines will replicate a
+replacement. The minefield repairs itself. This makes removing the
+minefield within a reasonable amount of time difficult to
+impossible. If even a single mine is left behind, it can replicate the
+entire minefield again.
+</p>
+<p>
+The most interesting question here is this:
+</p>
+<blockquote>
+  <p>
+  When the Federation returns and wants to remove the minefield, how
+  would they do it? What would stop the Dominion from doing the same
+  thing?
+  </p>
+</blockquote>
+<p>
+The first thing that comes to mind is having a kill signal, but what
+would this signal be? It could simply be a plain "kill" command, but
+the Dominion could also broadcast such a signal to disable the
+minefield. Consider that the Dominion could capture a single mine and
+study everything about its workings. The minefield itself could
+therefore hold no secrets whatsoever. This leaves out any possibility
+of a secret kill command stored in the mines.
+</p>
+<p>
+Here's what I would do, assuming that humans or aliens have not yet
+discovered some giant breakthrough in factoring in the Star Trek
+universe. I would randomly generate two very large prime
+numbers. Today, two 1024-bit primes should be more than enough, but in
+350 years even larger numbers would probably be necessary. Then, I
+multiply these two number together and store this number in the mine
+software. To disable the minefield, I simply broadcast these two
+numbers into the minefield. The mines would be programmed to take the
+product of any pairs of numbers it receives. If the product matches
+the internal number, the mine shuts down.
+</p>
+<p>
+Voila! A method for shutting down the minefield. The enemy can know
+everything about every single mine's construction, including the
+software and data stored on every mine, but will be unable to disable
+the minefield without factoring a very large composite number, which
+would presumably be difficult or impossible (within a reasonable
+amount of time).
+</p>
+<p>
+Another possibility would be using a hash. Come up with a strong
+passphrase, then use a hashing algorithm like SHA-1 or MD5, or
+whatever is available and appropriate in 350 years, to hash the
+passphrase. Store the hash in the mines. When you want to disable the
+minefield, broadcast the passphrase. These mines will hash the
+broadcast and compare it to the stored hash. It's really the same
+solution as before: a one-way function. This is also similar to how
+passwords are stored inside a computer today.
+</p>
+<p>
+If we wanted more commands, like "don't blow up any ships for awhile"
+or "increase minefield density", we could generate more composites
+corresponding to each command. However, once a command is issued, the
+secret -- the two prime numbers -- is out, and it cannot be used
+again. In this case, I would go into the realm of <a
+href="http://en.wikipedia.org/wiki/Public_key_cryptography">public key
+cryptography</a>.
+</p>
+<p>
+I would issue a command, along with a timestamp, and maybe even a
+nonce that could double as a global identifier for the command, and
+sign the whole deal using my private key. On each mine I would store
+the public key. When a command is received, the mines would check the
+signature before executing the command. I could then issue repeat
+commands, as the timestamps would change each time. An adversary
+learns nothing when a command is issued, because the time stamps would
+make any replay attacks useless.
+</p>
+<p>
+Minefields just like this exist today all over the Internet, as <a
+href="http://en.wikipedia.org/wiki/Botnet">botnets</a>. Thousands of
+computers all around the world become infected with malware and come
+under the control of a single individual or group. Individual machines
+in the botnet could be taken out, but removing the entire botnet is
+difficult as it grows and repairs itself. Any security researcher
+could disassemble the botnet malware and learn anything about it, so
+the malware can store no secrets. How does a malicious person control
+the botnet, then, without someone else taking control?  Public key
+cryptography, just as described above.
+</p>

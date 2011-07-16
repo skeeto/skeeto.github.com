@@ -1,0 +1,78 @@
+---
+title: Emacs Web Servlets
+layout: post
+---
+
+<!-- 3 November 2009 -->
+<p>
+Remember that <a href="http://nullprogram.com/blog/2009/05/17/">Emacs
+web server I wrote</a> back in May? Well, I got an e-mail last night
+from Chunye Wang containing a patch with a variant of my dynamic lisp
+idea, called "servlets" (not to be confused with Java
+servlets). Chunye had similar concept for an Emacs web server for a
+long time, but never implemented because Emacs lacked network
+functionality until recently (Specifically, <a
+href="http://www.gnu.org/software/emacs/NEWS.22.1">
+<code>make-network-process</code></a> in Emacs 22.1, June 2007). This
+led Chunye to find my implementation.
+</p>
+<p>
+Again, you can clone/view the code here. I turned the patch into a
+series of commits,
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=emacs-httpd.git;a=summary">http://git.nullprogram.com/emacs-httpd.git</a>
+</pre>
+<p>
+This is some cool stuff here.
+</p>
+<p>
+The servlets are simply functions installed under an
+"<code>httpd/</code>" namespace, where the trailing slash represents
+the server root. So, the function <code>httpd/example-servlet</code>
+will be executed when "/example-servlet" is requested from the
+server. The servlet runs on a temporary buffer, whose contents are
+served when the servlet function returns.
+</p>
+<p>
+To assist in HTML generation, Chunye also wrote a function to turn an
+<a href="http://en.wikipedia.org/wiki/S-expression">S-expression</a>
+into HTML, similar to the one I described in the web server previous
+post. Symbols are converted into strings, alists are attributes, and
+the <code>elisp</code> symbol indicates code to be executed, and the
+results used to generate HTML. For a simple hello word,
+</p>
+<pre>
+(html (head (title <span class="string">"hello world"</span>)) (body <span class="string">"hello world"</span>))
+</pre>
+<p>
+And for some dynamic content, a die roller,
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">httpd/roll-die</span> (uri-query req uri-path)
+  <span class="string">"Rolls a die with the requested number of sides (default 6)."</span>
+  (<span class="keyword">let</span> ((sides
+         (1- (string-to-number (or (cadr (assoc <span class="string">"sides"</span> uri-query)) <span class="string">"6"</span>)))))
+    (httpd-generate-html
+     '(html
+       (head
+        (title <span class="string">"Die Roll Servlet"</span>))
+       (body
+        (h1 <span class="string">"Die Roll Servlet"</span>)
+        <span class="string">"You rolled a "</span>
+        (b
+         (elisp (list (number-to-string (1+ (random sides)))))))))))
+</pre>
+<p>
+That one would be accessed from the browser with with
+"<code>/roll-die</code>" or "<code>/roll-die?sides=100</code>".
+</p>
+<p>
+Chunye provided some sample servlets that list the buffers, with links
+that serve them up. There is also another servlet that will switch the
+current buffer, which I find compelling. All of Emacs' functionality
+is available to the servlet.
+</p>
+<p>
+Now, to write a servlet that runs the Emacs psychiatrist ...
+</p>

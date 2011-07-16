@@ -1,0 +1,136 @@
+---
+title: Getting Lisp
+layout: post
+---
+
+<!-- 23 May 2009 -->
+<p>
+I've been using lisp on and off for the past few years. I read some
+lisp books, went through <a
+href="http://www.ccs.neu.edu/home/matthias/BTLS/"><i>The Little
+Schemer</i></a> and some of <a
+href="http://mitpress.mit.edu/sicp/full-text/book/book.html">SICP</a>. But
+I could never really <i>think</i> in lisp. When I needed to write some
+code, I would prefer another language first. I was writing imperative
+code for 10 years before I saw lisp, and I was used to it.
+</p>
+<p>
+Recently, I have found myself wanting to use lists (including alists,
+plists, etc.) as data structures for everything, even when I'm not
+even writing lisp. I think I finally
+<i>got</i> lisp and now I want to use lisp for everything.
+</p>
+<p>
+For example, take this little problem from the other day on <a
+href="http://function-of-time.blogspot.com/">f(t)</a>. <a
+href="http://function-of-time.blogspot.com/2009/05/wait-what.html">
+Katie Nowak gives us a math problem</a>,
+</p>
+<blockquote>
+  <p>
+    There is a 75% chance of rain on any given day in the next
+    week. What is the probability that it will rain on at least 5 of
+    the 7 days?
+  </p>
+</blockquote>
+<p>
+<img src="/img/rain-cloud.png"
+     alt="Rain cloud in parenthesis"
+     title="The way lisp hackers see the world."
+     class="right" />
+
+The purpose of the question was to point out a neat coincidence in the
+problem (explained at the link). I used a program to solve the
+problem and there are two reasons for this.
+</p>
+<p>
+First, I wanted to use the program to explore the problem and find the
+"special" property. With a program, I could quickly try different
+parameters, which would take longer, and be more error prone, by hand.
+</p>
+<p>
+Second, which is similar to the first, I hate evaluating a large
+expression by hand. It's slow and error prone. Writing a program to do
+the same work is faster and mistakes are easier to catch. Also, I can
+quickly try different parameters to make sure my program's output is
+reasonable. In this case, for any reasonable input, the output, a
+probability, shouldn't be greater than 1.
+</p>
+<p>
+Well, let's see, this is a <a
+href="http://en.wikipedia.org/wiki/Bernoulli_process"> Bernoulli
+experiment</a>: each day is independent, so it is like flipping a coin
+seven times and counting the heads. That means we need the <a
+href="http://en.wikipedia.org/wiki/Binomial_coefficient"> <i>choose
+function</i></a>.
+</p>
+<p>
+My first thought was Octave, as this is a simple program and Octave
+already provides <code>nchoosek()</code> for me.
+</p>
+<pre>
+<span class="comment-delimiter"># </span><span class="comment">Rain at least n days
+</span><span class="keyword">function</span> sum = <span class="function-name">rain</span> (n)
+  sum = 0;
+  <span class="keyword">for</span> i = n:7
+    sum += nchoosek(7,i) * 0.75 ^ i * 0.25 ^ (7 - i);
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+<p>
+Simple, but I actually made a couple little mistakes working it out,
+and it took me a little longer than it should have. If you asked
+someone to write this program in any imperative language, it would
+probably look a lot like this.
+</p>
+<p>
+I then made a lisp version (elisp), but I first needed to define the
+binomial coefficient function since there wasn't one provided.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">nck</span> (n k)
+  <span class="doc">"The binomial coefficient."</span>
+  (<span class="keyword">if</span> (or (= k 0) (= k n)) 1
+    (+ (nck (- n 1) (- k 1)) (nck (- n 1) k))))
+</pre>
+<p>
+This is the recursive version, based on <a
+href="http://en.wikipedia.org/wiki/Pascal%27s_rule"> Pascal's
+rule</a>, so it doesn't need factorials.
+</p>
+<p>
+In lisp, recursion is preferred to iteration, so that's the way I
+approached the program.
+</p>
+<pre>
+(<span class="keyword">defun</span> <span class="function-name">p-rain</span> (n)
+  <span class="doc">"Probability of rain on exactly n days."</span>
+  (* (nck 7 n) (expt 0.75 n) (expt 0.25 (- 7 n))))
+
+(<span class="keyword">defun</span> <span class="function-name">rain-at-least</span> (n)
+  <span class="doc">"Probability it will rain on at least n days."</span>
+  (<span class="keyword">if</span> (&gt; n 7) 0
+    (+ (p-rain n) (rain-at-least (+ 1 n)))))
+</pre>
+<p>
+I like the recursive version, and this code, much better. It presents
+the solution in a more straight forward way.  And I got it right the
+first time, too. Yes, it <i>was</i> written after the Octave version,
+but I still think it counts for something.
+</p>
+<p>
+The lisp version is also less complex. The Octave version has to use
+some temporary variables, <code>i</code> and <code>sum</code>, which
+is extra conceptual overhead. Sure, it could also be written
+recursively, but this is not really the way Octave is meant to be
+written.
+</p>
+<p>
+Eh, not a great example, really. Lisp has so many powerful features,
+like macros (the powerful lisp kind), symbols, low-level access into
+the interpreter, and the REPL, that allow the programmer to do some
+really cool things. Many of these features are unique to lisps.
+</p>
+<p>
+I'm really liking lisp.
+</p>

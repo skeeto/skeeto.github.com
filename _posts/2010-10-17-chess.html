@@ -1,0 +1,58 @@
+---
+title: A Modest Chess Engine
+layout: post
+---
+
+<!-- 17 October 2010 -->
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=Chess.git;a=summary">http://git.nullprogram.com/Chess.git</a>
+</pre>
+<p>
+Download compiled:
+<a href="http://git.nullprogram.com/Chess.git/Chess.jar">Chess.jar</a>
+</p>
+<p class="center">
+  <img src="/img/chess/chess-screenshot.png" alt=""/>
+</p>
+<p>
+Or try out a simplified version as an applet (experimental):
+<a href="http://git.nullprogram.com/Chess.git/applet.html">Chess applet</a>.
+</p>
+<p>
+Here's what I've been working on for about the last week: a little
+chess application in Java. It has a built-in AI you can play against
+and it's capable of playing both standard chess and Gothic chess right
+now. It's actually a chess framework, so it would be fairly easy for
+me to add new chess variants, and the AI would be able to play it
+automatically. The hardest part is handling a particular chess
+variant's castling rule, since that's the hardest rule to generalize.
+</p>
+<p>
+The AI is a minimax search over four full plies with a fairly
+simplistic heuristic (but more than just adding up material). It's
+probably not that great of a player, but it's good enough that none of
+my friends, nor I, are able to beat it. I concentrated more on making
+it flexible than fast, so it can't search more than five plies without
+taking unreasonably long. But it does use multiple threads to do the
+search, so it should be pretty speedy on an SMP system.
+</p>
+<p class="center">
+  <img src="/img/chess/gothic-screenshot.png" alt=""/>
+</p>
+<p>
+I thought about adding multiplayer capability and perhaps giving it
+the ability to interface with standalone chess engines (wow are those
+protocols ugly!),
+like <a href="http://en.wikipedia.org/wiki/GNU_Chess">GNU
+Chess</a>. But there are other programs that already do this better
+than I ever could. I've done about as much as I was interested in
+doing with it.
+</p>
+<p>
+Maybe you remember <a href="/blog/2007/10/24/">that chess AI essay I
+wrote some years back</a>? I was talking about using a genetic
+algorithm to tweak the AI parameters. Well, I actually tried to do
+that here with this AI (see the <code>OptimizeGA</code> class in the
+code). Turns out it's not very useful anyway! :-P It wasn't getting
+anywhere useful in my experiments.
+</p>

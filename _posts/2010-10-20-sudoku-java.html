@@ -1,0 +1,42 @@
+---
+title: Sudoku Applet
+layout: post
+---
+
+<!-- 20 October 2010 -->
+<p>
+<img src="/img/Sudoku-small.png" alt="" class="right"/>
+
+Over the last two evenings I created this, a Sudoku Java applet.
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=Sudoku.git">http://git.nullprogram.com/Sudoku.git</a>
+</pre>
+<p>
+Play the applet:
+<a href="http://git.nullprogram.com/Sudoku.git/applet.html">SudokuApplet</a>
+</p>
+<p class="center">
+
+</p>
+<p>
+
+The hardest part was creating and implementing the algorithm for
+generating new Sudokus. The first step to writing any Sudoku generator
+is to <a href="http://nullprogram.com/blog/2008/07/20/">write a Sudoku
+solver</a>. Use it to solve an empty board in a random order, then
+back off while maintaining a single solution. For a proper Sudoku,
+this has to be done symmetrically leaving no more than 32 givens.
+</p>
+<p>
+I didn't work out a great way to determine the difficulty of a
+particular puzzle. The proper way would probably be to solve it a few
+different ways and measure the number of steps taken. Right now I'm
+controlling difficulty by adjusting the number of givens: 24 (hard),
+28 (medium), and 32 (easy). Harder puzzles take longer to generate
+because the search-space is less dense, due to the strict constraints.
+</p>
+<p>
+This has also been placed on
+the <a href="http://nullprogram.com/applets/">applets page</a>.
+</p>

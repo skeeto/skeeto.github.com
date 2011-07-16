@@ -1,0 +1,136 @@
+---
+title: URL Shortening
+layout: post
+---
+
+<!-- 16 April 2009 -->
+<p>
+<img src="/img/redirect.png"
+     alt="Short URL diagram" title="A failed short URL redirect."
+     class="left" />
+
+There has been a lot of talk online about the fragility of URL
+shortening services, particularly in relation to Twitter and its 140
+character limit on posts (based on SMS limits). These services create
+a single point of failure and break mechanisms of the web that we rely
+on. Several solutions have been proposed, so over the next couple
+years we get to see which ones end up getting adopted.
+</p>
+<p>
+There are many different URL shortening services out there. They take
+a large URL, generate a short URL, and store the pair in a
+database. Several of these services have already shut down in response
+to abuse by spammers who hide fraudulent URLs behind shortened
+ones. If these services ever went down all at once, these shortened
+URLs would rot, destroying many of the connections that make up the
+world wide web. This is called the rot link apocalypse, and it has
+some people worried.
+</p>
+<p>
+I am not very worried about this, though. I don't use Twitter, or any
+other service that puts such ridiculous restrictions on message
+sizes. Nor do I think information on Twitter is very important. Also,
+this mass link rot will occur gradually, slow enough to be dealt with.
+</p>
+<p>
+In any case, short URLs may be useful sometimes, especially if a URL
+needs to be memorized or if the URL is extremely long. Or, it could be
+used to get around a <a
+href="http://www.boutell.com/newfaq/misc/urllength.html"> design
+flaw</a> in an <a
+href="http://en.wikipedia.org/wiki/Internet_explorer"> inferior
+browser</a>.
+</p>
+<p>
+One idea that I have not yet seen implemented is simple data
+compression. When a short URL is needed, a user can apply a
+compression algorithm to the URL. The original URL can be recovered
+from this alone, so we don't have to rely on third parties to store
+any data.
+</p>
+<p>
+I have doubts this would work in practice, though. Generic compression
+algorithms cannot compress such a small amount of data because their
+overhead is too large in relation. Go ahead, try pushing a URL through
+gzip. It will only get longer. We would need a special URL compression
+algorithm.
+</p>
+<p>
+For example, I could harvest a large number of URLs from around the
+web, probably sticking to a single language, and use it to make a <a
+href="http://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a>
+frequency table. Then I use this to break URLs into symbols to
+encode. The ".com/" symbol would likely be mapped to one or two
+bits. Finally, this compressed URL is encoded in base 64 for use. The
+client, who already has the same URL frequency table, would use it to
+decode the URL.
+</p>
+<p>
+URLs don't seem to have too many common bits, so I doubt this would
+work well. I should give it a shot to see how well it works.
+</p>
+<p>
+We probably need to stick with lookup tables mapping short strings to
+long strings. Instead of using a third party, which can disappear with
+the valuable data, we do the URL shortening at the same location as
+the data. If the URL shortening mechanism disappears, so did the
+data. The URL shortening loss wouldn't matter thanks to this
+coupling. Getting the shortened URL to users can be tricky, though.
+</p>
+<p>
+<a href="http://revcanonical.appspot.com/">One proposal</a> wants to
+set the <code>rev</code> attribute of the <code>link</code> tag to
+"canonical" and point to the short URL.
+</p>
+<pre>
+&lt;link rev="canonical" href="http://example.com/FbVT"&gt;
+</pre>
+<p>
+To understand this one must first understand the <code>rel</code>
+attribute. <code>rel</code> defines how the linked URL is related to
+the current document. <code>rev</code> is the opposite, describing how
+the current page is related to the linked page. To say
+<code>rev="canonical"</code> means "I am the canonical URL for this
+page".
+</p>
+<p>
+However, I don't think this will get far. Several search engines, <a
+href="http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html">
+including Google</a>, have already adopted a
+<code>rel="canonical"</code> for regular use. It's meant to be placed
+with the short URL and will cause search engines to treat it as if it
+was a <a href="http://en.wikipedia.org/wiki/HTTP_301">301
+redirect</a>. This won't help someone find the short URL from the long
+URL, though. It is also likely to be confused with the
+<code>rev</code> attribute by webmasters.
+</p>
+<p>
+The <code>rev</code> attribute is also considered too difficult to
+understand, which is why it was removed from HTML5.
+</p>
+<p>
+Another idea rests in just using the <code>rel</code> attribute by
+setting it to various values: "short", "shorter", "shortlink",
+"alternate shorter", "shorturi", "shortcut", "short_url". <a
+href="http://wiki.snaplog.com/short_url"> This website</a> does a good
+job of describing why they are all not very good (misleading, ugly, or
+wrong), and it goes on to recommend "shorturl".
+</p>
+<p>
+I went with this last one and added a "short permalink" link in all of
+my posts. This points to a 28 letter link that will 301 direct to the
+canonical post URL. In order to avoid trashing my root namespace, all
+of the short URLs begin with an asterisk. The 4 letter short code is
+derived from the post's internal name.
+</p>
+<p>
+I also took the time to make a long version of the URL that is more
+descriptive. It contains the title of the post in the URL so a user
+has an idea of the destination topic before following through. The
+title is actually complete fluff and simply ignored. Naturally this
+link's <code>rel</code> attribute is set to "longurl".
+</p>
+<p>
+Keep your eyes open to see where this URL shortening stuff ends up
+going.
+</p>

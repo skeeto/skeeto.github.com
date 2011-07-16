@@ -1,0 +1,122 @@
+---
+title: Variable Declarations and the C Call Stack
+layout: post
+---
+
+<!-- 18 July 2008 -->
+<p>
+A co-worker asked me a question today about C/C++ pointers,
+</p>
+<blockquote>
+  <p>
+    If a pointer is declared inside a function with no explicit
+    initialization, can I assume that the pointer is initialized
+    to <code>NULL</code>?
+  </p>
+</blockquote>
+<p>
+We were down in the lab and, therefore, he had no Internet access to
+look it up himself, which is why he asked. When I code C, it is just a
+sort of mental habit to not use a non-static function variable without
+first initializing it, but is this accurate? I <i>knew</i> the answer
+was "no", but I wanted to be able to explain the "why".
+</p>
+<p>
+Anyway, I quickly recalled some of my experimental C programs and
+thought carefully about the mechanics of what is going on
+behind-the-scenes, allowing me to confidently give him a "no"
+answer. I then threw this together in a few seconds to prove it,
+</p>
+<pre>
+#include &lt;stdio.h&gt;
+
+void a ()
+{
+  int   * x = (int *) 0x012345FF;
+  double  y = -63454;
+  (void) x;
+  (void) y;
+}
+
+void b ()
+{
+  int   * x;
+  double  y;
+  printf ("%p, %f\n", x, y);
+}
+
+int main ()
+{
+  a ();
+  b ();
+  return 0;
+}
+</pre>
+<p>
+When you compile it, make sure you don't use the optimization options
+(<code>-O</code>, <code>-O2</code>, or <code>-O3</code>
+for <code>gcc</code>) because they change the inner-workings of the
+program. It might do things like make those functions inline (so they
+won't be on the stack as I am intending), or even toss
+out <code>a()</code>, as it appears to do nothing. The compiler sees
+that, even though I "used" variables in <code>a()</code> by casting
+them to <code>void</code>, nothing is really happening,
+so <code>a()</code> can be ignored. We can probably get around this
+with a tacked
+on <code> <a href="http://en.wikipedia.org/wiki/Volatile_variable">
+volatile</a></code> declaration, which you might see a lot of in a
+micro-controller program. In a micro-controller, some memory addresses
+are mapped to registers external to the software, so, from the
+compiler's point of view, access to these locations may look like
+nothing is really happening. Optimizing away variables that point to
+these memory locations will lead to an incorrect binary, so your robot
+or laser guided shark or whatever won't work.
+</p>
+<p>
+Anyway, compiling with optimization will break my example! So don't do
+it here.
+</p>
+<p>
+When compiling, you should get some warnings about using uninitialized
+variables, which is kind of the point of my example. Ignore it. That
+warning alone gives away the answer to the main question, really, but
+this example is a bit more fun!
+</p>
+<p>
+Before you run it, study it and think about what the output should
+look like. When <code>a()</code> is called, its stack frame goes into
+the call stack, which contains the two declared variables. These
+variables are then assigned as part of the function
+execution. When <code>a()</code> returns, the frame is popped off the
+stack. Then <code>b()</code> is called, and, as the variable
+declarations are exactly the same, it will fit right over top
+of <code>a()</code>'s old stack frame, and its variables will line
+up. <code>x</code> and <code>y</code> are not assigned any value, so
+they pick up whatever junk was lying around, which happens to be the
+values assigned in <code>a()</code>.
+</p>
+<p>
+When you run the program, this is the output,
+</p>
+<pre>
+0x12345ff, -63454.000000
+</pre>
+<p>
+The pointer is <i>not</i> initialized
+to <code>NULL</code>. If <code>x</code> is passed back uninitialized
+under the assumption that a <code>NULL</code> is being passed, some
+other poor function that handles the return value may dereference it,
+resulting in possibly
+some <a href="http://www.catb.org/jargon/html/N/nasal-demons.html">
+nasal demons</a>, but most likely an annoying segmentation
+fault. Worse, this error may occur far, far away from where the actual
+problem is, and even worse than that, only sometimes (depending on the
+state of the call stack at just the right moment).
+</p>
+<p>
+Note here that I am talking about non-static function variable
+declarations. Global variables and static function variables will not
+be on the stack. They are placed in a fixed location (in the data
+segment), and their values are implicitly initialized to 0
+at <i>compile time</i>.
+</p>

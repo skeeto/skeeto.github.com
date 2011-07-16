@@ -1,0 +1,47 @@
+---
+title: Brainfuck Halting Problem
+layout: post
+---
+
+<!-- 12 April 2009 -->
+<p>
+<img src="/img/stop-sign-thumb.png"
+     alt="Stop sign" title="Halt!"
+     class="right" />
+
+On my <a href="/projects/bf/">brainfuck compiler project</a>, I
+proposed pre-calculation as an optimization technique. The idea can
+work, but it has an issue that will always be unsolvable: how do you
+know that the pre-calculation will halt? This is called <a
+href="http://en.wikipedia.org/wiki/Halting_problem"> the halting
+problem</a> and it has been proven impossible to solve.
+</p>
+<p>
+The idea was that the compiler would run the brainfuck program up
+until the first input operation -- if there even was one. It would
+record all output and the final state of the memory. Instead of
+compiling the code was was run, it would compile code that would print
+all of the output and set the memory at the final state.
+</p>
+<p>
+I has mistakenly assumed that it would be possible to detect a
+non-halting program and avoid doing pre-calculation on it. I described
+how it would be done and left it at that. Recently, someone kindly
+sent me an email containing only 5 letters:
+</p>
+<pre>
++[--]
+</pre>
+<p>
+This defeated my ill-conceived idea.
+</p>
+<p>
+Because brainfuck is Turing complete, it is actually impossible to
+determine whether or not an arbitrary brainfuck loop will halt. A
+computer can't do it. A human brain (a fancy computer) can't do it
+either. It cannot be done, at least not in this universe.
+</p>
+<p>
+So, if implemented, this pre-calculation measure will always be
+flawed.
+</p>

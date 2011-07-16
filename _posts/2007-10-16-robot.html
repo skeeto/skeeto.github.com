@@ -1,0 +1,80 @@
+---
+title: Robot Version 1
+layout: post
+---
+
+<!-- 16 October 2007 -->
+<p class="abstract">
+Update: There is a <a href="http://nullprogram.com/blog/2008/02/04/">
+followup post</a> to this post.
+</p>
+<p>
+Here is what my team has been working on for the last couple
+weeks. The end goal for this robot is to escape a maze, collect
+blocks, and find a repository in which to drop those blocks. Someone
+suggested we call it Pac-man. Here it is (without batteries),
+</p>
+<p>
+  <a href="/img/robotv1-1.jpg">
+    <img src="/img/robotv1-1-thumb.jpg"
+    alt="Robot" />
+  </a>
+</p>
+<p>
+  <a href="/img/robotv1-2.jpg">
+    <img src="/img/robotv1-2-thumb.jpg"
+    alt="Robot" />
+  </a>
+</p>
+<p>
+And here it is being worked on. We added a third level to make more
+room for the batteries and extra sensors.
+</p>
+<p>
+  <a href="/img/robotv1-3.jpg">
+    <img src="/img/robotv1-3-thumb.jpg"
+    alt="Robot" />
+  </a>
+</p>
+<p>
+Here is the game board. It is 8x8 feet with a 4x8 foot maze.
+</p>
+<p>
+  <a href="/img/robotmaze-1.jpg">
+    <img src="/img/robotmaze-1-thumb.jpg"
+    alt="Maze" />
+  </a>
+</p>
+<p>
+  <a href="/img/robotmaze-2.jpg">
+    <img src="/img/robotmaze-2-thumb.jpg"
+    alt="Maze" />
+  </a>
+</p>
+<p>
+Building a robot is an interesting experience, but a stressful
+one. Especially when you are doing it for a class. So many things
+could go wrong and you can spend hours tracking down a bad soldering
+job, which we once found inside an IR sensor. It was a poor
+manufacturing soldering job.
+</p>
+<p>
+So, as of this writing, the robot uses 3 infrared (IR) sensors to look
+at walls and two wheel encoders for tracking the distance traveled by
+each wheel. You can see the disk encoder on the inside of the wheel in
+the second robot image. The robot uses 9 rechargeable nickel-metal
+hydride (NiMH) AA batteries: 5 for the Freescale 68HC12
+micro-controller and sensors, and 4 for the continuous rotation servo
+motors. It is a competition, so I don't want to give too many details
+at the moment in case another team is reading.
+</p>
+<p>
+Right now it limps along in the maze and gets around for awhile before
+drifting into a wall. This will get fixed this weekend, as our grade
+depends on it. We just need to make better use of our sensors. I.e.,
+it is a software issue now.
+</p>
+<p>
+Eventually, I will put some code up here we used in the robot. It is
+all done in C, of course.
+</p>

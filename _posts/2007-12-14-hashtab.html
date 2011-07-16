@@ -1,0 +1,44 @@
+---
+title: Simple Hash Table in C
+layout: post
+---
+
+<!-- 14 December 2007 -->
+<p class="abstract">
+Update May 2011: I've made some changes, including putting this into
+the public domain, so I finally just checked this into a
+repository. This little thing still gets a lot of use!
+</p>
+<pre>
+git clone <a href="http://git.nullprogram.com/?p=hashtab.git">http://git.nullprogram.com/hashtab.git</a>
+</pre>
+<p>
+Download latest snapshot:
+<a href="http://git.nullprogram.com/?p=hashtab.git;a=snapshot;h=master;sf=tgz">
+  hashtab.tar.gz</a> (4KB)
+</p>
+<p>
+I needed a hash table written in C for a project I was working on and
+I didn't like any the free hash table code that was out there. Plus, I
+have <a href="http://en.wikipedia.org/wiki/Not_Invented_Here">NIH
+syndrome</a> and I really wanted to write my own for fun. My goal was
+to make it extremely generic, so that it would work with any data of
+any size. A small front end could be placed on top to make it work
+cleanly for strings (no need to pass the length of the data).
+</p>
+<p>
+It uses <a href="http://en.wikipedia.org/wiki/Open_hashing">open
+hashing</a>, with linked lists to store the data. The only penalty
+from collisions is a slightly slower lookup. This also is what alows
+the variable entry sizes. I could definitely fix up a few things to
+make it more efficient. The default hash function uses modulus, which
+is quite expensive.
+</p>
+<p>
+It works just fine with all my tests so far, so it suits my needs for
+the project. The code includes a demo of the hash table
+(<code>main.c</code>). If you want to read about some better hashing
+functions and use one with this hash table, take a look
+at <a href="http://www.burtleburtle.net/bob/hash/doobs.html">A Hash
+Function for Hash Table Lookup</a>.
+</p>

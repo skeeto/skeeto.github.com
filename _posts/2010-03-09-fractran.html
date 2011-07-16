@@ -1,0 +1,47 @@
+---
+title: A Fractran Short Story
+layout: post
+---
+
+<!-- 9 March 2010 -->
+<p>
+<a href="http://en.wikipedia.org/wiki/Fractran">Fractran</a> is a
+Turing-complete esoteric programming language. A Fractran program is
+just an ordered list of positive, irreducible fractions. The program's
+output for an input <i>n</i> is the output of the program run
+on <i>n</i> multiplied by the first fraction in the list that results
+in an integer. If no such multiplication results in an integer, the
+output is the input <i>n</i>. Variables are encoded in the exponents
+of the prime factorization of the input and output.
+</p>
+<p>
+Some time ago I thought up an idea for a short story involving
+Fractran. A mathematician accidentally creates a Fractran program that
+can trivially factor large composites. Think something like
+O(log <i>n</i>). It's just the right magical string of, say, 31
+fractions.
+</p>
+<p>
+The story would be a first-person narrative of the mathematician's
+thoughts during a short time after the discovery, considering many of
+the consequences of the program. For example, it would render much of
+cryptography, which plays an essential role in the modern world,
+useless. He would also wonder if mankind should deserve such a
+discovery, considering how accidental it was.
+</p>
+<p>
+This whole idea vanished once I realized that this Fractran program is
+actually completely trivial. It even runs in O(1) time. It's so
+trivial as to be worthless. Remember that Fractran stores its data in
+the number's prime factorization? The Fractran program that can factor
+any number in constant time is the identity function. To decode the
+output, which matches the input, all you need to do is factor it!
+</p>
+<p>
+Interestingly, it doesn't seem to actually be possible to implement
+the identity function in Fractran (<i>But somehow it's
+Turing-complete? Hmmm... more investigation needed.</i>), unless you
+can define your program in terms of its input. For example, the
+program <code>1/(n+1)</code> is the identity function for
+input <i>n</i>.
+</p>

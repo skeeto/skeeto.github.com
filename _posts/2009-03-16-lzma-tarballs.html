@@ -1,0 +1,106 @@
+---
+title: LZMA Tarballs Are Coming
+layout: post
+---
+
+<!-- 16 March 2009 -->
+<p>
+<img src="/img/compress.png"
+     alt="Compression" title="Compression"
+     class="right" />
+
+Any developer that uses a non-toy operating system will be familiar
+with <a href="http://www.gzip.org/">gzip</a> and <a
+href="http://www.bzip.org/">bzip2</a> tarballs (.tar.gz, .tgz, and
+.tar.bz2). Most places will provide both versions so that the user can
+use his preferred decompresser.
+</p>
+<p>
+Both types are useful because they make tradeoffs at different points:
+gzip is very fast with low memory requirements and bzip2 has much
+better compression ratios at the cost of more memory and CPU
+time. Users of older hardware will prefer gzip, because the benefits
+of bzip2 are negated by the long decompression times, around 6 times
+longer. This is why <a
+href="http://www.openbsd.org/faq/faq1.html#HowAbout"> OpenBSD prefers
+gzip</a>.
+</p>
+<p>
+But there is a new compression algorithm in town. Well, it has been
+around for about 10 years now, but, if I understand correctly, was
+patent encumbered (aka useless) for awhile. It is called the <a
+href="http://en.wikipedia.org/wiki/LZMA">Lempel-Ziv-Markov chain
+algorithm</a> (LZMA). It is still maturing and different software that
+uses LZMA still can't quite talk to each other. <a
+href="http://www.7-zip.org/">7-zip</a> and <a
+href="http://tukaani.org/lzma/">LZMA Utils</a> are a couple examples.
+</p>
+<p>
+GNU tar <a href="http://www.gnu.org/software/tar/">added an
+<code>--lzma</code> option</a> just last April, and finally gave it a
+short option, <code>-J</code>, this past December. I take this as a
+sign that LZMA tarballs (.tar.lzma) are going to become common over
+the next several years. It also would seem that the GNU project has
+officially blessed LZMA.
+</p>
+<p>
+And not only that, I think LZMA tarballs will supplant bzip2
+tarballs. The reason is because it is even more asymmetric than bzip2.
+</p>
+<p>
+According to the LZMA Utils page, LZMA compression ratios are 15%
+better than those of bzip2, but at the cost of being 4 to 12 times
+slower on compression. In many applications, including tarball
+distribution, this is completely acceptable because <i>decompression
+is faster than bzip2</i>! There is an extreme asymmetry here that can
+readily be exploited.
+</p>
+<p>
+So, when a developer has a new release he tells his version control
+system, or maybe his build system, to make a tar archive and compress
+it with LZMA. If he has a computer from this millennium, it won't take
+a lifetime to do, but it will still take some time. Since it could
+take as much as two orders of magnitude longer to make than a gzip
+tarball, he could make a gzip tarball first and put it up for
+distribution. When the LZMA tarball is done, it will be about 30%
+smaller and decompress almost as fast as the gzip tarball (but while
+using a large amount of memory).
+</p>
+<p>
+At this point, why would someone download a bzip2 archive? It's bigger
+<i>and</i> slower. Right now possible reasons may be a lack of an LZMA
+decompresser and/or lack of familiarity. Over time, these will both be
+remedied.
+</p>
+<p>
+Don't get me wrong. I don't hate bzip2. It is a very interesting
+algorithm. In fact, I was breathless when I first understood the <a
+href="http://en.wikipedia.org/wiki/Burrows-Wheeler_transform">
+Burrows-Wheeler transform</a>, which bzip2 uses at one stage. I would
+argue that bzip2 is more elegant than gzip and LZMA because it is less
+arbitrary. But I do think it will become obsolete.
+</p>
+<p>
+Unfortunately, the confused zip archive is here to stay for now
+because it is the only compression tool that a certain popular, but
+inferior, operating system ships with. I say "confused" because it
+makes the mistake of combining three tools into one: archive,
+compression, and encryption. As a result, instead of doing one thing
+well it does three things poorly. Cell phone designers also make the
+same mistake. Fortunately I don't have to touch zip archives often.
+</p>
+<p>
+Finally, don't forget that LZMA is mostly useful where the asymmetry
+can be exploited: data is compressed once and decompressed many
+times. Take the gitweb interface, which provides access to a git
+repository through a browser. <a href="http://git.nullprogram.com/">I
+run one myself</a>. It will provide a gzip tarball of any commit on
+the fly. It doesn't do this by having all these tarballs lying around,
+but creates them on demand. Data is compressed once and decompressed
+once. Because of this, gzip is, and will remain, the best option for
+this setting.
+</p>
+<p>
+In conclusion, consider creating LZMA tarballs next time, and don't be
+afraid to use them when you come across them.
+</p>
