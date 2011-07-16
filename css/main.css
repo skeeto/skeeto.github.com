@@ -1,0 +1,45 @@
+body {
+    color: black;
+    background-color: #ecffdc;
+}
+
+.date {
+    font-size: 75%;
+    font-weight: bold;
+    color: #2F4F4F;
+}
+
+.abstract {
+    font-style: italic;
+}
+
+
+img.center {
+  text-align: center;
+  border: 0px;
+}
+
+img.right {
+  float: right;
+  border: 0px;
+  padding: 10px;
+}
+
+img.left {
+  float: left;
+  border: 0px;
+  padding: 10px;
+}
+
+img {
+  border: 0px;
+}
+
+p.center {
+  text-align: center;
+}
+
+a.permalink {
+  font-size: 75%;
+  text-align: right;
+}

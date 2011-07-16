@@ -1,19 +1,26 @@
 ---
-title: root
+title: null program
+layout: default
 ---
+<h1>null program</h1>
 
-<html>
-  <head>
-    <title>null program</title>
-    <link rel="stylesheet" type="text/css" href="css/syntax.css"/>
-  </head>
-  <body>
-    <h1>null program</h1>
+{% for post in paginator.posts %}
+<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+{{ post.content }}
+{% endfor %}
 
-    {% for post in paginator.posts %}
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      {{ post.content }}
-    {% endfor %}
+<!-- Navigation -->
 
-  </body>
-</html>
+{% if paginator.previous_page %}
+<a href="/page{{ paginator.previous_page }}" title="Go to previous page">
+  &laquo; Previous
+</a>
+{% endif %}
+
+<a href="/index/" title="Go to archives">Archives</a>
+
+{% if paginator.next_page %}
+<a href="/page{{ paginator.next_page }}" title="Go to next page">
+  Next &raquo;
+</a>
+{% endif %}
