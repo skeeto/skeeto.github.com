@@ -68,34 +68,34 @@ Here's what it looks like in the game,
 Hypernova is written in Java, with Clojure as a scripting language, so
 the starfield drawing function looks like this.
 </p>
-<pre>
-<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable-name">STAR_SEED</span> = 0x9d2c5680;
-<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable-name">STAR_TILE_SIZE</span> = 256;
+{% highlight java %}
+public static final int STAR_SEED = 0x9d2c5680;
+public static final int STAR_TILE_SIZE = 256;
 
-<span class="keyword">public</span> <span class="type">void</span> <span class="function-name">drawStars</span>(<span class="type">Graphics2D</span> <span class="variable-name">g</span>, <span class="type">int</span> <span class="variable-name">xoff</span>, <span class="type">int</span> <span class="variable-name">yoff</span>, <span class="type">int</span> <span class="variable-name">starscale</span>) {
-    <span class="type">int</span> <span class="variable-name">size</span> = STAR_TILE_SIZE / starscale;
-    <span class="type">int</span> <span class="variable-name">w</span> = getWidth();
-    <span class="type">int</span> <span class="variable-name">h</span> = getHeight();
+public void drawStars(Graphics2D g, int xoff, int yoff, int starscale) {
+    int size = STAR_TILE_SIZE / starscale;
+    int w = getWidth();
+    int h = getHeight();
 
-    <span class="comment-delimiter">/* </span><span class="comment">Top-left tile's top-left position. */</span>
-    <span class="type">int</span> <span class="variable-name">sx</span> = ((xoff - w/2) / size) * size - size;
-    <span class="type">int</span> <span class="variable-name">sy</span> = ((yoff - h/2) / size) * size - size;
+    /* Top-left tile's top-left position. */
+    int sx = ((xoff - w/2) / size) * size - size;
+    int sy = ((yoff - h/2) / size) * size - size;
 
-    <span class="comment-delimiter">/* </span><span class="comment">Draw each tile currently in view. */</span>
-    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">i</span> = sx; i &lt;= w + sx + size * 3; i += size) {
-        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">j</span> = sy; j &lt;= h + sy + size * 3; j += size) {
-            <span class="type">int</span> <span class="variable-name">hash</span> = mix(STAR_SEED, i, j);
-            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">n</span> = 0; n &lt; 3; n++) {
-                <span class="type">int</span> <span class="variable-name">px</span> = (hash % size) + (i - xoff);
-                hash &gt;&gt;= 3;
-                <span class="type">int</span> <span class="variable-name">py</span> = (hash % size) + (j - yoff);
-                hash &gt;&gt;= 3;
+    /* Draw each tile currently in view. */
+    for (int i = sx; i <= w + sx + size * 3; i += size) {
+        for (int j = sy; j <= h + sy + size * 3; j += size) {
+            int hash = mix(STAR_SEED, i, j);
+            for (int n = 0; n < 3; n++) {
+                int px = (hash % size) + (i - xoff);
+                hash >>= 3;
+                int py = (hash % size) + (j - yoff);
+                hash >>= 3;
                 g.drawLine(px, py, px, py);
             }
         }
     }
 }
-</pre>
+{% endhighlight %}
 <p>
 Assuming the origin is in the center of the display, it iterates over
 each tile currently covered by the display. Positions are created by
@@ -118,18 +118,29 @@ an excellent hash function,
 <a href="http://www.concentric.net/~ttwang/tech/inthash.htm">
 Robert Jenkins' 96 bit Mix Function</a>, to do the trick.
 </p>
-<pre>
-<span class="doc">/** Robert Jenkins' 96 bit Mix Function. */</span>
-<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="function-name">mix</span>(<span class="type">int</span> <span class="variable-name">a</span>, <span class="type">int</span> <span class="variable-name">b</span>, <span class="type">int</span> <span class="variable-name">c</span>) {
-    a=a-b;  a=a-c;  a=a^(c &gt;&gt;&gt; 13);
-    b=b-c;  b=b-a;  b=b^(a &lt;&lt; 8);
-    c=c-a;  c=c-b;  c=c^(b &gt;&gt;&gt; 13);
-    a=a-b;  a=a-c;  a=a^(c &gt;&gt;&gt; 12);
-    b=b-c;  b=b-a;  b=b^(a &lt;&lt; 16);
-    c=c-a;  c=c-b;  c=c^(b &gt;&gt;&gt; 5);
-    a=a-b;  a=a-c;  a=a^(c &gt;&gt;&gt; 3);
-    b=b-c;  b=b-a;  b=b^(a &lt;&lt; 10);
-    c=c-a;  c=c-b;  c=c^(b &gt;&gt;&gt; 15);
-    <span class="keyword">return</span> c;
+{% highlight java %}
+/** Robert Jenkins' 96 bit Mix Function. */
+private static int mix(int a, int b, int c) {
+    a=a-b;  a=a-c;  a=a^(c >>> 13);
+    b=b-c;  b=b-a;  b=b^(a << 8);
+    c=c-a;  c=c-b;  c=c^(b >>> 13);
+    a=a-b;  a=a-c;  a=a^(c >>> 12);
+    b=b-c;  b=b-a;  b=b^(a << 16);
+    c=c-a;  c=c-b;  c=c^(b >>> 5);
+    a=a-b;  a=a-c;  a=a^(c >>> 3);
+    b=b-c;  b=b-a;  b=b^(a << 10);
+    c=c-a;  c=c-b;  c=c^(b >>> 15);
+    return c;
 }
-</pre>
+{% endhighlight %}
+<p class="center">
+  <video src="/video/hypernova/hypernova.ogv" controls
+         poster="/video/hypernova/hypernova-poster-small.png"
+        width="640" height="480">
+    <i>You don't have an Ogg Theora capable HTML5 browser. Click this to
+    download the video:</i><br/>
+    <a href="/video/hypernova/hypernova.ogv">
+      <img src="/video/hypernova/hypernova-poster-small.png" alt=""/>
+    </a>
+  </video>
+</p>
