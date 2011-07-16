@@ -1,11 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>{{ page.title }}</title>
     <link rel="stylesheet" type="text/css" href="/css/syntax.css"/>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/blog/index.rss"/>
   </head>
-<body>
-{{ content }}
-</body>
+  <body>
+
+    <div id="top">
+      <p>
+	<a href="/">
+	  <img src="/img/logo.png" alt="null program" class="center"/>
+	</a>
+      </p>
+    </div>
+
+    <nav id="side">
+      <address>
+	<p class="center">
+	  Christopher Wellons<br/>
+	  <a href="mailto:&#109;&#111;&#115;&#113;&#117;&#105;&#116;&#111;&#112;&#115;&#117;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#109;&#111;&#115;&#113;&#117;&#105;&#116;&#111;&#112;&#115;&#117;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a><br/>
+	  <a href="/download/Christopher-Wellons.asc">
+	    PGP Key
+	  </a>
+	</p>
+      </address>
+      <p class="center">
+	<img src="/img/me.jpg" alt=""/>
+      </p>
+      <hr/>
+      <p>
+	<a href="/index/">Archives</a>
+      </p>
+      <hr/>
+      <p>
+	<a href="/blog/index.rss">
+	  <img src="/img/rss.png" alt="RSS" class="center"/>
+	  RSS
+	</a>
+      </p>
+      <hr/>
+      <p class="center">
+	<img src="/img/hacker.png" alt="I like hacking."
+	     title="Hacker Culture"/>
+      </p>
+      <p>
+	Born and raised in Pittsburgh, I am currently a happily
+	married computer engineer working at
+	the <a href="http://www.jhuapl.edu/"> Johns Hopkins University
+	Applied Physics Laboratory</a> in Maryland.
+      </p>
+      <p>
+	Most of the topics you will find here are about hobby
+	computing and programming
+	with <a href="http://www.gnu.org/philosophy/free-sw.html">Free
+	software</a>.
+      </p>
+      <hr/>
+      <p>
+	Blogs I follow:<br/>
+	- <a href="http://devrand.org/">/dev/random</a><br/>
+	- <a href="http://brianttaylor.com/">Brian's Site</a><br/>
+	- <a href="http://metastine.com/">Metastine</a><br/>
+	- <a href="http://www.skorks.com/">Skorks</a><br/>
+	- <a href="http://www.captainaustralia.net/">Captain Australia</a><br/>
+	- <a href="http://terminally-incoherent.com/">Terminally Incoherent</a><br/>
+	- <a href="http://emacs-fu.blogspot.com/">emacs-fu</a><br/>
+	- <a href="http://curiousprogrammer.wordpress.com/">A Curious Programmer</a><br/>
+	- <a href="http://www.shamusyoung.com/twentysidedtale/">Twenty Sided</a><br/>
+	- <a href="http://blog.plover.com/">The Universe of Discourse</a><br/>
+	- <a href="http://godplaysdice.blogspot.com/">God Plays Dice</a><br/>
+	- <a href="http://ultra-premium.com/b">Friendly Robot Overlord</a><br/>
+	- <a href="http://possiblywrong.wordpress.com/">Possibly Wrong</a><br/>
+	- <a href="http://rewiredforsound.blogspot.com/">ReWired for Sound</a><br/>
+	- <a href="http://www.lettersofnote.com/">Letters of Note</a><br/>
+      </p>
+      <hr/>
+      <p>
+	Web Comics I follow:<br/>
+	- <a href="http://nedroid.com/">Nedroid Picture Diary</a><br/>
+	- <a href="http://www.kiwisbybeat.com/minus.html">minus</a><br/>
+	- <a href="http://www.smbc-comics.com/">Saturday Morning Breakfast Cereal</a><br/>
+	- <a href="http://www.explosm.net/comics/">Cyanide and Happiness</a><br/>
+	- <a href="http://www.shamusyoung.com/twentysidedtale/?p=612">DM of the Rings</a><br/>
+	- <a href="http://www.darthsanddroids.net/">Darths &amp; Droids</a><br/>
+	- <a href="http://www.squidi.net/comic/amd/">A Modest Destiny</a><br/>
+	- <a href="http://www.giantitp.com/comics/oots0001.html">Order of the Stick</a><br/>
+	- <a href="http://abstrusegoose.com/">Abstruse Goose</a><br/>
+	- <a href="http://www.amazingsuperpowers.com/">AmazingSuperPowers</a><br/>
+	- <a href="http://buttersafe.com/">Buttersafe</a><br/>
+	- <a href="http://www.qwantz.com/">Dinosaur Comics</a><br/>
+	- <a href="http://http://www.thedoghousediaries.com/">Doghouse Diaries</a><br/>
+	- <a href="http://mycardboardlife.com/">My Cardboard Life</a><br/>
+	- <a href="http://www.true-magic.com/">True Magic</a><br/>
+	- <a href="http://www.lefthandedtoons.com/">Left-Handed Toons</a><br/>
+	- <a href="http://scbots.com/">SCBots</a><br/>
+	- <a href="http://www.invisiblehairsuit.com/">The Invisible Hair Suit</a><br/>
+	- <a href="http://www.optipess.com/">Optipess</a><br/>
+	- <a href="http://loldwell.com/">Loldwell</a><br/>
+      </p>
+      <hr/>
+      <p>
+	This site is powered
+	by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and
+	edited
+	with <a href="http://www.gnu.org/software/emacs/">Emacs</a>.
+      </p>
+    </nav>
+
+    <div id="essay">
+      {{ content }}
+    </div>
+
+  </body>
 </html>

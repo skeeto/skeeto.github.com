@@ -2,11 +2,16 @@
 title: null program
 layout: default
 ---
-<h1>null program</h1>
 
 {% for post in paginator.posts %}
-<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-{{ post.content }}
+<article>
+  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  <p class="date">
+    Posted: <time datetime="{{ post.date }}" class="date">{{ post.date }}</time>
+  </p>
+  {{ post.content }}
+</article>
+<hr/>
 {% endfor %}
 
 <!-- Navigation -->

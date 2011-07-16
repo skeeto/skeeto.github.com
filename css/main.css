@@ -3,9 +3,45 @@ body {
     background-color: #ecffdc;
 }
 
+#top {
+    text-align: center;
+}
+
+#side {
+    border: solid #ccc;
+    border-width: 1px 1px 1px 1px;
+    color: black;
+    background-color: #F0F0E0;
+    position: absolute;
+    left: 1em;
+    top: 185px;
+    width: 14em;
+    padding: 0 20px 0 10px;
+    font-size: 75%;
+}
+
+#essay {
+    border: solid #ccc;
+    border-width: 1px 1px 1px 1px;
+    margin: 0 0 10px 13em;
+    padding: 1em;
+    background-color: white;
+}
+
+address {
+    font-style: normal;
+}
+
+h2 a {
+    font-size: 14pt;
+    text-decoration: none;
+    padding: 0 0 0 1em;
+}
+
 .date {
     font-size: 75%;
     font-weight: bold;
+    text-indent: 4em;
     color: #2F4F4F;
 }
 
@@ -39,7 +75,7 @@ p.center {
   text-align: center;
 }
 
-a.permalink {
+p.permalink {
   font-size: 75%;
   text-align: right;
 }
