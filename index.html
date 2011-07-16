@@ -11,8 +11,11 @@ layout: default
 
 <!-- Navigation -->
 
+{% if paginator.previous_page > 1 %}
+  {% capture prev_page %}page{{ paginator.previous_page }}{% endcapture%}
+{% endif %}
 {% if paginator.previous_page %}
-<a href="/page{{ paginator.previous_page }}" title="Go to previous page">
+<a href="/{{ prev_page }}" title="Go to previous page">
   &laquo; Previous
 </a>
 {% endif %}
