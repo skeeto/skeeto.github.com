@@ -1,0 +1,26 @@
+---
+---
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.title }}</title>
+    <description>{{ site.description }}</description>
+    <link>{{ site.url }}</link>
+    <language>en-us</language>
+    <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
+    <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}
+    </lastBuildDate>
+
+    {% for post in site.posts limit: 10 %}
+    <item>
+      <title>{{ post.title }}</title>
+      <description>{{ post.content | xml_escape }}</description>
+      <link>{{ post.url }}</link>
+      <guid>{{ site.url }}{{ post.id }}</guid>
+      <pubDate>{{ post.date }}</pubDate>
+    </item>
+    {% endfor %}
+
+  </channel>
+</rss>

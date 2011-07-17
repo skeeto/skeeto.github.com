@@ -3,3 +3,7 @@ paginate: 10
 pygments: true
 auto: true
 safe: true
+
+url: http://new.nullprogram.com
+title: null program
+description: Hobby computing blog
