@@ -42,10 +42,13 @@ address {
     font-style: normal;
 }
 
-h2 a {
+h2 {
     font-size: 14pt;
-    text-decoration: none;
     padding: 0 0 0 1em;
+}
+
+h2 a {
+    text-decoration: none;
 }
 
 .date {
