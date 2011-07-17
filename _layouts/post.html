@@ -5,7 +5,9 @@ layout: default
 <article>
   <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
   <p class="date">
-    Posted: <time datetime="{{ page.date }}" class="date">{{ page.date }}</time>
+    <time datetime="{{ page.date }}" class="date">
+      {{ page.date | date: "%d %b %Y" }}
+    </time>
   </p>
   {{ content }}
 
