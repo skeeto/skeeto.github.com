@@ -51,6 +51,10 @@ h2 a {
     text-decoration: none;
 }
 
+pre {
+    background-color: #F6F6FF;
+}
+
 .date {
     font-size: 90%;
     font-weight: bold;
