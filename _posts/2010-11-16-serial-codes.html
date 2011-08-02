@@ -5,7 +5,7 @@ layout: post
 
 <!-- 16 November 2010 -->
 <p class="abstract">
-Download the entire source here: <a href="/img/serial/serial.el">serial.el</a>
+Download the entire source here: <a href="/download/serial.el">serial.el</a>
 </p>
 <p>
 I was thinking recently about how software serial codes might work in
@@ -92,16 +92,16 @@ hexadecimal digits. First let's define a little bit about what our
 serial codes look like. I'm going to implement this in my favorite
 try-stuff language, Elisp.
 </p>
-<pre>
-(<span class="keyword">defvar</span> <span class="variable-name">serial-password</span> <span class="string">"password"</span>
-  <span class="doc">"Secret password used in serial generation and checks."</span>)
+{% highlight cl %}
+(defvar serial-password "password"
+  "Secret password used in serial generation and checks.")
 
-(<span class="keyword">defvar</span> <span class="variable-name">serial-code-len</span> 12
-  <span class="doc">"Length of the code component of the serial number."</span>)
+(defvar serial-code-len 12
+  "Length of the code component of the serial number.")
 
-(<span class="keyword">defvar</span> <span class="variable-name">serial-check-len</span> 12
-  <span class="doc">"Length of the check component of the serial number."</span>)
-</pre>
+(defvar serial-check-len 12
+  "Length of the check component of the serial number.")
+{% endhighlight %}
 <p>
 I decided to use 12 characters, 6 bytes, to represent each
 component. This makes for a 24-character serial code. A bit long, but
@@ -115,13 +115,13 @@ ways to perform this mix, such as
 with <a href="http://en.wikipedia.org/wiki/HMAC"> HMAC</a>,
 but <code>concat</code> is good enough for a DRM scheme.
 </p>
-<pre>
-(<span class="keyword">defalias</span> '<span class="function-name">serial-hash</span> 'sha1
-  <span class="doc">"Hash function for generating serial codes."</span>)
+{% highlight cl %}
+(defalias 'serial-hash 'sha1
+  "Hash function for generating serial codes.")
 
-(<span class="keyword">defalias</span> '<span class="function-name">serial-mixer</span> 'concat
-  <span class="doc">"Function for mixing the password and the code part of the serial number."</span>)
-</pre>
+(defalias 'serial-mixer 'concat
+  "Function for mixing the password and the code part of the serial number.")
+{% endhighlight %}
 <p>
 Below, first function is just a random number generator. It could be
 fancier, <a href="/blog/2010/05/11/">like the UUID generating</a>
@@ -129,20 +129,20 @@ function, but this is good enough. The <code>compose</code>
 function <a href="/blog/2010/11/15/">was defined in a previous
 post</a>.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">serial-gen-code-hex</span> ()
-  <span class="doc">"Generate a the code component of a new serial number."</span>
+{% highlight cl %}
+(defun serial-gen-code-hex ()
+  "Generate a the code component of a new serial number."
   (substring (serial-hash (mapconcat (compose 'prin1-to-string 'random)
-                                     (make-list serial-code-len 256) <span class="string">""</span>))
+                                     (make-list serial-code-len 256) ""))
              0 serial-code-len))
 
-(<span class="keyword">defun</span> <span class="function-name">serial-gen-hex</span> ()
-  <span class="doc">"Generate a hex-encoded serial number."</span>
-  (<span class="keyword">let*</span> ((code (serial-gen-code-hex))
+(defun serial-gen-hex ()
+  "Generate a hex-encoded serial number."
+  (let* ((code (serial-gen-code-hex))
          (check (substring (serial-hash (serial-mixer serial-password code))
                            0 serial-check-len)))
     (concat code check)))
-</pre>
+{% endhighlight %}
 <p>
 The serial codes it generates look like this.
 </p>
@@ -158,43 +158,43 @@ Next we need a function that accepts these numbers and checks their
 self-consistency. Simple enough: extract the code component, generate
 the checksum, and check against the checksum component.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">serial-check-hex</span> (serial)
-  <span class="doc">"Return t if the given hex-encoded serial is valid."</span>
-  (<span class="keyword">let</span> ((code (substring serial 0 serial-code-len))
+{% highlight cl %}
+(defun serial-check-hex (serial)
+  "Return t if the given hex-encoded serial is valid."
+  (let ((code (substring serial 0 serial-code-len))
         (check (substring serial (- serial-check-len))))
     (string= check (substring (serial-hash (serial-mixer serial-password code))
                               0 serial-check-len))))
-</pre>
+{% endhighlight %}
 <p>
 This quick test below always returns true, so it's working at least
 partially right.
 </p>
-<pre>
+{% highlight cl %}
 (serial-check-hex (serial-gen-hex))
-</pre>
+{% endhighlight %}
 <p>
 Those serial numbers could be shorter because we're limiting ourselves
 to <code>0-9</code> and <code>a-f</code>. Instead, we could base64
 encode the serial numbers to cram more information in each character.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">serial-hex-to-bytes</span> (hex)
-  <span class="doc">"Convert hexadecimal string to string of bytes."</span>
-  (<span class="keyword">if</span> (= 0 (length hex))
-      <span class="string">""</span>
+{% highlight cl %}
+(defun serial-hex-to-bytes (hex)
+  "Convert hexadecimal string to string of bytes."
+  (if (= 0 (length hex))
+      ""
     (concat (char-to-string (string-to-number (substring hex 0 2) 16))
             (serial-hex-to-bytes (substring hex 2)))))
 
-(<span class="keyword">defun</span> <span class="function-name">serial-gen</span> ()
-  <span class="doc">"Generate a base64 encoded serial number."</span>
+(defun serial-gen ()
+  "Generate a base64 encoded serial number."
   (base64-encode-string (serial-hex-to-bytes (serial-gen-hex))))
 
-(<span class="keyword">defun</span> <span class="function-name">serial-check</span> (serial)
-  <span class="doc">"Return t if base64 serial number is valid."</span>
-  (serial-check-hex (mapconcat (apply-partially 'format <span class="string">"%02x"</span>)
-                               (base64-decode-string serial) <span class="string">""</span>)))
-</pre>
+(defun serial-check (serial)
+  "Return t if base64 serial number is valid."
+  (serial-check-hex (mapconcat (apply-partially 'format "%02x")
+                               (base64-decode-string serial) "")))
+{% endhighlight %}
 <p>
 Now the serial codes from <code>serial-gen</code> look like this.
 </p>
