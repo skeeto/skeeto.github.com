@@ -59,68 +59,68 @@ also a mutex synchronized <code>draw_clock()</code> function not shown
 here. I've written it so that I could easily switch back and forth
 between the two threading libraries.
 </p>
-<pre>
-<span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
-<span class="preprocessor">#include</span> <span class="string">&lt;ncurses.h&gt;</span>
-<span class="preprocessor">#if</span> USE_PTH
-<span class="preprocessor">#include</span> <span class="string">&lt;pth.h&gt;</span>
-<span class="preprocessor">#else</span>
-<span class="preprocessor">#include</span> <span class="string">&lt;unistd.h&gt;</span>
-<span class="preprocessor">#include</span> <span class="string">&lt;pthread.h&gt;</span>
-<span class="preprocessor">#endif</span>
+{% highlight c %}
+#include <stdio.h>
+#include <ncurses.h>
+#if USE_PTH
+#include <pth.h>
+#else
+#include <unistd.h>
+#include <pthread.h>
+#endif
 
-<span class="type">int</span> <span class="variable-name">clockx</span> = 0, <span class="variable-name">clocky</span> = 0;
+int clockx = 0, clocky = 0;
 
-<span class="type">void</span> *<span class="function-name">run_clock</span> (<span class="type">void</span> *<span class="variable-name">v</span>)
+void *run_clock (void *v)
 {
-  <span class="keyword">while</span> (1)
+  while (1)
     {
       draw_clock ();
       sleep (1);
     }
-  <span class="keyword">return</span> <span class="constant">v</span>;
+  return v;
 }
 
-<span class="type">int</span> <span class="function-name">main</span> ()
+int main ()
 {
-  <span class="comment-delimiter">/* </span><span class="comment">ncurses init </span><span class="comment-delimiter">*/</span>
+  /* ncurses init */
   initscr ();
   noecho ();
   cbreak ();
   keypad (stdscr, TRUE);
 
-<span class="preprocessor">#if</span> USE_PTH
-  <b>halfdelay (1);</b>
+#if USE_PTH
+  halfdelay (1);
   pth_init ();
-  pth_spawn (<span class="constant">NULL</span>, &amp;run_clock, <span class="constant">NULL</span>);
-<span class="preprocessor">#else</span>
-  <span class="type">pthread_t</span> <span class="variable-name">thread</span>;
-  pthread_create (&amp;thread, <span class="constant">NULL</span>, &amp;run_clock, <span class="constant">NULL</span>);
-<span class="preprocessor">#endif</span>
+  pth_spawn (NULL, &run_clock, NULL);
+#else
+  pthread_t thread;
+  pthread_create (&thread, NULL, &run_clock, NULL);
+#endif
 
-  <span class="type">int</span> <span class="variable-name">ch</span>;
-  <span class="keyword">while</span> ((ch = getch ()) != <span class="string">'q'</span>)
+  int ch;
+  while ((ch = getch ()) != 'q')
     {
-<span class="preprocessor">#if</span> USE_PTH
-      <b>pth_yield (<span class="constant">NULL</span>);</b>
-<span class="preprocessor">#endif</span>
-      <span class="keyword">switch</span> (ch)
+#if USE_PTH
+      pth_yield (NULL);
+#endif
+      switch (ch)
         {
-        <span class="keyword">case</span> ERR:
-          <span class="keyword">continue</span>;
-        <span class="keyword">case</span> <span class="string">'h'</span>:
-        <span class="keyword">case</span> KEY_LEFT:
-        <span class="comment-delimiter">/* </span><span class="comment">more switch code here. </span><span class="comment-delimiter">*/</span>
+        case ERR:
+          continue;
+        case 'h':
+        case KEY_LEFT:
+        /* more switch code here. */
         }
     }
 
-<span class="preprocessor">#if</span> USE_PTH
+#if USE_PTH
   pth_kill ();
-<span class="preprocessor">#endif</span>
+#endif
   endwin ();
-  <span class="keyword">return</span> 0;
+  return 0;
 }
-</pre>
+{% endhighlight %}
 <p>
 Notice the two (bolded) differences in the code between Pth and
 Pthreads, in the <code>USE_PTH</code> sections. The Pth implementation
@@ -160,31 +160,31 @@ functions. Here's the relevant section of <code>pth.h</code>, where
 the "soft" version of this happens (the "hard" version
 uses <code>syscall()</code>, operating at a lower level),
 </p>
-    <pre>
-<span class="preprocessor">#define</span> <span class="variable-name">fork</span>          pth_fork
-<span class="preprocessor">#define</span> <span class="variable-name">waitpid</span>       pth_waitpid
-<span class="preprocessor">#define</span> <span class="variable-name">system</span>        pth_system
-<span class="preprocessor">#define</span> <span class="variable-name">nanosleep</span>     pth_nanosleep
-<span class="preprocessor">#define</span> <span class="variable-name">usleep</span>        pth_usleep
-<span class="preprocessor">#define</span> <span class="variable-name">sleep</span>         pth_sleep
-<span class="preprocessor">#define</span> <span class="variable-name">sigprocmask</span>   pth_sigmask
-<span class="preprocessor">#define</span> <span class="variable-name">sigwait</span>       pth_sigwait
-<span class="preprocessor">#define</span> <span class="variable-name">select</span>        pth_select
-<span class="preprocessor">#define</span> <span class="variable-name">pselect</span>       pth_pselect
-<span class="preprocessor">#define</span> <span class="variable-name">poll</span>          pth_poll
-<span class="preprocessor">#define</span> <span class="variable-name">connect</span>       pth_connect
-<span class="preprocessor">#define</span> <span class="variable-name">accept</span>        pth_accept
-<span class="preprocessor">#define</span> <span class="variable-name">read</span>          pth_read
-<span class="preprocessor">#define</span> <span class="variable-name">write</span>         pth_write
-<span class="preprocessor">#define</span> <span class="variable-name">readv</span>         pth_readv
-<span class="preprocessor">#define</span> <span class="variable-name">writev</span>        pth_writev
-<span class="preprocessor">#define</span> <span class="variable-name">recv</span>          pth_recv
-<span class="preprocessor">#define</span> <span class="variable-name">send</span>          pth_send
-<span class="preprocessor">#define</span> <span class="variable-name">recvfrom</span>      pth_recvfrom
-<span class="preprocessor">#define</span> <span class="variable-name">sendto</span>        pth_sendto
-<span class="preprocessor">#define</span> <span class="variable-name">pread</span>         pth_pread
-<span class="preprocessor">#define</span> <span class="variable-name">pwrite</span>        pth_pwrite
-</pre>
+{% highlight c %}
+#define fork          pth_fork
+#define waitpid       pth_waitpid
+#define system        pth_system
+#define nanosleep     pth_nanosleep
+#define usleep        pth_usleep
+#define sleep         pth_sleep
+#define sigprocmask   pth_sigmask
+#define sigwait       pth_sigwait
+#define select        pth_select
+#define pselect       pth_pselect
+#define poll          pth_poll
+#define connect       pth_connect
+#define accept        pth_accept
+#define read          pth_read
+#define write         pth_write
+#define readv         pth_readv
+#define writev        pth_writev
+#define recv          pth_recv
+#define send          pth_send
+#define recvfrom      pth_recvfrom
+#define sendto        pth_sendto
+#define pread         pth_pread
+#define pwrite        pth_pwrite
+{% endhighlight %}
 <p>
 Its own functions wrap the real deal, but suspend themselves on an
 awaiting event and yield. Any time the scheduler runs, it polls for
@@ -197,19 +197,19 @@ it, so it doesn't get a chance to handle it properly. After taking a
 look at the implementation for <code>pth_read()</code>, I
 fixed <code>getch()</code> for my program,
 </p>
-<pre>
-<span class="preprocessor">#if</span> USE_PTH
-<span class="type">int</span> <span class="function-name">pth_getch</span> ()
+{% highlight c %}
+#if USE_PTH
+int pth_getch ()
 {
-  <span class="type">pth_event_t</span> <span class="variable-name">ev</span>;
+  pth_event_t ev;
   ev = pth_event (PTH_EVENT_FD | PTH_UNTIL_FD_READABLE, 0);
   pth_wait (ev);
-  <span class="keyword">return</span> getch ();
+  return getch ();
 }
-<span class="preprocessor">#undef</span> getch
-<span class="preprocessor">#define</span> <span class="variable-name">getch</span> pth_getch
-<span class="preprocessor">#endif</span>
-</pre>
+#undef getch
+#define getch pth_getch
+#endif
+{% endhighlight %}
 <p>
 It tells the Pth scheduler that the thread wants to be suspended until
 there's something to read on <code>stdin</code> (file descriptor
@@ -237,8 +237,9 @@ systems <a href="http://lists.gnupg.org/pipermail/gnupg-devel/2006-November/0233
 have implicit yeilding disabled</a> by default. You may have needed to
 add this before the <code>pth.h</code> include.
 </p>
-<pre>
+{% highlight c %}
 #define PTH_SYSCALL_SOFT 1
+{% endhighlight %}
 </pre>
 <p>
 This is now in the linked source.
