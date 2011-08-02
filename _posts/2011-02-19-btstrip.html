@@ -8,7 +8,7 @@ layout: post
 You can skip my explanation and download the tool here,
 </p>
 <pre>
-git clone <a href="http://git.nullprogram.com/?p=btstrip.git">http://git.nullprogram.com/btstrip.git</a>
+git clone <a href="https://github.com/skeeto/btstrip">git://github.com/skeeto/btstrip.git</a>
 </pre>
 <p>
 My main computer recently stopped working for me, and, until I have a
@@ -53,12 +53,12 @@ script, with all the hard work being done by
 the <a href="http://search.cpan.org/dist/Bencode/lib/Bencode.pm">
 Bencode module</a>. Stripping out the trackers is trivial,
 </p>
-<pre>
-<span class="type">my</span> $<span class="variable-name">decoded</span> = bdecode <span class="keyword">do</span> { <span class="type">local</span> $/; &lt;<span class="constant">STDIN</span>&gt; };
-$$<span class="variable-name">decoded</span>{<span class="string">'announce'</span>} = <span class="string">"http://127.0.0.1/"</span>;
-delete $$<span class="variable-name">decoded</span>{<span class="string">'announce-list'</span>};
-print( bencode $<span class="variable-name">decoded</span> );
-</pre>
+{% highlight perl %}
+my $decoded = bdecode do { local $/; <STDIN> };
+$$decoded{'announce'} = "http://127.0.0.1/";
+delete $$decoded{'announce-list'};
+print( bencode $decoded );
+{% endhighlight %}
 <p>
 The encoding of a torrent file is of critical importance, due to
 the <code>info_hash</code>: the hash of all of the torrent data and
