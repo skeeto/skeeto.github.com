@@ -5,7 +5,7 @@ layout: post
 
 <!-- 31 March 2010 -->
 <p>
-<img src="/img/cat-safe/cat-paw.jpg" class="right"
+<img src="/img/emacs/cat-paw.jpg" class="right"
      alt="" title="Calvin's front right paw."/>
 
 I was inspired by an item
@@ -19,23 +19,18 @@ to leave a computer only to come back later to see garbage typed in by
 a wandering cat. I wrote a version for Emacs today.
 </p>
 <pre>
-git clone http://git.nullprogram.com/cat-safe.git
+git clone <a href="https://github.com/skeeto/cat-safe">git://github.com/skeeto/cat-safe.git</a>
 </pre>
-<p>
-Or you can download a
-snapshot: <a href="http://git.nullprogram.com/?p=cat-safe.git;a=snapshot;h=master">
-cat-safe-master.tar.gz</a>.
-</p>
 <p>
 Put it (<code>cat-safe.el</code>) somewhere in
 your <code>load-path</code> (like <code>~/.emacs.d/</code>) and put
 this line in your <code>.emacs</code> file,
 </p>
-<pre>
+{% highlight cl %}
 (require 'cat-safe)
-</pre>
+{% endhighlight %}
 <p class="center">
-<img src="/img/cat-safe/cat-safe-thumb.png" title="cat-safe in action"
+<img src="/img/emacs/cat-safe-thumb.png" title="cat-safe in action"
      alt="Emacs switches focus to a new buffer to stop cat damage."/>
 </p>
 <p>
