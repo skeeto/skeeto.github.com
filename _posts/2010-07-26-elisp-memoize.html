@@ -18,25 +18,24 @@ Elisp memoization on-line I wrote my own.
 </p>
 <p>
 Just put it in your path
-and <code>(<span class="keyword">require</span>
-'<span class="constant">memoize</span>)</code> it. Here's the core
+and <code>(require 'memoize)</code> it. Here's the core
 function.
 </p>
-<pre>
-<span class="comment-delimiter">;; </span><span class="comment">ID: 83bae208-da65-3e26-2ecb-4941fb310848
-</span>(<span class="keyword">defun</span> <span class="function-name">memoize-wrap</span> (func)
-  <span class="doc">"Return the memoized version of the given function."</span>
-  (<span class="keyword">let</span> ((table-sym (gensym))
+{% highlight cl %}
+;; ID: 83bae208-da65-3e26-2ecb-4941fb310848
+(defun memoize-wrap (func)
+  "Return the memoized version of the given function."
+  (let ((table-sym (gensym))
         (val-sym (gensym))
         (args-sym (gensym)))
-    (set table-sym (make-hash-table <span class="builtin">:test</span> 'equal))
-    `(<span class="keyword">lambda</span> (<span class="type">&amp;rest</span> ,args-sym)
-       ,(concat (documentation func) <span class="string">"\n(memoized function)"</span>)
-       (<span class="keyword">let</span> ((,val-sym (gethash ,args-sym ,table-sym)))
-          (<span class="keyword">if</span> ,val-sym
+    (set table-sym (make-hash-table :test 'equal))
+    `(lambda (&rest ,args-sym)
+       ,(concat (documentation func) "\n(memoized function)")
+       (let ((,val-sym (gethash ,args-sym ,table-sym)))
+          (if ,val-sym
               ,val-sym
             (puthash ,args-sym (apply ,func ,args-sym) ,table-sym))))))
-</pre>
+{% endhighlight %}
 <p>
 Normally the hash table would be stored inside of a closure, but Elisp
 doesn't have closures. Instead, the hash table is stored in an
@@ -64,14 +63,14 @@ computationally expensive: it performs key whitening. It repeats a
 hash function thousands of times to produce an expensive value. This
 isn't something you generally want to memoize, but stick with me.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">whiten</span> (key)
-  <span class="doc">"Perform key whitening with the md5 hash function."</span>
-  (<span class="keyword">dotimes</span> (i 100000 key)
+{% highlight cl %}
+(defun whiten (key)
+  "Perform key whitening with the md5 hash function."
+  (dotimes (i 100000 key)
     (setq key (md5 key))))
 
-(whiten <span class="string">"password"</span>)   <span class="comment-delimiter">; </span><span class="comment">takes a couple of seconds</span>
-</pre>
+(whiten "password")   ; takes a couple of seconds
+{% endhighlight %}
 <p>
 On my laptop that takes a couple of seconds to run. Increase that
 counter if it's quick on your computer. My memoize package provides
@@ -79,9 +78,9 @@ a <code>memoize</code> function which will create a new function that
 wraps the original, then installs the new function in place of the old
 one if we give it the function symbol.
 </p>
-<pre>
+{% highlight cl %}
 (memoize 'whiten)
-</pre>
+{% endhighlight %}
 <p>
 The first time you run it after memoization it will be slow, but after
 that the memoization kicks in for a quick return.
