@@ -6,12 +6,12 @@ layout: post
 <!-- 12 April 2010 -->
 <p>
 Two months ago I wanted to experiment with artificial neural networks
-in Scheme. I've <a href="http://nullprogram.com/blog/2007/11/13/">
-written one in C++ before</a>, but I wanted a pure Scheme
-implementation. So I wrote one. Grab it here,
+in Scheme. I've <a href="/blog/2007/11/13/"> written one in C++
+before</a>, but I wanted a pure Scheme implementation. So I wrote
+one. Grab it here,
 </p>
 <pre>
-git clone <a href="http://git.nullprogram.com/?p=scheme-ann.git;a=summary">http://git.nullprogram.com/scheme-ann.git</a>
+git clone <a href="https://github.com/skeeto/Scheme-Neural-Network">git://github.com/skeeto/Scheme-Neural-Network.git</a>
 </pre>
 <p>
 It fakes <abbr title="Object Oriented Programming">OOP</abbr> with
@@ -36,9 +36,9 @@ following. This creates a network with 4 input neurons, a hidden layer
 of 5 neurons, a hidden layer with 6 neurons, and an output layer with
 3 neurons.
 </p>
-<pre>
+{% highlight scheme %}
 (new-ann '(4 5 6 3))  ; input 4 bits, output 3 bits
-</pre>
+{% endhighlight %}
 <p>
 Then the functions <code>train-ann</code> and <code>run-ann</code> are
 used, with a list of bits as arguments, to train and run the neural
