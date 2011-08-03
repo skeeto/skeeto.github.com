@@ -33,36 +33,36 @@ the password (both strings) and hashed with a secure hashing
 algorithm. Only someone who knows the password -- including other
 clients -- can create the signature.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">sign-sexp</span> (password sexp)
-  <span class="doc">"Return signature of the given s-exp."</span>
-  (sha1 (format <span class="string">"%s%s"</span> password sexp))
-</pre>
+{% highlight cl %}
+(defun sign-sexp (password sexp)
+  "Return signature of the given s-exp."
+  (sha1 (format "%s%s" password sexp))
+{% endhighlight %}
 <p>
 To make it easy for the client to read in both the signature and the
 function we just cons them together before encoding them as text.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">encode</span> (password sexp)
-  <span class="doc">"Encode a s-exp for transmission to client."</span>
+{% highlight cl %}
+(defun encode (password sexp)
+  "Encode a s-exp for transmission to client."
   (prin1-to-string (cons (sign-sexp password sexp) sexp)))
-</pre>
+{% endhighlight %}
 <p>
 The client calls the Lisp reader on the string, then checks the
 signature in the <code>car</code> cell against the s-expression in
 the <code>cdr</code> cell. This will return the function if it's
 legitimate, otherwise <code>nil</code>.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">decode</span> (password str)
-  <span class="doc">"Decode string into s-exp, checking the signature in the process."</span>
-  (<span class="keyword">let*</span> ((cons (read str))
+{% highlight cl %}
+(defun decode (password str)
+  "Decode string into s-exp, checking the signature in the process."
+  (let* ((cons (read str))
          (sig  (car cons))
          (sexp (cdr cons)))
-    (<span class="keyword">if</span> (equal sig (sign-sexp password sexp))
+    (if (equal sig (sign-sexp password sexp))
         sexp
       nil)))
-</pre>
+{% endhighlight %}
 <p>
 And that's the core of it. It just needs some network code to move the
 string between computers. That part can be found in the linked source
@@ -83,22 +83,22 @@ more intelligent, managing a work queue so that an arbitrary length
 list of functions will be fed one at a time to each client. That's not
 the case here.
 </p>
-<pre>
-(dist-dist (mapcar (<span class="keyword">lambda</span> (p)
-                          `(<span class="keyword">lambda</span> ()
+{% highlight cl %}
+(dist-dist (mapcar (lambda (p)
+                          `(lambda ()
                              (fset 'whiten ,(symbol-function 'whiten))))
                       dist-clients))
-</pre>
+{% endhighlight %}
 <p>
 Also like in the previous post, this is an abstraction leak with the
 Emacs implementation. But I like this trick so I'm going to use it
 anyway. :-) Next we call it on each client with a different string.
 </p>
-<pre>
-(dist-dist (list (<span class="keyword">lambda</span> () (whiten <span class="string">"good"</span>))
-                 (<span class="keyword">lambda</span> () (whiten <span class="string">"news"</span>))
-                 (<span class="keyword">lambda</span> () (whiten <span class="string">"everyone"</span>))))
-</pre>
+{% highlight cl %}
+(dist-dist (list (lambda () (whiten "good"))
+                 (lambda () (whiten "news"))
+                 (lambda () (whiten "everyone"))))
+{% endhighlight %}
 <p>
 The way I have it set up for my proof of concept the results are just
 spit back into the server's <code>*Messages*</code> buffer. If we
