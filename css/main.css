@@ -55,6 +55,14 @@ pre {
     background-color: #F6F6FF;
 }
 
+blockquote {
+    color: inherit;
+    background-color: #F6F6FF;
+    border: dashed #00005c;
+    border-width: 1px 1px 1px 1px;
+    padding: 0 0 0 0.5em;
+}
+
 .date {
     font-size: 90%;
     font-weight: bold;
