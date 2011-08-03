@@ -4,23 +4,20 @@ layout: post
 ---
 
 <!-- 16 April 2010 -->
-<p>
-Stripped Windows binaries download: these can handle both the XZ and
-the older LZMA formats.
+<p class="abstract">
+Update August 2011: <b>Official Windows XZ binaries are now provided
+at the
+<a href="http://tukaani.org/xz/">official website</a></b> so I am no
+longer offering them here.
 </p>
-<pre>
-<a href="http://tukaani.org/xz/">version 5.0.0</a>
-0febf32988fbef2a10938eca8717140c  <a href="/download/xz/xz.exe">xz.exe</a> (175 kB) (<a href="/download/xz/xz.exe.sig">signature</a>)
-0652c09fdbb93ae2ce78c1368ffda612  <a href="/download/xz/xz-5.0.0.tar.bz2">xz-5.0.0.tar.bz2</a> source (981 kB)
-</pre>
 <p>
-Previously I had <a href="http://nullprogram.com/blog/2009/03/16/">
-predicted that LZMA tarballs were the future</a>. I'd like to make a
-slight correction to this: <a href="http://tukaani.org/xz/"> XZ
-tarballs</a> are the future! LZMA has actually already been supplanted
-by the newer LZMA2 algorithm, which is most directly accessed with
-the <code>xz</code> tool from XZ Utils. So look out
-for <code>.tar.xz</code> in the future.
+Previously I had <a href="/blog/2009/03/16/"> predicted that LZMA
+tarballs were the future</a>. I'd like to make a slight correction to
+this: <a href="http://tukaani.org/xz/"> XZ tarballs</a> are the
+future! LZMA has actually already been supplanted by the newer LZMA2
+algorithm, which is most directly accessed with the <code>xz</code>
+tool from XZ Utils. So look out for <code>.tar.xz</code> in the
+future.
 </p>
 <p>
 Right now I believe that XZ will get you the smallest compression of
@@ -34,11 +31,11 @@ with LZMA or XZ tarballs is needlessly difficult in
 Windows. <s>Archive software, such
 as <a href="http://www.7-zip.org/">7-zip</a>, doesn't seem to handle
 them directly yet. They can read
-the <a href="http://nullprogram.com/blog/2009/03/22/">underlying tar
-layer</a> but the compression layer seems to be opaque. 7-zip actually
-uses the LZMA and LZMA2 algorithms internally, so it's 99% of the way
-there. They just never did the last step.</s> <i>Update: the beta
-version of 7-zip can read these archives</i>.
+the <a href="/blog/2009/03/22/">underlying tar layer</a> but the
+compression layer seems to be opaque. 7-zip actually uses the LZMA and
+LZMA2 algorithms internally, so it's 99% of the way there. They just
+never did the last step.</s> <i>Update: the beta version of 7-zip can
+read these archives</i>.
 </p>
 <p>
 So here's where the above executable, provided for your convenience,
