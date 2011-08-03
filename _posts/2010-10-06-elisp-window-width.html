@@ -30,31 +30,31 @@ columns cuts just too short. For awhile I was creating 80 dashes
 size. After doing it a few times I decided to extend Emacs to do it
 instead. First define a function to set the current window width.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">set-window-width</span> (n)
-  <span class="doc">"Set the selected window's width."</span>
+{% highlight cl %}
+(defun set-window-width (n)
+  "Set the selected window's width."
   (adjust-window-trailing-edge (selected-window) (- n (window-width)) t))
-</pre>
+{% endhighlight %}
 <p>
 Wrap it with an interactive function and bind it.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">set-80-columns</span> ()
-  <span class="doc">"Set the selected window to 80 columns."</span>
+{% highlight cl %}
+(defun set-80-columns ()
+  "Set the selected window to 80 columns."
   (interactive)
   (set-window-width 80))
 
-(global-set-key <span class="string">"\C-x~"</span> 'set-80-columns)
-</pre>
+(global-set-key "\C-x~" 'set-80-columns)
+{% endhighlight %}
 <p>
 For those paying extra attention: instead of writing the extra
 function, you could
 use <a href="/blog/2010/09/29/">my <code>expose</code> function from
 the other day</a>.
 </p>
-<pre>
-(global-set-key <span class="string">"\C-x~"</span> (expose (apply-partially 'set-window-width 80)))
-</pre>
+{% highlight cl %}
+(global-set-key "\C-x~" (expose (apply-partially 'set-window-width 80)))
+{% endhighlight %}
 <p>
 The problem with this, though, is the dynamically generated function
 doesn't have a name or a docstring. Someone
