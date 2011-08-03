@@ -40,21 +40,21 @@ recurses, so that it continues printing forever. The recursion is
 important here and I'll get back to it. To keep things manageable I'm
 also going to insert a 1 second pause.
 </p>
-<pre>
-(<span class="keyword">define</span> (<span class="function-name">print-str</span>)
-  (display <span class="string">"Hello!\n"</span>)
+{% highlight scheme %}
+(define (print-str)
+  (display "Hello!\n")
   (sleep 1)
   (print-str))
-</pre>
+{% endhighlight %}
 <p>
 If we call this function with <code>(print-str)</code> it will sit
 there printing "Hello!" over and over. It will also lock up our REPL
 preventing us from doing anything else. Not very useful. So let's put
 it in a thread instead!
 </p>
-<pre>
+{% highlight scheme %}
 (thread print-str)
-</pre>
+{% endhighlight %}
 <p>
 Now our program is running and we get to keep our REPL. Why do we need
 to keep our REPL alive? Well, so we can
@@ -62,12 +62,12 @@ redefine <code>print-str</code> on the fly! In my buffer I'll go back
 and change "Hello!" to "Goodbye!". While I'm doing this the function
 is still spitting out "Hello!".
 </p>
-<pre>
-(<span class="keyword">define</span> (<span class="function-name">print-str</span>)
-  (display <span class="string">"Goodbye!\n"</span>)
+{% highlight cl %}
+(define (print-str)
+  (display "Goodbye!\n")
   (sleep 1)
   (print-str))
-</pre>
+{% endhighlight %}
 <p>
 As soon as I tell my editor to pass this to the REPL
 the <code>print-str</code> function gets redefined and starts printing
@@ -80,10 +80,10 @@ Since I didn't keep a handle on the thread the easiest way to
 stop <code>print-str</code> from running is to redefine it without
 recursion.
 </p>
-<pre>
-(<span class="keyword">define</span> (<span class="function-name">print-str</span>)
-  (display <span class="string">"Done.\n"</span>))
-</pre>
+{% highlight cl %}
+(define (print-str)
+  (display "Done.\n"))
+{% endhighlight %}
 <p>
 And it's done. If I was really fast about this my output looks
 something like this.
