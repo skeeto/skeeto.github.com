@@ -10,7 +10,7 @@ for my own future reference, but perhaps someone else may find it
 useful.
 </p>
 <pre>
-git clone <a href="http://git.nullprogram.com/?p=SampleJavaProject.git;a=summary">http://git.nullprogram.com/SampleJavaProject.git</a>
+git clone <a href="https://github.com/skeeto/SampleJavaProject">git://github.com/skeeto/SampleJavaProject.git</a>
 </pre>
 <p>
 If you couldn't guess already, I'm strongly against tying a project's
@@ -64,16 +64,16 @@ from source is so common, (depending on the implementation) it has
 built-in rules for it. This is all you need to say,
 and <code>make</code> knows how to do the rest.
 </p>
-<pre>
-<span class="makefile-targets">file.o</span> : file.c
-</pre>
+{% highlight make %}
+file.o : file.c
+{% endhighlight %}
 <p>
 Same for linking, it's so common you don't have to type anything more
 than necessary.
 </p>
-<pre>
-<span class="makefile-targets">program</span> : main.o common.o file.o
-</pre>
+{% highlight make %}
+program : main.o common.o file.o
+{% endhighlight %}
 <p>
 It guides you in creating good Makefiles. If you want to learn the
 best practice for Ant, you have to either buy a book on Ant or look at
