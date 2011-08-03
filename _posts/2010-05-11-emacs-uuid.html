@@ -42,18 +42,18 @@ be handled in very small pieces.
 I was beginning to work on my own when I found
 this <a href="http://furius.ca/pubcode/pub/conf/common/elisp/blais/uuid.el">
 great solution by Martin Blais</a>
-(<a href="http://nullprogram.com/download/uuid.el">mirror</a>). Specifically
+(<a href="/download/uuid.el">mirror</a>). Specifically
 the <code>uuid-simple</code> function, which takes an MD5 hash of
 unique data in Emacs and uses it for the UUID. I believe this may
 count as a version 3 UUID (or at least close enough that I don't
 care). I modified it slightly, adding more unique data and a version
 number.
 </p>
-<pre>
-<span class="comment-delimiter">;; </span><span class="comment">90aebf38-b33a-314b-1198-c9bffea2f2a2</span>
-(<span class="keyword">defun</span> <span class="function-name">uuid-create</span> ()
-  <span class="doc">"Return a newly generated UUID. This uses a simple hashing of variable data."</span>
-  (<span class="keyword">let</span> ((s (md5 (format <span class="string">"%s%s%s%s%s%s%s%s%s%s"</span>
+{% highlight cl %}
+;; ID: 90aebf38-b33a-314b-1198-c9bffea2f2a2
+(defun uuid-create ()
+  "Return a newly generated UUID. This uses a simple hashing of variable data."
+  (let ((s (md5 (format "%s%s%s%s%s%s%s%s%s%s"
                         (user-uid)
                         (emacs-pid)
                         (system-name)
@@ -64,30 +64,31 @@ number.
                         (garbage-collect)
                         (random)
                         (recent-keys)))))
-    (format <span class="string">"%s-%s-3%s-%s-%s"</span>
+    (format "%s-%s-3%s-%s-%s"
             (substring s 0 8)
             (substring s 8 12)
             (substring s 13 16)
             (substring s 16 20)
             (substring s 20 32))))
-</pre>
+
+{% endhighlight %}
 <p>
 This returns a string containing the UUID. Next, make an interactive
 function to wrap it,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">uuid-insert</span> ()
-  <span class="doc">"Inserts a new UUID at the point."</span>
+{% highlight cl %}
+(defun uuid-insert ()
+  "Inserts a new UUID at the point."
   (interactive)
   (insert (uuid-create)))
-</pre>
+{% endhighlight %}
 <p>
 I bound this to "<code>C-x !</code>", which wasn't yet bound to
 anything.
 </p>
-<pre>
+{% highlight cl %}
 (global-set-key <span class="string">"\C-x!"</span> 'uuid-insert)
-</pre>
+{% endhighlight %}
 <p>
 Instant UUIDs in Emacs.
 </p>
