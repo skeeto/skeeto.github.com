@@ -36,12 +36,13 @@ evaluating safe constant forms, and inline functions. This provides a
 nice performance boost (testing using my <a href="/blog/2009/05/28/">
 measure-time macro</a>),
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">fib</span> (n)
-  <span class="doc">"Fibonacci sequence."</span>
-  (<span class="keyword">if</span> (&lt;= n 2) 1
+{% highlight cl %}
+(defun fib (n)
+  "Fibonacci sequence."
+  (if (<= n 2) 1
     (+ (fib (- n 1)) (fib (- n 2)))))
-
+{% endhighlight %}
+<pre>
 (measure-time
  (fib 30))
   <i>=&gt; 1.0508708953857422</i>
@@ -64,14 +65,14 @@ has been compiled or not: <code>compiled-function-p</code>. For
 whatever reason, there is no equivalent predefined in Elisp, so I
 wrote one,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">byte-compiled-p</span> (func)
-  <span class="doc">"Return t if function is byte compiled."</span>
-  (<span class="keyword">cond</span>
+{% highlight cl %}
+(defun byte-compiled-p (func)
+  "Return t if function is byte compiled."
+  (cond
    ((symbolp   func) (byte-compiled-p (symbol-function func)))
    ((functionp func) (not (sequencep func)))
    (t nil)))
-</pre>
+{% endhighlight %}
 <p>
 My idea was to iterate over every interned symbol and, if the function
 slot contains an uncompiled function, using the test above, I would
@@ -85,9 +86,9 @@ a <code>mapatoms</code> function for this. Provide it a function and
 it calls it on every interned symbol. Well, that's simple and
 anticlimactic.
 </p>
-<pre>
+{% highlight cl %}
 (mapatoms 'byte-compile)
-</pre>
+{% endhighlight %}
 <p>
 That's it! It will take only a few seconds and spew a lot of
 warnings. I haven't found a way to disable those warnings, so this
