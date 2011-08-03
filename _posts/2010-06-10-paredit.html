@@ -41,27 +41,27 @@ features together with just a little advice. Here's how to do it with
 the Interactive Emacs-Lisp Mode (IELM) REPL. First tell IELM to use
 ParEdit,
 </p>
-<pre>
-(add-hook 'ielm-mode-hook (<span class="keyword">lambda</span> () (paredit-mode 1)))
-</pre>
+{% highlight cl %}
+(add-hook 'ielm-mode-hook (lambda () (paredit-mode 1)))
+{% endhighlight %}
 <p>
 The function in IELM that spits out the next prompt
 is <code>ielm-eval-input</code>, so we give it the advice to call the
 ParEdit function afterwards to insert a parenthesis pair.
 </p>
-<pre>
-(<span class="keyword">defadvice</span> <span class="function-name">ielm-eval-input</span> (after ielm-paredit activate)
-  <span class="string">"Begin each IELM prompt with a ParEdit parenthesis pair."</span>
+{% highlight cl %}
+(defadvice ielm-eval-input (after ielm-paredit activate)
+  "Begin each IELM prompt with a ParEdit parenthesis pair."
   (paredit-open-round))
-</pre>
+{% endhighlight %}
 <p>
 And that's it! Note that the first IELM prompt is not placed by this
 function so it won't appear until the second prompt.
 </p>
 <pre>
-<span class="comment">*** Welcome to IELM ***</span><span class="constant">  Type (describe-mode) for help.</span>
-<span class="comint-highlight-prompt">ELISP&gt; </span>
-<span class="comint-highlight-prompt">ELISP&gt; </span>()
+*** Welcome to IELM ***  Type (describe-mode) for help.
+ELISP>
+ELISP> ()
 </pre>
 <p>
 If you want to enter a single atom and don't need parenthesis, just
