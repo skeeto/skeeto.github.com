@@ -13,12 +13,12 @@ top of the function definition. The <code>interactive</code> call can
 be made more complex, if needed, to ask the user interactively for
 input.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">hello-world</span> ()
-  <span class="doc">"Example function."</span>
-  <b>(interactive)</b>
-  (message <span class="string">"hello"</span>))
-</pre>
+{% highlight cl %}
+(defun hello-world ()
+  "Example function."
+  (interactive)
+  (message "hello"))
+{% endhighlight %}
 <p>
 There are some handy higher-order functions in Elisp, such
 as <code>compose</code> and <code>apply-partially</code>. Today I
@@ -37,28 +37,28 @@ output of <code>apply-partially</code> is not interactive. A quick way
 to work around this is to wrap it in an anonymous function, which also
 takes away the need for <code>apply-partially</code>.
 </p>
-<pre>
-(<span class="keyword">lambda</span> () (interactive) (revert-buffer nil t))
-</pre>
+{% highlight cl %}
+(lambda () (interactive) (revert-buffer nil t))
+{% endhighlight %}
 <p>
 I'd rather there be <i>another</i> higher-order function that takes a
 non-interactive function and creates an interactive version. Here it is,
 </p>
-<pre>
-<span class="comment-delimiter">;; </span><span class="comment">ID: c7db6dec-e7ab-3b0f-bf26-0fa268674c6c</span>
-(<span class="keyword">defun</span> <span class="function-name">expose</span> (function)
-  <span class="doc">"Return an interactive version of FUNCTION."</span>
-  (<span class="keyword">lexical-let</span> ((lex-func function))
-    (<span class="keyword">lambda</span> ()
+{% highlight cl %}
+;; ID: c7db6dec-e7ab-3b0f-bf26-0fa268674c6c
+(defun expose (function)
+  "Return an interactive version of FUNCTION."
+  (lexical-let ((lex-func function))
+    (lambda ()
       (interactive)
       (funcall lex-func))))
-</pre>
+{% endhighlight %}
 <p>
 Now the binding looks like this,
 </p>
-<pre>
+{% highlight cl %}
 (global-set-key [f2] (expose (apply-partially 'revert-buffer nil t)))
-</pre>
+{% endhighlight %}
 <p>
 I think this more clearly expresses my intention than
 the <code>lambda</code> wrapper would. Maybe?
