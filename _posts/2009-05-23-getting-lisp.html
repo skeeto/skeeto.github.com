@@ -68,15 +68,15 @@ function</i></a>.
 My first thought was Octave, as this is a simple program and Octave
 already provides <code>nchoosek()</code> for me.
 </p>
-<pre>
-<span class="comment-delimiter"># </span><span class="comment">Rain at least n days
-</span><span class="keyword">function</span> sum = <span class="function-name">rain</span> (n)
+{% highlight octave %}
+# Rain at least n days
+function sum = rain (n)
   sum = 0;
-  <span class="keyword">for</span> i = n:7
+  for i = n:7
     sum += nchoosek(7,i) * 0.75 ^ i * 0.25 ^ (7 - i);
-  <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre>
+  end
+end
+{% endhighlight %}
 <p>
 Simple, but I actually made a couple little mistakes working it out,
 and it took me a little longer than it should have. If you asked
@@ -87,12 +87,12 @@ probably look a lot like this.
 I then made a lisp version (elisp), but I first needed to define the
 binomial coefficient function since there wasn't one provided.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">nck</span> (n k)
-  <span class="doc">"The binomial coefficient."</span>
-  (<span class="keyword">if</span> (or (= k 0) (= k n)) 1
+{% highlight cl %}
+(defun nck (n k)
+  "The binomial coefficient."
+  (if (or (= k 0) (= k n)) 1
     (+ (nck (- n 1) (- k 1)) (nck (- n 1) k))))
-</pre>
+{% endhighlight %}
 <p>
 This is the recursive version, based on <a
 href="http://en.wikipedia.org/wiki/Pascal%27s_rule"> Pascal's
@@ -102,16 +102,16 @@ rule</a>, so it doesn't need factorials.
 In lisp, recursion is preferred to iteration, so that's the way I
 approached the program.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">p-rain</span> (n)
-  <span class="doc">"Probability of rain on exactly n days."</span>
+{% highlight cl %}
+(defun p-rain (n)
+  "Probability of rain on exactly n days."
   (* (nck 7 n) (expt 0.75 n) (expt 0.25 (- 7 n))))
 
-(<span class="keyword">defun</span> <span class="function-name">rain-at-least</span> (n)
-  <span class="doc">"Probability it will rain on at least n days."</span>
-  (<span class="keyword">if</span> (&gt; n 7) 0
+(defun rain-at-least (n)
+  "Probability it will rain on at least n days."
+  (if (> n 7) 0
     (+ (p-rain n) (rain-at-least (+ 1 n)))))
-</pre>
+{% endhighlight %}
 <p>
 I like the recursive version, and this code, much better. It presents
 the solution in a more straight forward way.  And I got it right the
