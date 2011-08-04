@@ -18,27 +18,27 @@ of code. Specifically, I wanted it to work like this,
 And it would return the running time as seconds in floating
 point. Well, here's a macro that does it!
 </p>
-<pre>
-<span class="comment-delimiter">;; </span><span class="comment">ID: 6a3f3d99-f0da-329a-c01c-bb6b868f3239</span>
-(<span class="keyword">defmacro</span> <span class="function-name">measure-time</span> (<span class="type">&amp;rest</span> body)
-  <span class="doc">"Measure and return the running time of the code block."</span>
-  (<span class="keyword">declare</span> (indent defun))
-  (<span class="keyword">let</span> ((start (make-symbol <span class="string">"start"</span>)))
-    `(<span class="keyword">let</span> ((,start (float-time)))
+{% highlight cl %}
+;; ID: 6a3f3d99-f0da-329a-c01c-bb6b868f3239
+(defmacro measure-time (&rest body)
+  "Measure and return the running time of the code block."
+  (declare (indent defun))
+  (let ((start (make-symbol "start")))
+    `(let ((,start (float-time)))
        ,@body
        (- (float-time) ,start))))
-</pre>
+{% endhighlight %}
 <p>
 It's only good for up to around 18 hours, then the time integer
 overflows. If only Emacs had arbitrary precision numbers. Here it is
 in action using my <a href="/blog/2009/05/23">binomial function from
 last week</a>.
 </p>
-<pre>
+{% highlight cl %}
 (measure-time
   (nck 20 10)
   (nck 30 7))
-</pre>
+{% endhighlight %}
 <p>
 Which, just now, returned <code>3.643713</code> seconds when executed.
 </p>
