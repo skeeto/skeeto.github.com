@@ -5,8 +5,7 @@ layout: post
 
 <!-- 6 November 2007 -->
 <p>
-  <img src="/img/prison/top.gif"
-       alt="Animation" width="350" />
+  <img src="/img/prison/top.gif" alt="" width="350"/>
 </p>
 <p>
 I was reading about
@@ -46,11 +45,11 @@ tit-for-tat. This player begins by playing cooperatively, then does
 whatever the its opponent did last. Here is the common lisp code to
 run a tit-for-tat strategy,
 </p>
-<pre>
+{% highlight cl %}
 (defun tit-for-tat ()
   (lambda (x)
     (if (null x) :coop x)))
-</pre>
+{% endhighlight %}
 <p>
 If you are unfamiliar with common lisp, the <code>lambda</code> part
 is returning an anonymous function that actually plays the tit-for-tat
@@ -61,7 +60,7 @@ the symbols <code>:coop</code> or <code>:defect</code>. In the case of
 the first move, <code>nil</code> is passed. These are some really
 simple strategies that ignore their arguments,
 </p>
-<pre>
+{% highlight cl %}
 (defun rand-play ()
   (lambda (x)
     (declare (ignore x))
@@ -92,7 +91,7 @@ simple strategies that ignore their arguments,
   (lambda (x)
     (declare (ignore x))
     :defect))
-</pre>
+{% endhighlight %}
 <p>
 Patrick Grim did an interesting study about ten years ago on iterated
 prisoner's dilemma involving competing strategies in a 2-dimensional
@@ -120,12 +119,11 @@ test of my simulation. Three strategies were placed randomly in a
 50x50 grid: tit-for-tat, always-cooperate, and always-defect. This is
 the first twenty iterations. It stabilizes after 16 iterations.
 </p>
-<pre>
+{% highlight cl %}
 (run-random-matrix 50 100 20 '(tit-for-tat always-coop always-defect))
-</pre>
+{% endhighlight %}
 <p>
-  <img src="/img/prison/random.gif"
-       alt="Animated GIF" width="350" />
+  <img src="/img/prison/random.gif" alt="" width="350"/>
 </p>
 <p>
 White is always-cooperate, black is always-defect, and cyan is
@@ -143,12 +141,11 @@ The effect can be seen more easily here. Around the outside is
 tit-for-tat, in the middle is always-cooperate, and a single
 always-defect cell is placed in the middle.
 </p>
-<pre>
+{% highlight cl %}
 (run-matrix (create-three-box) 100 30)
-</pre>
+{% endhighlight %}
 <p>
-  <img src="/img/prison/boxes.gif"
-       alt="Animated GIF" width="350" />
+  <img src="/img/prison/boxes.gif" alt="" width="350"/>
 </p>
 <p>
 The asymmetric pattern is due to the way that ties are broken.
