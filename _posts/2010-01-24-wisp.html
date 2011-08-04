@@ -9,7 +9,8 @@ Update 2010-2-04: A lot of the information below is out of date. There
 is an update here: <a href="/blog/2010/02/04/">Wisp Screencasts</a>.
 </p>
 <p>
-<img src="/img/wisp.png" alt="" title="A wisp of a lisp" class="right"/>
+<img src="/img/wisp/wisp.png"
+     alt="" title="A wisp of a lisp" class="right"/>
 
 This is a project I've been wanting to do for some time, and I finally
 got around to doing it. I spent the last few days implementing my own
@@ -24,7 +25,7 @@ You can make a clone of the Wisp repository with Git. Go ahead; don't
 be shy,
 </p>
 <pre>
-git clone <a href="http://git.nullprogram.com/?p=wisp.git;a=summary">http://git.nullprogram.com/wisp.git</a>
+git clone <a href="https://github.com/skeeto/wisp">git://github.com/skeeto/wisp.git</a>
 </pre>
 <p>
 To build it, all you need is a C99 compiler, make, yacc
@@ -39,9 +40,9 @@ what I've been doing. If you plan on writing Wisp code in Emacs,
 putting this in your <code>.emacs</code> will give you all the syntax
 niceties,
 </p>
-<pre>
-(add-to-list 'auto-mode-alist '(<span class="string">".wisp\\'"</span> . lisp-mode))
-</pre>
+{% highlight cl %}
+(add-to-list 'auto-mode-alist '(".wisp\\'" . lisp-mode))
+{% endhighlight %}
 <p>
 You should also be able to run it as an inferior lisp and send code to
 it like a normal lisp. I haven't done this yet myself.
@@ -69,21 +70,21 @@ However, it <i>does</i> have already anonymous functions, which many
 popular languages <i>still</i> don't have. :-) It's far enough along
 to let you define crazy stuff like this,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">example</span> (n)
-  (<span class="keyword">if</span> (&lt;= n 0)
-      (<span class="keyword">lambda</span> (x) (* x 10))
-    (<span class="keyword">lambda</span> (x) (* x 2.0))))
-</pre>
+{% highlight cl %}
+(defun example (n)
+  (if (<= n 0)
+      (lambda (x) (* x 10))
+    (lambda (x) (* x 2.0))))
+{% endhighlight %}
 <p>
 Which you can call, interactively in this case, like so,
 </p>
-<pre>
+{% highlight cl %}
 wisp> ((example  1) 20)
 40.000000
 wisp> ((example -1) 20)
 200
-</pre>
+{% endhighlight %}
 <p>
 Because there's no garbage collection yet, it leaks memory like a
 sieve. For garbage collection, I think I'll do a mark-and-sweep,
@@ -115,54 +116,54 @@ would.
 The core struct that everything works with the the object struct. It's
 defined as such,
 </p>
-<pre>
-<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">object</span>
+{% highlight c %}
+typedef struct object
 {
-  <span class="type">type_t</span> <span class="variable-name">type</span>;
-  <span class="type">void</span> *<span class="variable-name">val</span>;
-} <span class="variable-name">object_t</span>;
-</pre>
+  type_t type;
+  void *val;
+} object_t;
+{% endhighlight %}
 <p>
 The <code>type_t</code> field comes from this enumeration,
 </p>
-<pre>
-<span class="keyword">typedef</span> <span class="keyword">enum</span> <span class="type">types</span>
-  { INT, FLOAT, STRING, SYMBOL, CONS, CFUNC, SPECIAL } <span class="variable-name">type_t</span>;
-</pre>
+{% highlight c %}
+typedef enum types
+  { INT, FLOAT, STRING, SYMBOL, CONS, CFUNC, SPECIAL } type_t;
+{% endhighlight %}
 <p>
 The type indicates what type of data the void pointer points to,
 making it sort-of polymorphic. Note the CONS type, the cons cell, used
 to create lists,
 </p>
-<pre>
-<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">cons</span>
+{% highlight c %}
+typedef struct cons
 {
-  <span class="type">object_t</span> *<span class="variable-name">car</span>;
-  <span class="type">object_t</span> *<span class="variable-name">cdr</span>;
-} <span class="variable-name">cons_t</span>;
-</pre>
+  object_t *car;
+  object_t *cdr;
+} cons_t;
+{% endhighlight %}
 <p>
 There's the familiar car and cdr pointers. There are a bunch of helper
 functions to manipulate and build these. For
 example, <code>c_cons()</code> creates a cons cell,
 </p>
-<pre>
-<span class="type">object_t</span> *<span class="function-name">c_cons</span> (<span class="type">object_t</span> * <span class="variable-name">car</span>, <span class="type">object_t</span> * <span class="variable-name">cdr</span>);
-</pre>
+{% highlight c %}
+object_t *c_cons (object_t * car, object_t * cdr);
+{% endhighlight %}
 <p>
 Look familiar? Yup, that's the lisp <code>cons</code> function. Since
 the <code>nil</code> symbol is available in C code as <code>NIL</code>
 you can chain these together in C to make a list,
 </p>
-<pre>
+{% highlight c %}
 object_t *lst = c_cons (c_int(10), c_cons (c_str ("hello"), NIL));
-</pre>
+{% endhighlight %}
 <p>
 Which puts together the simple list,
 </p>
-<pre>
+{% highlight cl %}
 (10 "hello")
-</pre>
+{% endhighlight %}
 <p>
 Since that's so cumbersome to write out, there's a parser that can
 read nice lisp code and use all those same functions to make the
