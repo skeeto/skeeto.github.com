@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Mersenne Prime Finder</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<script type="text/javascript" src="bigint.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+function handle_results(r) {
+  if (r) {
+    document.write(" is prime</p>");
+  }
+  else {
+    document.write(" is <b>not</b> prime</p>");
+  }
+
+  var end_time = new Date();
+  document.write("Elapsed: " + ((end_time.getTime() - start_time.getTime())
+                                / 1000)
+                             + "<br />");
+  document.write();
+}
+
+var start_time;
+function test_p (p) {
+  var num = "";
+  for (var i = 0; i < p; i++) num += "1";
+  num = str2bigInt(num,2);
+  document.write("Testing <code>2<sup>" + p + "</sup> - 1</code><br />");
+  start_time = new Date();
+  var witness = Math.floor(Math.random() * Math.pow(2,12));
+  millerRabin(num,witness,handle_results);
+}
+
+test_p(9941);//132049);
+
+</script>
+</body>
+</html>
