@@ -54,7 +54,7 @@ Octave because, as far as I know, Octave 2.1 doesn't
 have <code>interp2</code>. And, unfortunately, <code>interp2</code> is
 much slower than it probably could be.
 </p>
-<pre>
+{% highlight octave %}
 function m = diamond_square (m, i, c)
   if isempty (m)
     m = zeros (2);
@@ -76,7 +76,7 @@ function m = diamond_square (m, i, c)
     c = c / 2;
   end
 end
-</pre>
+{% endhighlight %}
 <p>
 Something of note here compared to other implementations of
 diamond-square, my code above adds Gaussian noise (with
@@ -176,22 +176,19 @@ get our final Perlin noise.
 <p>
 Here is the Octave code I am using to generate Perlin noise,
 </p>
-<pre>
+{% highlight octave %}
 function s = perlin (m)
   s = zeros(m);    # output image
-
   w = m;           # width of current layer
   i = 0;           # iterations
   while w > 3
     i = i + 1;
     d = interp2(randn(w), i-1, "spline");
-
     s = s + i * d(1:m, 1:m);
     w -= ceil(w/2 - 1);
   end
-
 end
-</pre>
+{% endhighlight %}
 <p>
 The first and only argument gives the side length of the image you
 want to generate - it only generates square images. This is an
@@ -233,7 +230,7 @@ change the sharpness of the clouds. Here is the function I wrote to
 convert the diamond-square or Perlin noise into cloud cover. The
 output is scaled between 0 and 255 to aid in image output.
 </p>
-<pre>
+{% highlight octave %}
 function a = get_clouds (a)
   ## Scale a between 0 and 1
   a = a - min(a(:));
@@ -244,13 +241,13 @@ function a = get_clouds (a)
   sharpness = 0.1;
 
   a = 1 - e.^(-(a - density) * sharpness);
-  a(a &lt; 0) = 0;
+  a(a < 0) = 0;
 
   ## Scale between 0 to 255 and quantize
   a = a / max(a(:));
   a = round(a * 255);
 end
-</pre>
+{% endhighlight %}
 <p>
 Now run this on our noise,
 </p>
@@ -265,14 +262,14 @@ octave> c = get_clouds(n);
 Well, that looks a bit more like cloud cover. We just need to apply a
 colormap to this. I wrote this colormap function for this purpose,
 </p>
-<pre>
+{% highlight octave %}
 function c = cloud_cmap ()
   c = [0.25 0.25 1];
   for i = 2:256
     c(i, :) = (i-2)/256 * (1 - c(2, :)) + c(2, :);
   end
 end
-</pre>
+{% endhighlight %}
 <p>
 Apply the colormap,
 </p>
@@ -331,7 +328,7 @@ Octave's <code>imperspectivewarp</code> to apply a perspective
 transformation to the cloud images. I put some code together that does
 this transformation as well as adds a gradient,
 </p>
-<pre>
+{% highlight octave %}
 function i = pers_clouds (n)
   w = size(n, 1);
   c = get_clouds (n);
@@ -352,7 +349,7 @@ function i = pers_clouds (n)
   i = round (i / max (i(:)) * 255);
   i(isnan(i)) = 0;
 end
-</pre>
+{% endhighlight %}
 <p>
 Provide either Perlin noise or diamond-square noise and it will return
 an image that you can write out to a file,
