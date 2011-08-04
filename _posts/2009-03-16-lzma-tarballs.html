@@ -5,9 +5,7 @@ layout: post
 
 <!-- 16 March 2009 -->
 <p>
-<img src="/img/compress.png"
-     alt="Compression" title="Compression"
-     class="right" />
+<img src="/img/diagram/compress.png" class="right"/>
 
 Any developer that uses a non-toy operating system will be familiar
 with <a href="http://www.gzip.org/">gzip</a> and <a
@@ -93,12 +91,11 @@ same mistake. Fortunately I don't have to touch zip archives often.
 Finally, don't forget that LZMA is mostly useful where the asymmetry
 can be exploited: data is compressed once and decompressed many
 times. Take the gitweb interface, which provides access to a git
-repository through a browser. <a href="http://git.nullprogram.com/">I
-run one myself</a>. It will provide a gzip tarball of any commit on
-the fly. It doesn't do this by having all these tarballs lying around,
-but creates them on demand. Data is compressed once and decompressed
-once. Because of this, gzip is, and will remain, the best option for
-this setting.
+repository through a browser. It will provide a gzip tarball of any
+commit on the fly. It doesn't do this by having all these tarballs
+lying around, but creates them on demand. Data is compressed once and
+decompressed once. Because of this, gzip is, and will remain, the best
+option for this setting.
 </p>
 <p>
 In conclusion, consider creating LZMA tarballs next time, and don't be
