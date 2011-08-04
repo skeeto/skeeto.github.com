@@ -15,13 +15,13 @@ and my favorite image generated so far. It is part of the sequence in
 the videos below.
 </p>
 <p class="center">
-  <video src="/download/mandel-zoom.ogg" controls="" width="400">
-    (HTML 5 browsers see a video here)
+  <video src="/video/fractal/mandel.ogv" controls width="400"
+	 poster="/video/fractal/mandel.jpg">
+    <a href="/video/fractal/mandel.ogv">mandel.ogv</a>
   </video>
   <br />
-  <a href="/img/mandelexp-huge.png">
-    <img src="/img/mandelexp-thumb.png"
-	 alt="Mandelbrot set zoom" />
+  <a href="/img/fractal/mandelexp-huge.png">
+    <img src="/video/fractal/mandel.jpg" alt=""/>
   </a>
 </p>
 <p>
@@ -55,16 +55,6 @@ systems). Extra capabilities are available
 if <a href="http://www.gzip.org/"><code>gzip</code></a> is installed.
 </p>
 <p>
-If you can't see the video above, here are two links to videos.
-</p>
-<a href="/download/mandel-zoom.ogg">
-  mandel-zoom.ogg</a> - 27M, <a href="http://www.theora.org/">
-  Ogg Theora</a> (Free, unencumbered codec)<br />
-<a href="/download/mandel-zoom.avi">
-  mandel-zoom.avi</a> - 40M, <a href="http://www.xvid.org/">Xvid</a>
-<p>
-</p>
-<p>
 I use <a href="http://wmi.math.u-szeged.hu/xaos">GNU Xaos</a> to find
 good locations in the set for zoom sequences. It lets you zoom in
 real-time. Once I find a good spot, I tell my generator to render some
@@ -84,7 +74,8 @@ took 13.678s. Gzipping (default options) took 5.167s. I am as
 surprised as you are.
 </p>
 <p>
-The project page with source code and documentation can be found
-at <a href="/projects/mandel/">
-projects/mandel</a>.
+The project page with source code and documentation,
 </p>
+<pre>
+git clone <a href="https://github.com/skeeto/mandelbrot">git://github.com/skeeto/mandelbrot.git</a>
+</pre>
