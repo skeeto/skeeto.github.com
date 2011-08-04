@@ -27,8 +27,8 @@ thought carefully about the mechanics of what is going on
 behind-the-scenes, allowing me to confidently give him a "no"
 answer. I then threw this together in a few seconds to prove it,
 </p>
-<pre>
-#include &lt;stdio.h&gt;
+{% highlight c %}
+#include <stdio.h>
 
 void a ()
 {
@@ -51,7 +51,7 @@ int main ()
   b ();
   return 0;
 }
-</pre>
+{% endhighlight %}
 <p>
 When you compile it, make sure you don't use the optimization options
 (<code>-O</code>, <code>-O2</code>, or <code>-O3</code>
