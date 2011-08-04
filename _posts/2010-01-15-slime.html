@@ -12,7 +12,7 @@ when someone invents a new language feature it can probably be added
 to Common Lisp without even touching the language core.
 </p>
 <p>
-<img src="/img/emacs-slime.png" alt="" title="SBCL SLIME REPL"
+<img src="/img/emacs/slime.png" alt="" title="SBCL SLIME REPL"
      class="right"/>
 
 However, if you're interested in digging into Common Lisp to try it
@@ -91,11 +91,11 @@ Now, we tell Emacs where SLIME is and how to use it. Make
 a <code>.emacs</code> file in your home directory, if you haven't
 already, and put this in it,
 </p>
-<pre>
-(add-to-list 'load-path <span class="string">"~/.emacs.d/slime/"</span>)
-(<span class="keyword">require</span> '<span class="constant">slime</span>)
+{% highlight cl %}
+(add-to-list 'load-path "~/.emacs.d/slime/")
+(require 'slime)
 (slime-setup '(slime-repl))
-</pre>
+{% endhighlight %}
 <p>
 Once it's saved, either restart Emacs, or simply evaluate those lines
 by putting the cursor after each them in turn and typing <code>C-x
@@ -106,9 +106,9 @@ Common Lisp installation didn't end up in your PATH as
 tell Emacs where it is. For example, I can point directly to my SBCL
 installation with this line,
 </p>
-<pre>
-(setq inferior-lisp-program <span class="string">"/usr/bin/sbcl"</span>)
-</pre>
+{% highlight cl %}
+(setq inferior-lisp-program "/usr/bin/sbcl")
+{% endhighlight %}
 <p>
 If everything is set up right, fire up SLIME with "<code>M-x
 slime</code>". It should compile the back-end, called swank, and run a
@@ -124,19 +124,19 @@ please. But this isn't where the true power of SLIME comes in
 yet. I'll give you an example: make a new file with
 a <code>.lisp</code> extension and open it. Throw some lisp in there,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">adder</span> (x)
-  (<span class="keyword">lambda</span> (y) (+ x y)))
-</pre>
+{% highlight cl %}
+(defun adder (x)
+  (lambda (y) (+ x y)))
+{% endhighlight %}
 <p>
 Type <code>C-x C-k</code> and it will send the current buffer over to
 be compiled and loaded. This code here uses a closure, so you know you
 aren't accidentally using Emacs lisp, as it doesn't have closures. At
 the REPL you can call it,
 </p>
-<pre>
+{% highlight cl %}
 CL-USER> (funcall (adder 5) 6)
-</pre>
+{% endhighlight %}
 <p>
 Which will print the return value, <code>11</code>. That's all there
 is to it. You write code in the buffer, then with a simple keystroke
