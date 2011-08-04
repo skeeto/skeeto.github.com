@@ -4,6 +4,9 @@ layout: post
 ---
 
 <!-- 8 September 2007 -->
+<pre>
+git clone <a href="https://github.com/skeeto/pngarch">git://github.com/skeeto/pngarch.git</a>
+</pre>
 <p>
 This is one of my projects. The original idea for this project came
 from Sean Howard's <a
@@ -27,15 +30,6 @@ is because I do not want to duplicate the work of real file archivers
 like <code>tar</code>. To store multiple files, make a "png-tarball".
 </p>
 <p>
-Here are a couple examples. Below is the US Constitution (gzipped),
-<br />
-<img src="/img/us-constitution.txt_gz.png"
-     alt="PNG Archive" /><br />
-And this is an audio recoding I made (encoded in Ogg Vorbis),<br />
-<img src="/img/pngarch.ogg.png"
-     alt="PNG Archive" />
-</p>
-<p>
 The PNG Archiver stores a checksum in the image that allows it to
 verify that the data was received correctly. This also allows it to
 automatically scan the image for data. When it reads in a piece that
@@ -43,9 +37,4 @@ fulfills the checksum it assumes that it found the data you are
 looking for. You can decorate the image with text or a border and the
 archiver should still find the data as long as you didn't disturb
 it. (examples of this on the project page)
-</p>
-<p>
-You can find the project page with detailed information (duplicating
-some of what I said here) under <a
-href="/projects/pngarch/">projects/pngarch</a>.
 </p>
