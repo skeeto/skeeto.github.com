@@ -18,15 +18,15 @@ one-liner (and implemented as one line in the comment system). It can
 be used on the command line to obfuscate a file/pipe containing a list
 of addresses.
 </p>
-<pre>
-perl -lpe '$_ = join "", map {"&amp;#" . ord() . ";"} split //'
-</pre>
+{% highlight bash %}
+perl -lpe '$_ = join "", map {"&#" . ord() . ";"} split //'
+{% endhighlight %}
 <p>
 All of the spaces are really only there for us humans,
 </p>
-<pre>
-perl -lpe '$_=join"",map{"&amp;#".ord.";"}split//'
-</pre>
+{% highlight bash %}
+perl -lpe '$_=join"",map{"&#".ord.";"}split//'
+{% endhighlight %}
 <p>
 I keep running into these one-liners.
 </p>
