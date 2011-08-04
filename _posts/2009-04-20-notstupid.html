@@ -5,11 +5,11 @@ layout: post
 
 <!-- 20 April 2009 -->
 <p>
-I was reading through a website of "<a
-href="http://www.rinkworks.com/stupid/cs_programming.shtml"> computer
+I was reading through a website of
+"<a href="http://www.rinkworks.com/stupid/cs_programming.shtml">computer
 stupidities</a>" today when I came across this,
 </p>
-<pre>
+{% highlight c %}
 if (a)
   {
     /* do something */
@@ -25,7 +25,7 @@ else
     /* do something entirely different */
     return z;
   }
-</pre>
+{% endhighlight %}
 <p>
 This was quickly dismissed as being an obvious beginner mistake. I
 don't think this can be dismissed so quickly without thinking it
@@ -33,16 +33,16 @@ through for a moment. Yes, in the example above we will never reach
 the last condition where we <code>return z</code>, but consider the
 following,
 </p>
-<pre>
-if (a &lt; b)
+{% highlight c %}
+if (a < b)
   printf ("foo\n");
-else if (a &gt; b)
+else if (a > b)
   printf ("bar\n");
 else if (a == b)
   printf ("baz\n");
 else
   printf ("faz\n");
-</pre>
+{% endhighlight %}
 <p>
 The same quick dismissal might drop the last "faz" print statement as
 being an impossible condition. Can you think of a situation where the
