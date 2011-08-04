@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Browser URL Mangling Test</title>
+</head>
+<body>
+<h1 style="text-align: center;">Browser URL Mangling Test</h1>
+<p>
+This is a simple test to see if your browser is automatically mangling
+your URLs. The following links will either take you to the correctly
+specified page ("Good!") or another incorrect URL it fabricated
+("Bad!"). There are no links here to the "bad" page, so if you are
+taken there your browser did something wrong.
+</p>
+<p>
+Note, the manual and automatic tests maye give different results if
+the browser mangles <code>http-equiv="refresh"</code> URLs differently
+than normal links (the case with Opera).
+</p>
+
+<p style="text-align: center; font-size: 125%;">
+  <a href="auto.html">Automatic Test</a>
+</p>
+
+<h2>Manual Test</h2>
+<h3>Test 1</h3>
+<p>
+<a href="pre\index.html">Test Link</a>
+</p>
+<p>
+If you got the "bad" page, your browser is silently modifying the URL
+to accommodate the arbitrary limitations of Windows. Specifically,
+it's incorrectly changing backslashes (\) to slashes (/).
+</p>
+<h3>Test 2</h3>
+<p>
+<a href="pre%5Cindex.html">Test Link</a>
+</p>
+<p>
+This link <i>must</i> take you to the right page, otherwise your
+browser is completely broken. If you went to the wrong page here then
+it is impossible to point your browser to the right page. I am not
+aware of any browsers that fail this test.
+</p>
+</body>
+</html>
