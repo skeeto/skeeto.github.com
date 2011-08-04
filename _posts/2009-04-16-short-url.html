@@ -5,9 +5,7 @@ layout: post
 
 <!-- 16 April 2009 -->
 <p>
-<img src="/img/redirect.png"
-     alt="Short URL diagram" title="A failed short URL redirect."
-     class="left" />
+<img src="/img/diagram/redirect.png" alt="" class="left"/>
 
 There has been a lot of talk online about the fragility of URL
 shortening services, particularly in relation to Twitter and its 140
@@ -82,9 +80,9 @@ coupling. Getting the shortened URL to users can be tricky, though.
 set the <code>rev</code> attribute of the <code>link</code> tag to
 "canonical" and point to the short URL.
 </p>
-<pre>
-&lt;link rev="canonical" href="http://example.com/FbVT"&gt;
-</pre>
+{% highlight html %}
+<link rev="canonical" href="http://example.com/FbVT">
+{% endhighlight %}
 <p>
 To understand this one must first understand the <code>rel</code>
 attribute. <code>rel</code> defines how the linked URL is related to
@@ -117,11 +115,12 @@ job of describing why they are all not very good (misleading, ugly, or
 wrong), and it goes on to recommend "shorturl".
 </p>
 <p>
-I went with this last one and added a "short permalink" link in all of
-my posts. This points to a 28 letter link that will 301 direct to the
-canonical post URL. In order to avoid trashing my root namespace, all
-of the short URLs begin with an asterisk. The 4 letter short code is
-derived from the post's internal name.
+<s>I went with this last one and added a "short permalink" link in all
+of my posts.</s> (<i>Removed after changing web hosts.</i>) This
+points to a 28 letter link that will 301 direct to the canonical post
+URL. In order to avoid trashing my root namespace, all of the short
+URLs begin with an asterisk. The 4 letter short code is derived from
+the post's internal name.
 </p>
 <p>
 I also took the time to make a long version of the URL that is more
