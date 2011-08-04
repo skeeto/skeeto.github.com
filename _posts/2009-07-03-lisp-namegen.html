@@ -21,15 +21,15 @@ s(ith|&lt;'C&gt;)V
 <p>
 can be represented in code as,
 </p>
-<pre>
+{% highlight cl %}
 (s ("ith" ("'" C)) V)
-</pre>
+{% endhighlight %}
 <p>
 I want a function I can apply to this to generate a name. First, I set
 up an association list with symbols and its replacements,
 </p>
-<pre>
-(<span class="keyword">defvar</span> <span class="variable-name">namegen-subs</span>
+{% highlight cl %}
+(defvar namegen-subs
   '((s ach ack ad age ald ale an ang ar ard as ash at ath augh
        aw ban bel bur cer cha che dan dar del den dra dyn
        ech eld elm em en end eng enth er ess est et gar gha
@@ -40,56 +40,56 @@ up an association list with symbols and its replacements,
        ther tia tin ton tor tur um und unt urn usk ust ver
        ves vor war wor yer)
     (v a e i o u y)
-    <i>...</i>
+    ...
     (d elch idiot ob og ok olph olt omph ong onk oo oob oof oog
        ook ooz org ork orm oron ub uck ug ulf ult um umb ump umph
        un unb ung unk unph unt uzz))
-  <span class="doc">"Substitutions for the name generator."</span>)
-</pre>
+  "Substitutions for the name generator.")
+{% endhighlight %}
 <p>
 Since we will need this in a couple places, make a function to
 randomly select an element from a list,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">randth</span> (lst)
-  <span class="doc">"Select random element from the given list."</span>
+{% highlight cl %}
+(defun randth (lst)
+  "Select random element from the given list."
   (nth (random (length lst)) lst))
-</pre>
+{% endhighlight %}
 <p>
 A function for replacing a symbol,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">namegen-select</span> (sym)
-  <span class="doc">"Select a replacement for the given symbol."</span>
-  (<span class="keyword">if</span> (null (assoc sym namegen-subs))
-      (<span class="keyword">throw</span> '<span class="constant">bad-symbol</span>
-             (concat <span class="string">"Invalid substitution symbol: "</span> (format <span class="string">"%s"</span> sym)))
+{% highlight cl %}
+(defun namegen-select (sym)
+  "Select a replacement for the given symbol."
+  (if (null (assoc sym namegen-subs))
+      (throw 'bad-symbol
+             (concat "Invalid substitution symbol: " (format "%s" sym)))
     (symbol-name (randth (cdr (assoc sym namegen-subs))))))
-</pre>
+{% endhighlight %}
 <p>
 And finally, the generator. Find a string, pass it through, find a
 symbol, substitute it, find a list, pick one element and recurse on
 it.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">namegen</span> (sexp)
-  <span class="doc">"Generate a name from the given sexp generator."</span>
-  (<span class="keyword">cond</span>
-   ((null sexp) <span class="string">""</span>)
+{% highlight cl %}
+(defun namegen (sexp)
+  "Generate a name from the given sexp generator."
+  (cond
+   ((null sexp) "")
    ((stringp sexp) sexp)
    ((symbolp sexp) (namegen-select sexp))
    ((listp sexp)
-    (concat (<span class="keyword">if</span> (listp (car sexp)) (namegen (randth (car sexp)))
+    (concat (if (listp (car sexp)) (namegen (randth (car sexp)))
               (namegen (car sexp)))
             (namegen (cdr sexp))))))
-</pre>
+{% endhighlight %}
 <p>
 That's it! We can apply it to the expression above,
 </p>
-<pre>
+{% highlight cl %}
 (namegen '(s ("ith" ("'" C)) V))
--&gt; "rynithi"
-</pre>
+-> "rynithi"
+{% endhighlight %}
 <p>
 But that's really the easy part. The hard part would be converting the
 original pattern into the S-expression, which I don't plan on doing
@@ -104,7 +104,7 @@ I threw the code in with the rest of my name generation code
 (namegen.el),
 </p>
 <pre>
-git clone <a href="http://git.nullprogram.com/?p=fantasyname.git;a=summary">http://git.nullprogram.com/fantasyname.git</a>
+git clone <a href="https://github.com/skeeto/fantasyname">git://github.com/skeeto/fantasyname.git</a>
 </pre>
 <p>
 S-expressions are handy anywhere.
