@@ -5,9 +5,7 @@ layout: post
 
 <!-- 28 August 2009 -->
 <p class="abstract">
-<img src="/img/diceware-roll.png"
-     alt="" title="5d6"
-     class="right" />
+<img src="/img/dice/roll.png" alt="" title="5d6" class="right" />
 
 This is related to a project I am working on and will post here
 soon. I imagine that, with a little more effort, this algorithm could
@@ -22,13 +20,13 @@ independently and randomly generate two numbers between 1 and 6
 inclusively. We easily can do this for any number of dice, we just
 iterate and roll each die. Like this recursive function,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">roll</span> (n sides)
-  <span class="string">"Roll n dice with given number of sides."</span>
-  (<span class="keyword">if</span> (zerop n) ()
+{% highlight cl %}
+(defun roll (n sides)
+  "Roll n dice with given number of sides."
+  (if (zerop n) ()
     (cons (1+ (random sides))
           (roll (1- n) sides))))
-</pre>
+{% endhighlight %}
 <p>
 However, generating a number between 1 and 6 wastes small amounts of
 entropy. A six-sided die only takes about 2.58 bits of entropy to
@@ -54,14 +52,14 @@ uniform distribution</a>) (also, note that the division is <a
 href="http://en.wikipedia.org/wiki/Integer_division#Division_of_integers">
 integer division</a>),
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">roll-perm</span> (n s u)
-  <span class="string">"Get uth permutation of n s-sided dice."</span>
-  (<span class="keyword">if</span> (zerop n) ()
-    (<span class="keyword">let</span> ((perms (expt s (1- n))))
+{% highlight cl %}
+(defun roll-perm (n s u)
+  "Get uth permutation of n s-sided dice."
+  (if (zerop n) ()
+    (let ((perms (expt s (1- n))))
       (cons (1+ (/ u perms))
             (roll-perm (1- n) s (mod u perms))))))
-</pre>
+{% endhighlight %}
 <p>
 If we're only interested in the sum, we could save memory by making
 this tail recursive -- or iterative -- and summing the dice as we
@@ -79,7 +77,7 @@ entropy. We saved a bit. That gap only gets larger with more dice. For
 necessary.
 </p>
 <p class="center">
-  <img src="/img/dice-bits.png" alt="">
+  <img src="/img/diagram/dice-bits.png" alt="">
 </p>
 <p>
 The efficient roll is basically defragmenting the individual rolls on
