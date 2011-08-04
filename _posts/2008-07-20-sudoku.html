@@ -5,8 +5,6 @@ layout: post
 
 <!-- 20 July 2008 -->
 <p>
-<img src="/img/sudoku/toilet.jpg"
-     alt="My 'Thinking Chair'" class="right" />
 I was at my fiancee's parent's house over Fourth of July weekend. Her
 family likes to leave plenty of reading material right by the toilet,
 which is something fairly new to me. They take their time on the john
@@ -57,13 +55,13 @@ all operations can be done in place.
 Here is the implementation in C I typed up just after I left the
 bathroom,
 </p>
-<pre>
+{% highlight c %}
 int solve (char matrix[9][9])
 {
   /* Find an empty spot. */
   int x, y, i, j, s = 0;
-  for (i = 0; i &lt; 9 &amp;&amp; !s; i++)
-    for (j = 0; j &lt; 9 &amp;&amp; !s; j++)
+  for (i = 0; i < 9 && !s; i++)
+    for (j = 0; j < 9 && !s; j++)
       if (matrix[i][j] == 0)
 	{
 	  x = i; y = j; s = 1;
@@ -75,20 +73,20 @@ int solve (char matrix[9][9])
 
   /* Determine legal numbers for this spot. */
   char nums[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-  for (i = 0, j = y; i &lt; 9; i++)
+  for (i = 0, j = y; i < 9; i++)
     nums[(int)matrix[i][j]] = 0; /* Vertically */
-  for (i = x, j = 0; j &lt; 9; j++)
+  for (i = x, j = 0; j < 9; j++)
     nums[(int)matrix[i][j]] = 0; /* Horizontally */
-  for (i = 0; i &lt; 3; i++)
-    for (j = 0; j &lt; 3; j++)
+  for (i = 0; i < 3; i++)
+    for (j = 0; j < 3; j++)
       nums[(int)matrix
 	   [i + ((int)(x / 3)) * 3]
 	   [j + ((int)(y / 3)) * 3]
 	   ] = 0;                /* Within the partition */
 
   /* Try each possible number and recurse for each. */
-  for (i = 1; i &lt; 10; i++)
-    if (nums[i] &gt; 0)
+  for (i = 1; i < 10; i++)
+    if (nums[i] > 0)
       {
 	matrix[x][y] = i;
 	if (solve (matrix))
@@ -99,7 +97,7 @@ int solve (char matrix[9][9])
   matrix[x][y] = 0;
   return 0;
 }
-</pre>
+{% endhighlight %}
 <p>
 I assumed that it would be slow solving the puzzles, having to search
 a wide tree, but it turns out to be very fast. It solves normal
@@ -113,7 +111,7 @@ perform their worst.
 	 alt="Worst-case Sudoku" />
   </a>
 </p>
-<pre>
+{% highlight c %}
 char worst_case[9][9] =
   {
     {0, 0, 0,   0, 0, 0,   0, 0, 0},
@@ -128,7 +126,7 @@ char worst_case[9][9] =
     {0, 0, 2,   0, 1, 0,   0, 0, 0},
     {0, 0, 0,   0, 4, 0,   0, 0, 9}
   };
-</pre>
+{% endhighlight %}
 <p>
 On my laptop, my program solves this in 15 seconds, which means that
 it should take no more than 15 seconds to solve any given Sudoku
