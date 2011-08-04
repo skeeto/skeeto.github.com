@@ -5,16 +5,12 @@ layout: post
 
 <!-- 17 May 2009 -->
 <p>
-<img src="/img/gnu.png"
-     alt="GNU head" title="GNU Emacs"
-     class="right" />
-
 As part of my quest of developing solid knowledge of <a
 href="http://www.gnu.org/software/emacs/">GNU Emacs</a> lisp, I have
 implemented a pseudo-HTTP/1.0 web server within Emacs. Behold,
 </p>
 <pre>
-git clone <a href="http://git.nullprogram.com/?p=emacs-httpd.git;a=summary">http://git.nullprogram.com/emacs-httpd.git</a>
+git clone <a href="https://github.com/skeeto/emacs-http-server">git://github.com/skeeto/emacs-http-server.git</a>
 </pre>
 <p>
 To all other non-emacsen text editors, can your text editor do that?!
@@ -102,9 +98,9 @@ file is being served, Emacs will first load/execute it. You see, it's
 just a lisp program. If you wanted to add a new index file name, the
 hypertext access file could contain this,
 </p>
-<pre>
+{% highlight cl %}
 (add-to-list 'httpd-indexes "0001.html")
-</pre>
+{% endhighlight %}
 <p>
 It's a bit like a <code>.emacs</code> file.
 </p>
@@ -128,16 +124,16 @@ same way PHP or Perl does. If a <code>.el</code> file (or
 in the elisp file. The server would also provide some nifty HTML
 generation macros. A dynamic script might look like this,
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">script</span> (get)
+{% highlight cl %}
+(defun script (get)
   (html
    (head
-    (title <span class="string">"My Script"</span>))
+    (title "My Script"))
    (body
-    (h1 <span class="string">"Your Query"</span>)
-    (p (concat <span class="string">"Your query was "</span>
-               (html-sanitize (cdr (assoc <span class="string">"q"</span> get)) <span class="string">"."</span>))))))
-</pre>
+    (h1 "Your Query")
+    (p (concat "Your query was "
+               (html-sanitize (cdr (assoc "q" get)) "."))))))
+{% endhighlight %}
 <p>
 However, this is not (yet?) implemented. Just an idea.
 </p>
