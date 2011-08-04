@@ -77,15 +77,14 @@ again. It looks like this,
 </pre>
 <p>
 Now to match a single backslash we have to insert four backslashes!
-Quite
-unfortunately, <a href="http://nullprogram.com/blog/2009/05/29/">
-Emacs Lisp doesn't directly support regular expressions</a> even
-though the language has a lot of emphasis on text parsing, so a lot of
-Elisp code is riddled with this sort of thing. Elisp is especially
-difficult because sometimes, such as during prompts, you can enter a
-regular expression directly and can ignore the layer of string
-parsing. It's a very conscious effort to remember which situation
-you're in at different times.
+Quite unfortunately, <a href="/blog/2009/05/29/"> Emacs Lisp doesn't
+directly support regular expressions</a> even though the language has
+a lot of emphasis on text parsing, so a lot of Elisp code is riddled
+with this sort of thing. Elisp is especially difficult because
+sometimes, such as during prompts, you can enter a regular expression
+directly and can ignore the layer of string parsing. It's a very
+conscious effort to remember which situation you're in at different
+times.
 </p>
 <p>
 Perl, Ruby, and JavaScript have regular expressions as part of the
