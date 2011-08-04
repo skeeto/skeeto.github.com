@@ -20,113 +20,11 @@ any language that Emacs supports, which is just about everything.
 </p>
 <p>
 I threw the CSS stuff in my main stylesheet so the XHTML of my posts
-remains simple. Here are some examples in action. Perl,
+remains simple.
 </p>
-<pre>
-<span class="comment-delimiter">## </span><span class="comment">Find the maximum total from top to bottom of the triangle.
-</span>
-<span class="keyword">use</span> <span class="constant">warnings</span>;
-<span class="keyword">use</span> <span class="constant">strict</span>;
-<span class="keyword">use</span> <span class="constant">List</span>::Util qw<span class="string">/reduce max/</span>;
-
-<span class="type">my</span> @<span class="underline"><span class="variable-name">triangle</span></span>;
-open <span class="type">my</span> $<span class="variable-name">datafile</span>, <span class="string">"data67.txt"</span>;
-<span class="keyword">while</span> (&lt;$<span class="variable-name">datafile</span>&gt;) { push @<span class="underline"><span class="variable-name">triangle</span></span>, [split/\s+/] }
-
-<span class="type">my</span> $<span class="variable-name">result</span> = reduce {
-    <span class="keyword">for</span> <span class="type">my</span> $<span class="variable-name">i</span> (0..$#{$<span class="variable-name">b</span>}) {
-        @$<span class="variable-name">b</span>[$<span class="variable-name">i</span>] += max(@$<span class="variable-name">a</span>[$<span class="variable-name">i</span>], @$<span class="variable-name">a</span>[$<span class="variable-name">i</span>+1]);
-    }
-    $<span class="variable-name">b</span>
-} reverse @<span class="underline"><span class="variable-name">triangle</span></span>;
-
-print @{$<span class="variable-name">result</span>}[0] . <span class="string">"\n"</span>;
-</pre>
-<p>
-Scheme,
+<p class="abstract">
+Update: This post refers to my old web hosting situation, so the
+examples I used to showcase here no longer work. I'm now
+using <a href="http://pygments.org/">Pygments</a> for my syntax
+highlighting.
 </p>
-<pre>
-<span class="quack-pltish-paren">(</span><span class="quack-pltish-keyword">define</span> <span class="quack-pltish-paren">(</span><span class="quack-pltish-defn">sqrt</span> x<span class="quack-pltish-paren">)</span>
-  <span class="quack-pltish-paren">(</span>sqrt-iter <span class="quack-pltish-selfeval">0</span> <span class="quack-pltish-selfeval">1.0</span> x<span class="quack-pltish-paren">))</span>
-
-<span class="quack-pltish-paren">(</span><span class="quack-pltish-keyword">define</span> <span class="quack-pltish-paren">(</span><span class="quack-pltish-defn">sqrt-iter</span> last-guess guess x<span class="quack-pltish-paren">)</span>
-  <span class="quack-pltish-paren">(</span><span class="quack-pltish-keyword">if</span> <span class="quack-pltish-paren">(</span>good-enough? last-guess guess<span class="quack-pltish-paren">)</span>
-      guess
-      <span class="quack-pltish-paren">(</span>sqrt-iter guess <span class="quack-pltish-paren">(</span>improve guess x<span class="quack-pltish-paren">)</span>
-                 x<span class="quack-pltish-paren">)))</span>
-
-<span class="quack-pltish-paren">(</span><span class="quack-pltish-keyword">define</span> <span class="quack-pltish-paren">(</span><span class="quack-pltish-defn">good-enough?</span> last-guess guess<span class="quack-pltish-paren">)</span>
-  <span class="quack-pltish-paren">(</span>&lt; <span class="quack-pltish-paren">(</span>/ <span class="quack-pltish-paren">(</span>abs <span class="quack-pltish-paren">(</span>- last-guess guess<span class="quack-pltish-paren">))</span> guess<span class="quack-pltish-paren">)</span> <span class="quack-pltish-selfeval">0.001</span><span class="quack-pltish-paren">))</span>
-</pre>
-<p>
-Octave,
-</p>
-<pre>
-<span class="comment-delimiter"># </span><span class="comment">npoly()
-</span><span class="keyword">function</span> a = <span class="function-name">npoly</span> (x, y)
-  X = repmat (x', 1, length(x));
-
-  <span class="keyword">for</span> i = 1:length(x)
-    X(:,i) = X(:,i) .^ (i - 1);
-  <span class="keyword">end</span>
-
-  a = X \ y';
-<span class="keyword">end</span>
-</pre>
-<p>
-C,
-</p>
-<pre>
-<span class="preprocessor">#define</span> <span class="function-name">SWAP</span>(<span class="variable-name">a</span>, <span class="variable-name">b</span>) <span class="keyword">if</span> (a ^ b) {a ^= b; b ^= a; a ^= b;}
-
-<span class="comment-delimiter">/* </span><span class="comment">Initialize a keystream.  </span><span class="comment-delimiter">*/</span>
-<span class="type">void</span> <span class="function-name">init_keystream</span> (<span class="type">keystream</span> *<span class="variable-name">k</span>, <span class="type">int</span> <span class="variable-name">n</span>)
-{
-  k-&gt;i = 0;
-  k-&gt;j = 0;
-
-  <span class="type">int</span> <span class="variable-name">i</span>;
-  <span class="keyword">for</span> (i = 0; i &lt; 256; i++)
-    k-&gt;S[i] = i;
-
-  <span class="type">int</span> <span class="variable-name">s</span>;
-  <span class="type">byte</span> <span class="variable-name">j</span> = 0;
-  <span class="keyword">for</span> (s = 0; s &lt; n; s++)
-    <span class="keyword">for</span> (i = 0; i &lt; 256; i++)
-      {
-        j += k-&gt;S[i] + k-&gt;key[i % k-&gt;keylen];
-        SWAP(k-&gt;S[i], k-&gt;S[j]);
-      }
-}
-</pre>
-<p>
-elisp,
-</p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">count-words-buffer</span> ()
-  <span class="doc">"Print a message the number of words in the current buffer."</span>
-  (interactive)
-  (<span class="keyword">save-excursion</span>
-    (<span class="keyword">let</span> ((count 0))
-      (goto-char (point-min))
-      (<span class="keyword">while</span> (&lt; (point) (point-max))
-        (forward-word 1)
-        (setq count (1+ count)))
-      (message <span class="string">"%d words."</span> count))))
-</pre>
-<p>
-And even HTML,
-</p>
-<pre>
-&lt;<span class="function-name">html</span>&gt;
-&lt;<span class="function-name">head</span>&gt;
-&lt;<span class="function-name">title</span>&gt;<span class="underline"><span class="bold">Sample HTML</span></span>&lt;/<span class="function-name">title</span>&gt;
-&lt;/<span class="function-name">head</span>&gt;
-&lt;<span class="function-name">body</span>&gt;
-&lt;<span class="function-name">h1</span>&gt;<span class="underline"><span class="bold">Hello World!</span></span>&lt;/<span class="function-name">h1</span>&gt;
-<span class="comment-delimiter">&lt;!-- </span><span class="comment">This is a comment. </span><span class="comment-delimiter">--&gt;</span>
-&lt;<span class="function-name">p</span>&gt;
-  This is my HTML sample.
-&lt;/<span class="function-name">p</span>&gt;
-&lt;/<span class="function-name">body</span>&gt;
-</pre>
