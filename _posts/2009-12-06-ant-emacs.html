@@ -6,7 +6,7 @@ layout: post
 <!-- 6 December 2009 -->
 <p class="abstract">
 Update: This is now part of my
-<a href="http://git.nullprogram.com/?p=emacs-java.git">
+<a href="https://github.com/skeeto/emacs-java">
 <code>java-mode-plus</code></a> Emacs extension.
 </p>
 <p>
@@ -23,9 +23,9 @@ I use the compile command so much that I bound it to <code>C-x
 C-k</code> (<code>C-k</code> tends to be part of compile key
 bindings),
 </p>
-<pre>
-(global-set-key <span class="string">"\C-x\C-k"</span> 'compile)
-</pre>
+{% highlight cl %}
+(global-set-key "\C-x\C-k" 'compile)
+{% endhighlight %}
 <p>
 Until recently, I didn't have as nice of a setup for Java. Since they
 generally force offensive IDEs onto me at work this wasn't something I
@@ -62,24 +62,24 @@ To keep the actual call as simple as possible, I wrote a wrapper for
 change the local binding. The wrapper, <code>ant-compile</code>,
 searches for the build file the same way <code>-find</code> would do.
 </p>
-<pre>
-(<span class="keyword">defun</span> <span class="function-name">ant-compile</span> ()
-  <span class="string">"Traveling up the path, find build.xml file and run compile."</span>
+{% highlight cl %}
+(defun ant-compile ()
+  "Traveling up the path, find build.xml file and run compile."
   (interactive)
-  (<span class="keyword">with-temp-buffer</span>
-    (<span class="keyword">while</span> (and (not (file-exists-p <span class="string">"build.xml"</span>))
-                (not (equal <span class="string">"/"</span> default-directory)))
-      (cd <span class="string">".."</span>))
+  (with-temp-buffer
+    (while (and (not (file-exists-p "build.xml"))
+                (not (equal "/" default-directory)))
+      (cd ".."))
     (call-interactively 'compile)))
-</pre>
+{% endhighlight %}
 <p>
 So I can transparently keep using my muscle memory compile binding, I
 set up the key binding in a hook,
 </p>
-<pre>
+{% highlight cl %}
 (add-hook 'java-mode-hook
-          (<span class="keyword">lambda</span> () (local-set-key <span class="string">"\C-x\C-k"</span> 'ant-compile)))
-</pre>
+          (lambda () (local-set-key "\C-x\C-k" 'ant-compile)))
+{% endhighlight %}
 <p>
 Voila! Java works looks a little bit more like C.
 </p>
