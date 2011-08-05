@@ -1,0 +1,100 @@
+---
+title: Moved To New Hosting
+layout: post
+---
+
+<!-- 05 August 2011 -->
+<p>
+If you see this post, then you're receiving null program from its new
+host: <a href="https://github.com/">GitHub</a>. The end of the month
+marks 4 years of my blog (the last such announcement
+was <a href="/blog/2009/09/01/">two years ago</a>), and what was going
+to be the 2-year renewal with my old host. I took the opportunity to
+reassess my hosting situation and reorganize my back-end.
+</p>
+<p>
+The repository that houses my entire blog is here,
+</p>
+<pre>
+git clone <a href="https://github.com/skeeto/skeeto.github.com">git://github.com/skeeto/skeeto.github.com.git</a>
+</pre>
+<p>
+You can run an entirely local version of my blog from that
+repository. You could also make corrections, commit them, and give me
+a pull request -- not that I'm expecting that to happen. (Oh, also,
+cloning the repository won't work in Windows, because
+my <a href="http://localhost:4000/download/slashtest/">URL mangling
+test</a> is in there.)
+</p>
+<p>
+Initially I considered going in the opposite direction. I looked into
+renting out a VM, rebuilding my site from scratch as a Java Servlet,
+and hosting it from the VM. That would double my monthly costs, but
+give me a cool new thing to play with. It would also be a lot of work
+building a back-end from scratch.
+</p>
+<p>
+Ultimately I wanted to work entirely within Git. I wanted to write a
+new post on my local machine, view it using a local web server, and,
+when I was satisfied, commit it and push it as a commit to the real
+server. My old situation had me checking out new posts by posting them
+live on the real server. I didn't like that.
+</p>
+<p>
+I eventually discovered <a href="http://pages.github.com/">GitHub
+Pages</a>. GitHub will host your static content for free. Not only
+that, but they'll process it
+with <a href="https://github.com/mojombo/jekyll">Jekyll</a>. That
+means I can push "source" files to GitHub and they'll "compile" them
+into my website for me. My blog is very well-suited for static
+hosting, so this is everything I needed. And the price is right: this
+is a free service!
+</p>
+<p>
+Going back through each of my old posts, refitting them for Jekyll,
+was a very time consuming process. Every video, image, and highlighted
+bit of source code needed to be reworked. In addition to moving them
+into place for Jekyll, I improved the organization of my videos and
+images. At my old host, I highlighted source code with
+the <a href="/blog/2009/04/23/">htmlize</a> Emacs extension. Jekyll
+has a much nicer
+solution: <a href="http://pygments.org/">Pygments</a>. However, this
+required stripping away all of the htmlize HTML code, reversing all of
+the HTML entities, and placing the Pygments delimiters; this was a
+process that couldn't be automated because it required a lot of human
+judgment.
+</p>
+<p>
+One thing I did notice from reworking all my source code samples,
+particularly more recent entries, was that most of my in-line code is
+Lisp! Common Lisp syntax highlighting was the most common, though it
+was really highlighting Elisp. My very early posts are dominated by
+Octave syntax highlighting.
+</p>
+<p>
+Due to static hosting, for comments I went
+to <a href="http://disqus.com/">Disqus</a>. It was very easy and
+painless to integrate into my static blog. Unfortunately I haven't yet
+looked into the import/export situation with my old comments. It looks
+like it should be possible to do. I can export to the WordPress XML
+format and import them into Disqus.
+</p>
+<p>
+For comments, I actually considered the pull request thing. If you
+wanted to leave a comment, you would clone my blog's repository, edit
+in a comment, and ask me to pull in your change. That's a very large
+barrier to commenting, and I doubt anyone would do it, so I skipped
+that idea.
+</p>
+<p>
+So this is my new blog situation. I've completely moved away from
+blosxom now. I trimmed some fat in the transition, so it currently
+weighs in at about 128MB. I'd like to keep it under 300MB, but that's
+not overly important. Hopefully you can't really tell the difference
+between the new and the old. The RSS feed is in the same place, so you
+don't need to change anything to keep following. I did break my
+"short" and "long" permalinks but no one was using them anyway. Even
+though I'm now using GitHub, I'm not actually too dependent on
+them. My transformation to Jekyll gives me more freedom than ever. I
+could very easily move to any host at this point.
+</p>
