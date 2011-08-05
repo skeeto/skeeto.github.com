@@ -104,3 +104,7 @@ p.permalink {
   font-size: 75%;
   text-align: right;
 }
+
+p.commentlink {
+  text-align: right;
+}
