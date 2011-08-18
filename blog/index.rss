@@ -16,7 +16,7 @@
     <item>
       <title>{{ post.title }}</title>
       <link>{{ site.url }}{{ post.url }}</link>
-      <guid>{{ site.url }}{{ post.id }}</guid>
+      <guid>{{ site.url }}{{ post.url }}</guid>
       <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
       <description>
         {{ post.content | strip_html | truncatewords: 30 }}
