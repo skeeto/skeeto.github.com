@@ -25,8 +25,8 @@ should probably fix some of those rough edges." So I did.
 
 First I gave it a name, since no one on that forum seemed to know what
 to call it. Most of the work was done in October of 2010, so I went
-with that: **October**. The October Chess Engine. It is also now in
-the public domain, no copyrights attached.
+with that: **October**. The October Chess Engine. It's also now in the
+public domain, no copyrights attached.
 
 Next, since I've learned so much about Java 2D graphics in the last
 year, I reworked the graphics. The graphics code is shorter and
@@ -47,10 +47,11 @@ perspective, except that it no longer triggers thread-related JVM bugs
 many threads.
 
 As a side-effect of tidying threading, I made an experimental branch
-(`distributed`) that allows the AI to make use of other computers in
-the network. The entire board state is serialized, along with a single
-unevaluated move, and sent off to other machines. They analyze the
-move and report back with the move's score.
+([`distributed`](https://github.com/skeeto/october-chess-engine/tree/distributed))
+that allows the AI to make use of other computers in the network. The
+entire board state is serialized, along with a single unevaluated
+move, and sent off to other machines. They analyze the move and report
+back with the move's score.
 
 While investigating a move can be done independently, it misses out on
 a serious optimization. Scores from previous moves can be used to
@@ -74,11 +75,13 @@ the previously-mentioned optimization, the AI speeds up as it
 progresses, so newer timings are weighted more than older timings.
 
 And finally, one of the most visible changes to the user, I created an
-[NSIS installer](http://nsis.sourceforge.net/) for the Windows
-users. They can now click their way through a familiar install
-wizard. The chess engine is now a neatly-packaged product. I got the
-idea from [DCSS](http://crawl.develz.org/wordpress/), which has a very
-well organized build system and makes good use of NSIS.
+[NSIS installer](http://nsis.sourceforge.net/) for the Windows users
+(available in the downloads section of
+[October's website](https://github.com/skeeto/october-chess-engine)). They
+can click their way through a familiar install wizard, making the
+chess engine a neatly-packaged product. I got the idea from
+[DCSS](http://crawl.develz.org/wordpress/), which has a very well
+organized build system and makes good use of NSIS.
 
 In the future I'd like to tidy up the experimental distributed AI
 stuff, possibly rebuild it on top of Java RMI. I'd also like to add
