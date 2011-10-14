@@ -5,8 +5,8 @@ layout: post
 
 I recently toyed around with some halftone, a technique for simulating
 continuous tone images using solid dots. I can't remember what
-specifically gave me the idea, to try it out. It also provided a good
-use-case for my [newly discovered hot code
+specifically gave me the idea to try it out. Perhaps it was because it
+provided a good use-case for my [newly discovered hot code
 replacement](/blog/2011/08/30/).
 
 <p class="center">
