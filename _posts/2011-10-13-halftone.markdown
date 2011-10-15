@@ -50,7 +50,7 @@ image. Since I want the dots to fully fill their space at the most
 extreme, their maximum radius is the square root of two times the
 spacing. That is, the dots will just touch on the diagonal when
 full. To determine magnitude of the dot I used the [luma
-coefficients](http://en.wikipedia.org/wiki/Luma_(video\)). That makes
+coefficients](http://en.wikipedia.org/wiki/Luma_(video%29). That makes
 the RGB values weighted more accurately to the way human sight
 perceives brightness.
 
