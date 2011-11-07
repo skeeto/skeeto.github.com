@@ -3,6 +3,9 @@ title: Introducing NativeGuide
 layout: post
 ---
 
+See it in action:
+[CubeDemo.jar](https://github.com/downloads/skeeto/SampleLWJGLProject/CubeDemo.jar) (4.7 MB) (Linux, Windows, and Mac OS X)
+
 NativeGuide is a Java utility library I wrote that makes native
 libraries easier to manage. Really, it's a very small and simple
 library, but it provides some critical functionality I desire and I
@@ -17,6 +20,12 @@ than rely on Maven -- I always go out of my way to avoid Maven. For
 reuse-ability, I added it to my [SampleJavaProject](/blog/2010/10/04/)
 as the "bundle" target. It generates all of the required artifacts,
 digitally signs them, and bundles them up.
+
+The demo at the top of this post contains native libraries for running
+OpenGL programs on seven platforms. NativeGuide takes care of getting
+the proper library in place for the JVM to load. All of this is
+hopefully transparent to you, the user, so that this appears to be a
+regular run-anywhere Java application.
 
 The issue that NativeGuide solves is a special case of the
 distribution problem. Distribution is one of the major problems every
