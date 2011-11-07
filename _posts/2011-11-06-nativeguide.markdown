@@ -4,7 +4,7 @@ layout: post
 ---
 
 See it in action:
-[CubeDemo.jar](https://github.com/downloads/skeeto/SampleLWJGLProject/CubeDemo.jar) (4.7 MB) (Linux, Windows, and Mac OS X)
+[CubeDemo.jar](https://github.com/downloads/skeeto/SampleLWJGLProject/CubeDemo.jar) (4.7 MB) (Linux, Windows, and Mac OS X) ([source](https://github.com/skeeto/SampleLWJGLProject/tree/cube-demo))
 
 NativeGuide is a Java utility library I wrote that makes native
 libraries easier to manage. Really, it's a very small and simple
