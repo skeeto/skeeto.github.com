@@ -5,7 +5,7 @@ layout: default
 <article>
   <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
   <p class="date">
-    <time datetime="{{ page.date }}" class="date">
+    <time datetime="{{ page.date | date: "%Y-%m-%d" }}" class="date">
       {{ page.date | date: "%d %b %Y" }}
     </time>
   </p>
