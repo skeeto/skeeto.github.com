@@ -41,9 +41,9 @@ problem -- my configuration is largely made up of *other*
 repositories. Git has good support for putting foreign Git
 repositories within your own repository, but a couple of repositories
 I was using were Subversion and CVS. I managed to cut down to just Git
-repositories and one Subversion repository, for which [I now maintain
-a Git mirror](https://github.com/skeeto/yasnippet), making these *all*
-Git repositories.
+repositories <s>and one Subversion repository, for which I now
+maintain a Git mirror, making these *all* Git repositories</s>.
+(*Update November 2011*: YASnippet has moved to Git.)
 
 I also trimmed down a bit, cutting out some things I noticed I wasn't
 using (breadcrumbs, pabbrev) or things that didn't need to be in
@@ -56,9 +56,10 @@ commit.
 
 Some of the important pieces of my configuration are a spattering of
 new modes, [Magit](http://philjackson.github.com/magit/) (`M-x g`),
-[yasnippet](http://code.google.com/p/yasnippet/) (including several of
-my own snippets), [dired+](http://www.emacswiki.org/emacs/DiredPlus),
+[yasnippet](https://github.com/capitaomorte/yasnippet) (including
+several of my own snippets),
+[dired+](http://www.emacswiki.org/emacs/DiredPlus),
 [ParEdit](http://www.emacswiki.org/emacs/ParEdit),
-[smex](https://github.com/nonsequitur/smex), my [Java editing
-extensions](/blog/2010/10/15/), and [a web server](/blog/2009/05/17/)
-(`M-x httpd-start`).
+[smex](https://github.com/nonsequitur/smex), my
+[Java editing extensions](/blog/2010/10/15/), and
+[a web server](/blog/2009/05/17/) (`M-x httpd-start`).
