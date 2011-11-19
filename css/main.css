@@ -51,8 +51,21 @@ h2 a {
     text-decoration: none;
 }
 
+code {
+    background-color: #EEEEEE;
+    border: 1px solid #AAAAAA;
+}
+
 pre {
-    background-color: #F6F6FF;
+    border: 1px solid #AAAAAA;
+    background-color: #EEEEEE;
+    padding: 3px;
+    margin-left : 1em;
+}
+
+pre code {
+    background-color: #EEEEEE;
+    border: none;
 }
 
 blockquote {
