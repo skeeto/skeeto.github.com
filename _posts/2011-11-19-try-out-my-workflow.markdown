@@ -1,5 +1,5 @@
 ---
-title: Try Out My Emacs with Java Workflow Easily
+title: Try Out My Java With Emacs Workflow Within Minutes
 layout: post
 ---
 
@@ -90,6 +90,8 @@ wombat theme. No menu bar, no toolbar, just a minibuffer, mode line,
 and wide open window. Anything else is a waste of screen real
 estate.
 
+[![](/img/emacs/init-thumb.png)](/img/emacs/init.png)
+
 Now to go for a test drive: open up that Java project you cloned, with
 `M-x open-java-project`. That will prompt you for the root directory
 of the project. The only thing this does is pre-opens all of the
@@ -105,12 +107,16 @@ statements at any time with `C-x I` (note: capital `I`), where
 pick. The import will be added at the top of the buffer in the correct
 position in the import listing.
 
+[![](/img/emacs/java-import-thumb.png)](/img/emacs/java-import.png)
+
 Without needing to save, hit `C-x r` to run the program from Emacs. A
 `*compilation-1*` buffer will pop up with all of the output from Ant
 and the program. If you just want to compile without running it, type
 `C-x c` instead. If there were any errors, Ant will report them in the
 compilation buffer. You can jump directly to these with <code>C-x
 `</code> (that's a backtick).
+
+[![](/img/emacs/java-run-thumb.png)](/img/emacs/java-run.png)
 
 Now open a new source file in the same package (same directory) as the
 source file you just edited. Type `cls` and hit tab. The boilerplate,
@@ -120,8 +126,10 @@ YASnippet. There are a bunch of completion snippets available. Try
 
 When I'm developing a library, I don't have a main function, so
 there's nothing to "run". Instead, I drive things from unit tests,
-which can be run with `C-h t`, which runs the "test" target if there
+which can be run with `C-x t`, which runs the "test" target if there
 is one.
+
+[![](/img/emacs/junit-mock-thumb.png)](/img/emacs/junit-mock.png)
 
 To see your changes, type `C-x g` to bring up Magit and type `M-s` in
 the Magit buffer (to show a full diff). From here you can make
@@ -130,6 +138,8 @@ learn how to do all this, see the
 [Magit manual](http://philjackson.github.com/magit/magit.html). You
 can type `q` to exit the Magit window, or use `S-<arrow key>` to move
 to an adjacent buffer in any direction.
+
+[![](/img/emacs/magit-thumb.png)](/img/emacs/magit.png)
 
 And that's basically my workflow. Developing in C is a very similar
 process, but without the `java-docs` part.
