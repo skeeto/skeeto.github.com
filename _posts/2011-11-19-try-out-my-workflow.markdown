@@ -88,7 +88,8 @@ Clone my configuration,
 Then run Emacs. You should be greeted with a plain, gray window: the
 wombat theme. No menu bar, no toolbar, just a minibuffer, mode line,
 and wide open window. Anything else is a waste of screen real
-estate.
+estate. This initial empty buffer has a great aesthetic, don't you
+think?
 
 [![](/img/emacs/init-thumb.png)](/img/emacs/init.png)
 
