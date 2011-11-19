@@ -12,7 +12,7 @@ layout: default
 <ul>
   {% for post in site.posts reversed %}
     <li>
-      <code>{{ post.date | date: "%Y-%m-%d" }} - </code>
+      {{ post.date | date: "%Y-%m-%d" }} -
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
