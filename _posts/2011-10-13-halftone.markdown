@@ -9,11 +9,7 @@ specifically gave me the idea to try it out. Perhaps it was because it
 provided a good use-case for my [newly discovered hot code
 replacement](/blog/2011/08/30/).
 
-<p class="center">
-  <a href="/img/halftone/halftone.png">
-    <img src="/img/halftone/halftone-thumb.png" alt=""/>
-  </a>
-</p>
+[![](/img/halftone/halftone-thumb.png)](/img/halftone/halftone.png)
 
 <pre>
 git clone <a href="https://github.com/skeeto/Halftone">git://github.com/skeeto/Halftone.git</a>
@@ -36,11 +32,7 @@ different ways to arrange the dots: by size (amplitude modulation), by
 spacing (frequency modulation), by shape, or any combination of
 these. In my little demo above I took the simplest route, by size.
 
-<p class="center">
-  <a href="/img/halftone/halftone-eye.png">
-    <img src="/img/halftone/halftone-eye-thumb.png" alt=""/>
-  </a>
-</p>
+[![](/img/halftone/halftone-eye-thumb.png)](/img/halftone/halftone-eye.png)
 
 I scale the image down using bicubic interpolation (thanks to the
 handy
