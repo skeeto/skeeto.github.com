@@ -20,6 +20,7 @@ body {
     width: 15em;
     padding: 0 10px 0 10px;
     font-size: 75%;
+    border-radius: 15px;
 }
 
 #essay {
@@ -28,6 +29,7 @@ body {
     margin: 0 0 10px 13em;
     padding: 1em;
     background-color: white;
+    border-radius: 15px;
 }
 
 #footer {
@@ -38,6 +40,7 @@ body {
     border-width: 1px 1px 1px 1px;
     margin: 0 0 10px 17.3em;
     padding: 1em 2em 1em 2em;
+    border-radius: 15px;
 }
 
 address {
