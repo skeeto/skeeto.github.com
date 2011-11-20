@@ -47,6 +47,11 @@ address {
     font-style: normal;
 }
 
+.portrait {
+    border-radius: 15px;
+    border: 2px solid #ccc;
+}
+
 h2 {
     font-size: 14pt;
     padding: 0 0 0 1em;
@@ -114,9 +119,6 @@ img.left {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-img {
   border: 0px;
 }
 
