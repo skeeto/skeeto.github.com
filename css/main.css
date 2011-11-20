@@ -6,11 +6,11 @@ body {
     margin-right: auto;
 }
 
-header {
+#header {
     text-align: center;
 }
 
-nav {
+#aside {
     border: solid #ccc;
     border-width: 1px 1px 1px 1px;
     color: black;
@@ -30,7 +30,7 @@ nav {
     background-color: white;
 }
 
-footer {
+#footer {
     font-size: 75%;
     color: inherit;
     background-color: #F6F6FF;
