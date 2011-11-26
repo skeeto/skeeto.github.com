@@ -31,6 +31,7 @@ article {
     padding: 1em;
     background-color: white;
     border-radius: 15px;
+    display: block;
 }
 
 footer {
@@ -42,6 +43,7 @@ footer {
     margin: 0 0 10px 17.3em;
     padding: 1em 2em 1em 2em;
     border-radius: 15px;
+    display: block;
 }
 
 nav {
