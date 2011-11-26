@@ -114,38 +114,38 @@ blockquote {
 
 
 img.center {
-  text-align: center;
-  border: 0px;
+    text-align: center;
+    border: 0px;
 }
 
 img.right {
-  float: right;
-  border: 0px;
-  padding: 10px;
+    float: right;
+    border: 0px;
+    padding: 10px;
 }
 
 img.left {
-  float: left;
-  border: 0px;
-  padding: 10px;
+    float: left;
+    border: 0px;
+    padding: 10px;
 }
 
 #essay img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0px;
 }
 
 p.center {
-  text-align: center;
+    text-align: center;
 }
 
 p.permalink {
-  font-size: 75%;
-  text-align: right;
+    font-size: 75%;
+    text-align: right;
 }
 
 p.commentlink {
-  text-align: right;
+    text-align: right;
 }
