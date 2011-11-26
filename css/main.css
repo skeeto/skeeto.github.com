@@ -6,24 +6,25 @@ body {
     margin-right: auto;
 }
 
-#header {
+header {
     text-align: center;
 }
 
-#aside {
+aside {
     border: solid #ccc;
     border-width: 1px 1px 1px 1px;
     color: black;
     background-color: #F0F0E0;
     position: absolute;
-    top: 185px;
+    top: 186px;
     width: 15em;
     padding: 0 10px 0 10px;
     font-size: 75%;
     border-radius: 15px;
 }
 
-#essay {
+article {
+    text-align: justify;
     border: solid #ccc;
     border-width: 1px 1px 1px 1px;
     margin: 0 0 10px 13em;
@@ -32,7 +33,7 @@ body {
     border-radius: 15px;
 }
 
-#footer {
+footer {
     font-size: 75%;
     color: inherit;
     background-color: #F6F6FF;
@@ -41,6 +42,18 @@ body {
     margin: 0 0 10px 17.3em;
     padding: 1em 2em 1em 2em;
     border-radius: 15px;
+}
+
+nav {
+    text-align: center;
+}
+
+.nav-prev {
+    float: left;
+}
+
+.nav-next {
+    float: right;
 }
 
 address {

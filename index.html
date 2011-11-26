@@ -18,24 +18,4 @@ layout: default
        data-disqus-identifier="{{ post.url }}">? Comments</a>
   </p>
 </article>
-<hr/>
 {% endfor %}
-
-<!-- Navigation -->
-
-{% if paginator.previous_page > 1 %}
-  {% capture prev_page %}page{{ paginator.previous_page }}{% endcapture%}
-{% endif %}
-{% if paginator.previous_page %}
-<a href="/{{ prev_page }}" title="Go to previous page">
-  &laquo; Previous
-</a>
-{% endif %}
-
-<a href="/index/" title="Go to archives">Archives</a>
-
-{% if paginator.next_page %}
-<a href="/page{{ paginator.next_page }}" title="Go to next page">
-  Next &raquo;
-</a>
-{% endif %}

@@ -3,17 +3,17 @@ title: Archives
 layout: default
 ---
 
-<h2>Archives</h2>
-
-<p>
-  There are <b>{{ site.posts | size }}</b> posts.
-</p>
-
-<ul>
-  {% for post in site.posts reversed %}
-    <li>
-      {{ post.date | date: "%Y-%m-%d" }} -
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+<article>
+  <h2>Archives</h2>
+  <p>
+    There are <b>{{ site.posts | size }}</b> posts.
+  </p>
+  <ul>
+    {% for post in site.posts reversed %}
+      <li>
+        {{ post.date | date: "%Y-%m-%d" }} -
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</article>
