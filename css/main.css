@@ -10,40 +10,32 @@ header {
     text-align: center;
 }
 
-aside {
-    border: solid #ccc;
-    border-width: 1px 1px 1px 1px;
-    color: black;
-    background-color: #F0F0E0;
+#sidebar {
     position: absolute;
-    top: 186px;
-    width: 15em;
-    padding: 0 10px 0 10px;
-    font-size: 75%;
-    border-radius: 15px;
 }
 
-article {
-    text-align: justify;
-    border: solid #ccc;
-    border-width: 1px 1px 1px 1px;
-    margin: 0 0 10px 13em;
-    padding: 1em;
-    background-color: white;
+aside {
+    background-color: WhiteSmoke;
+    padding: 3px 10px 3px 10px;
+    margin-bottom: 10px;
+    width: 180px;
+    font-size: 75%;
     border-radius: 15px;
+    box-shadow: 0 0 3px 3px Silver;
+}
+
+article, footer {
+    background-color: White;
+    margin: 0 0 10px 210px;
+    padding: 15px;
+    text-align: justify;
+    border-radius: 15px;
+    box-shadow: 0 0 3px 3px Silver;
     display: block;
 }
 
 footer {
     font-size: 75%;
-    color: inherit;
-    background-color: #F6F6FF;
-    border: solid #ccc;
-    border-width: 1px 1px 1px 1px;
-    margin: 0 0 10px 17.3em;
-    padding: 1em 2em 1em 2em;
-    border-radius: 15px;
-    display: block;
 }
 
 nav {
