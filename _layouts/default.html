@@ -6,25 +6,12 @@
     <link rel="stylesheet" type="text/css" href="/css/syntax.css"/>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
     <link rel="alternate" type="application/rss+xml" href="/blog/index.rss"/>
+    <script src="/script/ga.js"></script>
 
     <!--[if lt IE 9]>
       <meta http-equiv="refresh" content="0;url=http://www.mozilla.org/">
       <style type="text/css">body { visibility: hidden; }</style>
     <![endif]-->
-
-    <!-- Analytics -->
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-24992716-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-
   </head>
   <body>
 
@@ -209,18 +196,12 @@
       </p>
     </footer>
 
-<!-- Disqus -->
-<script type="text/javascript">
+  <!-- Disqus -->
+  <script>
     var disqus_shortname = 'nullprogram';
+  </script>
+  <script src="/script/disqus-count.js"></script>
+  <!-- End Disqus -->
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-<!-- End Disqus -->
   </body>
 </html>
