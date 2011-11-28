@@ -31,7 +31,6 @@ article, footer {
     text-align: justify;
     border-radius: 15px;
     box-shadow: 0 0 3px 3px Silver;
-    display: block;
 }
 
 footer {
@@ -57,6 +56,10 @@ address {
 .portrait {
     border-radius: 15px;
     border: 2px solid Silver;
+}
+
+img {
+    border: 0px;
 }
 
 h2 {
@@ -112,13 +115,11 @@ img.center {
 
 img.right {
     float: right;
-    border: 0px;
     padding: 10px;
 }
 
 img.left {
     float: left;
-    border: 0px;
     padding: 10px;
 }
 
@@ -126,7 +127,6 @@ article img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 0px;
 }
 
 p.center {
