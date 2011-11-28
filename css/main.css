@@ -4,6 +4,7 @@ body {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Signika Negative', sans-serif;
 }
 
 header {
@@ -16,9 +17,9 @@ header {
 
 aside {
     background-color: WhiteSmoke;
-    padding: 3px 10px 3px 10px;
+    padding: 3px 20px 3px 20px;
     margin-bottom: 10px;
-    width: 180px;
+    width: 160px;
     font-size: 75%;
     border-radius: 15px;
     box-shadow: 0 0 3px 3px Silver;
@@ -63,8 +64,9 @@ img {
 }
 
 h2 {
-    font-size: 14pt;
+    font-size: 1.4em;
     padding: 0 0 0 1em;
+    font-weight: normal;
 }
 
 h2 a {
