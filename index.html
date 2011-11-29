@@ -8,7 +8,7 @@ layout: default
   <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
   <p class="date">
     <time datetime="{{ post.date | date: "%Y-%m-%d" }}" class="date">
-      {{ post.date | date: "%d %b %Y" }}
+      {{ post.date | date: "%B %d, %Y" }}
     </time>
   </p>
   {{ post.content }}

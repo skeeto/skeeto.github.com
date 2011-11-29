@@ -126,9 +126,9 @@ blockquote {
 
 .date {
     font-size: 90%;
-    font-weight: bold;
-    text-indent: 3em;
     color: #2F4F4F;
+    text-align: center;
+    margin-top: -1em;
 }
 
 .abstract {
