@@ -23,6 +23,7 @@ aside {
     font-size: 75%;
     border-radius: 15px;
     box-shadow: 0 0 3px 3px Silver;
+    text-align: justify;
 }
 
 article, footer {
@@ -71,6 +72,22 @@ h2 {
 
 h2 a {
     text-decoration: none;
+}
+
+aside h2 {
+    font-size: 1.2em;
+    text-indent: 0;
+    border-radius: 3px;
+    background-color: Gainsboro;
+    text-align: center;
+    padding: 5px 3px 3px 3px;
+}
+
+aside li {
+    text-indent: 0em;
+    margin-left: -2.5em;
+    padding-left: 0;
+    list-style: none;
 }
 
 code {
