@@ -61,6 +61,10 @@ address {
     margin-bottom: -1em;
 }
 
+.buttons {
+    text-align: center;
+}
+
 img {
     border: 0px;
 }
