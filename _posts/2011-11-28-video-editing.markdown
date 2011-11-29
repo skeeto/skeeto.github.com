@@ -76,7 +76,7 @@ reading from stdin, especially if you do multiple passes. A possible
 workaround would be a named pipe,
 
     mkfifo video.y4m
-    cat *.ppm | ppmtoy4m > video.y4m
+    cat *.ppm | ppmtoy4m > video.y4m &
     otherencoder video.4pm
 
 I have attempted to do two passes with the WebM encoder
