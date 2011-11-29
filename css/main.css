@@ -70,22 +70,26 @@ img {
 }
 
 h2 {
-    font-size: 1.4em;
-    padding: 0 0 0 1em;
     font-weight: normal;
+    text-indent: 0;
+    border-radius: 15px;
+    background-color: Gainsboro;
+    text-align: center;
+    padding: 5px 3px 3px 3px;
+}
+
+article h2 {
+    font-size: 1.4em;
+    margin-top: 0.5em;
 }
 
 h2 a {
     text-decoration: none;
+    color: Black;
 }
 
 aside h2 {
     font-size: 1.2em;
-    text-indent: 0;
-    border-radius: 3px;
-    background-color: Gainsboro;
-    text-align: center;
-    padding: 5px 3px 3px 3px;
 }
 
 aside li {
