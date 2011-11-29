@@ -4,8 +4,7 @@ backB: White
 backC: WhiteSmoke
 backD: Gainsboro
 foreA: Black
-foreB: "#2F4F4F"
-foreC: Silver
+foreB: Silver
 ---
 
 body {
@@ -32,7 +31,7 @@ aside {
     width: 160px;
     font-size: 75%;
     border-radius: 15px;
-    box-shadow: 0 0 3px 3px {{ page.foreC }};
+    box-shadow: 0 0 3px 3px {{ page.foreB }};
     text-align: justify;
 }
 
@@ -42,7 +41,7 @@ article, footer {
     padding: 20px 40px 20px 40px;
     text-align: justify;
     border-radius: 15px;
-    box-shadow: 0 0 3px 3px {{ page.foreC }};
+    box-shadow: 0 0 3px 3px {{ page.foreB }};
 }
 
 footer {
@@ -67,7 +66,7 @@ address {
 
 .portrait {
     border-radius: 15px;
-    border: 2px solid {{ page.foreC }};
+    border: 2px solid {{ page.foreB }};
     margin-bottom: -1em;
 }
 
