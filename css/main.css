@@ -2,9 +2,10 @@
 backA: "#ecffdc"
 backB: White
 backC: WhiteSmoke
-backD: Gainsboro
 foreA: Black
-foreB: Silver
+foreB: SlateGray
+border: Silver
+links: Blue
 ---
 
 body {
@@ -14,6 +15,10 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Signika Negative', sans-serif;
+}
+
+body a {
+    color: {{ page.links }};
 }
 
 header {
@@ -31,7 +36,7 @@ aside {
     width: 160px;
     font-size: 75%;
     border-radius: 15px;
-    box-shadow: 0 0 3px 3px {{ page.foreB }};
+    box-shadow: 0 0 3px 3px {{ page.border }};
     text-align: justify;
 }
 
@@ -41,7 +46,7 @@ article, footer {
     padding: 20px 40px 20px 40px;
     text-align: justify;
     border-radius: 15px;
-    box-shadow: 0 0 3px 3px {{ page.foreB }};
+    box-shadow: 0 0 3px 3px {{ page.border }};
 }
 
 footer {
@@ -66,7 +71,7 @@ address {
 
 .portrait {
     border-radius: 15px;
-    border: 2px solid {{ page.foreB }};
+    border: 2px solid {{ page.border }};
     margin-bottom: -1em;
 }
 
@@ -82,7 +87,7 @@ h2 {
     font-weight: normal;
     text-indent: 0;
     border-radius: 15px;
-    background-color: {{ page.backD }};
+    background-color: {{ page.border }};
     text-align: center;
     padding: 5px 3px 3px 3px;
 }
@@ -109,27 +114,25 @@ aside li {
 }
 
 code {
-    background-color: #EEEEEE;
-    border: 1px solid #AAAAAA;
+    border: 1px solid {{ page.border }};
+    background-color: {{ page.backC }};
 }
 
 pre {
-    border: 1px solid #AAAAAA;
-    background-color: #EEEEEE;
+    border: 1px solid {{ page.border }};
+    background-color: {{ page.backC }};
     padding: 3px;
-    margin-left : 1em;
+    margin-left: 1em;
 }
 
 pre code {
-    background-color: #EEEEEE;
     border: none;
+    background-color: {{ page.backC }};
 }
 
 blockquote {
-    color: inherit;
-    background-color: #F6F6FF;
-    border: dashed #00005c;
-    border-width: 1px 1px 1px 1px;
+    border: 1px dashed {{ page.border }};
+    background-color: {{ page.backC }};
     padding: 0 0 0 0.5em;
 }
 
