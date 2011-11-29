@@ -1,6 +1,16 @@
+---
+backA: "#ecffdc"
+backB: White
+backC: WhiteSmoke
+backD: Gainsboro
+foreA: Black
+foreB: "#2F4F4F"
+foreC: Silver
+---
+
 body {
-    color: black;
-    background-color: #ecffdc;
+    color: {{ page.foreA }};
+    background-color: {{ page.backA }};
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -16,23 +26,23 @@ header {
 }
 
 aside {
-    background-color: WhiteSmoke;
+    background-color: {{ page.backC }};
     padding: 3px 20px 3px 20px;
     margin-bottom: 10px;
     width: 160px;
     font-size: 75%;
     border-radius: 15px;
-    box-shadow: 0 0 3px 3px Silver;
+    box-shadow: 0 0 3px 3px {{ page.foreC }};
     text-align: justify;
 }
 
 article, footer {
-    background-color: White;
+    background-color: {{ page.backB }};
     margin: 0 0 10px 210px;
     padding: 20px 40px 20px 40px;
     text-align: justify;
     border-radius: 15px;
-    box-shadow: 0 0 3px 3px Silver;
+    box-shadow: 0 0 3px 3px {{ page.foreC }};
 }
 
 footer {
@@ -57,7 +67,7 @@ address {
 
 .portrait {
     border-radius: 15px;
-    border: 2px solid Silver;
+    border: 2px solid {{ page.foreC }};
     margin-bottom: -1em;
 }
 
@@ -73,7 +83,7 @@ h2 {
     font-weight: normal;
     text-indent: 0;
     border-radius: 15px;
-    background-color: Gainsboro;
+    background-color: {{ page.backD }};
     text-align: center;
     padding: 5px 3px 3px 3px;
 }
@@ -85,7 +95,7 @@ article h2 {
 
 h2 a {
     text-decoration: none;
-    color: Black;
+    color: {{ page.foreA }};
 }
 
 aside h2 {
@@ -126,7 +136,7 @@ blockquote {
 
 .date {
     font-size: 90%;
-    color: #2F4F4F;
+    color: {{ page.foreB }};
     text-align: center;
     margin-top: -1em;
 }
