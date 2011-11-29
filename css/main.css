@@ -58,6 +58,7 @@ address {
 .portrait {
     border-radius: 15px;
     border: 2px solid Silver;
+    margin-bottom: -1em;
 }
 
 img {
