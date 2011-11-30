@@ -1,13 +1,3 @@
----
-backA: "#ecffdc"
-backB: White
-backC: WhiteSmoke
-foreA: Black
-foreB: SlateGray
-border: Silver
-links: Blue
----
-
 body {
     color: {{ page.foreA }};
     background-color: {{ page.backA }};

@@ -1,0 +1,11 @@
+---
+backA: "#ecffdc"
+backB: White
+backC: WhiteSmoke
+foreA: Black
+foreB: SlateGray
+border: Silver
+links: Blue
+---
+
+{% include main.css %}

@@ -1,0 +1,11 @@
+---
+backA: "#394248"
+backB: "#4E626F"
+backC: "#5D7A86"
+foreA: "#FEB41C"
+foreB: "#FEAC38"
+border: "#24221F"
+links: "#FEDE4C"
+---
+
+{% include main.css %}
