@@ -11,7 +11,8 @@ function disableAllThemes() {
 /* Set the theme by index number. */
 function setTheme(index) {
     disableAllThemes();
-    $(".theme[rel='stylesheet']").eq(index).attr("disabled", false);
+    $(".theme[rel='stylesheet']").eq(index * 2).attr("disabled", false);
+    $(".theme[rel='stylesheet']").eq(index * 2 + 1).attr("disabled", false);
     $(".theme-button").eq(index).addClass("selected");
     $.cookies.set("theme", index);
 }
