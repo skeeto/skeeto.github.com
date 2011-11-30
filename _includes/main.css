@@ -105,19 +105,19 @@ aside li {
 
 code {
     border: 1px solid {{ page.border }};
-    background-color: {{ page.backC }};
+    background-color: {{ page.backA }};
 }
 
 pre {
     border: 1px solid {{ page.border }};
-    background-color: {{ page.backC }};
+    background-color: {{ page.backA }};
     padding: 3px;
     margin-left: 1em;
 }
 
 pre code {
     border: none;
-    background-color: {{ page.backC }};
+    background-color: {{ page.backA }};
 }
 
 blockquote {
