@@ -4,10 +4,18 @@
     <title>{{ page.title }} &laquo; null program</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/syntax.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/light.css"/>
     <link rel="alternate" type="application/rss+xml" href="/blog/index.rss"/>
-    <script src="/script/ga.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Signika:400,700"/>
+
+    <!-- Themes -->
+    <link rel="stylesheet" href="/css/light.css" class="theme"/>
+    <link rel="stylesheet" href="/css/saffron.css" class="theme"/>
+
+    <!-- Scripts -->
+    <script src="/script/ga.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script src="/script/theme.js"></script>
 
     <!--[if lt IE 9]>
       <meta http-equiv="refresh" content="0;url=http://www.mozilla.org/">
@@ -62,6 +70,15 @@
         <a href="/applets/">
           <img src="/img/java-button.png"
                title="My Java Applets" alt="My Java Applets"></a>
+      </p>
+    </aside>
+    <aside>
+      <h2>Select a Theme</h2>
+      <p class="buttons">
+        <a onclick="setTheme(0);">
+          <img src="/img/theme/light-button.png"></a>
+        <a onclick="setTheme(1);">
+          <img src="/img/theme/saffron-button.png"></a>
       </p>
     </aside>
     <aside>
