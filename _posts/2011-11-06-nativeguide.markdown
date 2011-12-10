@@ -4,7 +4,7 @@ layout: post
 ---
 
 See it in action:
-[CubeDemo.jar](https://github.com/downloads/skeeto/SampleLWJGLProject/CubeDemo.jar) (4.7 MB) (Linux, Windows, and Mac OS X) ([source](https://github.com/skeeto/SampleLWJGLProject/tree/cube-demo))
+[CubeDemo.jar](https://github.com/downloads/skeeto/sample-java-project/CubeDemo.jar) (4.7 MB) (Linux, Windows, and Mac OS X) ([source](https://github.com/skeeto/sample-java-project/tree/lwjgl-cube))
 
 NativeGuide is a Java utility library I wrote that makes native
 libraries easier to manage. Really, it's a very small and simple
@@ -17,7 +17,7 @@ conveniently in the central Maven repository:
 
 As a side note, I actually worked out my own staging solution rather
 than rely on Maven -- I always go out of my way to avoid Maven. For
-reuse-ability, I added it to my [SampleJavaProject](/blog/2010/10/04/)
+reuse-ability, I added it to my [sample-java-project](/blog/2010/10/04/)
 as the "bundle" target. It generates all of the required artifacts,
 digitally signs them, and bundles them up.
 
@@ -112,8 +112,8 @@ already used it with two projects allowing me to package them up into
 a single `.jar` file as if no native library was being used. One is a
 project at work which uses
 [RXTX](http://rxtx.qbang.org/wiki/index.php/Main_Page) and the other
-is a fork of my SampleJavaProject:
-[SampleLWJGLProject](https://github.com/skeeto/SampleLWJGLProject). This
+is a branch of my sample-java-project:
+[lwjgl](https://github.com/skeeto/sample-java-project/tree/lwjgl). This
 allows me to produce a single `.jar` OpenGL application that users on
 Linux, Windows, and Mac OS X can just double-click to run.
 

@@ -3,7 +3,7 @@ title: SampleHttpServlet
 layout: post
 ---
 
-Very similar to my [SampleJavaProject](/blog/2010/10/04/), I recently
+Very similar to my [sample-java-project](/blog/2010/10/04/), I recently
 put together a SampleHttpServlet project,
 
 <pre>

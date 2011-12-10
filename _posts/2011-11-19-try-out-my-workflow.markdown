@@ -61,14 +61,14 @@ Except for Emacs, that's really all I need to develop with Java. This
 setup should allow you to compile and hack on just about any of my
 Java projects. To test it out, anywhere you like clone one of my
 projects, such as my
-[example project](https://github.com/skeeto/SampleJavaProject).
+[example project](https://github.com/skeeto/sample-java-project).
 
-    git clone https://github.com/skeeto/SampleJavaProject.git
+    git clone https://github.com/skeeto/sample-java-project.git
 
 You should be able to build and run it now,
 
-    cd SampleJavaProject
-	ant run
+    cd sample-java-project
+    ant run
 
 If that works, you're ready to set up Emacs. First, install Emacs. If
 you're not familiar with Emacs, now would be the time to go through

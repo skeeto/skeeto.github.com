@@ -45,7 +45,7 @@ new ones.
 
 There's actually an `modified` selector exactly for this type of
 job. Here's my solution (as seen in my
-[SampleJavaProject](/blog/2010/10/04/)),
+[sample-java-project](/blog/2010/10/04/)),
 
 {% highlight xml %}
 <target name="hotswap" depends="compile">
