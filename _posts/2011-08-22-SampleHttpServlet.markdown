@@ -1,14 +1,14 @@
 ---
-title: SampleHttpServlet
+title: Sample Java HTTP Servlet
 layout: post
 ---
 
-Very similar to my [sample-java-project](/blog/2010/10/04/), I recently
-put together a SampleHttpServlet project,
+As a branch on my [sample-java-project](/blog/2010/10/04/), I recently
+put together a sample HTTP servlet project,
 
 <pre>
-git clone <a href="https://github.com/skeeto/SampleHttpServlet">git://github.com/skeeto/SampleHttpServlet.git</a>
-</pre>
+git clone -b servlet <a href="https://github.com/skeeto/sample-java-project/tree/servlet">git://github.com/skeeto/sample-java-project.git</a>
+</pre>g
 
 It's a barebones Java HttpServlet project. All you need is a JDK,
 [Ant](http://ant.apache.org/), and
