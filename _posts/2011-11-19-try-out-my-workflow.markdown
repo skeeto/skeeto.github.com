@@ -79,7 +79,7 @@ menu.
 Move any existing configuration out of the way,
 
     mv .emacs .old.emacs
-	mv .emacs.d .old.emacs.d
+    mv .emacs.d .old.emacs.d
 
 Clone my configuration,
 
