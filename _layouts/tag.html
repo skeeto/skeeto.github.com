@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<article>
+  <h2>Posts tagged <code>{{ page.title }}</code></h2>
+  <ul>
+    {% for post in site.posts %}
+      {% if post.tags contains page.title %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</article>
