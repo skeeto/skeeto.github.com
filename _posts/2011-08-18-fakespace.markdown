@@ -1,6 +1,7 @@
 ---
 title: Fake Emacs Namespaces
 layout: post
+tags: [lisp, emacs]
 ---
 
 Back in May I wrote a crude `defpackage` function for Elisp, modeled

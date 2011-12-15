@@ -1,6 +1,7 @@
 ---
 title: Some Cool Shell Aliases
 layout: post
+tags: [trick]
 ---
 
 Over the last couple of years I've worked out some cool shell tricks,

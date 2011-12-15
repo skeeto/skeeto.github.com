@@ -1,6 +1,7 @@
 ---
 title: Halftone
 layout: post
+tags: [java]
 ---
 
 I recently toyed around with some halftone, a technique for simulating

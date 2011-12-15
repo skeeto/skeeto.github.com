@@ -1,6 +1,7 @@
 ---
 title: Try Out My Java With Emacs Workflow Within Minutes
 layout: post
+tags: [emacs, java, tutorial]
 ---
 
 Last month I started [managing my entire Emacs configuration in

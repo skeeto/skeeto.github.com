@@ -1,6 +1,7 @@
 ---
 title: October Chess Engine Updates
 layout: post
+tags: [java, game]
 ---
 
 When I wrote a [chess engine](/blog/2010/10/17/) a year ago, I left it

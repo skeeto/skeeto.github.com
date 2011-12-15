@@ -1,6 +1,7 @@
 ---
 title: Emacs Configuration Repository
 layout: post
+tags: [emacs]
 ---
 
 I finally got my entire Emacs configuration into source control. My

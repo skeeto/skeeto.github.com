@@ -1,6 +1,7 @@
 ---
 title: Introducing NativeGuide
 layout: post
+tags: [java]
 ---
 
 See it in action:

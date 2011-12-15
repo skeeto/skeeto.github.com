@@ -1,6 +1,7 @@
 ---
 title: Poor Man's Video Editing
 layout: post
+tags: [media, tutorial, trick]
 ---
 
 I've done all my video editing in a very old-school, unix-style way. I

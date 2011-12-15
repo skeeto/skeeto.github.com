@@ -1,6 +1,7 @@
 ---
 title: Java Hot Code Replacement
 layout: post
+tags: [java]
 ---
 
 I finally started taking advantage of a JVM feature that's been around
