@@ -11,6 +11,9 @@ layout: default
   </p>
   {{ content }}
 
+  <p class="tags">
+    {% include taglist.html %}
+  </p>
   <p class="permalink">
     <a href="{{ page.url }}" rel="canonical">permalink</a>
   </p>

@@ -181,7 +181,7 @@ p.center {
     text-align: center;
 }
 
-p.permalink {
+p.permalink, p.tags {
     font-size: 75%;
     text-align: right;
 }
