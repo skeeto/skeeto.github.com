@@ -11,8 +11,16 @@ layout: default
       {{ post.date | date: "%B %d, %Y" }}
     </time>
   </p>
+
   {{ post.content }}
 
+  <p class="tags">
+    tags: [
+    {% for tag in post.tags %}
+      <a href="/tags/{{ tag }}/">{{ tag }}</a>
+    {% endfor %}
+    ]
+  </p>
   <p class="commentlink">
     <a href="{{ post.url }}#disqus_thread"
        data-disqus-identifier="{{ post.url }}">? Comments</a>
