@@ -8,7 +8,7 @@ put together a sample HTTP servlet project,
 
 <pre>
 git clone -b servlet <a href="https://github.com/skeeto/sample-java-project/tree/servlet">git://github.com/skeeto/sample-java-project.git</a>
-</pre>g
+</pre>
 
 It's a barebones Java HttpServlet project. All you need is a JDK,
 [Ant](http://ant.apache.org/), and
