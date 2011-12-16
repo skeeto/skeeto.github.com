@@ -94,3 +94,10 @@ If you want to do audio *and* video ... that's a lot more work. I've
 never done it myself, but how I suspect I'd handle it is with
 [Audacity](http://audacity.sourceforge.net/) and lots of
 synchronization trial-and-error.
+
+*Extra notes update*: There's a bug in imlib2 where it can't read PPM
+files that have no initial comment, so some tools, including GIMP and
+QIV, can't read PPM files produced by ImageMagick. Fortunately
+`ppmtoy4m` is unaffected. However, there *is* a bug in `ppmtoy4m`
+where it can't read PPM files with a depth other than 8 bits. Fix this
+by giving the option `-depth 8` to ImageMagick's `convert`.
