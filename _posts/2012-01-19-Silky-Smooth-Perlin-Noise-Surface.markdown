@@ -48,6 +48,7 @@ colormap -- the default colormap size caused banding.
 {% highlight octave %}
 colormap(copper(1024));
 surf(ms, 'EdgeAlpha', 0);
+axis('equal');
 {% endhighlight %}
 
 It produced this beautiful result!
