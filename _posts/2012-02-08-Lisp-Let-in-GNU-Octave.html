@@ -7,7 +7,7 @@ tags: [octave, trick, lisp, media, math]
 <p>
 In BrianScheme, the standard Lisp binding form <code>let</code> isn't
 a special form. That is, it's not a hard-coded language feature, or
-*special form*. It's built on top of <code>lambda</code>. In any
+<i>special form</i>. It's built on top of <code>lambda</code>. In any
 lexically-scoped Lisp, the expression,
 </p>
 {% highlight cl %}
@@ -54,9 +54,9 @@ The anonymous function is called inside the same expression where it's
 created. In practice, doing this is stupid. It's confusing and there's
 really nothing to gain by being clever, doing it in one line instead
 of two. Most importantly, there's no macro system that can turn this
-into a new language feature. *However*, I enjoyed using this technique
-to create a one-liner that generates <code>n</code> random unit
-vectors.
+into a new language feature. <i>However</i>, I enjoyed using this
+technique to create a one-liner that generates <code>n</code> random
+unit vectors.
 </p>
 {% highlight octave %}
 n = 1000;
@@ -74,10 +74,10 @@ math problem</a>:
 </blockquote>
 <p>
 I was also demonstrating to <a href="http://devrand.org/">Gavin</a>
-that simply choosing two *angles* is insufficient, because the points
-the angles select are not evenly distributed over the surface of the
-sphere. I generated this video, where the poles are clearly visible
-due to the uneven selection by two angles.
+that simply choosing two <i>angles</i> is insufficient, because the
+points the angles select are not evenly distributed over the surface
+of the sphere. I generated this video, where the poles are clearly
+visible due to the uneven selection by two angles.
 </p>
 <p class="center">
   <video src="https://s3.amazonaws.com/nullprogram/sphere/sphere-dark.webm"
