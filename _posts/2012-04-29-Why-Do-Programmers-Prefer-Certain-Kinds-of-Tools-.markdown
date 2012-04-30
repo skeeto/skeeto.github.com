@@ -28,7 +28,7 @@ control, so even merging documents requires a capable, full word
 processor.
 
 For example, say you've received such a document from a colleague by
-e-mail, for editing. You've read it over and think it looks good
+e-mail, for editing. You've read it over and think it looks good,
 except you want to italicize a few words in the document. To do that,
 you open up the document in a word processor and go through looking
 for the words you want to modify. When you're done you click save.
