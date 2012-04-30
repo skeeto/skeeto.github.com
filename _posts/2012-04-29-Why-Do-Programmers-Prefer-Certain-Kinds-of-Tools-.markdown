@@ -115,4 +115,8 @@ wanted them to be (via [Magit](http://philjackson.github.com/magit/))
 before committing and publishing them.
 
 One of my longterm goals with my work is to try to do as much as
-possible with my precision developer tools.
+possible with my precision developer tools. I've already got
+[basic video editing](/blog/2011/11/28/) and
+[GIF creation](/blog/2012/04/10/) worked out. I'm still working out a
+happy process for documents (i.e. LaTeX and friends) and
+presentations.
