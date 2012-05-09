@@ -153,6 +153,11 @@ blockquote {
 
 .abstract {
     font-style: italic;
+    border: 1px solid {{ page.backB }};
+    padding: 15px;
+    margin: 15px;
+    background: {{ page.backC }};
+    indent: 1em;
 }
 
 
