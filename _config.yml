@@ -1,7 +1,6 @@
 permalink: /blog/:year/:month/:day/
 paginate: 10
 pygments: true
-auto: true
 safe: true
 
 url: http://nullprogram.com
