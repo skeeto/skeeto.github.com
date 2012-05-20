@@ -56,12 +56,11 @@ just rebooting would have fixed it. Even with `securelevel`, you can't
 check the compromised system in-place. Let this be a lesson to all
 those amateur sysadmins out there (including me)!
 
-We did a second round of this and he managed tricked me again by
-taking me further into the rabbit hole. Instead of loopback mounts,
-since I was expecting that, he set it up so that root would log into a
-chroot environment, filled with a full copy of the system including
-fake logs. This version survived reboots and really required
-inspection from an external system.
+We did a second round and he managed to trick me again by taking me
+further into the rabbit hole. Instead of loopback mounts, since I was
+expecting that, he had root log into a chroot environment, filled with
+a full copy of the system including fake logs. This version survived
+reboots and really required inspection from an external system.
 
 After all this, I wanted to crank things up a notch by letting some
 real attackers into my test system. I was already accustomed to seeing
