@@ -91,7 +91,7 @@ ridiculously long. An old graphics card could probably do this in real
 time.
 
 <video src="http://nullprogram.s3.amazonaws.com/noise/fire.webm"
-       width="200" height="200" controls="1">
+       width="300" height="300" controls="1">
   Your browser doesn't support HTML5 video with WebM. :-(
 </video>
 
