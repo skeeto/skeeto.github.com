@@ -181,7 +181,7 @@ img.left {
     padding: 10px;
 }
 
-article img {
+article img, article video {
     display: block;
     margin-left: auto;
     margin-right: auto;
