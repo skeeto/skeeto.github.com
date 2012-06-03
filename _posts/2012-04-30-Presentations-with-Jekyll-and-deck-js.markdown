@@ -64,7 +64,7 @@ presentation. All I have to do is clone this repository and I'm ready
 to go.
 
 <pre>
-git clone --recursive <a href="https://github.com/skeeto/jekyll-deck">https://github.com/skeeto/jekyll-deck.git</a> <i>my-presentation</i>
+git clone --recursive <a href="https://github.com/skeeto/jekyll-deck">https://github.com/skeeto/jekyll-deck.git</a> <i>my-pres</i>
 </pre>
 
 The result looks like this: [A Jekyll / deck.js Presentation](/jekyll-deck/).
