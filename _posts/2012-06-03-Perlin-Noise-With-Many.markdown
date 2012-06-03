@@ -36,7 +36,7 @@ be a lot simpler than I thought it would be!
 
  * [perlin2d.m](https://github.com/skeeto/perlin-noise/blob/master/octave/perlin2d.m)
 
-Because it's 2D, it there are four surrounding grid points to consider
+Because it's 2D, there are four surrounding grid points to consider
 and these are all hard-coded. This leads to an interesting property:
 there are no loops. The code is entirely vectorized, which makes it
 quite fast. It actually keeps up with my generalized Java solution
@@ -45,7 +45,7 @@ quite fast. It actually keeps up with my generalized Java solution
 The grid gradient vectors are generated on the fly by a hash
 function. The integer x and y positions of the point are hashed using
 a bastardized version of Robert Jenkins' 96 bit mix function (the one
-I used in my [infinite parallax starfield](/blog/2011/06/13/) to
+I used in my [infinite parallax starfield](/blog/2011/06/13/)) to
 produce a vector. This turned out to be the trickiest part to write,
 because any weaknesses in the hash function become very apparent in
 the resulting noise.
@@ -107,8 +107,8 @@ repository. I wrote my own Vector class (completely unlike Java's
 depreciated Vector but more like Apache Commons Math's RealVector), so
 it looks very similar to the Octave version. It's much, much faster
 than the generalized Octave version. It doesn't use a hash function
-for gradients, instead randomly generating them as needed and keeping
-track of them for later with a Map.
+for gradients -- instead randomly generating them as needed and
+keeping track of them for later with a Map.
 
 I wanted to go faster yet, so next I looked at OpenCL for the first
 time. OpenCL is an API that allows you to run C-like programs on your
