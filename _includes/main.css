@@ -55,6 +55,11 @@ article, footer {
     text-align: justify;
     border-radius: 15px;
     box-shadow: 0 0 3px 3px {{ page.border }};
+    font-size: 1.25em;
+}
+
+article pre {
+    font-size: 0.85em;
 }
 
 footer {
