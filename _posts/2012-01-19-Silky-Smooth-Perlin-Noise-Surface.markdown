@@ -12,12 +12,13 @@ wanted some terrain that demonstrated some key features, such as
 vision being occluded by hills of varying heights. Rather than search
 through the available DTED files for something good, I opted for
 generating my own terrain, using an old trick of mine:
-[my Perlin noise "cloud" generator](/blog/2007/11/20/). That's a
-lesson in the usefulness of maintaining a blog. The useful things you
-learn and create are easy to revisit years later!
+[my noise "cloud" generator](/blog/2007/11/20/). That's a lesson in
+the usefulness of maintaining a blog. The useful things you learn and
+create are easy to revisit years later!
 
-I generated some noise, looked at it with `surf()`, and repeated
-until I found something useful.
+I generated some noise, looked at it with `surf()`, and repeated until
+I found something useful. (*Update June 2012:* the function is called
+`perlin()` but it's not actually Perlin noise.)
 
 {% highlight octave %}
 m = perlin(1024);
