@@ -92,10 +92,12 @@ To produce Ogg Theora instead of WebM,
 well-behaved on the command line and can be dropped in place of
 `vpxenc`.
 
-If you want to do audio *and* video ... that's a lot more work. I've
-never done it myself, but how I suspect I'd handle it is with
-[Audacity](http://audacity.sourceforge.net/) and lots of
-synchronization trial-and-error.
+To do audio, encode your audio stream with your favorite audio encoder
+(Vorbis, Lame, etc.) then merge them together into your preferred
+container. For example, to add audio to a WebM video (i.e. Matroska),
+use `mkvmerge` from [MKVToolNix](http://www.bunkus.org/videotools/mkvtoolnix/),
+
+    mkvmerge --webm -o combined.webm video.webm audio.ogg
 
 *Extra notes update*: There's a bug in imlib2 where it can't read PPM
 files that have no initial comment, so some tools, including GIMP and
