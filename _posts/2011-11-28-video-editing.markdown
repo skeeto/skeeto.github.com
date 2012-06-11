@@ -80,10 +80,12 @@ workaround would be a named pipe,
     cat *.ppm | ppmtoy4m > video.y4m &
     otherencoder video.4pm
 
-I have attempted to do two passes with the WebM encoder
-(`--passes=2`), but there's always been a floating-point bug that
-prevents it. For now I just use the `--best` option, telling the
-encoder to takes its time to do a good job.
+For WebM encoding, I like to use the `--best` option, telling the
+encoder to take its time to do a good job. To do two passes and get
+even more quality per byte (`--passes=2`) a pipe cannot be used and
+you'll need to write the entire raw video onto the disk. If you try to
+pipe it anyway, `vpxenc` will simply crash rather than give an error
+message (as of this writing). This had me confused for awhile.
 
 To produce Ogg Theora instead of WebM,
 [ffmpeg2theora](http://v2v.cc/~j/ffmpeg2theora/) is a great tool. It's
