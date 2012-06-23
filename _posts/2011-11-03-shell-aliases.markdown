@@ -71,8 +71,8 @@ after reboot.
 
     $ emacs --daemon
     $ emacsclient -c
-	# Close it and sometime later start another client
-	$ emacsclient -c
+    # Close it and sometime later start another client
+    $ emacsclient -c
 
 This is another case of the single-instance problem. However, Emacs is
 really smart about managing this by itself. It has an argument,
