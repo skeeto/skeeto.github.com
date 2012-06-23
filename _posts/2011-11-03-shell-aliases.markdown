@@ -109,6 +109,9 @@ passphrase agents. Just in case you are not familiar, both `ssh` and
 `gpg` have daemons which will securely store your passphrases for
 you.
 
+*Update June 2012:* I [have a better solution](/blog/2012/06/08/) for
+this problem.
+
 OpenSSH is loaded with extremely useful functionality. One of them is
 key authentication. Rather than use a password to log into a system,
 you can prove your identity cryptographically -- you solve a math
