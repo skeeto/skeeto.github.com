@@ -1,0 +1,76 @@
+---
+title: Publishing My Private Keys
+layout: post
+tags: [crypto, tutorial]
+---
+
+One of the items [in my dotfiles repository](/blog/2012/06/23/) is my
+PGP keys, both private and public. I believe this is a unique approach
+that hasn't been done before -- a public experiment. It may *seem*
+dangerous, but I've given it careful thought and I'm only using the
+tools already available from GnuPG. It ensures my keys are well
+backed-up (via the
+[Torvalds method](http://markmail.org/message/bupvay4lmlxkbphr)) and
+available wherever I should need them.
+
+In your GnuPG directory there are two core files: `secring.gpg` and
+`pubring.gpg`. The first contains your secret keys and the second
+contains public keys. `secring.gpg` is not itself encrypted. You can
+(should) have different passphrases for each key, after all. These
+files (or any PGP file) can be inspected with `--list-packets`. Notice
+it won't prompt for a passphrase in order to get this data,
+
+    $ gpg --list-packets ~/.gnupg/secring.gpg
+    :secret key packet:
+        version 4, algo 1, created 1298734547, expires 0
+        skey[0]: [2048 bits]
+        skey[1]: [17 bits]
+        iter+salt S2K, algo: 9, SHA1 protection, hash: 10, salt: ...
+        protect count: 10485760 (212)
+        protect IV:  a6 61 4a 95 44 1e 7e 90 88 c3 01 70 8d 56 2e 11
+        encrypted stuff follows
+    :user ID packet: "Christopher Wellons <...>"
+    :signature packet: algo 1, keyid 613382C548B2B841
+    ... and so on ...
+
+Each key is encrypted *individually* within this file with a
+passphrase. If you try to use the key, GPG will attempt to decrypt it
+by asking for the passphrase. If someone were to somehow gain access
+to your `secring.gpg`, they'd still need to get your passphrase, so
+[pick a strong one](/blog/2009/02/07/). The official documentation
+advises you to keep your `secring.gpg` well-guarded and only rely on
+the passphrase as a cautionary measure. I'm ignoring that part.
+
+If you're using GPG's defaults, your secret key is encrypted with
+CAST5, a symmetric block cipher. The encryption key is your passphrase
+salted (mixed with a non-secret random number) and hashed with SHA-1
+65,536 times. Using the hash function over and over is called
+[key stretching](http://en.wikipedia.org/wiki/Key_stretching). It
+greatly increases the amount of required work for a brute-force
+attack, making your passphrase more effective. All of these settings
+can be adjusted to better protect the secret key at the cost of less
+portability. Since I've chosen to publish my `secring.gpg` in my
+dotfiles repository I cranked up the settings as far as I can.
+
+I changed the cipher to AES256, which is more modern, more trusted,
+and more widely used than CAST5. For the passphrase digest, I selected
+SHA-512. There are better passphrase digest algorithms out there but
+this is the longest, slowest one that GPG offers. The PGP spec
+supports between 1024 and 65,011,712 digest iterations, so I picked
+one of the largest. 65 million iterations takes my laptop over a
+second to process -- absolutely brutal for someone attempting a
+brute-force attack. Here's the command to change to this configuration
+on an existing key,
+
+    gpg --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 --s2k-mode 3 \
+        --s2k-count 65000000 --edit-key <key id>
+
+When the edit key prompt comes up, enter `passwd` to change your
+passphrase. You can enter the same passphrase again and it will re-use
+it with the new configuration.
+
+I'm feeling quite secure with my secret key, despite publishing my
+`secring.gpg`. Before now, I was much more at risk of losing it to
+disk failure than having it exposed. I challenge anyone who doubts my
+security to crack my secret key. I'd rather learn that I'm wrong
+sooner than later!
