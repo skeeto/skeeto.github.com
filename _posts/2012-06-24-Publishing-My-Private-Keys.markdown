@@ -74,3 +74,20 @@ I'm feeling quite secure with my secret key, despite publishing my
 disk failure than having it exposed. I challenge anyone who doubts my
 security to crack my secret key. I'd rather learn that I'm wrong
 sooner than later!
+
+With this established in my dotfiles repository, I can more easily
+include private dotfiles. Rather than use a symmetric cipher with an
+individual passphrase on each file, I encrypt the private dotfiles
+*to* myself. All my private dotfiles are managed with one key: my PGP
+key. This also plays better with Emacs. While it supports transparent
+encryption, it doesn't even attempt to manage your passphrase (with
+good reason). If the file is encrypted with a symmetric cipher, Emacs
+will prompt for a passphrase on each save. If I encrypt them with my
+public key, I only need the passphrase when I first open the file.
+
+How it works right now is any dotfile that ends with `.priv.pgp` will
+be decrypted into place -- not symlinked, unfortunately, since this is
+impossible. The install script has a `-p` switch to disable private
+dotfiles, such as when I'm using an untrusted computer. `gpg-agent`
+ensures that I only need to enter my passphrase once during the
+install process no matter how many private dotfiles there are.
