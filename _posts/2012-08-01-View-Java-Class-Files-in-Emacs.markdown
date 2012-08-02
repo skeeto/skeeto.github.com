@@ -58,6 +58,10 @@ read-only buffer containing detailed information about the class.
     (apply operation args)))
 {% endhighlight %}
 
+[![](/img/emacs/javap-junk-thumb.png)](/img/emacs/javap-junk.png)
+
+[![](/img/emacs/javap-clear-thumb.png)](/img/emacs/javap-clear.png)
+
 This was harder to do than I thought it would be. To make a new
 "magic" file mode requires the use of a half-documented, hackish
 file-name-handler API. There's
