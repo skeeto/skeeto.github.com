@@ -37,7 +37,7 @@ code),
 variables and functions from here."
   (interactive)
   (list (list (my-func) my-var) example-var
-	(ido-completing-read "New value: " (list "foo" "bar"))))
+        (ido-completing-read "New value: " (list "foo" "bar"))))
 
 (defun eq-hello (sym)
   (eq sym 'hello))

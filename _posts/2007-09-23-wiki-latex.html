@@ -44,12 +44,12 @@ while (&lt;&gt;) {
 
     # Lists
     if (m/^\* / &amp;&amp; !$listmode) {
-	print "\\begin{itemize}\n";
-	$listmode = 1;
+        print "\\begin{itemize}\n";
+        $listmode = 1;
     }
     if (!m/^\* / &amp;&amp; $listmode) {
-	print "\\end{itemize}\n";
-	$listmode = 0;
+        print "\\end{itemize}\n";
+        $listmode = 0;
     }
     s/^\* /\\item{} /;
 

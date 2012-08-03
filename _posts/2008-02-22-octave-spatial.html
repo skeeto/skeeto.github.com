@@ -8,15 +8,11 @@ uuid: e3b9e7a9-5669-3173-f84d-d8af0d8f8be4
 <!-- 22 February 2008 -->
 <p>
   <a href="/img/spatial/image-test.svg">
-    <img src="/img/spatial/image-test-small.png"
-	 alt="Test Image Original" />
+    <img src="/img/spatial/image-test-small.png" alt=""/>
   </a>
-  <img src="/img/spatial/image-test-small-ave.png"
-       alt="Test Image Averaged" />
-  <img src="/img/spatial/image-test-small-gauss.png"
-       alt="Test Image Guassian" />
-  <img src="/img/spatial/image-test-small-edge.png"
-       alt="Test Image Edge" />
+  <img src="/img/spatial/image-test-small-ave.png" alt=""/>
+  <img src="/img/spatial/image-test-small-gauss.png" alt=""/>
+  <img src="/img/spatial/image-test-small-edge.png" alt=""/>
 </p>
 <p style="font-style: italic;">
 I have gotten several e-mails lately about using GNU Octave. One
@@ -117,8 +113,7 @@ moving in the vertical direction as well, so that each element in the
 image is covered.
 </p>
 <p>
-  <img src="/img/spatial/draw-filter.png"
-       alt="Convolution Drawing" />
+  <img src="/img/spatial/draw-filter.png" alt=""/>
 </p>
 <p>
 Sometimes you will hear this described as correlation
@@ -140,8 +135,7 @@ to turn that off), but it is minimal.
 </p>
 <p>
   <a href="/img/spatial/image-test.svg">
-    <img src="/img/spatial/image-test.png"
-	 alt="Test Image Original" />
+    <img src="/img/spatial/image-test.png" alt=""/>
   </a>
 </p>
 <p>
@@ -223,8 +217,7 @@ you will first need to convert the image to <code>uint8</code>.
 imwrite("averaged.png", ave_m);
 </pre>
 <p>
-  <img src="/img/spatial/image-test-ave.png"
-       alt="Test Image Averaged" />
+  <img src="/img/spatial/image-test-ave.png" alt=""/>
 </p>
 <p>
 There are a few things to notice about this image. First there is a
@@ -234,8 +227,7 @@ border of the image had 0's averaged into them. Second, some parts of
 the blurred image are "noisy". Here are some selected parts at 4x zoom.
 </p>
 <p>
-  <img src="/img/spatial/ave-zoom.png"
-       alt="Average 4x Zoom" />
+  <img src="/img/spatial/ave-zoom.png" alt=""/>
 </p>
 <p>
 Notice how the circle, and the "a" seem a little bit boxy? This is due
@@ -287,8 +279,7 @@ plenty. A larger filter means a longer convolution time. Here is what
 the 9x9 filter looks like,
 </p>
 <p>
-  <img src="/img/spatial/gauss2d.png"
-       alt="Gaussian 2D" />
+  <img src="/img/spatial/gauss2d.png" alt=""/>
 </p>
 <p>
 And to filter with the Gaussian,
@@ -306,8 +297,7 @@ undergo (additional) zero-padding. The result is now the same size as
 the original image, but without the messy border,
 </p>
 <p>
-  <img src="/img/spatial/image-test-gauss.png"
-       alt="Test Image Gaussian" />
+  <img src="/img/spatial/image-test-gauss.png" alt=""/>
 </p>
 <p>
 Also, compare the result to the average filter above. See how much
@@ -368,8 +358,7 @@ end
 imshow(mf)
 </pre>
 <p>
-  <img src="/img/spatial/image-test-edge.png"
-       alt="Test Image Edges" />
+  <img src="/img/spatial/image-test-edge.png" alt=""/>
 </p>
 <p>
 Happy Hacking with Octave!

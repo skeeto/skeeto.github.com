@@ -35,8 +35,8 @@ function mandel_img = mandel ()
       z = 0;
       k = 0;
       while k < it && abs(z) < 2
-	z = z^2 + complex_plane (hi, wi);
-	k = k + 1;
+        z = z^2 + complex_plane (hi, wi);
+        k = k + 1;
       end
       mandel_img (hi, wi) = k - 1;
 

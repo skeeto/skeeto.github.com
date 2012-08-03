@@ -67,9 +67,9 @@ function collatz_len (n)
    while n > 1 do
       c = c + 1
       if math.mod(n, 2) == 0 then
-	 n = n / 2
+         n = n / 2
       else
-	 n = 3 * n + 1
+         n = 3 * n + 1
       end
    end
 
@@ -87,7 +87,7 @@ function check_range (n, m)
       local len = collatz_len (i)
 
       if len > largest then
-	 largest = len
+         largest = len
       end
 
    end
