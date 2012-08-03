@@ -2,6 +2,7 @@
 title: SSH and GPG Agents
 layout: post
 tags: [crypto, netsec]
+uuid: 7a12226e-073a-3902-4fe8-842afdfdb951
 ---
 
 If you're using SSH or GPG with any sort of frequency, you should

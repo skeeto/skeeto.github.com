@@ -2,6 +2,7 @@
 title: Halftone
 layout: post
 tags: [java]
+uuid: 99d32cd7-9102-3d62-01e5-a9dfee616fab
 ---
 
 I recently toyed around with some halftone, a technique for simulating

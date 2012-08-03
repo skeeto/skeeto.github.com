@@ -2,6 +2,7 @@
 title: Silky Smooth Perlin Noise Surface
 layout: post
 tags: [octave, math, media]
+uuid: 3b93a02f-93e1-3221-2405-58a83127968e
 ---
 
 At work I've recently been generating

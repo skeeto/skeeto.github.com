@@ -2,6 +2,7 @@
 title: Presentations with Jekyll and deck.js
 layout: post
 tags: [emacs, git]
+uuid: 23949cf7-f8c2-332e-6889-5d4c9d128cf7
 ---
 
 At work, this has been The Year of Presentations for me so far. I've

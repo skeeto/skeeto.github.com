@@ -2,6 +2,7 @@
 title: Introducing NativeGuide
 layout: post
 tags: [java]
+uuid: 7aa0c9ab-b5c3-3924-0422-4ae51fb80822
 ---
 
 See it in action:

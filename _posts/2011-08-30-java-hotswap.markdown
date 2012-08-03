@@ -2,6 +2,7 @@
 title: Java Hot Code Replacement
 layout: post
 tags: [java]
+uuid: fa8ed0d0-5edc-3f0b-a0bc-f6dce98378f7
 ---
 
 I finally started taking advantage of a JVM feature that's been around

@@ -2,6 +2,7 @@
 title: Publishing My Private Keys
 layout: post
 tags: [crypto, tutorial]
+uuid: cb40de11-5f3c-306f-b792-6214d65605a1
 ---
 
 One of the items [in my dotfiles repository](/blog/2012/06/23/) is my

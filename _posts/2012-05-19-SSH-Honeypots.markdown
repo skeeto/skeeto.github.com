@@ -2,6 +2,7 @@
 title: SSH Honeypots
 layout: post
 tags: [netsec]
+uuid: f7897af2-ca8e-3a80-f951-de22639bf7c7
 ---
 
 Three years ago I was experimenting with high-interaction SSH

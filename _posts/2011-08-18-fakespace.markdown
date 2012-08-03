@@ -2,6 +2,7 @@
 title: Fake Emacs Namespaces
 layout: post
 tags: [lisp, emacs]
+uuid: f89408fd-9b2f-3110-af83-fe96f7c1e7f7
 ---
 
 Back in May I wrote a crude `defpackage` function for Elisp, modeled

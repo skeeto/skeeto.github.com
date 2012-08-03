@@ -2,6 +2,7 @@
 title: Sample Java HTTP Servlet
 layout: post
 tags: [java]
+uuid: c30027da-4cf7-3adc-a34f-bffb15025a66
 ---
 
 As a branch on my [sample-java-project](/blog/2010/10/04/), I recently

@@ -2,6 +2,7 @@
 title: Perlin Noise With Octave, Java, and OpenCL
 layout: post
 tags: [java, c, octave, video]
+uuid: 830cc950-634a-3661-135a-b932c8c5399e
 ---
 
 I recently discovered that I'm an idiot and that my

@@ -2,6 +2,7 @@
 title: A Few Tricky C Questions
 layout: post
 tags: [c]
+uuid: 29f59a9d-86b9-387d-60bf-16417ea9888c
 ---
 
 At work I recently came across an abandoned copy of the first edition

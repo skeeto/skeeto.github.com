@@ -2,6 +2,7 @@
 title: Pseudo-terminals
 layout: post
 tags: [c]
+uuid: 269799fd-3a67-3a22-433a-c5224447e614
 ---
 
 My dad recently had an interesting problem at work related to serial

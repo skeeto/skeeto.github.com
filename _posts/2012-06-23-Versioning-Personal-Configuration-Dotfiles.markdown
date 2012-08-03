@@ -2,6 +2,7 @@
 title: Versioning Personal Configuration Dotfiles
 layout: post
 tags: [crypto, git]
+uuid: d2428806-5a27-3996-39aa-ae0c411da126
 ---
 
 For almost two months now I've been

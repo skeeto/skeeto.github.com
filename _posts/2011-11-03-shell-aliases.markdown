@@ -2,6 +2,7 @@
 title: Some Cool Shell Aliases
 layout: post
 tags: [trick]
+uuid: 98001174-3eda-3ae3-9131-943831f4d5fa
 ---
 
 Over the last couple of years I've worked out some cool shell tricks,

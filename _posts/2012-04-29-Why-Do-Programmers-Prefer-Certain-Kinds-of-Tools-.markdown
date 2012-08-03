@@ -2,6 +2,7 @@
 title: Why Do Developers Prefer Certain Kinds of Tools?
 layout: post
 tags: [rant, emacs, git]
+uuid: 4dd7c07d-982d-3ff6-5cdd-70db7c3800bb
 ---
 
 In my experience, software developers generally prefer some flavor of

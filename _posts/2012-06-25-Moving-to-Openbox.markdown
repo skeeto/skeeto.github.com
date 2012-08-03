@@ -2,6 +2,7 @@
 title: Moving to Openbox
 layout: post
 tags: [rant, git]
+uuid: 8e15a68e-5ad4-356b-7d5b-5c854e4c5302
 ---
 
 With [my dotfiles repository established](/blog/2012/06/23/) I now

@@ -2,6 +2,7 @@
 title: Try Out My Java With Emacs Workflow Within Minutes
 layout: post
 tags: [emacs, java, tutorial]
+uuid: 0096ac53-9db1-3aa8-81ed-64497696bdcb
 ---
 
 Last month I started [managing my entire Emacs configuration in

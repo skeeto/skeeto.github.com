@@ -2,6 +2,7 @@
 title: Emacs Configuration Repository
 layout: post
 tags: [emacs]
+uuid: d3b9a99d-3526-3c74-7b43-643b752df6ac
 ---
 
 I finally got my entire Emacs configuration into source control. My

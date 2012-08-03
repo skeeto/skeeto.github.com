@@ -2,6 +2,7 @@
 title: Viewing Java Class Files in Emacs
 layout: post
 tags: [emacs, java]
+uuid: 1bb9f8a9-61eb-34eb-bb62-83e93166cbea
 ---
 
 One of the users of [my Emacs java extensions](/blog/2010/10/15/)

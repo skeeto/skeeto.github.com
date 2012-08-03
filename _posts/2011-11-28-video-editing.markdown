@@ -2,6 +2,7 @@
 title: Poor Man's Video Editing
 layout: post
 tags: [media, tutorial, trick]
+uuid: 61996984-69d4-3615-64f1-1c2363199cbc
 ---
 
 I've done all my video editing in a very old-school, unix-style way. I

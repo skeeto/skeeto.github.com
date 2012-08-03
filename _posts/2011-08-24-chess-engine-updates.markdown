@@ -2,6 +2,7 @@
 title: October Chess Engine Updates
 layout: post
 tags: [java, game]
+uuid: 438369c7-5406-3133-f427-237674b1e53e
 ---
 
 When I wrote a [chess engine](/blog/2010/10/17/) a year ago, I left it

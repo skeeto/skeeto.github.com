@@ -2,6 +2,7 @@
 title: CSS Variables with Jekyll and Liquid
 layout: post
 tags: [web]
+uuid: e05bdf1a-f3d9-30b9-01f3-5dc7730aa678
 ---
 
 CSS variables have been proposed
