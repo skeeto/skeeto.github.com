@@ -16,7 +16,11 @@ function would have worked just fine. Since I didn't find any generic
 Elisp memoization on-line I wrote my own.
 </p>
 <p>
-<b>Download: <a href="/download/memoize.el">memoize.el</a></b>
+<b>Download:
+  <a href="https://raw.github.com/skeeto/.emacs.d/master/memoize.el">
+    memoize.el
+  </a>
+</b>
 </p>
 <p>
 Just put it in your path
@@ -26,38 +30,24 @@ function.
 {% highlight cl %}
 ;; ID: 83bae208-da65-3e26-2ecb-4941fb310848
 (defun memoize-wrap (func)
-  "Return the memoized version of the given function."
-  (let ((table-sym (gensym))
-        (val-sym (gensym))
-        (args-sym (gensym)))
-    (set table-sym (make-hash-table :test 'equal))
-    `(lambda (&rest ,args-sym)
-       ,(concat (documentation func) "\n(memoized function)")
-       (let ((,val-sym (gethash ,args-sym ,table-sym)))
-          (if ,val-sym
-              ,val-sym
-            (puthash ,args-sym (apply ,func ,args-sym) ,table-sym))))))
+  "Return the memoized version of FUNC."
+  (lexical-let ((table (make-hash-table :test 'equal)))
+    (lambda (&rest args)
+      (let ((value (gethash args table)))
+        (if value
+            value
+          (puthash args (apply func args) table))))))
 {% endhighlight %}
 <p>
-Normally the hash table would be stored inside of a closure, but Elisp
-doesn't have closures. Instead, the hash table is stored in an
-uninterned symbol, which will only (generally) be accessible to the
-memoization wrapper (in order for external code to access the table it
-would need to directly inspect the memoized function object). It's not
-quite a scope but it's close enough.
+The hash table is stored inside the fake closure provided by
+<code>lexical-let</code>. In a previous version of this function, I
+stored it in an uninterned symbol, which is what is going on behind
+the scenes of <code>lexical-let</code>.
 </p>
 <p>
-Note that it keeps the original function documentation intact. I want
-the memoization wrapper to be an unobtrusive as possible.
-</p>
-<p>
-This is a bit of an abstraction leak. It's creating new code at <i>run
-time</i> taking advantage of the specific low-level way Emacs executes
-s-expressions. If Emacs ever stopped directly evaluating s-expressions
-then this code would break. A more <i>proper</i> way to do this would
-be at compile time with a macro, where this exact sort of code
-generation is expected. Rather than <code>defun</code> we would use a
-macro called something like <code>defmemoized</code>.
+Note that in the full code it keeps the original function
+documentation intact. I want the memoization wrapper to be an
+unobtrusive as possible.
 </p>
 <p>
 Here's a demo of it in action. This <code>whiten</code> function is
@@ -103,5 +93,7 @@ both. This means you cannot memoize nil returns. But a computationally
 expensive function shouldn't be returning nil anyway.
 </p>
 <p>
-Hopefully someone else will find good use for this as well.
+<i>Update</i>: As of August 2012, me and several other people have
+gotten good mileage out of this function! It's an essential part of my
+Emacs dotfiles.
 </p>
