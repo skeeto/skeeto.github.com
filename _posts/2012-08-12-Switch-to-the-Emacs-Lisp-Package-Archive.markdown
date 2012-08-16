@@ -49,9 +49,10 @@ From a package maintainer's point-of-view, this is fantastic. I don't
 have to take any extra steps to publish updates to my package. I just
 keep doing what I do and it happens automatically. However, I need to
 be more careful about not pushing broken commits -- which is why I
-started unit testing (to be covered in a future post). And I need to
-be extra careful with my SSH keys, since they're now used to publish
-code that other people automatically trust and execute.
+started unit testing (to be
+[covered in a future post](/blog/2012/08/15/)). And I need to be extra
+careful with my SSH keys, since they're now used to publish code that
+other people automatically trust and execute.
 
 Excited about MELPA and wanting to actually use my own package, I
 started throwing out my submodules, replacing them with their package
