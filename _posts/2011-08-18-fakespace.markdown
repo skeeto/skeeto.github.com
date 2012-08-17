@@ -67,19 +67,28 @@ properly. This is necessary when one namespaced package depends on
 another, because the dependency will tend to be loaded in the middle
 of defining the current package.
 
-`in-package` is not provided, so there's no (simple) way to get the
-symbols back to where they can be accessed. Right now it would be hard
-to modify a package using this fake namespacing. Fortunately,
-providing `in-package` wouldn't be too hard to do -- and, if added as
-advice in the right places, it would replace `end-package`. When
+`in-package` is not provided, so there's no way to get the symbols
+back to where they can be accessed. It's impossible to modify a
+package using fake namespacing. Worst of all, implementing
+`in-package` is currently (and will likely always be) impossible. When
 symbols are uninterned they would need to be stored in a package
-symbol table for future fetching. `in-package`'s job would be to
+symbol table for future re-interning. `in-package`'s job would be to
 unintern and store away the current package's symbols and then place
 the new package's symbols into the main symbol table.
 
+However, symbols cannot be re-interned. This is because it's
+impossible for a symbol to exist in two different obarrays at the same
+time, so the functionality is intentionally not provided. An obarray
+is an Elisp vector containing symbols. It's treated like a hash table:
+the symbol is hashed to choose a location in the vector. If the slot
+is already taken, the symbol is invisibly chain behind the residing
+symbol by an inaccessible linked list. If the symbol was in two
+obarrays at once, it would need to be able to chain to two different
+symbols at the same time.
+
 Providing access to symbols through a colon-specificed namespace
-(`my-package:my-symbol`) is not currently possible without hacking in
-C.
+(`my-package:my-symbol`) is also currently impossible -- without
+hacking in C anyway.
 
 There's a neat trick to the `:export` list. The `defpackage` macro
 definition actually ignores that list altogether, because it works
