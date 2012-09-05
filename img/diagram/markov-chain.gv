@@ -1,0 +1,11 @@
+digraph {
+  bgcolor="transparent";
+
+  "Quickly, he" -> "he ran"       [label=" ran"];
+  "he ran"      -> "ran and"      [label=" and"];
+  "he ran"      -> "ran until"    [label=" until"];
+  "ran and"     -> "and he"       [label=" he"];
+  "and he"      -> "he ran"       [label=" ran"];
+  "ran until"   -> "until he"     [label=" he"];
+  "until he"    -> "he couldn't." [label=" couldn't."];
+}

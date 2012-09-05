@@ -1,9 +1,15 @@
 ---
 title: Implemented Is Simple Data Compression
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, lisp, ai]
 uuid: 2dd8265c-e498-333f-7f07-4fd93d873975
 ---
+
+*Update*: This post shouldn't make sense to anyone
+(hopefully). [Read the follow-up](/blog/2012/09/05/) for an
+explanation.
+
+* * *
 
 When a branch of my posts remains simple.
 
