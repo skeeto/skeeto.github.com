@@ -1,5 +1,5 @@
 ---
-title: Javascript Distributed Computing
+title: JavaScript Distributed Computing
 layout: post
 tags: [javascript]
 uuid: e859a5e0-5ce4-3eca-d8eb-9379578c00b0
@@ -12,7 +12,7 @@ uuid: e859a5e0-5ce4-3eca-d8eb-9379578c00b0
 
 I'm not the first to come across this idea: the browser could be used
 as part of a distributed computing system. A web server hands out
-Javascript and the browser runs the script and reports the results
+JavaScript and the browser runs the script and reports the results
 back to the server. The browser is a portable, widely available
 platform so just about anyone can easily contribute, possibly without
 even knowing.
@@ -36,7 +36,7 @@ href="http://www.pluraprocessing.com/">In fact, there is already a
 company doing this with secret Java applets</a>.
 </p>
 <p>
-There are two serious constraints on using Javascript in a browser as
+There are two serious constraints on using JavaScript in a browser as
 a distributed computing platform:
 </p>
 <p>
@@ -46,7 +46,7 @@ each other. The data needed by a node must be small. The results data
 must also be small.
 </p>
 <p>
-<b>Short computational units</b>. The Javascript in the browser has no
+<b>Short computational units</b>. The JavaScript in the browser has no
 way to store its running state between browser sessions, so it must
 rely on the server for this. This means that the units of work must be
 able to be completed within a short period of time. A few minutes at
@@ -81,7 +81,7 @@ which you can try out here,
 </p>
 <p>
 I modified an <a href="http://www.leemon.com/crypto/BigInt.html">
-existing Javascript bigint library</a> which allowed me to get it up
+existing JavaScript bigint library</a> which allowed me to get it up
 running quickly. After you receive the page, your browser will run the
 <a
 href="http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">
