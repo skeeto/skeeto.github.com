@@ -16,6 +16,8 @@ external programs**, making it portable and very easy to set up.
 
 ### Repository
 
+ * Available on [MELPA](http://melpa.milkbox.net/)
+
  * [https://github.com/skeeto/skewer-mode][skewer-mode]
 
 ### Demo
@@ -60,8 +62,8 @@ cooperating Node.js server, a particular version of SLIME, and a lot
 of patience. I could never get it working, and if I did I wouldn't
 want to have to do all that setup again on another computer. In
 contrast, Skewer is just another Emacs package, no special setup
-needed. Once I get it on MELPA (soon), installing and using it should
-be no more difficult than installing any other package.
+needed. Thanks to `package.el` installing and using it should be no
+more difficult than installing any other package.
 
 Most importantly, with Skewer I can capture the setup in my
 [.emacs.d repository](/blog/2011/10/19/) where it will automatically
