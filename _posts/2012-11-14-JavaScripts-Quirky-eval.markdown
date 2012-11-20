@@ -59,19 +59,20 @@ be passed explicitly as an additional argument.
 
 In [Perl][perl] things start to get a bit strange (string
 version). `eval` *is* done in the current lexical
-environment. However, no assignments, either to change bindings or
-modify data structures, are visible outside of the `eval`.
+environment. <del>However, no assignments, either to change bindings
+or modify data structures, are visible outside of the
+<code>eval</code>.</del> (Fixed a string interpolation mistake.)
 
 {% highlight perl %}
 sub foo {
     my $bar = 10;
-    eval "$bar = 5";
-    return eval "$bar";
+    eval '$bar = 5';
+    return eval '$bar';
 }
 {% endhighlight %}
 
-This function returns `10`. It could *see* `$bar` but not change its
-assignment.
+This function returns `5`. The `eval` modified the lexically scoped
+`$bar`.
 
 Note how short Lisp's `eval` documentation is compared to
 Perl's. Lisp's `eval` semantics are dead simple -- very important for
