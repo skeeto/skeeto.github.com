@@ -19,16 +19,11 @@
   </head>
   <body>
 
-    <!-- GitHub ribbon -->
-    <a href="https://github.com/skeeto/">
-      <img style="position: absolute; top: 0; left: 0; border: 0;"
-           src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png"
-           alt="Fork me on GitHub">
-    </a>
-
     <header>
       <a href="/"><h1>null program</h1></a>
     </header>
+
+    {{ content }}
 
     <div id="sidebar">
     <aside>
@@ -103,8 +98,6 @@
     </aside>
     </div>
 
-    {{ content }}
-
     <footer>
       <!-- Navigation -->
       <nav>
@@ -134,6 +127,13 @@
         reserved.
       </p>
     </footer>
+
+    <!-- GitHub ribbon -->
+    <a href="https://github.com/skeeto/">
+      <img style="position: absolute; top: 0; left: 0; border: 0;"
+           src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png"
+           alt="Fork me on GitHub">
+    </a>
 
   <!-- Disqus -->
   <script>

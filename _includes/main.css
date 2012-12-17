@@ -35,6 +35,7 @@ header a {
 
 #sidebar {
     position: absolute;
+    top: 270px;
 }
 
 aside {
