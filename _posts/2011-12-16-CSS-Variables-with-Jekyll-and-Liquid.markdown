@@ -89,3 +89,7 @@ and the link color. For each theme, a full stylesheet is generated
 from the stylesheet template above. To allow the user to select a
 theme, I just use some JavaScript to select the proper stylesheet. You
 can try this out with the theme-selector on the sidebar.
+
+*Update December 2012*: I feel like themes weren't really adding much
+to the blog so I removed them. However, the Liquid CSS variables do
+remain because it makes maintenance simpler.
