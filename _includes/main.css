@@ -201,14 +201,10 @@ p.commentlink {
     text-align: right;
 }
 
-/* Theme selector */
+/* Folding */
 
-img.selected {
-    border: 2px dotted {{ page.foreA }};
-    border-radius: 10px;
-    margin: 0px;
-}
-
-img.theme-button {
-    margin: 2px;
+.fold-button {
+    float: right;
+    position: relative;
+    right: 5px;
 }
