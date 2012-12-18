@@ -8,19 +8,15 @@
 
 $(document).ready(function() {
     var up = '&#x25B2;', down = '&#x25BC;';
-    $('.foldable ul').slideToggle();
+    $('.foldable ul').toggle();
     $('.foldable h2').append($('<a>' + down + '</a>').attr({
-        'class': 'fold-button folded',
+        'class': 'fold-button',
         'href': '#'
     }));
     $('.fold-button').bind('click', function () {
-        var $this = $(this);
-        $this.parent().closest('.foldable').find('ul').slideToggle();
-        if ($this.hasClass('folded')) {
-            $this.html(up).removeClass('folded').addClass('unfolded');
-        } else {
-            $this.html(down).removeClass('unfolded').addClass('folded');
-        }
+        var ul = $(this).parent().closest('.foldable').find('ul');
+        this.innerHTML = ul.css('display') === 'none' ? up : down;
+        ul.slideToggle();
         return false;
     });
 });
