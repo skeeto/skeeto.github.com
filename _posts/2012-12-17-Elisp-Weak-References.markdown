@@ -30,7 +30,7 @@ holds its values,
 (make-hash-table :weakness 'value)
 {% endhighlight %}
 
-Oddly, Elisp lacks funtionality to use weak references more
+Oddly, Elisp lacks functionality to use weak references more
 generally. Fortunately [this can be fixed][weak-ref]!
 
 {% highlight cl %}
