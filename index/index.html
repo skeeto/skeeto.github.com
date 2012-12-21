@@ -8,7 +8,7 @@ layout: default
   <p>
     There are <b>{{ site.posts | size }}</b> posts.
   </p>
-  <ul>
+  <ul class="archive">
     {% for post in site.posts reversed %}
       <li>
         {{ post.date | date: "%Y-%m-%d" }} -

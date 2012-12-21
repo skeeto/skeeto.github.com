@@ -15,4 +15,11 @@ $(document).ready(function() {
     $('time.date').each(function() {
         this.innerHTML = new Date(this.getAttribute('datetime')).longCount();
     });
+    $('ul.archive li').each(function() {
+        var $this = $(this);
+        var text = $this.contents().first();
+        var date = new Date(text.text().match(/\d+-\d+-\d+/)[0]);
+        text.replaceWith(date.longCount() + ' - ');
+        $this.css('font-size', '85%');
+    });
 });
