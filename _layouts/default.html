@@ -12,6 +12,8 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/script/ga.js"></script>
     <script src="/script/foldable.js"></script>
+    <script src="/script/jquery.qrcode.min.js"></script>
+    <script src="/script/address.js"></script>
 
     <!--[if lt IE 9]>
       <meta http-equiv="refresh" content="0;url=http://www.mozilla.org/">
@@ -27,25 +29,19 @@
     {{ content }}
 
     <div id="sidebar">
-    <aside>
-      <h2>Christopher Wellons</h2>
-      <address>
-        <p class="center">
-          <video class="portrait" width="125" height="183"
-                 autoplay loop onended="this.play()">
-            <source src="/video/me.webm" type="video/webm"/>
-            <img class="portrait" src="/img/me.jpg" alt=""/>
-          </video>
-        </p>
-        <p class="center">
-          <a href="mailto:&#109;&#111;&#115;&#113;&#117;&#105;&#116;&#111;&#112;&#115;&#117;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#109;&#111;&#115;&#113;&#117;&#105;&#116;&#111;&#112;&#115;&#117;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a><br/>
-          <a href="/download/Christopher-Wellons.asc">
-            PGP Key
-          </a>
-        </p>
-      </address>
-    </aside>
-    <aside>
+      <aside>
+        <h2>Christopher Wellons</h2>
+        <address>
+          <div class="portrait">
+            <img class="portrait" src="/img/avatar.jpg" alt=""/>
+          </div>
+          <div>
+            <a id="email" href=""></a>
+            (<a href="/download/Christopher-Wellons.asc">PGP</a>)
+          </div>
+        </address>
+      </aside>
+      <aside>
       <p class="buttons">
         <a href="/index/">
           <img src="/img/archives.png" alt="Archives" title="Archives"/></a>
@@ -58,45 +54,50 @@
           <img src="/img/java-button.png"
                title="My Java Applets" alt="My Java Applets"></a>
       </p>
-    </aside>
-    <aside>
-      <p class="center">
-        <img src="/img/ancap-hacker.png" alt="Voluntaryist Hacker"
-             title="Hacker Culture"/>
-      </p>
-      <p>
-        Born and raised in Pittsburgh, I am currently a happily
-        married computer engineer working in Maryland. Most of the
-        topics you will find here are about hobby computing and
-        programming.
-      </p>
-    </aside>
-    <aside class="foldable">
-      <h2>Blogs I Like</h2>
-      <ul>
-        {% include list-blogs.html %}
-      </ul>
-    </aside>
-    <aside class="foldable">
-      <h2>Channels I Like</h2>
-      <ul>
-        {% include list-videos.html %}
-      </ul>
-    </aside>
-    <aside class="foldable">
-      <h2>Comics I Like</h2>
-      <ul>
-        {% include list-comics.html %}
-      </ul>
-    </aside>
-    <aside>
-      <p>
-        This site is powered
-        by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and
-        edited
-        with <a href="http://www.gnu.org/software/emacs/">Emacs</a>.
-      </p>
-    </aside>
+      </aside>
+      <aside id="tipjar">
+        <h2>Tip Jar</h2>
+        <div id="bitcoin-qrcode"></div>
+        <div id="bitcoin-address"></div>
+      </aside>
+      <aside>
+        <p class="center">
+          <img src="/img/ancap-hacker.png" alt="Voluntaryist Hacker"
+               title="Hacker Culture"/>
+        </p>
+        <p>
+          Born and raised in Pittsburgh, I am currently a happily
+          married computer engineer working in Maryland. Most of the
+          topics you will find here are about hobby computing and
+          programming.
+        </p>
+      </aside>
+      <aside class="foldable">
+        <h2>Blogs I Like</h2>
+        <ul>
+          {% include list-blogs.html %}
+        </ul>
+      </aside>
+      <aside class="foldable">
+        <h2>Channels I Like</h2>
+        <ul>
+          {% include list-videos.html %}
+        </ul>
+      </aside>
+      <aside class="foldable">
+        <h2>Comics I Like</h2>
+        <ul>
+          {% include list-comics.html %}
+        </ul>
+      </aside>
+      <aside>
+        <p>
+          This site is powered
+          by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and
+          edited
+          with <a href="http://www.gnu.org/software/emacs/">Emacs</a>.
+        </p>
+      </aside>
     </div>
 
     <footer>
@@ -136,12 +137,12 @@
            alt="Fork me on GitHub">
     </a>
 
-  <!-- Disqus -->
-  <script>
-    var disqus_shortname = 'nullprogram';
-  </script>
-  <script src="/script/disqus-count.js"></script>
-  <!-- End Disqus -->
+    <!-- Disqus -->
+    <script>
+      var disqus_shortname = 'nullprogram';
+    </script>
+    <script src="/script/disqus-count.js"></script>
+    <!-- End Disqus -->
 
   </body>
 </html>

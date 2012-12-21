@@ -33,9 +33,15 @@ header a {
     text-decoration: none;
 }
 
+/* Sidebar */
+
 #sidebar {
     position: absolute;
     top: 270px;
+}
+
+#sidebar div {
+    margin: 1em 0px;
 }
 
 aside {
@@ -49,6 +55,34 @@ aside {
     text-align: justify;
 }
 
+aside h2 {
+    font-size: 1.2em;
+}
+
+address {
+    text-align: center;
+    font-style: normal;
+}
+
+img.portrait {
+    border-radius: 15px;
+    border: 2px solid {{ page.border }};
+    margin-bottom: -1em;
+}
+
+.buttons {
+    text-align: center;
+}
+
+aside li {
+    text-indent: 0em;
+    margin-left: -2.5em;
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Articles */
+
 article, footer {
     background-color: {{ page.backB }};
     margin: 0 0 10px 210px;
@@ -61,36 +95,6 @@ article, footer {
 
 article pre {
     font-size: 0.8em;
-}
-
-footer {
-    font-size: 75%;
-}
-
-nav {
-    text-align: center;
-}
-
-.nav-prev {
-    float: left;
-}
-
-.nav-next {
-    float: right;
-}
-
-address {
-    font-style: normal;
-}
-
-.portrait {
-    border-radius: 15px;
-    border: 2px solid {{ page.border }};
-    margin-bottom: -1em;
-}
-
-.buttons {
-    text-align: center;
 }
 
 img {
@@ -114,17 +118,6 @@ article h2 {
 h2 a {
     text-decoration: none;
     color: {{ page.foreA }};
-}
-
-aside h2 {
-    font-size: 1.2em;
-}
-
-aside li {
-    text-indent: 0em;
-    margin-left: -2.5em;
-    padding-left: 0;
-    list-style: none;
 }
 
 code {
@@ -166,7 +159,6 @@ blockquote {
     indent: 1em;
 }
 
-
 img.center {
     text-align: center;
     border: 0px;
@@ -201,10 +193,40 @@ p.commentlink {
     text-align: right;
 }
 
+/* Footer */
+
+footer {
+    font-size: 75%;
+}
+
+nav {
+    text-align: center;
+}
+
+.nav-prev {
+    float: left;
+}
+
+.nav-next {
+    float: right;
+}
+
 /* Folding */
 
 .fold-button {
     float: right;
     position: relative;
     right: 5px;
+}
+
+/* Tip Jar */
+
+#tipjar div {
+    text-align: center;
+}
+
+#bitcoin-address {
+    font-size: 8px;
+    position: relative;
+    top: -10px;
 }
