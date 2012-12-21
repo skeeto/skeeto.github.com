@@ -230,3 +230,26 @@ nav {
     position: relative;
     top: -10px;
 }
+
+/* Mobile version (this must go last) */
+
+@media only screen and (max-width: 900px) {
+    #sidebar, #github-ribbon {
+        display: none;
+    }
+
+    header {
+        width: 80%;
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body {
+        max-width: 100%;
+    }
+
+    article, footer {
+        margin: 10px 10px;
+    }
+}
