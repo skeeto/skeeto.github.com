@@ -25,7 +25,7 @@ external programs**, making it portable and very easy to set up.
 (No audio.)
 
 <video src="http://nullprogram.s3.amazonaws.com/skewer/demo.webm"
-       controls="true" width="600" height="375">
+       controls="controls" width="600" height="375">
        <a href="http://youtu.be/4tyTgyzUJqM">YouTube video</a>
 </video>
 

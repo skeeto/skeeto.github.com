@@ -52,7 +52,7 @@ the galaxy drifts out of view. This is due to a bias in the random
 number generator -- the galaxy's mass was lopsided.
 
 <video src="http://nullprogram.s3.amazonaws.com/galaxy/attempt-1.webm"
-       controls="true" width="480" height="360">
+       controls="controls" width="480" height="360">
   Video requires WebM support with HTML5.
 </video>
 
@@ -61,7 +61,7 @@ camera follows the action. It's a bit excessive at the beginning (the
 camera is *too* dynamic) and the end (the camera is too far out).
 
 <video src="http://nullprogram.s3.amazonaws.com/galaxy/attempt-2.webm"
-       controls="true" width="480" height="360">
+       controls="controls" width="480" height="360">
   Video requires WebM support with HTML5.
 </video>
 
@@ -70,7 +70,7 @@ adding initial velocities) and the camera and I got this interesting
 result. The galaxy initially bunches into two globs, which then merge.
 
 <video src="http://nullprogram.s3.amazonaws.com/galaxy/v10-z9.webm"
-       controls="true" width="480" height="360">
+       controls="controls" width="480" height="360">
   Video requires WebM support with HTML5.
 </video>
 
