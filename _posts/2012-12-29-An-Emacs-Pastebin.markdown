@@ -23,10 +23,6 @@ Here's what it looked like once I was all done,
 
 [![](/img/screenshot/pastebin-thumb.png)](/img/screenshot/pastebin.png)
 
-I'm *temporarily* hosting it here,
-
- * [http://zeus.nullprogram.com/pastebin/vQ5Y](http://zeus.nullprogram.com/pastebin/vQ5Y)
-
 It has syntax highlighting, paste expiration, and light version
 control. The server side is as simple as possible, consisting of only
 three servlets,
