@@ -5,11 +5,11 @@ tags: [lisp, emacs, javascript, web]
 uuid: cbfbf5b0-607d-34d0-6f31-b2712d4e421f
 ---
 
-Luke just finished an interesting three-part tutorial on writing a
-pastebin in PHP: [PHP Like a Pro][luke1] ([2][luke2], [3][luke3]). The
-tutorial is largely an introduction to the set of tools a professional
-would use to accomplish a more involved project, the most interesting
-of which, for me, is [Vagrant][vagrant].
+Luke is doing an interesting <s>three</s>five-part tutorial on writing
+a pastebin in PHP: [PHP Like a Pro][luke1] ([2][luke2], [3][luke3],
+[4][luke4]). The tutorial is largely an introduction to the set of
+tools a professional would use to accomplish a more involved project,
+the most interesting of which, for me, is [Vagrant][vagrant].
 
 Because I have [no intention of ever using PHP][php], I decided to
 follow along in parallel with my own version. I used Emacs Lisp with
@@ -130,6 +130,7 @@ same front-end.
 [luke1]: http://terminally-incoherent.com/blog/2012/12/17/php-like-a-pro-part-1/
 [luke2]: http://terminally-incoherent.com/blog/2012/12/19/php-like-a-pro-part-2/
 [luke3]: http://terminally-incoherent.com/blog/2012/12/26/php-like-a-pro-part-3/
+[luke4]: http://terminally-incoherent.com/blog/2013/01/02/php-like-a-pro-part-4/
 [vagrant]: http://vagrantup.com/
 [php]: http://me.veekun.com/blog/2012/04/09/php-a-fractal-of-bad-design/
 [pastebin]: https://github.com/skeeto/emacs-pastebin
