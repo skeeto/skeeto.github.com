@@ -134,7 +134,7 @@ In this case, we can be even more clever. Rather than build a nice
 parse tree, the expression can be evaluated directly. All it takes is
 one small change,
 
-{% highlight language %}
+{% highlight cl %}
 (defun arith-op (expr)
   (destructuring-bind (a (op b)) expr
     (funcall op a b)))
@@ -143,7 +143,7 @@ one small change,
 With this, the parser returns the computed value directly. So this
 evaluates to 120.
 
-{% highlight language %}
+{% highlight cl %}
 (rdp-parse-string "4 * 5 * 6" arith-tokens arith-funcs)
 {% endhighlight %}
 

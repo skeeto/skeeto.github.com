@@ -96,7 +96,7 @@ redirects with `httpd-redirect`. The file server part of the server is
 actually just another a servlet as well: `httpd/`. This could be
 redefined to redirect the browser to our example servlet (HTTP 301).
 
-{% highlight language %}
+{% highlight cl %}
 (defun httpd/ (proc &rest args)
   (httpd-redirect proc "/hello-world"))
 {% endhighlight %}
