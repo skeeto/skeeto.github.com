@@ -1,7 +1,7 @@
 ---
 title: Clojure and Emacs for Lispers
 layout: post
-tags: [lisp, emacs]
+tags: [lisp, emacs, clojure]
 uuid: 5a316444-8f60-30c0-2a94-b87eb239eb13
 ---
 
