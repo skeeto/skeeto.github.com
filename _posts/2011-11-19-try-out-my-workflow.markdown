@@ -5,6 +5,13 @@ tags: [emacs, java, tutorial]
 uuid: 0096ac53-9db1-3aa8-81ed-64497696bdcb
 ---
 
+**Update January 2013:** I've learned more about Java dependency
+management and no longer use my old .ant repository. As a result, I
+have deleted it, so ignore any references to it below. The only thing
+I keep in `$HOME/.ant/lib` these days is an up-to-date `ivy.jar`.
+
+* * *
+
 Last month I started [managing my entire Emacs configuration in
 Git](/blog/2011/10/19/), which has already paid for itself by saving
 me time. I found out a few other people have been using it (including
