@@ -231,6 +231,11 @@ nav {
     top: -10px;
 }
 
+/* Archive CSS */
+ul.archive {
+    font-size: 85%;
+}
+
 /* Mobile version (this must go last) */
 
 @media only screen and (max-width: 900px) {
