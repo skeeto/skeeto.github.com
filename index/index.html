@@ -9,7 +9,7 @@ layout: default
     There are <b>{{ site.posts | size }}</b> posts.
   </p>
   <ul class="archive">
-    {% for post in site.posts reversed %}
+    {% for post in site.posts %}
       <li>
         {{ post.date | date: "%Y-%m-%d" }} -
         <a href="{{ post.url }}">{{ post.title }}</a>
