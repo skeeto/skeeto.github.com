@@ -184,12 +184,12 @@ p.center {
     text-align: center;
 }
 
-p.permalink, p.tags {
+.permalink, .tags {
     font-size: 90%;
     text-align: right;
 }
 
-p.commentlink {
+.commentlink {
     text-align: right;
 }
 
