@@ -92,15 +92,10 @@ application would be the way to go. To coordinate this work I'd use
 
  * [https://github.com/skeeto/key-collab](https://github.com/skeeto/key-collab)
 
-For a short time I'll be running the server here, so you can
-participate in the network. Each tab you have open consumes one of
-your CPU cores, so you can choose how much of your CPU to commit,
-
- * [http://zeus.nullprogram.com/](http://zeus.nullprogram.com/)
-
-Here's what it looks like in action. All of those numbers update about
-twice per second, so users can get a concrete idea of what's going
-on. I think it's fun to watch.
+Here's what it looks like in action. Each tab open consumes one CPU
+core, allowing users to control their commitment. All of those numbers
+update about twice per second, so users can get a concrete idea of
+what's going on. I think it's fun to watch.
 
 [![](/img/screenshot/key-collab-thumb.png)](/img/screenshot/key-collab.png)
 
