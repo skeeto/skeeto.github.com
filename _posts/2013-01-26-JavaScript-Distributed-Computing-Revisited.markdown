@@ -24,9 +24,10 @@ lively interface alongside the computation. The interface and
 computation were competing for time on the same thread.
 
 The worker isn't *entirely* isolated; otherwise it would be useless
-for anything but wasting resources. As events it can pass strings to
-and from the main thread running in the page. Other than this, it has
-no access to the DOM or to make any sort of requests.
+for anything but wasting resources. As events it can pass
+[structured clones][clone] to and from the main thread running in the
+page. Other than this, it has no access to the DOM or to make any sort
+of requests.
 
 The interface is a bit unfriendly to [live development][skewer], but
 it's manageable. It's invoked by passing the URL of a script to the
@@ -56,12 +57,20 @@ interface could be faked using a [data URI][data-uri] and taking
 advantage of the fact that most browsers return function source code
 from `toString()`.
 
-Another difficulty is libraries. Ignoring the stupid idea of passing
-code through the event API and evaling it, that single URL must
-contain *all* the source code the worker will use as one script. This
-means if you want to use any libraries you'll need to concatenate them
-with your script. That complicates things slightly, but I imagine many
-people will be minifying their worker JavaScript anyway.
+<s>Another difficulty is libraries. Ignoring the stupid idea of
+passing code through the event API and evaling it, that single URL
+must contain *all* the source code the worker will use as one
+script. This means if you want to use any libraries you'll need to
+concatenate them with your script. That complicates things slightly,
+but I imagine many people will be minifying their worker JavaScript
+anyway.</s>
+
+Libraries can be loaded by the worker with the `importScripts()`
+function, so not everything needs to be packed into one
+script. Furthermore, workers can make HTTP requests with
+XMLHttpRequest, so that data don't need to be embedded either. Note
+that it's probably worth making these requests synchronously (third
+argument `false`), because blocking isn't an issue in workers.
 
 The other big change was the effect Google Chrome, especially its V8
 JavaScript engine, had on the browser market. Browser JavaScript is
@@ -164,3 +173,4 @@ participating.
 [simple-httpd]: /blog/2012/08/20/
 [strict]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode
 [brian]: http://www.50ply.com/
+[clone]: https://developer.mozilla.org/en-US/docs/DOM/The_structured_clone_algorithm
