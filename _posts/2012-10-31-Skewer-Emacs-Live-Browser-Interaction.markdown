@@ -81,7 +81,7 @@ code. That's a satisfying tool to have.
 Due to those prior poor experiences, I had avoided web development for
 a long time. But now that I have some decent tools configured I'm
 going to get into it more. In fact, I've decided I'm completely done
-with [writing Java applets](/applets/). Bounze will have been my last
+with [writing Java applets](/toys/). Bounze will have been my last
 one.
 
 This has become a pattern for me. When I want to start using a new

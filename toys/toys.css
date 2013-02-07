@@ -1,0 +1,20 @@
+body {
+    width: 725px;
+    text-align: center;
+    margin: auto auto;
+    background-color: black;
+    color: gray;
+}
+
+section {
+    width: 350px;
+    display: inline-block;
+}
+
+section img {
+    border: 0;
+}
+
+section h2, section a {
+    color: #FF7F50;
+}
