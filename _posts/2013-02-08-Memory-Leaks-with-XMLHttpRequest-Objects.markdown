@@ -151,8 +151,8 @@ closure references the XHR through the closed-over variable
 
 Under some forms of memory management, such as reference counting,
 this could be an issue. Fortunately, JavaScript implementations can
-handle this situation just fine ([well, except IE<8][ie]). Garbage
-collectors operate on *reachability*. Cycles don't matter, the
+handle this situation just fine ([well, except before IE8][ie]).
+Garbage collectors operate on *reachability*. Cycles don't matter, the
 collector only cares if any part of the cycle is reachable by a
 *root*, a hard reference from where the collector begins its search.
 
