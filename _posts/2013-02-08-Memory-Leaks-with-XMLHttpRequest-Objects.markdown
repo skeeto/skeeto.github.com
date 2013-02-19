@@ -150,8 +150,8 @@ closure references the XHR through the closed-over variable
 `xhr`.
 
 Under some forms of memory management, such as reference counting,
-this could be an issue. Fortunately, browser JavaScript
-implementations can handle this situation just fine. Garbage
+this could be an issue. Fortunately, JavaScript implementations can
+handle this situation just fine ([well, except IE<8][ie]). Garbage
 collectors operate on *reachability*. Cycles don't matter, the
 collector only cares if any part of the cycle is reachable by a
 *root*, a hard reference from where the collector begins its search.
@@ -262,3 +262,4 @@ or documentation on the subject, please share!
 [eval]: /blog/2012/11/14/
 [escape]: http://en.wikipedia.org/wiki/Escape_analysis
 [pool]: http://closure-library.googlecode.com/svn/docs/class_goog_net_XhrManager.html
+[ie]: http://msdn.microsoft.com/en-us/library/dd361842(v=vs.85).aspx
