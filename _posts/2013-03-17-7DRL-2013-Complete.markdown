@@ -1,0 +1,233 @@
+---
+title: 7DRL 2013 Complete
+layout: post
+tags: [javascript, interactive]
+uuid: bb22fefb-c0c9-3a83-88fe-70179a7975f8
+---
+
+As I mentioned previously, I participated in this year's Seven Day
+Roguelike. It was my first time doing so. I managed to complete my
+roguelike within the allotted time period, though lacking many
+features I had originally planned. It's an HTML5 game run entirely
+within the browser. You can play the final version here,
+
+ * [Disc RL](http://nullprogram.com/disc-rl/)
+
+[![](/img/screenshot/disc-rl-thumb.png)](/img/screenshot/disc-rl.png)
+
+### What Went Right
+
+#### Display
+
+The first thing I did was create a functioning graphical display. The
+goal was to get it into a playable state as soon as possible so that I
+could try ideas out as I implemented them. This was especially true
+because I was doing [live development](/blog/2012/10/31/), adding
+features to the game as it was running.
+
+The display is made up of 225 (15x15) absolutely positioned `div`
+elements. The content of each div is determined by its dynamically-set
+CSS classes. Generally, the type of map tile is one class (background)
+and the type of monster in that tile is another class (foreground). If
+the game had items, these would also be displayed using classes.
+
+While I could use `background-image` to fill these `div`s with images,
+I decided when I started I would use no images whatsoever. Everything
+in the game would be drawn using CSS.
+
+After the display was working, I was able spend the rest of the time
+working entirely in game coordinates, completely forgetting all about
+screen coordinates. This made everything else so much simpler.
+
+#### Saving
+
+Early in the week I got [my save system working](/blog/2013/03/11/).
+After ditching a library that wasn't working, it only took me about 45
+minutes to do this from scratch. Plugging my main data structure into
+it *just worked*. I did end up accidentally violating my assumption
+about non-circularity. When adding multiple dungeon levels, these
+levels would refer to each other, leading to circularity. I got around
+that with a small hack of referring to other dungeons by name, an
+indirect reference.
+
+From what I've seen of other HTML5 roguelikes, saving state seems to
+be a unique feature of my roguelike. I don't see anyone else doing it.
+
+#### Combat
+
+I think the final combat mechanics are fairly interesting. It's all
+based on *identity discs* and *corruption* (see the help in the game
+for more information). There are two kinds of attacks that any
+creature in the game can do: melee (bash with your disc) and ranged
+(throw your disc). I created three different AIs to make use of these,
+bringing in four different monster classes. Note, I consider these
+game spoilers.
+
+ * **Simple** -- Middle-of-the-road on abilities, these guys run up
+   and try to hit you. No ranged attacks. The strategy is to attack
+   them with ranged as they close in, then melee them down. They're
+   easy and these are the monsters you see in the beginning of the
+   game.
+
+ * **Brute** -- These guys have high health and damage (high
+   strength), but are slow moving (low dexterity). They try to run up
+   to you and bash you (same AI as "simple" monsters). The strategy
+   for them is to "kite" them, keeping your distance and hitting them
+   with ranged attacks, especially when they're standing on
+   corruption.
+
+ * **Archer** -- Archers are the opposite of brutes: low health, high
+   ranged damage, and high speed. They chase you down and perform
+   ranged attacks no matter what. The strategy for dealing with them
+   is to break line-of-sight and wait. They'll run up and around the
+   corner where you can melee attack them. Since they'll continue to
+   use ranged attacks this leaves them wide open for melee
+   attacks. This is due to a mechanic that monsters, including the
+   player, can't block attacks with their disc for one turn after they
+   throw it.
+
+ * **Skirmisher** -- This is a hybrid of brutes and archers and are
+   the most difficult. They have high dexterity, sometimes also high
+   strength, and use the appropriate attack for the situation. At
+   range they use ranged attacks, they'll try to run away from you if
+   you get close, and if you do manage to get up close they'll switch
+   to melee. Dealing with these guys depends a lot on the terrain
+   around you. Remember to take advantage of corruption when dealing
+   with them.
+
+The eight final, identical bosses of the game have a slightly custom
+AI, making them sort of like another class on their own. They're the
+"T" monsters in the screenshot above. I won't describe it here because
+I still want there to be some sort of secret. :-)
+
+#### Corruption
+
+Corruption was actually something I came up with late in the week, and
+I'm happy with out it turned out. It makes for more interesting combat
+tactics (see above) and I think it really adds some flavor.
+Occasionally when you move over corrupted (green) tiles, you will
+notice the game's interface being scrambled for a turn.
+
+#### rot.js
+
+I ended up using [rot.js][rot] to handle field-of-view calculations,
+path finding, and dungeon generation. These are all time consuming to
+write and there really is no reason to implement your own for the
+first two. I would have liked to do my own dungeon generation, but
+rot.js was just so convenient for this that I decided to skip it. The
+downside is that my dungeons will look like the dungeons from other
+games.
+
+Path finding was critical not only for monsters but also automatic
+exploration. Even though it's quirky, I'm really happy with how it
+turned out. Personally, one of the most tiring parts of some
+roguelikes is just manually navigating around empty complex
+corridors. Good gameplay is all about a long series of interesting
+decisions. Choosing right or left when exploring a map is generally
+not an interesting decision, because there's really no differentiating
+them. Auto-exploration is a useful way to quickly get the player to
+the next interesting decision. In my game, you generally only need to
+press a directional navigation key when you're engaged in combat.
+
+#### Help Screen
+
+I'm really happy with how my overlay screens turned out, especially
+the keyboard styling. I'm talking about the help screen, control
+screen, and end-game screen. Since this is the *very* first thing
+presented to the user, I felt it was important to invest time into
+it. First impressions are everything.
+
+### What Went Wrong
+
+The game is smaller than I originally planned. Monsters have unused
+stats and slots on them not displayed by the interface. A look at the
+code will reveal a lot of openings I left for functionality not
+actually present. I originally intended for 10 dungeon levels, but
+lacking a variety of monster AIs, which are time consuming to write, I
+ended up with 6 dungeon levels.
+
+#### User Interfaces
+
+My original healing mechanic was going to be health potions (under a
+different, thematic name), with no heal-over-time. As I was nearing
+the end of the week I still hadn't implemented items, so this got
+scrapped for a heal-on-level mechanic and an easing of the leveling
+curve. Everything was in place for implementing items, and therefore
+healing potions, except for the user interface. This was a common
+situation: the UI being the hardest part of any new feature. Writing
+an inventory management interface was going to take too much time, so
+I dropped it.
+
+Also dumped due to the lack of time to implement an interface for it
+was some kind of spell mechanic. Towards the end I did squeeze in
+ranged attacks, but this was out of necessity of real combat
+mechanics.
+
+There's no race (Program, User, etc) and class (melee, ranged, etc.)
+selection, not even character name selection. This is really just
+another user interface thing.
+
+There are no stores/merchants because these are probably the hardest
+to implement interfaces of all!
+
+#### Game Balance
+
+I'm also not entirely satisfied with the balance. The early game is
+too easy and the late game is probably too hard. The difficulty ramps
+up quickly in the middle. Fortunately this is probably better than the
+reverse: the early game is too hard and the end game is too
+easy. Early difficulty won't be what's scaring off anyone trying out
+the game -- instead, that would be boredom! Generally if you find a
+level too difficult, you need to retreat to the previous level and
+grind out a few more levels. This turns out to be not very
+interesting, so there needs to be less of it.
+
+Fixing this would take a lot more play-testing -- also very
+time-consuming. At the end of the week I probably spent around six
+hours just playing legitimately (i.e. not cheating), and having fun
+doing so, but that still wasn't enough. The very end of the game with
+the final bosses is quite challenging, so to test that part in a
+reasonable time-frame I had to cheat a bit.
+
+#### Code Namespacing
+
+My namespaces are messy. This was the largest freestanding (i.e. not
+AngularJS) JavaScript application I've done so far, and it's the first
+one where I could really start to appreciate tighter namespace
+management. This lead to more coupling between different systems than
+was strictly necessary.
+
+I still want to avoid the classical module pattern of wrapping
+everything in a big closure. That's incompatible with Skewer for one,
+and it would have also been incompatible with my prototype-preserving
+storage system. I just need to be more disciplined in containing
+sprawl.
+
+However, in the end none of this really mattered one bit. No one is
+maintaining this code and no one will ever read it except me. At the
+end of the week it's *much* better to have sloppy code and a working
+game than a clean codebase and only half of a game.
+
+#### CSS Animations
+
+Along with my no-images philosophy, I was intending to exploit CSS
+animations to make the map look really interesting. I wanted the
+glowing walls to pulsate with energy. Unfortunately adding a removing
+classes causes these animations to reset if reflow is allowed to occur
+-- sometimes. The exact behavior is browser-dependent. All the
+individual tile animations would get out of sync and everything would
+look terrible. There is intentionally little control over this
+behavior, for optimization purposes, so I couldn't fix it.
+
+### Next Year?
+
+Will I participate again next year? Maybe. I'm really happy with the
+outcome this year, but I'm afraid doing the same thing again next year
+will feel tedious. But maybe I'll change my mind after taking a year
+off from this! I wasn't intending on participating this year, until
+[Brian][brian] twisted my arm into it. See, peer pressure isn't always
+a bad thing!
+
+
+[rot]: http://ondras.github.com/rot.js/hp/
+[brian]: http:/50ply.com/
