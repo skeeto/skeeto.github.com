@@ -230,4 +230,4 @@ a bad thing!
 
 
 [rot]: http://ondras.github.com/rot.js/hp/
-[brian]: http:/50ply.com/
+[brian]: http://50ply.com/
