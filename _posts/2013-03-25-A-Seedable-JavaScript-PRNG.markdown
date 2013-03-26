@@ -28,9 +28,9 @@ All other distributions sample from the uniform number generator, so
 bits are twiddled in only one place. Moreso, it means that
 Math.random() can be used as the core random number generator. My RC4
 implementation is about 10x slower than V8's Math.random(), so if all
-you care about aee the probability distributions, not the seeding,
-then you could benefit from better performance. Just provide
-Math.random as the "seed".
+you care about is the probability distributions, not the seeding, then
+you could benefit from better performance. Just provide Math.random as
+the "seed".
 
 Here's an example of it in action. I'm seeding it with an arbitrary
 object and generating six normally-distributed values. The output
