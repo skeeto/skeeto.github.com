@@ -6,11 +6,11 @@ uuid: 8c5e22c4-f826-3b81-3f55-4ea60882620e
 ---
 
 Also in preparation for [my 7-day roguelike](/blog/2013/03/17/) I
-[rewrote the RingWorks fantasy name generator in JavaScript][js]. It's
-my third implementation of this generator and this one is also the
-most mature *by far*.
+rewrote the [RingWorks fantasy name generator][namegen]
+[in JavaScript][js]. It's my third implementation of this generator
+and this one is also the most mature *by far*.
 
-Try it out by [playing with the demo][demo].
+Try it out by [playing with the demo][demo] ([GitHub][js]).
 
 The first implementation was written in Perl. It worked by
 interpreting the template string each time a name was to be generated.
@@ -19,9 +19,10 @@ but mostly because the parser library I used had really poor
 performance. It's literally *millions* of times slower than this new
 JavaScript implementation.
 
-The second implementation I did in Emacs Lisp. I didn't actually write
-a parser. Instead, an s-expression is walked and interpreted for each
-name generation. Much faster, but I missed having the template syntax.
+The [second implementation][lisp] I did in Emacs Lisp. I didn't
+actually write a parser. Instead, an s-expression is walked and
+interpreted for each name generation. Much faster, but I missed having
+the template syntax.
 
 The JavaScript implementation has a template *compiler*. There are
 five primitive name generator prototypes -- including strings
