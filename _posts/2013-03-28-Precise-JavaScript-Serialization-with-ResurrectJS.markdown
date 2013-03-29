@@ -195,6 +195,15 @@ necromancer.stringify(circle);
 The first object in the copy array is an array that contains a
 reference to itself.
 
+JSON doesn't support `undefined` but I get it for free with this
+scheme: any time I come across `undefined` I replace it with a
+reference the object at index -1. This will always be `undefined`!
+
+{% highlight javascript %}
+string = necromancer.stringify([undefined]);
+// => '[[{"#":-1}]]'
+{% endhighlight %}
+
 ### Deserialization
 
 To deserialize, the string is parsed as regular JSON resulting in the
