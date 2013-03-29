@@ -197,7 +197,7 @@ reference to itself.
 
 JSON doesn't support `undefined` but I get it for free with this
 scheme: any time I come across `undefined` I replace it with a
-reference the object at index -1. This will always be `undefined`!
+reference to the object at index -1. This will always be `undefined`!
 
 {% highlight javascript %}
 string = necromancer.stringify([undefined]);
@@ -275,7 +275,7 @@ necromancer.stringify(h1);
 // => '{"#.":"Resurrect.Node","#v":["<h1>Hello</h1>"]}'
 
 document.body.appendChild(necromancer.resurrect(string));
-// (the header appears on the page)
+// (the heading appears on the page)
 {% endhighlight %}
 
 It uses [XMLSerializer][xml] to serialize the DOM element into XML.
