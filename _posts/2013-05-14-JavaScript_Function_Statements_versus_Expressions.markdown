@@ -108,18 +108,18 @@ What happens when a function expression is given a name? Two things.
 function maths() {
     return {
         // ...
-        fib: function fib(n) {
-            return n === 0 ? 1 : n * fib(n - 1);
+        fact: function fact(n) {
+            return n === 0 ? 1 : n * fact(n - 1);
         }
     };
 }
 
-maths().fib(10); // => 3628800
+maths().fact(10); // => 3628800
 {% endhighlight %}
 
-The `fib` function is evaluated as a function expression as part of
-this object literal. The variable `fib` is established in the scope of
-the function `fib`, assigned to the function itself, allowing the
+The `fact` function is evaluated as a function expression as part of
+this object literal. The variable `fact` is established in the scope
+of the function `fact`, assigned to the function itself, allowing the
 function to call itself. It's a self-contained recursive function.
 
 ### Pop Quiz: Function Name and Scope
