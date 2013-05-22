@@ -93,7 +93,7 @@ relative dependency versions.
 Say your package depends on jQuery and it relies on the newer jQuery
 1.6 behavior of `attr()`. You would mark down that you depend on
 jQuery 1.6.0. Say a user of your package is also using another package
-that depends on jQuerym it's using the `on()` method, which requires
+that depends on jQuery, it's using the `on()` method, which requires
 jQuery 1.7 or newer. It specifies jQuery 1.7.0. This is a dependency
 conflict.
 
@@ -142,7 +142,7 @@ in Bower's registry.
 
 The good news is that most of the important libraries, like jQuery and
 Underscore, work properly. I've also registered two of my JavaScript
-libraries, [RessurectJS][resurrect] and [rng-js][rng], so these can be
+libraries, [ResurrectJS][resurrect] and [rng-js][rng], so these can be
 loaded on the fly in Skewer.
 
 
