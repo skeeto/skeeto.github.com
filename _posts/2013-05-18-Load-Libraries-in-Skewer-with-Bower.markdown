@@ -75,7 +75,7 @@ GitHub, which most package developers are already comfortable with.
 Package maintainers don't need to use any tools or interact with any
 new host systems. Except for adding some metadata they just keep doing
 what they're doing. I think this last point is a big part of
-[Melpa's][melpa] success.
+[MELPA's][melpa] success.
 
 ### Bower's Fatal Weaknesses
 
