@@ -7,7 +7,7 @@ uuid: ab83f362-cc7f-308f-309b-5f3af5ae9be9
 
 Four years ago I investigated the idea of using
 [browsers as nodes for distributed computing][js-dist]. I concluded
-that due to the platform's contraints there were few problems that it
+that due to the platform's constraints there were few problems that it
 was suited to solve. However, the situation has since changed quite a
 bit! In fact, this weekend I made practical use of web browsers across
 a number of geographically separated computers to solve a
@@ -16,7 +16,7 @@ computational problem.
 ### What changed?
 
 [Web workers][worker] came into existence, not just as a specification
-but as an implemention across all the major browsers. It allows for
+but as an implementation across all the major browsers. It allows for
 JavaScript to be run in an isolated, dedicated background thread. This
 eliminates the `setTimeout()` requirement from before, which not only
 caused a performance penalty but really hampered running any sort of
@@ -31,7 +31,7 @@ the page.
 
 The interface is a bit unfriendly to [live development][skewer], but
 it's manageable. It's invoked by passing the URL of a script to the
-constructor. This script is the code that runs in the dedicated thead.
+constructor. This script is the code that runs in the dedicated thread.
 
 {% highlight javascript %}
 var worker = new Worker('script/worker.js');
@@ -39,7 +39,7 @@ var worker = new Worker('script/worker.js');
 
 The sort of interface that would have been more convenient for live
 interaction would be something like what is found on most
-multithreaded platforms: a thread constructor that accepts a function
+multi-threaded platforms: a thread constructor that accepts a function
 as an argument.
 
 {% highlight javascript %}
@@ -77,7 +77,7 @@ JavaScript engine, had on the browser market. Browser JavaScript is
 probably about two orders of magnitude faster than it was when I wrote
 my previous post. It's
 [incredible what the V8 team has accomplished][v8]. If written
-carefully, V8 JavaScript peformance can beat out most other languages.
+carefully, V8 JavaScript performance can beat out most other languages.
 
 Finally, I also now have much, much better knowledge of JavaScript
 than I did four years ago. I'm not fumbling around like I was before.
@@ -129,7 +129,7 @@ in the version I distributed to the clients, so I got to see how
 things were going without it. When I noticed the mistake and
 uncommented the `"use strict"` line, **I saw a 6-fold speed boost in
 Chrome**. Wow! Just making those few promises to Chrome allowed it to
-make some massive performance optimizaions.
+make some massive performance optimizations.
 
 With Chrome moving at full speed, it was able to inspect 560 keys per
 second on [Brian's][brian] laptop. I was getting about 300 keys per
@@ -137,7 +137,7 @@ second on my own (less-capable) computers. I haven't been able to get
 anything close to these speeds in any other language/platform (but I
 didn't try in C yet).
 
-Furthermore, I got a noticable speed boost in Chrome by using proper
+Furthermore, I got a noticeable speed boost in Chrome by using proper
 object oriented programming, versus a loose collection of functions
 and ad-hoc structures. I think it's because it made me construct my
 data structures consistently, allowing V8's hidden classes to work
