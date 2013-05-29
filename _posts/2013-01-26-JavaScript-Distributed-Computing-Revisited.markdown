@@ -102,9 +102,10 @@ this work I'd use [simple-httpd][simple-httpd]. And so it was born,
  * [https://github.com/skeeto/key-collab](https://github.com/skeeto/key-collab)
 
 Here's what it looks like in action. Each tab open consumes one CPU
-core, allowing users to control their commitment. All of those numbers
-update about twice per second, so users can get a concrete idea of
-what's going on. I think it's fun to watch.
+core, allowing users to control their commitment by choosing how many
+tabs to keep open. All of those numbers update about twice per second,
+so users can get a concrete idea of what's going on. I think it's fun
+to watch.
 
 [![](/img/screenshot/key-collab-thumb.png)](/img/screenshot/key-collab.png)
 
