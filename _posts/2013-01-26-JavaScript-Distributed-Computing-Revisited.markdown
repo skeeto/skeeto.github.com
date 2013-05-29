@@ -24,10 +24,10 @@ lively interface alongside the computation. The interface and
 computation were competing for time on the same thread.
 
 The worker isn't *entirely* isolated; otherwise it would be useless
-for anything but wasting resources. As events it can pass
+for anything but wasting resources. As pubsub events, it can pass
 [structured clones][clone] to and from the main thread running in the
-page. Other than this, it has no access to the DOM or to make any sort
-of requests.
+page. Other than this, it has no access to the DOM or other data on
+the page.
 
 The interface is a bit unfriendly to [live development][skewer], but
 it's manageable. It's invoked by passing the URL of a script to the
