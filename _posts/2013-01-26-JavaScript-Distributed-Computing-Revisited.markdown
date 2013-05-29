@@ -88,16 +88,16 @@ than I did four years ago. I'm not fumbling around like I was before.
 a permutation of the alphabet -- that when applied to a small
 dictionary results in the maximum number of words with their letters
 in alphabetical order. That's a keyspace of 26!, or
-403,291,461,126,605,635,584,000,000. When I'm working I use both a
-laptop and a desktop simultaneously, and I wanted to put them both to
-work searching that huge space for good solutions.
+403,291,461,126,605,635,584,000,000.
 
-Initially I was going to accomplish this by writing my program in
-Clojure and running it on each machine. But what about involving my
-wife's computer, too? I wasn't going to bother her with setting up an
-environment to run my stuff. Writing it in JavaScript as a web
-application would be the way to go. To coordinate this work I'd use
-[simple-httpd][simple-httpd]. And so it was born,
+When I'm developing, I use both a laptop and a desktop simultaneously,
+and I really wanted to put them both to work searching that huge space
+for good solutions. Initially I was going to accomplish this by
+writing my program in Clojure and running it on each machine. But what
+about involving my wife's computer, too? I wasn't going to bother her
+with setting up an environment to run my stuff. Writing it in
+JavaScript as a web application would be the way to go. To coordinate
+this work I'd use [simple-httpd][simple-httpd]. And so it was born,
 
  * [https://github.com/skeeto/key-collab](https://github.com/skeeto/key-collab)
 
