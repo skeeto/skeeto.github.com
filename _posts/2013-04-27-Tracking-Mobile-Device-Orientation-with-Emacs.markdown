@@ -1,7 +1,7 @@
 ---
 title: Tracking Mobile Device Orientation with Emacs
 layout: post
-tags: [emacs, javascript]
+tags: [emacs, javascript, web]
 uuid: 3e015231-d0f9-3d53-72a1-ec7d4a30c941
 ---
 

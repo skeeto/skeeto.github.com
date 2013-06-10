@@ -1,7 +1,7 @@
 ---
 title: Emacs Mouse Slider Mode for Numbers
 layout: post
-tags: [emacs]
+tags: [emacs, media]
 uuid: 26f803e9-776a-309d-9d7d-76448c2d1231
 ---
 

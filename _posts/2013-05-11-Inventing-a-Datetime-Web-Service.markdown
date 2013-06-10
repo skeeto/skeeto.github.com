@@ -1,7 +1,7 @@
 ---
 title: Inventing a Datetime Web Service
 layout: post
-tags: [javascript]
+tags: [javascript, web]
 uuid: 578a8f22-8748-3dbf-e927-2cf43954fd2f
 ---
 

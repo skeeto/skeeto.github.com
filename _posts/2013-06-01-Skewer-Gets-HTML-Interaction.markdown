@@ -1,7 +1,7 @@
 ---
 title: Skewer Gets HTML Interaction
 layout: post
-tags: [javascript, emacs]
+tags: [javascript, emacs, web]
 uuid: f8c13ac6-2da6-3851-497c-8785db8a203e
 ---
 
