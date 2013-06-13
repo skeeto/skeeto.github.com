@@ -61,9 +61,10 @@ buffer.
 ![](/img/emacs/with-package.png)
 
 JavaScript developers with a keen eye may notice a familiar pattern
-here. This macro is shaped a bit like RequireJS's `define` with
-asynchronousy in mind. Since this is Lisp with a powerful macro
-system, I get to hide away the function wrapper part.
+here. This macro is shaped a bit like the
+[Asynchronous Module Definition (AMD)][amd], with asynchronousy in
+mind. Since this is Lisp with a powerful macro system, I get to hide
+away the function wrapper part.
 
 Using this macro has caused me to use `eval-after-load` with just
 about everything. This has cut my initialization time down to about
@@ -116,3 +117,4 @@ function can be passed in directly.
 [compile]: http://lunaryorn.com/blog/2013/05/31/byte-compiling-eval-after-load/
 [helper]: https://github.com/skeeto/.emacs.d/blob/master/package-helper.el
 [expose]: /blog/2010/09/29/
+[amd]: https://github.com/amdjs/amdjs-api/wiki/AMD
