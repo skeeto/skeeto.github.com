@@ -1,7 +1,7 @@
 ---
 title: Long Live WebGL
 layout: post
-tags: [javascript, interactive, web]
+tags: [javascript, interactive, web, webgl]
 uuid: 75a9dce9-79f1-388e-f5f9-578cbb5b8800
 ---
 
