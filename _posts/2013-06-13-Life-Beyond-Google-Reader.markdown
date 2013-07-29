@@ -5,6 +5,10 @@ tags: [web]
 uuid: 7e14731d-8cb7-32d3-5ec2-e22d79aefdac
 ---
 
+**Update August 2013**: After the shutdown of Google Reader, The Old
+Reader was [unable to keep up with the demand and has closed its
+doors](http://blog.theoldreader.com/post/56798895350/desperate-times-call-for-desperate-measures). Damn.
+
 <p class="abstract">
 This started out as an e-mail but as it grew I turned it into a blog post.
 </p>
