@@ -17,6 +17,7 @@ when <a href="http://www.gnu.org/software/emacs/NEWS.23.1">
 <code>json.el</code> was first included with Emacs</a>, for dumping to
 and reading from <a href="http://en.wikipedia.org/wiki/JSON">JSON</a>.
 </p>
+
 {% highlight cl %}
 (require 'json)
 
@@ -27,15 +28,18 @@ and reading from <a href="http://en.wikipedia.org/wiki/JSON">JSON</a>.
 (insert "\n;; " (json-encode hash))
 ;; {"key2":"data2", "key1":"data1"}
 {% endhighlight %}
+
 <p>
 Just a month ago Emacs 23.2 came out, very silently
 including <a href="http://www.gnu.org/software/emacs/NEWS.23.2">a new
 printed representation for hash tables</a> with a <code>#s</code> hash
 notation.
 </p>
+
 {% highlight cl %}
 #s(hash-table data ("key1" "data1" "key2" "data2"))
 {% endhighlight %}
+
 <p>
 With this hash tables can be printed and read as part of normal
 s-expressions with the standard lisp reader and printer functions.  It

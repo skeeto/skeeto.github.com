@@ -27,6 +27,7 @@ Just put it in your path
 and <code>(require 'memoize)</code> it. Here's the core
 function.
 </p>
+
 {% highlight cl %}
 ;; ID: 83bae208-da65-3e26-2ecb-4941fb310848
 (defun memoize-wrap (func)
@@ -38,6 +39,7 @@ function.
             value
           (puthash args (apply func args) table))))))
 {% endhighlight %}
+
 <p>
 The hash table is stored inside the fake closure provided by
 <code>lexical-let</code>. In a previous version of this function, I
@@ -55,6 +57,7 @@ computationally expensive: it performs key whitening. It repeats a
 hash function thousands of times to produce an expensive value. This
 isn't something you generally want to memoize, but stick with me.
 </p>
+
 {% highlight cl %}
 (defun whiten (key)
   "Perform key whitening with the md5 hash function."
@@ -63,6 +66,7 @@ isn't something you generally want to memoize, but stick with me.
 
 (whiten "password")   ; takes a couple of seconds
 {% endhighlight %}
+
 <p>
 On my laptop that takes a couple of seconds to run. Increase that
 counter if it's quick on your computer. My memoize package provides
@@ -70,9 +74,11 @@ a <code>memoize</code> function which will create a new function that
 wraps the original, then installs the new function in place of the old
 one if we give it the function symbol.
 </p>
+
 {% highlight cl %}
 (memoize 'whiten)
 {% endhighlight %}
+
 <p>
 The first time you run it after memoization it will be slow, but after
 that the memoization kicks in for a quick return.

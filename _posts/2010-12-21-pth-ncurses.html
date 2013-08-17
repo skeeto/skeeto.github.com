@@ -61,6 +61,7 @@ also a mutex synchronized <code>draw_clock()</code> function not shown
 here. I've written it so that I could easily switch back and forth
 between the two threading libraries.
 </p>
+
 {% highlight c %}
 #include <stdio.h>
 #include <ncurses.h>
@@ -123,6 +124,7 @@ int main ()
   return 0;
 }
 {% endhighlight %}
+
 <p>
 Notice the two (bolded) differences in the code between Pth and
 Pthreads, in the <code>USE_PTH</code> sections. The Pth implementation
@@ -162,6 +164,7 @@ functions. Here's the relevant section of <code>pth.h</code>, where
 the "soft" version of this happens (the "hard" version
 uses <code>syscall()</code>, operating at a lower level),
 </p>
+
 {% highlight c %}
 #define fork          pth_fork
 #define waitpid       pth_waitpid
@@ -187,6 +190,7 @@ uses <code>syscall()</code>, operating at a lower level),
 #define pread         pth_pread
 #define pwrite        pth_pwrite
 {% endhighlight %}
+
 <p>
 Its own functions wrap the real deal, but suspend themselves on an
 awaiting event and yield. Any time the scheduler runs, it polls for
@@ -199,6 +203,7 @@ it, so it doesn't get a chance to handle it properly. After taking a
 look at the implementation for <code>pth_read()</code>, I
 fixed <code>getch()</code> for my program,
 </p>
+
 {% highlight c %}
 #if USE_PTH
 int pth_getch ()
@@ -212,6 +217,7 @@ int pth_getch ()
 #define getch pth_getch
 #endif
 {% endhighlight %}
+
 <p>
 It tells the Pth scheduler that the thread wants to be suspended until
 there's something to read on <code>stdin</code> (file descriptor
@@ -239,9 +245,11 @@ systems <a href="http://lists.gnupg.org/pipermail/gnupg-devel/2006-November/0233
 have implicit yeilding disabled</a> by default. You may have needed to
 add this before the <code>pth.h</code> include.
 </p>
+
 {% highlight c %}
 #define PTH_SYSCALL_SOFT 1
 {% endhighlight %}
+
 </pre>
 <p>
 This is now in the linked source.

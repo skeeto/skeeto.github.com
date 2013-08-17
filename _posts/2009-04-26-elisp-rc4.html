@@ -22,6 +22,7 @@ interface. The relevant files are <code>arcfour.el</code> and
 <code>ciphersaber.el</code>. There are some test vectors in there that
 I won't show here. Here is the arcfour implementation,
 </p>
+
 {% highlight cl %}
 (defun rc4-init-state ()
   "Initialize the arcfour state vector."
@@ -58,6 +59,7 @@ I won't show here. Here is the arcfour implementation,
   (aref rc4-state (% (+ (aref rc4-state rc4-i)
                         (aref rc4-state rc4-j)) 256)))
 {% endhighlight %}
+
 <p>
 For the sake of simplicity it uses some global variables to store the
 cipher state. It would be better if the state was returned as a list,

@@ -12,6 +12,7 @@ working on <a href="/blog/2010/01/24/"> Wisp</a>. In C function
 pointers are incompatible with normal pointers. For example, this is
 unportable C,
 </p>
+
 {% highlight c %}
 int func (int x);
 
@@ -20,6 +21,7 @@ int main ()
   void *p = (void *) &func;
 }
 {% endhighlight %}
+
 <p>
 This is because function pointers are a different size than other
 pointers on some architectures, or even within the same architecture

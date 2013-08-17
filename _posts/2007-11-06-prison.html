@@ -47,11 +47,13 @@ tit-for-tat. This player begins by playing cooperatively, then does
 whatever the its opponent did last. Here is the common lisp code to
 run a tit-for-tat strategy,
 </p>
+
 {% highlight cl %}
 (defun tit-for-tat ()
   (lambda (x)
     (if (null x) :coop x)))
 {% endhighlight %}
+
 <p>
 If you are unfamiliar with common lisp, the <code>lambda</code> part
 is returning an anonymous function that actually plays the tit-for-tat

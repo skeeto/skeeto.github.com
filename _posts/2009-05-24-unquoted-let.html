@@ -36,6 +36,7 @@ In elisp, this is analogous to <code>setq</code>, which quotes its
 first argument, and <code>set</code>, which doesn't. It could be used
 like so in elisp,
 </p>
+
 {% highlight cl %}
 (setq foo 'bar)
 (setq bar 25)
@@ -43,6 +44,7 @@ like so in elisp,
 (uq-let ((foo 10))
   (+ 10 bar))
 {% endhighlight %}
+
 <p>
 The unquoted <code>let</code> form evalues to <code>20</code>, not 35,
 because <code>foo</code> evaluates to the symbol <code>bar</code>,
@@ -82,6 +84,7 @@ use an unquoted <code>let</code>,
 <p>
 There, that's a lot more lispy. Here is an elisp macro for uq-let,
 </p>
+
 {% highlight cl %}
 (defmacro uq-let (vars &rest body)
   "Unquoted let."
@@ -91,6 +94,7 @@ There, that's a lot more lispy. Here is an elisp macro for uq-let,
             (cons (eval (car a)) (cdr a))) vars)
      ,@body))
 {% endhighlight %}
+
 <p>
 From this, making a <code>uq-let*</code> is trivial. The documentation
 string could use some work too.

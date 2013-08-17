@@ -50,6 +50,7 @@ something? This is the linear system,
 We just have to solve for the <i>a</i> vector to get our
 coefficients. I quickly wrote this GNU Octave code to try this out,
 </p>
+
 {% highlight octave %}
 function a = npoly (x, y)
   X = repmat (x', 1, length(x));
@@ -61,6 +62,7 @@ function a = npoly (x, y)
   a = X \ y';
 end
 {% endhighlight %}
+
 <p>
 This is just an extremely simple and slow version of
 Octave's <code>polyfit</code> function, except for the order of the

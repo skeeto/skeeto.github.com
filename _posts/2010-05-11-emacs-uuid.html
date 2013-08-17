@@ -51,6 +51,7 @@ count as a version 3 UUID (or at least close enough that I don't
 care). I modified it slightly, adding more unique data and a version
 number.
 </p>
+
 {% highlight cl %}
 ;; ID: 90aebf38-b33a-314b-1198-c9bffea2f2a2
 (defun uuid-create ()
@@ -74,23 +75,28 @@ number.
             (substring s 20 32))))
 
 {% endhighlight %}
+
 <p>
 This returns a string containing the UUID. Next, make an interactive
 function to wrap it,
 </p>
+
 {% highlight cl %}
 (defun uuid-insert ()
   "Inserts a new UUID at the point."
   (interactive)
   (insert (uuid-create)))
 {% endhighlight %}
+
 <p>
 I bound this to "<code>C-x !</code>", which wasn't yet bound to
 anything.
 </p>
+
 {% highlight cl %}
 (global-set-key <span class="string">"\C-x!"</span> 'uuid-insert)
 {% endhighlight %}
+
 <p>
 Instant UUIDs in Emacs.
 </p>

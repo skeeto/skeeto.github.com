@@ -56,6 +56,7 @@ Octave because, as far as I know, Octave 2.1 doesn't
 have <code>interp2</code>. And, unfortunately, <code>interp2</code> is
 much slower than it probably could be.
 </p>
+
 {% highlight octave %}
 function m = diamond_square (m, i, c)
   if isempty (m)
@@ -79,6 +80,7 @@ function m = diamond_square (m, i, c)
   end
 end
 {% endhighlight %}
+
 <p>
 Something of note here compared to other implementations of
 diamond-square, my code above adds Gaussian noise (with

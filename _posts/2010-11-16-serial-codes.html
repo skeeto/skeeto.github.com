@@ -94,6 +94,7 @@ hexadecimal digits. First let's define a little bit about what our
 serial codes look like. I'm going to implement this in my favorite
 try-stuff language, Elisp.
 </p>
+
 {% highlight cl %}
 (defvar serial-password "password"
   "Secret password used in serial generation and checks.")
@@ -104,6 +105,7 @@ try-stuff language, Elisp.
 (defvar serial-check-len 12
   "Length of the check component of the serial number.")
 {% endhighlight %}
+
 <p>
 I decided to use 12 characters, 6 bytes, to represent each
 component. This makes for a 24-character serial code. A bit long, but
@@ -117,6 +119,7 @@ ways to perform this mix, such as
 with <a href="http://en.wikipedia.org/wiki/HMAC"> HMAC</a>,
 but <code>concat</code> is good enough for a DRM scheme.
 </p>
+
 {% highlight cl %}
 (defalias 'serial-hash 'sha1
   "Hash function for generating serial codes.")
@@ -124,6 +127,7 @@ but <code>concat</code> is good enough for a DRM scheme.
 (defalias 'serial-mixer 'concat
   "Function for mixing the password and the code part of the serial number.")
 {% endhighlight %}
+
 <p>
 Below, first function is just a random number generator. It could be
 fancier, <a href="/blog/2010/05/11/">like the UUID generating</a>
@@ -131,6 +135,7 @@ function, but this is good enough. The <code>compose</code>
 function <a href="/blog/2010/11/15/">was defined in a previous
 post</a>.
 </p>
+
 {% highlight cl %}
 (defun serial-gen-code-hex ()
   "Generate a the code component of a new serial number."
@@ -145,6 +150,7 @@ post</a>.
                            0 serial-check-len)))
     (concat code check)))
 {% endhighlight %}
+
 <p>
 The serial codes it generates look like this.
 </p>
@@ -160,6 +166,7 @@ Next we need a function that accepts these numbers and checks their
 self-consistency. Simple enough: extract the code component, generate
 the checksum, and check against the checksum component.
 </p>
+
 {% highlight cl %}
 (defun serial-check-hex (serial)
   "Return t if the given hex-encoded serial is valid."
@@ -168,18 +175,22 @@ the checksum, and check against the checksum component.
     (string= check (substring (serial-hash (serial-mixer serial-password code))
                               0 serial-check-len))))
 {% endhighlight %}
+
 <p>
 This quick test below always returns true, so it's working at least
 partially right.
 </p>
+
 {% highlight cl %}
 (serial-check-hex (serial-gen-hex))
 {% endhighlight %}
+
 <p>
 Those serial numbers could be shorter because we're limiting ourselves
 to <code>0-9</code> and <code>a-f</code>. Instead, we could base64
 encode the serial numbers to cram more information in each character.
 </p>
+
 {% highlight cl %}
 (defun serial-hex-to-bytes (hex)
   "Convert hexadecimal string to string of bytes."
@@ -197,6 +208,7 @@ encode the serial numbers to cram more information in each character.
   (serial-check-hex (mapconcat (apply-partially 'format "%02x")
                                (base64-decode-string serial) "")))
 {% endhighlight %}
+
 <p>
 Now the serial codes from <code>serial-gen</code> look like this.
 </p>
