@@ -13,7 +13,7 @@
   <author>
     <name>Christopher Wellons</name>
     <uri>{{ site.url }}</uri>
-    <email>mosquitopsu@gmail.com</email>
+    <email>wellons@nullprogram.com</email>
   </author>
 
   {% for post in site.posts limit: 8 %}

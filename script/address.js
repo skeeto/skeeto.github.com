@@ -2,7 +2,7 @@
  */
 
 $(document).ready(function() {
-    var email = 'mosquitopsu\u0040gmail.com';
+    var email = 'wellons\u0040nullprogram.com';
     $('#email').attr('href', 'mailto:' + email).text(email);
 
     var bitcoin = '17YcJGMHjeTqEE9k1XKnC2PENBAtuoz8GQ';
