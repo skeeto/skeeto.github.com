@@ -5,9 +5,10 @@ tags: [web]
 uuid: 7e14731d-8cb7-32d3-5ec2-e22d79aefdac
 ---
 
-<p class="abstract">
-This started out as an e-mail but as it grew I turned it into a blog post.
-</p>
+*Update September 2013*: I'm now using [Elfeed](/blog/2013/09/04/).
+The Old Reader was a victim of its own success, unable to keep up with
+its surge in popularity, and I ended up writing my own reader to serve
+my needs.
 
 Google Reader will close its doors in about two more weeks. A few
 people had wanted to know what my plans were for accessing web feeds
