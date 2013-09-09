@@ -7,13 +7,13 @@ uuid: 8aba2e49-22a0-330b-e664-54fb50ecdd00
 ---
 
 The design of [Elfeed's][elfeed] database took some experimentation
-before any part of it was settled. A major design constraint was Emacs
-very limited file input/output. There's no random access and, without
-the aid of an external program, files must always be read and written
-wholesale. That's not database-friendly at all! In the end I settled
-on a design that minimized the size of the frequently rewritten parts,
-an index with two different data models, by storing immutable data in
-a loose-file, content-addressable database.
+before any part of it was settled. A major design constraint was
+Emacs' very limited file input/output. There's no random access and,
+without the aid of an external program, files must always be read and
+written wholesale. That's not database-friendly at all! In the end I
+settled on a design that minimized the size of the frequently
+rewritten parts, an index with two different data models, by storing
+immutable data in a loose-file, content-addressable database.
 
 At the moment there really aren't any pure-Elisp database solutions
 for Emacs. This is almost certainly due to the aforementioned I/O
