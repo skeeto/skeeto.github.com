@@ -91,7 +91,8 @@ buffer view without fetching any feeds.
 
 Everything fetched will be added to the database for next time you run
 Emacs. It's not required at all in order to use Elfeed, but I'll
-discuss some of the details of the database format in another post.
+discuss some of
+[the details of the database format in another post](/blog/2013/09/09/).
 
 ### The search filter
 
