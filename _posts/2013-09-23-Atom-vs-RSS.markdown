@@ -77,12 +77,10 @@ Without a guid tag it's up to the client to guess what items have been
 seen already, and there's no guidance in the specification for doing
 so. Without a guid tag, some clients use contents of the `link` tag as
 an identifier (Elfeed, The Old Reader). In practice it's very unlikely
-for two unique items to have the same link.
-
-Other clients track the entire contents of the item, so when any part
-changes, such as the description, it's treated as a brand new item
-(Liferea). Most RSS feeds do not use guid tags. A few of these
-guid-less feeds regularly change their `description` tag (advertising,
+for two unique items to have the same link. Other clients track the
+entire contents of the item, so when any part changes, such as the
+description, it's treated as a brand new item (Liferea). Some
+guid-less feeds regularly change their `description` (advertising,
 etc.), so they're not handled well by the latter clients. It's a mess.
 
 In contrast, Atom's `id` element is required. If someone doesn't have
@@ -137,8 +135,8 @@ between these two RFCs. In practice everyone just pretends RSS uses
 
 In contrast, Atom consistently uses [RFC 3339][rfc3339] dates, along
 with a couple of additional restrictions. These dates are *much*
-simpler to parse than RFC 2822, which is complex because attempts to
-be backwards compatible with RFC 822.
+simpler to parse than RFC 2822, which is complex because it attempts
+to be backwards compatible with RFC 822.
 
 #### RSS 1.0, the problem child
 
@@ -217,7 +215,7 @@ no trouble.
 Someday if you're going to create a new feed for some content, please
 do the web a favor and choose Atom! You're much more likely to get
 things right the first time and you'll make someone else's job a lot
-easier. As the author of a web feed client, you can take my word for
+easier. As the author of a web feed client you can take my word for
 it.
 
 
