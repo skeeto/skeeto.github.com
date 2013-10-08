@@ -115,6 +115,6 @@ function can be passed in directly.
 
 [after]: http://milkbox.net/note/single-file-master-emacs-configuration/
 [compile]: http://lunaryorn.com/blog/2013/05/31/byte-compiling-eval-after-load/
-[helper]: https://github.com/skeeto/.emacs.d/blob/master/package-helper.el
+[helper]: https://github.com/skeeto/.emacs.d/blob/master/etc/package-helper.el
 [expose]: /blog/2010/09/29/
 [amd]: https://github.com/amdjs/amdjs-api/wiki/AMD
