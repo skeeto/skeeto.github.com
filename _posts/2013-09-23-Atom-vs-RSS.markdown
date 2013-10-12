@@ -2,7 +2,7 @@
 title: Atom vs. RSS
 layout: post
 date: 2013-09-23T06:23:51Z
-tags: [web]
+tags: [web, elfeed]
 uuid: a36dba78-5234-3269-bb3c-dc1e939f12b1
 ---
 

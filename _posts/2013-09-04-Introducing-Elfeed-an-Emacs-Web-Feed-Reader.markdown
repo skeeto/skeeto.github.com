@@ -2,7 +2,7 @@
 title: Introducing Elfeed, an Emacs Web Feed Reader
 layout: post
 date: 2013-09-04T05:33:10Z
-tags: [emacs, web]
+tags: [emacs, web, elfeed]
 uuid: fdfd55d2-65dd-39cc-6695-655c3ea7e8e0
 ---
 
