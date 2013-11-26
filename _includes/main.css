@@ -225,12 +225,6 @@ nav {
     text-align: center;
 }
 
-#bitcoin-address {
-    font-size: 8px;
-    position: relative;
-    top: -10px;
-}
-
 /* Archive CSS */
 ul.archive {
     font-size: 85%;
