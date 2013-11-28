@@ -2,7 +2,7 @@
 title: Elfeed Tips and Tricks
 layout: post
 date: 2013-11-26T00:38:20Z
-tags: [elfeed]
+tags: [elfeed, lisp, emacs]
 uuid: 45fbc221-dbea-302c-22c0-ec0527421ed8
 ---
 
