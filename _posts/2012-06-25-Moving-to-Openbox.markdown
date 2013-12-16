@@ -1,7 +1,7 @@
 ---
 title: Moving to Openbox
 layout: post
-tags: [rant, git, debian]
+tags: [rant, git, debian, reddit]
 uuid: 8e15a68e-5ad4-356b-7d5b-5c854e4c5302
 ---
 

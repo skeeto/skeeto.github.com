@@ -1,7 +1,7 @@
 ---
 title: Web Distributed Computing Revisited
 layout: post
-tags: [javascript, web, lisp]
+tags: [javascript, web, lisp, reddit]
 uuid: ab83f362-cc7f-308f-309b-5f3af5ae9be9
 ---
 

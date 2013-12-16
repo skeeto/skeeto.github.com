@@ -2,7 +2,7 @@
 title: My Grading Process
 layout: post
 date: 2013-10-13T02:56:31Z
-tags: [java, rant]
+tags: [java, rant, reddit]
 uuid: 8c5aecd0-c7f0-314d-d4a8-88014a195e08
 ---
 
