@@ -12,7 +12,7 @@ first *multiple dispatch* object system!** That is, methods are
 dispatched based on the dynamic, run-time type of more than one of its
 arguments.
 
-* [https://github.com/skeeto/multi](https://github.com/skeeto/multi)
+ * [https://github.com/skeeto/multi](https://github.com/skeeto/multi)
 
 As of version 23.2, Emacs includes a CLOS-like object system cleverly
 named EIEIO. While CLOS (Common Lisp Object System) is multiple
