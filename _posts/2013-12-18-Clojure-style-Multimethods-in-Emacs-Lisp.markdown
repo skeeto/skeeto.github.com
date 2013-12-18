@@ -9,8 +9,8 @@ uuid: 029f9acb-a29f-3e58-14f3-457f245cdb5d
 This past week I added [Clojure-style multimethods][clojure] to Emacs
 Lisp through a package I call `multi`. **I believe it is Elisp's very
 first *multiple dispatch* object system!** That is, methods are
-dispatched based on the dynamic, run-time type of more than one of its
-arguments.
+dispatched based on the dynamic, run-time type of
+[more than one of its arguments][multimethods].
 
  * [https://github.com/skeeto/multi](https://github.com/skeeto/multi)
 
@@ -21,7 +21,7 @@ The multi package is also very different than my other Elisp object
 system, [@][at], which was prototype based and, therefore, also single
 dispatch (and comically slow).
 
-The [Clojure multimethods documentation][multimethods] provides a good
+The [Clojure multimethods documentation][clojure] provides a good
 introduction. The multi package works almost exactly the same way,
 except that due to Elisp's lack of namespacing the function names are
 prefixed with `multi-`. Also different is that the optional hierarchy
