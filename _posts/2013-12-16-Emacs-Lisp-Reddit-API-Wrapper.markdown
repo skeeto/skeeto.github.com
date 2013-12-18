@@ -133,4 +133,4 @@ I hope other people find this library useful!
 [mod]: http://www.reddit.com/r/civ/comments/clxj4/lets_tidy_rciv_up_a_bit/
 [wrappers]: https://github.com/reddit/reddit/wiki/API-Wrappers
 [bug]: http://www.reddit.com/r/bugs/comments/1t162o/
-[elfeed]: http://nullprogram.com/blog/2013/09/04/
+[elfeed]: /blog/2013/09/04/
