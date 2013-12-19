@@ -124,7 +124,7 @@ Without needing to save, hit `C-x r` to run the program from Emacs. A
 and the program. If you just want to compile without running it, type
 `C-x c` instead. If there were any errors, Ant will report them in the
 compilation buffer. You can jump directly to these with
-<code>C-x `</code> (that's a backtick).
+<code>C-x &#x65;</code> (that's a backtick).
 
 [![](/img/emacs/java-run-thumb.png)](/img/emacs/java-run.png)
 
