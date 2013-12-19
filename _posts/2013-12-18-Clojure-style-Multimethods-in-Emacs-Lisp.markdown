@@ -8,11 +8,15 @@ uuid: 029f9acb-a29f-3e58-14f3-457f245cdb5d
 
 This past week I added [Clojure-style multimethods][clojure] to Emacs
 Lisp through a package I call `multi`. **I believe it is Elisp's very
-first *multiple dispatch* object system!** That is, methods are
-dispatched based on the dynamic, run-time type of
+first complete *multiple dispatch* object system!** That is, methods
+are dispatched based on the dynamic, run-time type of
 [more than one of its arguments][multimethods].
 
  * [https://github.com/skeeto/multi](https://github.com/skeeto/multi)
+
+(Unfortunately I was unaware of [the other one][other] when I wrote
+mine. However, my version is *much* more complete, has better
+performance, and is public domain.)
 
 As of version 23.2, Emacs includes a CLOS-like object system cleverly
 named EIEIO. While CLOS (Common Lisp Object System) is multiple
@@ -291,3 +295,4 @@ free to try it out.
 [clojure]: http://clojure.org/multimethods
 [multimethods]: http://en.wikipedia.org/wiki/Multimethods
 [at]: /blog/2013/04/07/
+[other]: https://github.com/kurisuwhyte/emacs-multi
