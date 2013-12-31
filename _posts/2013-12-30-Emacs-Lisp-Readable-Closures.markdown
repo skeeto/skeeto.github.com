@@ -62,8 +62,8 @@ types print readably:
  * byte-code function object (`#[...]`)
  * symbol (anything else)
 
-Here are all the non-readable values I can think of. Each one has a
-good reason for not being serializable.
+Here are all the non-readable values I can find. Each one has a good
+reason for not being serializable.
 
  * buffer
  * process (external state)
@@ -81,7 +81,7 @@ themselves can be printed.
 An interesting note here is that, unlike the Common Lisp Object System
 (CLOS), EIEIO objects are readable by default. To Elisp they're just
 vectors, so of course they print. CLOS objects are unreadable without
-manually defining a print function per class.
+manually defining a print method per class.
 
 ### Elisp Closures
 
@@ -161,7 +161,7 @@ Since closures are byte-code function objects, they print readably.
 You can capture an environment in a closure, serialize it, read it
 back in, and evaluate it. That's pretty cool! This means closures can
 be transmitted to other Emacs instances in a multi-processing setup
-([Elnode][elnode], [Async][async])
+(i.e. [Elnode][elnode], [Async][async])
 
 The catch is that it's easy to accidentally capture an unreadable
 value, especially buffers. Consider this function `bar` which uses a
