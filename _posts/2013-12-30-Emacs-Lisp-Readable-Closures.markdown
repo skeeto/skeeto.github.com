@@ -52,10 +52,10 @@ Elisp has a small set of primitive data types. All of these primitive
 types print readably:
 
  * integer (`1024`, `?a`)
- * float ('`1.7`)
+ * float (`1.7`)
  * cons/list (`(...)`)
  * vector (one-dimensional, `[...]`)
- * bool-vector (`"#&n"..."`)
+ * bool-vector (`#&n"..."`)
  * string (`"..."`)
  * char-table (`#^[...]`)
  * hash-table (readable as of Emacs 23, `#s(hash-table ...)`)
