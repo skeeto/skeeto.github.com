@@ -11,7 +11,7 @@ that its closures are *readable*. Closures can be serialized by the
 printer and read back in with the reader. I am unaware of any other
 programming language that has this feature. In fact it's essential for
 Elisp byte-code compilation because byte-compiled Elisp files are
-merely s-expressions dumped out as Elisp source.
+merely s-expressions of byte-code dumped out as source.
 
 ### Lisp Printing
 
