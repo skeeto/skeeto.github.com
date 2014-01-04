@@ -124,7 +124,7 @@ Capturing it has a few problems.
  * It affects the readability of the closure, which I'll get to later.
 
 Fortunately the compiler is smart enough to see this and will avoid
-capturing unused variables. To prove this, I've not compiled `foo` so
+capturing unused variables. To prove this, I've now compiled `foo` so
 that it returns a compiled closure.
 
 {% highlight cl %}
