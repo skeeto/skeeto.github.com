@@ -182,8 +182,8 @@ talk more about the byte-code below.
 #### Constants Vector
 
 The byte-code has very limited operands. Most operands are only a few
-bits, some fill entire byte, and occasionally two bytes. The meat of
-the function that holds all the constants, function symbols, and
+bits, some fill an entire byte, and occasionally two bytes. The meat
+of the function that holds all the constants, function symbols, and
 variables symbols is the constants vector. It's a normal Elisp vector
 and can be created with `vector` or a vector literal. Operands
 reference either this vector or they index into the stack itself.

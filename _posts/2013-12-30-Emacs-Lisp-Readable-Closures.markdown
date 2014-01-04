@@ -60,9 +60,9 @@ types print readably:
  * char-table (`#^[...]`)
  * hash-table (readable as of Emacs 23, `#s(hash-table ...)`)
  * byte-code function object (`#[...]`)
- * symbol (anything else)
+ * symbol
 
-Here are all the non-readable values I can find. Each one has a good
+Here are all the non-readable types I can find. Each one has a good
 reason for not being serializable.
 
  * buffer
