@@ -146,9 +146,10 @@ compiler didn't capture it.
 
 For those curious about the byte-code here's an explanation. The
 string syntax shown is in octal, representing a string containing two
-bytes: 192 and 135. The Elisp virtual machine is stack-based. The 192
-says to push the first constant onto the stack. The 135 says to pop
-the top element from the stack and return it.
+bytes: 192 and 135. The
+[Elisp byte-code interpreter is stack-based][internals]. The 192
+(`constant 0`) says to push the first constant onto the stack. The 135
+(`return`) says to pop the top element from the stack and return it.
 
 {% highlight cl %}
 (coerce "\300\207" 'list)
@@ -205,3 +206,4 @@ behavior.
 [print]: /blog/2013/03/28/
 [async]: https://github.com/jwiegley/emacs-async
 [elnode]: https://github.com/nicferrier/elnode
+[internals]: /blog/2014/01/04/
