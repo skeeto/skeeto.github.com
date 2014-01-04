@@ -418,6 +418,8 @@ of it all. Perhaps implementing a programming language that targets
 the byte-code interpreter, improving compiler optimization, or, for a
 really big project, JIT compiling Emacs byte-code.
 
+**People *can* write byte-code!**
+
 
 [literal]: /blog/2012/07/17/
 [bytecomp]: http://cvs.savannah.gnu.org/viewvc/emacs/emacs/lisp/emacs-lisp/bytecomp.el?view=markup
