@@ -8,9 +8,7 @@ uuid: f89408fd-9b2f-3110-af83-fe96f7c1e7f7
 Back in May I wrote a crude `defpackage` function for Elisp, modeled
 after Common Lisp's version. I'm calling them fakespaces.
 
-<pre>
-git clone <a href="https://github.com/skeeto/elisp-fakespace">git://github.com/skeeto/elisp-fakespace.git</a>
-</pre>
+ * [https://github.com/skeeto/elisp-fakespace](https://github.com/skeeto/elisp-fakespace)
 
 It works like so (see `example.el` for detailed information on this
 code),
