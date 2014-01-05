@@ -99,7 +99,7 @@ tests, compiled Elisp with lexical scope enabled is about 10% to 15%
 faster than with the default dynamic scope.
 
 What do closures look like in Emacs Lisp? It takes on two forms
-depending on weather the closure is compiled or not. For example,
+depending on whether the closure is compiled or not. For example,
 consider this function, `foo`, that takes two arguments and returns a
 closure that returns the first argument.
 
