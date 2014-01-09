@@ -58,7 +58,7 @@ types print readably:
  * bool-vector (`#&n"..."`)
  * string (`"..."`)
  * char-table (`#^[...]`)
- * hash-table (readable as of Emacs 23, `#s(hash-table ...)`)
+ * hash-table (readable as of Emacs 23.3, `#s(hash-table ...)`)
  * byte-code function object (`#[...]`)
  * symbol
 
