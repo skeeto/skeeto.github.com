@@ -7,13 +7,14 @@ uuid: fd8ed6df-1a72-3568-7dfe-0be6fde803a0
 
 <!-- 24 May 2009 -->
 <p class="abstract">
-Update: While the basic idea is sound, my implementation below is
-definitely not. At the time I obviously did not fully understand Lisp
-macros. Using <code>eval</code> is usually a stupid idea, and it's
-even more stupid to try to use it inside of a macro where it will most
-likely be used, causing an error, at compile time. I doubt this would
-work well with byte-compiled code. I'll leave this post here for
-historical purposes.
+Update: The basic idea is unsound as is my implementation below.
+Besides this, the <code>cl-letf</code> macro can already do this sort
+of thing. At the time I obviously did not fully understand Lisp macros
+nor language implementation in general. Using <code>eval</code> is
+usually a stupid idea, and it's even more stupid to try to use it
+inside of a macro where it will most likely be used, causing an error,
+at compile time. I doubt this would work well with byte-compiled code.
+I'll leave this post here for historical purposes.
 </p>
 <p>
 The lisp macro/form <code>let</code> quotes variable's symbols. This
