@@ -16,9 +16,9 @@ you do?
 **Solution**: This is Emacs Lisp. We can just add this feature to the
 language ourselves!
 
-I've already implemented this feature as a package called `finalize`.
-It will be in MELPA shortly if it's not already there. I need it as
-part of a larger, upcoming project.
+I've already implemented this feature as a package called `finalize`,
+available on MELPA. I will be using it as part of a larger, upcoming
+project.
 
  * [https://github.com/skeeto/elisp-finalize](https://github.com/skeeto/elisp-finalize)
 
