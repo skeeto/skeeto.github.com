@@ -219,15 +219,14 @@ nav {
     right: 5px;
 }
 
-/* Tip Jar */
+/* Archive CSS */
 
-#tipjar div {
-    text-align: center;
+.archive {
+    font-size: 85%;
 }
 
-/* Archive CSS */
-ul.archive {
-    font-size: 85%;
+.archive li:nth-child(odd) {
+    background-color: {{ page.backC }};
 }
 
 /* Mobile version (this must go last) */
