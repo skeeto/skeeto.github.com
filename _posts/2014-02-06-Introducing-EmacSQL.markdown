@@ -283,7 +283,7 @@ entirely on the Emacs reader to parse the results. This makes
 communication between Emacs and the subprocess as fast as it can
 possibly be. The reader is faster than any possible Elisp program.
 
-As I mentioned before, this is C program compiled when possible, and
+As I mentioned before, this C program is compiled when possible, and
 otherwise a pre-built binary is fetched from my server (popular
 platforms only, obviously). It's likely EmacSQL will have at least one
 working back-end on whatever you're using.
