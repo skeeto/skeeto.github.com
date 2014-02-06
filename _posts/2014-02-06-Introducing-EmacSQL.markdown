@@ -205,10 +205,10 @@ decided the command shell was inadequate as an Emacs subprocess.
 Recently there [was some discussion][elfeed] from alexbenjm and Andres
 Ramirez on an Elfeed post about using SQLite as an Elfeed back-end.
 This inspired me to take another look and that's when I came up with a
-workaround for SQLite's ambiguity: only store printed Elisp values as
-TEXT! With `print-escape-newlines` set, TEXT values no longer span
-multiple lines, and I can use `read` to pull in data from sqlite3. All
-of sqlite3's output modes were now unambiguous.
+workaround for SQLite's ambiguity: only store printed Elisp values for
+TEXT values! With `print-escape-newlines` set, TEXT values no longer
+span multiple lines, and I can use `read` to pull in data from
+sqlite3. All of sqlite3's output modes were now unambiguous.
 
 However, after making significant progress I discovered an even bigger
 issue: GNU Readline. The sqlite3 binary provided by Linux package
