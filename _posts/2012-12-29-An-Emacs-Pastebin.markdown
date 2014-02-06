@@ -120,6 +120,9 @@ every request, asking for a response in CSV -- the only output format
 that seems to escape unambiguously. This response then has to be
 parsed, so long as it's not too long to blow the regex stack.
 
+*Update February 2014*: I have
+[found a solution to this problem][solution]!
+
 ### Future
 
 This has been an educational project for me. As a tutorial and for
@@ -140,3 +143,4 @@ same front-end.
 [htmlize]: http://emacswiki.org/emacs/Htmlize
 [file-variable]: http://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html
 [pg.el]: http://www.online-marketwatch.com/pgel/pg.html
+[solution]: /blog/2014/02/06/
