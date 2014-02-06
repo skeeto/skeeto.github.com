@@ -132,7 +132,7 @@ INSERT INTO people (name, age) VALUES ('"Jim"', 45), ('"Jeff"', 34);
 And this,
 
 {% highlight cl %}
-[:select * :from people :where (in name $v1)]
+[:select * :from tags :where (in tag $v1)]
 {% endhighlight %}
 
 Given the argument `[hiking camping biking]` becomes,
