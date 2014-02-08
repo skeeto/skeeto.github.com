@@ -5,31 +5,14 @@ tags: [java, interactive]
 uuid: a0616bd6-6e00-38c5-c84c-12335f388d88
 ---
 
-<!-- 8 October 2007 -->
-<p class="center">
-  <img src="/img/screenshot/maze-thumb.png" alt=""/>
-</p>
+![](/img/screenshot/maze-thumb.png)
 
-<p>
-Download source:
-</p>
-<pre>
-git clone <a href="https://github.com/skeeto/RunMaze">git://github.com/skeeto/RunMaze.git</a>
-</pre>
-<p>
-Compiled:
-<a href="http://skeeto.github.com/RunMaze/RunMaze.jar">RunMaze.jar</a>
-</p>
-<p>
-As an applet:
-<a href="http://skeeto.github.com/RunMaze/">MazeApplet</a>
-</p>
+* [https://github.com/skeeto/RunMaze](https://github.com/skeeto/RunMaze)
+* [MazeApplet](http://skeeto.github.com/RunMaze/)
 
-<p>
 In preparation for showing off the maze-navigating robot I made last
 week, I give you this program I wrote last year.
-</p>
-<p>
+
 When I started to learn Java, I wrote this little program for
 practice. It features a GUI and multi-threading. It generates a maze
 and then slowly solves the maze so you can watch it go. I wrote this
@@ -39,8 +22,7 @@ one). The Makefile is therefore set up for <code>gcj</code> and
 <code>gij</code>. The Makefile can build the byte-compiled
 <code>.jar</code> file as well as a natively compiled version.</span>
 I have updated it to use Ant, and I also use Sun's OpenJDK these days.
-</p>
-<p>
+
 The maze generation algorithm is what I believe to be called the
 "straw man" algorithm: the maze starts as a matrix of individual
 cells. Break down the walls between two cells that aren't already
@@ -48,51 +30,39 @@ connected and move into it. Choose another wall at random and
 repeat. If there are no walls left to break down, go back a
 step. Lather, rinse, repeat. If you are back in the starting cell with
 no more walls to break down, you are done.
-</p>
-<p>
+
 Solving the maze is done in a similar way to generation. Go forward,
 right, or left if you can. If not, go back to the previous cell. This
 is the same algorithm I employed in the maze-navigating robot I built,
 which has kept me pretty busy. I will post pictures of it later.
-</p>
-<p>
+
 You can specify the maze height, width, and cell pixel size on the
 command line when you run it. This runs with the defaults,
-</p>
-<pre>
-java -jar RunMaze.jar
-</pre>
-<p>
+
+    java -jar RunMaze.jar
+
 Or if you grabbed the source,
-</p>
-<pre>
-ant run
-</pre>
-<p>
+
+    ant run
+
 And, for a tiny 100 by 100 maze,
-</p>
-<pre>
-java -jar RunMaze.jar 100 100 5
-</pre>
-<p>
+
+    java -jar RunMaze.jar 100 100 5
+
 where,
-</p>
-<pre>
-java -jar RunMaze.jar &lt;width&gt; &lt;height&gt; &lt;cell-size&gt;
-</pre>
-<p>
+
+    java -jar RunMaze.jar <width> <height> <cell-size>
+
 So, why learn Java? I still don't like Java, but I had missed out on
 an interesting research opportunity because I had zero Java
 experience. I probably wouldn't use it on my own for anything but
-practice, as my own projects don't really need to be
-super-portable. Java is ugly, bulky, and slow, but I don't want to
-miss any more opportunities. Right after I was turned down because of
-my lack of experience, I bought a Java textbook and read it cover to
-cover on vacation. More importantly, I wrote simple little Java
-programs (like the one presented here) as I learned core concepts.
-</p>
-<p>
-Update 2009-07-07: I use Java all the time at work now. There is
-really no escaping it. Except maybe with something like <a
-href="http://clojure.org/">Clojure</a> ...
-</p>
+practice, as my own projects don't really need to be super-portable.
+Java is ugly, bulky, and slow, but I don't want to miss any more
+opportunities. Right after I was turned down because of my lack of
+experience, I bought a Java textbook and read it cover to cover on
+vacation. More importantly, I wrote simple little Java programs (like
+the one presented here) as I learned core concepts.
+
+*Update 2009-07-07: I use Java all the time at work now. There is
+really no escaping it. Except maybe with something like
+[Clojure](http://clojure.org/) ...*
