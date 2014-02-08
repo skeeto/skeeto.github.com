@@ -5,35 +5,29 @@ tags: [ai, video, lisp]
 uuid: 4068d624-311a-30f4-a291-63713ffbc932
 ---
 
-<!-- 6 November 2007 -->
-<p>
-  <img src="/img/prison/top.gif" alt="" width="350"/>
-</p>
-<p>
-I was reading about
-the <a href="http://en.wikipedia.org/wiki/Prisoner's_dilemma">prisoner's
-dilemma</a> game the other day and was inspired to simulate it
-myself. It would also be a good project to start learning common
-lisp. All of the common lisp code is available in its original source
-file
-here: <a href="/download/prison/prison.lisp">
-prison.lisp</a>. I have only tried this code in my favorite common
-lisp implementation, <a href="http://clisp.cons.org/">CLISP</a>, as
-well <a href="http://www.cons.org/cmucl/">CMUCL</a>.
-</p>
-<p>
+![](/img/prison/top.gif)
+
+I was reading about the [prisoner's dilemma][pd] game the other day
+and was inspired to simulate it myself. It would also be a good
+project to start learning Common Lisp. All of the source code is
+available in its original source file here:
+
+* [/download/prison/prison.lisp](/download/prison/prison.lisp)
+
+I have only tried this code in my favorite Common Lisp implementation,
+[CLISP][clisp], as well [CMUCL][cmucl].
+
 In prisoner's dilemma, two players acting as prisoners are given the
-option of cooperating with or betraying (defecting) the other
-player. Each player's decision along with his opponents decision
-determines the length of his prison sentence. It is bad news for the
-cooperating player when the other player is defecting.
-</p>
-<p>
+option of cooperating with or betraying (defecting) the other player.
+Each player's decision along with his opponents decision determines
+the length of his prison sentence. It is bad news for the cooperating
+player when the other player is defecting.
+
 Prisoner's dilemma becomes more interesting in the iterated version of
 the game, where the same two players play repeatedly. This allows
-players to "punish" each other for uncooperative play.  Scoring
+players to "punish" each other for uncooperative play. Scoring
 generally works as so (higher is better),
-</p>
+
 <table>
 <tr><td colspan="2"></td><th colspan="2">Player A</th></tr>
 <tr><td colspan="2"></td><td>coop</td><td>defect</td></tr>
@@ -41,30 +35,27 @@ generally works as so (higher is better),
 <td>(3,3)</td><td>(0,5)</td></tr>
 <tr><td>defect</td><td>(5,0)</td><td>(1,1)</td></tr>
 </table>
-<p>
-The most famous, and strongest individual strategy, is
-tit-for-tat. This player begins by playing cooperatively, then does
-whatever the its opponent did last. Here is the common lisp code to
-run a tit-for-tat strategy,
-</p>
 
-{% highlight cl %}
+The most famous, and strongest individual strategy, is tit-for-tat.
+This player begins by playing cooperatively, then does whatever the
+its opponent did last. Here is the Common Lisp code to run a
+tit-for-tat strategy,
+
+~~~cl
 (defun tit-for-tat ()
   (lambda (x)
     (if (null x) :coop x)))
-{% endhighlight %}
+~~~
 
-<p>
-If you are unfamiliar with common lisp, the <code>lambda</code> part
-is returning an anonymous function that actually plays the tit-for-tat
-strategy. The <code>tit-for-tat</code> function generates a
-tit-for-tat player along with its own closure. The argument to the
-anonymous function supplies the opponent's last move, which is one of
-the symbols <code>:coop</code> or <code>:defect</code>. In the case of
-the first move, <code>nil</code> is passed. These are some really
-simple strategies that ignore their arguments,
-</p>
-{% highlight cl %}
+If you are unfamiliar with Common Lisp, the `lambda` part is returning
+an anonymous function that actually plays the tit-for-tat strategy.
+The `tit-for-tat` function generates a tit-for-tat player along with
+its own closure. The argument to the anonymous function supplies the
+opponent's last move, which is one of the symbols `:coop` or
+`:defect`. In the case of the first move, `nil` is passed. These are
+some really simple strategies that ignore their arguments,
+
+~~~cl
 (defun rand-play ()
   (lambda (x)
     (declare (ignore x))
@@ -95,18 +86,16 @@ simple strategies that ignore their arguments,
   (lambda (x)
     (declare (ignore x))
     :defect))
-{% endhighlight %}
-<p>
+~~~
+
 Patrick Grim did an interesting study about ten years ago on iterated
 prisoner's dilemma involving competing strategies in a 2-dimensional
-area: <a href="http://www.sunysb.edu/philosophy/faculty/pgrim/SPATIALP.HTM">
-Undecidability in the Spatialized Prisoner's Dilemma: Some
-Philosophical Implications</a>. It is very interesting, but I really
+area: [Undecidability in the Spatialized Prisoner's Dilemma: Some
+Philosophical Implications][2d]. It is very interesting, but I really
 wanted to play around with some different configurations myself. So
 what I did was extend my iterated prisoner's dilemma engine above to
 run over a 2-dimensional grid.
-</p>
-<p>
+
 Grim's idea was this: place different strategies in a 2-dimensional
 grid. Each strategy competes against its immediate neighbors. (The
 paper doesn't specify which kind of neighbor, 4-connected or
@@ -114,22 +103,20 @@ paper doesn't specify which kind of neighbor, 4-connected or
 competitions are added up to make that cell's final score. After
 scoring, each cell takes on the strategy of its highest neighbor, if
 any of its neighbors have a higher score than itself. Repeat.
-</p>
-<p>
+
 The paper showed some interesting results, where the tit-for-tat
 strategy would sometimes dominate, and, in other cases, be quickly
 wiped out, depending on starting conditions. Here was my first real
 test of my simulation. Three strategies were placed randomly in a
 50x50 grid: tit-for-tat, always-cooperate, and always-defect. This is
 the first twenty iterations. It stabilizes after 16 iterations.
-</p>
-{% highlight cl %}
+
+~~~cl
 (run-random-matrix 50 100 20 '(tit-for-tat always-coop always-defect))
-{% endhighlight %}
-<p>
-  <img src="/img/prison/random.gif" alt="" width="350"/>
-</p>
-<p>
+~~~
+
+![](/img/prison/random.gif)
+
 White is always-cooperate, black is always-defect, and cyan is
 tit-for-tat. Notice how the always-defect quickly exploits the
 always-cooperate and dominates the first few iterations. However, as
@@ -139,47 +126,49 @@ remaining always-cooperate, to eliminate the always-defect invaders,
 who have no one left to exploit. In the end, a few always-defect cells
 are left in equilibrium, feeding off of always-cooperate neighbors,
 who themselves have enough cooperating neighbors to hold their ground.
-</p>
-<p>
+
 The effect can be seen more easily here. Around the outside is
 tit-for-tat, in the middle is always-cooperate, and a single
 always-defect cell is placed in the middle.
-</p>
-{% highlight cl %}
+
+~~~cl
 (run-matrix (create-three-box) 100 30)
-{% endhighlight %}
-<p>
-  <img src="/img/prison/boxes.gif" alt="" width="350"/>
-</p>
-<p>
+~~~
+
+![](/img/prison/boxes.gif)
+
 The asymmetric pattern is due to the way that ties are broken.
-</p>
-<p>
+
 The lisp code only spits out text, which isn't very easy to follow
 whats going on. To generate these gifs, I first used this Octave
 script to convert the text into images. Just dump the lisp output to a
 text file and remove the hash table dump at the end. Then run this
-script on that
-file: <a href="/download/prison/pd_plot.m">
-pd_plot.m</a>. The text file input should look like
-this: <a href="/download/prison/example.txt">
-example.txt</a>. You will
-need <a href="http://octave.sourceforge.net/">Octave-Forge</a>
-</p>
-<p>
+script on that file:
+
+* [/download/prison/pd_plot.m](/download/prison/pd_plot.m)
+
+The text file input should look like this:
+
+* [/download/prison/example.txt](/download/prison/example.txt)
+
+~~You will need Octave-Forge.~~
+
 The script will make PNGs. You can either change the script to make
-GIFs (didn't try this myself), or use something
-like <a href="http://www.imagemagick.org">ImageMagick</a> to convert
-the images afterward. Then, you compile frames into the animated GIF
-using <a href="http://www.lcdf.org/gifsicle/">Gifsicle</a>.
-</p>
-<p>
+GIFs (didn't try this myself), or use something like
+[ImageMagick][imagemagick] to convert the images afterward. Then, you
+compile frames into the animated GIF using [Gifsicle][gifsicle].
+
 See if you can come up with some different strategies and make some
 special patterns for them. You may be able to observe some interesting
 interactions. The image at the beginning of the article uses all of
 the listed strategies in a random matrix.
-</p>
-<p>
+
 I will continue to try out some more to see if I can find something
 particularly interesting.
-</p>
+
+[pd]: http://en.wikipedia.org/wiki/Prisoner's_dilemma
+[imagemagick]: http://www.imagemagick.org/
+[gifsicle]: http://www.lcdf.org/gifsicle/
+[clisp]: http://clisp.cons.org/
+[cmucl]: http://www.cons.org/cmucl/
+[2d]: http://www.sunysb.edu/philosophy/faculty/pgrim/SPATIALP.HTM

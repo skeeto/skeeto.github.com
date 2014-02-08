@@ -15,7 +15,7 @@ taking a simple approach because I am more interested in seeing the
 genetic algorithm at work than seeing the chess playing AI do well
 against other chess AI or people.
 
-The program would search the game tree using the [minimax][minimx]
+The program would search the game tree using the [minimax][minimax]
 algorithm, with some [possible optimizations][pruning] added
 afterward. Tree searching is just a matter of generating all possible
 moves and looking at them. The hard part is the board evaluation
