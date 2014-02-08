@@ -1,0 +1,105 @@
+---
+title: Movie DNA
+layout: post
+tags: [trick]
+uuid: fea3c63e-1d62-3670-770a-832987093f4b
+---
+
+Update: A [follow-up of this post][followup] has a script that can do
+the montage part the job much faster than ImageMagick.
+
+Brendan Dawes has this interesting idea he calls
+[Cinema Redux][redux]. A entire film is distilled down to a single
+image. You take one frame from each second of the movie, shrink that
+frame down to 8x6 pixels, then line them up in a montage with 60
+frames per row. Each row then represents one minute of film. There are
+8 examples on his website.
+
+I was interested in trying this for myself, but I couldn't find any of
+his code, which he had written in Java, to do it myself. Then it hit
+me: I really don't need to write *anything* to do this! Here is
+how you can make your own using only two tools: [mplayer][mplayer] and
+[ImageMagick][im].
+
+Originally I thought that I may need to write a small Perl script to
+glue these two things together, but found, after digging
+though `man` pages, that this was completely
+unnecessary. There are two steps involved and each tool does one step:
+grab all of the frames, and second, make a montage out of those
+frames. Grabbing the frames is one call to `mplayer`,
+
+    mplayer -vo jpeg:outdir=frames -ao dummy -vf framestep=30,scale=8:6 \
+            <video_file>
+
+What we are doing here is dumping every 30th frame (assuming 30
+frames-per-second) into a directory named `frames`. These
+images will be named by consecutive 8-digit numbers. These frames are
+also resized down to 8x6 pixels. If you are converting a video with a
+different aspect ratio, such as a wide-screen movie without
+letter-boxing, you will need to adjust this. A wide-screen film would
+be 16x9.
+
+Next, we glue these frames together with ImageMagick,
+
+    montage -geometry +0+0 -background black -tile 60x "frames/*jpg" \
+            montage.jpg
+
+This will create the montage in the file `montage.jpg `.
+There is something important to note here. See how the file glob is
+quoted so that the shell will not expand it? Thats because listing
+7000 frames pushes the limits of the system in passing command line
+arguments. ImageMagick knows about file globs and will do this
+internally.
+
+* [/download/cinrdx.sh](/download/cinrdx.sh)
+
+And that's it! I put these together into that handy shell script that
+will also remove the frames after the montage has been successfully
+created. The process takes between 6 and 12 hours, depending on the
+length of the movie. It takes the movie running time to produce all
+the frames file, then it spends the rest of the time creating the
+montage, which is disappointingly slow. (Maybe I could write a Perl
+script that does it faster?) The script will create a montage out of
+just about any video you throw at it, thanks to `mplayer`. Example
+usage for DVDs,
+
+    $ ./cinrdx.sh dvd://
+
+I did it on three movies so far: *Gladiator*, *Tron*, and *The
+Matrix*. I did it to *Tron* and *The Matrix* because I wanted to see
+if these movies have a dominant color scheme.
+
+[![](/img/cinrdx/gladiator-thumb.jpg)](/img/cinrdx/gladiator.jpg)
+
+[![](/img/cinrdx/tron-thumb.jpg)](/img/cinrdx/tron.jpg)
+
+[![](/img/cinrdx/matrix-thumb.jpg)](/img/cinrdx/matrix.jpg)
+
+To inspect the coloring of these films, I took a hue histogram. *Tron*
+is very obvious: lots of blues and cyans dominate,
+
+![](/img/cinrdx/tron-hist.png)
+
+I was expecting to see a lot of green show up in *The Matrix*, but was
+a little bit disappointed,
+
+![](/img/cinrdx/matrix-hist.png)
+
+To get these histograms, I loaded the images into GNU Octave,
+converted it to HSV so that the red channel is really the hue channel.
+Then I had the GIMP make the histograms by providing the histogram of
+the "red" (read hue) channel. I dropped an HSV color bar below with
+some image editing.
+
+    octave> m = imread("movie.jpg");
+    octave> [x map] = rgb2ind(m);
+    octave> map = rgb2hsv(map);
+    octave> imwrite("movie-hsv.jpg", x, map);
+
+See if you can find some really interesting things to do with this.
+
+
+[followup]: /blog/2007/12/26/
+[redux]: http://www.brendandawes.com/sketches/redux/
+[mplayer]: http://www.mplayerhq.hu/
+[im]: http://www.imagemagick.org/

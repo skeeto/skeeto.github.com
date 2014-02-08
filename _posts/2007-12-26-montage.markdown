@@ -1,0 +1,63 @@
+---
+title: A Faster Montage
+layout: post
+tags: [perl]
+uuid: a4b9aedd-14f9-30fa-f2e5-7a478aff9be2
+---
+
+Get the script:
+
+* [/download/gdmontage.perl](/download/gdmontage.perl)
+
+I had written a previous post called [Movie DNA][last] where I
+described a simple way of distilling an entire movie down to a single
+frame. It involved the use of two tools, with no intermediate code or
+software in the middle to glue things together.
+
+The first tool, mplayer was used to dump all of the frames we needed.
+This took about the running length of the movie to do, which wasn't so
+bad. There may be a way to speed this up by giving mplayer some extra
+hints. I have not yet figured this part out.
+
+The real time cost was in ImageMagick's `montage` tool, which made the
+final montage out of the images. This took between 6 and 10 hours to
+do this, depending on the length of the movie. The process seemed to
+be non-linear for some reason, with long movies taking
+unproportionally longer to process (One could always dig around the
+montage source to find out why). I knew there had to be a way that
+this could be improved!
+
+Well, I wrote a Perl script last night, dubbed `gdmontage` to speed up
+the montage process. It was even faster than I thought it would be,
+**taking only 12 seconds** on the same machine as before. It uses the
+[GD Graphics Library][gd] via Perl's [GD module][cpan], which you
+would need to install to use this. It also uses the
+[Term::ProgressBar][prog], if it's available, to provide a progress
+bar and ETA.
+
+Like the original `montage` program, the script recognizes file globs,
+so you can provide the files through a glob in order to avoid the
+limits on command line arguments.
+
+    $ ./gdmontage.pl "frames/*"
+
+It is a bit unfair to call my code a "faster montage" because it only
+covers a tiny subset of the original `montage`. It makes some big
+assumptions in order to be faster; specifically, it assumes that every
+image is the same size. The original montage must look at every image
+before it even starts in order to determine the dimensions and
+placement of the final image.
+
+It is also geared towards the Cinema Redux thing, doing only 60 images
+per row. This can be changed internally (no command line arguments for
+this) by adjusting the parameters at the top of the script. The script
+could probably be easily expanded to include most of the features of
+ImageMagick's montage, but I am sure this Perl script would be much
+faster when it comes to creating large montage's. (Why is `montage` so
+slow?)
+
+
+[prev]: /blog/2007/12/11
+[gd]: http://www.boutell.com/gd/
+[cpan]: http://search.cpan.org/dist/GD/GD.pm
+[prog]: http://search.cpan.org/~fluffy/Term-ProgressBar-2.09/lib/Term/ProgressBar.pm
