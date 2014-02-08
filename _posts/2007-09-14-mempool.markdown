@@ -5,43 +5,31 @@ tags: [c]
 uuid: 032a6065-a4f8-3c90-c64b-7be3e7ec0e1e
 ---
 
-<!-- 14 September 2007 -->
-<p style="font-style: italic;">
-I wrote this code and writeup some time ago and have used it in
+*I wrote this code and writeup some time ago and have used it in
 several projects for building parse trees quickly. Using the pool is
-faster than making a system call with <code>malloc</code> each time
-you add a new node. In fact, one of my programs ran 25% faster when I
-dropped in the this memory allocation pool. This code is very solid
-and reliable.
-</p>
-<p>
-Download the code (<a href="http://www.gnu.org/copyleft/gpl.html">GPL
-licensed</a>) at <a
-href="/download/alloc-pool.tar.gz">
-download/alloc-pool.tar.gz</a> (2.58KB).
-</p>
-<p>
-I read about memory allocation pools in the <a
-href="http://svnbook.red-bean.com/">Subversion manual</a> and decided
-to write one for fun. So here it is. Included is a small driver I ran
-over night to test for memory leaks. <code>lint</code> will complain
+faster than making a system call with `malloc` each time you add a new
+node. In fact, one of my programs ran 25% faster when I dropped in the
+this memory allocation pool. This code is very solid and reliable.*
+
+ * [/download/alloc-pool.tar.gz](/download/alloc-pool.tar.gz) (2.58KB)
+
+I read about memory allocation pools in the Subversion manual and
+decided to write one for fun. So here it is. Included is a small
+driver I ran over night to test for memory leaks. `lint` will complain
 about memory leaks on this code, however. I also added thread safety,
 but I don't suggest you use it.
-</p>
-<p>
+
 A memory allocation pool is good for speeding up a program that needs
-to make many small memory requests quickly (many system
-calls). Instead, one system call is made in place of many.
-</p>
-<p>
+to make many small memory requests quickly (many system calls).
+Instead, one system call is made in place of many.
+
 It is also useful for semi-automatic memory management. Let's say you
 build some large tree structure somewhere in your program. If you want
 to free all this memory used by the tree, you will need to traverse it
 to take it down. This takes time and code. If you use a memory pool,
 you can free all of the memory at once by freeing the entire memory
 pool.
-</p>
-<p>
+
 The pool works by allocating a large chunk of memory and dishes it out
 as requested (a subpool). If a request is too large to take out of the
 current chunk, it allocates another chunk twice as large as the
@@ -51,4 +39,6 @@ allocated from the old pool until that pool has too many misses in a
 row (hard coded to 10 in my sources). Once this happens, the subpool
 remains untouched and your pool will have some slight internal
 fragmentation.
-</p>
+
+
+[svn]: http://svnbook.red-bean.com/

@@ -1,0 +1,44 @@
+---
+title: null program is Alive
+layout: post
+tags: [meta]
+uuid: 01475da9-58d6-36ac-e652-ce88c48b6b02
+---
+
+Welcome to **null program**. This is my new home as my [student
+location](http://www.cse.psu.edu/~wellons) will no longer exist in a
+few months. Here is where I will share my projects and ideas, even if
+no one is looking, reading, or caring.
+
+The name for this website comes from a phrase spoken in several places
+in my favorite book, *The Moon is a Harsh Mistress*. If you have not
+read this book, you are missing out. I recommend you go to the nearest
+library immediately and read it. Amazon lets you [read the first
+chapter online][read] if you want to get a taste of it. When I started
+reading it, I was hooked right away. Why is it a great book? Because
+it is about an American Revolution style libertarian revolution on the
+moon, and the hero character is a computer engineer. What book can get
+better than that?
+
+I would like to post something interesting here about once a week or
+so. I am taking classes right now, so getting ideas should be
+relatively easy. The first few posts will probably be repeating things
+I have already published at my old student location. This will include
+little intros to my old projects and a bunch of code snippets.
+
+Also, separate from this blog thing are my projects, such as the PNG
+Archiver and binitools. ~~These have a permanent home located under
+projects/~~. (*No longer here, after changing web hosts.*)
+
+I am a big [free software][free] fan and you will probably see the
+[GNU project][gnu] being mentioned a lot around here. I also use
+[Emacs][emacs] for just about everything I can. Here is more advice:
+learn to use Emacs. You will become much more productive. After using
+Emacs for awhile, you will begin loathing word processors and mice
+(the computer kind). More on this later.
+
+
+[read]: http://www.amazon.com/gp/reader/0312863551/ref=sib_dp_pt/103-6664886-7819837#reader-link
+[free]: http://en.wikipedia.org/wiki/Free_software
+[gnu]: http://www.gnu.org
+[emacs]: http://www.gnu.org/software/emacs/

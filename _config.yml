@@ -4,6 +4,10 @@ pygments: true
 timezone: GMT
 safe: true
 
+markdown: redcarpet
+redcarpet:
+  extensions: ["strikethrough"]
+
 url: http://nullprogram.com
 title: null program
 description: Hobby computing blog

@@ -1,0 +1,42 @@
+---
+title: Walk Text Adventure Game
+layout: post
+tags: [octave, game]
+uuid: 3d597eab-e922-3eca-1a47-6211b34b9a9b
+---
+
+*I wrote this thing back in September 2005 when I had to learn Matlab
+for work. This writeup was done about year later.*
+
+* [/download/walk.tar.gz](/download/walk.tar.gz) (33.72KB)
+
+This was a text-adventure engine I wrote when I was starting to learn
+Matlab programming, which means the Matlab code here is pretty
+horrendous. It may or may not work in GNU octave, I didn't bother
+checking. That's because I later wrote a Perl version that does the
+same thing (when I was still starting with learning Perl, so not much
+better). Included is a sample "world" to explore (in English and pig
+latin!). The format for the "world" is a really simple one, probably
+missing a lot of features of a real text adventure scripting language.
+Have fun!
+
+This is what it looks like,
+
+    Welcome to Walk. Just type in plain English into the 'Action:' line what you
+    want to do.
+
+    Type 'inv' to display the inventory.
+    Type 'clc' to clear the screen
+    Type 'look' or 'ls' to get the current description of the room.
+    Type 'save' to quicksave the session.
+    Type 'load' to restore the quicksave session.
+    Type 'doc' or 'help' to see this message again.
+    Type 'quit' to quit.
+
+     Action: look
+
+     You appear to be in a small bedroom. There are no windows. Light is
+    provided by a small ceiling lamp. There is a brown wooden door, a small bed
+    with no sheets, a small box which is laying on the bed.
+
+     Action: _
