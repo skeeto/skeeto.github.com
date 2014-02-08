@@ -33,7 +33,7 @@ classes, IDs, and so on, instead relying on the pseudo-selector
 [:nth-of-type][nth-of-type]. For example, say this is the content of
 the buffer and the point is somewhere inside the second heading (Bar).
 
-{% highlight html %}
+~~~html
 <html>
   <head></head>
   <body>
@@ -45,7 +45,7 @@ the buffer and the point is somewhere inside the second heading (Bar).
     </div>
   </body>
 </html>
-{% endhighlight %}
+~~~
 
 The function `skewer-html-compute-selector` will generate this
 selector. Note that :nth-of-type is 1-indexed.

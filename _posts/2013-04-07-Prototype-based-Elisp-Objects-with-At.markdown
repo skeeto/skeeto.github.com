@@ -30,9 +30,9 @@ highlighting for this post.
 
 Fortunately `require` *does* manage just fine.
 
-{% highlight cl %}
+~~~cl
 (require '@)
-{% endhighlight %}
+~~~
 
 Objects in @ are vectors with the symbol @ as the first element. The
 rest of the elements are implementation specific, but, at the moment,
@@ -45,10 +45,10 @@ creating a new object is a matter of extending one or more
 (multiple-inheritance) existing objects. This is done with the
 function `@extend`.
 
-{% highlight cl %}
+~~~cl
 ;; Create a brand new object
 (defvar foo (@extend @))
-{% endhighlight %}
+~~~
 
 If no objects are given to `@extend`, @ will be used as the parent
 object, so it's not necessary as an argument above. This is actually
@@ -62,19 +62,19 @@ Elisp is a *lisp-2* meaning that variables and functions exist in
 their own namespaces. This means there can be both a variable @ (the
 root object) and function @ (property accessor).
 
-{% highlight cl %}
+~~~cl
 (setf rectangle (@extend :width 3 :height 4))
 (@ rectangle :width)  ; => 3
 (@ rectangle :height)  ; => 4
-{% endhighlight %}
+~~~
 
 The @ function is also *setf-able*, so setting properties should be
 obvious to any lisper.
 
-{% highlight cl %}
+~~~cl
 (setf (@ rectangle :width) 13)
 (@ rectangle :width)  ; => 13
-{% endhighlight %}
+~~~
 
 Like JavaScript, methods are just functions stored in properties on an
 object. In @, the first argument for a method is the object itself,
@@ -93,10 +93,10 @@ adding syntax. The macro `def@` transforms variables that look like @:
 into these @ accessors. The following declaration is equivalent to the
 lambda assignment above. It's meant to be very convenient.
 
-{% highlight cl %}
+~~~cl
 (def@ rectangle :area ()
   (* @:width @:height))
-{% endhighlight %}
+~~~
 
 This macro walks the body of the function at compile-time (macro
 expansion time) and transforms these symbols into the full @ calls
@@ -106,16 +106,16 @@ Because using `funcall` all the time and remembering to pass the
 object as the first argument is tedious, the @! function is provided
 for calling methods.
 
-{% highlight cl %}
+~~~cl
 (@! rectangle :area)  ; => 52
-{% endhighlight %}
+~~~
 
 The @: variables become function calls when in function position.
 
-{% highlight cl %}
+~~~cl
 (def@ rectangle :double-area ()
   (* 2 (@:area))
-{% endhighlight %}
+~~~
 
 In a *lisp-1* this would happen for free, but in Elisp this situation
 expands to the @! form.
@@ -125,16 +125,16 @@ expands to the @! form.
 This `rectangle` is starting to look like a nice re-usable object.
 There's a @ convention for this: prefix "class" object names with @.
 
-{% highlight cl %}
+~~~cl
 (setf @rectangle rectangle)
-{% endhighlight %}
+~~~
 
 Now to create new rectangle objects.
 
-{% highlight cl %}
+~~~cl
 (setf foo (@extend @rectangle :width 3 :height 7.1))
 (@! foo :area)  ; => 21.3
-{% endhighlight %}
+~~~
 
 Notice that the `foo` object doesn't actually have an `:area` property
 on itself. It was found on its parent, `@rectangle` by inheritance.
@@ -192,11 +192,11 @@ modify the objects inheritance? This can be used to *freeze* an
 object's properties in place. Here's a `:freeze` method for all
 objects.
 
-{% highlight cl %}
+~~~cl
 (def@ @ :freeze ()
   "Make this object immutable."
   (push @immutable @:proto))
-{% endhighlight %}
+~~~
 
 Pretty cool, eh?
 

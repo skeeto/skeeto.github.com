@@ -20,11 +20,11 @@ would be facing from other people, and rightfully so.
 
 Before I dive in, this is what the user configuration now looks like,
 
-{% highlight cl %}
+~~~cl
 (javadoc-add-artifacts [org.lwjgl.lwjg lwjgl "2.8.2"]
                        [com.nullprogram native-guide "0.2"]
                        [org.apache.commons commons-math3 "3.0"])
-{% endhighlight %}
+~~~
 
 That's right: it knows how to find, fetch, and index documentation on
 its own. Keep reading if this sounds useful to you.
@@ -73,10 +73,10 @@ documentation. I like to bind this to `C-h j`.
 The function `javadoc-add-roots` provides filesystem paths to be
 indexed for lookup.
 
-{% highlight cl %}
+~~~cl
 (javadoc-add-roots "/usr/share/doc/openjdk-6-jdk/api"
                    "~/src/project/doc")
-{% endhighlight %}
+~~~
 
 Also, as before, if you don't provide a root for the core Java API, it
 will automatically load an index of the official Javadoc hosted
@@ -108,11 +108,11 @@ vector and those names can be either strings or symbols. I prefer the
 vector/symbol method because it requires
 [the least quoting](/blog/2012/07/17/), plus it looks Clojure-ish.
 
-{% highlight cl %}
+~~~cl
 (javadoc-add-artifacts [org.lwjgl.lwjg lwjgl "2.8.2"]
                        [com.nullprogram native-guide "0.2"]
                        [org.apache.commons commons-math3 "3.0"])
-{% endhighlight %}
+~~~
 
 Put that in your initialization and all this documentation will appear
 in the lookup index. It only needs to fetch from Maven once per

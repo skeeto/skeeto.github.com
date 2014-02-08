@@ -12,7 +12,7 @@ Elisp. This function will generate a
 [Sierpinski carpet](http://en.wikipedia.org/wiki/Sierpi%C5%84ski_carpet)
 and display the result in a buffer.
 
-{% highlight cl %}
+~~~cl
 (defun sierpinski (s)
   (pop-to-buffer (get-buffer-create "*sierpinski*"))
   (fundamental-mode) (erase-buffer)
@@ -23,20 +23,20 @@ and display the result in a buffer.
     (insert (format "P1\n%d %d\n" s s))
     (dotimes (y s) (dotimes (x s) (insert (fill-p x y) " "))))
   (image-mode))
-{% endhighlight %}
+~~~
 
 It's best called with powers of three,
 
-{% highlight cl %}
+~~~cl
 (sierpinski (expt 3 5))
-{% endhighlight %}
+~~~
 
 [![](/img/fractal/sierpinski-thumb.png)](/img/fractal/sierpinski.png)
 
 This one should [look quite familiar](/blog/2007/10/01/). Using the
 same technique,
 
-{% highlight cl %}
+~~~cl
 (defun mandelbrot ()
   (pop-to-buffer (get-buffer-create "*mandelbrot*"))
   (let ((w 400) (h 300) (d 32))
@@ -54,18 +54,18 @@ same technique,
                              zi (+ (* (* zr zi) 2) cy))))))
           (insert-char (floor (* 256 (/ v 1.0 d))) 3))))
     (image-mode)))
-{% endhighlight %}
+~~~
 
 ![](/img/fractal/elisp-mandelbrot.png)
 
 Tweak it with a colormap,
 
-{% highlight cl %}
+~~~cl
 (defun colormap (v)
   "Given a value between 0 and 1.0, insert a P6 color."
   (dotimes (i 3)
     (insert-char (floor (* 256 (min 0.99 (sqrt (* (- 3 i) v))))) 1)))
-{% endhighlight %}
+~~~
 
 ![](/img/fractal/elisp-mandelbrot-color.png)
 

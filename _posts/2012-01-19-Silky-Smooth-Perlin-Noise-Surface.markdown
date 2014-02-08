@@ -21,37 +21,37 @@ I generated some noise, looked at it with `surf()`, and repeated until
 I found something useful. (*Update June 2012:* the function is called
 `perlin()` but it's not actually Perlin noise.)
 
-{% highlight octave %}
+~~~octave
 m = perlin(1024);
 surf(m);
-{% endhighlight %}
+~~~
 
 The generated terrain is really quite rough, so I decided to smooth it
 out by [convolving it with a 2-dimensional Gaussian kernel](/blog/2008/02/22/).
 
-{% highlight octave %}
+~~~octave
 k = fspecial('gaussian', 9);
 ms = conv2(m, k, 'same');
-{% endhighlight %}
+~~~
 
 It still wasn't smooth enough. So I repeated the process a bit,
 
-{% highlight octave %}
+~~~octave
 for i = 1:10
     ms = conv2(ms, k, 'same');
 end
-{% endhighlight %}
+~~~
 
 Perfect! I used that for my presentation. However, I was having fun
 and decided to experiment more with this. I filtered it again another
 1000 times and generated a `surf()` plot with a high-resolution
 colormap -- the default colormap size caused banding.
 
-{% highlight octave %}
+~~~octave
 colormap(copper(1024));
 surf(ms, 'EdgeAlpha', 0);
 axis('equal');
-{% endhighlight %}
+~~~
 
 It produced this beautiful result!
 

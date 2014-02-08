@@ -36,7 +36,7 @@ Here's an example of it in action. I'm seeding it with an arbitrary
 object and generating six normally-distributed values. The output
 should be exactly the same no matter what JavaScript engine is used.
 
-{% highlight javascript %}
+~~~javascript
 (function(array, n) {
     var rng = new RNG({foo: 'bar'});
     for (var i = 0; i < n; i++) {
@@ -45,7 +45,7 @@ should be exactly the same no matter what JavaScript engine is used.
     return array;
 }([], 6));
 // => [0.807, -0.9347, -1.4543, -0.2737, 0.5064, -1.7342]
-{% endhighlight %}
+~~~
 
 Provided probability distributions:
 

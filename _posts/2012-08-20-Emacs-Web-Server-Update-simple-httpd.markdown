@@ -35,10 +35,10 @@ servlet prepares a buffer and the server sends it to the client.
 So I ended up adding servlet support again, from scratch. This time
 it's really easy to use. Here's a "Hello, World" servlet,
 
-{% highlight cl %}
+~~~cl
 (defservlet hello-world text/plain ()
   (insert "Hello, World"))
-{% endhighlight %}
+~~~
 
 The "function name" part is the path to the servlet. This one would be
 found at `/hello-world`. The second is the MIME type as a
@@ -52,20 +52,20 @@ path argument is relevant.
 
 This servlet uses the path to get a name,
 
-{% highlight cl %}
+~~~cl
 (defservlet hello text/plain (path)
   (insert "hello, " (file-name-nondirectory path)))
-{% endhighlight %}
+~~~
 
 If you visit `/hello/Chris` it will send you "Hello, Chris". Servlets
 are trivial to write!
 
 This one serves the contents of the `*scratch*` buffer,
 
-{% highlight cl %}
+~~~cl
 (defservlet scratch text/plain ()
   (insert-buffer-substring (get-buffer "*scratch*")))
-{% endhighlight %}
+~~~
 
 In the background I continue to use Chunye's symbol dispatch
 technique, so all servlets are actually functions that begin with
@@ -76,11 +76,11 @@ pass four arguments (the three servlet arguments plus one more), so
 when creating the function directly it needs to accept at least four
 arguments.
 
-{% highlight cl %}
+~~~cl
 (defun httpd/hello (proc path &rest args)
   (with-httpd-buffer proc "text/plain"
     (insert "hello, " (file-name-nondirectory path))))
-{% endhighlight %}
+~~~
 
 The `proc` object here is the network connection process, providing
 more exclusive access to the client. This allows the servlet to do
@@ -96,10 +96,10 @@ redirects with `httpd-redirect`. The file server part of the server is
 actually just another a servlet as well: `httpd/`. This could be
 redefined to redirect the browser to our example servlet (HTTP 301).
 
-{% highlight cl %}
+~~~cl
 (defun httpd/ (proc &rest args)
   (httpd-redirect proc "/hello-world"))
-{% endhighlight %}
+~~~
 
 ### impatient-mode
 

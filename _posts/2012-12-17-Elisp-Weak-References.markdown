@@ -26,14 +26,14 @@ is more flexible than Java's [WeakHashMap][WeakHashMap], which only
 supports weak keys. For example, to make a hash table that weakly
 holds its values,
 
-{% highlight cl %}
+~~~cl
 (make-hash-table :weakness 'value)
-{% endhighlight %}
+~~~
 
 Oddly, Elisp lacks functionality to use weak references more
 generally. Fortunately [this can be fixed][weak-ref]!
 
-{% highlight cl %}
+~~~cl
 (defun weak-ref (thing)
   (let ((ref (make-hash-table :size 1 :weakness t :test 'eq)))
     (prog1 ref
@@ -41,14 +41,14 @@ generally. Fortunately [this can be fixed][weak-ref]!
 
 (defun deref (ref)
   (gethash t ref))
-{% endhighlight %}
+~~~
 
 `weak-ref` wraps an object in a weak hash table of size 1 under the
 key `t`. The second function, `deref`, fetches the object from the
 hash table if it's still there. Otherwise it returns `nil`. Here it is
 in action,
 
-{% highlight cl %}
+~~~cl
 (setq ref (weak-ref (list 1 2 3)))
 
 ;; It's still there.
@@ -59,7 +59,7 @@ in action,
 
 ;; The list has been garbage collected.
 (deref ref)  ; => nil
-{% endhighlight %}
+~~~
 
 I had to use `setq` here instead of `defvar` because garbage
 collection seems to always get triggered after `defvar`.

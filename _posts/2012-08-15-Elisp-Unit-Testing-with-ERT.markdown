@@ -21,10 +21,10 @@ about: `ert-deftest` and `should`. The first is used to create tests
 and the second behaves like `assert` but with nicer behavior. Here's
 an example,
 
-{% highlight cl %}
+~~~cl
 (ert-deftest example-test ()
   (should (= (+ 9 2) 11)))
-{% endhighlight %}
+~~~
 
 `ert-deftest` is what you'd expect from every other `def*`. The empty
 parameter list does nothing at the moment other than to make it feel
@@ -50,15 +50,15 @@ What makes `should` special is error reporting. When tests fail you
 will be provided with the forms that failed and their return
 values. For example, if we modify the test above to fail.
 
-{% highlight cl %}
+~~~cl
 (ert-deftest example-test ()
   (should (= (+ 9 2) 100)))
-{% endhighlight %}
+~~~
 
 Then run the test and it will note the failure. There is also some red
 coloring not captured here.
 
-{% highlight cl %}
+~~~cl
 F example-test
     (ert-test-failed
      ((should
@@ -68,7 +68,7 @@ F example-test
       :form
       (= 11 100)
       :value nil))
-{% endhighlight %}
+~~~
 
 Displayed are the forms we were comparing -- `(+ 9 2)` and `100` --
 and what they evaluated to: `(= 11 100)`. If I put the point at the
@@ -92,7 +92,7 @@ with a *mock* function using `let`'s cousin, `flet`. Note that
 `file-exists-p` is a C source function but I can still override it as
 if it was any regular lisp function.
 
-{% highlight cl %}
+~~~cl
 (defun determine-next-action ()
   (if (file-exists-p "death-star-plans.org")
       'bring-him-the-passengers
@@ -103,7 +103,7 @@ if it was any regular lisp function.
     (should (eq (determine-next-action) 'bring-him-the-passengers)))
   (flet ((file-exists-p (file) nil))
     (should (eq (determine-next-action) 'tear-this-ship-apart))))
-{% endhighlight %}
+~~~
 
 This is a very simple mock. For a real unit test I might want the mock
 to return `t` for some filename patterns and `nil` for others. There's

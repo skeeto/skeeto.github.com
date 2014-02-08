@@ -45,7 +45,7 @@ s-expressions which, behind the scenes, are compiled into SQL using
 some simple rules. This means if you already know SQL you should be
 able to hit the ground running with EmacSQL. Here's an example,
 
-{% highlight cl %}
+~~~cl
 (require 'emacsql)
 
 ;; Connect to the database, SQLite in this case:
@@ -71,7 +71,7 @@ able to hit the ground running with EmacSQL. Here's an example,
              :where (> weight $s1)]
          100)
 ;; => (("Jeff" 1000) ("Susan" 1001))
-{% endhighlight %}
+~~~
 
 A query is a vector of keywords, identifiers, parameters, and data.
 Thanks to parameters, these s-expression statements should not need to
@@ -83,15 +83,15 @@ keywords, row-oriented information is always presented as vectors,
 expressions are lists, and symbols are identifiers, except when
 quoted.
 
-{% highlight cl %}
+~~~cl
 [:select [name weight] :from patients :where (< weight 150.0)]
-{% endhighlight %}
+~~~
 
 That compiles to this,
 
-{% highlight sql %}
+~~~sql
 SELECT name, weight FROM patients WHERE weight < 150.0;
-{% endhighlight %}
+~~~
 
 Also, any [readable lisp value][readable] can be stored in an
 attribute. Integers are mapped to INTEGER, floats are mapped to REAL,
@@ -104,42 +104,42 @@ A symbol beginning with a dollar sign is a parameter. It has a type --
 identifier (i), scalar (s), vector (v), schema (S) -- and an argument
 position.
 
-{% highlight cl %}
+~~~cl
 [:select [$i1] :from $i2 :where (< $i3 $s4)]
-{% endhighlight %}
+~~~
 
 Given the arguments `name people age 21`, three symbols and an
 integer, it compiles to:
 
-{% highlight cl %}
+~~~cl
 SELECT name FROM people WHERE age < 21;
-{% endhighlight %}
+~~~
 
 A vector parameter refers to rows to be inserted or as a set for an
 `IN` expression.
 
-{% highlight cl %}
+~~~cl
 [:insert-into people [name age] :values $v1]
-{% endhighlight %}
+~~~
 
 Given the argument `(["Jim" 45] ["Jeff" 34])`, a list of two rows,
 this becomes,
 
-{% highlight sql %}
+~~~sql
 INSERT INTO people (name, age) VALUES ('"Jim"', 45), ('"Jeff"', 34);
-{% endhighlight %}
+~~~
 
 And this,
 
-{% highlight cl %}
+~~~cl
 [:select * :from tags :where (in tag $v1)]
-{% endhighlight %}
+~~~
 
 Given the argument `[hiking camping biking]` becomes,
 
-{% highlight sql %}
+~~~sql
 SELECT * FROM tags WHERE tag IN ('hiking', 'camping', 'biking');
-{% endhighlight %}
+~~~
 
 When writing these expressions keep in mind the command
 `emacsql-show-last-sql`. It will display in the minibuffer the SQL
@@ -152,7 +152,7 @@ vector (i.e. row-oriented information is presented as vectors). The
 remaining elements are table constraints. Here are the examples from
 the documentation,
 
-{% highlight cl %}
+~~~cl
 ;; No constraints schema with four columns:
 ([name id building room])
 
@@ -163,7 +163,7 @@ the documentation,
 ([(name :unique) (id integer :primary-key) building room]
  (:unique [building room])
  (:check (> id 0)))
-{% endhighlight %}
+~~~
 
 In the handful of EmacSQL databases I've created for practice and
 testing, I've put the schema in a global constant. A table schema is a
@@ -174,7 +174,7 @@ like defstructs.
 These schemas can be substituted into a SQL statement using a `$S`
 parameter (capital "S" for *S*chema).
 
-{% highlight cl %}
+~~~cl
 (defconst foo-schema-people
   '([(person-id integer :primary-key) name age]))
 
@@ -182,7 +182,7 @@ parameter (capital "S" for *S*chema).
 
 (defun foo-init (db)
   (emacsql db [:create-table $i1 $S2] 'people foo-schema-people))
-{% endhighlight %}
+~~~
 
 ### Back-ends
 
@@ -259,9 +259,9 @@ Unfortunately there's no function to do this so you need to call
 `stty`. Of course, this program needs to run on the same PTY, so a
 `start-process-shell-command` is required.
 
-{% highlight cl %}
+~~~cl
 (start-process-shell-command name buffer "stty raw && <your command>")
-{% endhighlight %}
+~~~
 
 Windows has neither `stty` nor PTYs (nor any of PTY's issues) so
 you'll need to check the operating system before starting the process.

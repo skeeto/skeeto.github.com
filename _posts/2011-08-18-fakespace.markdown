@@ -13,7 +13,7 @@ after Common Lisp's version. I'm calling them fakespaces.
 It works like so (see `example.el` for detailed information on this
 code),
 
-{% highlight cl %}
+~~~cl
 (require 'fakespace)
 
 (defpackage example
@@ -41,7 +41,7 @@ variables and functions from here."
   (eq sym 'hello))
 
 (end-package)
-{% endhighlight %}
+~~~
 
 Notice `end-package` at the end, which is not needed in Common
 Lisp. That's part of what makes it crude.

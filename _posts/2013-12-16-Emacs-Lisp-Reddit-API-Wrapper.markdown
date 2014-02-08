@@ -61,7 +61,7 @@ API responded with an error, these functions signal a `reddit-error`.
 Typical usage looks like so. Notice that values need not be only
 strings; they just need to print to something reasonable.
 
-{% highlight cl %}
+~~~cl
 ;; Login first
 (reddit-login "your-username" "your-password")
 
@@ -70,7 +70,7 @@ strings; they just need to print to something reasonable.
 
 ;; Post a comment
 (reddit-post "/api/comment/" '(:text "Hello world." :thing_id "t1_cd3ar7y"))
-{% endhighlight %}
+~~~
 
 For plists keys I considered automatically converting between dashes
 and underscores so that the keywords could have Lisp-style names. But
@@ -82,13 +82,13 @@ each of the reddit endpoints, forming a facade for the wrapper
 library, hiding way the plist arguments and complicated responses.
 That would eliminate the trial and error of using the API.
 
-{% highlight cl %}
+~~~cl
 (defun reddit-api-comment (parent comment)
   (if (null reddit-session)
       (error "Not logged in.")
     ;; TODO: reduce the return value into a thing/struct
     (reddit-post "/api/comment/" '(:thing_id parent :text comment))))
-{% endhighlight %}
+~~~
 
 Furthermore there could be defstructs for comments, posts, subreddits,
 etc. so that the "thing" ID stuff is hidden away. This is basically

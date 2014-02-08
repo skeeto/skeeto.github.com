@@ -58,9 +58,9 @@ yourself right now,
 
 Or evaluate the code manually in a buffer (save everything first!),
 
-{% highlight cl %}
+~~~cl
 (#[0 "\300\207" [] 0])
-{% endhighlight %}
+~~~
 
 This segfault, caused by referencing beyond the end of the constants
 vector, is *not* an Emacs bug. Doing a boundary test would slow down
@@ -89,7 +89,7 @@ object literal or with `make-byte-code`.
 [Like vector literals][literal], byte-code literals don't need to be
 quoted.
 
-{% highlight cl %}
+~~~cl
 (make-byte-code 0 "" [] 0)
 ;; => #[0 "" [] 0]
 
@@ -98,7 +98,7 @@ quoted.
 
 (#[0 "" [] 0])
 ;; error: Invalid byte opcode
-{% endhighlight %}
+~~~
 
 The elements of an object literal are:
 
@@ -116,10 +116,10 @@ function is lexically or dynamically scoped. If the function is
 dynamically scoped, the argument list is exactly what appears in lisp
 code.
 
-{% highlight cl %}
+~~~cl
 (byte-compile (lambda (a b &optional c)))
 ;; => #[(a b &optional c) "\300\207" [nil] 1]
-{% endhighlight %}
+~~~
 
 There's really no shorter way to represent the parameter list because
 preserving the argument names is critical. Remember that, in dynamic
@@ -140,7 +140,7 @@ number of optional and required arguments (not counting `&rest`). It's
 really easy to parse these in your head when viewed as hexadecimal
 because each portion almost always fits inside its own "digit."
 
-{% highlight cl %}
+~~~cl
 (byte-compile-make-args-desc '())
 ;; => #x000  (0 args, 0 rest, 0 required)
 
@@ -152,7 +152,7 @@ because each portion almost always fits inside its own "digit."
 
 (byte-compile-make-args-desc '(a b &optional c &rest d))
 ;; => #x382  (3 args, 1 rest, 2 required)
-{% endhighlight %}
+~~~
 
 The names of the arguments don't matter in lexical scope: they're
 purely positional. This tighter argument specification is one of the
@@ -170,10 +170,10 @@ reader when higher values are present (> 127), the strings are printed
 in an escaped octal notation, keeping the string literal inside the
 ASCII character set.
 
-{% highlight cl %}
+~~~cl
 (unibyte-string 100 200 250)
 ;; => "d\310\372"
-{% endhighlight %}
+~~~
 
 It's unusual to see a byte-code string that doesn't end with 135
 (#o207, byte-return). Perhaps this should have been implicit? I'll
@@ -188,10 +188,10 @@ variables symbols is the constants vector. It's a normal Elisp vector
 and can be created with `vector` or a vector literal. Operands
 reference either this vector or they index into the stack itself.
 
-{% highlight cl %}
+~~~cl
 (byte-compile (lambda (a b) (my-func b a)))
 ;; => #[(a b) "\302\134\011\042\207" [b a my-func] 3]
-{% endhighlight %}
+~~~
 
 Note that the constants vector lists the variable symbols as well as
 the external function symbol. If this was a lexically scoped function
@@ -219,13 +219,13 @@ If this element is present and non-nil then the function is an
 interactive function. It holds the exactly contents of `interactive`
 in the uncompiled function definition.
 
-{% highlight cl %}
+~~~cl
 (byte-compile (lambda (n) (interactive "nNumber: ") n))
 ;; => #[(n) "\010\207" [n] 1 nil "nNumber: "]
 
 (byte-compile (lambda (n) (interactive (list (read))) n))
 ;; => #[(n) "\010\207" [n] 1 nil (list (read))]
-{% endhighlight %}
+~~~
 
 The interactive expression is always interpreted, never byte-compiled.
 This is usually fine because, by definition, this code is going to be
@@ -260,7 +260,7 @@ value of the global variable `foo`. Each opcode has a named constant
 of `byte-X` so we don't have to worry about their actual byte-code
 number.
 
-{% highlight cl %}
+~~~cl
 (require 'bytecomp)  ; named opcodes
 
 (defvar foo "hello")
@@ -276,13 +276,13 @@ number.
 
 (get-foo)
 ;; => "hello"
-{% endhighlight %}
+~~~
 
 Ta-da! That's a handcrafted byte-code function. I left a "+ 0" in
 there so that I can change the offset. This function has the exact
 same behavior, it's just less optimal,
 
-{% highlight cl %}
+~~~cl
 (defalias 'get-foo
   (make-byte-code
     #x000
@@ -291,12 +291,12 @@ same behavior, it's just less optimal,
       byte-return)
     [nil nil nil foo]
     1))
-{% endhighlight %}
+~~~
 
 If `foo` was the 10th constant, we would need to use the 1-byte
 operand version. Again, the same behavior, just less optimal.
 
-{% highlight cl %}
+~~~cl
 (defalias 'get-foo
   (make-byte-code
     #x000
@@ -306,7 +306,7 @@ operand version. Again, the same behavior, just less optimal.
       byte-return)
     [nil nil nil nil nil nil nil nil nil foo]
     1))
-{% endhighlight %}
+~~~
 
 Dynamically-scoped code makes heavy use of `varref` but
 lexically-scoped code rarely uses it (global variables only), instead
@@ -348,25 +348,25 @@ From here the function can access its arguments directly on the stack
 without any named variable misdirection. It can even consume them
 directly.
 
-{% highlight cl %}
+~~~cl
 ;; -*- lexical-binding: t -*-
 (defun foo (x) x)
 
 (symbol-function #'foo)
 ;; => #[#x101 "\207" [] 2]
-{% endhighlight %}
+~~~
 
 The byte-code for `foo` is a single instruction: `return`. The
 function's argument is already on the stack so it doesn't have to do
 anything. Strangely the maximum stack usage element is wrong here (2),
 but it won't cause a crash.
 
-{% highlight cl %}
+~~~cl
 ;; (As of this writing `byte-compile' always uses dynamic scope.)
 
 (byte-compile 'foo)
 ;; => #[(x) "\010\207" [x] 1]
-{% endhighlight %}
+~~~
 
 It takes longer to set up (x is implicitly bound), it has to make an
 explicit variable dereference (`varref`), then it has to clean up by
@@ -376,13 +376,13 @@ faster!
 Note that there's also a `disassemble` function for examining
 byte-code, but it only reveals part of the story.
 
-{% highlight cl %}
+~~~cl
 (disassemble #'foo)
 ;; byte code:
 ;;   args: (x)
 ;; 0       varref    x
 ;; 1       return
-{% endhighlight %}
+~~~
 
 ### Compiler Intermediate "lapcode"
 
@@ -395,7 +395,7 @@ packed operands, are handled whole. Each instruction is a cons cell,
 
 Let's rewrite our last `get-foo` using lapcode.
 
-{% highlight cl %}
+~~~cl
 (defalias 'get-foo
   (make-byte-code
     #x000
@@ -404,7 +404,7 @@ Let's rewrite our last `get-foo` using lapcode.
         (byte-return)))
     [nil nil nil nil nil nil nil nil nil foo]
     1))
-{% endhighlight %}
+~~~
 
 We didn't have to worry about which form of `varref` we were using or
 even how to encode a 2-byte operand. The lapcode "assembler" took care

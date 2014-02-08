@@ -49,7 +49,7 @@ There's actually an `modified` selector exactly for this type of
 job. Here's my solution (as seen in my
 [sample-java-project](/blog/2010/10/04/)),
 
-{% highlight xml %}
+~~~xml
 <target name="hotswap" depends="compile">
   <taskdef name="hotswap" classname="dak.ant.taskdefs.Hotswap"/>
   <hotswap verbose="true" port="9000">
@@ -58,7 +58,7 @@ job. Here's my solution (as seen in my
     </fileset>
   </hotswap>
 </target>
-{% endhighlight %}
+~~~
 
 The `modified` filter is not timestamp based. It creates a
 `cache.properties` file containing the hash of all of your class

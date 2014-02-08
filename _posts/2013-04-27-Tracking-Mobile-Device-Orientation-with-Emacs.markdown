@@ -55,20 +55,20 @@ Instead of writing a new servlet for this, to try it out I used
 hosted on the laptop, then evaluate this in a `js2-mode` buffer on the
 laptop.
 
-{% highlight javascript %}
+~~~javascript
 window.addEventListener('devicemotion', function(event) {
     var a = event.accelerationIncludingGravity;
     skewer.log([a.x, a.y, a.z]);
 });
-{% endhighlight %}
+~~~
 
 Or for orientation,
 
-{% highlight javascript %}
+~~~javascript
 window.addEventListener('deviceorientation', function(event) {
     skewer.log([event.alpha, event.beta, event.gamma]);
 });
-{% endhighlight %}
+~~~
 
 These orientation values appeared in my `*skewer-repl*` buffer as I
 casually rolled the tablet on one axis. The units are obviously

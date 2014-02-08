@@ -25,7 +25,7 @@ prototypes of the base monster prototype. Serializing a monster with
 `JSON.stringify()` loses all this "class" information, so the
 deserialized object will have no behavior.
 
-{% highlight javascript %}
+~~~javascript
 function Foo() {}
 
 Foo.prototype.greet = function() {
@@ -39,7 +39,7 @@ foo1.greet();
 var foo2 = JSON.parse(JSON.stringify(foo1));
 foo2.greet();
 // => TypeError: Object has no method 'greet'
-{% endhighlight %}
+~~~
 
 Specifically what's not being captured here is the `__proto__`
 property of the original object. When a property is not found on the
@@ -59,7 +59,7 @@ objects with methods directly attached. I only need to ensure the
 `__proto__` property points at the right prototype before I start
 using the object.
 
-{% highlight javascript %}
+~~~javascript
 // Setting __proto__ directly:
 
 foo2.__proto__ = Foo.prototype;
@@ -76,7 +76,7 @@ for (var p in foo2) {
 }
 foo3.greet();
 // => "hello"
-{% endhighlight %}
+~~~
 
 Of course this one was really easy because there was only one
 prototype in my example. If we deserialize an arbitrary object how do
@@ -88,17 +88,17 @@ object is restored we can use the name to look up the appropriate
 prototype. Prototypes themselves don't have names but constructors
 generally do.
 
-{% highlight javascript %}
+~~~javascript
 foo.constructor.name;
 // => "Foo"
-{% endhighlight %}
+~~~
 
 I'm going to stuff this name in the `"#"` property of the object, a
 name that is unlikely to be used. A longer name has a better chance of
 avoiding a collision, but since I'm putting this in localStorage, and
 every stored object gets this field, I want to keep it short.
 
-{% highlight javascript %}
+~~~javascript
 function serialize(object) {
     object['#'] = object.constructor.name;
     return JSON.stringify(object);
@@ -115,7 +115,7 @@ var string = serialize(new Foo());
 
 deserialize(string).greet();
 // => "hello"
-{% endhighlight %}
+~~~
 
 To look up the prototype I check for a global variable of that name on
 the global object, which in this case is `window`. This places one
@@ -123,14 +123,14 @@ important restriction on how I use my serializer: all constructors
 must have names and must be assigned to the corresponding global
 variable. Being a prototype language this isn't necessarily the case!
 
-{% highlight javascript %}
+~~~javascript
 (function() {
     var Bar = function Quux() {};
     var bar = new Bar();
     return bar.constructor.name;
 }());
 // => "Quux"
-{% endhighlight %}
+~~~
 
 Here, the Bar/Quux prototype isn't global nor does the attached name
 (Quux) match the name I used with `new` (Bar). If `bar` was serialized

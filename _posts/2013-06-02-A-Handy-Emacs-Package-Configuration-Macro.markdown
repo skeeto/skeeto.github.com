@@ -36,7 +36,7 @@ function is [from my personal `utility` library][expose]. The
 expressions to be evaluated depend on both packages and neither needs
 to be loaded immediately, so I'm using the first form of the macro.
 
-{% highlight cl %}
+~~~cl
 (with-package (skewer-mode utility)
   (skewer-setup)
   (define-key skewer-mode-map (kbd "C-c $")
@@ -45,7 +45,7 @@ to be loaded immediately, so I'm using the first form of the macro.
 (with-package* smex
   (smex-initialize)
   (global-set-key (kbd "M-x") 'smex))
-{% endhighlight %}
+~~~
 
 For the second one, I'm going to be using smex right away (takes over
 `M-x`), so I use the second form, which immediately loads smex. The
@@ -89,9 +89,9 @@ named something like `<package>-load-hook`. Then when `load` or
 `require` loads a file, it runs the hook with the matching name. This
 removes `eval-after-load` as its own standalone language concept.
 
-{% highlight cl %}
+~~~cl
 (add-hook 'skewer-mode-load-hook (lambda () ...))
-{% endhighlight %}
+~~~
 
 The problem here is when the package is already loaded the hook is
 never run. In contrast, when `eval-after-load` is used on an
@@ -104,9 +104,9 @@ macro just like `after` that wraps this function. Why not just a
 macro? The function form would be really useful for a situation like
 this,
 
-{% highlight cl %}
+~~~cl
 (eval-after-load 'skewer-mode #'skewer-setup)
-{% endhighlight %}
+~~~
 
 Here there's no need to instantiate a new anonymous function or
 s-expression. If all it's doing is calling a zero-arity function, that

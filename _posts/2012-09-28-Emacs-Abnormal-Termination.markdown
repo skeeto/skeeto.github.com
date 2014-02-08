@@ -41,7 +41,7 @@ to implement an `abort` function on top of it, allowing Elisp programs
 to terminate Emacs abnormally -- you know, in case `kill-emacs` isn't
 fun enough.
 
-{% highlight cl %}
+~~~cl
 (defun abort ()
   "Ask Emacs to abnormally terminate itself (bug#12077)."
   (interactive)
@@ -51,7 +51,7 @@ fun enough.
     (add-hook 'after-change-functions
               (lambda (a b c) (re-search-forward "")))
     (replace-regexp "^\\*" " *")))
-{% endhighlight %}
+~~~
 
 It's interactive so you could even bind a key to it.
 

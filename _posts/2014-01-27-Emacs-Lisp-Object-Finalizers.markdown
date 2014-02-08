@@ -55,16 +55,16 @@ resource is properly cleaned up regardless of the body's termination
 state. The latter is accomplished using `unwind-protect`. For example,
 `with-temp-buffer`,
 
-{% highlight cl %}
+~~~cl
 ;; Fetch the first 10 bytes of foo.txt
 (with-temp-buffer
   (insert-file-contents "foo.txt" nil 0 10)
   (buffer-string))
-{% endhighlight %}
+~~~
 
 This expands (roughly) to the following expression.
 
-{% highlight cl %}
+~~~cl
 (let ((temp-buffer (generate-new-buffer "*temp*")))
   (with-current-buffer temp-buffer
     (unwind-protect
@@ -73,7 +73,7 @@ This expands (roughly) to the following expression.
           (buffer-string))
       (and (buffer-live-p temp-buffer)
            (kill-buffer temp-buffer)))))
-{% endhighlight %}
+~~~
 
 For dealing with open files, Common Lisp has `with-open-stream`. It
 establishes a binding for a new stream over its body and ensures the
@@ -108,7 +108,7 @@ specify how strongly keys and values should be held by the table. To
 make a weak reference just create a hash table of size 1 and set
 `:weakness` to t.
 
-{% highlight cl %}
+~~~cl
 (defun weak-ref (thing)
   (let ((ref (make-hash-table :size 1 :weakness t :test 'eq)))
     (prog1 ref
@@ -116,7 +116,7 @@ make a weak reference just create a hash table of size 1 and set
 
 (defun deref (ref)
   (gethash t ref))
-{% endhighlight %}
+~~~
 
 The same trick can be used to detect when an object is garbage
 collected. If the result of `deref` is nil, then the object was
@@ -132,16 +132,16 @@ collection. This check can be done in a `post-gc-hook` function.
 To avoid cluttering up `post-gc-hook` with one closure per object
 we'll keep a register of all watched objects.
 
-{% highlight cl %}
+~~~cl
 (defvar finalizable-objects ())
 
 (defun register (object callback)
   (push (cons (weak-ref object) callback) finalizable-objects))
-{% endhighlight %}
+~~~
 
 Now a function to check for missing objects, `try-finalize`.
 
-{% highlight cl %}
+~~~cl
 (defun try-finalize ()
   (let ((alive (cl-remove-if-not #'deref finalizable-objects :key #'car))
         (dead (cl-remove-if #'deref finalizable-objects :key #'car)))
@@ -149,13 +149,13 @@ Now a function to check for missing objects, `try-finalize`.
     (mapc #'funcall (mapcar #'cdr dead))))
 
 (add-hook 'post-gc-hook #'try-finalize)
-{% endhighlight %}
+~~~
 
 Now to try it out. Create a process, stuff it in a vector (like a
 defstruct), register `delete-process` as a finalizer, and, for the
 sake of demonstration, immediately forget the vector.
 
-{% highlight cl %}
+~~~cl
 ;;; -*- lexical-binding: t; -*-
 (let ((process (start-process "ping" nil "ping" "localhost")))
   (register (vector process) (lambda () (delete-process process))))
@@ -169,7 +169,7 @@ sake of demonstration, immediately forget the vector.
 
 (get-process "ping")
 ;; => nil
-{% endhighlight %}
+~~~
 
 The garbage collector killed the process for us!
 
@@ -203,14 +203,14 @@ above but it accepts `&rest` arguments to be passed to the finalizer.
 This makes the registration call simpler and avoids some
 [significant problems with closures][closure].
 
-{% highlight cl %}
+~~~cl
 (let ((process (start-process "ping" nil "ping" "localhost")))
   (finalize-register (vector process) #'delete-process process))
-{% endhighlight %}
+~~~
 
 Here's a more formal example of how it might really be used.
 
-{% highlight cl %}
+~~~cl
 (cl-defstruct (pinger (:constructor pinger--create))
   process host)
 
@@ -219,7 +219,7 @@ Here's a more formal example of how it might really be used.
          (object (pinger--create :process process :host host)))
     (finalize-register object #'delete-process process)
     object))
-{% endhighlight %}
+~~~
 
 To make things cleaner for EIEIO classes there's also a `finalizable`
 mixin class that ensures the `finalize` generic function is called on
@@ -230,7 +230,7 @@ Here's how it would be used for the same "pinger" concept, this time
 as an EIEIO class. An advantage here is that anyone can manually call
 `finalize` early if desired.
 
-{% highlight cl %}
+~~~cl
 (require 'eieio)
 (require 'finalizable)
 
@@ -245,7 +245,7 @@ as an EIEIO class. An advantage here is that anyone can manually call
 
 (defmethod finalize ((pinger pinger))
   (delete-process (pinger-process pinger)))
-{% endhighlight %}
+~~~
 
 It's a small package but I think it can be quite handy.
 

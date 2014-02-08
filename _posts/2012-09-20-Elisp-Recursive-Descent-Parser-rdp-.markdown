@@ -72,7 +72,7 @@ For example, here's a grammar for simple arithmetic expressions,
 including operator precedence and grouping (i.e. "4 + 5 * 2.5",
 "(4 + 5) * 2.5", etc.).
 
-{% highlight cl %}
+~~~cl
 (defvar arith-tokens
   '((sum       prod  [([+ -] sum)  no-sum])
     (prod      value [([* /] prod) no-prod])
@@ -85,7 +85,7 @@ including operator precedence and grouping (i.e. "4 + 5 * 2.5",
     (value   . [pexpr num])
     (no-prod . "")
     (no-sum  . "")))
-{% endhighlight %}
+~~~
 
 Strings are regular expressions , the only thing to actually match
 input text (*terminals*). Lists are *sequences*, where each element in
@@ -105,7 +105,7 @@ functions which process the parse tree at parse time. For example,
 these corresponding functions will make sure `"4 * 5 * 6"` gets parsed
 into `(* 4 (* 5 (* 6 1)))`.
 
-{% highlight cl %}
+~~~cl
 (defun arith-op (expr)
   (destructuring-bind (a (op b)) expr
     (list op a b)))
@@ -122,7 +122,7 @@ into `(* 4 (* 5 (* 6 1)))`.
     (value   . ,#'identity)
     (no-prod . ,(lambda (e) '(* 1)))
     (no-sum  . ,(lambda (e) '(+ 0)))))
-{% endhighlight %}
+~~~
 
 Notice how normal Emacs functions could be supplied directly in most
 cases! That makes this approach so elegant in my opinion.
@@ -134,18 +134,18 @@ In this case, we can be even more clever. Rather than build a nice
 parse tree, the expression can be evaluated directly. All it takes is
 one small change,
 
-{% highlight cl %}
+~~~cl
 (defun arith-op (expr)
   (destructuring-bind (a (op b)) expr
     (funcall op a b)))
-{% endhighlight %}
+~~~
 
 With this, the parser returns the computed value directly. So this
 evaluates to 120.
 
-{% highlight cl %}
+~~~cl
 (rdp-parse-string "4 * 5 * 6" arith-tokens arith-funcs)
-{% endhighlight %}
+~~~
 
 #### ParselTongue Compiler
 
@@ -164,10 +164,10 @@ This ParselTongue program,
 
 Compiles to this Elisp,
 
-{% highlight cl %}
+~~~cl
 (let ((obj (list (cons 'x 1))))
   (progn (cdr (assq 'x obj))))
-{% endhighlight %}
+~~~
 
 Because it compiles to such a high level language, and because
 ParselTongue is very Lisp-like semantically, it's a bit

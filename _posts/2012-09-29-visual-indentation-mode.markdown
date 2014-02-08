@@ -38,9 +38,9 @@ well, with the indentation highlighting appearing darker.
 
 It can be enabled by default in all programming modes easily,
 
-{% highlight cl %}
+~~~cl
 (add-hook 'prog-mode-hook 'visual-indentation-mode)
-{% endhighlight %}
+~~~
 
 It completely falls apart when tabs are used for indentation, which
 Emacs will use by default. [My configuration](/blog/2011/10/19/)

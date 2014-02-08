@@ -17,25 +17,25 @@ Like its close cousin, Scheme, JavaScript is a [Lisp-1][lisp-1]:
 functions and variables share the same namespace. In Scheme, the
 `define` form defines new variables.
 
-{% highlight scheme %}
+~~~scheme
 (define foo "Hello, world!")
-{% endhighlight %}
+~~~
 
 Combine with the `lambda` form and it can be used to name functions,
 
-{% highlight scheme %}
+~~~scheme
 (define square (lambda (x) (* x x)))
 
 (square -4)  ;; => 16
-{% endhighlight %}
+~~~
 
 The variable `square` is assigned to an anonymous function, and
 afterward it can be called as a function. Since this is so common,
 there's a syntactic shorthand (*sugar*) for this,
 
-{% highlight scheme %}
+~~~scheme
 (define (square x) (* x x))
-{% endhighlight %}
+~~~
 
 Notice that the first argument to `define` is now a list rather than a
 symbol. This is a signal to `define` that a function is being defined,
@@ -51,7 +51,7 @@ function, the `function` statement can be used to declare a variable
 *and* assign it a function. These definitions below are equivalent
 ... most of the time.
 
-{% highlight javascript %}
+~~~javascript
 var square = function(x) {
     return x * x;
 }
@@ -59,14 +59,14 @@ var square = function(x) {
 function square(x) {
     return x * x;
 }
-{% endhighlight %}
+~~~
 
 The second definition is actually more magical than a syntactic
 shorthand, which leads into my quiz.
 
 ### Quiz
 
-{% highlight javascript %}
+~~~javascript
 function bar() {
     var foo = 0;
     function foo() {}
@@ -90,7 +90,7 @@ function quux() {
 }
 
 quux(); // How about now?
-{% endhighlight %}
+~~~
 
 We have three functions, `bar()`, `baz()`, and `quux()`, each slightly
 different. Try to figure out the return value of each without running
@@ -145,9 +145,9 @@ one of convenience.
 
 Consider this,
 
-{% highlight javascript %}
+~~~javascript
 var foo = foo;
-{% endhighlight %}
+~~~
 
 The expression on the right-hand side is evaluated in the same scope
 as the variable declaration. `foo` is initially assigned to
@@ -156,25 +156,25 @@ recursive functions to be defined with `var` -- otherwise the
 identifier used to make the recursive call wouldn't refer to the
 function itself.
 
-{% highlight javascript %}
+~~~javascript
 var factorial = function(n) {
     if (n === 0)
         return 1;
     else
         return factorial(n - 1) * n;
 };
-{% endhighlight %}
+~~~
 
 In contrast, Lisp's `let` does not evaluate the right-hand side within
 the scope of the `let`, so recursive definitions are not possible with
 a regular `let`. This is the purpose of `letrec` (Scheme) and `labels`
 (Common Lisp).
 
-{% highlight cl %}
+~~~cl
 ;; Compile error, x is unbound
 (let ((x x))
   x)
-{% endhighlight %}
+~~~
 
 ### Why function hoisting?
 
@@ -191,14 +191,14 @@ Below, in any other language the function definition would be dead
 code, unreachable by any valid control flow, and the compiler would be
 free to toss it.
 
-{% highlight javascript %}
+~~~javascript
 function foo() {
     return baz();
     function baz() { return 'Hello'; }
 }
 
 foo(); // => 'Hello'
-{% endhighlight %}
+~~~
 
 But in JavaScript you can raise the dead!
 

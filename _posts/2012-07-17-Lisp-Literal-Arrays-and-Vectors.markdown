@@ -18,7 +18,7 @@ just like regular synchronous functions. Follow Clojure's style, the
 asynchronous functions are written inside a vector rather than a list
 to indicate to the macro that they're special.
 
-{% highlight clojure %}
+~~~clojure
 (doasync
   [text [fetch "/foo/json"]
    url (str text ".html")
@@ -26,7 +26,7 @@ to indicate to the macro that they're special.
    _ (.show view result)
    _ [timeout 1000]
    _ (.makeEditable view)])
-{% endhighlight %}
+~~~
 
 That sounded completely reasonable to me, since array literals are
 rarely used inside code Common Lisp. When they are used, it's as a
@@ -38,10 +38,10 @@ he would normally write. Sometimes he really did want to use a vector
 literal in a `let` binding. Why would he do that? In Common Lisp,
 that's just asking for trouble -- same for Elisp and Scheme.
 
-{% highlight cl %}
+~~~cl
 (let ((v #(1 2 3)))
   (foo v))
-{% endhighlight %}
+~~~
 
 The reason why this is a bad idea is that the *same exact* array will
 always be passed to `foo`. The array is created once at *read time* by
@@ -49,20 +49,20 @@ the reader and re-used for the life of that code. If anyone makes a
 modification to the array it will damage the array for everyone using
 it.
 
-{% highlight cl %}
+~~~cl
 (defun foo ()
   #(1 2 3))
 (eq (foo) (foo))
 => T
-{% endhighlight %}
+~~~
 
 The safer method is to create a fresh array every time by *not* using
 a literal but instead calling `vector`.
 
-{% highlight cl %}
+~~~cl
 (let ((v (vector 1 2 3)))
   (foo v))
-{% endhighlight %}
+~~~
 
 Clojure data structures are immutable, including vectors, so using the
 same exact vector in multiple places is safe. That makes use literal
@@ -74,58 +74,58 @@ In Common Lisp, they're not very useful because the elements are not
 evaluated by the parser. When this vector is evaluated the result is a
 vector where the second element is a list containing three atoms.
 
-{% highlight cl %}
+~~~cl
 #(1 (+ 2 3) 4)
 => #(1 (+ 2 3) 4)
-{% endhighlight %}
+~~~
 
 Evaluated arrays return themselves unchanged. To do most useful
 things, a fresh vector needs to be constructed piecemeal. If somehow
 the uniqueness of a literal array wasn't an issue, they still couldn't
 be used for much.
 
-{% highlight cl %}
+~~~cl
 (defun foo (x)
   #(x x x))
 (foo 10)
 => #(X X X)
-{% endhighlight %}
+~~~
 
 To achieve the desired effect, the `vector` function needs to be used
 again. Because it's a normal function call, the arguments are
 evaluated.
 
-{% highlight cl %}
+~~~cl
 (defun foo (x)
   (vector x x x))
 (foo 10)
 => #(10 10 10)
-{% endhighlight %}
+~~~
 
 However, to my surprise, Clojure doesn't work like this! Literal
 vectors have their elements evaluated and, if necessary, are created
 fresh on every use -- exactly like a call to `vector`.
 
-{% highlight clojure %}
+~~~clojure
 (defn foo [x]
   [x x x])
 (foo 10)
 => [10 10 10]
 (identical? (foo 10) (foo 10))
 => false
-{% endhighlight %}
+~~~
 
 If the exact form of the vector is needed unevaluated, it needs to be
 quoted just like lists.
 
-{% highlight clojure %}
+~~~clojure
 (defn foo [x]
   '[x x x])
 (foo 10)
 => [x x x]
 (identical? (foo 10) (foo 10))
 => true
-{% endhighlight %}
+~~~
 
 After further reflection, I now feel like this is the *right* way to
 go about implementing vectors. When I was first learning Lisp the

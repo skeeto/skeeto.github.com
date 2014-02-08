@@ -37,10 +37,10 @@ is nil) but will do so using special syntax that will signal an error
 in the reader: `#<`. For example, in Emacs Lisp buffers cannot be
 serialized so they print using this syntax.
 
-{% highlight cl %}
+~~~cl
 (prin1-to-string (current-buffer))
 ;; => "#<buffer *scratch*>"
-{% endhighlight %}
+~~~
 
 It doesn't matter what's between the angle brackets, or even that
 there's a closing angle bracket. The reader will signal an error as
@@ -103,14 +103,14 @@ depending on whether the closure is compiled or not. For example,
 consider this function, `foo`, that takes two arguments and returns a
 closure that returns the first argument.
 
-{% highlight cl %}
+~~~cl
 ;; -*- lexical-binding: t; -*-
 (defun foo (x y)
   (lambda () x))
 
 (foo :bar :ignored)
 ;; => (closure ((y . :ignored) (x . :bar) t) () x)
-{% endhighlight %}
+~~~
 
 An uncompiled closure is a list beginning with the symbol `closure`.
 The second element is the lexical environment, the third is the
@@ -127,10 +127,10 @@ Fortunately the compiler is smart enough to see this and will avoid
 capturing unused variables. To prove this, I've now compiled `foo` so
 that it returns a compiled closure.
 
-{% highlight cl %}
+~~~cl
 (foo :bar :ignored)
 ;; => #[0 "\300\207" [:bar] 1]
-{% endhighlight %}
+~~~
 
 What's returned here is a byte-code function object, with the `#[...]`
 syntax. It has these elements:
@@ -151,10 +151,10 @@ bytes: 192 and 135. The
 (`constant 0`) says to push the first constant onto the stack. The 135
 (`return`) says to pop the top element from the stack and return it.
 
-{% highlight cl %}
+~~~cl
 (coerce "\300\207" 'list)
 ;; => (192 135)
-{% endhighlight %}
+~~~
 
 ### The Readable Closures Catch
 
@@ -169,33 +169,33 @@ value, especially buffers. Consider this function `bar` which uses a
 temporary buffer as an efficient string builder. It returns a closure
 that returns the result. (Weird, but stick with me here!)
 
-{% highlight cl %}
+~~~cl
 (defun bar (n)
   (with-temp-buffer
     (let ((standard-output (current-buffer)))
       (loop for i from 0 to n do (princ i))
       (let ((string (buffer-string)))
         (lambda () string)))))
-{% endhighlight %}
+~~~
 
 The compiled form looks fine,
 
-{% highlight cl %}
+~~~cl
 (foo 3)
 ;; => #[0 "\300\207" ["0123"] 1]
-{% endhighlight %}
+~~~
 
 But the interpreted form of the closure has a problem. The
 `with-temp-buffer` macro silently introduced a new binding -- an
 abstraction leak.
 
-{% highlight cl %}
+~~~cl
 (foo 3)
 ;; => (closure ((string . "0123")
 ;;              (temp-buffer . #<killed buffer>)
 ;;              (n . 3) t)
 ;;      () string)
-{% endhighlight %}
+~~~
 
 The temporary buffer is mistakenly captured in the closure making it
 unreadable, but *only* in its uncompiled form. This creates the

@@ -102,12 +102,12 @@ use, copies the correct ones to a temporary directory, and appends
 that directory to the `java.library.path` if needed. For example, this
 is what registration looks like,
 
-{% highlight java %}
+~~~java
 NativeGuide.prepare(Arch.LINUX_32, "/x86/libexample.so");
 NativeGuide.prepare(Arch.LINUX_64, "/amd64/libexample.so");
 NativeGuide.prepare(Arch.WINDOWS_32, "/x86/example.dll");
 NativeGuide.prepare(Arch.WINDOWS_64, "/amd64/example.dll");
-{% endhighlight %}
+~~~
 
 Outside of this registration, the whole thing is transparent. I've
 already used it with two projects allowing me to package them up into

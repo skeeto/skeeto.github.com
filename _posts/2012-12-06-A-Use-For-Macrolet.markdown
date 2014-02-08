@@ -13,11 +13,11 @@ definitions.
 For example, here's a locally-defined [anaphoric][anaphoric] `lambda`
 macro called `fn`.
 
-{% highlight cl %}
+~~~cl
 (macrolet ((fn (&body body) `(lambda (_) ,@body)))
   (map 'string (fn (if (standard-char-p _) _ #\*)) "naïve"))
 ;; => "na*ve"
-{% endhighlight %}
+~~~
 
 My particular use case was about making my code cleaner for
 [a brainfuck interpreter][bf]. The state of the machine was being
@@ -25,11 +25,11 @@ tracked by this struct. (Interesting side note: SBCL warns about using
 `p` as a slot name because the accessor function will look like a
 predicate.)
 
-{% highlight cl %}
+~~~cl
 (defstruct bf
   (p 0)
   (mem (make-array 30000 :initial-element 0)))
-{% endhighlight %}
+~~~
 
 The BF instructions `+` and `-` increment the byte at the data
 pointer. The Common Lisp `incf` and `decf` macros can be used to do
@@ -37,7 +37,7 @@ this. Similarly, the `,` instruction sets the byte at the data
 pointer, which can be done with `setf`. All three of these macros are
 *place*-modifying.
 
-{% highlight cl %}
+~~~cl
 (defun interp (program state)
   ;; ...
   (incf (aref (bf-mem state) (bf-p state)))
@@ -45,12 +45,12 @@ pointer, which can be done with `setf`. All three of these macros are
   (decf (aref (bf-mem state) (bf-p state)))
   ;; ...
   (setf (aref (bf-mem state) (bf-p state)) (char-code (read-char))))
-{% endhighlight %}
+~~~
 
 That's a whole lot of redundancy for a Lisp program. Under similar
 circumstances elsewhere I might use `flet` to reduce it.
 
-{% highlight cl %}
+~~~cl
 ;; This won't work.
 (defun interp (program state)
   (flet ((ref () (aref (bf-mem state) (bf-p state))))
@@ -58,7 +58,7 @@ circumstances elsewhere I might use `flet` to reduce it.
     (incf (ref))
     ;; ...
     (decf (ref))))
-{% endhighlight %}
+~~~
 
 The problem is that `ref` isn't a [*generalized reference*][ref],
 which `incf`, `decf`, and `setf` all require. Common Lisp's
@@ -78,7 +78,7 @@ place-modifying macro will expand `ref`
 ([*after* looking elsewhere][expand]) to decide what to do, and `ref`
 will expand to an `aref` form.
 
-{% highlight cl %}
+~~~cl
 (defun interp (program state)
   (macrolet ((ref () '(aref (bf-mem state) (bf-p state))))
     ;; ...
@@ -87,7 +87,7 @@ will expand to an `aref` form.
     (decf (ref))
     ;; ...
     (setf (ref) (char-code (read-char)))))
-{% endhighlight %}
+~~~
 
 Because the macro has no parameters I could have even more easily used
 `symbol-macrolet`. I just didn't think of it at the time.

@@ -18,18 +18,18 @@ especially JavaScript.
 Here some some examples. This function, `foo`, has three required
 parameters, `a`, `b`, and `c`.
 
-{% highlight cl %}
+~~~cl
 (defun foo (a b c)
   ...)
-{% endhighlight %}
+~~~
 
 
 To make `b` and `c` optional, place them after the symbol `&optional`,
 
-{% highlight cl %}
+~~~cl
 (defun foo (a &optional b c)
   ...)
-{% endhighlight %}
+~~~
 
 
 If second and third arguments are not provided, `b` and `c` will be
@@ -37,10 +37,10 @@ bound to `nil`. To provide a default argument, put that parameter
 inside a list. Below, when a third argument is not provided, `c` will
 be bound to `"bar"`.
 
-{% highlight cl %}
+~~~cl
 (defun foo (a &optional b (c "bar"))
   ...)
-{% endhighlight %}
+~~~
 
 
 To write a function that accepts any number of arguments, use `&rest`
@@ -48,10 +48,10 @@ followed by the parameter to hold the list of the remaining
 arguments. Below, `args` will be a list of all arguments after the
 third. Note how this can be combined with `&optional`.
 
-{% highlight cl %}
+~~~cl
 (defun foo (a &optional b c &rest args)
   ...)
-{% endhighlight %}
+~~~
 
 
 Often, the *position* of a parameter may be hard to remember or read,
@@ -60,20 +60,20 @@ name them with `&key`. Below, the function has three named parameters,
 specified at the call site using *keywords* -- special symbols from
 the keyword package that always evaluate to themselves.
 
-{% highlight cl %}
+~~~cl
 (defun foo (&key a b c)
   ...)
 
 (foo :b "world" :a "hello")
-{% endhighlight %}
+~~~
 
 Like optional parameters, when a parameter is not provided it is bound
 to `nil`. In the same way, it can be given a default argument.
 
-{% highlight cl %}
+~~~cl
 (defun foo (&key (a "hello") (b "world") c)
   ...)
-{% endhighlight %}
+~~~
 
 `&key` can be combined with `&optional` and `&rest`. However, the
 `&rest` argument will be filled with all of key-value pairs, so it's
@@ -96,20 +96,20 @@ when not provided by the caller. The first definition has an arity of
 one and it calls the second definition with the optional argument
 filled in.
 
-{% highlight clojure %}
+~~~clojure
 (defn foo
   ([a] (foo a "bar"))
   ([a b] ...))
-{% endhighlight %}
+~~~
 
 Variadic functions are specified with `&`, similar to `&rest` in
 Common Lisp. Below, `xs` is a sequence of all of the arguments
 provided after the first.
 
-{% highlight clojure %}
+~~~clojure
 (defn foo [x & xs]
   ...)
-{% endhighlight %}
+~~~
 
 As far as *parameters* are concerned, this is all Clojure
 has. However, Clojure's parameter specification is actually *more*
@@ -122,7 +122,7 @@ The following in Common Lisp would require manually parsing the
 parameters on some level. The `last` parameter can be either second or
 third depending on whether a middle name was provided.
 
-{% highlight clojure %}
+~~~clojure
 (defn make-name
   ([first last]
      (make-name first "Q" last))
@@ -131,7 +131,7 @@ third depending on whether a middle name was provided.
 
 (make-name "John" "Public")
 ;; => {:first "John", :middle "Q", :last "Public"}
-{% endhighlight %}
+~~~
 
 That covers optional parameters with default arguments and variadic
 functions. What about keyword parameters? Well, to cover that we need
@@ -149,11 +149,11 @@ Below, in the body of the form, `a`, `b`, and `c` are bound to 1, 2,
 and 3 respectively. The form `(a (b c))` is mapped into the quoted
 structure of the same shape to the right.
 
-{% highlight cl %}
+~~~cl
 (destructuring-bind (a (b c)) '(1 (2 3))
   (+ a (* b c)))
 ;; => 7
-{% endhighlight %}
+~~~
 
 Because of Common Lisp's concept of *cons cells*, the *cdr* of a cell
 can be bound to a variable if that variable appears in the `cdr`
@@ -161,23 +161,23 @@ position. This is similar to the `&rest` parameter (and is how Scheme
 does variadic functions). I like using this to match the head and tail
 of a list,
 
-{% highlight cl %}
+~~~cl
 (destructuring-bind (x . xs) '(1 2 3 4 5)
   (list x xs))
 ;; => (1 (2 3 4 5))
-{% endhighlight %}
+~~~
 
 Perhaps the neatest use of destructuring is in the `loop` macro. This
 loop walks over a list two at a time, binding a variable to each side
 of the pair,
 
-{% highlight cl %}
+~~~cl
 (loop for (keyword value) on '(:a 1 :b 2 :c 3) by #'cddr
    collect keyword into keywords
    collect value into values
    finally (return (values keywords values)))
 ;; => (:A :B :C), (1 2 3)
-{% endhighlight %}
+~~~
 
 Unfortunately destructuring in Common Lisp is limited to these few
 cases, or where ever else you write your own destructuring macros.
@@ -188,7 +188,7 @@ parameter lists. It works on any core data structure, not just lists.
 
 Below, I'm doing destructuring inside of a standard `let` form.
 
-{% highlight clojure %}
+~~~clojure
 (defn greet-dr [fullname]
   (let [[first last] (clojure.string/split fullname #" +")]
     (str "Hello, Dr. " last ". "
@@ -196,50 +196,50 @@ Below, I'm doing destructuring inside of a standard `let` form.
 
 (greet-dr "John Doe")
 ;; "Hello, Dr. Doe. It's good to see you again, John."
-{% endhighlight %}
+~~~
 
 Similarly, I could destructure an argument into my parameters. (Note
 the double square brackets.)
 
-{% highlight clojure %}
+~~~clojure
 (defn greet-dr-2 [[first last]]
   ...)
 
 (greet-dr-2 ["John" "Doe"])
-{% endhighlight %}
+~~~
 
 Because hashmaps are a core language feature in Clojure, they can also
 be destructured. The syntax is a bit like flipping the hashmap inside
 out. The variable is specified, then the key it's mapped to.
 
-{% highlight clojure %}
+~~~clojure
 (let [{a :a, b :b} {:a 1 :b 2}]
   (list a b))
 ;; => (1 2)
-{% endhighlight %}
+~~~
 
 When variables and keys have the same name, there's a shorthand with
 `:keys`.
 
-{% highlight clojure %}
+~~~clojure
 (let [{:keys [a b]} {:a 1 :b 2}]
   ...)
-{% endhighlight %}
+~~~
 
 Variables default to `nil` when the corresponding key is not in the
 map. They can be given default values with `:or`.
 
-{% highlight clojure %}
+~~~clojure
 (let [{a :a, b :b :or {a 0 b 0}} {}]
   (list a b))
 ;; => (0 0)
-{% endhighlight %}
+~~~
 
 Now, here's where it gets really neat. In Common Lisp, the `&key` part
 of a lambda list is a special case. In Clojure it comes for free as
 part of destructuring. Just destructure the *rest* argument!
 
-{% highlight clojure %}
+~~~clojure
 (defn height-opinion [name & {height :height}]
   (if-not height
     (str "I have no opinion on " name ".")
@@ -249,18 +249,18 @@ part of destructuring. Just destructure the *rest* argument!
 
 (height-opinion "Chris" :height 6.25)
 ;; => "Chris is tall."
-{% endhighlight %}
+~~~
 
 We can still access the entire rest argument at the same time, using
 `:as`, so it covers everything Common Lisp covers.
 
-{% highlight clojure %}
+~~~clojure
 (defn foo [& {a :a, b :b :as args}]
   args)
 
 (foo :b 10)
 ;; => {:b 10}
-{% endhighlight %}
+~~~
 
 (A side note while we're making comparisons: keywords in Clojure are
 *not* symbols, but rather a whole type of their own.)

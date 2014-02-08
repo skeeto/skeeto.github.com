@@ -9,10 +9,10 @@ JavaScript has a handy `map()` function for mapping a function across
 the elements of an array, producing a new array. It's part of
 JavaScript's functional side.
 
-{% highlight javascript %}
+~~~javascript
 [1, 2, 3, 4, 5].map(function(x) { return x * x; });
 // => [1, 4, 9, 16, 25]
-{% endhighlight %}
+~~~
 
 Each array element is passed as the first argument to the
 function. (Unfortunately, it [also passes two more arguments][map]:
@@ -29,14 +29,14 @@ the `map()` method. Here's a function that produces an adaptor
 function, which translates the arguments of a provided function into a
 modified call to the provided function.
 
-{% highlight javascript %}
+~~~javascript
 function withThis(f) {
     var args = Array.prototype.slice.call(arguments, 1);
     return function(object) {
         return f.apply(object, args);
     };
 }
-{% endhighlight %}
+~~~
 
 Here, `withThis()` takes a variadic function and some arguments,
 returning a new function that accepts one additional argument on the
@@ -44,10 +44,10 @@ left and partially applies the provided function to the provided
 arguments. The first argument on the new function is used as the
 context of a call to the provided function. Here's an example,
 
-{% highlight javascript %}
+~~~javascript
 [1, 2, 3].map(withThis(Number.prototype.toFixed, 2));
 // => ["1.00", "2.00", "3.00"]
-{% endhighlight %}
+~~~
 
 The expression `withThis(Number.prototype.toFixed, 2)` returns a
 non-method version of `toFixed()`, partially applied to 2, which
@@ -57,26 +57,26 @@ be passed to `map()` or `filter()`.
 One downside to this is that it's not polymorphic; it doesn't dispatch
 on the type of the element. This can be fixed,
 
-{% highlight javascript %}
+~~~javascript
 function withThis(f) {
     var args = Array.prototype.slice.call(arguments, 1);
     return function(object) {
         return object[f].apply(object, args);
     };
 }
-{% endhighlight %}
+~~~
 
-{% highlight javascript %}
+~~~javascript
 [1, new Date(), [1, 2, 3]].map(withThis('toString'));
 // => ["1", "Thu Feb 07 2013 17:08:46 GMT-0500 (EST)", "1,2,3"]
-{% endhighlight %}
+~~~
 
 It's also easier to call. Here's the same `toFixed()` example.
 
-{% highlight javascript %}
+~~~javascript
 [1, 2, 3].map(withThis('toFixed', 2));
 // => ["1.00", "2.00", "3.00"]
-{% endhighlight %}
+~~~
 
 I haven't tested it yet, but I'd bet the second version of
 `withThis()` is a lot slower. It has to look up the actual method
@@ -85,7 +85,7 @@ identifier is established at compile time. If this is the case, here's
 a final version that does the right thing depending on what type of
 argument is provided.
 
-{% highlight javascript %}
+~~~javascript
 function withThis(f) {
     var args = Array.prototype.slice.call(arguments, 1);
     if (typeof f === 'string') {
@@ -98,7 +98,7 @@ function withThis(f) {
         };
     }
 }
-{% endhighlight %}
+~~~
 
 
 [map]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/map

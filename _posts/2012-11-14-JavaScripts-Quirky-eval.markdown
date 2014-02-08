@@ -48,10 +48,10 @@ has no access to it. The compilation and optimization of this code is
 unaffected by the `eval`. It's about as complicated as loading a new
 source file with `load`.
 
-{% highlight cl %}
+~~~cl
 (let ((foo 'bar))
   (eval 'foo))  ; error, foo is unbound
-{% endhighlight %}
+~~~
 
 [Python][python] and [Ruby][ruby] are similar, where `eval` is done in
 the global environment. In both cases, an evaluation environment can
@@ -63,13 +63,13 @@ environment. <del>However, no assignments, either to change bindings
 or modify data structures, are visible outside of the
 <code>eval</code>.</del> (Fixed a string interpolation mistake.)
 
-{% highlight perl %}
+~~~perl
 sub foo {
     my $bar = 10;
     eval '$bar = 5';
     return eval '$bar';
 }
-{% endhighlight %}
+~~~
 
 This function returns `5`. The `eval` modified the lexically scoped
 `$bar`.
@@ -86,12 +86,12 @@ JavaScript goes much further than all of this. Not only is `eval` done
 in the current lexical environment but **it can introduce entirely new
 bindings!**
 
-{% highlight javascript %}
+~~~javascript
 function foo() {
     eval('var bar = 10');
     return bar;
 }
-{% endhighlight %}
+~~~
 
 This function returns 10. `eval` created a new lexical variable in
 `foo` *at run time*. Because the environment can be manipulated so
@@ -107,14 +107,14 @@ determine at compile time which variables are being accessed by a
 function and minimize the environment captured by a closure. For
 example,
 
-{% highlight javascript %}
+~~~javascript
 function foo(x) {
     var y = {x: x};
     return function() {
         return x * x;
     };
 }
-{% endhighlight %}
+~~~
 
 The function `foo` returns a closure capturing the bindings `x` and
 `y`. The compiler can prove that `y` is never accessed by the closure
@@ -122,13 +122,13 @@ and omit it, [freeing the object][closure] bound to `y` for garbage
 collection. However, if `eval` is present, *anything* could be
 accessed at any time and the compiler can prove nothing. For example,
 
-{% highlight javascript %}
+~~~javascript
 function foo(x) {
     return function() {
         return eval('x * x');
     };
 }
-{% endhighlight %}
+~~~
 
 The variable `x` is never accessed lexically, but the `eval` can tease
 it out at run time. The expression `foo(3)()` will evaluate to 9,
@@ -141,14 +141,14 @@ time we call another function it may stomp all over the local
 environment, preventing the compiler from proving anything useful. For
 example,
 
-{% highlight javascript %}
+~~~javascript
 var secretEval = eval;
 function foo(string) {
     // ...
     secretEval(string);
     // ...
 }
-{% endhighlight %}
+~~~
 
 There's good news and bad news. The good news is that this is *not*
 the case in the above example. `string` will be evaluated in the

@@ -27,7 +27,7 @@ in the selected region to [youtube-dl][youtube-dl] for downloading the
 videos. It's too large to share as a snippet so here's a small example
 of something similar using a program called `xcowsay`.
 
-{% highlight cl %}
+~~~cl
 (defun xcowsay (message)
   (call-process "xcowsay" nil nil nil message))
 
@@ -37,7 +37,7 @@ of something similar using a program called `xcowsay`.
     (xcowsay (elfeed-entry-title entry))))
 
 (define-key elfeed-search-mode-map "x" #'elfeed-xcowsay)
-{% endhighlight %}
+~~~
 
 Now when I hit "x" over an entry in Elfeed I'm greeted by a cow
 announcing the title.
@@ -64,9 +64,9 @@ reflected in the display. This cache exists because building the
 display, assembling all the special faces, is actually quite
 CPU-intensive. It was an optimization I established early on.
 
-{% highlight cl %}
+~~~cl
 (clrhash elfeed-search-cache)
-{% endhighlight %}
+~~~
 
 If you set these variables in your start-up configuration you don't
 need to worry about clearing the cache because it will already be
@@ -79,10 +79,10 @@ only displays the entry's date. Dates are formatted by the function
 `elfeed-search-format-date`. This can be redefined to display dates
 differently.
 
-{% highlight cl %}
+~~~cl
 (defun elfeed-search-format-date (date)
   (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date)))
-{% endhighlight %}
+~~~
 
 It's given epoch seconds as a float and it returns a string to display
 as a date.
@@ -100,13 +100,13 @@ so these can be changed to whatever you like.
 Say you suffered a head injury and decided you want your Elfeed dates
 to be bold, purple, and underlined,
 
-{% highlight cl %}
+~~~cl
 (custom-set-faces
  '(elfeed-search-date-face
    ((t :foreground "#f0f"
        :weight extra-bold
        :underline t))))
-{% endhighlight %}
+~~~
 
 ### Database Manipulation
 
@@ -124,10 +124,10 @@ Programmer" (head injury, remember?). The function
 `elfeed-db-get-feed` can be used to fetch a feed's data structure from
 the database, given it's exact URL as listed in your `elfeed-feeds`.
 
-{% highlight cl %}
+~~~cl
 (let ((feed (elfeed-db-get-feed "http://nullprogram.com/feed/")))
   (setf (elfeed-feed-title feed) "Seriously Handsome Programmer"))
-{% endhighlight %}
+~~~
 
 Hold it, that didn't work. First, that display cache is getting in the
 way again. Feed titles change very infrequently so they're cached
@@ -139,11 +139,11 @@ The solution is to do it with a little bit of advice just before the
 title is displayed. Advise the function `elfeed-search-update` with
 some "before" advice.
 
-{% highlight cl %}
+~~~cl
 (defadvice elfeed-search-update (before nullprogram activate)
   (let ((feed (elfeed-db-get-feed "http://nullprogram.com/feed/")))
     (setf (elfeed-feed-title feed) "Seriously Handsome Programmer")))
-{% endhighlight %}
+~~~
 
 #### Entry Tweaking
 
@@ -152,7 +152,7 @@ so that it looks like the entry arrived that way. This is done through
 the `elfeed-new-entry-hook`. Generally this would be used for applying
 custom tags. These examples are from the documentation:
 
-{% highlight cl %}
+~~~cl
 ;; Mark all YouTube entries
 (add-hook 'elfeed-new-entry-hook
           (elfeed-make-tagger :feed-url "youtube\\.com"
@@ -169,32 +169,32 @@ custom tags. These examples are from the documentation:
                               :entry-title '(not "something interesting")
                               :add 'junk
                               :remove 'unread))
-{% endhighlight %}
+~~~
 
 Due to a feature I recently ported from my personal configuration,
 this tagger helper function is less necessary. You can put lists in
 your `elfeed-feeds` list to supply automatic tags.
 
-{% highlight cl %}
+~~~cl
 (setq elfeed-feeds
       '(("http://nullprogram.com/feed/" blog emacs)
         "http://www.50ply.com/atom.xml"  ; no autotagging
         ("http://nedroid.com/feed/" webcomic)))
-{% endhighlight %}
+~~~
 
 #### Content Tweaking
 
 Going beyond tagging you could change the content of the feed. Say you
 want to [make feeds 100 times better][xkcd].
 
-{% highlight cl %}
+~~~cl
 (defun hundred-times-better (entry)
   (let* ((original (elfeed-deref (elfeed-entry-content entry)))
          (replace (replace-regexp-in-string "keyboard" "leopard" original)))
     (setf (elfeed-entry-content entry) (elfeed-ref replace))))
 
 (add-hook 'elfeed-new-entry-hook #'hundred-times-better)
-{% endhighlight %}
+~~~
 
 The same trick could be used to remove advertising, change the date,
 change the title, etc. The `elfeed-deref` and `elfeed-ref` parts are
@@ -203,13 +203,13 @@ reference is stored on the structure. You can actually use these
 functions at any time outside of Elfeed, but they'll eventually get
 garbage collected if Elfeed doesn't know about them.
 
-{% highlight cl %}
+~~~cl
 (setf ref (elfeed-ref "Hello, World"))
 ;; => [cl-struct-elfeed-ref "907d14fb3af2b0d4f18c2d46abe8aedce17367bd"]
 
 (elfeed-deref ref)
 ;; => "Hello, World"
-{% endhighlight %}
+~~~
 
 ### Deletion
 
@@ -249,12 +249,12 @@ content).
 You can also clear out the content database from within Elisp by
 visiting every entry and clearing its content field.
 
-{% highlight cl %}
+~~~cl
 (with-elfeed-db-visit (entry _)
   (setf (elfeed-entry-content entry) nil))
 
 (elfeed-db-gc)  ;; garbage collect everything
-{% endhighlight %}
+~~~
 
 The same sort of expression can be used to run over all known entries
 to perform other changes. If there was a delete function you might use
@@ -265,10 +265,10 @@ If you *never* want to store entry content (you never read entries
 within Emacs), you can use a hook to always drop it on the floor as it
 arrives,
 
-{% highlight cl %}
+~~~cl
 (add-hook 'elfeed-new-entry-hook
           (lambda (entry) (setf (elfeed-entry-content entry) nil)))
-{% endhighlight %}
+~~~
 
 ### Questions?
 

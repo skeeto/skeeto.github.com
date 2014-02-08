@@ -124,17 +124,17 @@ biggest annoyance is not focusing the error buffer, like all the other
 interactive modes. Once I'm done glancing at it I'll dismiss it with
 `q`. This advice fixes that.
 
-{% highlight cl %}
+~~~cl
 (defadvice nrepl-default-err-handler (after nrepl-focus-errors activate)
   "Focus the error buffer after errors, like Emacs normally does."
   (select-window (get-buffer-window "*nrepl-error*")))
-{% endhighlight %}
+~~~
 
 I also like having expressions flash when I evaluate them. Both SLIME
 and Skewer do this. This uses `slime-flash-region` to do so when
 available.
 
-{% highlight cl %}
+~~~cl
 (defadvice nrepl-eval-last-expression (after nrepl-flash-last activate)
   (if (fboundp 'slime-flash-region)
       (slime-flash-region (save-excursion (backward-sexp) (point)) (point))))
@@ -142,7 +142,7 @@ available.
 (defadvice nrepl-eval-expression-at-point (after nrepl-flash-at activate)
   (if (fboundp 'slime-flash-region)
       (apply #'slime-flash-region (nrepl-region-for-expression-at-point))))
-{% endhighlight %}
+~~~
 
 For Lisp modes I use parenface to de-emphasize parenthesis. Reading
 Lisp is more about indentation than parenthesis. Clojure uses square

@@ -11,7 +11,7 @@ one, which I came up with over the weekend. Study it and try to come
 up with an answer before looking a the explanation below. Go ahead and
 use a JavaScript interpreter or debugger to poke at it if you need to.
 
-{% highlight javascript %}
+~~~javascript
 var count = 4;
 
 function foo() {
@@ -30,7 +30,7 @@ function foo() {
 }
 
 foo(); // What does this return? And why?
-{% endhighlight %}
+~~~
 
 When I originally came up with the problem, I just enabled
 [impatient-mode][imp] in my editor buffer to share it friends. It's a
@@ -54,10 +54,10 @@ concatenate the array, flattening out the result? If it did, pushing
 an empty array would result in nothing. This is not the case,
 fortunately.
 
-{% highlight javascript %}
+~~~javascript
 var foo = [1, 2, 3];
 foo.push([]);  // foo = [1, 2, 3, []]
-{% endhighlight %}
+~~~
 
 The real quirk here is JavaScript's strange scoping rules. JavaScript
 only has *function* scope [^let], not *block* scope like most other

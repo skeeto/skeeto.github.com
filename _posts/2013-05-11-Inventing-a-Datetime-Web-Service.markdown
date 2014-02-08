@@ -76,14 +76,14 @@ off that. This is when the lightbulb went off: **web servers hand out
 date strings all the time**! It's a standard HTTP header: `Date`! Even
 [my own web server does this][simple-httpd].
 
-{% highlight js %}
+~~~js
 function getServerDate() {
     var xhr = new XMLHttpRequest();
     xhr.open('HEAD', '/?nocache=' + Math.random(), false);
     xhr.send();
     return new Date(xhr.getResponseHeader('Date'));
 }
-{% endhighlight %}
+~~~
 
 This makes a synchronous XMLHttpRequest to the page's host, being
 careful to cache bust so that I'm not handed a stale date. I'm also
@@ -129,7 +129,7 @@ setInterval(function() {
 
 Here's the code for these clocks:
 
-{% highlight js %}
+~~~js
 var Demo = Demo || {};
 
 Demo.setDate = function(id, date) {
@@ -143,7 +143,7 @@ setInterval(function() {
     Demo.setDate('time-local', date);
     Demo.setDate('time-server', new Date(Demo.offset + date.valueOf()));
 }, 1000 / 15);
-{% endhighlight %}
+~~~
 
 You know what? I think this is better than some random datetime
 web service anyway.

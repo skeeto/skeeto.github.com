@@ -18,19 +18,19 @@ First, a review.
 
 A canvas is just another element in the page.
 
-{% highlight html %}
+~~~html
 <canvas id="display" width="200" height="200"></canvas>
-{% endhighlight %}
+~~~
 
 To draw onto it, get a context and call drawing methods on it.
 
-{% highlight javascript %}
+~~~javascript
 var ctx = document.getElementById('display').getContext('2d');
 ctx.fillStyle = 'blue';
 ctx.beginPath();
 ctx.arc(100, 100, 75, 0, Math.PI * 3 / 2);
 ctx.fill();
-{% endhighlight %}
+~~~
 
 This will result in a canvas that looks like this,
 
@@ -42,7 +42,7 @@ As you could imagine from this example, Java 2D API is much richer,
 and more object-oriented than the Canvas API. The cast from Graphics
 to Graphics2D is required due to legacy.
 
-{% highlight java %}
+~~~java
 public class Example extends JComponent {
     public void paintComponent(Graphics graphics) {
         Graphics2D g = (Graphics2D) graphics;
@@ -50,18 +50,18 @@ public class Example extends JComponent {
         g.fill(new Arc2D.Float(25, 25, 150, 150, 0, 360, Arc2D.CHORD));
     }
 }
-{% endhighlight %}
+~~~
 
 An important feature of both is the ability to globally apply
 transforms -- translate, scale, shear, and rotate -- to all drawing
 commands. For example, drawings on the canvas can be vertically scaled
 using the `scale()` method. Graphics2D also has a `scale()` method.
 
-{% highlight javascript %}
+~~~javascript
 // ...
 ctx.scale(1, 0.5);
 // ...
-{% endhighlight %}
+~~~
 
 ![](/img/screenshot/canvas-arc-scaled.png)
 
@@ -95,22 +95,22 @@ on an internal stack. The above JavaScript example may be in a
 function that is called more than once, so it should restore the
 transform matrix before returning.
 
-{% highlight javascript %}
+~~~javascript
 ctx.save();
 ctx.scale(1, 0.5);
 // ... draw ...
 ctx.restore();
-{% endhighlight %}
+~~~
 
 In Java this stack is managed manually, and it (typically) sits inside
 the call stack itself as a variable.
 
-{% highlight java %}
+~~~java
 AffineTransform tf = g.getTransform();
 g.scale(1, 0.5);
 // ... draw ...
 g.setTransform(tf);
-{% endhighlight %}
+~~~
 
 I think Canvas's built-in stack is more elegant than managing an
 extraneous variable and object. However, what's significant about Java
@@ -140,7 +140,7 @@ teardown step inside a `finally` block. If something goes wrong, the
 context will be left in a clean state. This has personally helped me
 in debugging.
 
-{% highlight javascript %}
+~~~javascript
 ctx.save();
 ctx.scale(1, 0.5);
 try {
@@ -148,7 +148,7 @@ try {
 } finally {
     ctx.restore();
 }
-{% endhighlight %}
+~~~
 
 In Lisp, this pattern is typically captured as a `with-` macro.
 
@@ -162,24 +162,24 @@ clean up regardless of any error condition. Here's a simplified
 version of Emacs' `with-temp-buffer` macro, which itself is built on
 another `with-` macro, `with-current-buffer`.
 
-{% highlight cl %}
+~~~cl
 (defmacro with-temp-buffer (&rest body)
   `(let ((temp-buffer (generate-new-buffer " *temp*")))
      (with-current-buffer temp-buffer
        (unwind-protect
            (progn ,@body)
          (kill-buffer temp-buffer)))))
-{% endhighlight %}
+~~~
 
 The setup is to create a new buffer and switch to it. The teardown
 destroys the buffer, regardless of what happens in the body. An
 example from Common Lisp would be `with-open-file`.
 
-{% highlight cl %}
+~~~cl
 (with-open-file (stream "/etc/passwd")
   (loop while (listen stream)
      collect (read-line stream)))
-{% endhighlight %}
+~~~
 
 This macro ensures that the stream is closed when the body exits, no
 matter what. (Side note: this can be very surprising when combined
@@ -189,7 +189,7 @@ There are no macros in JavaScript, let alone Lisp's powerful macro
 system, but the pattern can still be captured using closures. Replace
 the body with a callback.
 
-{% highlight javascript %}
+~~~javascript
 function Transform() {
     // ...
 }
@@ -205,12 +205,12 @@ Transform.prototype.withDraw = function(ctx, callback) {
         ctx.restore();
     }
 };
-{% endhighlight %}
+~~~
 
 The callback is called once the context is in the proper state. Here's
 how it would be used.
 
-{% highlight javascript %}
+~~~javascript
 var transform = new Transform().scale(1, 0.5);  // (fluent API)
 
 function render(step) {
@@ -218,7 +218,7 @@ function render(step) {
         // ... draw ...
     });
 }
-{% endhighlight %}
+~~~
 
 Since JavaScript has proper closures, that `step` variable is
 completely available to the callback. This function-as-body pattern
@@ -228,7 +228,7 @@ think of JavaScript as a "suitable Lisp."
 Java can just barely pull off the pattern using anonymous classes, but
 it's very clunky.
 
-{% highlight java %}
+~~~java
 class Transform {
     // ...
 
@@ -258,7 +258,7 @@ class Foo {
         });
     }
 }
-{% endhighlight %}
+~~~
 
 Java's anonymous classes are closures, but, unlike Lisp and
 JavaScript, they close over *values* rather than *bindings*. Purely in

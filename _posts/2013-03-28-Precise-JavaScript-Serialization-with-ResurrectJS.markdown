@@ -24,7 +24,7 @@ It works with all the major browsers, including You Know Who.
 
 To demonstrate, here's another Greeter prototype.
 
-{% highlight javascript %}
+~~~javascript
 function Greeter(name) {
     this.name = name;
 }
@@ -35,7 +35,7 @@ Greeter.prototype.greet = function() {
 var kelsey = new Greeter('Kelsey');
 kelsey.greet();
 // => "Hello, my name is Kelsey"
-{% endhighlight %}
+~~~
 
 ResurrectJS can serialize `kelsey` for storage, including behavior.
 I'm creating new Resurrect objects each time just to show that this
@@ -43,14 +43,14 @@ definitely works across different instances. Nothing up my sleeves!
 There's no reason to avoid reusing Resurrect objects because the only
 state they maintain between method calls is their configuration.
 
-{% highlight javascript %}
+~~~javascript
 var string = null;
 string = new Resurrect().stringify(kelsey);
 // => '[{"#":"Greeter","name":"Kelsey"}]'
 
 kelsey;
 // => {"name":"Kelsey","#id":null}
-{% endhighlight %}
+~~~
 
 Notice that the serialization format is a bit unusual: it's wrapped in
 an array. It's still a valid JSON encoding. Also notice that `kelsey`
@@ -59,7 +59,7 @@ was not encoded. I'll explain all this below.
 
 Here's object resurrection.
 
-{% highlight javascript %}
+~~~javascript
 var zombie = null;
 zombie = new Resurrect().resurrect(string);
 // => {"#":"Greeter","name":"Kelsey"}
@@ -69,7 +69,7 @@ zombie.greet();
 
 zombie === kelsey;  // A whole new object
 // => false
-{% endhighlight %}
+~~~
 
 The resurrected object has a `#` property.
 [As explained before](/blog/2013/03/11/) this is used to link the
@@ -79,7 +79,7 @@ What's special now, which I didn't need in my game, is that
 *identity*, including circularity, is properly maintained! For
 example,
 
-{% highlight javascript %}
+~~~javascript
 var necromancer = new Resurrect();
 necromancer.stringify([kelsey, kelsey]);
 // => '[[{"#":1},{"#":1}],{"#":"Greeter","name":"Kelsey"}]'
@@ -87,7 +87,7 @@ necromancer.stringify([kelsey, kelsey]);
 var array = necromancer.resurrect(string);
 array[0] === array[1];
 // => true
-{% endhighlight %}
+~~~
 
 The encoding should begin to reveal itself now. There's only one
 Greeter object serialized and two `{'#': 1}` objects -- references
@@ -103,13 +103,13 @@ structural: testing for it walks the structures recursively.
 In JavaScript the `===` operator tests equality for primitive values
 (numbers, strings) and identity for objects.
 
-{% highlight javascript %}
+~~~javascript
 2 === 2;
 // true, these values are equal
 
 ({foo: 2} === {foo: 2});
 // false, these are equal but different object instances
-{% endhighlight %}
+~~~
 
 JavaScript has no operator for testing object equality and writing a
 function to do the job is surprisingly complicated.
@@ -119,23 +119,23 @@ lines of code.
 JSON maintains object equality but not object identity. Due to the
 former it can be used to fake an equality test.
 
-{% highlight javascript %}
+~~~javascript
 Object.prototype.equals = function(that) {
     return JSON.stringify(this) === JSON.stringify(that);
 };
 
 ({foo: 2}).equals({foo: 2});
 // => true
-{% endhighlight %}
+~~~
 
 However, keys are encoded in insertion order, so this is really
 fragile. Bencode would be better suited (sorted keys), except that it
 supports few of JavaScript's types.
 
-{% highlight javascript %}
+~~~javascript
 ({a: 1, b: 2}).equals({b: 2, a: 1});
 // => false (incorrect), due to ordering
-{% endhighlight %}
+~~~
 
 ResurrectJS extends JSON to maintain identity as well as equality
 across serialization. It does so through the use of references, as
@@ -185,12 +185,12 @@ object in the copy array. The first object in the copy array is the
 original array being serialized. For example, here's a circular
 reference,
 
-{% highlight javascript %}
+~~~javascript
 var circle = [];
 circle.push(circle);
 necromancer.stringify(circle);
 // => '[[{"#":0}]]'
-{% endhighlight %}
+~~~
 
 The first object in the copy array is an array that contains a
 reference to itself.
@@ -199,10 +199,10 @@ JSON doesn't support `undefined` but I get it for free with this
 scheme: any time I come across `undefined` I replace it with a
 reference to the object at index -1. This will always be `undefined`!
 
-{% highlight javascript %}
+~~~javascript
 string = necromancer.stringify([undefined]);
 // => '[[{"#":-1}]]'
-{% endhighlight %}
+~~~
 
 ### Deserialization
 
@@ -218,14 +218,14 @@ result. Simple!
 ResurrectJS handles Dates automatically, treating them as *atomic
 values*.
 
-{% highlight javascript %}
+~~~javascript
 var object = {date: new Date(Math.pow(10, 12))};
 string = necromancer.stringify(object);
 // => '[{"date":{"#.":"Date","#v":["2001-09-09T01:46:40.000Z"]}}]'
 
 necromancer.resurrect(string).date.toString();
 // => "Sat Sep 08 2001 21:46:40 GMT-0400 (EDT)"
-{% endhighlight %}
+~~~
 
 When the program comes across one of these special values, a
 "constructor" object is placed in the copy. On deserialization, not
@@ -239,13 +239,13 @@ maintain their identity. Having the same Date in two places on a data
 structure will result in two different date objects after
 deserialization.
 
-{% highlight javascript %}
+~~~javascript
 var date = new Date();
 string = necromancer.stringify([date, date]);
 array = necromancer.resurrect(string);
 array[0] === array[1];
 // => false
-{% endhighlight %}
+~~~
 
 If the user was intending on mutating the Date and having it update
 Dates (the same one) elsewhere in the structure, this will break it.
@@ -254,13 +254,13 @@ them.
 
 Here's a RegExp being serialized,
 
-{% highlight javascript %}
+~~~javascript
 string = necromancer.stringify(/abc/i);
 // => '{"#.":"RegExp","#v":["abc","i"]}'
 
 necromancer.resurrect(string).test('abC');
 // => true
-{% endhighlight %}
+~~~
 
 If you were watching carefully you might notice there's no wrapper
 array. If an atomic value is stringified directly then the copy array
@@ -268,7 +268,7 @@ process is not performed.
 
 Here's one of the most interesting values to serialize: a DOM element.
 
-{% highlight javascript %}
+~~~javascript
 var h1 = document.createElement('h1');
 h1.innerHTML = 'Hello';
 necromancer.stringify(h1);
@@ -276,7 +276,7 @@ necromancer.stringify(h1);
 
 document.body.appendChild(necromancer.resurrect(string));
 // (the heading appears on the page)
-{% endhighlight %}
+~~~
 
 It uses [XMLSerializer][xml] to serialize the DOM element into XML.
 The counterpart to XMLSerializer is [DOMParser][dom], but,
@@ -292,13 +292,13 @@ used for the intrusive property names, in case you need `#` for
 yourself. You can control prototype relinking and post-serialization
 cleanup, as mentioned before.
 
-{% highlight javascript %}
+~~~javascript
 necromancer = new Resurrect({
     prefix: '__',
     cleanup: true,
     revive: false
 });
-{% endhighlight %}
+~~~
 
 I'm really quite proud of how this library turned out. *As far as I
 know* it's the only library that can actually do all this. It's

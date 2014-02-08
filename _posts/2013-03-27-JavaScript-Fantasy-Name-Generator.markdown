@@ -33,26 +33,26 @@ compiler, using the smallest composition of generators possible. If a
 template can only emit one possible pattern, the compiler will try to
 return a string of exactly the one possible output.
 
-{% highlight javascript %}
+~~~javascript
 typeof NameGen.compile('(foo) (bar)');
 // => "string"
-{% endhighlight %}
+~~~
 
 Here's the example usage I have in the documentation. On my junk
 laptop it can generate a million names for this template in just under
 a second.
 
-{% highlight javascript %}
+~~~javascript
 var generator = NameGen.compile("sV'i");
 generator.toString();  // => "entheu'loaf"
 generator.toString();  // => "honi'munch"
-{% endhighlight %}
+~~~
 
 However, in this case there aren't actually that many possible
 outputs. How do I know? You can ask the generator about what it can
 generate. Generators know quite a bit about themselves!
 
-{% highlight javascript %}
+~~~javascript
 generator.combinations();
 // => 118910
 
@@ -61,7 +61,7 @@ foobar.combinations();
 // => 2
 foobar.enumerate(); // List all possible outputs.
 // => ["foo", "bar"]
-{% endhighlight %}
+~~~
 
 After some experience using it in Disc RL I found that it would be
 *really* useful to be mark parts of the output to the capitalized.

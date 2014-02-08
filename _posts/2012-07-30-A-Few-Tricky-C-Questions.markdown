@@ -33,7 +33,7 @@ each situation.
 
 What is the output of this program?
 
-{% highlight c %}
+~~~c
 #include <stdio.h>
 
 int main()
@@ -42,7 +42,7 @@ int main()
     printf("%p\n", &foo);
     return 0;
 }
-{% endhighlight %}
+~~~
 
 The `register` keyword hints to the compiler that the automatic
 variable should be stored in a register rather than memory, making
@@ -60,7 +60,7 @@ compiler will produce and error and the code will not compile.
 
 Is this program valid?
 
-{% highlight c %}
+~~~c
 struct {
     int foo, bar;
 } baz;
@@ -69,7 +69,7 @@ int *example()
 {
     return &baz.foo;
 }
-{% endhighlight %}
+~~~
 
 Here we're creating a struct called `baz` and take a pointer to one of
 its fields. According to K&R C, this is invalid. Overall, structs are
@@ -84,7 +84,7 @@ objects. This means the above program is **valid** in ANSI C.
 
 How about this one?
 
-{% highlight c %}
+~~~c
 struct {
     int foo : 4;
 } baz;
@@ -93,7 +93,7 @@ int *example()
 {
     return &baz.foo;
 }
-{% endhighlight %}
+~~~
 
 
 The `foo` field is a 4-bit wide bit-field -- smaller than a single
@@ -106,14 +106,14 @@ on modern architectures) this would still be invalid.
 We want to average two pointers to get a pointer in-between them. Is
 this reasonable code?
 
-{% highlight c %}
+~~~c
 char *foo()
 {
     char *start = "hello";
     char *end = start + 5;
     return (start + end) / 2;
 }
-{% endhighlight %}
+~~~
 
 A thoughtful programmer should notice that adding together pointers is
 likely to be disastrous. Pointers tend to be very large, addressing
@@ -122,18 +122,18 @@ lead to an overflow. When I posed this question to
 [Brian](http://www.50ply.com/), he realized this and came up with this
 solution to avoid the overflow.
 
-{% highlight c %}
+~~~c
     return start / 2 + end / 2;
-{% endhighlight %}
+~~~
 
 However, this is still **invalid**. As a complete precaution for
 overflowing pointer arithmetic, pointer addition is forbidden and
 neither of these will compile. Pointer subtraction is perfectly valid,
 so it can be done like so.
 
-{% highlight c %}
+~~~c
     return (end - start) / 2 + start;
-{% endhighlight %}
+~~~
 
 Subtracting two pointers produces an integer. Adding *integers* to
 pointers is not only valid but also essential, so this is only a
@@ -143,26 +143,26 @@ restriction about adding *pointers* together.
 
 Is this valid?
 
-{% highlight c %}
+~~~c
 void foo()
 {
     char hello[] = "hello";
     char *foo = hello;
 }
-{% endhighlight %}
+~~~
 
 `hello` is an array of `char`s and `foo` is a pointer to a `char`. In
 general, arrays are interchangeable with pointers of the same type so
 this is **valid**. Now how about this one?
 
-{% highlight c %}
+~~~c
 void foo()
 {
     char hello[6];
     char *foo = "hello";
     hello = foo;
 }
-{% endhighlight %}
+~~~
 
 Here we've inverted the relationship are are trying to assign the
 array as a pointer. This is **invalid**. Arrays are like pointer

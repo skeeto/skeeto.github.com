@@ -47,20 +47,20 @@ Here I'm going to define a multimethod called `combine` that takes two
 arguments. It combines its arguments appropriately depending on their
 dynamic run-time types.
 
-{% highlight cl %}
+~~~cl
 (predd-defmulti combine (lambda (a b) (vector (type-of a) (type-of b)))
   "Appropriately combine A and B.")
-{% endhighlight %}
+~~~
 
 The classifier uses `type-of`, an Elisp built-in, to examine its
 argument types. It returns them as tuple in the form of a vector. The
 classifier of a method can be accessed with `predd-classifier`, which
 I'll use to demonstrate what these dispatch values will look like.
 
-{% highlight cl %}
+~~~cl
 (funcall (predd-classifier 'combine) 1 2)    ; => [integer integer]
 (funcall (predd-classifier 'combine) 1 "2")  ; => [integer string]
-{% endhighlight %}
+~~~
 
 I chose a vector for the dispatch value because I like the bracket
 style when defining methods (you'll see below). The dispatch value can
@@ -71,7 +71,7 @@ classifier returned a list -- or even better: a single cons.
 
 Now define some methods for different dispatch values.
 
-{% highlight cl %}
+~~~cl
 (predd-defmethod combine [integer integer] (a b)
   (+ a b))
 
@@ -80,18 +80,18 @@ Now define some methods for different dispatch values.
 
 (predd-defmethod combine [cons cons] (a b)
   (append a b))
-{% endhighlight %}
+~~~
 
 Now try it out.
 
-{% highlight cl %}
+~~~cl
 (combine 1 2)            ; => 3
 (combine "a" "b")        ; =>"ab"
 (combine '(1 2) '(3 4))  ; => (1 2 3 4)
 
 (combine 1 '(3 4))
 ; error: "No method found in combine for [integer cons]"
-{% endhighlight %}
+~~~
 
 Notice in the last case it didn't know how to combine these two types,
 so it threw an error. In this simple example where we're only calling
@@ -100,11 +100,11 @@ these methods can be added directly with the `predd-add-method`
 function. This has the exact same result except that it has slightly
 better performance (no wrapper functions).
 
-{% highlight cl %}
+~~~cl
 (predd-add-method 'combine [integer integer] #'+)
 (predd-add-method 'combine [string string]   #'concat)
 (predd-add-method 'combine [cons cons]       #'append)
-{% endhighlight %}
+~~~
 
 #### Use the Hierarchy
 
@@ -115,7 +115,7 @@ own ad hoc hierarchy using `predd-derive`. Both integers and floats
 are a kind of number. It's important to note that `type-of` never
 returns `number`. We're introducing that name here ourselves.
 
-{% highlight cl %}
+~~~cl
 (type-of 1.0)  ; => float
 
 (predd-derive 'integer 'number)
@@ -124,30 +124,30 @@ returns `number`. We're introducing that name here ourselves.
 ;; Types can derive from multiple parents, like multiple inheritance
 (predd-derive 'integer 'exact)
 (predd-derive 'float 'inexact)
-{% endhighlight %}
+~~~
 
 This says that `integer` and `float` are each a kind of `number`. Now
 we can use `number` in a dispatch value. When it sees something like
 `[float integer]` it knows that it matches `[number number]`.
 
-{% highlight cl %}
+~~~cl
 (predd-add-method 'combine [number number] #'+)
 
 (combine 1.5 2)  ; => 3.5
-{% endhighlight %}
+~~~
 
 We can check the hierarchy explicitly with `predd-isa-p` (like
 Clojure's `isa?`). It compares two values just like `equal`, but it
 also accounts for all `predd-derive` declarations. Because of this
 extra concern, unlike `equal`, `predd-isa-p` is *not* commutative.
 
-{% highlight cl %}
+~~~cl
 (predd-isa-p 'number 'number)  ; => 0
 (predd-isa-p 'float 'number)   ; => 1
 (predd-isa-p 'number 'float)   ; => nil
 
 (predd-isa-p [float float] [number number])  ; => 2
-{% endhighlight %}
+~~~
 
 (Remember that `0` is truthy in Elisp.) The integer returned is a
 distance metric used by method dispatch to determine which values are
@@ -170,19 +170,19 @@ Imagine we're making some kind of game where each of the creatures is
 represented by an `actor` struct. Each actor has a name, hit points,
 and active status effects.
 
-{% highlight cl %}
+~~~cl
 (defstruct actor
   (name "Unknown")
   (hp 100)
   (statuses ()))
-{% endhighlight %}
+~~~
 
 The `defstruct` macro has a useful inheritance feature that we can
 exploit for our game to create subtypes. The parent accessors will
 work on these subtypes, immediately providing some (efficient)
 polymorphism even before multimethods are involved.
 
-{% highlight cl %}
+~~~cl
 (defstruct (player (:include actor))
   control-scheme)
 
@@ -190,7 +190,7 @@ polymorphism even before multimethods are involved.
   (type 'sewage))
 
 (actor-hp (make-stinkmonster))  ; => 100
-{% endhighlight %}
+~~~
 
 As a side note: this isn't necessarily the best way to go about
 modeling a game. We probably shouldn't be relying on inheritance too
@@ -201,7 +201,7 @@ types of monsters. Elisp structs have a very useful property by
 default: they're simply vectors whose first element is a symbol
 denoting its type. We can use this in a multimethod classifier.
 
-{% highlight cl %}
+~~~cl
 (make-player)
 ;; => [cl-struct-player "Unknown" 100 nil nil]
 
@@ -209,15 +209,15 @@ denoting its type. We can use this in a multimethod classifier.
     (lambda (attacker victim)
       (vector (aref attacker 0) (aref victim 0)))
   "Perform an attack from ATTACKER on VICTIM.")
-{% endhighlight %}
+~~~
 
 Let's define a base case. This will be overridden by more specific
 methods (determined by that distance metric).
 
-{% highlight cl %}
+~~~cl
 (predd-defmethod attack [cl-struct-actor cl-struct-actor] (a v)
   (decf (actor-hp v) 10))
-{% endhighlight %}
+~~~
 
 We could have instead used `:default` for the dispatch value, which is
 a special catch-all value. The `actor-hp` function will signal an
@@ -230,7 +230,7 @@ the relationship between these structs. It doesn't check `defstruct`
 hierarchies. This step is what makes combining `defstruct` and predd
 a little unwieldy. A wrapper macro is probably due for this.
 
-{% highlight cl %}
+~~~cl
 (predd-derive 'cl-struct-player 'cl-struct-actor)
 (predd-derive 'cl-struct-stinkmonster 'cl-struct-actor)
 
@@ -239,12 +239,12 @@ a little unwieldy. A wrapper macro is probably due for this.
   (attack player monster)
   (actor-hp monster))
 ;; => 90
-{% endhighlight %}
+~~~
 
 When the stinkmonster attacks players it doesn't do damage. Instead it
 applies a status effect.
 
-{% highlight cl %}
+~~~cl
 (predd-defmethod attack [cl-struct-stinkmonster cl-struct-player] (a v)
   (pushnew (stinkmonster-type a) (actor-statuses v)))
 
@@ -253,7 +253,7 @@ applies a status effect.
   (attack monster player)
   (actor-statuses player))
 ;; => (sewage)
-{% endhighlight %}
+~~~
 
 If the monster applied a status effect in addition to the default
 attack behavior then CLOS-style method combination would be far more
@@ -265,7 +265,7 @@ If I was actually building a system combing structs and predd, I would
 be using this helper function for building classifiers. It returns a
 dispatch value for selected arguments.
 
-{% highlight cl %}
+~~~cl
 ;;; -*- lexical-binding: t; -*-
 
 (defun struct-classifier (&rest pattern)
@@ -279,7 +279,7 @@ dispatch value for selected arguments.
 ;; Messages sent to the player are displayed.
 (predd-defmethod speak '(cl-struct-actor cl-struct-player) (from to message)
   (message "%s says %s." (actor-name from) message))
-{% endhighlight %}
+~~~
 
 ### The Future
 

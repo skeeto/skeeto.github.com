@@ -25,7 +25,7 @@ JSON-encoded data from the server. As written, it will only work in
 modern browsers. For backwards compatibility, feature sniffing would be
 required and the `onreadystatechange` event would be used instead.
 
-{% highlight javascript %}
+~~~javascript
 var xhr = new XMLHttpRequest();
 xhr.addEventListener('load', function() {
     var data = JSON.parse(xhr.responseText);
@@ -33,7 +33,7 @@ xhr.addEventListener('load', function() {
 });
 xhr.open('GET', '/widgets/id/443424805.json', true);
 xhr.send();
-{% endhighlight %}
+~~~
 
 Here's what the jQuery version looks like. Notice how it's a lot more
 functional, passing the server response data as an argument rather
@@ -41,7 +41,7 @@ than gluing it to a mutable object. Of course, underneath it's just
 using an XHR object, performing lots of feature sniffing to normalize
 its behavior across different browsers.
 
-{% highlight javascript %}
+~~~javascript
 $.getJSON('/widgets/id/443424805.json', function(data) {
     // ...
 });
@@ -55,7 +55,7 @@ $.ajax({
         // ...
     }
 });
-{% endhighlight %}
+~~~
 
 This is what the core AJAX API *should* have looked like. The
 XMLHttpRequest API has a critical flaw: it's at odds with garbage
@@ -75,14 +75,14 @@ Let's quickly review what is *not* the problem. A closure is a
 function that retains its lexical environment, *closing over* its
 non-local variables.
 
-{% highlight javascript %}
+~~~javascript
 function makeCounter() {
     var x = 0;
     return function() {
         return ++x;
     };
 }
-{% endhighlight %}
+~~~
 
 When `makeCounter()` is called, a *binding* named `x` is established,
 initially bound to the value 0 -- an *assignment*. Then a closure is
@@ -92,14 +92,14 @@ newly established binding, open for garbage collection, but it was
 captured by the closure. This entire process happens on *each*
 invocation of `makeCounter()`.
 
-{% highlight javascript %}
+~~~javascript
 var counterA = makeCounter();
 var counterB = makeCounter();
 counterA();  // => 1
 counterA();  // => 2
 counterA();  // => 3
 counterB();  // => 1
-{% endhighlight %}
+~~~
 
 When the returned closure, here assigned to `counterA` and another to
 `counterB`, is invoked, it reassigns `x` to a new value, then returns
@@ -110,14 +110,14 @@ Closures *can* capture more values than the programmer intended, which
 will cause the captures values to live longer than expected -- a
 leak. Fortunately, this is unusual. Consider this function.
 
-{% highlight javascript %}
+~~~javascript
 function makeGreeter(name) {
     var greeting = "Hello, " + name;
     return function() {
         return greeting;
     };
 }
-{% endhighlight %}
+~~~
 
 The body of `makeGreeter()` has two bindings, `name` and
 `greeting`. Theoretically, the closure will capture `name` as well as
@@ -131,7 +131,7 @@ closure makes no reference to `name` --
 
 With closures in mind, consider the typical use case for an XHR.
 
-{% highlight javascript %}
+~~~javascript
 function getText(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
@@ -140,7 +140,7 @@ function getText(url, callback) {
     xhr.open('get', url, true);
     xhr.send();
 }
-{% endhighlight %}
+~~~
 
 A binding named `xhr` is established and a closure is created which
 references `xhr` as a *free variable*, so it gets captured. This
@@ -195,45 +195,45 @@ At the time of this writing, the specialness of the XHR object can be
 demonstrated by the current browsers. I'm going to use Chrome/Chromium
 here since it's got the best tools for observing the internals.
 
-{% highlight javascript %}
+~~~javascript
 function makeMany(type) {
     for (var i = 0; i < 1000000; i++) {
         new type();
     }
 }
-{% endhighlight %}
+~~~
 
 The function `makeMany()` creates a million objects of a given type,
 but retains no reference to any of them. In theory, they're free for
 garbage collection as soon as they're created.
 
-{% highlight javascript %}
+~~~javascript
 function Point(x, y, z) {
     this.x = x;
     this.y = y;
     this.z = z;
 }
-{% endhighlight %}
+~~~
 
 According to Chrome's heap profiler, an XHR instance is 24 bytes and
 instances of this Point prototype are each 56 bytes. When I ask
 `makeMany()` to generate a million Point objects, the browser does it
 trivially.
 
-{% highlight javascript %}
+~~~javascript
 makeMany(Point);
 // Chrome easily asks, "Do you even lift?"
-{% endhighlight %}
+~~~
 
 Let's try the same thing with XHR, which according to the profiler
 should use even less memory. If XHR wasn't a special object, the
 result would be the same. Note that there are no closures or circular
 references created here.
 
-{% highlight javascript %}
+~~~javascript
 makeMany(XMLHttpRequest);
 // Chrome starts thrashing my craptop now
-{% endhighlight %}
+~~~
 
 If I run this a few times in a row Chromium's memory usage blows up
 past a gigabyte and my whole computer starts thrashing. I begin to

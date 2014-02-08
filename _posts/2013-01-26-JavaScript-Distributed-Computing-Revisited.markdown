@@ -33,21 +33,21 @@ The interface is a bit unfriendly to [live development][skewer], but
 it's manageable. It's invoked by passing the URL of a script to the
 constructor. This script is the code that runs in the dedicated thread.
 
-{% highlight javascript %}
+~~~javascript
 var worker = new Worker('script/worker.js');
-{% endhighlight %}
+~~~
 
 The sort of interface that would have been more convenient for live
 interaction would be something like what is found on most
 multi-threaded platforms: a thread constructor that accepts a function
 as an argument.
 
-{% highlight javascript %}
+~~~javascript
 /* This doesn't work! */
 var worker = new Worker(function() {
     // ...
 });
-{% endhighlight %}
+~~~
 
 I completely understand why this isn't the case. The worker thread
 needs to be totally isolated and the above example is insufficient.

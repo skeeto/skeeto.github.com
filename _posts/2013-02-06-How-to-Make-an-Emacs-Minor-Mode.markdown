@@ -25,10 +25,10 @@ on boilerplate code and so there's a macro for this very purpose:
 `define-minor-mode`. Here's all it takes to make a new minor mode,
 `foo-mode`.
 
-{% highlight cl %}
+~~~cl
 (define-minor-mode foo-mode
   "Get your foos in the right places.")
-{% endhighlight %}
+~~~
 
 This creates a command `foo-mode` for toggling the minor mode and a
 hook called `foo-mode-hook`. There's a strange caveat about the hook:
@@ -58,11 +58,11 @@ with a space. I think this is mistake, but we're stuck with it
 probably forever. Otherwise this string should be kept short: there's
 generally not much room on the modeline.
 
-{% highlight cl %}
+~~~cl
 (define-minor-mode foo-mode
   "Get your foos in the right places."
   :lighter " foo")
-{% endhighlight %}
+~~~
 
 New, empty keymaps are created with `(make-keymap)` or
 `(make-sparse-keymap)`. The latter is more efficient when the map will
@@ -77,7 +77,7 @@ and define keys separately outside the `define-minor-mode`
 declaration, but I like the idea of creating the whole map in one
 expression.
 
-{% highlight cl %}
+~~~cl
 (defun insert-foo ()
   (interactive)
   (insert "foo"))
@@ -88,7 +88,7 @@ expression.
   :keymap (let ((map (make-sparse-keymap)))
             (define-key map (kbd "C-c f") 'insert-foo)
             map))
-{% endhighlight %}
+~~~
 
 The `:global` option means the minor mode is not local to a buffer,
 it's present everywhere. As far as I know, the only global minor mode
@@ -119,7 +119,7 @@ then destroys the buffer.
 For example, let's say I want to keep track of how many times
 `foo-mode` inserted "foo" into the current buffer.
 
-{% highlight cl %}
+~~~cl
 (defvar foo-count 0
   "Number of foos inserted into the current buffer.")
 
@@ -135,7 +135,7 @@ For example, let's say I want to keep track of how many times
             (define-key map (kbd "C-c f") 'insert-foo)
             map)
   (make-local-variable 'foo-count))
-{% endhighlight %}
+~~~
 
 The built-in function `make-local-variable` creates a new buffer-local
 version of a global variable in the current buffer. Here, the
@@ -149,11 +149,11 @@ However, in this case it may be better to use
 `insert-foo` to clobber the global variable if it happens to be used
 in a buffer that doesn't have the minor mode enabled.
 
-{% highlight cl %}
+~~~cl
 (make-variable-buffer-local
  (defvar foo-count 0
    "Number of foos inserted into the current buffer."))
-{% endhighlight %}
+~~~
 
 A big advantage is that this buffer-local intention for the variable
 is documented globally. This message will appear in the variable's
@@ -174,9 +174,9 @@ automatically enable along with that mode. This is done by hooking
 that major mode's hook. So long as the mode follows Emacs' conventions
 as mentioned at the top, this hook should be easy to find.
 
-{% highlight cl %}
+~~~cl
 (add-hook 'text-mode-hook 'foo-mode)
-{% endhighlight %}
+~~~
 
 Here, `foo-mode` will automatically be activated in all `text-mode`
 buffers.
@@ -188,7 +188,7 @@ has one keybinding and it's easily open for users to define more keys
 in `foo-mode-map`. It also automatically activates when the user is
 editing a plain text file.
 
-{% highlight cl %}
+~~~cl
 (make-variable-buffer-local
  (defvar foo-count 0
    "Number of foos inserted into the current buffer."))
@@ -210,7 +210,7 @@ editing a plain text file.
 (add-hook 'text-mode-hook 'foo-mode)
 
 (provide 'foo-mode)
-{% endhighlight %}
+~~~
 
 I added some autoload declarations and a `provide` in case this mode
 is ever distributed or used as a package. If an autoloads script is

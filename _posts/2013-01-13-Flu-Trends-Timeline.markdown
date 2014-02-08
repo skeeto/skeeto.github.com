@@ -44,11 +44,11 @@ reading straightforward JSON. For example,
 
 Will be parsed into this in JavaScript structure,
 
-{% highlight javascript %}
+~~~javascript
 [{name:"apple",  color:"red",    weight:"1.2"},
  {name:"banana", color:"yellow", weight:"1.6"},
  {name:"orange", color:"orange", weight:"0.9"}]
-{% endhighlight %}
+~~~
 
 With the flu data, it means each returned object is a single date
 snapshot, just what I need. The only data-massaging I had to do was

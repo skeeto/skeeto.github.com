@@ -28,7 +28,7 @@ these forms evaluated, try opening a .class file in Emacs. Rather than
 a screen full of junk, you'll (hopefully) be presented with a
 read-only buffer containing detailed information about the class.
 
-{% highlight cl %}
+~~~cl
 (add-to-list 'file-name-handler-alist '("\\.class$" . javap-handler))
 
 (defun javap-handler (op &rest args)
@@ -57,7 +57,7 @@ read-only buffer containing detailed information about the class.
                     inhibit-file-name-handlers)))
         (inhibit-file-name-operation operation))
     (apply operation args)))
-{% endhighlight %}
+~~~
 
 [![](/img/emacs/javap-junk-thumb.png)](/img/emacs/javap-junk.png)
 

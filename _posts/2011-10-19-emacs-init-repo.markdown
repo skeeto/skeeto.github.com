@@ -33,10 +33,10 @@ system-specific configuration, where, for example, I tell Emacs [where
 to find Javadoc files](/blog/2010/10/14/). At the top of this file I
 make sure to load my other init file.
 
-{% highlight cl %}
+~~~cl
 ;; Load standard configuration
 (load-file "~/.emacs.d/init.el")
-{% endhighlight %}
+~~~
 
 One reason I didn't use source control right away was the submodule
 problem -- my configuration is largely made up of *other*

@@ -74,13 +74,13 @@ start out empty because you need to tell it what feeds you'd like to
 follow. List your feeds `elfeed-feeds` variable. You would do this in
 your `.emacs` or other initialization files.
 
-{% highlight cl %}
+~~~cl
 (setq elfeed-feeds
       '("http://www.50ply.com/atom.xml"
         "http://possiblywrong.wordpress.com/feed/"
         ;; ...
         "http://www.devrand.org/feeds/posts/default"))
-{% endhighlight %}
+~~~
 
 Once set, hitting `G` (capitalized) in the search buffer or running
 `elfeed-update` will tell Elfeed to fetch each of these feeds and load
@@ -143,11 +143,11 @@ Generally you don't want to spend time tagging entries. Fortunately
 this step can easily be automated using `elfeed-make-tagger`. To tag
 all YouTube entries with `youtube` and `video`,
 
-{% highlight cl %}
+~~~cl
 (add-hook 'elfeed-new-entry-hook
           (elfeed-make-tagger :feed-url "youtube\\.com"
                               :add '(video youtube)))
-{% endhighlight %}
+~~~
 
 Any functions added to `elfeed-new-entry-hook` are called with the new
 entry as its argument. The `elfeed-make-tagger` function returns a
@@ -157,11 +157,11 @@ This tagger tags old entries as read. It's handy for initializing an
 Elfeed database on a new computer, since I've likely already read most
 of the entries being discovered.
 
-{% highlight cl %}
+~~~cl
 (add-hook 'elfeed-new-entry-hook
           (elfeed-make-tagger :before "2 weeks ago"
                               :remove 'unread))
-{% endhighlight %}
+~~~
 
 ### Creating custom subfeeds
 
@@ -169,13 +169,13 @@ Tagging is also really handy for fixing some kinds of broken feeds or
 otherwise filtering out unwanted content. I like to use a `junk` tag
 to indicate uninteresting entries.
 
-{% highlight cl %}
+~~~cl
 (add-hook 'elfeed-new-entry-hook
           (elfeed-make-tagger :feed-url "example\\.com"
                               :entry-title '(not "something interesting")
                               :add 'junk
                               :remove 'unread))
-{% endhighlight %}
+~~~
 
 There are a few feeds I'd *like* to follow but do not because the
 entries lack dates. This makes them difficult to follow without a

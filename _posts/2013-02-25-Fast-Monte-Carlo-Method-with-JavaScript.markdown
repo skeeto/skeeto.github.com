@@ -32,7 +32,7 @@ more accurate my answer will get -- to a point.
 
 Here's the Common Lisp version. (I love the loop macro, obviously.)
 
-{% highlight cl %}
+~~~cl
 (defun trial ()
   (loop for count upfrom 1
      sum (random 1.0) into total
@@ -43,7 +43,7 @@ Here's the Common Lisp version. (I love the loop macro, obviously.)
   (loop repeat n
      sum (trial) into total
      finally (return (/ total 1.0 n))))
-{% endhighlight %}
+~~~
 
 Using SBCL 1.0.57.0.debian on an Intel Core i7-2600 CPU, once
 everything's warmed up this takes about 9.4 seconds with 100 million
@@ -61,7 +61,7 @@ trials.
 Since this makes for an interesting benchmark I gave it a whirl in
 JavaScript,
 
-{% highlight javascript %}
+~~~javascript
 function trial() {
     var count = 0, sum = 0;
     while (sum <= 1) {
@@ -78,21 +78,21 @@ function monteCarlo(n) {
     }
     return total / n;
 }
-{% endhighlight %}
+~~~
 
 I ran this on Chromium 24.0.1312.68 Debian 7.0 (180326) which uses V8,
 currently the fastest JavaScript engine. With 100 million trials,
 **this only took about 2.7 seconds**!
 
-{% highlight javascript %}
+~~~javascript
 monteCarlo(100000000); // ~2.7 seconds, according to Skewer
 // => 2.71850356
-{% endhighlight %}
+~~~
 
 Whoa! It beat SBCL! I was shocked. Let's try using C as a
 baseline. Surely C will be the fastest.
 
-{% highlight c %}
+~~~c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -118,7 +118,7 @@ int main() {
     printf("%f\n", monteCarlo(100000000));
     return 0;
 }
-{% endhighlight %}
+~~~
 
 I used the highest optimization setting on the compiler.
 

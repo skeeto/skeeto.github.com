@@ -10,11 +10,11 @@ it's used: as a *statement* or as an *expression*. It's a statement
 when the keyword appears at the top-level of a block. This is known as
 a *function declaration*.
 
-{% highlight javascript %}
+~~~javascript
 function foo() {
     // ...
 }
-{% endhighlight %}
+~~~
 
 This statement means declare a variable called `foo` in the current
 scope, create a closure named `foo`, and assign this closure to this
@@ -26,9 +26,9 @@ Notice that the closure's name is separate from the variable name.
 Except for a certain well-known JavaScript engine, closure/function
 objects have a read-only `name` property.
 
-{% highlight javascript %}
+~~~javascript
 foo.name; // => "foo"
-{% endhighlight %}
+~~~
 
 A name is required for function declarations, otherwise they would be
 no-ops. This name also appears in debugging backtraces.
@@ -37,11 +37,11 @@ A function's name has different semantics in *function expressions*.
 The `function` keyword is an expression when used in an expression
 position of a statement.
 
-{% highlight javascript %}
+~~~javascript
 var foo = function() {
     // ...
 }
-{% endhighlight %}
+~~~
 
 The function expression above evaluates to an anonymous closure, which
 is then assigned to the variable `foo`. This is *nearly* identical to
@@ -63,29 +63,29 @@ one-off local scope, is typically wrapped in parenthesis. The purpose
 of the parenthesis is to put `function` in an expression position so
 that it is a function expression rather than a function declaration.
 
-{% highlight javascript %}
+~~~javascript
 (function() {
     // ... declare variables, etc.
 }());
-{% endhighlight %}
+~~~
 
 Another way to put `function` in an expression position is to precede
 it with an unary operator. This is an example of being clever instead
 of practical.
 
-{% highlight javascript %}
+~~~javascript
 !function() {
     // ... declare variables, etc.
 }();
-{% endhighlight %}
+~~~
 
 If `function` is already in an expression position, the wrapping
 parenthesis are unnecessary. For example,
 
-{% highlight javascript %}
+~~~javascript
 var foo = function() { return "bar"; }();
 foo; // => "bar"
-{% endhighlight %}
+~~~
 
 However, it may still be a good idea to wrap the IIFE in parenthesis
 just to help other programmers read your code. A casual glance that
@@ -104,7 +104,7 @@ What happens when a function expression is given a name? Two things.
  2. **The name becomes a variable in the scope of the function**. This
     means it's possible to write recursive function expressions!
 
-{% highlight javascript %}
+~~~javascript
 function maths() {
     return {
         // ...
@@ -115,7 +115,7 @@ function maths() {
 }
 
 maths().fact(10); // => 3628800
-{% endhighlight %}
+~~~
 
 The `fact` function is evaluated as a function expression as part of
 this object literal. The variable `fact` is established in the scope
@@ -127,7 +127,7 @@ function to call itself. It's a self-contained recursive function.
 Given this, try to determine the answer to this problem in your head.
 What does the second invocation of `foo` evaluate to?
 
-{% highlight javascript %}
+~~~javascript
 function foo() {
     foo = function() {
         return "function two";
@@ -137,7 +137,7 @@ function foo() {
 
 foo(); // => "function one"
 foo(); // => ???
-{% endhighlight %}
+~~~
 
 Here's where we come to the major difference between function
 declarations and function expressions. The answer is `"function two"`.
@@ -156,7 +156,7 @@ this trick is exactly how Emacs autoloading works.
 If this function declaration is converted to what *appears* to be the
 equivalent function expression form the difference is obvious.
 
-{% highlight javascript %}
+~~~javascript
 var foo = function foo() {
     foo = function() {
         return "function two";
@@ -166,7 +166,7 @@ var foo = function foo() {
 
 foo(); // => "function one"
 foo(); // => "function one"
-{% endhighlight %}
+~~~
 
 The reassignment happens in the function's scope, leaving the outer
 scope's assignment intact. For better or worse, even ignoring

@@ -25,38 +25,38 @@ was able to ignore all the unfamiliar, complicated rules for the
 Hebrew calendar: Emacs knows how to compute Hebrew dates. It can be
 accessed through the function `calendar-hebrew-date-string`.
 
-{% highlight cl %}
+~~~cl
 ;; Thanksgiving 2013
 (calendar-hebrew-date-string '(11 28 2013))
 ;; => "Kislev 25, 5774"
-{% endhighlight %}
+~~~
 
 Hanukkah begins on the 25th of Kislev, so I can write a
 quick-and-dirty function to detect if a date is the first day of
 Hanukkah.
 
-{% highlight cl %}
+~~~cl
 (defun hanukkah-p (date)
   "Return non-nil if DATE is Hanukkah."
   (string-match-p "^Kislev 25" (calendar-hebrew-date-string date)))
-{% endhighlight %}
+~~~
 
 Next I need a function to compute Thanksgiving, which is really
 simple. Thanksgiving falls on the fourth Thursday of November.
 
-{% highlight cl %}
+~~~cl
 (defun thanksgiving (year)
   "Return the date of Thanksgiving for YEAR."
   (loop for day from 1 upto 7
         when (= 4 (calendar-day-of-week `(11 ,day ,year)))
         return `(11 ,(+ day 21) ,year)))
-{% endhighlight %}
+~~~
 
 If there was no `calendar-day-of-week` I could compute it using
 [Zeller's algorithm][zeller], which I already happen to have
 implemented,
 
-{% highlight cl %}
+~~~cl
 (defun cal/day-of-week (year month day)
   "Return day of week number (0-7)."
   (let* ((Y (if (< month 3) (1- year) year))
@@ -64,19 +64,19 @@ implemented,
          (y (mod Y 100))
          (c (/ Y 100)))
     (mod (+ day (floor (- (* 26 m) 2) 10) y (/ y 4) (/ c 4) (* -2 c)) 7)))
-{% endhighlight %}
+~~~
 
 Now for each year find Thanksgiving and test it for Hanukkah. I
 started with 1942 because that's when the fourth-Thursday-of-November
 rule was established. Presumably due to the regexp part, this
 expression takes a moment to compute.
 
-{% highlight cl %}
+~~~cl
 (loop for year from 1942 to 80000
       when (hanukkah-p (thanksgiving year))
       collect year)
 ;; => (2013 79043 79290 79537 79564 79635 79784 79811 79882)
-{% endhighlight %}
+~~~
 
 My result exactly matches what I'm seeing elsewhere. The rumors are
 correct! The next coincidence occurs on November 23rd, 79043. Thanks,

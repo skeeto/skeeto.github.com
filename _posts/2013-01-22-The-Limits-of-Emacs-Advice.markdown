@@ -31,10 +31,10 @@ Advice is defined with `defadvice`. Duh. For example, say we wanted to
 be silly and have Emacs say "Ouch!" when a line is killed with
 `kill-line`. We can advise this function to display a message.
 
-{% highlight cl %}
+~~~cl
 (defadvice kill-line (after say-ouch activate)
   (message "Ouch!"))
-{% endhighlight %}
+~~~
 
 This says we want to advise the function `kill-line`, we want this
 advise to execute *after* `kill-line` has run, our advice is named
@@ -61,7 +61,7 @@ call, like `narrow-to-defun`, `narrow-to-page`, and any other
 mode-specific narrowing. **Advising these two functions will cover all
 buffer narrowing.** It *should* be this simple.
 
-{% highlight cl %}
+~~~cl
 (defvar change-restriction-hook ())
 
 (defadvice narrow-to-region (after hook activate)
@@ -69,7 +69,7 @@ buffer narrowing.** It *should* be this simple.
 
 (defadvice widen (after hook activate)
   (run-hooks 'change-restriction-hook))
-{% endhighlight %}
+~~~
 
 At first this seems to work. I can add a test hook see them activate
 when I use `M-x narrow-to-region` and `M-x widen`. However, when I use
@@ -81,18 +81,18 @@ code. Nope, these are lisp functions which ultimately call
 `narrow-to-region`. Is the advice not getting used when called
 indirectly? I test that out.
 
-{% highlight cl %}
+~~~cl
 (defun foo ()
   (interactive)
   (narrow-to-region 1 2))
-{% endhighlight %}
+~~~
 
 This works fine. Hmmm, these other functions are byte-compiled, maybe
 that's the problem.
 
-{% highlight cl %}
+~~~cl
 (byte-compile 'foo)
-{% endhighlight %}
+~~~
 
 Bingo. The advice has stopped working. It has something to do with
 byte-compilation.
@@ -101,10 +101,10 @@ byte-compilation.
 
 Let's take a look at the bytecode for `foo`.
 
-{% highlight cl %}
+~~~cl
 (symbol-function 'foo)
 ;; => #[nil "\300\301}\207" [1 2] 2 nil nil]
-{% endhighlight %}
+~~~
 
 I don't know too much about Emacs' byte code, but here's the gist of
 it. A compiled function is a special type of vector (hence the `#[]`
@@ -121,10 +121,10 @@ appear in this list**!
 
 Curious. Let's take a closer look at the bytecode.
 
-{% highlight cl %}
+~~~cl
 (coerce (aref (symbol-function 'foo2) 1) 'list)
 ;; => (192 193 125 135)
-{% endhighlight %}
+~~~
 
 Looking at `bytecomp.el` from the Emacs distribution I can see that
 codes 192 and 193 are used for accessing constants. This pushes my

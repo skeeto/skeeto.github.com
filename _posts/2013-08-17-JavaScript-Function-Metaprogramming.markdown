@@ -14,10 +14,10 @@ The constructor's API looks like this,
 
 For example, creating a 2-argument `add` function at run-time,
 
-{% highlight javascript %}
+~~~javascript
 var add = new Function('x', 'y', 'return x + y');
 add(3, 5);  // => 8
-{% endhighlight %}
+~~~
 
 In all of the JavaScript engines I'm aware of, functions created this
 way are fully optimized and JITed just like any other, except that
@@ -25,14 +25,14 @@ this is done later. The function isn't established at compile-time but
 at some point during run-time. The constructor could be implemented in
 pure JavaScript using `eval`,
 
-{% highlight javascript %}
+~~~javascript
 /* Notice: not 100% correct, but close. */
 function Function() {
     var args = Array.prototype.slice.call(arguments, 0);
     var body = args.pop();
     return eval('(function(' + args.join(', ') + ') { ' + body + ' })');
 }
-{% endhighlight %}
+~~~
 
 ### Constructor Misuse
 
@@ -40,7 +40,7 @@ Misusing the Function constructor has the risk that you may invoke
 compilation repeatedly. For example, both of these functions return an
 array of adder functions.
 
-{% highlight javascript %}
+~~~javascript
 function literal() {
     var out = [];
     for (var i = 0; i < 10; i++) {
@@ -56,14 +56,14 @@ function constructor() {
     }
     return out;
 }
-{% endhighlight %}
+~~~
 
 The `literal` function creates 10 unique closure objects.
 
-{% highlight javascript %}
+~~~javascript
 var x = literal();
 x[0] === x[1];  // => false
-{% endhighlight %}
+~~~
 
 While these appear to be unique objects, they're all backed by the
 same code in memory. Since the function has no free variables, it
@@ -85,7 +85,7 @@ metaprogramming. Use it to generate source code programmatically. For
 example, this function generates 64 new functions by assembling source
 code from strings.
 
-{% highlight javascript %}
+~~~javascript
 function opfuncs() {
     var ops = ['+', '-', '*', '/'];
     var names = ['a', 's', 'm', 'd'];
@@ -102,13 +102,13 @@ function opfuncs() {
     }
     return funcs;
 }
-{% endhighlight %}
+~~~
 
 Writing out all these functions explicitly would take 66 lines of code
 instead of just 16, and it would be error prone and more difficult to
 maintain. Metaprogramming is a win here.
 
-{% highlight javascript %}
+~~~javascript
 /* Ugh ... */
 var opfuncs = {
     aaa: function(w, x, y, z) { return w + x + y + z; },
@@ -116,18 +116,18 @@ var opfuncs = {
     /* ... */
     ddd: function(w, x, y, z) { return w / x / y / z; }
 };
-{% endhighlight %}
+~~~
 
 The `opfuncs` function should be called exactly once. These functions
 shouldn't be generated multiple times because the benefits of the
 metaprogramming approach would be lost. To ensure that, I'm replacing
 the function with its result in this example,
 
-{% highlight javascript %}
+~~~javascript
 opfuncs = opfuncs();
 opfuncs.aaa(2,3,4,5); // 2+3+4+5 => 14
 opfuncs.ama(2,3,4,5); // 2+3*4+5 => 19
-{% endhighlight %}
+~~~
 
 The final metaprogrammed `opfuncs` object should completely
 indistinguishable from the longer, explicit version.
@@ -154,9 +154,9 @@ work.
 
 Used like this,
 
-{% highlight javascript %}
+~~~javascript
 var add = new Function(['x', 'y'], 'return x + y');
-{% endhighlight %}
+~~~
 
 Fortunately there's a simple workaround. The built-in constructors do
 something useful for the most part when used without `new`. My
@@ -164,21 +164,21 @@ personal favorite is the Boolean constructor. Without `new` it returns
 a primitive boolean based on the truthiness of its argument. It can be
 used to remove falsy values from an array.
 
-{% highlight javascript %}
+~~~javascript
 [1, '', 'foo', 0, null].filter(Boolean);
 // => [1, "foo"]
-{% endhighlight %}
+~~~
 
 In the case of Function, `new` isn't actually needed at all! This way,
 `apply` can be used with the constructor. This works as expected,
 
-{% highlight javascript %}
+~~~javascript
 var add = Function.apply(null, ['x', 'y', 'return x + y']);
-{% endhighlight %}
+~~~
 
 Here it is being used to generate functions of n arguments.
 
-{% highlight javascript %}
+~~~javascript
 /** Return a function of n-args that sums its arguments. */
 function addN(n) {
     var args = [];
@@ -190,7 +190,7 @@ function addN(n) {
 }
 
 addN(5)(3, 4, 5, 6, 7);  // => 25
-{% endhighlight %}
+~~~
 
 A single variadic function that uses the `arguments` special variable
 to sum its arguments could be used in place of these individual
@@ -198,7 +198,7 @@ functions, but generating a function with a specific arity and using
 it many times will have much better performance than the variadic
 version.
 
-{% highlight javascript %}
+~~~javascript
 function add() {
     var sum = 0;
     for (var i = 0; i < arguments.length; i++) {
@@ -217,7 +217,7 @@ function test(f, n) {
 
 test(add,     10000000);  // => 0.698 seconds
 test(addN(5), 10000000);  // => 0.152 seconds
-{% endhighlight %}
+~~~
 
 In MonkeyScript, the metaprogramming approach is almost 5 times
 faster.

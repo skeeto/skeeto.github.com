@@ -21,21 +21,21 @@ coordination with an external process (the browser) making it
 inherently asynchronous. So as a second, optional argument, a callback
 can be provided for receiving the result.
 
-{% highlight cl %}
+~~~cl
 ;; Echo the result in the minibuffer.
 (skewer-eval "Math.pow(2.1, 3.1)"
              (lambda (r) (message (cdr (assoc 'value r)))))
-{% endhighlight %}
+~~~
 
 However, **the equivalent function in nrepl.el, `nrepl-eval`, is
 synchronous!** It *returns* the evaluation result. "That's not true!
 That's impossible!"
 
-{% highlight cl %}
+~~~cl
 ;; !!!
 (plist-get (nrepl-eval "(Math/pow 2.1 3.1)") :value)
 ;; => "9.97423999265871"
-{% endhighlight %}
+~~~
 
 Well, it turns out what I said above about execution contexts wasn't
 completely true. There's exactly *one* sneaky function that breaks the
@@ -61,7 +61,7 @@ its execution. It will remain in that state until another thread
 *notifies* the latch, releasing any threads blocked on the
 latch. Here's how it might look in Lisp.
 
-{% highlight cl %}
+~~~cl
 (defvar result nil)
 
 (defvar my-latch (make-latch))
@@ -75,7 +75,7 @@ latch. Here's how it might look in Lisp.
 (defun set-result (value)
   (setf result value)
   (notify my-latch)) ; Release anyone waiting on my-latch
-{% endhighlight %}
+~~~
 
 The pattern above is similar to a ***promise***, which we will later
 implement on top of latches. In our latch implementation I'd also like
@@ -99,13 +99,13 @@ to literally make a pipe, which is better for this purpose, but
 
 Let's start by making a new class called `latch`.
 
-{% highlight cl %}
+~~~cl
 (require 'eieio)
 
 (defclass latch ()
   ((process :initform (start-process "latch" nil nil))
    (value :initform nil)))
-{% endhighlight %}
+~~~
 
 This class has two slots, `process` and `value`. The process slot
 holds the aforementioned process we'll be blocking on. The `value`
@@ -113,7 +113,7 @@ slot will be used to pass a value from `notify` to `wait`. The
 `process` slot is initialized with a brand new process object upon
 instantiation.
 
-{% highlight cl %}
+~~~cl
 (defmethod wait ((latch latch))
   (accept-process-output (slot-value latch 'process))
   (slot-value latch 'value))
@@ -121,7 +121,7 @@ instantiation.
 (defmethod notify ((latch latch) &optional value)
   (setf (slot-value latch 'value) value)
   (process-send-string (slot-value latch 'process) "\n"))
-{% endhighlight %}
+~~~
 
 To wait, call `accept-process-output` on the latch's private
 process. This function won't return until data is sent to the
@@ -139,14 +139,14 @@ Emacs, so we need a `destroy` destructor method. The name `destroy`
 here is not special to Emacs. It's something for the user of the
 library to call.
 
-{% highlight cl %}
+~~~cl
 (defmethod destroy ((latch latch))
   (ignore-errors
     (delete-process (slot-value latch 'process))))
 
 (defun make-latch ()
   (make-instance 'latch))
-{% endhighlight %}
+~~~
 
 I also made a convenience constructor function `make-latch`, with the
 conventional name `make-`, since users shouldn't have to call
@@ -154,13 +154,13 @@ conventional name `make-`, since users shouldn't have to call
 
 That's enough to turn `skewer-eval` into a synchronous function.
 
-{% highlight cl %}
+~~~cl
 (defun skewer-eval-synchronously (js-code)
   (lexical-let ((latch (make-latch)))
     (skewer-eval js-code (apply-partially #'notify latch))
     (prog1 (wait latch)
       (destroy latch))))
-{% endhighlight %}
+~~~
 
 In combination with `lexical-let`, `apply-partially` returns a closure
 that will notify the latch with the return value passed to it from
@@ -174,7 +174,7 @@ lot. Having to destroy my latch after a single use was really
 inconvenient. Fortunately this pattern can be captured by a subclass:
 one-time-latch.
 
-{% highlight cl %}
+~~~cl
 (defclass one-time-latch (latch)
   ())
 
@@ -183,18 +183,18 @@ one-time-latch.
 
 (defmethod wait :after ((latch one-time-latch))
   (destroy latch))
-{% endhighlight %}
+~~~
 
 This subclass destroys the latch after the superclass's `wait` is
 done, through an `:after` method (purely for side-effects). CLOS is
 fun, isn't it?
 
-{% highlight cl %}
+~~~cl
 (defun skewer-eval-synchronously (js-code)
   (lexical-let ((latch (make-one-time-latch)))
     (skewer-eval js-code (apply-partially #'notify latch))
     (wait latch)))
-{% endhighlight %}
+~~~
 
 There, that's a lot more elegant.
 
@@ -213,7 +213,7 @@ and `retrieve` (like wait). If a value has been delivered already,
 `retrieve` will return that value. Otherwise, it will block and wait
 until a value is delivered,
 
-{% highlight cl %}
+~~~cl
 (defclass promise ()
   ((latch :initform (make-one-time-latch))
    (delivered :initform nil)
@@ -221,12 +221,12 @@ until a value is delivered,
 
 (defun make-promise ()
   (make-instance 'promise))
-{% endhighlight %}
+~~~
 
 It has three slots, the one-time-latch used for blocking, a Boolean
 determining the delivery status, and the `value` of the promise.
 
-{% highlight cl %}
+~~~cl
 (defmethod deliver ((promise promise) value)
   (if (slot-value promise 'delivered)
       (error "Promise has already been delivered.")
@@ -238,7 +238,7 @@ determining the delivery status, and the `value` of the promise.
   (if (slot-value promise 'delivered)
       (slot-value promise 'value)
     (wait (slot-value promise 'latch))))
-{% endhighlight %}
+~~~
 
 A promise can only be delivered once, so it throws an error if it is
 attempted more than once. Otherwise it updates the promise state and

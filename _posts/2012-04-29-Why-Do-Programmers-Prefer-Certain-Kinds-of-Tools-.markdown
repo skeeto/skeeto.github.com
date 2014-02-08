@@ -55,19 +55,19 @@ take the output from `diff` and one of the original files, and use it
 to produce the other file. As an example, say you have this source
 file `example.c`,
 
-{% highlight c %}
+~~~c
 int main()
 {
     printf("Hello, world.");
     return 0;
 }
-{% endhighlight %}
+~~~
 
 If you change the string and save it as a different file, then run
 `diff -u` (`-u` for unified, producing a diff with extra context), you
 get this output,
 
-{% highlight udiff %}
+~~~udiff
 --- example.c  2012-04-29 21:50:00.250249543 -0400
 +++ example2.c   2012-04-29 21:50:09.514206233 -0400
 @@ -1,5 +1,5 @@
@@ -77,7 +77,7 @@ get this output,
 -    printf("Goodbye, world.");
      return 0;
  }
-{% endhighlight %}
+~~~
 
 This is very human readable. It states what two files are being
 compared, where they differ, some context around the difference

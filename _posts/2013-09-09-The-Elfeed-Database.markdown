@@ -63,7 +63,7 @@ even works for circular data structures. It's something I missed so
 much with the much-less-capable JSON format earlier this year that I
 [wrote a JavaScript library to do it][resurrectjs].
 
-{% highlight cl %}
+~~~cl
 (defun save-data (file data)
   (with-temp-file file
     (let ((standard-output (current-buffer))
@@ -78,7 +78,7 @@ much with the much-less-capable JSON format earlier this year that I
 (save-data "demo.dat" '(a b c ["1" 2 3]))
 (load-data "demo.dat")
 ;; => (a b c ["1" 2 3])
-{% endhighlight %}
+~~~
 
 Anything with a printed representation can be serialized and stored
 this way, including symbols, string, numbers, lists, vectors (structs,
@@ -135,13 +135,13 @@ the database. Because of the hash, providing the same string in the
 future will return the same reference without actually performing a
 write. References are dereferenced with `elfeed-deref`.
 
-{% highlight cl %}
+~~~cl
 (setf ref (elfeed-ref "Hello, world!"))
 ;; => [cl-struct-elfeed-ref "943a702d06f34599aee1f8da8ef9f7296031d699"]
 
 (elfeed-deref ref)
 ;; => "Hello, world"
-{% endhighlight %}
+~~~
 
 With content stored elsewhere, entries are a struct containing only
 some small metadata: title, link, date, and a content database

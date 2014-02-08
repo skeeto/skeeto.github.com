@@ -34,9 +34,9 @@ that first command just to see it fail. Fortunately, it really does
 fail: the exit code is non-zero. This allows me to make this cool
 alias,
 
-{% highlight bash %}
+~~~bash
 alias rt='screen -r rtorrent || screen -S rtorrent rtorrent'
-{% endhighlight %}
+~~~
 
 Either it attaches to the existing instance or fires a new one up for
 me and attaches me to that one. Now, there *is* a race condition
@@ -53,9 +53,9 @@ the build with someone else. I might drop out of it just to do
 something with git and rebuild. Once again, my alias fix involves
 `screen`,
 
-{% highlight bash %}
+~~~bash
 alias httpd='screen -S http python -m SimpleHTTPServer 8080'
-{% endhighlight %}
+~~~
 
 Rather than kill the server only to restart it again, I always run it
 in `screen`. So instead I detach, but I don't even need to bother
@@ -86,24 +86,24 @@ The most important part of this option is its hidden feature. When the
 argument is empty it defaults to launching a daemon. No need to launch
 it manually, it's just one command.
 
-{% highlight bash %}
+~~~bash
 alias e='emacsclient -cna ""'
-{% endhighlight %}
+~~~
 
 Naturally, Emacs gets to be in one of the coveted, single-letter
 slots. I also set one up for terminal mode Emacs (`-t` instead of
 `-c`),
 
-{% highlight bash %}
+~~~bash
 alias et='emacsclient -ta ""'
-{% endhighlight %}
+~~~
 
 And just to teach the editor heathens a lesson or two, this command
 has a second alias,
 
-{% highlight bash %}
+~~~bash
 alias vi='emacsclient -ta ""'
-{% endhighlight %}
+~~~
 
 The final trick is one I just figured out this week, and it involves
 passphrase agents. Just in case you are not familiar, both `ssh` and
@@ -180,9 +180,9 @@ is never evaluated. I can't simply remove the `exec`s and live with
 nested shells because the next agent isn't launched until the first
 agent's shell dies. The very cool solution is to chain them together!
 
-{% highlight bash %}
+~~~bash
 alias agent='exec ssh-agent gpg-agent --daemon bash'
-{% endhighlight %}
+~~~
 
 The current shell turns into the `ssh-agent`, which spawns `gpg-agent`
 with the proper environment for `ssh`, which forwards its environment

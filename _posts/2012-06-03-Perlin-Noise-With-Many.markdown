@@ -64,7 +64,7 @@ slow. For a hash function, I use Octave's `hashmd5()`, so this one
 won't work in Matlab (which provides no hash function
 whatsoever). However, it *is* a lot shorter!
 
-{% highlight octave %}
+~~~octave
 ## Returns the Perlin noise value for an arbitrary point.
 function v = perlin(p)
   v = 0;
@@ -85,7 +85,7 @@ function v = qgradient(q)
       v(i) = hashmd5([i q]) * 2.0 - 1.0;
   end
 end
-{% endhighlight %}
+~~~
 
 It took Octave an entire day to generate this "fire" video, which is
 ridiculously long. An old graphics card could probably do this in real

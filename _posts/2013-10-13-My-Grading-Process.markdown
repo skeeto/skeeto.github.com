@@ -36,7 +36,7 @@ increases the readability of the patch and, as a bonus, allows it to
 be applied to a slightly different source. Here's a part of a patch
 recently submitted to Elfeed:
 
-{% highlight diff %}
+~~~diff
 diff --git a/tests/elfeed-tests.el b/tests/elfeed-tests.el
 index 31d5ad2..fbb78dd 100644
 --- a/tests/elfeed-tests.el
@@ -60,7 +60,7 @@ index 31d5ad2..fbb78dd 100644
 
  (ert-deftest elfeed-entries-from-x ()
    (with-elfeed-test
-{% endhighlight %}
+~~~
 
 I'd *really* prefer to receive patches like this as homework
 submissions but this is probably too sophisticated for most students.

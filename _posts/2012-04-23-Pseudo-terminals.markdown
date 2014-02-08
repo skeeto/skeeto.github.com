@@ -31,7 +31,7 @@ a "master" *file descriptor* used to talk to it. The second provides
 the name of the pseudo-terminal device on the filesystem, usually
 named something like `/dev/pts/5`.
 
-{% highlight c %}
+~~~c
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,7 +44,7 @@ int main()
     /* ... read and write to fd ... */
     return 0;
 }
-{% endhighlight %}
+~~~
 
 The printed device name can be opened by software that's expecting to
 access a serial port, such as
@@ -58,19 +58,19 @@ collisions with software already using `openpt()` as a function
 name. The GNU C Library provides an extension `getpt(3)`, which is
 just shorthand for the above.
 
-{% highlight c %}
+~~~c
 int fd = getpt();
-{% endhighlight %}
+~~~
 
 Pseudo-terminal functionality was available much earlier, of
 course. It could be done through the poorly designed `openpty(3)`,
 added in BSD Unix.
 
-{% highlight c %}
+~~~c
 int openpty(int *amaster, int *aslave, char *name,
             const struct termios *termp,
             const struct winsize *winp);
-{% endhighlight %}
+~~~
 
 It accepts `NULL` for the last three arguments, allowing the user to
 ignore them. What makes it so bad is that string `name`. The user
@@ -85,11 +85,11 @@ memory. However, that means the function is not re-entrant; it has
 issues in multi-threaded programs, since that string could be trashed
 at any instant by another call to `ptsname()`. Consider this case,
 
-{% highlight c %}
+~~~c
 int fd0 = getpt();
 int fd1 = getpt();
 printf("%s %s\n", ptsname(fd0), ptsname(fd1));
-{% endhighlight %}
+~~~
 
 `ptsname()` will be returning the same `char *` pointer each time it's
 called, merely filling the pointed-to space before returning. Rather
@@ -102,13 +102,13 @@ To make a one-way virtual connection between our pseudo-terminals,
 create two of them and do the typical buffer thing between the file
 descriptors (for succinctness, no checking for errors),
 
-{% highlight c %}
+~~~c
 while (1) {
     char buffer;
     int in = read(pt0, &buffer, 1);
     write(pt1, &buffer, in);
 }
-{% endhighlight %}
+~~~
 
 Making a two-way connection would require the use of threads or
 `select(2)`, but it wouldn't be much more complicated.

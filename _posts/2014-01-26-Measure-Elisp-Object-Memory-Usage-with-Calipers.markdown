@@ -39,7 +39,7 @@ options:
  * Load it into Emacs using json.el (part of Emacs). This is what I
    ended up doing.
 
-{% highlight cl %}
+~~~cl
 (defvar jeopardy
   (with-temp-buffer
     (insert-file-contents "/tmp/JEOPARDY_QUESTIONS1.json")
@@ -47,7 +47,7 @@ options:
 
 (length jeopardy)
 ;; => 216930
-{% endhighlight %}
+~~~
 
 Here, `jeopardy` is bound to a vector of 216,930 association lists
 (alists). I'm curious exactly how much heap memory this data structure
@@ -72,7 +72,7 @@ on a 64-bit operating system. To make sure Elisp doesn't happen to
 have any additional information attached to cons cells, let's take a
 look at the Emacs source code.
 
-{% highlight c %}
+~~~c
 struct Lisp_Cons
   {
     /* Car of this cons cell.  */
@@ -87,14 +87,14 @@ struct Lisp_Cons
       struct Lisp_Cons *chain;
     } u;
   };
-{% endhighlight %}
+~~~
 
 The return value from `garbage-collect` backs this up. The first value
 after each type is the shallow size of that type. From here on, all
 values have been computed for 64-bit Emacs running on x86_64
 GNU/Linux.
 
-{% highlight cl %}
+~~~cl
 (garbage-collect)
 ;; => ((conses 16 9923172 2036943)
 ;;     (symbols 48 57017 54)
@@ -107,7 +107,7 @@ GNU/Linux.
 ;;     (intervals 56 119911 69249)
 ;;     (buffers 960 134)
 ;;     (heap 1024 593412 133853))
-{% endhighlight %}
+~~~
 
 A `Lisp_Object` is just a pointer to a lisp object. The *retained*
 size of a cons cell is its shallow size plus, recursively, the
@@ -122,13 +122,13 @@ pointers in `Lisp_Cons` will hold integers directly. This means to
 Caliper integers have retained size of 0. We can use this to verify
 Caliper's return value for cons cells.
 
-{% highlight cl %}
+~~~cl
 (caliper-object-size 100)
 ;; => 0
 
 (caliper-object-size (cons 100 200))
 ;; => 16
-{% endhighlight %}
+~~~
 
 Tagged integers are fast and save on memory. They also compare
 properly with `eq`, which is just a pointer (identity) comparison.
@@ -149,21 +149,21 @@ used here because that counts characters, which vary in size. There's
 a `string-bytes` function for this. A string's size is 32 plus its
 `string-bytes` value.
 
-{% highlight cl %}
+~~~cl
 (string-bytes "naïveté")
 ;; => 9
 (caliper-object-size "naïveté")
 ;; => 41  (i.e. 32 + 9)
-{% endhighlight %}
+~~~
 
 As you can see from above, symbols are *huge*. Without even counting
 either the string holding the name of the symbol or the symbol's
 plist, a symbol is 48 bytes.
 
-{% highlight cl %}
+~~~cl
 (caliper-object-size 'hello)
 ;; => 1038
-{% endhighlight %}
+~~~
 
 This 1,038 bytes is a little misleading. The symbol itself is 48
 bytes, the string `"hello"` is 37 bytes, and the plist is nil. The
@@ -199,10 +199,10 @@ stop when we see it twice.
 So what's the total retained size of the `jeopardy` structure? About
 124MB.
 
-{% highlight cl %}
+~~~cl
 (caliper-object-size jeopardy)
 ;; => 130430198
-{% endhighlight %}
+~~~
 
 For fun, let's see if how much we can improve on this.
 
@@ -213,7 +213,7 @@ realized that **plists use exactly the same number of cons cells as
 alists**. If this doesn't sound right, try to picture the cons cells
 in your head (an exercise for the reader).
 
-{% highlight cl %}
+~~~cl
 (defvar jeopardy
   (let ((json-object-type 'plist))
     (with-temp-buffer
@@ -223,14 +223,14 @@ in your head (an exercise for the reader).
 
 (caliper-object-size jeopardy)
 ;; => 130430077 (plist)
-{% endhighlight %}
+~~~
 
 Strangely this is 121 bytes smaller. I don't know why yet, but in the
 scope of 124MB that's nothing.
 
 So what do these questions look like?
 
-{% highlight cl %}
+~~~cl
 (elt jeopardy 0)
 ;; => (:show_number "4680"
 ;;     :round "Jeopardy!"
@@ -239,7 +239,7 @@ So what do these questions look like?
 ;;     :question "..." ;; omitted
 ;;     :air_date "2004-12-31"
 ;;     :category "HISTORY")
-{% endhighlight %}
+~~~
 
 They're (now) plists of 7 pairs. All of the keys are symbols, and, as
 such, are interned and consuming very little memory. All of the values
@@ -254,18 +254,18 @@ times. For example, the very first answer from our dataset,
 Copernicus, appears 14 times. That makes even the answers good
 candidates for interning.
 
-{% highlight cl %}
+~~~cl
 (cl-loop for question across jeopardy
          for answer = (plist-get question :answer)
          count (string= answer "Copernicus"))
 ;; => 14
-{% endhighlight %}
+~~~
 
 A string pool is trivial to implement. Just use a weak, `equal` hash
 table to track strings. Making it weak keeps it from leaking memory by
 holding onto strings for longer than necessary.
 
-{% highlight cl %}
+~~~cl
 (defvar string-pool
   (make-hash-table :test 'equal :weakness t))
 
@@ -284,26 +284,26 @@ holding onto strings for longer than necessary.
 
 (defvar jeopardy-interned
   (cl-map 'vector #'jeopardy-fix jeopardy))
-{% endhighlight %}
+~~~
 
 So how are we looking now?
 
-{% highlight cl %}
+~~~cl
 (caliper-object-size jeopardy-interned)
 ;; => 83254322
-{% endhighlight %}
+~~~
 
 That's down to 79MB of memory. Not bad! If we `print-circle` this,
 taking advantage of string interning in the printed representation, I
 wonder how it compares to the original JSON.
 
-{% highlight cl %}
+~~~cl
 (with-temp-buffer
   (let ((print-circle nil))
     (prin1 jeopardy-interned (current-buffer))
     (buffer-size)))
 ;; => 45554437
-{% endhighlight %}
+~~~
 
 About 44MB, down from JSON's 53MB. With `print-circle` set to nil it's about
 48MB.

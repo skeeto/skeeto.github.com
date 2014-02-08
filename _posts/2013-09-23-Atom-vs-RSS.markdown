@@ -47,7 +47,7 @@ thing.**
 
 For reference, here's a typical, friendly RSS 2.0 feed.
 
-{% highlight xml %}
+~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
@@ -61,7 +61,7 @@ For reference, here's a typical, friendly RSS 2.0 feed.
     </item>
   </channel>
 </rss>
-{% endhighlight %}
+~~~
 
 #### guid, the misnomer
 
@@ -154,7 +154,7 @@ hell. For example, look at [this Gmane RSS 1.0 feed][hell]. Unlike the
 other RSS versions, the top level element is `rdf:RFD`. That's not a
 typo.
 
-{% highlight xml %}
+~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF xmlns="http://purl.org/rss/1.0/"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns">
@@ -172,7 +172,7 @@ typo.
     <link>http://www.example.com/foo</link>
   </item>
 </rdf:RDF>
-{% endhighlight %}
+~~~
 
 Remember, if you want dates you'll need to import another namespace.
 

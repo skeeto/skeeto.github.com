@@ -71,7 +71,7 @@ blockquote {
 
 Those are Liquid variables. Each theme source file looks like this,
 
-{% highlight yaml %}
+~~~yaml
 ---
 backA: "#ecffdc"
 backB: White
@@ -81,7 +81,7 @@ foreB: SlateGray
 border: Silver
 links: Blue
 ---
-{% endhighlight %}
+~~~
 
 That's just some YAML front-matter defining the theme's variables. For
 my themes, I define three background colors, two foreground colors,

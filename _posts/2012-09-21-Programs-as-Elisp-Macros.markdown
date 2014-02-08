@@ -25,7 +25,7 @@ examples,
 
 It's easy to achieve the same effect in Elisp,
 
-{% highlight cl %}
+~~~cl
 ;;; -*- lexical-binding: t; -*-
 (require 'cl)
 
@@ -44,7 +44,7 @@ It's easy to achieve the same effect in Elisp,
     (let ((symbol (intern program)))
       (unless (fboundp symbol)
         (make-shell-macro symbol)))))
-{% endhighlight %}
+~~~
 
 Evaluating the above will install macros for all programs in your
 `PATH`, except where you already have functions or macros defined. I
@@ -57,13 +57,13 @@ limited usefulness. These function calls are static and can't be
 passed variable arguments. In order to do that arguments would need to
 be evaluated and symbols would need to be quoted. For example,
 
-{% highlight cl %}
+~~~cl
 (defun git-checkout (branch)
   (git 'checkout branch))
 
 (defun ls-l (file)
   (ls '-l file))
-{% endhighlight %}
+~~~
 
 So I think I'd prefer this interface to the one provided by Clojure's
 `shake` (and my Elisp code at the top). I have little need to call

@@ -40,10 +40,10 @@ It turns out MELPA is *really* interesting. Each package is described
 by a "recipe" file, which is essentially just a tiny s-expression
 listing the repository URL. In the case of my memoization package,
 
-{% highlight cl %}
+~~~cl
 (memoize :repo "skeeto/emacs-memoize"
          :fetcher github)
-{% endhighlight %}
+~~~
 
 From a package maintainer's point-of-view, this is fantastic. I don't
 have to take any extra steps to publish updates to my package. I just
@@ -83,7 +83,7 @@ packages in a configuration and doing everything in the right
 order. Here's how I have it set up at the moment, after after listing
 the packages to use in `my-packages`,
 
-{% highlight cl %}
+~~~cl
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -93,7 +93,7 @@ the packages to use in `my-packages`,
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-{% endhighlight %}
+~~~
 
 Upgrading/updating is currently a manual process. Run
 `package-refresh-contents`, list the packages with `list-packages`,

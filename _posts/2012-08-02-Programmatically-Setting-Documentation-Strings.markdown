@@ -27,47 +27,47 @@ programmatically accessing symbol documentation. The Elisp version
 only provides *function* documentation, so it only accepts one
 argument.
 
-{% highlight cl %}
+~~~cl
 (defun foo ()
   "Foo."
   nil)
 
 (documentation 'foo)
 => "Foo."
-{% endhighlight %}
+~~~
 
 The Common Lisp version must be told what type of documentation to
 return, such as `function` or `variable` (`defvar`, `defconst`).
 
-{% highlight cl %}
+~~~cl
 (documentation 'foo 'function)
 => "Foo."
-{% endhighlight %}
+~~~
 
 As it might be expected, this is `setf`-able! It's possible to update
 or modify documentation strings without needing to redefine the
 function.
 
-{% highlight cl %}
+~~~cl
 (setf (documentation 'foo 'function) "New doc string.")
-{% endhighlight %}
+~~~
 
 Unfortunately it's not `setf`-able in Elisp. Instead you can set the
 `function-documentation` *property* of the symbol. The `documentation`
 function will prefer this over the string stored in the function
 itself.
 
-{% highlight cl %}
+~~~cl
 (put 'foo 'function-documentation "Foo updated.")
 
 (documentation 'foo)
 => "Foo updated."
-{% endhighlight %}
+~~~
 
 The downside is that this is a second place to put docstrings, leading
 to surprising behavior for developers unaware of this hack.
 
-{% highlight cl %}
+~~~cl
 (put 'foo 'function-documentation "Old docstring.")
 
 (defun foo ()
@@ -76,13 +76,13 @@ to surprising behavior for developers unaware of this hack.
 
 (documentation 'foo)
 => "Old docstring."
-{% endhighlight %}
+~~~
 
 This can be fixed by setting the symbol property for
 `function-documentation` to `nil`.
 
-{% highlight cl %}
+~~~cl
 (put 'foo 'function-documentation nil)
-{% endhighlight %}
+~~~
 
 I prefer the Common Lisp method.
