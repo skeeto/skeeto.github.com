@@ -30,8 +30,8 @@ this may sound like an impossible task.
 Fortunately, Debian, being *the* universal operating system and living
 up to its name, has a way to do this, and do it cleanly. When I'm done
 there will be absolutely *no* trace of Ubuntu left. I could do the
-same from within the Red Hat system, but working from Ubuntu takes me
-one less step. The magic tool for solving this problem is
+same from within the Red Hat system, but working from Ubuntu takes one
+fewer step. The magic tool for solving this problem is
 [**debootstrap**][debootstrap]. It installs a Debian base system into
 an arbitrary subdirectory. This is what the official Debian installer
 uses and it's used to [build my live CD][live]. Ubuntu offers this as
