@@ -58,6 +58,7 @@ a Debian base system. I have no use for an extended partition so I can
 just blow the whole thing away and install Debian to sda2.
 
     ubuntu# swapoff /dev/sda5
+    ubuntu# fdisk /dev/sda  # (fix up partitions)
     ubuntu# mkfs.ext4 /dev/sda2
     ubuntu# mkdir /mnt/debian
     ubuntu# mount /dev/sda2 /mnt/debian
