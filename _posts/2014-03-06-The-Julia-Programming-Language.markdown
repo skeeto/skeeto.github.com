@@ -2,7 +2,7 @@
 title: The Julia Programming Language
 layout: post
 date: 2014-03-06T23:55:44Z
-tags: []
+tags: [rant]
 uuid: 35f29378-6e92-3d11-43df-9c40139f142e
 ---
 
