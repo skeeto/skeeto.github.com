@@ -13,7 +13,7 @@ inside of one week. I participated again this year in 7DRL 2014, with
 the help of [Brian][brian]. My submission was called *Northbound*. To
 play, all you need is a modern web browser.
 
-* [Northbound](http://nullprogram.com/northbound/) ([video][video])
+* [Northbound](http://nullprogram.com/northbound/) ([video][video], [source][src])
 
 It only takes about 10-15 minutes to complete.
 
@@ -57,10 +57,10 @@ walk on a frozen lake with too many people.
   description: >-
     As everyone steps out onto the frozen lake, the quiet, chilled air
     is disrupted by loud cracks of splits forming through the ice.
-    Frozen in place, {{game.player.party.[0]}} looks at you as if
+    Frozen in place, {{"{{game.player.party.[0]"}}}} looks at you as if
     asking you what should be done.
 
-    {{game.player.party.[1]}} says, "Perhaps we should leave some of
+    {{"{{game.player.party.[1]"}}}} says, "Perhaps we should leave some of
     this stuff behind to lighten load on the ice."
   options:
     - answer: Leave behind some supplies before moving further. (-10 supplies)
@@ -138,3 +138,4 @@ but plays like Disc RL.
 [tbs]: http://stoicstudio.com/
 [video]: http://youtu.be/J4jOxma4uhE
 [7drl]: http://7drl.org/
+[src]: https://github.com/skeeto/northbound
