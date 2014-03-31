@@ -1,0 +1,140 @@
+---
+title: Northbound 7DRL 2014
+layout: post
+date: 2014-03-31T17:37:08Z
+tags: [game, media]
+uuid: f0804d6b-83fd-38f4-654f-242dd73dce88
+---
+
+Last year [I participated in 7DRL 2013][7drl2013] and submitted a game
+called [*Disc RL*](http://nullprogram.com/disc-rl/). 7DRL stands for
+[*Seven Day Roguelike*][7drl] -- a challenge to write a roguelike game
+inside of one week. I participated again this year in 7DRL 2014, with
+the help of [Brian][brian]. My submission was called *Northbound*. To
+play, all you need is a modern web browser.
+
+* [Northbound](http://nullprogram.com/northbound/) ([video][video])
+
+It only takes about 10-15 minutes to complete.
+
+[![](/img/screenshot/northbound-thumb.png)](/img/screenshot/northbound.png)
+
+It's a story-driven survival game about escaping northward away from a
+mysterious, spreading corruption. ("Corruption" seems to be a common
+theme in my games.) There's no combat and, instead, the game is a
+series of events with a number of possible responses by the player.
+For better or worse, other characters may join you in your journey. I
+coded the core game basically from scratch -- no rot.js this year --
+and Brian focused on writing story events and expanding the story
+system.
+
+Just as Disc RL was inspired primarily by NetHack and DCSS, this
+year's submission was heavily, to an embarrassing extent, inspired by
+two other games: [*The Banner Saga*][tbs] ([LP][ghaz]) and
+[*One Way Heroics*][owh] ([LP][php]).
+
+Writing events was taking a lot longer than expected, and time ran
+short at the end of the week, so there aren't quite as many events as
+I had hoped. This leaves the story incomplete, so don't keep playing
+over and over trying to reveal it all!
+
+My ultimate goal was to create a game with an interesting atmosphere,
+and I think I was mostly successful. There's somber music, sounds
+effects, and ambient winds. The climate changes as you head north,
+with varying terrain. There's day and night cycles. I intentionally
+designed the main menu to show off most of this.
+
+### The Event System
+
+Events are stored in a handful of YAML files. YAML is a very
+human-friendly data format that, unlike JSON, is very well suited for
+writing prose. Here's an example of an event that may occur if you
+walk on a frozen lake with too many people.
+
+~~~yaml
+- title: Treacherous ice!
+  filter: [inCold, inWater, [minParty, 2]]
+  description: >-
+    As everyone steps out onto the frozen lake, the quiet, chilled air
+    is disrupted by loud cracks of splits forming through the ice.
+    Frozen in place, {{game.player.party.[0]}} looks at you as if
+    asking you what should be done.
+
+    {{game.player.party.[1]}} says, "Perhaps we should leave some of
+    this stuff behind to lighten load on the ice."
+  options:
+    - answer: Leave behind some supplies before moving further. (-10 supplies)
+      scripts: [[supplies, -10]]
+      result: Dropping off excess weight keeps the the ice from cracking.
+    - answer: Ignore the issue and carry on.
+      scripts: [dierandom, [karma, -3]]
+      result: >-
+        Throwing caution to the wind you move on. Unfortunately the
+        ice worsens and cracks. Someone is going in.
+~~~
+
+Those paragraphs would be difficult to edit and format while within
+quotes in JSON.
+
+Events can manipulate game state, with other events depending on the
+state change, effectively advancing story events in order. The longest
+event chain in the game reveals some of the nature of the corruption.
+This gets complicated fast, which really slows down event development.
+
+If this is interesting for you to play with, you should easily be able
+to add your own story events to the game just by appending to the
+event YAML files.
+
+### The Map
+
+I put off map generation for awhile to work on the story system. For
+the first few days it was just randomly placed trees on an endless
+grassy field.
+
+When I finally moved on to map generated it was far easier than I
+expected. It's just a few layers of the same 3D Perlin noise, capable
+of providing a virtually infinite, seamless expanse of terrain.
+Water-dirt-grass is one layer. Trees-mountains-highgrass is another
+layer. The cold/snow is a third layer, which, in addition to Perlin
+noise, is a function of altitude (more snow appears as you go north).
+
+One obvious early problem was blockage. Occasionally forests would
+generate that prohibited movement forward, ending the game. Rather
+than deal with the complexities of checking connectedness, I went with
+an idea suggested by Brian: add a road that carves its way up the map,
+guaranteeing correctness. It plows through forests, mountains, and
+lakes alike all the way to the end of the game. Its curvature is
+determined by yet another sample into the same 3D Perlin set.
+
+The snow and corruption effects are all dynamically generated from the
+base tiles. In short, I write the tile onto a hidden canvas, add a
+white gradient for snow, and desaturate for corruption. This was
+faster than manually creating three versions of everything.
+
+### In Reflection
+
+While I really like the look and sound of Northbound, it's ultimately
+less fun for me than Disc RL. With the fixed story and lack of
+procedually-genertaed content, it has little replayability. This would
+still be the case even if the story was fully fleshed out.
+
+Even now I still play Disc RL on occasion, about a couple of times per
+month, just for enjoyment. Despite this, I've still never beaten it,
+which is an indication that I made it much too hard. On the other
+hand, Northbound is *way* too easy. The main problem is that running
+out of the supplies almost immediately ends the game in a not-fun way,
+so I never really want that to happen. The only way to lose is through
+intention.
+
+Next year I need to make a game that looks and feels like Northbound
+but plays like Disc RL.
+
+
+[7drl2013]: /blog/2013/03/17/
+[brian]: http://www.50ply.com/
+[ghaz]: http://www.youtube.com/playlist?list=PLvjoxMr-LwkIBxL4XedpI72XcYgZIzK-S
+[php]: http://www.youtube.com/playlist?list=PLp3KcQ0xncPrVPZQT5xCrRhk19I2pNszI
+[owh]: http://playism-games.com/games/onewayheroics/
+[tbs]: http://stoicstudio.com/
+[video]: http://youtu.be/J4jOxma4uhE
+[7drl]: http://7drl.org/
