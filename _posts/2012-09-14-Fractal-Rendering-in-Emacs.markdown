@@ -1,7 +1,7 @@
 ---
 title: Fractal Rendering in Emacs
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: 71006dd1-ae7b-3860-e82b-4a0affd6524a
 ---
 

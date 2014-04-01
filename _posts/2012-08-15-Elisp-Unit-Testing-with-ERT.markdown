@@ -1,7 +1,7 @@
 ---
 title: Elisp Unit Testing with ERT
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: f5798f49-155b-3038-a8d9-4f5a5f1c2d0c
 ---
 

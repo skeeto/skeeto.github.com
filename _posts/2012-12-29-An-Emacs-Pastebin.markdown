@@ -1,7 +1,7 @@
 ---
 title: An Emacs Pastebin
 layout: post
-tags: [lisp, emacs, javascript, web]
+tags: [elisp, emacs, javascript, web]
 uuid: cbfbf5b0-607d-34d0-6f31-b2712d4e421f
 ---
 

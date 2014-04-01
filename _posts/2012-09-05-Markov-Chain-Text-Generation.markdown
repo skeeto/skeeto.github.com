@@ -1,7 +1,7 @@
 ---
 title: Markov Chain Text Generation
 layout: post
-tags: [emacs, lisp, ai]
+tags: [emacs, elisp, ai]
 uuid: 3f808165-be65-3f4b-f485-8df6aacccd04
 ---
 

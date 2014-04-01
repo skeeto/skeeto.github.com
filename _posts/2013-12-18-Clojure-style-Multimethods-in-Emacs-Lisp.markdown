@@ -2,7 +2,7 @@
 title: Clojure-style Multimethods in Emacs Lisp
 layout: post
 date: 2013-12-18T23:06:15Z
-tags: [emacs, lisp, clojure]
+tags: [emacs, elisp, clojure]
 uuid: 029f9acb-a29f-3e58-14f3-457f245cdb5d
 ---
 

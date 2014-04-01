@@ -1,7 +1,7 @@
 ---
 title: Fake Emacs Namespaces
 layout: post
-tags: [lisp, emacs]
+tags: [elisp, emacs]
 uuid: f89408fd-9b2f-3110-af83-fe96f7c1e7f7
 ---
 

@@ -2,7 +2,7 @@
 title: Introducing EmacSQL
 layout: post
 date: 2014-02-06T05:52:37Z
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: af878773-296e-3411-593a-cc516856b832
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Switching to the Emacs Lisp Package Archive
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: 3e3186c8-dccd-3167-1f42-79f34d08a3dd
 ---
 

@@ -2,7 +2,7 @@
 title: Emacs Lisp Object Finalizers
 layout: post
 date: 2014-01-27T05:24:16Z
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: 48023a80-358c-39b4-371b-d74dfb248897
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Programmatically Setting Lisp Docstrings
 layout: post
-tags: [lisp, emacs]
+tags: [elisp, emacs]
 uuid: d35e27e8-212a-3d1c-5168-afcccc04bf76
 ---
 

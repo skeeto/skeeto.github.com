@@ -2,7 +2,7 @@
 title: Emacs Lisp Reddit API Wrapper
 layout: post
 date: 2013-12-16T23:27:23Z
-tags: [emacs, lisp, reddit, web]
+tags: [emacs, elisp, reddit, web]
 uuid: 3362934d-9762-3f58-e05c-4d8b28175367
 ---
 

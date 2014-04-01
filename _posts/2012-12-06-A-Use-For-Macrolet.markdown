@@ -1,7 +1,7 @@
 ---
 title: A Use For Macrolet
 layout: post
-tags: [lisp]
+tags: [lisp, elisp]
 uuid: 271d91dd-abad-31c8-4e26-f8dfdd5ffa92
 ---
 

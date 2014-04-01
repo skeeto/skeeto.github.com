@@ -1,7 +1,7 @@
 ---
 title: The Limits of Emacs Advice
 layout: post
-tags: [emacs]
+tags: [emacs, elisp]
 uuid: 1cfcdeee-19e5-33b8-1344-8fef68333e41
 ---
 

@@ -2,7 +2,7 @@
 title: Emacs, Thanksgiving, and Hanukkah
 layout: post
 date: 2013-11-28T22:25:36Z
-tags: [emacs, meatspace, lisp]
+tags: [emacs, elisp, meatspace]
 uuid: cd66c73c-cb8c-3e12-9c16-396a36266f8b
 ---
 

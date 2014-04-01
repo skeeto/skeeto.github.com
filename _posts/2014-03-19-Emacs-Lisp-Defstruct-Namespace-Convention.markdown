@@ -2,7 +2,7 @@
 title: Emacs Lisp Defstruct Namespace Convention
 layout: post
 date: 2014-03-19T01:41:52Z
-tags: [emacs, lisp]
+tags: [emacs, lisp, elisp]
 uuid: 624f92a9-6696-33bb-f955-d6c83da56fc1
 ---
 

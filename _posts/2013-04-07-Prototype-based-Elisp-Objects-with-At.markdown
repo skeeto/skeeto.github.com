@@ -1,7 +1,7 @@
 ---
 title: Prototype-based Elisp Objects with @
 layout: post
-tags: [lisp, emacs]
+tags: [elisp, emacs]
 uuid: d1361157-9022-3e77-270c-5410d903c7d4
 ---
 

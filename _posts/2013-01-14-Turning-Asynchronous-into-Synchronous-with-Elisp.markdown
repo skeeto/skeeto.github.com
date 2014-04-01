@@ -1,7 +1,7 @@
 ---
 title: Turning Asynchronous into Synchronous in Elisp
 layout: post
-tags: [lisp, emacs]
+tags: [elisp, emacs]
 uuid: 61c72b82-371c-304f-7e0e-f5ea4a990ef3
 ---
 

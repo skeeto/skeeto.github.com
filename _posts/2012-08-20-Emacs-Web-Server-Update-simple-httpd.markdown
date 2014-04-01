@@ -1,7 +1,7 @@
 ---
 title: simple-httpd and impatient-mode
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: 627e438d-36e5-3a9d-dd35-6a9a3914a63a
 ---
 

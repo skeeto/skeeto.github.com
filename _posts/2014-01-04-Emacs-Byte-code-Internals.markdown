@@ -2,7 +2,7 @@
 title: Emacs Byte-code Internals
 layout: post
 date: 2014-01-04T05:07:26Z
-tags: [emacs, lisp]
+tags: [emacs, lisp, elisp]
 uuid: c03869b5-fca0-3f9e-8dda-c3f361b287a8
 ---
 

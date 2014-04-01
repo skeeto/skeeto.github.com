@@ -2,7 +2,7 @@
 title: Emacs Lisp Readable Closures
 layout: post
 date: 2013-12-30T23:52:38Z
-tags: [emacs, lisp, javascript]
+tags: [emacs, elisp, lisp, javascript]
 uuid: 84f86fb6-e029-3a57-1450-1d25be3fdee0
 ---
 

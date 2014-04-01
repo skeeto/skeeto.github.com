@@ -1,7 +1,7 @@
 ---
 title: Literal Arrays and Vectors in Lisp
 layout: post
-tags: [lisp]
+tags: [lisp, elisp]
 uuid: 71e44f9e-2e92-30e9-8b29-8418229a7ce1
 ---
 

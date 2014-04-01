@@ -1,7 +1,7 @@
 ---
 title: Programs as Elisp Macros
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: 22a67760-c114-3285-fff8-36a6d23f0c65
 ---
 

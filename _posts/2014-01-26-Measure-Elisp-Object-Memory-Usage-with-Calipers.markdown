@@ -2,7 +2,7 @@
 title: Measure Elisp Object Memory Usage with Calipers
 layout: post
 date: 2014-01-26T01:15:02Z
-tags: [emacs, lisp]
+tags: [emacs, elisp]
 uuid: 3ba9664d-2758-30c8-6b33-2c17835575d1
 ---
 
