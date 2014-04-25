@@ -155,6 +155,9 @@ have no definition with the subtraction operator. In weakly typed
 languages, the "8" is likely to be parsed into a number as part of
 being handled by the operator, with the expression evaluating to 3.
 
+If a language has a triple equality operator (`===`), that's a dead
+giveaway that it's weakly typed.
+
 In the case of C, its pointers are what make it weakly typed. It's
 easy to make a pointer to a value, then dereference it as a different
 type (usually leading to *undefined behavior*).
