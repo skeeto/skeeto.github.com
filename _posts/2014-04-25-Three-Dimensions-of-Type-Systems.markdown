@@ -2,7 +2,7 @@
 title: Three Dimensions of Type Systems
 layout: post
 date: 2014-04-25T22:03:01Z
-tags: []
+tags: [lang]
 uuid: b953054a-3681-3f91-a3a0-f075261f2e69
 ---
 

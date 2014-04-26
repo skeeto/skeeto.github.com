@@ -1,7 +1,7 @@
 ---
 title: JavaScript Truthiness Quiz
 layout: post
-tags: [javascript]
+tags: [javascript, lang]
 uuid: d621c4c0-9f17-3c95-d907-8e57d029dfe5
 ---
 

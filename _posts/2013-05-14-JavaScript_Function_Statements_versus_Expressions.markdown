@@ -1,7 +1,7 @@
 ---
 title: JavaScript Function Statements vs. Expressions
 layout: post
-tags: [javascript]
+tags: [javascript, lang]
 uuid: aa5d1d3f-60c2-3b30-41c6-833dfee56cce
 ---
 

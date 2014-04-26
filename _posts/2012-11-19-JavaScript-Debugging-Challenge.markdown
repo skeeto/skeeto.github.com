@@ -1,7 +1,7 @@
 ---
 title: JavaScript Debugging Challenge
 layout: post
-tags: [javascript]
+tags: [javascript, lang]
 uuid: 51e6cdc8-6562-3ac7-e298-ddb0c989f81a
 ---
 

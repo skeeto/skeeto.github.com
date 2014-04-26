@@ -1,7 +1,7 @@
 ---
 title: JavaScript's Quirky eval
 layout: post
-tags: [javascript]
+tags: [javascript, lang]
 uuid: 8676a0fa-c6ea-3231-717c-259c363be653
 ---
 

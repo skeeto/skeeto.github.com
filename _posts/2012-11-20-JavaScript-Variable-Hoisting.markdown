@@ -1,7 +1,7 @@
 ---
 title: Raising the Dead with JavaScript
 layout: post
-tags: [javascript]
+tags: [javascript, lang]
 uuid: 8ba4b264-c7ce-33f5-d69f-51a6240a24b3
 ---
 
