@@ -199,7 +199,7 @@ here.
  * **bash**: n/a, dynamic, n/a, untyped, type-safe, n/a
 
 
-[duck]: http://nullprogram.com/blog/2014/04/01/
+[duck]: /blog/2014/04/01/
 [pun]: http://en.wikipedia.org/wiki/Type_punning
 [undef]: http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
 [lexperf]: /blog/2014/01/04/
