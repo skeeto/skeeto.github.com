@@ -19,15 +19,14 @@ with any hardware project, the details are irreversibly messy. It
 can't make use of the standard Arduino software for programming the
 board, so you have to download a customized toolchain. This download
 includes files that have the incorrect vendor ID, requiring a manual
-fix. Worse, [the fix listed in their documentation][ts] is also wrong,
+fix. Worse, [the fix listed in their documentation][ts] is incomplete,
 at least for Debian and Debian-derived systems.
 
-The main problem is that, despite what the documentation says, Linux
-will *not* automatically create a `/dev/ttyACM0` device like it
-normally does for Arduino devices. Instead it gets a long, hidden,
-unpredictable device name. The fix is to ask udev to give it a
-predictable name by appending the following to the first line in the
-provided udev rules file (`49-micronucleus.rules`),
+The main problem is that Linux will *not* automatically create a
+`/dev/ttyACM0` device like it normally does for Arduino devices.
+Instead it gets a long, hidden, unpredictable device name. The fix is
+to ask udev to give it a predictable name by appending the following
+to the first line in the provided udev rules file (`49-micronucleus.rules`),
 
     SYMLINK+="ttyACM%n"
 
