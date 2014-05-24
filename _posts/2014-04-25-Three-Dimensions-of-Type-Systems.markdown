@@ -198,6 +198,11 @@ here.
  * **Elisp**: dynamic, dynamic, strong, type-safe, typed, nominal
  * **bash**: n/a, dynamic, n/a, untyped, type-safe, n/a
 
+*Update May 2014*: Exactly one day day after I posted this article,
+Robert Smallshire made a video covering the same topic in the same
+way: [The Unreasonable Effectiveness of Dynamic Typing for Practical
+Programs](http://www.infoq.com/presentations/dynamic-static-typing).
+
 
 [duck]: /blog/2014/04/01/
 [pun]: http://en.wikipedia.org/wiki/Type_punning
