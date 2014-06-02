@@ -8,9 +8,9 @@ uuid: 97759105-8995-34d3-c914-a84eb7eb762c
 
 I recently got an itch to play around with [Voronoi diagrams][wiki].
 It's a diagram that divides a space into regions composed of points
-closest to one of set of seed points. There are a couple of algorithms
-for computing a Voronoi diagram: Bowyer-Watson and Fortune. These are
-complicated and difficult to implement.
+closest to one of a set of seed points. There are a couple of
+algorithms for computing a Voronoi diagram: Bowyer-Watson and Fortune.
+These are complicated and difficult to implement.
 
 However, if we're interested only in *rendering* a Voronoi diagram as
 a bitmap, there's a trivial brute for algorithm. For every pixel of
