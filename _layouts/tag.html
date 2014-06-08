@@ -3,10 +3,15 @@ layout: default
 ---
 
 <article>
-  <h2>Posts tagged <code>{{ page.title }}</code></h2>
+  <h2>Posts tagged <code>{{ page.tag }}</code></h2>
+  <p>
+    <a href="/tags/{{ page.tag }}/feed/">
+      <img src="/img/feed.png" alt="Atom Feed" class="tag-feed"/>
+    </a>
+  </p>
   <ul>
     {% for post in site.posts %}
-      {% if post.tags contains page.title %}
+      {% if post.tags contains page.tag %}
         <li>
           <a href="{{ post.url }}">{{ post.title }}</a>
         </li>

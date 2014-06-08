@@ -189,6 +189,24 @@ p.center {
     text-align: right;
 }
 
+.tag-feed {
+    float: right;
+    width: 32px;
+    height: 32px;
+}
+
+.feed-icon, .feed-icon img {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+}
+
+.tag-entry {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
 .commentlink {
     text-align: right;
 }

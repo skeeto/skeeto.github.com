@@ -1,0 +1,24 @@
+---
+title: Tags
+layout: default
+tags: [ai, c, clojure, compression, cpp, crypto, debian, elfeed,
+       elisp, emacs, game, git, interactive, java, javascript, lang,
+       link, lisp, math, meatspace, media, meta, netsec, octave, perl,
+       rant, reddit, story, trick, tutorial, video, web, webgl]
+---
+
+<article>
+  <h2>Tags</h2>
+  <ul>
+  {% for tag in page.tags %}
+    <li>
+      <a href="/tags/{{ tag }}/feed/" class="feed-icon">
+        <img src="/img/feed.png" alt="feed"/>
+      </a>
+      <a href="/tags/{{ tag }}/" class="tag-entry">
+        {{ tag }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</article>

@@ -1,11 +1,20 @@
 #!/bin/bash
 
-## Create a new tag page
+## This script generates a new tag page.
 
-mkdir $1
+mkdir -p $1/feed/
 cat > $1/index.html <<EOF
 ---
-title: $1
+title: Posts tagged $1
+tag: $1
 layout: tag
+---
+EOF
+
+cat > $1/feed/index.xml <<EOF
+---
+tag: $1
+layout: tagfeed
+uuid: $(uuidgen)
 ---
 EOF
