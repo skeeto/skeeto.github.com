@@ -6,9 +6,15 @@ body {
     color: gray;
 }
 
+h1 {
+    margin: 10px 0 0 0;
+}
+
 section {
     width: 350px;
     display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
 }
 
 section img {
@@ -17,4 +23,36 @@ section img {
 
 section h2, section a {
     color: #FF7F50;
+}
+
+section .source {
+    margin-top: 5px;
+}
+
+section .source:before {
+    content: "Source:";
+}
+
+section .article:before {
+    content: "Article:";
+}
+
+.warning {
+    text-align: justify;
+    color: #aaa;
+}
+
+.warning p {
+    margin: 5px auto;
+    text-indent: 1em;
+    width: 600px;
+}
+
+.warning a {
+    color: #FF7F50;
+    text-decoration: none;
+}
+
+.warning b {
+    color: #ccc;
 }
