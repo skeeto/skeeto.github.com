@@ -72,6 +72,9 @@ printing functions go there.
     (buffer-string)))
 ~~~
 
+Update: Jon O. pointed out that Emacs has a `with-output-to-string`
+macro available to do this more concisely.
+
 Internally Elisp buffers are [gap buffers][gap], a rather simple data
 structure where the data is split into two sequences with a "gap" in
 between. Insertion and deletion occurs at the gap, which is slid up
