@@ -6,6 +6,9 @@ tags: [emacs]
 uuid: 6f626662-cc2a-3d1e-5e1e-225943d8ff09
 ---
 
+Update: This event has completed and [is available for
+download][update].
+
 On Friday, Math 30th at 7:00pm I will be the guest for the 14th
 [*Emacs Chat*][ec]. It's an hour-long talk about Emacs, my Emacs
 workflow, and some of the (hopefully!) interesting things I do with
@@ -21,3 +24,4 @@ become available.
 
 [ec]: http://sachachua.com/blog/emacs-chat/
 [event]: https://plus.google.com/u/0/events/cci5nllltoq0ov974d40idgrk3s
+[update]: /blog/2014/06/04/
