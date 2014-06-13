@@ -305,9 +305,9 @@ expressions.
 
 Another potential problem is ranges, though this is quite uncommon.
 Ranges of characters can be expressed in inside brackets, e.g.
-`[a-zA-Z]`. If the range begins or ends with a decomposed character
-you won't get the proper range because its parts are considered
-separately by the regular expression engine.
+`[a-zA-Z]`. If the range begins or ends with a decomposed combining
+character you won't get the proper range because its parts are
+considered separately by the regular expression engine.
 
 ~~~cl
 (defvar match-weird "[\u00E0-\u00F6]+")
@@ -321,8 +321,8 @@ separately by the regular expression engine.
 
 It's *especially* important to keep all of this in mind when
 sanitizing untrusted input, such as when using Emacs as a web server.
-An attacker might use a denormalized or strange character composition
-to bypass a filter.
+An attacker might use a denormalized or strange grapheme cluster to
+bypass a filter.
 
 ### Interacting with the World
 
@@ -369,7 +369,7 @@ manipulating text.
 [poo]: http://www.fileformat.info/info/unicode/char/1F4A9/index.htm
 [sec114]: https://speakerdeck.com/mathiasbynens/hacking-with-unicode?slide=114
 [sec]: https://speakerdeck.com/mathiasbynens/hacking-with-unicode
-[harmful]: http://programmers.stackexchange.com/a/102215
+[harmful]: http://www.utf8everywhere.org/
 [internals]: /blog/2014/01/04/
 [elfeed]: /blog/2013/09/04/
 [reverse]: https://github.com/mathiasbynens/esrever
