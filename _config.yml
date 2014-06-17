@@ -1,6 +1,6 @@
 permalink: /blog/:year/:month/:day/
 paginate: 10
-pygments: true
+highlighter: pygments
 timezone: GMT
 safe: true
 
