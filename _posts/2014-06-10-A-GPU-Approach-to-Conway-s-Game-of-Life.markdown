@@ -107,14 +107,13 @@ dimensions must be powers of two, i.e. 512x512, 256x1024, etc. Since I
 want to exploit the built-in texture wrapping, I've decided to
 constrain my simulation state size to powers of two. If I manually did
 the wrapping in the fragment shader, I could make the simulation state
-any size I wanted. The `glViewport()` call shown below would be even
-more important.
+any size I wanted.
 
 ### Framebuffers
 
 A framebuffer is the target of the current `glClear()`,
 `glDrawArrays()`, or `glDrawElements()`. The user's display is the
-*default* framebuffer. New framebuffers can be created an used as
+*default* framebuffer. New framebuffers can be created and used as
 drawing targets in place of the default framebuffer. This is how
 things are drawn off-screen without effecting the display.
 
