@@ -107,9 +107,8 @@ dimensions must be powers of two, i.e. 512x512, 256x1024, etc. Since I
 want to exploit the built-in texture wrapping, I've decided to
 constrain my simulation state size to powers of two. If I manually did
 the wrapping in the fragment shader, I could make the simulation state
-any size I want so long as the actual texture is the next largest
-power of two. The `glViewport()` call shown below would be even more
-important.
+any size I wanted. The `glViewport()` call shown below would be even
+more important.
 
 ### Framebuffers
 
