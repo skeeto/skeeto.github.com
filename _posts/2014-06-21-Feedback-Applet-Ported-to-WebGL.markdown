@@ -27,7 +27,7 @@ computation][gol] with fragment shaders.
 The next project introduced me to *alpha blending*. **I ported [my old
 feedback applet][applet] to WebGL!**
 
-* [http://skeeto.github.io/Feedback/](http://skeeto.github.io/Feedback/webgl/)
+* [http://skeeto.github.io/Feedback/webgl/](http://skeeto.github.io/Feedback/webgl/)
   ([source](http://github.com/skeeto/Feedback))
 
 Since finishing the port I've already spent a couple of hours just
