@@ -6,6 +6,11 @@ tags: [webgl, javascript, interactive]
 uuid: 205b43ce-faa8-33c8-db27-173ddad64229
 ---
 
+<p class="abstract">
+Update: In the next article, I <a href="/blog/2014/06/22/">extend this
+program to solving mazes</a>.
+</p>
+
 [Conway's Game of Life][life] is [another well-matched
 workload][voronoi] for GPUs. Here's the actual WebGL demo if you want
 to check it out before continuing.
