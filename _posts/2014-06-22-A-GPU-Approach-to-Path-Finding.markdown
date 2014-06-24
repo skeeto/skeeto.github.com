@@ -10,7 +10,8 @@ Last time [I demonstrated how to run Conway's Game of Life][gol]
 entirely on a graphics card. This concept can be generalized to *any*
 cellular automata, including automata with more than two states. In
 this article I'm going to exploit this to solve the [shortest path
-problem][spp] for two-dimensional grids entirely on a GPU.
+problem][spp] for two-dimensional grids entirely on a GPU. It will be
+just as fast as traditional searches on a CPU.
 
 The JavaScript side of things is essentially the same as before -- two
 textures with fragment shader in between that steps the automata
@@ -130,14 +131,21 @@ a much more interesting demo.
 
 #### Skipping the Route Step
 
-On my computers, with a 1023x1023 Kruskal maze it's about an order of
-magnitude slower than [A*](astar) ([rot.js's version][rot]) for the
-same maze. Not very impressive! I *believe* this gap will close with
-time, as GPUs become parallel faster than CPUs get faster. However,
-there's something important to consider: it's not only solving the
-shortest path between source and goal, **it's finding the shortest
-path between the source and any other point**. At its core it's a
-[breadth-first grid search][bfs].
+On my computers, with a 1023x1023 Kruskal maze ~~it's about an order
+of magnitude slower~~ (see update below) than [A*](astar) ([rot.js's
+version][rot]) for the same maze. ~~Not very impressive!~~ I *believe*
+this gap will close with time, as GPUs become parallel faster than
+CPUs get faster. However, there's something important to consider:
+it's not only solving the shortest path between source and goal,
+**it's finding the shortest path between the source and any other
+point**. At its core it's a [breadth-first grid search][bfs].
+
+*Update*: One day after writing this article I realized that
+`glReadPixels` was causing a gigantic bottlebeck. By only checking for
+the end conditions once every 500 iterations, this method is now
+equally fast as A* on modern graphics cards, despite taking up to an
+extra 499 iterations. **In just a few more years, this technique
+should be faster than A*.**
 
 Really, there's little use in ROUTE step. It's a poor fit for the GPU.
 It has no use in any real application. I'm using it here mainly for
