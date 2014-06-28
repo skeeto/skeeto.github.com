@@ -2,7 +2,7 @@
 title: A GPU Approach to Voronoi Diagrams
 layout: post
 date: 2014-06-01T21:53:48Z
-tags: [webgl, media, video, math, interactive]
+tags: [webgl, media, video, math, interactive, gpgpu]
 uuid: 97759105-8995-34d3-c914-a84eb7eb762c
 ---
 

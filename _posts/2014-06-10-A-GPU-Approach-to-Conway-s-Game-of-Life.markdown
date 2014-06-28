@@ -2,7 +2,7 @@
 title: A GPU Approach to Conway's Game of Life
 layout: post
 date: 2014-06-10T06:29:48Z
-tags: [webgl, javascript, interactive]
+tags: [webgl, javascript, interactive, gpgpu]
 uuid: 205b43ce-faa8-33c8-db27-173ddad64229
 ---
 
