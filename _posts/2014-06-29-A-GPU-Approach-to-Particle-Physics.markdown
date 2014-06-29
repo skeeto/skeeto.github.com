@@ -334,7 +334,7 @@ I think there's still some more to explore with this project.
 
 [bt]: http://www.opengl.org/wiki/Buffer_Texture
 [pbo]: http://www.opengl.org/wiki/Pixel_Buffer_Object
-[gpgpu]: http://localhost:8080/tags/gpgpu/
+[gpgpu]: /tags/gpgpu/
 [source]: https://github.com/skeeto/webgl-particles
 [demo]: http://skeeto.github.io/webgl-particles/
 [gol]: /blog/2014/06/10/
