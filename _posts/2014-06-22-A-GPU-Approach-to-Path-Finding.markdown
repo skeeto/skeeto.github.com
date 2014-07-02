@@ -8,28 +8,28 @@ uuid: 29de5cb3-f93a-3e6e-9adc-ff689e736877
 
 Last time [I demonstrated how to run Conway's Game of Life][gol]
 entirely on a graphics card. This concept can be generalized to *any*
-cellular automation, including automata with more than two states. In
+cellular automaton, including automata with more than two states. In
 this article I'm going to exploit this to solve the [shortest path
 problem][spp] for two-dimensional grids entirely on a GPU. It will be
 just as fast as traditional searches on a CPU.
 
 The JavaScript side of things is essentially the same as before -- two
-textures with fragment shader in between that steps the automation
+textures with fragment shader in between that steps the automaton
 forward -- so I won't be repeating myself. The only parts that have
-changed are the cell state encoding (to express all automation states)
+changed are the cell state encoding (to express all automaton states)
 and the fragment shader (to code the new rules).
 
 * [Online Demo](http://skeeto.github.io/webgl-path-solver/)
   ([source](https://github.com/skeeto/webgl-path-solver))
 
 Included is a pure JavaScript implementation of the cellular
-automation (State.js) that I used for debugging and experimentation,
+automaton (State.js) that I used for debugging and experimentation,
 but it doesn't actually get used in the demo. A fragment shader
-(12state.frag) encodes the full automation rules for the GPU.
+(12state.frag) encodes the full automaton rules for the GPU.
 
-### Maze-solving Cellular Automation
+### Maze-solving Cellular Automaton
 
-There's a dead simple 2-state cellular automation that can solve any
+There's a dead simple 2-state cellular automaton that can solve any
 *perfect* maze of arbitrary dimension. Each cell is either OPEN or a
 WALL, only 4-connected neighbors are considered, and there's only one
 rule: if an OPEN cell has only one OPEN neighbor, it becomes a WALL.
@@ -48,11 +48,11 @@ the shortest one.
 
 ![](/img/path/simple-loop.gif)
 
-To fix this we need a more advanced cellular automation.
+To fix this we need a more advanced cellular automaton.
 
-### Path-solving Cellular Automation
+### Path-solving Cellular Automaton
 
-I came up with a 12-state cellular automation that can not only solve
+I came up with a 12-state cellular automaton that can not only solve
 mazes, but will specifically find the shortest path. Like above, it
 only considers 4-connected neighbors.
 
@@ -98,7 +98,7 @@ requires double the number of steps as the length of the shortest
 path.
 
 Note that the FLOW cell keep flooding the maze even after the END was
-found. It's a cellular automation, so there's no way to communicate to
+found. It's a cellular automaton, so there's no way to communicate to
 these other cells that the solution was discovered. However, when
 running on a GPU this wouldn't matter anyway. There's no bailing out
 early before all the fragment shaders have run.
@@ -111,13 +111,13 @@ Here's a path through a few connected rooms with open space.
 #### Maze Types
 
 The worst-case solution is the longest possible shortest path. There's
-only one frontier and running the entire automation to push it forward
+only one frontier and running the entire automaton to push it forward
 by one cell is inefficient, even for a GPU.
 
 ![](/img/path/spiral.gif)
 
 The way a maze is generated plays a large role in how quickly the
-cellular automation can solve it. A common maze generation algorithm
+cellular automaton can solve it. A common maze generation algorithm
 is a random depth-first search (DFS). The entire maze starts out
 entirely walled in and the algorithm wanders around at random plowing
 down walls, but never breaking into open space. When it comes to a
@@ -149,9 +149,9 @@ should be faster than A*.**
 
 Really, there's little use in ROUTE step. It's a poor fit for the GPU.
 It has no use in any real application. I'm using it here mainly for
-demonstration purposes. If dropped, the cellular automation would
+demonstration purposes. If dropped, the cellular automaton would
 become 6 states: OPEN, WALL, and four flavors of FLOW. Seed the source
-point with a FLOW cell (arbitrary direction) and run the automation
+point with a FLOW cell (arbitrary direction) and run the automaton
 until all of the OPEN cells are gone.
 
 ### Detecting End State
@@ -169,7 +169,7 @@ counter][atom] that could serve this role, but this isn't available in
 OpenGL ES / WebGL. The only thing left to do is use `glReadPixels` to
 pull down the entire thing and check for end state on the CPU.
 
-The original 2-state automation above also suffers from this problem.
+The original 2-state automaton above also suffers from this problem.
 
 ### Encoding Cell State
 
@@ -193,7 +193,7 @@ This leaves three untouched channels for other useful information. I
 experimented (uncommitted) with writing distance in the green channel.
 When an OPEN cell becomes a FLOW cell, it adds 1 to its adjacent FLOW
 cell distance. I imagine this could be really useful in a real
-application: put your map on the GPU, run the cellular automation a
+application: put your map on the GPU, run the cellular automaton a
 sufficient number of times, pull the map back off (`glReadPixels`),
 and for every point you know both the path and total distance to the
 source point.
