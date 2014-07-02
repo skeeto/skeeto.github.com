@@ -208,7 +208,7 @@ The `get(int, int)` function returns the value of the cell at (x, y),
 is solid white and black, but just sampling one channel (red) is good
 enough to know the state of the cell. I've learned that loops and
 arrays are are troublesome in GLSL, so I've manually unrolled the
-neighbor check. Cellular automata that has more complex state could
+neighbor check. Cellular automata that have more complex state could
 make use of the other channels and perhaps even exploit alpha channel
 blending in some special way.
 
