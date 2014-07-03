@@ -28,7 +28,8 @@ particles very well and lower framerates really don't capture the
 effect properly. I also added some appropriate sound that you won't
 hear in the actual demo.
 
-<video width="500" height="375" controls poster="/img/particles/poster.png">
+<video width="500" height="375" controls poster="/img/particles/poster.png"
+       preload="none">
   <source src="http://nullprogram.s3.amazonaws.com/particles/particles.webm"
           type="video/webm">
   <source src="http://nullprogram.s3.amazonaws.com/particles/particles.mp4"

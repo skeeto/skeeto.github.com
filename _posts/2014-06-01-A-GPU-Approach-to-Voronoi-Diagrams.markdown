@@ -56,7 +56,7 @@ can add and remove points with left and right clicks. And if you press
 the "a" key, the seed points will go for a random walk, animating the
 whole diagram. Here's a (HTML5) video showing it off.
 
-<video width="500" height="280" controls>
+<video width="500" height="280" controls preload="metadata">
   <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi.webm"
           type="video/webm">
   <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi.mp4"
@@ -122,7 +122,7 @@ figuring out the scene geometry.
 
 Here's a video ([GIF][gif]) I made that demonstrates what I mean.
 
-<video width="500" height="500" controls>
+<video width="500" height="500" controls preload="metadata">
   <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.webm"
           type="video/webm">
   <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.mp4"
