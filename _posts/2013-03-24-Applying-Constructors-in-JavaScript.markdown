@@ -219,11 +219,11 @@ typeof Date(0);  // "string"
 So **the *only* way to create a Date or these other built in types
 (except RegExp) is through the `new` operator**. To loop back around
 to the original problem: we have an array of arguments and a
-constructor.  We want to `apply` the constructor to the array to
-create a new object. The conflict is that **`new` and `apply` can't be
-used at the same time**, so it would seem there's no way to write
-generic `create` function that works with built in types without
-explicitly making them a special case.
+constructor. We want to `apply` the constructor to the array to create
+a new object. **The conflict is that `new` and `apply` can't be used
+at the same time**, so it would seem there's no way to write generic
+`create` function that works with built in types without explicitly
+making them a special case.
 
 ### The Workaround
 
