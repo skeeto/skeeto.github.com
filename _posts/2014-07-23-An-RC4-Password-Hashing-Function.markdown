@@ -85,10 +85,13 @@ Unfortunately, RC4 has had a lot of holes punched in it over the
 years. The initial output has been proven to be biased, leaking key
 material, and there's even good reason to believe it may already be
 broken by nation state actors. Despite this, RC4 remains the most
-widely used stream cipher today due to its inclusion in TLS. Besides,
-what I'm developing is a proof of concept, not something to be used in
-a real application. It would be interesting to see how long it takes
-for someone to break this.
+widely used stream cipher today due to its inclusion in TLS. Most
+importantly here, almost none of RC4's weaknesses apply to this
+situation -- we're only using a few bytes of output -- so it's still a
+very strong algorithm. Besides, what I'm developing is a proof of
+concept, not something to be used in a real application. It would be
+interesting to see how long it takes for someone to break this (maybe
+even decades).
 
 Before I dive into the details, I'll link to the source repository. As
 of this writing there are C and Elisp implementations of the
@@ -98,23 +101,23 @@ it **RC4HASH**.
 * [https://github.com/skeeto/rc4hash](https://github.com/skeeto/rc4hash)
 
 Here are some example hashes for the password "foobar". It's different
-each time because each has a unique salt. Notice the duplicated
-pattern `0003ffff` in the middle of the hash.
+each time because each has a unique salt. Notice the repeated byte
+`12` in the 5th byte position of the hash.
 
     $ ./rc4hash -p foobar
-    509b60860003ffff65280c1b51fa457d43a050834081d11a9391dd7d
+    c56cdbe512c922a2f9682cc0dfa21259e4924304e9e9b486c49d
     $ ./rc4hash -p foobar
-    8f65316a0003ffff4823dffa750c0ac76da688d72785bd7700b93af4
+    a1ea954b1296052a7cd766eb989bfd52915ab267733503ef3e8d
     $ ./rc4hash -p foobar
-    e30f6f400003ffff68af78c42f9199036e594feb6c96f8f256dbfc01
+    5603de351288547e12b89585171f40cf480001b21dcfbd25f3f4
 
 Each also validates as correct.
 
-    $ ./rc4hash -p foobar -v 509b...dd7d
+    $ ./rc4hash -p foobar -v c56cdbe5...b486c49d
     valid
-    $ ./rc4hash -p foobar -v 8f65...3af4
+    $ ./rc4hash -p foobar -v a1ea954b...03ef3e8d
     valid
-    $ ./rc4hash -p foobar -v e30f...fc01
+    $ ./rc4hash -p foobar -v 5603de35...bd25f3f4
     valid
 
 ### The Algorithm
@@ -272,42 +275,40 @@ our hash function will be running it hundreds of thousands of times.
 Second, the difficulty will also determine how many initial bytes of
 output are discarded before we start generating the hash.
 
-I decided on an unsigned 32-bit value for the difficulty. The number
-of key schedules will be one plus this number. It doesn't make sense
-to run the key schedule 0 times, so the minimum is 1. The number of
-bytes skipped is the difficulty factor times 64, so that it can skip
-large swaths output. Therefore the implementation so far has a
-difficulty of zero: one key schedule round and zero bytes of output
-skipped.
+I decided on an unsigned 8-bit value for the difficulty. The number of
+key schedules will be 1 shifted left by this number of bits (i.e.
+`pow(2, difficulty)`). This makes the minimum number of key schedules
+1, since any less doesn't make sense. The number of bytes skipped is
+the same bitshift, minus 1, times 64 (`(pow(2, difficulty) - 1) * 64`),
+the muliplication is so that it can skip large swaths output.
+Therefore the implementation so far has a difficulty of zero: one key
+schedule round and zero bytes of output skipped.
 
-With a dynamic range of 32 bits for the difficulty factor, the time
-needed on a modern computer to compute an RC4HASH can be between a few
-microseconds and several hours. That should be a sufficient amount of
-future proofing, especially considering that we're using RC4, which
-will likely be broken before the difficulty factor ever tops out.
+The dynamic range of the difficulty factor (0-255) puts the the time
+needed on a modern computer to compute an RC4HASH between a few
+microseconds (0) to the billions of years (255). That should be a more
+than sufficient amount of future proofing, especially considering that
+we're using RC4, which will likely be broken before the difficulty
+factor ever tops out.
 
 I won't show the code to do this since that's how it's implemented in
 the final version, so go look at the repository instead. The final
-hash is 28 bytes long: a 224-bit hash. The first 4 bytes are the salt
-(grabbed from /dev/urandom in my implementations), the next 4 bytes
-are the difficulty factor (`uint32_t`), and the final 20 bytes are RC4
-output.
+hash is 26 bytes long: a 208-bit hash. The first 4 bytes are the salt
+(grabbed from /dev/urandom in my implementations), the byte is the
+difficulty factor, and the final 21 bytes are RC4 output.
 
-The difficulty factor is stored in little-endian (network) byte order,
-so the hash will work across different architectures. I tested this
-out by validating hashes on Raspberry Pi (ARMv6). In the example
-hashes above that's the `0003ffff` constant you see in the middle of
-the hash. The default difficulty factor is 262,143 (`2^18 - 1`). I've
-considered XORing this with some salt-seeded RC4 output just to make
-the hash look nice, but that just seems like arbitrary complexity for
-no real gains. With the default difficulty, it takes almost a second
-for my computers to compute the hash.
+In the example hashes above, the `12` constant byte is the difficulty
+factor. The default difficulty factor is 18 (`0x12`). I've considered
+XORing this with some salt-seeded RC4 output just to make the hash
+look nice, but that just seems like arbitrary complexity for no real
+gains. With the default difficulty, it takes almost a second for my
+computers to compute the hash.
 
-I *believe* RC4HASH should be fairly resistant to GPGPU attacks. RC4
-is software oriented, involving many random array reads and writes
-rather than SIMD-style operations. GPUs are really poor at this sort
-of thing, so they should take a significant performance hit when
-running RC4HASH.
+I *believe* RC4HASH should be quite resistant to GPGPU attacks. RC4 is
+software oriented, involving many random array reads and writes rather
+than SIMD-style operations. GPUs are really poor at this sort of
+thing, so they should take a significant performance hit when running
+RC4HASH.
 
 ### Break My Hash!
 
@@ -316,8 +317,8 @@ of English language passphrases. Each is about one short sentence in
 length (`[a-zA-Z !.,]+`). I'm not keeping track of the sentences I used,
 so the only way to get them will be to break the hash, even for me.
 
-    f0622dde0003ffff7f9ab5aaee710aa4bfb17a224f7e6e93745f7ae9
-    8ee9cdec0003ffff88bc7857c4b41b2791fe377e441f3659692c9aa0
+    f0622dde127f9ab5aaee710aa4bfb17a224f7e6e93745f7ae948
+    8ee9cdec12feabed5c2fde0a51a2381b522f5d2bd483717d4a96
 
 If you can find a string that validates with these hashes, especially
 if it's not the original passphrase, you win! I don't have any prizes
