@@ -113,7 +113,7 @@ on if needed. The two obvious choices for this were mu4e and notmuch,
 both started in 2009. I initially reached for mu4e. Compared to
 notmuch, it follows Emacs idioms more closely. For example, the e-mail
 listing is oriented around a mark and execute paradigm, like a dired
-buffer. After an initial glace, it felt more integrated.
+buffer. After an initial glance, it felt more integrated.
 
 Unfortunately, mu4e is still not mature enough for real productive
 use, making it far too risky for e-mail. I found out the hard way that
