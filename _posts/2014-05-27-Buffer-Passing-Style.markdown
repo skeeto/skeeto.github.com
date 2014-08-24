@@ -139,8 +139,8 @@ If anything goes wrong, the buffer will be automatically killed by
 ~~~
 
 Buffer-passing style is what I settled on for [simple-httpd][httpd].
-Servlets are called with the output buffer as the current buffer )and
-with standard-output set to this buffer). The servlet is only
+Servlets are called with the output buffer as the current buffer and
+with `standard-output` set to this buffer. The servlet is only
 responsible for filling this buffer with content. Thanks to
 `process-send-region`, the content is never actually copied into a
 string.
