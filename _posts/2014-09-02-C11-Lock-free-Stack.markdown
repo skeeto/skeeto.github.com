@@ -154,7 +154,7 @@ typedef struct {
 Notice the use of the new `_Atomic` qualifier. Atomic values may have
 different size, representation, and alignment requirements in order to
 satisfy atomic access. These values should never be accessed directly,
-even just for reading (`atomic_load()`).
+even just for reading (use `atomic_load()`).
 
 The `size` field is for convenience to check the number of elements on
 the stack. It's accessed separately from the stack nodes themselves,
