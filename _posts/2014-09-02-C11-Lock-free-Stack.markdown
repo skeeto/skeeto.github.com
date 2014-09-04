@@ -241,8 +241,7 @@ and returning them, so they're not suitable to expose in the API
 part of lock-free stacks. Here's `pop()`.
 
 ~~~c
-static struct
-lstack_node *pop(_Atomic struct lstack_head *head)
+static struct lstack_node *pop(_Atomic struct lstack_head *head)
 {
     struct lstack_head next, orig = atomic_load(head);
     do {
