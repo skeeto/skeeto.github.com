@@ -419,10 +419,10 @@ Push removes a node from the free stack. If the free stack is empty it
 reports an out-of-memory error. It assigns the value and pushes it
 onto the value stack where it will be visible to other threads.
 Finally, the stack size is incremented atomically. This means there's
-an instant where the stack size is one shorted than it actually is.
-However, since there's no way to access both the stack size and the
-stack itself at the same instant, this is fine. The stack size is
-really only an estimate.
+an instant where the stack size is listed as one shorter than it
+actually is. However, since there's no way to access both the stack
+size and the stack itself at the same instant, this is fine. The stack
+size is really only an estimate.
 
 Popping is the same thing in reverse.
 
