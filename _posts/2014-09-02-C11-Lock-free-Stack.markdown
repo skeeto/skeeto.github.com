@@ -311,7 +311,7 @@ Say we have two threads, A and B.
 
 The core problem is that, unlike integral values, pointers have
 meaning beyond their intrinsic numeric value. The meaning of a
-particular pointer value changes when the pointer is reused, making it
+particular pointer changes when the pointer is reused, making it
 suspect when used in CAS. The unfortunate effect is that, **by itself,
 atomic pointer manipulation is nearly useless**. They'll work with
 append-only data structures, where pointers are never recycled, but
