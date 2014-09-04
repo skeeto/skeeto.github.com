@@ -448,13 +448,13 @@ the primitive push and pop.
 The lstack repository linked at the top of the article includes a demo
 that searches for patterns in SHA-1 hashes (sort of like Bitcoin
 mining). It fires off one worker thread for each core and the results
-are all collected into the same stack. It's not *really* exercising
-the library thoroughly because no contended pops occur, but I couldn't
-think of a better example at the time.
+are all collected into the same lock-free stack. It's not *really*
+exercising the library thoroughly because there are no contended pops,
+but I couldn't think of a better example at the time.
 
 The next thing to try would be implementing a C11, bounded, lock-free
-queue. It would also be more useful than a stack, particularly for
-common consumer-producer scenarios.
+queue. It would also be more generally useful than a stack,
+particularly for common consumer-producer scenarios.
 
 
 [c11]: http://en.wikipedia.org/wiki/C11_(C_standard_revision)
