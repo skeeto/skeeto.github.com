@@ -90,7 +90,7 @@ complicated than the stack itself.
 The declared maximum size should actually be the desired maximum size
 plus the number of threads accessing the stack. This is because a
 thread might remove a node from the stack and before the node can
-freed it for reuse, another thread attempts a push. This other thread
+freed for reuse, another thread attempts a push. This other thread
 might not find any free nodes, causing it to give up without the stack
 actually being "full."
 
