@@ -16,11 +16,10 @@ kernel, BSD kernels, and SQLite.
 ### Starting Simple
 
 Suppose you're writing a function `pass_match()` that takes an input
-stream, an output string, and a pattern. It works sort of like grep.
+stream, an output stream, and a pattern. It works sort of like grep.
 It passes to the output each line of input that matches the pattern.
-The pattern string contains a shell glob pattern, which will be
-handled by [POSIX `fnmatch()`][fnmatch]. Here's what the interface
-looks like.
+The pattern string contains a shell glob pattern to be handled by
+[POSIX `fnmatch()`][fnmatch]. Here's what the interface looks like.
 
 ~~~c
 void pass_match(FILE *in, FILE *out, const char *pattern);
@@ -40,9 +39,10 @@ accept both and match whichever one isn't NULL.
 void pass_match(FILE *in, FILE *out, const char *pattern, regex_t *re);
 ~~~
 
-Bleh. This is ugly and won't scale well. It would be much better to
-accept a single object that covers both cases, and possibly even
-another kind of filter in the future.
+Bleh. This is ugly and won't scale well. What happens when more kinds
+of filters are needed? It would be much better to accept a single
+object that covers both cases, and possibly even another kind of
+filter in the future.
 
 ### A Generalized Filter
 
@@ -52,22 +52,22 @@ argument to [`qsort()`][qsort] is a comparator that determines how
 objects get sorted.
 
 For `pass_match()`, this function would accept a string and return a
-boolean value deciding if the string should be passed. It gets called
-once on each line of input.
+boolean value deciding if the string should be passed to the output
+stream. It gets called once on each line of input.
 
 ~~~c
 void pass_match(FILE *in, FILE *out, bool (*match)(const char *));
 ~~~
 
-However, just this has one of the [same problems as
-`qsort()`][closure]: the passed function lacks context. It needs a
-pattern string or `regex_t` object to operate on. In other languages
-these would be attached to the function as a closure, but C doesn't
-have closures. It would need to be smuggled in via a global variable,
-[which is not good][global].
+However, this has one of the [same problems as `qsort()`][closure]:
+the passed function lacks context. It needs a pattern string or
+`regex_t` object to operate on. In other languages these would be
+attached to the function as a closure, but C doesn't have closures. It
+would need to be smuggled in via a global variable, [which is not
+good][global].
 
 ~~~c
-static regex_t regex;
+static regex_t regex;  // BAD!!!
 
 bool regex_match(const char *string)
 {
@@ -75,9 +75,10 @@ bool regex_match(const char *string)
 }
 ~~~
 
-Because of the global variable, in practice, `pass_match()` would be
+Because of the global variable, in practice `pass_match()` would be
 neither reentrant nor thread-safe. We could take a lesson from GNU's
 `qsort_r()` and accept a context to be passed to the filter function.
+This simulates a closure.
 
 ~~~c
 void pass_match(FILE *in, FILE *out,
@@ -85,11 +86,13 @@ void pass_match(FILE *in, FILE *out,
 ~~~
 
 The provided context pointer would be passed to the filter function as
-the second argument, so that no global variables are needed. This
-would probably be good enough for most purposes. The interface to
-`pass_match()` should cover any kind of filter.
+the second argument, and no global variables are needed. This would
+probably be good enough for most purposes and it's about as simple as
+possible. The interface to `pass_match()` would cover any kind of
+filter.
 
-But wouldn't it be nice to package the function and context together?
+But wouldn't it be nice to package the function and context together
+as one object?
 
 ### More Abstraction
 
@@ -108,8 +111,9 @@ struct filter {
 };
 ~~~
 
-There's one function for interacting with this struct. It checks the
-`type` and calls the correct function with the correct context.
+There's one function for interacting with this struct:
+`filter_match()`. It checks the `type` member and calls the correct
+function with the correct context.
 
 ~~~c
 bool filter_match(struct filter *filter, const char *string)
@@ -134,14 +138,15 @@ void pass_match(FILE *input, FILE *output, struct filter *filter);
 It still doesn't care how the filter works, so it's good enough to
 cover all future cases. It just calls `filter_match()` on the pointer
 it was given. However, the `switch` and tagged union aren't friendly
-to extension. Really, it's outright hostile. We have polymorphism, but
-it's crude. Adding new behavior means adding another `switch` case.
-This feels like a step backwards. We can do better.
+to extension. Really, it's outright hostile. We finally have some
+degree of polymorphism, but it's crude. It's like building duct tape
+into a design. Adding new behavior means adding another `switch` case.
+This is a step backwards. We can do better.
 
 #### Methods
 
-We're not longer taking advantage of function pointers. So what about
-putting a function pointer on the struct?
+With the `switch` we're no longer taking advantage of function
+pointers. So what about putting a function pointer on the struct?
 
 ~~~c
 struct filter {
@@ -151,8 +156,8 @@ struct filter {
 
 The filter itself is passed as the first argument, providing context.
 In object oriented languages, that's the implicit `this` argument. To
-avoid requiring the calling to worry about this detail, we'll hide it
-in the new version of `filter_match()`.
+avoid requiring the caller to worry about this detail, we'll hide it
+in a new `switch`-free version of `filter_match()`.
 
 ~~~c
 bool filter_match(struct filter *filter, const char *string)
@@ -182,7 +187,9 @@ This is critical. We're going to be using a trick called *type
 punning*. The first member is guaranteed to be positioned at the
 beginning of the struct, so a pointer to a `struct filter_glob` is
 also a pointer to a `struct filter`. Notice any resemblance to
-inheritance? Each type, glob and regex, needs its own match method.
+inheritance?
+
+Each type, glob and regex, needs its own match method.
 
 ~~~c
 static bool
@@ -204,8 +211,8 @@ I've prefixed them with `method_` to indicate their intended usage. I
 declared these `static` because they're completely private. Other
 parts of the program will only be accessing them through a function
 pointer on the struct. This means we need some constructors in order
-to set up those function pointers. (For simplicity, I'm not performing
-all the required error checks.)
+to set up those function pointers. (For simplicity, I'm not error
+checking.)
 
 ~~~c
 struct filter *filter_regex_create(const char *pattern)
@@ -225,14 +232,14 @@ struct filter *filter_glob_create(const char *pattern)
 }
 ~~~
 
-Now this is real polymorphism. Things are now really simple from the
-user's perspective. They call the correct constructor and get a filter
-struct back that has the desired behavior. This can be passed around
-and no other part of the program worries about how it's implemented.
-Best of all, since each method is a separate function rather than a
-`switch` case, new kinds of filter subtypes can be defined
-independently. Users can create their own filter types that work just
-as well as the two "built-in" filters.
+Now this is real polymorphism. It's really simple from the user's
+perspective. They call the correct constructor and get a filter object
+that has the desired behavior. This object can be passed around
+trivially, and no other part of the program worries about how it's
+implemented. Best of all, since each method is a separate function
+rather than a `switch` case, new kinds of filter subtypes can be
+defined independently. Users can create their own filter types that
+work just as well as the two "built-in" filters.
 
 #### Cleaning Up
 
@@ -276,9 +283,11 @@ private copy, in which case it would be freed here.
 ### Object Composition
 
 A good rule of thumb is to prefer composition over inheritance. Having
-tidy filter objects to work with opens up some interesting
-possibilities for composition. Here's an AND filter that combines two
-filter objects. It only matches when both its subfilters match.
+tidy filter objects opens up some interesting possibilities for
+composition. Here's an AND filter that composes two arbitrary filter
+objects. It only matches when both its subfilters match. It supports
+short circuiting, so put the faster, or most discriminating, filter
+first in the constructor (user's responsibility).
 
 ~~~c
 struct filter_and {
@@ -376,7 +385,7 @@ to be in this position: a contradiction.
 
 Fortunately type punning can be generalized such that it the
 first-member constraint isn't necessary. This is commonly done through
-the `container_of()` macro. Here's the C99 definition.
+a `container_of()` macro. Here's a C99 conforming definition.
 
 ~~~c
 #include <stddef.h>
@@ -385,7 +394,7 @@ the `container_of()` macro. Here's the C99 definition.
     ((type *)((char *)(ptr) - offsetof(type, member)))
 ~~~
 
-Given a pointer to a member of a struct, the `container_of()` macros
+Given a pointer to a member of a struct, the `container_of()` macro
 allows us to back out to the containing struct. Suppose the regex
 struct was defined differently, so that the `regex_t` member came
 first.
@@ -397,7 +406,7 @@ struct filter_regex {
 };
 ~~~
 
-The constructor remains unchanged. The casts in the method change to
+The constructor remains unchanged. The casts in the methods change to
 the macro.
 
 ~~~c
@@ -429,7 +438,8 @@ Say we want to add a third method, `clone()`, to the filter API, to
 make an independent copy of a filter, one that will need to be
 separately freed. It will be like the copy assignment operator in C++.
 Each kind of filter will need to define an appropriate "method" for
-it.
+it. As long as new methods like this are added at the end, this
+doesn't break the API, but it does break the ABI regardless.
 
 ~~~c
 struct filter {
@@ -446,7 +456,7 @@ these pointers could be shared between instances in a common table
 called a *virtual method table*, commonly known as a *vtable*.
 
 Here's a vtable version of the filter API. The overhead is now only
-one byte regardless of the number of methods in the interface.
+one pointer regardless of the number of methods in the interface.
 
 ~~~c
 struct filter {
@@ -524,9 +534,9 @@ oriented programming in plain old C. It doesn't require heavy use of
 macros, nor do users of these systems need to know that underneath
 it's an object system, unless they want to extend it for themselves.
 
-Here's the whole program once if you're interested in poking:
+Here's the whole example program once if you're interested in poking:
 
-* https://gist.github.com/skeeto/5faa131b19673549d8ca
+* [https://gist.github.com/skeeto/5faa131b19673549d8ca](https://gist.github.com/skeeto/5faa131b19673549d8ca)
 
 
 [fnmatch]: http://man7.org/linux/man-pages/man3/fnmatch.3.html
