@@ -182,12 +182,11 @@ struct filter_glob {
 };
 ~~~
 
-Notice that for both the original filter struct is the first member.
-This is critical. We're going to be using a trick called *type
-punning*. The first member is guaranteed to be positioned at the
-beginning of the struct, so a pointer to a `struct filter_glob` is
-also a pointer to a `struct filter`. Notice any resemblance to
-inheritance?
+For both the original filter struct is the first member. This is
+critical. We're going to be using a trick called *type punning*. The
+first member is guaranteed to be positioned at the beginning of the
+struct, so a pointer to a `struct filter_glob` is also a pointer to a
+`struct filter`. Notice any resemblance to inheritance?
 
 Each type, glob and regex, needs its own match method.
 
@@ -296,7 +295,7 @@ struct filter_and {
 };
 
 static bool
-method_match_and (struct filter *f, const char *s)
+method_match_and(struct filter *f, const char *s)
 {
     struct filter_and *and = (struct filter_and *) f;
     return filter_match(and->sub[0], s) && filter_match(and->sub[1], s);
@@ -324,7 +323,7 @@ struct filter *filter_and(struct filter *a, struct filter *b)
 
 It can combine a regex filter and a glob filter, or two regex filters,
 or two glob filters, or even other AND filters. It doesn't care what
-the subfilters are. Notice the `free()` method here frees its
+the subfilters are. Also, the `free()` method here frees its
 subfilters. This means that the user doesn't need to keep hold of
 every filter created, just the "top" one in the composition.
 
@@ -385,7 +384,7 @@ to be in this position: a contradiction.
 
 Fortunately type punning can be generalized such that it the
 first-member constraint isn't necessary. This is commonly done through
-a `container_of()` macro. Here's a C99 conforming definition.
+a `container_of()` macro. Here's a C99-conforming definition.
 
 ~~~c
 #include <stddef.h>
@@ -499,8 +498,8 @@ method_free_regex(struct filter *f)
     free(f);
 }
 
-static struct
-filter *method_clone_regex(struct filter *f)
+static struct filter *
+method_clone_regex(struct filter *f)
 {
     struct filter_regex *regex = container_of(f, struct filter_regex, filter);
     return filter_regex_create(regex->pattern);
