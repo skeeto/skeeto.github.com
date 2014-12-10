@@ -20,7 +20,7 @@ dependencies, so the entire game is packed into that 10kB binary.
 * [https://github.com/skeeto/dosdefender-ld31](https://github.com/skeeto/dosdefender-ld31)
 * [DOSDEF.COM](https://github.com/skeeto/dosdefender-ld31/releases/download/1.1.0/DOSDEF.COM) (10kB, v1.1.0, run in DOSBox)
 
-![](/img/screenshot/dosdefender.png)
+![](/img/screenshot/dosdefender.gif)
 
 You'll need a joystick/gamepad in order to play. I included mouse
 support in the Ludum Dare release in order to make it easier to
