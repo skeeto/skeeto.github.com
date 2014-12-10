@@ -7,10 +7,11 @@ uuid: cff7d942-a91d-38b8-46fd-d05bbce0e212
 ---
 
 This past weekend I participated in [Ludum Dare #31][ld31]. Before the
-theme was even announced, I wanted to make an old school DOS game.
-DOSBox would be the target platform since it's the most practical way
-to run DOS applications anymore, despite modern x86 CPUs still being
-fully backwards compatible all the way back to the 16-bit 8086.
+theme was even announced, due to [recent fascination][lzss] I wanted
+to make an old school DOS game. DOSBox would be the target platform
+since it's the most practical way to run DOS applications anymore,
+despite modern x86 CPUs still being fully backwards compatible all the
+way back to the 16-bit 8086.
 
 I successfully created and submitted a DOS game called [DOS
 Defender][dd]. It's a 32-bit 80386 real mode DOS COM program. All
@@ -39,11 +40,11 @@ program with Linux's GCC.
 
 ### Finding the right tools
 
-I didn't have GCC in mind when I started this project. What triggered
-all of this was that I had noticed Debian's [bcc][bcc] package,
-Bruce's C Compiler, that builds 16-bit 8086 binaries. It's kept around
-for compiling x86 bootloaders and such, but it can also be used to
-compile DOS COM files, which was the part that interested me.
+I didn't have GCC in mind when I started this project. What really
+triggered all of this was that I had noticed Debian's [bcc][bcc]
+package, Bruce's C Compiler, that builds 16-bit 8086 binaries. It's
+kept around for compiling x86 bootloaders and such, but it can also be
+used to compile DOS COM files, which was the part that interested me.
 
 For some background: the Intel 8086 was a 16-bit microprocessor
 released in 1978. It had none of the fancy features of today's CPU: no
@@ -415,3 +416,4 @@ platform.
 [ls]: http://wiki.osdev.org/Linker_Scripts
 [vga]: http://www.brackeen.com/vga/index.html
 [freedos]: http://www.freedos.org/
+[lzss]: /blog/2014/11/22/
