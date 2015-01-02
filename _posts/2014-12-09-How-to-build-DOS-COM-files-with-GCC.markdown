@@ -2,7 +2,7 @@
 title: How to build DOS COM files with GCC
 layout: post
 date: 2014-12-09T23:50:10Z
-tags: [c, debian, tutorial]
+tags: [c, debian, tutorial, game]
 uuid: cff7d942-a91d-38b8-46fd-d05bbce0e212
 ---
 
