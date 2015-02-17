@@ -244,12 +244,14 @@ int main(void)
     float value;
     while (scanf(" %63s %f", id, &value) == 2)
         node_push(&nodes, id, value);
-    node_print(nodes);
-    struct node *old = node_pop(&nodes);
-    node_push(&nodes, "foobar", 0.0f);
-    node_print(nodes);
-    ref_dec(&old->refcount);
-    ref_dec(&nodes->refcount);
+    if (nodes != NULL) {
+        node_print(nodes);
+        struct node *old = node_pop(&nodes);
+        node_push(&nodes, "foobar", 0.0f);
+        node_print(nodes);
+        ref_dec(&old->refcount);
+        ref_dec(&nodes->refcount);
+    }
     return 0;
 }
 ~~~
