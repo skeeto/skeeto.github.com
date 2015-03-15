@@ -8,7 +8,7 @@ uuid: 362ccedf-9538-358f-9474-5befd8bce4de
 
 Yesterday I completed my third entry to the annual Seven Day Roguelike
 (7DRL) challenge (previously: [2013][y2013] and [2014][y2014]). This
-year's entry is called Goblin-COM.
+year's entry is called **Goblin-COM**.
 
 [![](/img/screenshot/gcom-thumb.png)](/img/screenshot/gcom.png)
 
@@ -19,12 +19,12 @@ As with previous years, the ideas behind the game are not all that
 original. The goal was to be a fantasy version of [classic
 X-COM][xcom] with an ANSI terminal interface. You are the ruler of a
 fledgling human nation that is under attack by invading goblins. You
-hire heroes, manage squads, construct buildings, and manage resource
+hire heroes, operate squads, construct buildings, and manage resource
 income.
 
 The inspiration this year came from watching [BattleBunny][bb] play
 [OpenXCOM][openxcom], an open source clone of the original X-COM. It
-had its first major (1.0) release last year. Like the early days of
+had its major 1.0 release last year. Like the early days of
 [OpenTTD][openttd], it currently depends on the original game assets.
 But also like OpenTTD, it surpasses the original game in every way, so
 there's no reason to bother running the original anymore. I've also
@@ -47,12 +47,16 @@ My previous entries were HTML5 games, but this entry is a plain old
 standalone application. C has been my preferred language for the past
 few months, so that's what I used. Both UTF-8-capable ANSI terminals
 and the Windows console are supported, so it should be perfectly
-playable on any modern machine. I **didn't make use of ncurses**,
-instead opting to write my own terminal graphics engine. That's
-because I wanted a [single, small binary][dos] that was easy to build,
-and I didn't want to mess around with [PDCurses][pd]. I've also been
-studying the Win32 API lately, so writing my own terminal platform
-layer would rather easy to do anyway.
+playable on any modern machine. Note, though, that some of the
+poorer-quality terminal emulators that you'll find in your Linux
+distribution's repositories (rxvt and its derivatives) are not
+Unicode-capable, which means they won't work with G-COM.
+
+I **didn't make use of ncurses**, instead opting to write my own
+terminal graphics engine. That's because I wanted a [single, small
+binary][dos] that was easy to build, and I didn't want to mess around
+with [PDCurses][pd]. I've also been studying the Win32 API lately, so
+writing my own terminal platform layer would rather easy to do anyway.
 
 I experimented with a number of terminal emulators -- LXTerminal,
 Konsole, GNOME/MATE terminal, PuTTY, xterm, mintty, Terminator -- but
@@ -241,8 +245,8 @@ deliberately delay the end of the game so that I can sprawl my nation
 out over the island and generate crazy income.
 
 
-[y2014]: http://nullprogram.com/blog/2013/03/17/
-[y2013]: http://nullprogram.com/blog/2014/03/31/
+[y2013]: http://nullprogram.com/blog/2013/03/17/
+[y2014]: http://nullprogram.com/blog/2014/03/31/
 [bb]: https://www.youtube.com/playlist?list=PL2xITSnTC0YkB2-B8fs-02YVT81AE0WtP
 [openxcom]: http://openxcom.org/
 [ss]: https://youtu.be/bwPLKud0rP4
