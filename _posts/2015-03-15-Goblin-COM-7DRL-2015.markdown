@@ -245,15 +245,15 @@ deliberately delay the end of the game so that I can sprawl my nation
 out over the island and generate crazy income.
 
 
-[y2013]: http://nullprogram.com/blog/2013/03/17/
-[y2014]: http://nullprogram.com/blog/2014/03/31/
+[y2013]: /blog/2013/03/17/
+[y2014]: /blog/2014/03/31/
 [bb]: https://www.youtube.com/playlist?list=PL2xITSnTC0YkB2-B8fs-02YVT81AE0WtP
 [openxcom]: http://openxcom.org/
 [ss]: https://youtu.be/bwPLKud0rP4
 [openttd]: https://www.openttd.org/en/
-[dos]: http://nullprogram.com/blog/2014/12/09/
+[dos]: /blog/2014/12/09/
 [pd]: http://pdcurses.sourceforge.net/
-[pitfall]: http://nullprogram.com/blog/2014/06/13/
+[pitfall]: /blog/2014/06/13/
 [utf8]: http://utf8everywhere.org/
 [plane]: http://en.wikipedia.org/wiki/Plane_(Unicode)
 [hh]: http://handmadehero.org/
