@@ -2,7 +2,7 @@
 title: A Basic Just-In-Time Compiler
 layout: post
 date: 2015-03-19T04:57:55Z
-tags: [c]
+tags: [c, tutorial, netsec]
 uuid: 95e0437f-61f0-3932-55b7-f828e171d9ca
 ---
 
@@ -64,7 +64,8 @@ Memory returned by `malloc()` and friends will be writable and
 readable, but non-executable. If the JIT compiler allocates memory
 through `malloc()`, fills it with machine instructions, and jumps to
 it without doing any additional work, there will be a segmentation
-fault. These details will all be encapsulated in an `asmbuf` struct.
+fault. So some different memory allocation calls will be made instead,
+with the details hidden behind an `asmbuf` struct.
 
 ~~~c
 #define PAGE_SIZE 4096
@@ -76,8 +77,8 @@ struct asmbuf {
 ~~~
 
 To keep things simple here, I'm just assuming the page size is 4kB. In
-a real program, we'd sue `sysconf(_SC_PAGESIZE)` to discover the page
-size at run time. On x86_64, pages may be 4kB, 2MB, or 1GB. This
+a real program, we'd use `sysconf(_SC_PAGESIZE)` to discover the page
+size at run time. On x86_64, pages may be 4kB, 2MB, or 1GB, but this
 program will work correctly as-is regardless.
 
 Instead of `malloc()`, the compiler allocates memory as an anonymous
@@ -199,7 +200,7 @@ first argument comes in `rcx` rather than `rdi`. Fortunately this only
 affects the very first instruction and the rest of the assembly
 remains the same.
 
-The very last thing it will do, assuming the result is in `rax` is
+The very last thing it will do, assuming the result is in `rax`, is
 return to the caller.
 
 ~~~gas
@@ -315,6 +316,7 @@ situation. There's no branching, no intermediate values, no function
 calls, and I didn't even touch the stack (push, pop). The recurrence
 relation definition in this challenge is practically an assembly
 language itself, so after the initial setup it's a 1:1 translation.
+
 I'd like to build a JIT compiler more advanced than this in the
 future. I just need to find a suitable problem that's more complicated
 than this one, warrants having a JIT compiler, but is still simple
