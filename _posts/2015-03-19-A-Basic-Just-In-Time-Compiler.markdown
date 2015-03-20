@@ -32,6 +32,10 @@ operations into native machine code and lets the hardware do the work
 directly. In this article I'll go through how it works and how I did
 it.
 
+**Update**: The [follow-up challenge][part2] uses Reverse Polish
+notation to allow for more complicated expressions. I wrote another
+JIT compiler for [my submission][mine2] ([mirror][mirror2]).
+
 ### Allocating Executable Memory
 
 Modern operating systems have page-granularity protections for
@@ -332,3 +336,6 @@ enough that I could, on some level, justify not using LLVM.
 [old]: /blog/2014/12/09/
 [call]: http://en.wikipedia.org/wiki/X86_calling_conventions#x86-64_calling_conventions
 [cf]: https://www.reddit.com/r/dailyprogrammer/comments/2z68di/_/cpgkcx7
+[part2]: http://redd.it/2zna5q
+[mine2]: https://gist.github.com/anonymous/f7e4a5086a2b0acc83aa
+[mirror2]: /download/rpn-jit.c
