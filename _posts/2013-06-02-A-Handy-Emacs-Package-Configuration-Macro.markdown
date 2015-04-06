@@ -5,6 +5,10 @@ tags: [emacs]
 uuid: 3e64c259-69a6-3500-0e87-3a93d61c1644
 ---
 
+*Update April 2015*: I now use [use-package][use-package] instead of
+the `with-package` macro explained below. It's cleaner, nicer, and
+better maintained.
+
 I was inspired by [a post recently written by Milkypostman][after]
 (the M in MELPA). He describes some of his `init.el` configuration,
 specifically focusing on an `after` macro that wraps the misdesigned
@@ -118,3 +122,4 @@ function can be passed in directly.
 [helper]: https://github.com/skeeto/.emacs.d/blob/master/lisp/package-helper.el
 [expose]: /blog/2010/09/29/
 [amd]: https://github.com/amdjs/amdjs-api/wiki/AMD
+[use-package]: https://github.com/jwiegley/use-package
