@@ -14,6 +14,7 @@ year's entry is called **Goblin-COM**.
 
 * Download/Source: [Goblin-COM](https://github.com/skeeto/goblin-com)
 * Telnet play (no saves): `telnet gcom.nullprogram.com`
+* [Video review][review] by Akhier Dragonheart
 
 As with previous years, the ideas behind the game are not all that
 original. The goal was to be a fantasy version of [classic
@@ -259,3 +260,4 @@ out over the island and generate crazy income.
 [hh]: http://handmadehero.org/
 [fsync]: http://lwn.net/Articles/322823/
 [xcom]: http://en.wikipedia.org/wiki/UFO:_Enemy_Unknown
+[review]: https://www.youtube.com/watch?v=QW3Uul7-Iss
