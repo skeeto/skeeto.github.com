@@ -2,7 +2,7 @@
 title: A Basic Just-In-Time Compiler
 layout: post
 date: 2015-03-19T04:57:55Z
-tags: [c, tutorial, netsec]
+tags: [c, tutorial, netsec, x86]
 uuid: 95e0437f-61f0-3932-55b7-f828e171d9ca
 ---
 
