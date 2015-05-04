@@ -113,7 +113,7 @@ In theory this should even work unchanged with MinGW, but there's a
 long-standing MinGW bug that prevents it from working right ("cannot
 perform PE operations on non PE output file"). It's still do-able, and
 I did it myself, but you'll need to drop the `OUTPUT_FORMAT` directive
-and add an extra `objdump` step.
+and add an extra `objcopy` step (`objcopy -O binary`).
 
 #### Hello World in DOS
 
