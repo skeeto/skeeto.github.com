@@ -23,8 +23,8 @@ works just like fork() except that it accepts a number of flags to
 adjust its behavior, primarily to share parts of the parent's
 execution context with the child.
 
-It's *so* simple that it takes less than 15 instructions to spawn a
-thread with its own stack, no libraries needed, and no need to call
+It's *so* simple that **it takes less than 15 instructions to spawn a
+thread with its own stack**, no libraries needed, and no need to call
 Pthreads! In this article I'll demonstrate how to do this on x86_64.
 All of the code with be written in [NASM][nasm] syntax since, IMHO,
 it's by far the best (see: [nasm-mode][nasm-mode]).
