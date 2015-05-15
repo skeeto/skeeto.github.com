@@ -189,18 +189,17 @@ You [can't just read from and write to arbitrary addresses][mem] in
 virtual memory, you first [have to ask the kernel to allocate
 pages][jit]. There are two system calls this on Linux to do this:
 
-* brk(): Put simply, this extends (or shrinks) the heap of a running
-  process, typically located somewhere shortly after the .bss segment.
-  Many allocators will do this for small or initial allocations. This
-  is a less optimal choice for thread stacks because the stacks will
-  be very near other important data, near other stacks, and lack a
-  guard page (by default). It would be somewhat easier for an attacker
-  to exploit a buffer overflow. A guard page is a locked-down page
-  just past the absolute end of the stack that will trigger a
-  segmentation fault on a stack overflow, rather than allow a stack
-  overflow to trash other memory undetected. A guard page could still
-  be created manually with mprotect(). Also, there's also no room for
-  these stacks to grow.
+* brk(): Extends (or shrinks) the heap of a running process, typically
+  located somewhere shortly after the .bss segment. Many allocators
+  will do this for small or initial allocations. This is a less
+  optimal choice for thread stacks because the stacks will be very
+  near other important data, near other stacks, and lack a guard page
+  (by default). It would be somewhat easier for an attacker to exploit
+  a buffer overflow. A guard page is a locked-down page just past the
+  absolute end of the stack that will trigger a segmentation fault on
+  a stack overflow, rather than allow a stack overflow to trash other
+  memory undetected. A guard page could still be created manually with
+  mprotect(). Also, there's also no room for these stacks to grow.
 
 * mmap(): Use an anonymous mapping to allocate a contiguous set of
   pages at some randomized memory location. As we'll see, you can even
