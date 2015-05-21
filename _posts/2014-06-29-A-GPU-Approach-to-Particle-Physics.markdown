@@ -46,7 +46,7 @@ OpenGL.
 
 ### Encoding Particle State as Color
 
-Just as with the [Game of Life][gol] and [path finding](path)
+Just as with the [Game of Life][gol] and [path finding][path]
 projects, simulation state is stored in pairs of textures and the
 majority of the work is done by a fragment shader mapped between them
 pixel-to-pixel. I won't repeat myself with the details of setting this

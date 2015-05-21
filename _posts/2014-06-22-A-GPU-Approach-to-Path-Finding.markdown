@@ -132,7 +132,7 @@ a much more interesting demo.
 #### Skipping the Route Step
 
 On my computers, with a 1023x1023 Kruskal maze ~~it's about an order
-of magnitude slower~~ (see update below) than [A*](astar) ([rot.js's
+of magnitude slower~~ (see update below) than [A*][astar] ([rot.js's
 version][rot]) for the same maze. ~~Not very impressive!~~ I *believe*
 this gap will close with time, as GPUs become parallel faster than
 CPUs get faster. However, there's something important to consider:
