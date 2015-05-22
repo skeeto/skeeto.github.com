@@ -8,10 +8,9 @@ uuid: 3e3186c8-dccd-3167-1f42-79f34d08a3dd
 For those who are unaware, Emacs 24 was finally released this past
 June. I had been following the official repository for about a year
 before the release using what was becoming version 24, very quickly
-becoming dependent on several of
-[the new features](http://www.gnu.org/software/emacs/NEWS.24.1). Now
-that it's been officially released I'm back to using a stable version
-of Emacs, about which I'm quite relieved.
+becoming dependent on several of [the new features][news]. Now that
+it's been officially released I'm back to using a stable version of
+Emacs, about which I'm quite relieved.
 
 One of the new features that I *hadn't* been using until recently was
 the package manager, `package`, and the
@@ -66,14 +65,12 @@ I also heavily updated and renamed [my web server](/blog/2009/05/17/)
 covered in a future post). Thanks to MELPA, I follow the package
 rather than my own repository since it follows so closely (< 1 hour).
 
-Another barrier was that I was using an old version of
-[Magit](http://philjackson.github.com/magit/) due to a bad interaction
-of modern versions with Wombat, my preferred color theme. After
-[some face tweaking](https://github.com/skeeto/.emacs.d/commit/aec488937ff9a344278359ded7732446f2380748),
-I not only fixed it but I made it better than it was before. Sinking a
-an hour or two into these sorts of annoyances usually works out really
-well. I need to remind myself of this in the future when I run into
-annoyance issues.
+Another barrier was that I was using an old version of [Magit][magit]
+due to a bad interaction of modern versions with Wombat, my preferred
+color theme. After [some face tweaking][tweak], I not only fixed it
+but I made it better than it was before. Sinking a an hour or two into
+these sorts of annoyances usually works out really well. I need to
+remind myself of this in the future when I run into annoyance issues.
 
 Surprisingly, `package` doesn't seem to be written with managed
 configuration in mind. The provided functionally is designed to be
@@ -104,3 +101,8 @@ once-per-week or something.
 I really look forward to making more use of the package manager,
 especially as packages can more easily become interdependent, reducing
 duplication of effort.
+
+
+[news]: http://www.gnu.org/software/emacs/NEWS.24.1
+[magit]: https://github.com/magit/magit
+[tweak]: https://github.com/skeeto/.emacs.d/commit/aec488937ff9a344278359ded7732446f2380748

@@ -173,6 +173,6 @@ I call that challenge completed!
 
 
 [piquery]: http://www.angio.net/pi/piquery.html
-[bmh]: http://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorith
+[bmh]: http://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorithm
 [digits]: https://stuff.mit.edu/afs/sipb/contrib/pi/
 [sarg]: http://en.wikipedia.org/wiki/Sargable

@@ -5,7 +5,7 @@ tags: [emacs, web]
 uuid: 92c8a519-1e4c-374b-7f90-37b1dadfc862
 ---
 
-This evening [Skewer](blog/2012/10/31/) gained support for live CSS.
+This evening [Skewer](/blog/2012/10/31/) gained support for live CSS.
 When editing CSS code, you can send your rules and declarations from
 the editing buffer to be applied in the open page in the browser. It
 makes experimenting with CSS really, really easy. The functionality is
