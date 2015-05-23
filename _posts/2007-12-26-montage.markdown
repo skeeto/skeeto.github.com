@@ -7,7 +7,8 @@ uuid: a4b9aedd-14f9-30fa-f2e5-7a478aff9be2
 
 *Update May 2015: Somehow the original script was lost while [changing
  hosts][host] four years ago. I've replaced the script with a smaller,
- better, standalone C program:*
+ better, standalone C program. Note: it has a different interface, so
+ read the header first!*
 
 * [/download/fastmontage.c](/download/fastmontage.c) (new!)
 
