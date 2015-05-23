@@ -5,9 +5,11 @@ tags: [perl]
 uuid: a4b9aedd-14f9-30fa-f2e5-7a478aff9be2
 ---
 
-Get the script:
+*Update May 2015: Somehow the original script was lost while [changing
+ hosts][host] four years ago. I've replaced the script with a smaller,
+ better, standalone C program:*
 
-* [/download/gdmontage.perl](/download/gdmontage.perl)
+* [/download/fastmontage.c](/download/fastmontage.c) (new!)
 
 I had written a previous post called [Movie DNA][prev] where I
 described a simple way of distilling an entire movie down to a single
@@ -61,3 +63,4 @@ slow?)
 [gd]: http://www.boutell.com/gd/
 [cpan]: http://search.cpan.org/dist/GD/GD.pm
 [prog]: http://search.cpan.org/~fluffy/Term-ProgressBar-2.09/lib/Term/ProgressBar.pm
+[host]: /blog/2011/08/05/
