@@ -12,6 +12,8 @@
  *
  * Warning: The PPM reader is incomplete as it doesn't tolerate PPM
  *          header comments, so don't try to input images with them!
+ *
+ * This is free and unencumbered software released into the public domain.
  */
 
 #include <stdio.h>
@@ -86,15 +88,15 @@ image_write(const image *im)
     fwrite(im->colors, im->width * im->height, 3, stdout);
 }
 
-int main(void)
+int
+main(void)
 {
     #ifdef _WIN32
     _setmode(fileno(stdout), _O_BINARY);
     _setmode(fileno(stdin), _O_BINARY);
     #endif
 
-    image *frame = NULL;
-    frame = image_read(NULL);
+    image *frame = image_read(NULL);
     image *final = image_create(frame->width * WIDTH, frame->height);
     image_copy(final, 0, 0, frame);
     long count = 1;
