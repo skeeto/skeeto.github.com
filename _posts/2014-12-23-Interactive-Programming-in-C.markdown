@@ -2,7 +2,7 @@
 title: Interactive Programming in C
 layout: post
 date: 2014-12-23T05:43:41Z
-tags: [c]
+tags: [c, tutorial]
 uuid: 203e981d-b086-393e-27c0-db18dacfc4bf
 ---
 

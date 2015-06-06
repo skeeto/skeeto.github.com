@@ -2,7 +2,7 @@
 title: C Object Oriented Programming
 layout: post
 date: 2014-10-21T03:52:43Z
-tags: [c, cpp]
+tags: [c, cpp, tutorial]
 uuid: 3851ee30-1f9d-35af-e59f-e4be5023b2d5
 ---
 
