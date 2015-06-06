@@ -2,7 +2,7 @@
 title: A GPU Approach to Particle Physics
 layout: post
 date: 2014-06-29T03:23:42Z
-tags: [webgl, media, interactive, gpgpu, javascript]
+tags: [webgl, media, interactive, gpgpu, javascript, opengl]
 uuid: 2d2ab14c-18c6-3968-d9b1-5243e7d0b2f1
 ---
 

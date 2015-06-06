@@ -2,7 +2,7 @@
 title: A GPU Approach to Path Finding
 layout: post
 date: 2014-06-22T22:51:46Z
-tags: [ai, webgl, javascript, gpgpu]
+tags: [ai, webgl, javascript, gpgpu, opengl]
 uuid: 29de5cb3-f93a-3e6e-9adc-ff689e736877
 ---
 

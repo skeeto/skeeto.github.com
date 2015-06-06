@@ -2,7 +2,7 @@
 title: Feedback Applet Ported to WebGL
 layout: post
 date: 2014-06-21T02:49:57Z
-tags: [webgl, javascript, media, interactive]
+tags: [webgl, javascript, media, interactive, opengl]
 uuid: 1bcbcaaa-35b8-34f8-b114-34a2116882ef
 ---
 

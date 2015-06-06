@@ -1,7 +1,7 @@
 ---
 title: Liquid Simulation in WebGL
 layout: post
-tags: [javascript, interactive, webgl]
+tags: [javascript, interactive, webgl, opengl]
 uuid: a0e42262-19a8-3208-4a5b-b70485f5ae8a
 ---
 
