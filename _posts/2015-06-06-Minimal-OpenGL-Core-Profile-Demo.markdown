@@ -93,7 +93,7 @@ FreeGLUT by handling swap interval, joystick input/output, threading,
 audio, networking, image loading, and timers: basically all the stuff
 you'd need when writing a game.
 
-If you're programming in C++, [SMFL][sfml] is also a good choice.
+Another great, minimal choice is [GLFW][glfw].
 
 ### Why gl3w?
 
@@ -144,5 +144,5 @@ OpenGL graphics.
 [mesa]: http://en.wikipedia.org/wiki/Mesa_%28computer_graphics%29#Implementations_of_rendering_APIs
 [egl]: https://www.khronos.org/egl/
 [sdl]: https://www.libsdl.org/
-[sfml]: http://www.sfml-dev.org/
+[glfw]: http://www.glfw.org/
 [glloadgen]: https://bitbucket.org/alfonse/glloadgen/wiki/Home
