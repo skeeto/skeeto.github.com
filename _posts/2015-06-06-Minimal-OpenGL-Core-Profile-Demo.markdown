@@ -67,6 +67,10 @@ As far as "desktop" OpenGL goes, 3.3 is currently *the* prime target.
 
 ### Why FreeGLUT?
 
+*Update*: I switched the demo over to [GLFW][glfw] since it's smaller,
+ simpler, cleaner, and more modern. It seems there's not much reason
+ to use FreeGLUT anymore.
+
 Until [EGL][egl] someday fills this role, the process for obtaining an
 OpenGL context is specific to each operating system, where it's
 generally a pain in the butt. GLUT, the OpenGL Utility Toolkit, was a
@@ -75,12 +79,12 @@ It also normalized user input (keyboard and mouse) and provided some
 basic (and outdated) utility functions.
 
 The open source replacement for GLUT is [FreeGLUT][freeglut]. While I
-wish it was even smaller, as far as I know it's the smallest of its
-kind. I just need a portable library that creates a window, handles
-keyboard and mouse events in that window, and gives me an OpenGL 3.3
-core profile context. FreeGLUT does this well. As I mentioned before,
-I statically link it in the Windows' build of the demo, so it's great
-for small, standaline binaries.
+wish it was even smaller, as far as I know it's one of the smallest of
+its kind. I just need a portable library that creates a window,
+handles keyboard and mouse events in that window, and gives me an
+OpenGL 3.3 core profile context. FreeGLUT does this well. As I
+mentioned before, I statically link it in the Windows' build of the
+demo, so it's great for small, standaline binaries.
 
 One caveat: oddly, **FreeGLUT doesn't have a swap interval function**.
 This is used to lock the application's redraw rate to the system's
@@ -93,7 +97,9 @@ FreeGLUT by handling swap interval, joystick input/output, threading,
 audio, networking, image loading, and timers: basically all the stuff
 you'd need when writing a game.
 
-Another great, minimal choice is [GLFW][glfw].
+Another great choice is [GLFW][glfw]. It's tiny, doesn't carry along
+GLUT's outdated functionality, supports swap interval, and also
+handles joystick input.
 
 ### Why gl3w?
 
