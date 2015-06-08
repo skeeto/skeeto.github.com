@@ -20,7 +20,7 @@ The relevant examples I could find at the time were more complicated
 than necessary, due to the common problem that full 3D graphics are
 too closely conflated with OpenGL. The examples would include matrix
 libraries, texture loading, etc. This is a big reason I ended up
-;[settling on WebGL][webgl]: a clean slate in a completely different
+[settling on WebGL][webgl]: a clean slate in a completely different
 community. (The good news is that this situation has already improved
 dramatically over the last few years!)
 
