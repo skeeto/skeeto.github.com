@@ -56,12 +56,12 @@ I chose OpenGL 3.3 in particular for three reasons:
   keyword.
 * Mesa 10.0 (2013) [supports up to OpenGL 3.3][mesa]. Mesa is the
   prominent 3D graphics library for open source operating systems.
-  It's what applications use for both hardware-accelerated and softwre
-  OpenGL rendering. This means the demo will work on any modern Linux
-  installation. (Note: when running on older hardware without OpenGL
-  3.3 support, you may have to force software rendering with the
-  environment variable `LIBGL_ALWAYS_SOFTWARE=1`. The software
-  renderer will take advantage of your CPU's SIMD features.)
+  It's what applications use for both hardware-accelerated and
+  software OpenGL rendering. This means the demo will work on any
+  modern Linux installation. (Note: when running on older hardware
+  without OpenGL 3.3 support, you may have to force software rendering
+  with the environment variable `LIBGL_ALWAYS_SOFTWARE=1`. The
+  software renderer will take advantage of your CPU's SIMD features.)
 
 As far as "desktop" OpenGL goes, 3.3 is currently *the* prime target.
 
@@ -84,7 +84,7 @@ its kind. I just need a portable library that creates a window,
 handles keyboard and mouse events in that window, and gives me an
 OpenGL 3.3 core profile context. FreeGLUT does this well. As I
 mentioned before, I statically link it in the Windows' build of the
-demo, so it's great for small, standaline binaries.
+demo, so it's great for small, standalone binaries.
 
 One caveat: oddly, **FreeGLUT doesn't have a swap interval function**.
 This is used to lock the application's redraw rate to the system's
