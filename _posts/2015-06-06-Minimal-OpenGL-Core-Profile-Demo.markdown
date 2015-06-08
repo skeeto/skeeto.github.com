@@ -26,7 +26,7 @@ dramatically over the last few years!)
 
 Until recently, [all of my OpenGL experience had been WebGL][tag].
 Wanting to break out of that, earlier this year I set up a minimal
-OpenGL 3.3 core profile demo in C, using [FreeGLUT][freeglut] and
+OpenGL 3.3 core profile demo in C, using [GLFW][glfw] and
 [gl3w][gl3w]. You can find it here:
 
 * [https://github.com/skeeto/opengl-demo](https://github.com/skeeto/opengl-demo)
@@ -65,11 +65,7 @@ I chose OpenGL 3.3 in particular for three reasons:
 
 As far as "desktop" OpenGL goes, 3.3 is currently *the* prime target.
 
-### Why FreeGLUT?
-
-*Update*: I switched the demo over to [GLFW][glfw] since it's smaller,
- simpler, cleaner, and more modern. It seems there's not much reason
- to use FreeGLUT anymore.
+### Why GLFW?
 
 Until [EGL][egl] someday fills this role, the process for obtaining an
 OpenGL context is specific to each operating system, where it's
@@ -78,28 +74,38 @@ library to make this process uniform across the different platforms.
 It also normalized user input (keyboard and mouse) and provided some
 basic (and outdated) utility functions.
 
-The open source replacement for GLUT is [FreeGLUT][freeglut]. While I
-wish it was even smaller, as far as I know it's one of the smallest of
-its kind. I just need a portable library that creates a window,
-handles keyboard and mouse events in that window, and gives me an
-OpenGL 3.3 core profile context. FreeGLUT does this well. As I
-mentioned before, I statically link it in the Windows' build of the
-demo, so it's great for small, standalone binaries.
+The original GLUT isn't quite open source (licensing issues) and it's
+no longer maintained. The open source replacement for GLUT is
+[FreeGLUT][freeglut]. It's what you'd typically find on a Linux
+system in place of the original GLUT.
 
-One caveat: oddly, **FreeGLUT doesn't have a swap interval function**.
-This is used to lock the application's redraw rate to the system's
-screen refresh rate, preventing screen tearing and excessive resource
-consumption. I added a macro to the top of the demo to work around
-this by finding the system's swap interval function.
+I just need a portable library that creates a window, handles keyboard
+and mouse events in that window, and gives me an OpenGL 3.3 core
+profile context. FreeGLUT does this well, but we can do better. One
+problem is that it includes a whole bunch of legacy cruft from GLUT:
+immediate mode rendering utilities, menus, spaceball support, lots of
+global state, and only one OpenGL context per process.
 
-[SDL 2.0][sdl] would also be an excellent choice. It goes beyond
-FreeGLUT by handling swap interval, joystick input/output, threading,
-audio, networking, image loading, and timers: basically all the stuff
-you'd need when writing a game.
+One of the biggest problems is that **FreeGLUT doesn't have a swap
+interval function**. This is used to lock the application's redraw
+rate to the system's screen refresh rate, preventing screen tearing
+and excessive resource consumption. I originally used FreeGLUT for the
+demo, and, as a workaround, had added my own macro work around this by
+finding the system's swap interval function, but it was a total hack.
 
-Another great choice is [GLFW][glfw]. It's tiny, doesn't carry along
-GLUT's outdated functionality, supports swap interval, and also
-handles joystick input.
+The demo was initially written with FreeGLUT, but I switched over to
+[GLFW][glfw] since it's smaller, simpler, cleaner, and more modern.
+GLFW also has portable joystick handling. With the plethora of modern
+context+window creation libraries out there, it seems there's not much
+reason to use FreeGLUT anymore.
+
+[SDL 2.0][sdl] would also be an excellent choice. It goes beyond GLFW
+with threading, audio, networking, image loading, and timers:
+basically all the stuff you'd need when writing a game.
+
+I'm sure there are some other good alternatives, especially when
+you're not sticking to plain C, but these are the libraries I'm
+familiar with at the time of this article.
 
 ### Why gl3w?
 
