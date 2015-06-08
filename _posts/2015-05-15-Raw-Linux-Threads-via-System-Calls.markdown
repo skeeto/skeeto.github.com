@@ -216,6 +216,7 @@ void *stack_create(void);
 The mmap() system call takes 6 arguments, but when creating an
 anonymous memory map the last two arguments are ignored. For our
 purposes, it looks like this C prototype.
+
 ~~~c
 void *mmap(void *addr, size_t length, int prot, int flags);
 ~~~
