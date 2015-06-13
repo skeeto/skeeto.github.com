@@ -250,7 +250,7 @@ nav {
 /* Mobile version (this must go last) */
 
 @media only screen and (max-width: 900px) {
-    #sidebar, #github-ribbon {
+    #sidebar {
         display: none;
     }
 
@@ -267,5 +267,83 @@ nav {
 
     article, footer {
         margin: 10px 10px;
+    }
+}
+
+/* Print version, PDF-oriented */
+
+@media print {
+    @page {
+        margin: 1in 1.2in 1in 1.2in;
+    }
+
+    header, footer, .permalink, .tags, #sidebar, #disqus_thread {
+        display: none;
+    }
+
+    body {
+        color: black;
+        background: white;
+    }
+
+    article {
+        max-width: 100%;
+        margin: 0;
+        font-size: 12pt;
+        box-shadow: none;
+    }
+
+    .date {
+        color: gray;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 18pt;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 16pt;
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 14pt;
+    }
+
+    h5 {
+        font-weight: bold;
+        font-size: 13pt;
+    }
+
+    h6 {
+        font-weight: bold;
+        font-size: 12pt;
+    }
+
+    img {
+        width: 75%;
+        header: 75%;
+        page-break-inside: avoid;
+    }
+
+    .highlight {
+        page-break-inside: avoid;
+    }
+
+    p a, li a {
+        color: navy;
+        text-decoration: none;
+    }
+
+    article p {
+        text-indent: 2em;
+        line-height: 120%;
+    }
+
+    code, pre {
+        border: 0;
+        background-color: white;
     }
 }
