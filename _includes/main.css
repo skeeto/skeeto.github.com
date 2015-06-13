@@ -343,6 +343,10 @@ nav {
         line-height: 120%;
     }
 
+    article li p {
+        text-indent: 0;
+    }
+
     code, pre {
         border: 0;
         background-color: white;
