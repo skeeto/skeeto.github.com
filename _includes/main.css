@@ -277,7 +277,7 @@ nav {
         margin: 1in 1.2in 1in 1.2in;
     }
 
-    header, footer, .permalink, .tags, #sidebar, #disqus_thread {
+    header, footer, .permalink, .tags, .commentlink, #sidebar, #disqus_thread {
         display: none;
     }
 
@@ -291,6 +291,7 @@ nav {
         margin: 0;
         font-size: 12pt;
         box-shadow: none;
+        page-break-after: always;
     }
 
     .date {
