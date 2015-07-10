@@ -14,6 +14,10 @@ Data* (SIMD) instruction sets: SSE2, AVX, and NEON. The latter two
 didn't exist when the last article was published. In this article I
 demonstrate SIMD bringing a 5.8x speedup to a fractal renderer.
 
+If you want to take a look at my code before reading further:
+
+* [https://github.com/skeeto/mandel-simd](https://github.com/skeeto/mandel-simd)
+
 ![](/img/fractal/mandel-plain-small.png)
 
 Having multiple CPU cores allows different instructions to operation
@@ -27,10 +31,6 @@ implemented on CPUs through wide registers: 64, 128, 256, and even 512
 bits wide. Values are packed into the register like an array and are
 operated on independently, generally with *saturation arithmetic*
 (clamped, non-wrapping).
-
-If you want to take a look at my code before reading further:
-
-* [https://github.com/skeeto/mandel-simd](https://github.com/skeeto/mandel-simd)
 
 Rather than hand-code all this in assembly, I'm using yet another
 technique I picked up from the always-educational [Handmade Hero][hh]:
