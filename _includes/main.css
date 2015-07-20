@@ -97,8 +97,13 @@ article, footer {
     font-size: 1.25em;
 }
 
+article p {
+    margin: 0 0 20px 0;
+}
+
 article pre {
     font-size: 0.8em;
+    margin: 0 0 20px 0;
 }
 
 img {
@@ -122,6 +127,10 @@ article h2 {
 h2 a {
     text-decoration: none;
     color: {{ page.foreA }};
+}
+
+article h3, article h4, article h5, article h6 {
+    margin: 20px 0 10px 0;
 }
 
 code {
@@ -151,13 +160,14 @@ blockquote {
     font-size: 90%;
     color: {{ page.foreB }};
     text-align: center;
-    margin-top: -1em;
+    margin: -1em 0 1em 0;
 }
 
 .url {
     font-size: 90%;
     color: {{ page.foreB }};
     text-align: center;
+    margin: 0 0 1em 0;
 }
 
 .abstract {
@@ -315,6 +325,7 @@ nav {
 
     .date {
         color: gray;
+        margin: -1em 0 0 0;
     }
 
     h2 {
@@ -365,6 +376,10 @@ nav {
     article p {
         text-indent: 2em;
         line-height: 120%;
+    }
+
+    article pre {
+        margin-left: 0.15in;
     }
 
     article li p {
