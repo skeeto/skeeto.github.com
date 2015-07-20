@@ -33,6 +33,10 @@ header a {
     text-decoration: none;
 }
 
+.print-only {
+    display: none;
+}
+
 /* Sidebar */
 
 #sidebar {
@@ -148,6 +152,12 @@ blockquote {
     color: {{ page.foreB }};
     text-align: center;
     margin-top: -1em;
+}
+
+.url {
+    font-size: 90%;
+    color: {{ page.foreB }};
+    text-align: center;
 }
 
 .abstract {
@@ -286,9 +296,14 @@ nav {
         background: white;
     }
 
+    .print-only {
+        display: inherit;
+    }
+
     article {
         max-width: 100%;
         margin: 0;
+        padding: 0;
         font-size: 12pt;
         box-shadow: none;
         page-break-after: always;
