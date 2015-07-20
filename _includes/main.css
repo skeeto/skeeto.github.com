@@ -296,6 +296,10 @@ nav {
         background: white;
     }
 
+    .no-print {
+        display: none;
+    }
+
     .print-only {
         display: inherit;
     }
