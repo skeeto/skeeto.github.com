@@ -176,10 +176,10 @@ struct stat attr;
 if ((stat(GAME_LIBRARY, &attr) == 0) && (game->id != attr.st_ino)) {
 ~~~
 
-First, Use `stat()` to determine if the library's inode is different
+First, use `stat()` to determine if the library's inode is different
 than the one that's already loaded. The `id` field will be 0
-initially, so as long as `stat()` succeeds, this will load the
-library the first time.
+initially, so as long as `stat()` succeeds, this will load the library
+the first time.
 
 ~~~c
     if (game->handle) {
@@ -205,7 +205,7 @@ Finally load the game library. There's a race condition here that
 cannot be helped due to limitations of `dlopen()`. The library may
 have been updated *again* since the call to `stat()`. Since we can't
 ask `dlopen()` about the inode of the library it opened, we can't
-know. Since this is only used during development, not in production,
+know. But as this is only used during development, not in production,
 it's not a big deal.
 
 ~~~c
