@@ -156,7 +156,7 @@ And on Win32,
 void
 asmbuf_free(struct asmbuf *buf)
 {
-    VirtualFree(buf, PAGE_SIZE, MEM_RELEASE);
+    VirtualFree(buf, 0, MEM_RELEASE);
 }
 ~~~
 
