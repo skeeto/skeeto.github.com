@@ -14,7 +14,7 @@ campaigns. Since he's [shared the e-book on his blog][tenth], I'm now
 free to pull back the curtain on this little project.
 
 * Download: [twenty-sided-tale.epub][epub]
-* Repository: [https://github.com/skeeto/twenty-sided-tale][repo]
+* Repository: <https://github.com/skeeto/twenty-sided-tale>
 
 To build the book yourself, you will only need `make` and `pandoc`.
 
@@ -120,7 +120,6 @@ idea only works in fiction.
 [orig]: http://www.shamusyoung.com/twentysidedtale/?cat=1
 [tenth]: http://www.shamusyoung.com/twentysidedtale/?p=23755
 [epub]: http://nullprogram.s3.amazonaws.com/tst/twenty-sided-tale.epub
-[repo]: https://github.com/skeeto/twenty-sided-tale
 [style]: http://www.chicagomanualofstyle.org/facsimile/CMSfacsimile_all.pdf
 [pandoc]: http://pandoc.org/
 [tablet]: /blog/2013/04/27/
