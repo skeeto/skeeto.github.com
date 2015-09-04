@@ -35,7 +35,7 @@ book is very graphical, not suited to read/view on a screen (full
 image astronomy books, *Calvin and Hobbes* collections).
 
 As far as formats go, I prefer PDF and ePub, depending on the contents
-of the book. Technical books fair better as PDFs due to elaborate
+of the book. Technical books fare better as PDFs due to elaborate
 typesetting used for diagrams and code samples. For prose-oriented
 content, particularly fiction, ePub is the better format due to its
 flexibility and looseness. *Twenty-Sided Tale* falls in this latter
