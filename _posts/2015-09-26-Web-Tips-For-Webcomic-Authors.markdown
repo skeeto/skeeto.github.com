@@ -36,11 +36,13 @@ published.
 
 Those days are over. Today's authors can cheaply host their comics on
 the web --- *web*comics --- with full control over content, layout,
-and schedule.If they even try to monetize at all, it's generally
+and schedule. If they even try to monetize at all, it's generally
 through advertising, merchandising, or reader donations. Some do it
 all in their free time, while for others it's part or even full time
-employment. The role of the middleman is somewhere between diminished
-to non-existent. Newspapers would *never* publish the vast majority of
+employment. The number of regular readers of a single webcomic can be
+just a handful of people, or up to millions of people. The role of the
+middleman is somewhere between diminished to non-existent. This is
+great, because newspapers would *never* publish the vast majority of
 the comics I read every day.
 
 I've been fortunate to meet a couple of my favorite webcomic authors.
@@ -60,18 +62,18 @@ this is because blogs I follow tend to be computing related and so
 their authors have high proficiency in computing. The same is not
 necessarily true of the webcomics I follow.
 
-### Tips for authors
+### Tips for web authors
 
 Since I want to see this medium continue to thrive, and to do so in a
-way friendly to my own preferences, I'd like to share some tips
-related to common mistakes. Some of these apply more broadly than
+way friendly to my own preferences, I'd like to share some tips to
+avoid common mistakes. Some of these apply more broadly than
 webcomics.
 
 If you're using a host designed for webcomics or similar, such as
 Tumblr, a lot of this stuff will be correct by default without any
 additional work on your part. However, you should still be aware of
-common problems because you can still go out of your way to break
-things.
+common problems because you may unwittingly go out of your way to
+break things.
 
 #### URLs are forever
 
@@ -82,7 +84,7 @@ some specific URL: that sequence of characters that starts with
 URL should point to the same comic for as long as possible --- ideally
 until the heat death of the universe. This will be affected by
 problems such as your host going down, but the impact should only be
-temporary and short.
+temporary and short. A URL is a promise.
 
 People will be using this URL to share your comics with others.
 They'll make posts on other websites linking to your comic. They'll
@@ -94,12 +96,14 @@ revamping their site. For example, the previously the URL contained
 the date but the new URL is only the domain and the title. That breaks
 thousands of links all over the Internet. Visitors using those old
 links will be welcomed with an ugly "404 Not Found" --- or worse, as
-I've seen more than once, a "200 Found" blank page.
+I've seen more than once, a "200 Found" blank page. These are missed
+opportunities for new readers.
 
 If you *really* must change your URLs, the next best thing is to use
 an HTTP "301 Moved Permanently" and redirect to the new URL. This will
-leave all those old links intact and encourage new links to point to
-the new address.
+leave all those old links intact and encourage new links to use the
+new address. If you don't know how this works, ask your local computer
+geek about it.
 
 You should also avoid having multiple URLs for the same content
 without a redirect. Search engines will punish you for it and it's
@@ -111,10 +115,10 @@ canonical URL.
 Your main page probably lists all your comics starting from the most
 recent. This is a good design and doesn't violate anything I
 previously said. That's not the URL for any particular comic, but to
-the main page, which also serves as the page of recent comics. I
+the main page, which also serves as the list of recent comics. I
 strongly recommend that the comics on the main page are also
 hyperlinks to their specific URL. Users naturally expect to find the
-comic's URL for sharing by clicking on the comic.
+comic's URL by clicking on the comic's image.
 
 #### Have an Atom or RSS feed
 
@@ -123,11 +127,12 @@ be][old], but it still comes up on occasion. If you need to pick
 between Atom and RSS, [I recommend Atom][vs], but, honestly, it's only
 important that you have a valid feed with a date. You don't even need
 to put the comic in the feed itself (possibly costing you ad revenue),
-just a link to the comic's URL is fine.
+just a link to the comic's URL is fine. It's main purpose is to say,
+"hey, there's a new comic up!"
 
 You may not use Atom/RSS yourself, but your readers will appreciate
 it. Many of us don't use centralized services like Facebook, Twitter,
-or Google+, and want to follow your work without signing up for a new
+or Google+, and want to follow your work without signing up for a
 third-party service. Atom/RSS is the widely-accepted decentralized
 method for syndication on the web.
 
@@ -135,7 +140,7 @@ Web feeds are really easy; it's just an XML file on your website that
 lists the most recent content. A [validator][valid] can help you
 ensure you've done it correctly.
 
-#### Pick a good, catchy titles
+#### Pick a good, catchy title
 
 One of the biggest barriers to sharing a comic is a lack of title. For
 example, if a reader is going to post your comic on reddit, they need
@@ -149,27 +154,27 @@ with this:
   possible.
 
 * You really don't want readers choosing titles for you, especially
-  while they're impatiently just trying to share your work. If the
-  comic is shared in multiple places, it will end up with a different
+  while they're impatiently trying to share your work. If the comic is
+  shared in multiple places, it will end up with a different
   reader-made title at each.
 
 At minimum your title should appear in the `<title>` element of the
 page so that it shows up in the browser tab and browser's window
 title. The title of the individual comic should come before the title
 of the whole website, since that shows up better in search engines.
-The title should also appear somewhere on the page near the top for
-easy clipboard copying, though it may be worth leaving out depending
-on the style of your comic.
+The title should also appear somewhere near the top of page for easy
+clipboard copying, though it may be worth leaving out depending on the
+style of your comic.
 
 A page without a `<title>` element looks amateur, so don't do that!
 
 #### Think of the future and include dates
 
 This is one of those things that's important anywhere on the web and
-is often violated by blogs, too. Far too much content is published
-without date information. Dates help put your comic in context,
-especially if it's about something topical, and it helps users
-navigate your content though time.
+is often violated by blog articles as well. Far too much content is
+published without a date. Dates put your comic in context, especially
+if it's about something topical, and it helps users navigate your
+content though time.
 
 Putting the date in the URL is sufficient --- even preferred --- if
 you didn't want to display it on the page proper. Your Atom/RSS should
@@ -182,15 +187,15 @@ things I've already read.
 #### How do I contact you?
 
 When I notice one of the previous problems, particularly when they
-suddenly appear in comics I'm already following, I'd like to inform
-you of the problem. Or perhaps I want to compliment you on a well-made
-comic and you don't have a comments section. I can only do this if you
-include some sort of contact information. An e-mail address, even in
-an anti-spam image form, is preferable but not strictly required.
+arise in comics I'm already following, I'd like to inform you of the
+problem. Or perhaps I want to compliment you on a well-made comic and
+you don't have a comments section. I can only do this if you include
+some sort of contact information. An e-mail address, even in an
+anti-spam image form, is preferable but not strictly required.
 
 #### Take advantage of the medium and go big
 
-Comics published in newspapers are really tiny because the newspaper
+Comics published in newspapers are really tiny because newspaper
 editors want to cram a bunch of them onto a couple of pages. You're
 not operating under these limitations, so fight the urge to copy that
 familiar format. Your canvas is practically infinite, so make big,
