@@ -144,7 +144,7 @@ ensure you've done it correctly.
 
 One of the biggest barriers to sharing a comic is a lack of title. For
 example, if a reader is going to post your comic on reddit, they need
-to enter the comic's URL and its title. If they comic doesn't have a
+to enter the comic's URL and its title. If the comic doesn't have a
 title, then this person will need to make one up. There's two problems
 with this:
 
@@ -173,7 +173,7 @@ A page without a `<title>` element looks amateur, so don't do that!
 This is one of those things that's important anywhere on the web and
 is often violated by blog articles as well. Far too much content is
 published without a date. Dates put your comic in context, especially
-if it's about something topical, and it helps users navigate your
+if it's about something topical. It also helps users navigate your
 content though time.
 
 Putting the date in the URL is sufficient --- even preferred --- if
