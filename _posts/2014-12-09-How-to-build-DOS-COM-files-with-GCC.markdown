@@ -293,7 +293,7 @@ The linker script has a `STARTUP` option for handling this, but to
 keep it simple we'll put that right in the program. This is usually
 called `crt0.o` or `Boot.o`, in case those names every come up in your
 own reading. This inline assembly *must* be the very first thing in
-our code, before any includes and such. DOS will so most of the setup
+our code, before any includes and such. DOS will do most of the setup
 for us, we really just have to jump to the entry point.
 
 ~~~C
