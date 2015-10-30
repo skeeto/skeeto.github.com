@@ -104,6 +104,9 @@ number.
     (concat "16#" (mapconcat f (buffer-string) ""))))
 ~~~
 
+(Note: `/dev/urandom` *is* the right choice. There's [no reason to use
+`/dev/random` for generating keys][myth].)
+
 ### Computing e and d
 
 From here the code just follows along from the Wikipedia article.
@@ -237,3 +240,4 @@ packages.
 [euc]: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
 [pow]: https://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method
 [factor]: http://crypto.stackexchange.com/a/5942
+[myth]: http://www.2uo.de/myths-about-urandom/
