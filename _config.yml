@@ -6,8 +6,7 @@ safe: true
 
 markdown: redcarpet
 redcarpet:
-  extensions: ["strikethrough"]
-  extensions: ['smart']
+  extensions: ['smart', 'strikethrough']
 
 url: http://nullprogram.com
 title: null program
