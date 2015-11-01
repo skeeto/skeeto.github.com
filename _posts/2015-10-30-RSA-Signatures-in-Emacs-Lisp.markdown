@@ -73,9 +73,9 @@ mathematically related composite numbers.
 
 calc has a function `calc-next-prime` for finding the next prime
 number following any arbitrary number. It uses a probabilistic
-primarily test --- the Fermat primality test -- to efficiently test
-large integers. It increments the input until it finds a result that
-passes enough iterations of the primality test.
+primarily test --- the ~~Fermat~~ Miller-Rabin primality test -- to
+efficiently test large integers. It increments the input until it
+finds a result that passes enough iterations of the primality test.
 
 ~~~cl
 (calc-eval "nextprime($1)" nil "100000000000000000")
