@@ -177,7 +177,7 @@ int dosmain(void)
 }
 ~~~
 
-COM files are limited to 65,279 bytes in side. This is because an x86
+COM files are limited to 65,279 bytes in size. This is because an x86
 memory segment is 64kB and COM files are simply loaded by DOS to
 0x0100 in the segment and executed. There are no headers, it's just a
 raw binary. Since a COM program can never be of any significant size,
