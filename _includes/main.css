@@ -99,6 +99,7 @@ article, footer {
 
 article p {
     margin: 0 0 20px 0;
+    line-height: 140%;
 }
 
 article pre {
@@ -374,8 +375,7 @@ nav {
     }
 
     article p {
-        text-indent: 2em;
-        line-height: 120%;
+        line-height: 135%;
     }
 
     article pre {
