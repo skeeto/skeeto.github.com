@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Signika';
+  src: url(Signika.woff) format('woff');
+}
+
 body {
     color: {{ page.foreA }};
     background-color: {{ page.backA }};
@@ -23,7 +28,7 @@ header {
 
 header h1 {
     text-align: right;
-    font-size: 2.6em;
+    font-size: 42px;
     text-shadow: 0px 8px 10px #042;
     font-family: "Courier New", Courier, monospace;
 }
@@ -53,14 +58,14 @@ aside {
     padding: 3px 20px 3px 20px;
     margin-bottom: 10px;
     width: 160px;
-    font-size: 75%;
+    font-size: 12px;
     border-radius: 15px;
     box-shadow: 0 0 3px 3px {{ page.border }};
     text-align: justify;
 }
 
 aside h2 {
-    font-size: 1.2em;
+    font-size: 16px;
 }
 
 address {
@@ -94,16 +99,15 @@ article, footer {
     text-align: justify;
     border-radius: 15px;
     box-shadow: 0 0 3px 3px {{ page.border }};
-    font-size: 1.25em;
 }
 
-article p {
+article p, article ul {
+    font-size: 20px;
     margin: 0 0 20px 0;
     line-height: 140%;
 }
 
 article pre {
-    font-size: 0.8em;
     margin: 0 0 20px 0;
 }
 
@@ -121,7 +125,7 @@ h2 {
 }
 
 article h2 {
-    font-size: 1.4em;
+    font-size: 28px;
     margin-top: 0.5em;
 }
 
@@ -131,10 +135,12 @@ h2 a {
 }
 
 article h3, article h4, article h5, article h6 {
+    font-size: 22px;
     margin: 20px 0 10px 0;
 }
 
 code {
+    font-size: 15px;
     border: 1px solid {{ page.border }};
     background-color: {{ page.backA }};
 }
@@ -147,6 +153,8 @@ pre {
 }
 
 pre code {
+    font-size: 12px;
+    line-height: 12px;
     border: none;
     background-color: {{ page.backA }};
 }
@@ -158,14 +166,14 @@ blockquote {
 }
 
 .date {
-    font-size: 90%;
+    font-size: 16px;
     color: {{ page.foreB }};
     text-align: center;
     margin: -1em 0 1em 0;
 }
 
 .url {
-    font-size: 90%;
+    font-size: 16px;
     color: {{ page.foreB }};
     text-align: center;
     margin: 0 0 1em 0;
@@ -205,8 +213,8 @@ p.center {
     text-align: center;
 }
 
-.permalink, .tags {
-    font-size: 90%;
+.permalink, .tags, .commentlink {
+    font-size: 18px;
     text-align: right;
 }
 
@@ -235,7 +243,7 @@ p.center {
 /* Footer */
 
 footer {
-    font-size: 75%;
+    font-size: 12px;
 }
 
 nav {
@@ -260,8 +268,9 @@ nav {
 
 /* Archive CSS */
 
-.archive {
-    font-size: 85%;
+.archive li {
+    font-size: 17px;
+    margin: 0;
 }
 
 .archive li:nth-child(odd) {
