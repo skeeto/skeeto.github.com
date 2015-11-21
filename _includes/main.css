@@ -77,6 +77,8 @@ img.portrait {
     border-radius: 15px;
     border: 2px solid {{ page.border }};
     margin-bottom: -1em;
+    width: 140px;
+    height: 140px;
 }
 
 .buttons {
