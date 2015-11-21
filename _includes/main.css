@@ -19,7 +19,7 @@ body a {
 header {
     background: url(/img/logo.jpg) no-repeat;
     width: 860px;
-    height: 210px;
+    height: 100px;
     padding: 40px 40px 0 0;
     margin: 10px 0 10px 0;
     border-radius: 15px;
@@ -46,7 +46,7 @@ header a {
 
 #sidebar {
     position: absolute;
-    top: 270px;
+    top: 160px;
 }
 
 #sidebar div {
