@@ -156,7 +156,7 @@ certain keys --- which I know many users have done, including me.
 
 If you've updated very recently, you probably noticed Elfeed got a
 brand new header. Previously it faked a header by writing to the first
-line of the header. This is because somehow I had no idea Emacs had
+line of the buffer. This is because somehow I had no idea Emacs had
 official support for buffer headers (despite notmuch using them all
 this time).
 
