@@ -8,7 +8,9 @@ uuid: 205b43ce-faa8-33c8-db27-173ddad64229
 
 <p class="abstract">
 Update: In the next article, I <a href="/blog/2014/06/22/">extend this
-program to solving mazes</a>.
+program to solving mazes</a>. The demo has also been <a
+href="http://rykap.com/graphics/skew/2016/01/23/game-of-life.html">
+ported to the Skew programming language</a>.
 </p>
 
 [Conway's Game of Life][life] is [another well-matched
