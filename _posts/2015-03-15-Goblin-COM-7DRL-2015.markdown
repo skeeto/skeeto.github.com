@@ -2,7 +2,7 @@
 title: Goblin-COM 7DRL 2015
 layout: post
 date: 2015-03-15T21:56:12Z
-tags: [game, media]
+tags: [game, media, win32]
 uuid: 362ccedf-9538-358f-9474-5befd8bce4de
 ---
 
