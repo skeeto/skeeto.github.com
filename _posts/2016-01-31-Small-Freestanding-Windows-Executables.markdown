@@ -7,7 +7,7 @@ uuid: 8eddc701-52d3-3b0c-a8a8-dd13da6ead2c
 ---
 
 Recently I've been experimenting with freestanding C programs on
-Windows. "Freestanding" refers to programs that don't link, either
+Windows. *Freestanding* refers to programs that don't link, either
 statically or dynamically, against a standard library (i.e. libc).
 This is typical for operating systems and [similar, bare metal
 situations][com]. Normally a C compiler can make assumptions about the
@@ -156,7 +156,7 @@ protection.
 Alternatively you could link against libgcc (statically) with `-lgcc`,
 but, again, I'm going for a tiny executable.
 
-### A "freestanding" example
+### A freestanding example
 
 Here's an example of a Windows "Hello, World" that doesn't use a C
 library.
@@ -189,10 +189,10 @@ wouldn't make a significant difference.
 
 From here you could create a GUI by linking against `user32.dll` and
 `gdi32.dll` (both also part of Win32) and calling the appropriate
-functions. I already [ported my OpenGL demo][opengl] to a
-"freestanding" .exe, dropping GLFW and directly using Win32 and WGL.
-It's much less portable, but the final .exe is only 4kB, down from the
-original 104kB (static linking against GLFW).
+functions. I already [ported my OpenGL demo][opengl] to a freestanding
+.exe, dropping GLFW and directly using Win32 and WGL. It's much less
+portable, but the final .exe is only 4kB, down from the original 104kB
+(static linking against GLFW).
 
 I may go this route for [the upcoming 7DRL 2016][7drl] in March.
 
