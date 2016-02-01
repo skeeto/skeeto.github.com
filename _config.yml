@@ -1,12 +1,8 @@
 permalink: /blog/:year/:month/:day/
-paginate: 10
-highlighter: pygments
+markdown: kramdown
+highlighter: rouge
 timezone: GMT
 safe: true
-
-markdown: redcarpet
-redcarpet:
-  extensions: ['smart', 'strikethrough']
 
 url: http://nullprogram.com
 title: null program

@@ -151,7 +151,7 @@ The text file input should look like this:
 
 * [/download/prison/example.txt](/download/prison/example.txt)
 
-~~You will need Octave-Forge.~~
+<del>You will need Octave-Forge.</del>
 
 The script will make PNGs. You can either change the script to make
 GIFs (didn't try this myself), or use something like

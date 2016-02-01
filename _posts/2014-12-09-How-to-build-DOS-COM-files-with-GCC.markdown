@@ -139,7 +139,7 @@ passed in registers `dx` and `ds`.
 Here's the GCC inline assembly `print()` function. Strings passed to
 this function must be terminated with a `$`. Why? Because DOS.
 
-~~~C
+~~~c
 static void print(char *string)
 {
     asm volatile ("mov   $0x09, %%ah\n"
@@ -169,7 +169,7 @@ Now for the main function. The name of this function shouldn't matter,
 but I'm avoiding calling it `main()` since MinGW has a funny ideas
 about mangling this particular symbol, even when it's asked not to.
 
-~~~C
+~~~c
 int dosmain(void)
 {
     print("Hello, World!\n$");
@@ -296,7 +296,7 @@ own reading. This inline assembly *must* be the very first thing in
 our code, before any includes and such. DOS will do most of the setup
 for us, we really just have to jump to the entry point.
 
-~~~C
+~~~c
 asm (".code16gcc\n"
      "call  dosmain\n"
      "mov   $0x4C, %ah\n"
@@ -316,7 +316,7 @@ inputs or outputs.
 
 Here's the entire C program.
 
-~~~C
+~~~c
 asm (".code16gcc\n"
      "call  dosmain\n"
      "mov   $0x4C,%ah\n"
@@ -375,7 +375,7 @@ leave it exactly the same). That memory would then managed by
 Here's how we can get `sbrk()` in a COM program. Notice I have to
 define my own `size_t`, since we don't have a standard library.
 
-~~~C
+~~~c
 typedef unsigned short  size_t;
 
 extern char _heap;

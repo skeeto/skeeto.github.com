@@ -45,11 +45,11 @@ function mandel_img = mandel ()
 end
 ~~~
 
-~~You may need to comment out the `waitbar` line if you do not have
+<del>You may need to comment out the `waitbar` line if you do not have
 [Octave-Forge][forge] installed properly (as is the case with Octave
 2.9 on Debian as of this writing) or at all. You will also need
-Octave-Forge if you want to use the image functions described below.~~
-(*This information is out of date.*)
+Octave-Forge if you want to use the image functions described
+below.</del> (*This information is out of date.*)
 
 You can find the same code all over the Internet for many different
 languages. The advantage with Octave is that it knows about complex

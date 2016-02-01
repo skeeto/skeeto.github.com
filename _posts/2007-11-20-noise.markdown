@@ -122,8 +122,8 @@ Another way to make noise is [fractional Brownian motion][brown]
 (FBM). Generally, this noise will be better and more useful than
 diamond-square noise (examples later). I personally like this person's
 (mislabeled) approach: [FPM Noise][wrong]. It is easy to implement and
-understand, ~~though it doesn't have the all advantages you get from
-generating Perlin noise.~~
+understand, <del>though it doesn't have the all advantages you get
+from generating Perlin noise.</del>
 
 If you don't feel like clicking through and see the nice introduction
 to FBM noise there, here is the idea of this approach: we create

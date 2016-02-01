@@ -31,8 +31,8 @@ for me, thanks.
 
 I have discovered several solutions to watching YouTube with free
 software. There are two steps involved: getting the video and playing
-the video. For the first you have [youtube-dl][youtube-dl] ~~and then
-you have [Firefox][firefox] [Fast Video Download][fvd]~~.
+the video. For the first you have [youtube-dl][youtube-dl] <del>and
+then you have [Firefox][firefox] [Fast Video Download][fvd]</del>.
 
 youtube-dl is a Python script that you can easily install on your
 system. You just give it a YouTube URL and it does all the work. It

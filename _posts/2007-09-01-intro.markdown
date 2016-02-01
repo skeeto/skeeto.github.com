@@ -27,8 +27,8 @@ I have already published at my old student location. This will include
 little intros to my old projects and a bunch of code snippets.
 
 Also, separate from this blog thing are my projects, such as the PNG
-Archiver and binitools. ~~These have a permanent home located under
-projects/~~. (*No longer here, after changing web hosts.*)
+Archiver and binitools. <del>These have a permanent home located under
+projects/</del>. (*No longer here, after changing web hosts.*)
 
 I am a big [free software][free] fan and you will probably see the
 [GNU project][gnu] being mentioned a lot around here. I also use

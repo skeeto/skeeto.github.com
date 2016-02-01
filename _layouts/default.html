@@ -83,24 +83,7 @@
     <footer>
       <!-- Navigation -->
       <nav>
-        <span class="nav-prev">
-          {% if paginator.previous_page > 1 %}
-            {% capture prev_page %}page{{ paginator.previous_page }}{% endcapture %}
-          {% endif %}
-          {% if paginator.previous_page %}
-            <a href="/{{ prev_page }}" title="Go to previous page">
-              &larr; Previous
-            </a>
-          {% endif %}
-        </span>
         <a href="/index/" title="Go to archives">Archives</a>
-        <span class="nav-next">
-          {% if paginator.next_page %}
-            <a href="/page{{ paginator.next_page }}" title="Go to next page">
-              Next &rarr;
-            </a>
-          {% endif %}
-        </span>
       </nav>
       <!-- Uncopyright notice -->
       <p>

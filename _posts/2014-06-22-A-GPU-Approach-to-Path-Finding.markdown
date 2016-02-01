@@ -131,14 +131,15 @@ a much more interesting demo.
 
 #### Skipping the Route Step
 
-On my computers, with a 1023x1023 Kruskal maze ~~it's about an order
-of magnitude slower~~ (see update below) than [A*][astar] ([rot.js's
-version][rot]) for the same maze. ~~Not very impressive!~~ I *believe*
-this gap will close with time, as GPUs become parallel faster than
-CPUs get faster. However, there's something important to consider:
-it's not only solving the shortest path between source and goal,
-**it's finding the shortest path between the source and any other
-point**. At its core it's a [breadth-first grid search][bfs].
+On my computers, with a 1023x1023 Kruskal maze <del>it's about an
+order of magnitude slower</del> (see update below) than [A*][astar]
+([rot.js's version][rot]) for the same maze. <del>Not very
+impressive!</del> I *believe* this gap will close with time, as GPUs
+become parallel faster than CPUs get faster. However, there's
+something important to consider: it's not only solving the shortest
+path between source and goal, **it's finding the shortest path between
+the source and any other point**. At its core it's a [breadth-first
+grid search][bfs].
 
 *Update*: One day after writing this article I realized that
 `glReadPixels` was causing a gigantic bottlebeck. By only checking for
