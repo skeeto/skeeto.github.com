@@ -23,11 +23,9 @@ gradient vectors is calculated. Vectors are reduced to a single noise
 value by dot product.
 
 Rather than waste time trying to explain it myself, I'll link to an
-existing, great tutorial:
-[The Perlin noise math FAQ](http://webstaff.itn.liu.se/~stegu/TNM022-2005/perlinnoiselinks/perlin-noise-math-faq.html). There's
-also the original presentation by Ken Perlin,
-[Making Noise](http://www.noisemachine.com/talk1/), which is more
-concise but harder to grok.
+existing, great tutorial: [The Perlin noise math FAQ][faq]. There's
+also the original presentation by Ken Perlin, [Making Noise][machine],
+which is more concise but harder to grok.
 
 When making my own implementation, I started by with Octave. It's my
 "go to language" for creating a prototype when I'm doing something
@@ -158,3 +156,7 @@ I still don't really have a use for Perlin noise, especially not under
 constraints that require I use OpenCL to generate it. The big thing I
 got out of this project was my first experience with OpenCL, something
 that really *is* useful at work.
+
+
+[faq]: https://web.archive.org/web/20150304163452/http://webstaff.itn.liu.se/~stegu/TNM022-2005/perlinnoiselinks/perlin-noise-math-faq.html
+[machine]: (http://www.noisemachine.com/talk1/)
