@@ -123,7 +123,7 @@ hotpatch(void *target, void *replacement)
     union {
         uint8_t bytes[8];
         uint64_t value;
-    } instruction = {{0xe9, rel >> 0, rel >> 8, rel >> 16, rel >> 24}};
+    } instruction = { {0xe9, rel >> 0, rel >> 8, rel >> 16, rel >> 24} };
     *(uint64_t *)target = instruction.value;
     mprotect(page, 4096, PROT_EXEC);
 }
