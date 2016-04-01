@@ -80,7 +80,7 @@ hotpatch prologue is properly aligned.
 As you might have guessed, this is primarily fixed with the `noinline`
 function attribute. Unfortunately this isn't enough. It also needs the
 `noclone` attribute to prevent GCC from making a clone of the function
-and inlining the clone. Even further, if GCC determines there are no
+and calling that instead. Even further, if GCC determines there are no
 side effects, it may cache the return value and only ever call the
 function once. To convince GCC that there's a side effect, I added an
 empty inline assembly string (`__asm("")`). Since `puts()` has a side
