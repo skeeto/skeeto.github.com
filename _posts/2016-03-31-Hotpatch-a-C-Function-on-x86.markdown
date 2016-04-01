@@ -66,7 +66,7 @@ API, hence the "ms" in the name.
 
 * The prologue NOP needs to be updated atomically. I can't let the
   other thread see a half-written instruction or, again, disaster. On
-  x86, this means I have an alignment requirement. Since I'm
+  x86 this means I have an alignment requirement. Since I'm
   overwriting an 8-byte instruction, I'm specifically going to need
   8-byte alignment to get an atomic write.
 
@@ -93,7 +93,7 @@ hello(void)
 
 And what does the assembly look like?
 
-    $ objdump -Mintel -d example
+    $ objdump -Mintel -d hotpatch
     0000000000400848 <hello>:
       400848:       48 8d a4 24 00 00 00    lea    rsp,[rsp+0x0]
       40084f:       00
@@ -132,8 +132,9 @@ hotpatch(void *target, void *replacement)
 It takes the address of the function to be patched and the address of
 the function to replace it. As mentioned, the target *must* be 8-byte
 aligned (enforced by the assert). It's also important this function is
-only called by one thread at a time. If that was a concern, I'd wrap
-it in a mutex to create a critical section.
+only called by one thread at a time, even on different targets. If
+that was a concern, I'd wrap it in a mutex to create a critical
+section.
 
 There are a number of things going on here, so let's go through them
 one at a time:
@@ -143,7 +144,7 @@ one at a time:
 The .text segment will not be writeable by default. This is for both
 security and safety. Before I can hotpatch the function I need to make
 the function writeable. To make the function writeable, I need to make
-its page writable. To make it's page writeable I need to call
+its page writable. To make its page writeable I need to call
 `mprotect()`. If there was another thread monkeying with the page
 attributes of this page at the same time (another thread calling
 `hotpatch()`) I'd be in trouble.
