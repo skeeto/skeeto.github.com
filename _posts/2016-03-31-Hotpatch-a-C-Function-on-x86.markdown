@@ -230,6 +230,16 @@ thread without its knowledge. In a more practical situation, this
 could be used to update parts of a running program without restarting
 or even synchronizing.
 
+### Further Reading
+
+These related articles have been shared with me since publishing this
+article:
+
+* [Why do Windows functions all begin with a pointless MOV EDI, EDI instruction?][chen]
+* [x86 API Hooking Demystified][hook]
+
 
 [prev]: /blog/2014/12/23/
 [man]: http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
+[chen]: https://blogs.msdn.microsoft.com/oldnewthing/20110921-00/?p=9583
+[hook]: http://jbremer.org/x86-api-hooking-demystified/
