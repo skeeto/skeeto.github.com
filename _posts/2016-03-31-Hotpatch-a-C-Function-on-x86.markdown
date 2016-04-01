@@ -253,9 +253,13 @@ article:
 
 * [Why do Windows functions all begin with a pointless MOV EDI, EDI instruction?][chen]
 * [x86 API Hooking Demystified][hook]
+* [Living on the edge: Rapid-toggling probes with cross modification on x86][toggle]
+* [arm64: alternatives runtime patching][lwn]
 
 
 [prev]: /blog/2014/12/23/
 [man]: http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
 [chen]: https://blogs.msdn.microsoft.com/oldnewthing/20110921-00/?p=9583
 [hook]: http://jbremer.org/x86-api-hooking-demystified/
+[toggle]: http://conf.researchr.org/event/pldi-2016/pldi-2016-papers-living-on-the-edge-rapid-toggling-probes-with-cross-modification-on-x86
+[lwn]: https://lwn.net/Articles/620640/
