@@ -77,16 +77,27 @@ hotpatch prologue is properly aligned.
   inlined. I'll never be able to updated inlined copies of the
   function.
 
-As you might have guessed, this is fixed with the `noinline` function
-attribute. What does the function look like now?
+As you might have guessed, this is primarily fixed with the `noinline`
+function attribute. Unfortunately this isn't enough. It also needs the
+`noclone` attribute to prevent GCC from making a clone of the function
+and inlining the clone. Even further, if GCC determines there are no
+side effects, it may cache the return value and only ever call the
+function once. To convince GCC that there's a side effect, I added an
+empty inline assembly string (`__asm("")`). Since `puts()` has a side
+effect (output), this isn't truly necessary for this particular
+example, but I'm being thorough.
+
+What does the function look like now?
 
 ~~~c
 __attribute__ ((ms_hook_prologue))
 __attribute__ ((aligned(8)))
 __attribute__ ((noinline))
+__attribute__ ((noclone))
 void
 hello(void)
 {
+    __asm("");
     puts("hello");
 }
 ~~~

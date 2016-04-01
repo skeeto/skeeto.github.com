@@ -10,9 +10,11 @@
 __attribute__ ((ms_hook_prologue))
 __attribute__ ((aligned(8)))
 __attribute__ ((noinline))
+__attribute__ ((noclone))
 void
 hello(void)
 {
+    __asm("");
     puts("hello");
 }
 
