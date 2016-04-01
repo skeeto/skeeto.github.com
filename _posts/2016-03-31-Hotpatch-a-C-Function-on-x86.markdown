@@ -73,19 +73,20 @@ API, hence the "ms" in the name.
 The solution is the `aligned` function attribute, ensuring the
 hotpatch prologue is properly aligned.
 
-* The final problem is that it's very important this function is never
-  inlined. I'll never be able to updated inlined copies of the
-  function.
+* The final problem is that there must be exactly one copy of this
+  function in the compiled program. It must never be inlined or
+  cloned, since these won't be hotpatched.
 
 As you might have guessed, this is primarily fixed with the `noinline`
-function attribute. Unfortunately this isn't enough. It also needs the
-`noclone` attribute to prevent GCC from making a clone of the function
-and calling that instead. Even further, if GCC determines there are no
-side effects, it may cache the return value and only ever call the
-function once. To convince GCC that there's a side effect, I added an
-empty inline assembly string (`__asm("")`). Since `puts()` has a side
-effect (output), this isn't truly necessary for this particular
-example, but I'm being thorough.
+function attribute. Since GCC may also clone the function and call
+that instead, so it also needs the `noclone` attribute.
+
+Even further, if GCC determines there are no side effects, it may
+cache the return value and only ever call the function once. To
+convince GCC that there's a side effect, I added an empty inline
+assembly string (`__asm("")`). Since `puts()` has a side effect
+(output), this isn't truly necessary for this particular example, but
+I'm being thorough.
 
 What does the function look like now?
 
