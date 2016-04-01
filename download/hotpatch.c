@@ -27,7 +27,7 @@ void
 hotpatch(void *target, void *replacement)
 {
     assert(((uintptr_t)target & 0x07) == 0);
-    void *page = (void *)((uintptr_t)hello & ~0xfff);
+    void *page = (void *)((uintptr_t)target & ~0xfff);
     mprotect(page, 4096, PROT_WRITE | PROT_EXEC);
     uint32_t rel = (char *)replacement - (char *)target - 5;
     union {
