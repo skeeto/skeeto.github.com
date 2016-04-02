@@ -165,9 +165,9 @@ It finds the page by rounding the target address down to the nearest
 4096, the assumed page size (sorry hagepages). *Warning*: I'm being a
 bad programmer and not checking the result of `mprotect()`. If it
 fails, the program will crash and burn. It will always fail systems
-with W^X enforcement, which will likely become the standard in the
-future. Under W^X ("write XOR execute"), memory can either be
-writeable or executable, but never both at the same time.
+with W^X enforcement, which will likely become the standard [in the
+future][enforce]. Under W^X ("write XOR execute"), memory can either
+be writeable or executable, but never both at the same time.
 
 What if the function straddles pages? Well, I'm only patching the
 first 8 bytes, which, thanks to alignment, will sit entirely inside
@@ -263,3 +263,4 @@ article:
 [hook]: http://jbremer.org/x86-api-hooking-demystified/
 [toggle]: http://conf.researchr.org/event/pldi-2016/pldi-2016-papers-living-on-the-edge-rapid-toggling-probes-with-cross-modification-on-x86
 [lwn]: https://lwn.net/Articles/620640/
+[enforce]: https://marc.info/?t=145942649500004
