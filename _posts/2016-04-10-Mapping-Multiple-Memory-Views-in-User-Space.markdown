@@ -224,6 +224,7 @@ memory_alias_map(size_t size, size_t naddr, void **addrs)
                         fd, 0);
         if (addrs[i] == MAP_FAILED) {
             memory_alias_unmap(size, i, addrs);
+            close(fd);
             return -1;
         }
     }
@@ -270,6 +271,7 @@ memory_alias_map(size_t size, size_t naddr, void **addrs)
         addrs[i] = MapViewOfFileEx(m, access, 0, 0, size, addrs[i]);
         if (addrs[i] == NULL) {
             memory_alias_unmap(size, i, addrs);
+            close(fd);
             return -1;
         }
     }
