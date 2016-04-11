@@ -1,3 +1,7 @@
+/* POSIX: cc -std=c99 -Wall -Wextra -Os memalias.c -lrt
+ * MinGW: cc -std=c99 -Wall -Wextra -Os memalias.c
+ */
+#define _POSIX_C_SOURCE 200112L // ftruncate()
 #include <stdio.h>
 #include <stdint.h>
 #include <assert.h>
