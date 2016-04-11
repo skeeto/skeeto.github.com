@@ -73,9 +73,10 @@ to access it by name. File descriptors can be shared with other
 processes via `fork(2)` or through UNIX domain sockets, so a name
 isn't strictly required.
 
-OpenBSD introduced `shm_mkstemp(3)` to solve this problem, but it's
-not widely available. On Linux, as of this writing, the `O_TMPFILE`
-flag may or may not provide a fix ([it's undocumented][tmpfile]).
+OpenBSD introduced [`shm_mkstemp(3)`][mkstemp] to solve this problem,
+but it's not widely available. On Linux, as of this writing, the
+`O_TMPFILE` flag may or may not provide a fix ([it's
+undocumented][tmpfile]).
 
 The portable workaround is to attempt to choose a unique name, open
 the file with `O_CREAT | O_EXCL` (either atomically create the file or
@@ -288,3 +289,4 @@ multiple memory views.
 [hotpatch]: /blog/2016/03/31/
 [amd64]: http://stackoverflow.com/a/18905927
 [tmpfile]: http://comments.gmane.org/gmane.linux.man/9815
+[mkstemp]: http://man.openbsd.org/OpenBSD-current/man3/shm_mkstemp.3
