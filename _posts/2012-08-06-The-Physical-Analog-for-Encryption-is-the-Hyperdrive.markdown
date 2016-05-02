@@ -1,7 +1,7 @@
 ---
 title: The Physical Analog for Encryption is the Hyperdrive
 layout: post
-tags: [crypto]
+tags: [crypto, compsci]
 uuid: 89cd4041-90bf-3536-3bda-c1fe56e26383
 ---
 

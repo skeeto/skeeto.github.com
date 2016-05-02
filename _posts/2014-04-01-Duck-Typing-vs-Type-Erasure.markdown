@@ -2,7 +2,7 @@
 title: Duck Typing vs. Type Erasure
 layout: post
 date: 2014-04-01T21:07:31Z
-tags: [java, cpp, lang]
+tags: [java, cpp, lang, compsci]
 uuid: d01a1d2e-2752-35f4-949a-ff69d7f78e22
 ---
 
