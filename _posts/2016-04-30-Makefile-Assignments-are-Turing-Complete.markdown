@@ -293,6 +293,7 @@ so that it doesn't need to appear literally in the source.
 And that's all there is to it: Conway's Game of Life running in a
 Makefile. [Life, uh, finds a way][goldblum].
 
+<!-- Obviously the following image is not public domain. -->
 ![](/img/humor/life-finds-a-way.jpg)
 
 
