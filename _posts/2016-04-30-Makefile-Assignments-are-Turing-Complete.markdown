@@ -184,10 +184,10 @@ with new inputs in this target,
 
 Before going any further, now that loops have been added, the natural
 next question is halting. In reality, the operating system will take
-care of that after some hundreds of millions of make processes have
-carelessly been invoked by this horribly inefficient scheme. However,
-we can do better. The program can clobber the `MAKE` variable when
-it's ready to halt. Let's formalize it.
+care of that after some millions of make processes have carelessly
+been invoked by this horribly inefficient scheme. However, we can do
+better. The program can clobber the `MAKE` variable when it's ready to
+halt. Let's formalize it.
 
     loop = $(MAKE) $(args)
     output :
@@ -284,7 +284,7 @@ simple:
 
 The display output, to be given to `printf`, is built similarly:
 
-    output = $(n0000)$(n0100)$(n0200)$(n0300)
+    output = $(n0000)$(n0100)$(n0200)$(n0300)...
 
 In the real version, this is decorated with an ANSI escape code that
 clears the terminal. The `printf` interprets the escape byte (`\033`)
