@@ -19,10 +19,11 @@ If you want to see it in action for yourself before reading further,
 here's a Makefile that implements Conway's Game of Life (40x40) using
 only macro assignments.
 
-* [**life.mak**][demo] (174kB)
+* [**life.mak**][demo] (174kB) [[or generate your own][gen]]
 
 Run it with any make program in an ANSI terminal. It *must* literally
-be named `life.mak`.
+be named `life.mak`. Beware: if you run it longer than a few minutes,
+your computer may begin thrashing.
 
     make -f life.mak
 
@@ -305,3 +306,4 @@ Makefile. [Life, uh, finds a way][goldblum].
 [gol]: http://rendell-attic.org/gol/tm.htm
 [goldblum]: https://www.youtube.com/watch?v=dMjQ3hA9mEA
 [recur]: http://aegis.sourceforge.net/auug97.pdf
+[gen]: https://github.com/skeeto/makefile-game-of-life
