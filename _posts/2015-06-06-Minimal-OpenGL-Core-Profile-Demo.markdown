@@ -14,8 +14,8 @@ advised to specifically learn *core profile*, which drops nearly all
 the legacy parts of the API.
 
 However, since much of the OpenGL-related content to be found online,
-even today, [is outdated][outdated] -- and, worse, it's not marked as
-such -- good, modern core profile examples have been hard to come by.
+even today, [is outdated][outdated] — and, worse, it's not marked as
+such — good, modern core profile examples have been hard to come by.
 The relevant examples I could find at the time were more complicated
 than necessary, due to the common problem that full 3D graphics are
 too closely conflated with OpenGL. The examples would include matrix
@@ -130,8 +130,8 @@ practice, you drop the generated code directly into your project
 (embedded) rather than rely on the system to provide it as a library.
 
 A great (and probably better) alternative to gl3w is
-[glLoadgen][glloadgen]. It's the same idea -- an automatically
-generated OpenGL loader -- but allows for full customization of the
+[glLoadgen][glloadgen]. It's the same idea — an automatically
+generated OpenGL loader — but allows for full customization of the
 output, such as the inclusion of select OpenGL extensions.
 
 ### Conclusion

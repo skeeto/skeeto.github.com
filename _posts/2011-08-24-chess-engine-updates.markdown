@@ -45,7 +45,7 @@ the GUI so that the user can select the difficulty setting.
 I've also advanced my knowledge of Java threading, cleaning up thread
 management in the engine. There's no difference from a user
 perspective, except that it no longer triggers thread-related JVM bugs
--- which I've seen occur when rapidly instantiating and tearing down
+— which I've seen occur when rapidly instantiating and tearing down
 many threads.
 
 As a side-effect of tidying threading, I made an experimental branch

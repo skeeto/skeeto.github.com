@@ -17,7 +17,7 @@ year.
 x86-lookup is also available from [MELPA][melpa].
 
 To use it, you'll need [Poppler's][poppler] pdftotext command line
-program --- used to build an index of the PDF --- and a copy of the
+program — used to build an index of the PDF — and a copy of the
 complete Volume 2 of Intel's instruction set manual. There's only one
 command to worry about: `M-x x86-lookup`.
 

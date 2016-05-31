@@ -101,7 +101,7 @@ semester is over.
 
 Another is that the students are unaware of the amount of changes they
 make. Some of these patches contain a significant number of trivial
-changes -- breaking long lines in the original source, changing
+changes — breaking long lines in the original source, changing
 whitespace within lines, etc. If students focused on crafting a tidy
 patch they might try to avoid including these types of changes in
 their submissions. I like to imagine this process being similar to
@@ -132,8 +132,8 @@ become a realistic goal.
 
 I've expressed all these ideas to the class's instructor, my
 colleague, so maybe some things will change in future semesters. If
-I'm offered the opportunity again -- assuming I didn't screw this
-semester up already -- I'm still unsure if I would want to grade a
+I'm offered the opportunity again — assuming I didn't screw this
+semester up already — I'm still unsure if I would want to grade a
 class again. It's a lot of work for, optimistically, what amounts to
 the same pay rate I received as an engineering intern in college. This
 first experience at grading has been very educational, making me

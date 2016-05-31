@@ -64,7 +64,7 @@ integer division</a>),
 {% endhighlight %}
 <p>
 If we're only interested in the sum, we could save memory by making
-this tail recursive -- or iterative -- and summing the dice as we
+this tail recursive — or iterative — and summing the dice as we
 calculate them. Ignoring the exponent, this is <code>O(n)</code>, not
 better than the simple algorithm in terms of growth rate. This
 algorithm is more efficient when it comes to entropy, though.
@@ -122,7 +122,7 @@ manipulate the formulas such that it's not so expensive.
 <p>
 If you're rolling lots of dice and you want to preserve binary
 entropy, try it out. If you want to be really efficient queue up rolls
--- or generate them ahead of time -- so that the number of outcomes is
+— or generate them ahead of time — so that the number of outcomes is
 just below a power of two. In the case of <code>d6</code>, some good
 number of dice to roll are 17 (~43.94 bits), 29 (~74.96), 41
 (~105.983), 94 (~242.986 bits), 200 (~516.993), 253 (~653.995 bits),

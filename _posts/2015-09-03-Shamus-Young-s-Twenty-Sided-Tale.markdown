@@ -8,7 +8,7 @@ uuid: 0d11edb9-17ba-336b-25b4-3cc479ba9f03
 
 Last month I assembled and edited [Shamus Young's Twenty-Sided
 Tale][orig], originally a series of 84 blog articles, into an e-book.
-The book is 75,000 words --- about the average length of a novel ---
+The book is 75,000 words — about the average length of a novel —
 recording the complete story of one of Shamus' *Dungeons and Dragons*
 campaigns. Since he's [shared the e-book on his blog][tenth], I'm now
 free to pull back the curtain on this little project.
@@ -66,8 +66,8 @@ like LaTeX.
 
 Once I got the book in a comfortable format, I spent another 1.5 weeks
 combing through the book fixing up punctuation, spelling, grammar,
-and, in some cases, wording. It was my first time editing a book ---
-fiction in particular --- and in many cases I wasn't sure of the
+and, in some cases, wording. It was my first time editing a book —
+fiction in particular — and in many cases I wasn't sure of the
 correct way to punctuate and capitalize some particular expression. Is
 "Foreman" capitalized when talking about a particular foreman? What
 about "Queen?" How are quoted questions punctuated when the sentence

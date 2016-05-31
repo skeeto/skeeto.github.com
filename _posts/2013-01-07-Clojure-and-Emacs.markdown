@@ -46,7 +46,7 @@ I've wasted enough time in my life configuring and installing
 software. I hate sinking time into doing so without capturing that
 work in source control, so that I never need to spend time on that
 particular thing again. I don't mean the installation itself but the
-configuration -- the difference from the defaults. (And the better the
+configuration — the difference from the defaults. (And the better the
 defaults, the smaller my configuration needs to be.) With
 [my dotfiles repository][dotfiles] and Debian, I can go from a
 computer with no operating system to a fully productive development
@@ -173,8 +173,8 @@ few months of studying [the API][api], learning the idioms, and
 practicing, I expect to be a fluent speaker.
 
 I think it's ultimately a good thing I didn't get into Clojure a
-couple of years ago. That gave me time to build up -- as a sort of
-rite of passage -- needed knowledge and experience with Java, which
+couple of years ago. That gave me time to build up — as a sort of
+rite of passage — needed knowledge and experience with Java, which
 deliberately, through the interop, plays a significant role in
 Clojure.
 

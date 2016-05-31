@@ -21,7 +21,7 @@ for my own archival purposes.
 
 I didn't quite understand what I was doing so I screwed up the
 math. All the vector computations were done independently. Integration
-was done by Euler method -- a sin I continue to commit regularly to
+was done by Euler method — a sin I continue to commit regularly to
 this day but now I'm at least aware of the limitations. Despite this,
 it was still accurate enough to look interesting.
 
@@ -49,7 +49,7 @@ just had GNU Octave plot it for me, which I turned into videos. This
 first video is a static view of the origin of the coordinate
 system. If you watch (or skip) all the way to the end you'll see that
 the galaxy drifts out of view. This is due to a bias in the random
-number generator -- the galaxy's mass was lopsided.
+number generator — the galaxy's mass was lopsided.
 
 <video src="http://nullprogram.s3.amazonaws.com/galaxy/attempt-1.webm"
        controls="controls" width="480" height="360">

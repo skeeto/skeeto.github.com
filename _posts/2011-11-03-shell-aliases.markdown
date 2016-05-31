@@ -115,13 +115,13 @@ this problem.
 
 OpenSSH is loaded with extremely useful functionality. One of them is
 key authentication. Rather than use a password to log into a system,
-you can prove your identity cryptographically -- you solve a math
+you can prove your identity cryptographically — you solve a math
 problem that *only* you have the information to solve. This is
 invaluable to Git, because it allows for passwordless access to remote
 repositories. You can host a repository for a bunch of users without
-the awkward password step ("Pst ... your password is
-`passwordABC`. Change it after you first log in."). Instead, they all
-send you their public keys.
+the awkward password step ("Pst ... your password is `passwordABC`.
+Change it after you first log in."). Instead, they all send you their
+public keys.
 
 To use this feature, you first you generate a public/private keypair
 for yourself, which gets stored in `~/.ssh/id_rsa` and

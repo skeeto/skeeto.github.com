@@ -137,7 +137,7 @@ in Bower's registry.
    all or some other arbitrary versioning system.
 
  * In total, **2041 (93%) of all Bower packages have invalid or
-   missing metadata** -- bad registry entry, missing bower.json file,
+   missing metadata** — bad registry entry, missing bower.json file,
    or lack of semantic version tags.
 
 The good news is that most of the important libraries, like jQuery and

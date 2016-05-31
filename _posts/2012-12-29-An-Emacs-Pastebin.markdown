@@ -28,9 +28,9 @@ It has syntax highlighting, paste expiration, and light version
 control. The server side is as simple as possible, consisting of only
 three servlets,
 
- * `/pastebin/` -- static files
- * `/pastebin/get` -- serves (immutable) pastes in JSON
- * `/pastebin/post` -- accepts new pastes in JSON, returns the ID
+ * `/pastebin/`: static files
+ * `/pastebin/get`: serves (immutable) pastes in JSON
+ * `/pastebin/post`: accepts new pastes in JSON, returns the ID
 
 A paste's JSON is the raw paste content plus some metadata, including
 post date, expiration date, language (highlighting), parent paste ID,
@@ -116,7 +116,7 @@ necessity. However, the specific target I had in mind was SQLite.
 
 I *did* manage to implement a third backend that uses SQLite, but it's
 a big hack. It invokes the `sqlite3` command line program once for
-every request, asking for a response in CSV -- the only output format
+every request, asking for a response in CSV — the only output format
 that seems to escape unambiguously. This response then has to be
 parsed, so long as it's not too long to blow the regex stack.
 

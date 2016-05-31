@@ -34,7 +34,7 @@ Instead, I'm interested in mobile devices as a web platform. One of
 the few high-quality pieces of software on Android are the web
 browsers (Chrome and Firefox), and I'm already familiar with
 developing for these. Even more, I can develop software live on the
-tablet remotely from my laptop using [Skewer](/blog/2012/10/31/) --
+tablet remotely from my laptop using [Skewer](/blog/2012/10/31/) —
 i.e. the exact same development tools and workflow I'm already using.
 
 What's new and challenging is the user interface. Instead of

@@ -43,14 +43,14 @@ The problem was that java-mode-plus was doing two unrelated things:
  this is generally useful for anyone writing Java in Emacs, even if
  they're using another suite like JDEE or writing in another JVM
  language. It would be nice for people to be able to use this without
- pulling in all of java-mode-plus -- which was somewhat intrusive.
+ pulling in all of java-mode-plus — which was somewhat intrusive.
 
 I also didn't like the names I had picked. java-mode-plus wasn't even
 a mode until recently and its name isn't conventional. And "java-docs"
 is just stupid. I recently solved all this by splitting the
 java-mode-plus into two new packages,
 
- * [*ant-project-mode*][ant-project-mode] -- A minor mode that
+ * [*ant-project-mode*][ant-project-mode] — A minor mode that
  performs the duties of the first task above. Since I've
  [phased Java out](/blog/2012/08/12/) from my own personal projects
  and no longer intend to write Java anymore, this part isn't very
@@ -59,7 +59,7 @@ java-mode-plus into two new packages,
  un-maintained, it's just in maintenance mode for now. Because of
  this, this is not in any Emacs package archive
 
- * [*javadoc-lookup*][javadoc-lookup] -- This is java-docs renamed and
+ * [*javadoc-lookup*][javadoc-lookup] — This is java-docs renamed and
  **with some new goodies!** I also **put this on MELPA**, where it's
  easy for anyone to use. This is continues to be useful for me as I
  use Clojure.
@@ -116,7 +116,7 @@ vector/symbol method because it requires
 
 Put that in your initialization and all this documentation will appear
 in the lookup index. It only needs to fetch from Maven once per
-artifact per system -- a very very slow process. After that it
+artifact per system — a very very slow process. After that it
 operates entirely from its own cache which is very fast, so it won't
 slow down your startup.
 

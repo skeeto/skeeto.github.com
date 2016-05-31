@@ -21,7 +21,7 @@ extension to Skewer: it could have been created without making any
 changes to Skewer itself.
 
 Unfortunately Emacs' css-mode is nowhere near as sophisticated as
-js2-mode -- which reads in and exposes a full JavaScript AST. I had to
+js2-mode — which reads in and exposes a full JavaScript AST. I had to
 write my own very primitive CSS parsing routines to tease things
 apart. It should generally be able to parse declarations and rules
 reasonably no matter how it's indented, but it's not very good at

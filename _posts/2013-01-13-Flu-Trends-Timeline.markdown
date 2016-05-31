@@ -32,7 +32,7 @@ request. That's a really handy service!
 To parse the CSV format, I'm using [jquery-csv][jquery-csv]. I
 wouldn't mention it except that it has a really cool feature I haven't
 seen in any other CSV parser: instead of reading the text into a
-two-dimensional array -- which would need to be "parsed" further -- it
+two-dimensional array — which would need to be "parsed" further — it
 can read in each row as a object, using the CSV header line as the
 properties. This is the `toObjects()` function. It makes it feel like
 reading straightforward JSON. For example,
@@ -68,8 +68,8 @@ CSS for styling.
 The tricky part is actually accessing the SVG's document root. To do
 this, it can't be included as an `img` tag. Otherwise it's an opaque
 raster image as far as JavaScript is concerned. It either needs to be
-embedded into the HTML -- a dirty mix of languages that should be
-avoided -- or accessed through an asynchronous request. Accessing
+embedded into the HTML — a dirty mix of languages that should be
+avoided — or accessed through an asynchronous request. Accessing
 remote XML was the original purpose of asynchronous browser requests,
 after all (i.e. the poorly-named **XML**HttpRequest object). I can host
 this SVG from my own server, so this isn't an issue like the CSV data.

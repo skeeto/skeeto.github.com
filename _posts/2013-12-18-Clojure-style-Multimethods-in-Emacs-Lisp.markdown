@@ -67,7 +67,7 @@ style when defining methods (you'll see below). The dispatch value can
 be literally anything that `equal` knows how to compare, not just
 vectors. Note that it's actually faster to create a list than a vector
 up to a length of about 6, so this multimethod would be faster if the
-classifier returned a list -- or even better: a single cons.
+classifier returned a list — or even better: a single cons.
 
 Now define some methods for different dispatch values.
 
@@ -162,7 +162,7 @@ penalty after the first call with a particular dispatch value.
 ### Struct Example
 
 Something that really sets these multimethods apart from other object
-systems is a lack of concern about encapsulation -- or really about
+systems is a lack of concern about encapsulation — or really about
 object data in general. That's the classifier's concern. So here's an
 example of how to combine predd with `defstruct` from cl/cl-lib.
 

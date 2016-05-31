@@ -57,7 +57,7 @@ third. Note how this can be combined with `&optional`.
 Often, the *position* of a parameter may be hard to remember or read,
 especially if there are many parameters. It may be more convenient to
 name them with `&key`. Below, the function has three named parameters,
-specified at the call site using *keywords* -- special symbols from
+specified at the call site using *keywords* — special symbols from
 the keyword package that always evaluate to themselves.
 
 ~~~cl

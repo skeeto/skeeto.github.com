@@ -157,7 +157,7 @@ First, bind the custom framebuffer as the current framebuffer with
 `glCreateFramebuffer()` and required no initial configuration. The
 configuration is entirely done here, where the back texture is
 attached to the current framebuffer. This replaces any texture that
-might currently be attached to this spot -- like the front texture
+might currently be attached to this spot — like the front texture
 from the previous iteration. Finally, the size of the drawing area is
 locked to the size of the simulation state with `glViewport()`.
 
@@ -260,7 +260,7 @@ void main() {
 
 ~~~
 
-Since I'm scaling up by four -- i.e. 16 pixels per cell -- this
+Since I'm scaling up by four — i.e. 16 pixels per cell — this
 fragment shader is run 16 times per simulation cell. Since I used
 `GL_NEAREST` on the texture there's no funny business going on here.
 If I had used `GL_LINEAR`, it would look blurry.
@@ -275,7 +275,7 @@ quad vertices.
 
 An important thing to notice is that **the simulation state never
 leaves the GPU**. It's updated there and it's drawn there. The CPU is
-operating the simulation like the strings on a marionette -- *from a
+operating the simulation like the strings on a marionette — *from a
 thousand feet up in the air*.
 
 ### User Interaction

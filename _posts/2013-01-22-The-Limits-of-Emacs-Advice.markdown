@@ -50,8 +50,8 @@ are the functions in this list? Emacs' documentation calls both of
 these things hooks.) These functions are called, usually without
 arguments, when some specific event occurs. For example, every mode
 has its own mode hook which is called when the mode is activated in a
-buffer. This allows users to extend or modify the mode -- like by
-enabling additional minor modes -- without editing the mode's source
+buffer. This allows users to extend or modify the mode — like by
+enabling additional minor modes — without editing the mode's source
 code directly.
 
 To make our hook work we need to advise `narrow-to-region` and `widen`
@@ -112,7 +112,7 @@ form). This is a legal s-expression which you can use directly in
 regular Elisp code just like it was a function. The only reason you'd
 do so is for obfuscation, so it would look very suspicious.
 
-The first element of this function vector is the parameter list --
+The first element of this function vector is the parameter list —
 empty in this case. The second is a string containing the actual
 bytecodes. The rest holds the various constants from the function
 body. This includes the symbols of other functions called by this
@@ -131,8 +131,8 @@ codes 192 and 193 are used for accessing constants. This pushes my
 constants 1 and 2 onto a stack for use as function arguments. Next up
 is 125, which corresponds to `byte-narrow-to-region`. Gotcha!
 
-It turns out `narrow-to-region` is so special -- probably because it's
-used very frequently -- that it gets its own bytecode. The **primitive
+It turns out `narrow-to-region` is so special — probably because it's
+used very frequently — that it gets its own bytecode. The **primitive
 function call is being compiled away into a single instruction**. This
 means my advice will not be considered in byte-compiled code. Darnit.
 The same is true for `widen` (code 126).

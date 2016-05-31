@@ -250,7 +250,7 @@ Locking up Emacs' UI really limits the usefulness of this
 library. Since Emacs' primary purpose is being a text editor, it needs
 to remain very lively or else the user will become annoyed. If I used
 a synchronous version of `skewer-eval`, Emacs would completely lock up
-(easily interrupted with `C-g`) until the browser responds -- which
+(easily interrupted with `C-g`) until the browser responds — which
 would be never if no browser is connected. That's unacceptable.
 
 Also, not very many Emacs functions have the callback pattern. The

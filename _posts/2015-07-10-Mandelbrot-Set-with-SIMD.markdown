@@ -24,7 +24,7 @@ Having multiple CPU cores allows different instructions to operation
 on (usually) different data independently. In contrast, under SIMD a
 specific operation (single instruction) acts upon several values
 (multiple data) at once. It's another form of parallelization. For
-example, with image processing -- perhaps the most common use case --
+example, with image processing — perhaps the most common use case —
 this means multiple pixels could be computed within the same number of
 cycles it would normally take to compute just one. SIMD is generally
 implemented on CPUs through wide registers: 64, 128, 256, and even 512
@@ -54,7 +54,7 @@ instructions.
 
 However, you don't need to worry about any of that because these both
 were superseded by *Streaming SIMD Extensions* (SSE) in 1999. SSE has
-128-bit registers -- confusingly named `xmm0` - `xmm7` -- and a much
+128-bit registers — confusingly named `xmm0` - `xmm7` — and a much
 richer instruction set. SSE has been extended with SSE2 (2001), SSE3
 (2004), SSSE3 (2006), SSE4.1 (2007), and SSE4.2 (2008). x86_64 doesn't
 have SSE2 as an extension but instead as a core component of the
@@ -81,8 +81,8 @@ straight C implementation that produces a monochrome image. Normally I
 would post the code here within the article, but it's 30 lines long
 and most of it isn't of any particular interest.
 
-I didn't use C99's complex number support because -- continuing to
-follow the approach Handmade Hero -- I intended to port this code
+I didn't use C99's complex number support because — continuing to
+follow the approach Handmade Hero — I intended to port this code
 directly into SIMD intrinsics. It's much easier to work from a
 straight non-SIMD implementation towards one with compiler intrinsics
 than coding with compiler intrinsics right away. In fact, I'd say it's

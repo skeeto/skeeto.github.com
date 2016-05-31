@@ -53,7 +53,7 @@ public class Example extends JComponent {
 ~~~
 
 An important feature of both is the ability to globally apply
-transforms -- translate, scale, shear, and rotate -- to all drawing
+transforms — translate, scale, shear, and rotate — to all drawing
 commands. For example, drawings on the canvas can be vertically scaled
 using the `scale()` method. Graphics2D also has a `scale()` method.
 

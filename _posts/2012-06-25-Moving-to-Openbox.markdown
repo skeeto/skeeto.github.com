@@ -32,7 +32,7 @@ it. I had only been using it a few months. I've used a number of
 desktops since 2004, the main ones being Xfce (couple years), IceWM
 (couple years), xmonad (8 months), and Gnome 2 (the rest of the
 time). Gnome 2 was my fallback, the familiar environment where I could
-feel at home and secure -- that is, until Gnome 3 / Unity. The coming
+feel at home and secure — that is, until Gnome 3 / Unity. The coming
 of Gnome 3 marked the death of Gnome 2. It became harder and harder to
 obtain version 2 and I lost my fallback.
 
@@ -56,7 +56,7 @@ dmenu to be a problem. For years I was just launching things from a
 terminal. However, the Gnome and KDE menus both have a big common
 annoyance. If you want to add a custom item, you need to write a
 special desktop file and save it to the right location. Bleh! dmenu
-works right off your `PATH` -- the way it *should* work -- so no
+works right off your `PATH` — the way it *should* work — so no
 special work needed.
 
 Gnome 2 *has* been revived with a fork called MATE, but with the lack
@@ -114,7 +114,7 @@ command-line tool.
 
 I chose Wicd to do network management. It has both a GTK client and an
 ncurses client, so I can easily manage my wireless network
-connectivity with and without a graphical environment -- something I
+connectivity with and without a graphical environment — something I
 could have used for years now (goodbye `iwconfig`)! Unfortunately Wicd
 is rigidly inflexible, allowing only one network interface to be up at
 a time. This is a problem when I want to be on both a wired and

@@ -56,7 +56,7 @@ foo.call(null, 1, "bar", 3);
 Normally, `null` and `undefined` cannot be passed as `this`: they will
 automatically be replaced with the global object. In
 [strict mode][strict], these values are passed directly as
-`this`. Also, primitive types will be boxed -- wrapped in an object.
+`this`. Also, primitive types will be boxed — wrapped in an object.
 
 `apply` is exactly like `call`, but the arguments are provided as an
 array. This is necessary for truly dynamic function calls since the
@@ -142,7 +142,7 @@ manual.greet();  // => "Hello, Kelsey"
 The above doesn't *entirely* capture everything about the `new`
 operator. Constructors are allowed to return an object (i.e. not a
 primitive value) other than `this`, and that will be the newly
-constructed object -- even if it's an entirely different type!
+constructed object — even if it's an entirely different type!
 
 ~~~javascript
 function Foo() {
@@ -261,8 +261,8 @@ foo.bind(100).call(0, 1, 2, 3);  // => [100, 1, 2, 3]
 ~~~
 
 The `factory` constructor in `create` already has `this` bound, but
-`new` gets to override it anyway. Moreso -- and this is really
-important for my purposes -- the constructor name survives this
+`new` gets to override it anyway. Moreso — and this is really
+important for my purposes — the constructor name survives this
 process, through both the unofficial `name` property and `toString`
 method! Normally functions returned by `bind` have no name.
 

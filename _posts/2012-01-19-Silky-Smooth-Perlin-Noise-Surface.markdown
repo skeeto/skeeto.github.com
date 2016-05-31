@@ -45,7 +45,7 @@ end
 Perfect! I used that for my presentation. However, I was having fun
 and decided to experiment more with this. I filtered it again another
 1000 times and generated a `surf()` plot with a high-resolution
-colormap -- the default colormap size caused banding.
+colormap — the default colormap size caused banding.
 
 ~~~octave
 colormap(copper(1024));

@@ -106,7 +106,7 @@ Now to go for a test drive: open up that Java project you cloned, with
 `M-x open-java-project`. That will prompt you for the root directory
 of the project. The only thing this does is pre-opens all of the
 source files for you, exposing their contents to `dabbrev-expand` and
-makes jumping to other source files as easy as changing buffers -- so
+makes jumping to other source files as easy as changing buffers — so
 it's not *strictly* necessary.
 
 Switch to a buffer with a source file, such as

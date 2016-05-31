@@ -448,8 +448,8 @@ struct filter {
 };
 ~~~
 
-The filter object is starting to get big. It's got three pointers --
-24 bytes on modern systems -- and these pointers are the same between
+The filter object is starting to get big. It's got three pointers —
+24 bytes on modern systems — and these pointers are the same between
 all instances of the same type. That's a lot of redundancy. Instead,
 these pointers could be shared between instances in a common table
 called a *virtual method table*, commonly known as a *vtable*.

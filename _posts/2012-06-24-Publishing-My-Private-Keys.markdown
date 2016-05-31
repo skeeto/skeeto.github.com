@@ -7,7 +7,7 @@ uuid: cb40de11-5f3c-306f-b792-6214d65605a1
 
 One of the items [in my dotfiles repository](/blog/2012/06/23/) is my
 PGP keys, both private and public. I believe this is a unique approach
-that hasn't been done before -- a public experiment. It may *seem*
+that hasn't been done before — a public experiment. It may *seem*
 dangerous, but I've given it careful thought and I'm only using the
 tools already available from GnuPG. It ensures my keys are well
 backed-up (via the
@@ -59,7 +59,7 @@ SHA-512. There are better passphrase digest algorithms out there but
 this is the longest, slowest one that GPG offers. The PGP spec
 supports between 1024 and 65,011,712 digest iterations, so I picked
 one of the largest. 65 million iterations takes my laptop over a
-second to process -- absolutely brutal for someone attempting a
+second to process — absolutely brutal for someone attempting a
 brute-force attack. Here's the command to change to this configuration
 on an existing key,
 
@@ -87,7 +87,7 @@ will prompt for a passphrase on each save. If I encrypt them with my
 public key, I only need the passphrase when I first open the file.
 
 How it works right now is any dotfile that ends with `.priv.pgp` will
-be decrypted into place -- not symlinked, unfortunately, since this is
+be decrypted into place — not symlinked, unfortunately, since this is
 impossible. The install script has a `-p` switch to disable private
 dotfiles, such as when I'm using an untrusted computer. `gpg-agent`
 ensures that I only need to enter my passphrase once during the

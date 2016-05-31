@@ -106,7 +106,7 @@ repository. I wrote my own Vector class (completely unlike Java's
 depreciated Vector but more like Apache Commons Math's RealVector), so
 it looks very similar to the Octave version. It's much, much faster
 than the generalized Octave version. It doesn't use a hash function
-for gradients -- instead randomly generating them as needed and
+for gradients — instead randomly generating them as needed and
 keeping track of them for later with a Map.
 
 I wanted to go faster yet, so next I looked at OpenCL for the first

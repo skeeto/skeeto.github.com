@@ -18,7 +18,7 @@ conveniently in the central Maven repository:
 [com.nullprogram:native-guide](http://search.maven.org/#artifactdetails%7Ccom.nullprogram%7Cnative-guide%7C0.2%7Cjar).
 
 As a side note, I actually worked out my own staging solution rather
-than rely on Maven -- I always go out of my way to avoid Maven. For
+than rely on Maven — I always go out of my way to avoid Maven. For
 reuse-ability, I added it to my [sample-java-project](/blog/2010/10/04/)
 as the "bundle" target. It generates all of the required artifacts,
 digitally signs them, and bundles them up.
@@ -41,10 +41,10 @@ something figured out, though I don't know what it is.
 
 I believe this is one of Lisp's biggest problems, because there's no
 real solution yet. Assuming the user already has a Lisp system
-installed -- a very big assumption -- what do you deliver? FASL files
+installed — a very big assumption — what do you deliver? FASL files
 aren't compatible between Lisps and sometimes even between versions of
 the same Lisp. You're left either targeting their specific Lisp system
-or distributing source -- which either you can't do or you really
+or distributing source — which either you can't do or you really
 can't expect the user to compile. That's a long ways away from a
 simple double-click shortcut. If you somehow got that work, then how
 to you make it convenient to launch?

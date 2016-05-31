@@ -76,8 +76,8 @@ only for setting other options. That will make more sense in a moment.
 ~~~
 
 It traverses up (down?) the directory hierarchy towards root looking
-for a Makefile --- or whatever is set for `quick-compile-build-file`
---- then invokes the build system there. I [don't believe in recursive
+for a Makefile — or whatever is set for `quick-compile-build-file`
+— then invokes the build system there. I [don't believe in recursive
 `make`][harmful].
 
 So how do I put this to use? I clobber some key bindings I don't

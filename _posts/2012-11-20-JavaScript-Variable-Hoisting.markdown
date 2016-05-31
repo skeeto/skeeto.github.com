@@ -130,16 +130,16 @@ variable declaration like `var foo = 0` accomplishes *two* separate
 things. The merge of these two tasks into a single statement is merely
 one of convenience.
 
- 1. **Declaration** -- declares a variable, modifying the *semantics*
+ 1. **Declaration**: declares a variable, modifying the *semantics*
     of the function's body. It changes what *place* in memory an
     *identifier* in the current scope will refer to. This is a
-    compile-time activity. Nothing *happens* at run time -- there is
+    compile-time activity. Nothing *happens* at run time — there is
     no *when*. When function definitions are hoisted, it's the
     *assignment* (part 2) that gets hoisted. In C, variables are
     initially assigned to stack garbage (globals are zeroed). In
     JavaScript, variables are initially assigned to `undefined`.
 
- 2. **Assignment** -- *binds* a variable to a new value. This is
+ 2. **Assignment**: *binds* a variable to a new value. This is
     evaluated at run time. It matters *when* this happens in relation
     to other evaluations.
 
@@ -152,7 +152,7 @@ var foo = foo;
 The expression on the right-hand side is evaluated in the same scope
 as the variable declaration. `foo` is initially assigned to
 `undefined`, then it is re-assigned to `undefined`. This permits
-recursive functions to be defined with `var` -- otherwise the
+recursive functions to be defined with `var` — otherwise the
 identifier used to make the recursive call wouldn't refer to the
 function itself.
 

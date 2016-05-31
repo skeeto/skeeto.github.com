@@ -22,7 +22,7 @@ explanation.
 It's called [@][at], due to the syntax that it adds to Elisp as a
 domain-specific language. It's a mini-language, really. The name is
 also a challenge to the code that supports Elisp, because so much of
-it -- including emacs-lisp-mode and Paredit -- doesn't properly handle
+it — including emacs-lisp-mode and Paredit — doesn't properly handle
 @ in identifiers. Even [Maruku][maruku], the Markdown to HTML
 translator I use for this blog, has bugs that won't allow it to handle
 the @ characters in my code, so I had to forgo most syntax
@@ -142,7 +142,7 @@ on itself. It was found on its parent, `@rectangle` by inheritance.
 they're already bound on `foo`.
 
 Here's another re-usable prototype. Notice that @: variables are
-also setf-able -- using `push` in this case.
+also setf-able — using `push` in this case.
 
     (defvar @colored (@extend :color ()))
 
@@ -272,7 +272,7 @@ for even as high as 1,000 elements. While I think @ leads to elegant
 code, there's still plenty to do for performance. It's comically slow.
 
 This really caught Brian's interest, because it was an opportunity to
-put on his programming language designer's hat -- which I believe to
+put on his programming language designer's hat — which I believe to
 be his favorite hat. He's been trying different caching strategies to
 reduce all the walking of the prototype chain. This effort can be
 found in the other repository branches and in his fork. The system is

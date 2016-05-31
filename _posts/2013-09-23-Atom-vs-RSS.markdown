@@ -65,8 +65,8 @@ For reference, here's a typical, friendly RSS 2.0 feed.
 
 #### guid, the misnomer
 
-Two of the biggest RSS flaws -- flaws that forced me to make a major
-design compromise when writing Elfeed -- have to do with the `guid`
+Two of the biggest RSS flaws — flaws that forced me to make a major
+design compromise when writing Elfeed — have to do with the `guid`
 tag. That's GUID, as in Global Unique Identifier. Not only did it not
 appear until RSS 2.0, but **the guid tag is not required**. In
 practice an RSS client will be rereading the same feed items over and
@@ -129,7 +129,7 @@ screwed this part up. The specification says that **dates must conform
 to the outdated [RFC 822][rfc822], then provides examples that
 *aren't* RFC 822 dates**! Doh! This is because RFC 822 only allows for
 2-digit years, so no one should be using it anymore. The RSS authors
-unwittingly created yet another date specification -- a mash-up
+unwittingly created yet another date specification — a mash-up
 between these two RFCs. In practice everyone just pretends RSS uses
 [RFC 2822][rfc2822], which superseded RFC 822.
 
@@ -195,7 +195,7 @@ channel tag serves absolutely no purpose**. It's just more noise. Why
 was this ever added?
 
 The good news is that RSS has a `category` tag which serves this
-purpose much better anyway. Tagging is preferable to hierarchies --
+purpose much better anyway. Tagging is preferable to hierarchies —
 e.g. an item could only belong to one channel but it could belong to
 multiple categories.
 

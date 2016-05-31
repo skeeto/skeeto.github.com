@@ -68,8 +68,8 @@ The schema specifies which tags are "void" (always self-closing:
 `img`, `br`) and which tags are "normal" (explicitly closed: `script`,
 `canvas`). This means if you *don't* use `/>` syntax, your editor
 would need to know the HTML5 schema in order to properly understand
-the syntax. I prefer not to require this of a text editor -- or
-anything else doing dumb manipulations of HTML text -- especially with
+the syntax. I prefer not to require this of a text editor — or
+anything else doing dumb manipulations of HTML text — especially with
 the HTML5 specification constantly changing.
 
 When I was writing this I originally included `html` in the selector.

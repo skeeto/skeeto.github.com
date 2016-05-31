@@ -47,8 +47,8 @@ the interface and whether or not it's a stable sort. OpenBSD made the
 exact same mistake when they introduced [`arc4random()`][arc4random],
 which [no longer uses RC4][chacha20].
 
-Since quicksort is an unstable sort -- there are multiple possible
-results when the array contains equivalent elements -- this means
+Since quicksort is an unstable sort — there are multiple possible
+results when the array contains equivalent elements — this means
 `qsort()` is not guaranteed to be stable, even if internally the C
 library *is* using a stable sort like merge sort. The C standard
 library has no stable sort function.

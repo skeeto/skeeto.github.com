@@ -18,7 +18,7 @@ The repository that houses my entire blog is here,
 
 You can run an entirely local version of my blog from that repository.
 You could also make corrections, commit them, and give me a pull
-request -- not that I'm expecting that to happen. (Oh, also, cloning
+request — not that I'm expecting that to happen. (Oh, also, cloning
 the repository won't work in Windows, because my
 [URL mangling test][mangle] is in here.)
 

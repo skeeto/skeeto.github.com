@@ -38,8 +38,8 @@ And one variable,
 The `reddit-login` function is really just a special case of
 `reddit-post`. It returns a session value (cookie/modhash tuple) that
 is used by the other two functions for authenticating the user. Just
-as you get automatically with almost all Elisp data structures --
-probably more so than *any* other popular programming language -- it
+as you get automatically with almost all Elisp data structures —
+probably more so than *any* other popular programming language — it
 can be serialized with the printer and reader, allowing a reddit
 session to be maintained across Emacs sessions.
 

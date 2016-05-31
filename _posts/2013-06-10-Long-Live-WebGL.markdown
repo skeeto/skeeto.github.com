@@ -115,7 +115,7 @@ way to achieve mastery.
 
 More so, for me the step being skipped *is perhaps the most
 interesting part of it all*! For example, after getting a handle on
-how things worked -- without copy-pasting any boilerplate around -- I
+how things worked — without copy-pasting any boilerplate around — I
 ported [my OpenCL 3D perlin noise generator][opencl] to GLSL.
 
  * [http://nullprogram.com/perlin-noise/](http://nullprogram.com/perlin-noise/)

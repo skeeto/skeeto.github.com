@@ -10,7 +10,7 @@ uuid: 6c418044-7097-3eb2-3910-9724a375c0e6
 Today I had a large document written in [MediaWiki][mediawiki] markup.
 The document was a simple one consisting only of paragraphs, all
 possible heading levels, and flat lists. There were no mathematical
-expressions or images -- nothing fancy whatsoever. I wanted this
+expressions or images — nothing fancy whatsoever. I wanted this
 document available in LaTeX markup so that I could have a nice,
 professional looking printout.
 

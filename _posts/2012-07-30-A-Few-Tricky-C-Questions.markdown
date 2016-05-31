@@ -6,7 +6,7 @@ uuid: 29f59a9d-86b9-387d-60bf-16417ea9888c
 ---
 
 At work I recently came across an abandoned copy of the first edition
-of *The C Programming Language* by Ken Thompson and Dennis Ritchie --
+of *The C Programming Language* by Ken Thompson and Dennis Ritchie —
 often lovingly abbreviated as *K&R*. It's a
 [significant piece of computer science history](http://en.wikipedia.org/wiki/The_C_Programming_Language)
 and I highly recommend it to anyone who writes software. As far as
@@ -16,7 +16,7 @@ the whole thing in about a week.
 I've been programming in C for seven years now but it seems there's
 always something new for me to learn about it. The book cleared up
 some incomplete concepts I had about C, particularly the relationship
-between pointers and arrays as well as operator precedence -- the
+between pointers and arrays as well as operator precedence — the
 reason why function pointers look so weird. By the end I re-gained an
 appreciation for the simplicity and power of C. All of the examples in
 the book are written without heap allocation (no `malloc()`), just
@@ -96,7 +96,7 @@ int *example()
 ~~~
 
 
-The `foo` field is a 4-bit wide bit-field -- smaller than a single
+The `foo` field is a 4-bit wide bit-field — smaller than a single
 byte. Pointers can only address whole bytes, so this is
 **invalid**. Even if `foo` was 8 or 32 bits wide (full/aligned bytes
 on modern architectures) this would still be invalid.
@@ -166,7 +166,7 @@ void foo()
 
 Here we've inverted the relationship are are trying to assign the
 array as a pointer. This is **invalid**. Arrays are like pointer
-constants in that they can't be used as *lvalues* -- they can't be
+constants in that they can't be used as *lvalues* — they can't be
 reassigned to point to somewhere else. The closest you can get is to
 *copy* the contents of `foo` into `hello`.
 

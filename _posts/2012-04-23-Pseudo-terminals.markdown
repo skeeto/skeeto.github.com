@@ -26,7 +26,7 @@ USB/serial port adapters and plugging them into each other.
 
 It turns out this is very easy to do on Unix-like systems. POSIX
 defines two functions, `posix_openpt(3)` and `ptsname(3)`. The first
-one creates a pseudo-terminal -- a virtual serial port -- and returns
+one creates a pseudo-terminal — a virtual serial port — and returns
 a "master" *file descriptor* used to talk to it. The second provides
 the name of the pseudo-terminal device on the filesystem, usually
 named something like `/dev/pts/5`.

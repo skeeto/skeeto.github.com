@@ -44,7 +44,7 @@ or some other kind of object. There is probably a "close" function
 that accepts one of these structs and kills the process. But if that
 function isn't called, due to a bug or an error condition, it will
 become a "dangling" process. If the struct is completely lost, it will
-probably be inconvenient to deal with the process -- the "close"
+probably be inconvenient to deal with the process — the "close"
 function is no longer useful.
 
 ### With Macros
@@ -87,7 +87,7 @@ beyond a single body.
 
 ### Finalizers
 
-What would really be useful is to have a callback -- a finalizer --
+What would really be useful is to have a callback — a finalizer —
 that runs when an object is garbage collected. This ensures that the
 resource will not outlive its owner, restoring management back to the
 garbage collector. However, Emacs provides no such hook.

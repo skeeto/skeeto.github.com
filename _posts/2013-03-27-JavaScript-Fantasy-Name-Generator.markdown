@@ -25,9 +25,9 @@ interpreted for each name generation. Much faster, but I missed having
 the template syntax.
 
 The JavaScript implementation has a template *compiler*. There are
-five primitive name generator prototypes -- including strings
+five primitive name generator prototypes — including strings
 themselves, because anything with a toString() method can be a name
-generator -- which the compiler composes into a composite generator
+generator — which the compiler composes into a composite generator
 following the template. The neatest part is that it's an optimizing
 compiler, using the smallest composition of generators possible. If a
 template can only emit one possible pattern, the compiler will try to

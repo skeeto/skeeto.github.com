@@ -36,21 +36,21 @@ interface to it.
 
 As you know, [Google Reader shut down this past July][reader]. This
 left me using only two Google services: Talk and Mail. Not only is
-Talk easily replaceable -- it has no significant data on Google's
-servers -- [it will be shut down soon as well][talk]. I would need to
+Talk easily replaceable — it has no significant data on Google's
+servers — [it will be shut down soon as well][talk]. I would need to
 move to a different XMPP server anyway. If I could move off of Gmail,
 I would finally be able to discontinue my Google account *for good*!
 
 Why would I want to do this? It's become increasingly apparent,
 especially this year, that there is very little privacy to be had when
 logged into a Google account. Various intelligence and law enforcement
-organizations have easy -- likely automated -- access to user data,
+organizations have easy — likely automated — access to user data,
 especially e-mail. I'd really like to take that privacy back.
 
 There are also the technical reasons. It's a bit embarrassing to
 admit, but the final straw that pushed me to finally leaving Gmail was
-[the new compose interface][compose] -- a technical issue rather than
-a privacy issue -- which was pushed out just a few days before I left.
+[the new compose interface][compose] — a technical issue rather than
+a privacy issue — which was pushed out just a few days before I left.
 I found it to be very unpleasant and, worse, completely incompatible
 with Pentadactyl, as there is no longer a plain-text option (the one
 listed is a fake). A huge technical step backwards, towards the layman
@@ -68,8 +68,8 @@ This was all within my grasp!
 
 ### A daunting task
 
-Switching *everything* about my e-mail -- provider, client, spam
-filter, server, domain -- and running it myself would be a daunting
+Switching *everything* about my e-mail — provider, client, spam
+filter, server, domain — and running it myself would be a daunting
 task. There's 8 years of archived e-mail to manage, though I kept it
 trimmed to a relatively light 1 GB of storage (which I cut down to 200
 MB before exporting). I've made backups of all this e-mail on
@@ -138,7 +138,7 @@ post).
 My early plan was to run an e-mail server on a Raspberry Pi. It's
 low-powered, making it very inexpensive and quiet to operate. It's
 also very portable, so I wouldn't need to lug a server around if I
-needed to move it -- no more difficult than moving a cell phone
+needed to move it — no more difficult than moving a cell phone
 charger. I could run it from my nightstand next to my bed if I wanted
 to. On the other hand, I would be a little nervous running my mail
 server on a residential connection. The downtime would be a product of

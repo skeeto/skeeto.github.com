@@ -36,7 +36,7 @@ A few days later when I was talking to Brian at the metaphorical water
 cooler he mentioned that the macro was actually conflicting with what
 he would normally write. Sometimes he really did want to use a vector
 literal in a `let` binding. Why would he do that? In Common Lisp,
-that's just asking for trouble -- same for Elisp and Scheme.
+that's just asking for trouble — same for Elisp and Scheme.
 
 ~~~cl
 (let ((v #(1 2 3)))
@@ -104,7 +104,7 @@ evaluated.
 
 However, to my surprise, Clojure doesn't work like this! Literal
 vectors have their elements evaluated and, if necessary, are created
-fresh on every use -- exactly like a call to `vector`.
+fresh on every use — exactly like a call to `vector`.
 
 ~~~clojure
 (defn foo [x]
@@ -141,4 +141,4 @@ numbers and strings. Instead, evaluation of a vector should return a
 evaluated. Since Clojure's data structures are immutable, the compiler
 can take a shortcut when it can guarantee each of a vector's elements
 always evaluate to themselves, and have the vector evaluate to itself
--- purely as an optimization.
+— purely as an optimization.

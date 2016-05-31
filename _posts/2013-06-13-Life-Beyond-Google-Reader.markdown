@@ -139,7 +139,7 @@ This has been one of my biggest annoyance with these "app stores"
 popping up over the last few years. There's no metadata for indicating
 where to find an app's source code (if available), even if it's just a
 link to a GitHub repository. When I find bugs in apps I have no way to
-fix them myself -- something I have taken for granted with Debian and
+fix them myself — something I have taken for granted with Debian and
 Emacs. These app stores are not made for technical people or power
 users.
 

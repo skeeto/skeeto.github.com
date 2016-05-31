@@ -85,7 +85,7 @@ obarrays at once, it would need to be able to chain to two different
 symbols at the same time.
 
 Providing access to symbols through a colon-specificed namespace
-(`my-package:my-symbol`) is also currently impossible -- without
+(`my-package:my-symbol`) is also currently impossible — without
 hacking in C anyway.
 
 There's a neat trick to the `:export` list. The `defpackage` macro

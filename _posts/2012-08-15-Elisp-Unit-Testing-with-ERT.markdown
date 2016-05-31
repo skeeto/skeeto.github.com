@@ -5,8 +5,8 @@ tags: [emacs, elisp]
 uuid: f5798f49-155b-3038-a8d9-4f5a5f1c2d0c
 ---
 
-Emacs 24 comes with a unit testing library, ERT -- Emacs Lisp
-Regression Testing. I learned about it after watching
+Emacs 24 comes with a unit testing library, ERT (Emacs Lisp
+Regression Testing). I learned about it after watching
 [Extending Emacs Rocks!](http://emacsrocks.com/) and I've been using
 it ever since. It's been a pleasant experience; enough so that
 [I made a key binding for it](https://github.com/skeeto/.emacs.d/commit/59d3eac73edbad8a5be72a81c7d6c5b1193bbb90)
@@ -70,12 +70,12 @@ F example-test
       :value nil))
 ~~~
 
-Displayed are the forms we were comparing -- `(+ 9 2)` and `100` --
-and what they evaluated to: `(= 11 100)`. If I put the point at the
-test result and type `.` it will take me to the test definition so
-that I can start looking further. Or I can press `b` to see a
-backtrace, `m` to see all output messages from that test, or, if I'm
-in disbelief, `r` to rerun that test.
+Displayed are the forms we were comparing — `(+ 9 2)` and `100` — and
+what they evaluated to: `(= 11 100)`. If I put the point at the test
+result and type `.` it will take me to the test definition so that I
+can start looking further. Or I can press `b` to see a backtrace, `m`
+to see all output messages from that test, or, if I'm in disbelief,
+`r` to rerun that test.
 
 ### Mocking
 

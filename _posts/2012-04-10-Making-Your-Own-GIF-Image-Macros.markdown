@@ -78,7 +78,7 @@ I've also instructed it to optimize the GIF as fully as it can
 turning off dithering goes a long way, followed by disabling
 optimization.
 
-The delay of 5 gives us the 15-ish frames-per-second we want -- since
+The delay of 5 gives us the 15-ish frames-per-second we want — since
 we cut half the frames from a 30 frames-per-second source video. We
 also want to loop indefinitely.
 
@@ -97,7 +97,7 @@ Add your macro text in white, in the Impact Condensed font.
 ![](/img/gif-tutorial/text1.png)
 
 Right click the text layer and select "Alpha to Selection," then under
-Select, grow the selection by a few pixels -- 3 in this case.
+Select, grow the selection by a few pixels — 3 in this case.
 
 ![](/img/gif-tutorial/text2.png)
 

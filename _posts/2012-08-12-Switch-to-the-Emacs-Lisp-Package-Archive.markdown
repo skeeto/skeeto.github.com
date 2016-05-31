@@ -17,7 +17,7 @@ the package manager, `package`, and the
 [Emacs Lisp Package Archive](http://elpa.gnu.org/) (ELPA). You can now
 ask Emacs to download and install new modes and extensions from the
 Internet. By default, it only uses the official archive. It only hosts
-packages with copyright assigned to the FSF -- quite
+packages with copyright assigned to the FSF — quite
 restrictive. There are alternatives, the most popular of which is
 [Marmalade](http://marmalade-repo.org/). Fortunately it's easy to ask
 `package` to use additional repositories, so this is a non-issue.
@@ -47,7 +47,7 @@ listing the repository URL. In the case of my memoization package,
 From a package maintainer's point-of-view, this is fantastic. I don't
 have to take any extra steps to publish updates to my package. I just
 keep doing what I do and it happens automatically. However, I need to
-be more careful about not pushing broken commits -- which is why I
+be more careful about not pushing broken commits — which is why I
 started unit testing (to be
 [covered in a future post](/blog/2012/08/15/)). And I need to be extra
 careful with my SSH keys, since they're now used to publish code that

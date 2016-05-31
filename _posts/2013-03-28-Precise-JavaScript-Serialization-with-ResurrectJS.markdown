@@ -90,7 +90,7 @@ array[0] === array[1];
 ~~~
 
 The encoding should begin to reveal itself now. There's only one
-Greeter object serialized and two `{'#': 1}` objects -- references
+Greeter object serialized and two `{'#': 1}` objects — references
 into the top-level array.
 
 ### Identity and Equality Review

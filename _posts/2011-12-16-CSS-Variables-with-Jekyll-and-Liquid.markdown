@@ -9,8 +9,8 @@ CSS variables have been proposed
 [a number](http://oocss.org/spec/css-variables.html)
 [of times](http://disruptive-innovations.com/zoo/cssvariables/)
 already, but, as far as I know, it has never been taken
-seriously. Variables -- *constants*, really, depending on the proposal
--- would be useful in eliminating redundancy, because the same value
+seriously. Variables — *constants*, really, depending on the proposal
+— would be useful in eliminating redundancy, because the same value
 often appears multiple times across a consistent theme. The cascading
 part of cascading stylesheets can deal with some of this, but not
 all. For example,

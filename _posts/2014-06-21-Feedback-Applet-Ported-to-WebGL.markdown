@@ -194,7 +194,7 @@ goal was to extend this to support GLSL-style matrices. However,
 writing a matrix library from scratch was turning out to be *far* more
 work than I expected. Plus it's reinventing the wheel.
 
-So, instead, I dropped my vector library -- I completely deleted it --
+So, instead, I dropped my vector library — I completely deleted it —
 and decided to use [glMatrix][glmatrix], a *really* solid
 WebGL-friendly matrix library. Highly recommended! It doesn't
 introduce any new types, it just provides functions for operating on

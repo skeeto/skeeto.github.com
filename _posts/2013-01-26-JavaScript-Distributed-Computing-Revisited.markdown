@@ -84,8 +84,8 @@ than I did four years ago. I'm not fumbling around like I was before.
 
 ### Applying these Changes
 
-[This weekend's Daily Programmer challenge][dp] was to find a "key" --
-a permutation of the alphabet -- that when applied to a small
+[This weekend's Daily Programmer challenge][dp] was to find a "key" —
+a permutation of the alphabet — that when applied to a small
 dictionary results in the maximum number of words with their letters
 in alphabetical order. That's a keyspace of 26!, or
 403,291,461,126,605,635,584,000,000.

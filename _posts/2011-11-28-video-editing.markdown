@@ -21,7 +21,7 @@ repositories, making them trivial to obtain. The last one is easy to
 obtain and compile.
 
 If you're using a modern browser, you should have noticed my portrait
-on the left-hand side changed recently. That's an HTML5 WebM video --
+on the left-hand side changed recently. That's an HTML5 WebM video —
 currently with Ogg Theora fallback due to a GitHub issue. To cut the
 video down to that portrait size, I used the above four tools on the
 original video.
@@ -43,7 +43,7 @@ Next look through the output frames and delete any unwanted frames to
 keep, such as the first and last few seconds of video. With the
 desired frames remaining, use ImageMagick, or any batch image editing
 software, to crop out the relevant section of the images. This can be
-done in parallel with `xargs`' `-P` option -- to take advantage of
+done in parallel with `xargs`' `-P` option — to take advantage of
 multiple cores if disk I/O isn't being the bottleneck.
 
     ls *.jpg | xargs -I{} -P5 convert {} 312x459+177+22 {}.ppm

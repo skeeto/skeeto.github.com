@@ -38,7 +38,7 @@ in trying to fix it myself.
 
 So, since it looks like it's here for the long haul it's kind of fun
 to implement an `abort` function on top of it, allowing Elisp programs
-to terminate Emacs abnormally -- you know, in case `kill-emacs` isn't
+to terminate Emacs abnormally — you know, in case `kill-emacs` isn't
 fun enough.
 
 ~~~cl

@@ -44,7 +44,7 @@ I had anticipated!
 A lock-free data structure doesn't require the use of mutex locks.
 More generally, it's a data structure that can be accessed from
 multiple threads without blocking. This is accomplished through the
-use of atomic operations -- transformations that cannot be
+use of atomic operations — transformations that cannot be
 interrupted. Lock-free data structures will generally provide better
 throughput than mutex locks. And it's usually safer, because there's
 no risk of getting stuck on a lock that will never be freed, such as a
@@ -133,9 +133,9 @@ There's still no atomic declaration here because the struct is going
 to be handled as an entire unit. The `aba` field is critically
 important for correctness and I'll go over it shortly. It's declared
 as a `uintptr_t` because it needs to be the same size as a pointer.
-Now, this is not guaranteed by C11 -- it's only guaranteed to be large
+Now, this is not guaranteed by C11 — it's only guaranteed to be large
 enough to hold any valid `void *` pointer, so it could be even larger
--- but this will be the case on any system that has the required
+— but this will be the case on any system that has the required
 hardware support for this lock-free stack. This struct is therefore
 the size of two pointers. If that's not true for any reason, this code
 will not link. Users will never directly access or handle this struct
@@ -349,7 +349,7 @@ Another problem in `pop()` is dereferencing `orig.node` to access its
 `orig.node` may have already been removed from the stack and freed. If
 the stack was using `malloc()` and `free()` for allocations, it may
 even have had `free()` called on it. If so, the dereference would be
-undefined behavior -- a segmentation fault, or worse.
+undefined behavior — a segmentation fault, or worse.
 
 There are three ways to deal with this.
 

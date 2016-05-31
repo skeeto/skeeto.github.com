@@ -39,7 +39,7 @@ also have no idea what I'm doing,
 
 [![](/img/plot/bts-hist-2012-10-thumb.png)](/img/plot/bts-hist-2012-10.png)
 
-There was a peak 6 years ago, but things have recently plateaued --
+There was a peak 6 years ago, but things have recently plateaued —
 except for very recently with the Wheezy freeze (June 2012), which is
 expected. If you have any insight on this, please share.
 

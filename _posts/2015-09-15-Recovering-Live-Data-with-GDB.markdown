@@ -11,8 +11,8 @@ output was trapped in a C `FILE` buffer. The program had been running
 for two days straight printing its results, but the last few kilobytes
 of output were missing. It wouldn't output these last bytes until the
 program completed its day-long (or worse!) cleanup operation and
-exited. This is easy to fix --- and, honestly, the cleanup step was
-unnecessary anyway --- but I didn't want to start all over and wait
+exited. This is easy to fix — and, honestly, the cleanup step was
+unnecessary anyway — but I didn't want to start all over and wait
 two more days to recompute the result.
 
 Here's a minimal example of the situation. The first loop represents

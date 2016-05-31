@@ -17,14 +17,14 @@ Atom and RSS.
 
 The design of Elfeed was inspired by [notmuch][notmuch], which is
 [my e-mail client of choice][mail]. I've enjoyed the notmuch search
-interface and the extensibility of the whole system -- a side-effect
-of being written in Emacs Lisp -- so much that I wanted a similar
+interface and the extensibility of the whole system — a side-effect
+of being written in Emacs Lisp — so much that I wanted a similar
 interface for my web feed reader.
 
 ### The search buffer
 
-Unlike many other feed readers, Elfeed is oriented around *entries* --
-the Atom term for articles -- rather than *feeds*. It cares less about
+Unlike many other feed readers, Elfeed is oriented around *entries* —
+the Atom term for articles — rather than *feeds*. It cares less about
 where entries came from and more about listing relevant entries for
 reading. This listing is the `*elfeed-search*` buffer. It looks like
 this,
@@ -34,7 +34,7 @@ this,
 This buffer is not necessarily about listing unread or recent entries,
 it's a filtered view of all entries in the local Elfeed database.
 Hence the "search" buffer. Entries are marked with various *tags*,
-which play a role in view filtering -- the notmuch model. By default,
+which play a role in view filtering — the notmuch model. By default,
 all new entries are tagged `unread` (customize with
 `elfeed-initial-tags`). I'll cover the filtering syntax shortly.
 
@@ -196,7 +196,7 @@ has already saved me a lot of time.
 
 Adding custom actions like this to Elfeed is exactly the extensibility
 I'm interested in supporting. I want this to be easy. After just a
-week of usage I've already customized Elfeed a lot for myself -- very
+week of usage I've already customized Elfeed a lot for myself — very
 specific customizations which are not included with Elfeed.
 
 ### Web interface

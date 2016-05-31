@@ -42,7 +42,7 @@ int main() {
 ~~~
 
 This code compiles cleanly and, when run, emits "FooBar". This is an
-example of *duck typing* -- i.e., "If it looks like a duck, swims like
+example of *duck typing* — i.e., "If it looks like a duck, swims like
 a duck, and quacks like a duck, then it probably is a duck." Foo and
 Bar are unrelated types. They have no common inheritance, but by
 providing the expected interface, they both work with with Caller.

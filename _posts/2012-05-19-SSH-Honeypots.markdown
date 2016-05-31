@@ -26,7 +26,7 @@ from -1 (least secure) to 2 (most secure), and it's not possible to
 decrease the level without gaining physical access to the system. Each
 increase makes the system more read-only, and less flexible, so it's a
 trade-off. A system running at level 2 should not carry over any state
-between boots -- like a LiveCD on a system with no disks.
+between boots — like a LiveCD on a system with no disks.
 
 I set up a fresh OpenBSD install in a [QEMU](http://qemu.org/) virtual
 machine, locked the system down with `securelevel` at 1, forwarded the
@@ -52,7 +52,7 @@ to do a loopback mount there, too. After restarting OpenSSH, it was no
 longer writing to the append-only log, but to the doctored log.
 
 So, the proper way to check your security logs is by mounting the
-compromised filesystem in a known trusted system -- or, in this case,
+compromised filesystem in a known trusted system — or, in this case,
 just rebooting would have fixed it. Even with `securelevel`, you can't
 check the compromised system in-place. Let this be a lesson to all
 those amateur sysadmins out there (including me)!
@@ -67,8 +67,8 @@ After all this, I wanted to crank things up a notch by letting some
 real attackers into my test system. I was already accustomed to seeing
 many password-guesses on my SSH server in the logs, so getting someone
 into my honeypot wouldn't take long at all. While I didn't care of
-they trashed my VM -- restoring from snapshot was an automatic process
--- I really didn't want them to take advantage of my Internet
+they trashed my VM — restoring from snapshot was an automatic process
+— I really didn't want them to take advantage of my Internet
 connection, using it for DDoS attacks or pivoting to attack other SSH
 servers. So I needed a way to allow them *in* though SSH, but not allow
 any other traffic *out*.
@@ -110,7 +110,7 @@ exist last time: [kippo](http://code.google.com/p/kippo/), a
 "medium"-interaction SSH honeypot. This is everything I was looking
 for before. It doesn't require a full-blown VM, it's has high fidelity
 interaction, it's safe, and it allows me to fully observe all activity
--- it even records the tty session for replay. Cool!
+— it even records the tty session for replay. Cool!
 
 kippo is written in pure Python, so there shouldn't be any buffer
 overflows, and doesn't execute any external programs. It *should* be
@@ -147,7 +147,7 @@ their mistake. The only way to disconnected is to either close your
 terminal emulator or use SSH's `~.` escape sequence.
 
 I've been considering running kippo all the time with no password set
--- using it as a true honeypot. This would help keep anyone from
+— using it as a true honeypot. This would help keep anyone from
 finding my real SSH server, since they would find the honeypot and
 stop searching other ports. It would also waste time that could be
 spent attacking other people's real SSH servers, helping to protect

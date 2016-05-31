@@ -32,8 +32,8 @@ and server. When the server sends a function it includes a signature,
 and the client only runs code that matches the signature. To create a
 signature the string encoded version of the function is appended with
 the password (both strings) and hashed with a secure hashing
-algorithm. Only someone who knows the password -- including other
-clients -- can create the signature.
+algorithm. Only someone who knows the password — including other
+clients — can create the signature.
 </p>
 {% highlight cl %}
 (defun sign-sexp (password sexp)

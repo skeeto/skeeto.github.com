@@ -67,7 +67,7 @@ the first two uses of `count`, it isn't actually a *free variable*
 like it appears to be. It refers to the `for` loop variable `count`
 even though it's declared later in the function.
 
-A variable doesn't spring into existence at the place it's declared --
+A variable doesn't spring into existence at the place it's declared —
 otherwise that would be a sort-of hidden nested scope. The binding's
 extent is determined at *compile-time* (i.e. *lexical* scope). If the
 variable is declared anywhere in the function with `var`, it is bound

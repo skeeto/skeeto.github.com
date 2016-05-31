@@ -57,7 +57,7 @@ it right. I've grown a much better appreciation for automatic
 indentation in other modes.
 
 In an attempt to improve this I decided I would try to fully parse the
-language and use the resulting parse tree to determine indentation --
+language and use the resulting parse tree to determine indentation —
 something like the depth of the pointer in the
 tree. [My experience with Perl's Parse::RecDescent](/blog/2009/01/04/)
 some years ago was very positive and I wanted to reproduce that
@@ -196,7 +196,7 @@ to create.
 
 #### Future Directions
 
-I also [wrote a bencode parser][bencode.el] -- *only* the
+I also [wrote a bencode parser][bencode.el] — *only* the
 `bencode-tokens` and `bencode-funcs` alists are needed to parse
 bencode, about 30 LOC. Careful observation will reveal that I cheated
 and the result is a little hackish. Due to the way strings work,

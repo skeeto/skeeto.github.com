@@ -17,7 +17,7 @@ in MELPA.
 I did more than rename the package; it got an overhaul. I rewrote a
 few functions, tossed a whole bunch of functions, created
 [a test suite](/blog/2012/08/15/), and **finally added directory
-listings** -- a feature that had long been on the TODO list. To keep
+listings** — a feature that had long been on the TODO list. To keep
 with the name "simple", I ripped out the
 [clunky servlet system](/blog/2009/11/03/) (sorry Chunye). This new
 version was leaner, cleaner, and more useful.
@@ -27,7 +27,7 @@ three years since I originally wrote it. In my refactor I made it
 buffer oriented. When a request comes in, the server fills a buffer
 with the response and sends it back. This means I could send a
 `Content-Length` header and use keep-alive to serve multiple requests
-over one connection. It also suggested a new servlet paradigm -- the
+over one connection. It also suggested a new servlet paradigm — the
 servlet prepares a buffer and the server sends it to the client.
 
 ### Servlets
@@ -118,7 +118,7 @@ update.
 
 Enabling `impatient-mode`, a minor mode, publishes the buffer. If the
 server's running, the list of published buffers can be found under
-`/imp` --
+`/imp` —
 i.e. [http://localhost:8080/imp](http://localhost:8080/imp). The
 buffer can be accessed directly at `/imp/live/<buffer-name>`, which is
 where `/imp` will link.

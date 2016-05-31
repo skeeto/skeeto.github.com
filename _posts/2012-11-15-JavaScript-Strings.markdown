@@ -27,7 +27,7 @@ are `find` and `map`. Writing a new sequence function means sticking
 to these generic sequence functions, particularly `elt` and `subseq`
 rather than the more specialized accessors.
 
-A string is just a one-dimensional array -- a vector -- with elements
+A string is just a one-dimensional array — a vector — with elements
 of the type *character*. This means all sequence functions also work
 on strings.
 

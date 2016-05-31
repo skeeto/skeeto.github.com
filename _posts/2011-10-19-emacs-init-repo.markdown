@@ -39,13 +39,13 @@ make sure to load my other init file.
 ~~~
 
 One reason I didn't use source control right away was the submodule
-problem -- my configuration is largely made up of *other*
-repositories. Git has good support for putting foreign Git
-repositories within your own repository, but a couple of repositories
-I was using were Subversion and CVS. I managed to cut down to just Git
-repositories <s>and one Subversion repository, for which I now
-maintain a Git mirror, making these *all* Git repositories</s>.
-(*Update November 2011*: YASnippet has moved to Git.)
+problem — my configuration is largely made up of *other* repositories.
+Git has good support for putting foreign Git repositories within your
+own repository, but a couple of repositories I was using were
+Subversion and CVS. I managed to cut down to just Git repositories
+<s>and one Subversion repository, for which I now maintain a Git
+mirror, making these *all* Git repositories</s>. (*Update November
+2011*: YASnippet has moved to Git.)
 
 I also trimmed down a bit, cutting out some things I noticed I wasn't
 using (breadcrumbs, pabbrev) or things that didn't need to be in

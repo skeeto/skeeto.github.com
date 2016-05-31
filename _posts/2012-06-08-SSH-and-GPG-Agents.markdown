@@ -51,15 +51,15 @@ for the *password* on the *remote* system (not the passphrase you just
 entered), adding it to the file `~/.ssh/authorized_keys`. From this
 point on, all logins will use your new keypair rather than prompt you
 for a password. Since you put a passphrase on your key, this may seem
-pointless -- it seems you still need to type in a password for every
+pointless — it seems you still need to type in a password for every
 connection. Bear with me here!
 
 As a side note, you should have a unique SSH keypair for each
 <i>site</i>, so you'll have several of them. This way you can revoke
 access to a particular site without affecting the others.
 
-For GPG -- the GNU Privacy Guard, <i>the</i> free software PGP
-implementation -- your keys are stored under `~/.gnupg/` in a
+For GPG — the GNU Privacy Guard, <i>the</i> free software PGP
+implementation — your keys are stored under `~/.gnupg/` in a
 database. Generating a key is also a simple command,
 
     gpg --gen-key
@@ -134,7 +134,7 @@ retrieve your passphrase when it's needed (if the agent is available),
 so it will cache your passphrase on demand. No need to explicitly
 register with the agent. Even better, it will try its best to use a
 "PIN entry" program to read your key, which helps protect against some
-kinds of keyloggers -- preventing other processes from seeing your
+kinds of keyloggers — preventing other processes from seeing your
 keystrokes.
 
 Well, this is all fine and dandy except when you've already got an
@@ -146,7 +146,7 @@ lousy behavior, in my opinion. There's no `--inherit` option to tell
 them to silently pass along the information of the existing agent if
 it appears to be valid. This causes two problems. One, you'll need to
 enter your passphrases *again* for the new agent. Second, these new
-agents will linger around after the spawning shell has exited --
+agents will linger around after the spawning shell has exited —
 hogging important non-swappable memory.
 
 The direct workaround is to, in your shell init script, check for
@@ -169,7 +169,7 @@ an awesome little tool called
 launch the agents for you. It stores the agent information in a file
 so that you only ever launch one instance of the agent, and the agents
 will be shared across every shell. It *does* have an `--inherit`
-option -- the default behavior, so you don't even need to ask
+option — the default behavior, so you don't even need to ask
 nicely. Instead of running the `*-agent`s directly, you just put this
 in your `.bashrc`,
 

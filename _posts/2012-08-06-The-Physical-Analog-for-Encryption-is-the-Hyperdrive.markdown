@@ -29,10 +29,10 @@ those at the home base where they can be protected.
 <img src="/img/misc/deep-space.jpg" class="right" alt=""/>
 
 Storing items at random locations in deep space is actually *very*
-secure -- more so than any lock! Space is *huge*. Even with
+secure — more so than any lock! Space is *huge*. Even with
 faster-than-light travel searching a galaxy for a storage location
 would be impractical. It would be as impractical as using brute-force
-to find an encryption key -- another huge search space. Also, if the
+to find an encryption key — another huge search space. Also, if the
 storage location as been in use for *X* years, you'd need to come
 within *X* light-years of it, at least, in order to find it, since
 even gravity itself is limited by the speed of light.

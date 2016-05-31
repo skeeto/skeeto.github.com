@@ -67,7 +67,7 @@ These are used to assemble lists.
 
 ![](/img/diagram/list.png)
 
-So a cons cell itself -- the *shallow* size -- is two words: 16 bytes
+So a cons cell itself — the *shallow* size — is two words: 16 bytes
 on a 64-bit operating system. To make sure Elisp doesn't happen to
 have any additional information attached to cons cells, let's take a
 look at the Emacs source code.
@@ -137,7 +137,7 @@ them from actual pointers these integers have a restricted dynamic
 range.
 
 Floats are not tagged and exist as immutable objects in the heap.
-That's why `eql` is still useful in Elisp -- it's like `eq` but will
+That's why `eql` is still useful in Elisp — it's like `eq` but will
 handle numbers properly. (By convention you should use `eql` for
 integers, too.)
 

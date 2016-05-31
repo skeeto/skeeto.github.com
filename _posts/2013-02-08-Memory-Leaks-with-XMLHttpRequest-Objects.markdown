@@ -12,7 +12,7 @@ incorrect information. If you know of an article that does get it
 right, please share it.
 </p>
 
-I really love jQuery. It is *by far* my favorite XML library -- the
+I really love jQuery. It is *by far* my favorite XML library — the
 only one that's enjoyable to use, really. It cleans up a lot of the
 Document Object Model's ugliness, along with a few other important
 browser APIs. One such API is the misnamed HTTP request object,
@@ -85,7 +85,7 @@ function makeCounter() {
 ~~~
 
 When `makeCounter()` is called, a *binding* named `x` is established,
-initially bound to the value 0 -- an *assignment*. Then a closure is
+initially bound to the value 0 — an *assignment*. Then a closure is
 created by the `function` expression, capturing this binding, and the
 closure is returned. This would normally be the end of life for the
 newly established binding, open for garbage collection, but it was
@@ -107,7 +107,7 @@ that value. `x` has become a truly private variable for each closure,
 completely inaccessible except through this single call.
 
 Closures *can* capture more values than the programmer intended, which
-will cause the captures values to live longer than expected -- a
+will cause the captures values to live longer than expected — a
 leak. Fortunately, this is unusual. Consider this function.
 
 ~~~javascript
@@ -124,7 +124,7 @@ The body of `makeGreeter()` has two bindings, `name` and
 `greeting` because they're both part of its lexical environment. The
 value assigned to `name` could live longer than intended. In practice,
 this is not the case. Compilers are smart enough to see that the
-closure makes no reference to `name` --
+closure makes no reference to `name` —
 [so long as eval isn't present][eval].
 
 ### Circular References

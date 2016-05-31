@@ -134,7 +134,7 @@ of `x` is strictly limited to `foo` or `bar`.
 Strong versus weak is probably the least understood property. Strong
 typing is often mixed up with static typing despite being an
 orthogonal concept. A language can be strongly, dynamically typed
-(Python) -- or weakly, statically typed (C). Strong/weak is also
+(Python) — or weakly, statically typed (C). Strong/weak is also
 sometimes confused with *type safety*.
 
 This aspect refers to the tendency of values to be implicitly coerced

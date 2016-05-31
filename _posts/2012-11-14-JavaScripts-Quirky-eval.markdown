@@ -12,7 +12,7 @@ it is capable of wreaking so much havoc.
 
 The purpose of `eval` is to take an arbitrary data structure
 containing a program (usually a string) and evaluate it. Most of the
-time the use `eval` indicates a bad program -- its use completely
+time the use `eval` indicates a bad program — its use completely
 unnecessary, very slow, and probably dangerous. There are exceptions,
 like [Skewer](/blog/2012/10/31/), where a REPL is being provided to a
 developer. *Something* needs to perform the "E" part of REPL.
@@ -75,7 +75,7 @@ This function returns `5`. The `eval` modified the lexically scoped
 `$bar`.
 
 Note how short Lisp's `eval` documentation is compared to
-Perl's. Lisp's `eval` semantics are dead simple -- very important for
+Perl's. Lisp's `eval` semantics are dead simple — very important for
 such a dangerous function. Perl's description is two orders of
 magnitude larger than Lisp's and it still doesn't fully document the
 feature.

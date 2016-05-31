@@ -86,8 +86,8 @@ switch to a different computer to continue developing.
 
 For the second time since I've picked up WebGL I have overestimated
 graphics cards' performance capabilities. It turns out my CPU is
-faster at convolving a 25x25 kernel -- the size of the convolution
-kernel in the Java version -- than any GPU that I have access to. If I
+faster at convolving a 25x25 kernel — the size of the convolution
+kernel in the Java version — than any GPU that I have access to. If I
 reduce the size of the kernel the GPU gets its edge back. The only way
 to come close to 25x25 on the GPU is to cut some corners. I finally
 settled on an 19x19 kernel, which seems to work just about as well

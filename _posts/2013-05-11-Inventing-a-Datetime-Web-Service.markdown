@@ -44,7 +44,7 @@ So if I don't trust the local system time to be precise, where can I
 get a more accurate time? Surely there are web services out there for
 it, right? NIST operates [time.gov](http://time.gov/) and maybe that
 has a web API for web applications. I don't need to be super precise
--- a web API could never be -- just within a couple of seconds.
+— a web API could never be — just within a couple of seconds.
 
 Turns out there isn't any such web service, at least not a reliable
 one. Yahoo used to [provide one called getTime][yahoo], but it's been

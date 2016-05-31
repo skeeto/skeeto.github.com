@@ -55,8 +55,8 @@ boot the entire system is lifted into memory. **Editing the system
 arguments before booting can be done by hitting <kbd>tab</kbd> at the
 isolinux/syslinux boot menu.** Once the system is up I'm free to
 remove the thumb drive and use it to boot another system.
-Additionally, the system will also be *much* faster -- faster than
-even a normal system -- since it's running entirely in RAM.
+Additionally, the system will also be *much* faster — faster than
+even a normal system — since it's running entirely in RAM.
 
 The disadvantage is that there's now less memory available to the
 system for other things. This can be mitigated by making use of a swap

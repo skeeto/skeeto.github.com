@@ -100,8 +100,8 @@ TEXT. The specifics vary depending on the back-end.
 
 #### Parameters
 
-A symbol beginning with a dollar sign is a parameter. It has a type --
-identifier (i), scalar (s), vector (v), schema (S) -- and an argument
+A symbol beginning with a dollar sign is a parameter. It has a type —
+identifier (i), scalar (s), vector (v), schema (S) — and an argument
 position.
 
 ~~~cl
@@ -328,7 +328,7 @@ there's no disadvantage to it. EmacSQL builds SQLite with the
 full-text search engine enabled, which opens to the door to a
 powerful, fast Elfeed search API. Currently the main obstacle is
 actually Elfeed's database API being somewhat incompatible with ACID
-database transactions -- shortsightedness on my part!
+database transactions — shortsightedness on my part!
 
 
 [emacsql]: https://github.com/skeeto/emacsql

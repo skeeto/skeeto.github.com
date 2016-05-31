@@ -44,7 +44,7 @@ With deck.js, I'll be writing my presentations in HTML 5, something
 with which I'm already comfortable and experienced. Most importantly,
 I'll be able to create my presentations with Emacs and version them
 with Git. That allows for easy collaboration on presentations
-without all the stupid e-mailing documents back and forth -- though
+without all the stupid e-mailing documents back and forth — though
 the other person would need to be comfortable with using deck.js,
 too. That leaves ... well, just [Brian](http://50ply.com/) I
 guess. So, *in theory*, this could make collaboration easier.
@@ -75,7 +75,7 @@ next level: presentations written in Markdown! That would be
 wonderful. Unfortunately, the HTML output is a little bit too
 demanding for Jekyll (i.e. Maruku) to manage. It's not quite
 extensible enough to pull it off. So it's just HTML5 for now, which is
-unfortunately bulky when it comes to lists -- a common element of
+unfortunately bulky when it comes to lists — a common element of
 presentations. Oh well. I do still get syntax highlighting with
 Pygments!
 

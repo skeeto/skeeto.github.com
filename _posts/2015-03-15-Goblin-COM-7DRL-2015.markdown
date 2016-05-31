@@ -59,8 +59,8 @@ binary][dos] that was easy to build, and I didn't want to mess around
 with [PDCurses][pd]. I've also been studying the Win32 API lately, so
 writing my own terminal platform layer would rather easy to do anyway.
 
-I experimented with a number of terminal emulators -- LXTerminal,
-Konsole, GNOME/MATE terminal, PuTTY, xterm, mintty, Terminator -- but
+I experimented with a number of terminal emulators — LXTerminal,
+Konsole, GNOME/MATE terminal, PuTTY, xterm, mintty, Terminator — but
 the least capable "terminal" *by far* is the Windows console, so it
 was the one to dictate the capabilities of the graphics engine. Some
 ANSI terminals are capable of 256 colors, bold, underline, and
@@ -151,7 +151,7 @@ would look like:
 
     $(LD) -r -b binary -o $@ $^
 
-The `-r` specifies that output should be relocatable -- i.e. it can be
+The `-r` specifies that output should be relocatable — i.e. it can be
 fed back into the linker later when linking the final binary. The `-b
 binary` says that the input is just an opaque binary file ("plain"
 text included). The linker will create three symbols for each input

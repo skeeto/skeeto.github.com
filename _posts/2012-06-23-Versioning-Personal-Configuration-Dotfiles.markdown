@@ -11,7 +11,7 @@ in Git. Just as [when I did the same with Emacs](/blog/2011/10/19/),
 it's been extremely liberating and I wish I had been doing this for
 years. Currently it covers 11 different applications including my web
 browser, shell, window manager, and cryptographic keys, giving me a
-unified experience across all of my machines -- which, between home,
+unified experience across all of my machines — which, between home,
 work, and virtual computers is about half a dozen.
 
 Like anything, the biggest problem with *not* versioning these files

@@ -50,7 +50,7 @@ especially if you imported from OPML.
 
 If you wanted certain tags applied to entries from each, you would
 need to putz around with `elfeed-make-tagger`. For the most common
-case --- apply certain tags to all entries from a URL --- it's much
+case — apply certain tags to all entries from a URL — it's much
 simpler to specify the information as part of the listing itself,
 
 ~~~cl
@@ -149,8 +149,8 @@ between sessions. To revisit a filter in the future, `M-x
 bookmark-jump` (`C-x r b`).
 
 Since this requires no configuration, this may serve as an easy
-replacement for manually building "view" toggles --- filters bound to
-certain keys --- which I know many users have done, including me.
+replacement for manually building "view" toggles — filters bound to
+certain keys — which I know many users have done, including me.
 
 #### New Header
 

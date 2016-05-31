@@ -90,11 +90,10 @@ wisp> ((example -1) 20)
 <p>
 Because there's no garbage collection yet, it leaks memory like a
 sieve. For garbage collection, I think I'll do a mark-and-sweep,
-marking objects based on their reachability from the symbol
-table. That still leaves some corner cases -- such as worrying about
-objects in limbo in the evaluator -- that I'm not sure about. I need
-to be careful not to free objects still in use. Still working that one
-out.
+marking objects based on their reachability from the symbol table.
+That still leaves some corner cases — such as worrying about objects
+in limbo in the evaluator — that I'm not sure about. I need to be
+careful not to free objects still in use. Still working that one out.
 </p>
 <p>
 It has the multiplication, addition, subtraction, and division

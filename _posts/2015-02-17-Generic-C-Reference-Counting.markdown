@@ -108,16 +108,16 @@ reference. Their promise not to modify the object doesn't *really*
 apply to the reference count, which is merely embedded metadata. They
 would need to cast the `const` away before being permitted to call
 `ref_inc()` and `ref_dec()`. Rather than litter the program with
-dangerous casts, the casts are all kept in one place -- in the
-reference counting functions -- where they're strictly limited to
+dangerous casts, the casts are all kept in one place — in the
+reference counting functions — where they're strictly limited to
 mutating the reference counting fields.
 
 On a related note, the `stdlib.h` `free()` function doesn't take a
 `const` pointer, so the `free()` method taking a `const` pointer is a
 slight departure from the norm. Taking a non-`const` pointer [was a
 mistake in the C standard library][const]. The `free()` function
-mutates the pointer itself -- including all other pointers to that
-object -- making it invalid. Semantically, it doesn't mutate the
+mutates the pointer itself — including all other pointers to that
+object — making it invalid. Semantically, it doesn't mutate the
 memory *behind* the pointer, so it's not actually violating the
 `const`. To compare, the [Linux kernel `kfree()`][kfree] takes a
 `const void *`.

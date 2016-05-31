@@ -42,10 +42,9 @@ going on a new machine once Ivy and Ant are in place.
 
 So I ended up with something very much like my normal Java workflow. I
 restart the server every time I want to see my changes, but I do it
-directly from Ant -- meaning I can
-[trigger it from within Emacs](/blog/2010/10/15/). It's really no
-different from developing a normal application, except that a browser
-is involved.
+directly from Ant — meaning I can [trigger it from within
+Emacs](/blog/2010/10/15/). It's really no different from developing a
+normal application, except that a browser is involved.
 
 I created this two months ago and have yet to create any servlet
 projects from it. That's the point of these Sample*Xxxx*Project

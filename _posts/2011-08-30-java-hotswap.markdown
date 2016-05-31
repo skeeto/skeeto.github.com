@@ -68,15 +68,16 @@ timestamp business, no need to write out the compile task again. We
 can just call the original as a dependency of this target.
 
 An easy way to try this out for yourself now is with the
-[`hotswap-demo` branch](https://github.com/skeeto/october-chess-engine/tree/hotswap-demo)
+[`hotswap-demo`
+branch](https://github.com/skeeto/october-chess-engine/tree/hotswap-demo)
 of my chess engine. (This branch is special because it forces the GUI
 to redraw every second, causing changes to take effect immediately.)
 Check out that branch, run the program with the `run` target, then in
 `BoardPanel.java` change the colors of the board in `paintComponent()`
--- change `LIGHT` to `Color.WHITE` and `DARK` to `Color.GRAY`, for
-example. Then, without stopping the program, run the `hotswap`
-target. Ant will inject the new code into the running program and the
-board will change before your eyes.
+— change `LIGHT` to `Color.WHITE` and `DARK` to `Color.GRAY`, for
+example. Then, without stopping the program, run the `hotswap` target.
+Ant will inject the new code into the running program and the board
+will change before your eyes.
 
 I look forward to making good use of this in the future. Expect it to
 be a typical Ant target in all of my Java projects from now on.

@@ -1,5 +1,5 @@
 ---
-title: Skewer -- Emacs Live Browser Interaction
+title: "Skewer: Emacs Live Browser Interaction"
 layout: post
 tags: [emacs, javascript]
 uuid: 2564011d-0057-3a3e-eaff-c28748d077b0
@@ -73,7 +73,7 @@ work across any operating system, so long as it has Emacs installed.
 
 I already used Skewer to develop a little [boids toy][boids-js], which
 I'm using to demonstrate the mode (the video). Unlike my previous
-experiences in web development, this was extremely enjoyable --
+experiences in web development, this was extremely enjoyable —
 probably because it felt a lot like I was writing Lisp. And unlike any
 Lisp I've used so far, I had a canvas to draw on with my live
 code. That's a satisfying tool to have.

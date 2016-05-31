@@ -7,8 +7,8 @@ uuid: 42b38d5e-1781-3354-c1b2-1228fff81ebd
 ---
 
 The [April 5th, 2014 draft][draft] of the [ECMA-262 6th Edition
-specification][spec] -- a.k.a the next major version of
-JavaScript/ECMAScript -- contained a subtle, though very significant,
+specification][spec] — a.k.a the next major version of
+JavaScript/ECMAScript — contained a subtle, though very significant,
 change to the semantics of the `for` loop (13.6.3.3). Loop variables
 are now fresh bindings for each iteration of the loop: a
 *per-iteration* binding. Previously loop variables were established
@@ -285,8 +285,8 @@ for (let i = 0; i < count; i++) {
 }
 ~~~
 
-Now all the expected `for` semantics work -- the body can also update
-the loop variable -- but we still get the closure-friendly
+Now all the expected `for` semantics work — the body can also update
+the loop variable — but we still get the closure-friendly
 per-iteration variables.
 
 ### Conclusion

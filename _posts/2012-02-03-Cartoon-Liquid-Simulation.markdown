@@ -52,7 +52,7 @@ project ideas. Maybe even a game.
 
 The most computationally intensive part of the process *isn't* the
 physics. That's really quite cheap. It's actually blurring, by far.
-Blurring involves [convolving a kernel][kernel] over the image --
+Blurring involves [convolving a kernel][kernel] over the image —
 O(n^2) time. The graphics card would be ideal for that step, probably
 eliminating it as a bottleneck, but it's unavailable to pure Java. I
 could have [pulled in lwjgl][lwjgl], but I wanted to keep it simple,
@@ -62,7 +62,7 @@ As a result, it may not run smoothly on computers that are more than a
 couple of years old. I've been trying to come up with a cheaper
 alternative, such as rendering a transparent halo around each ball,
 but haven't found anything yet. Even with that fix, thresholding would
-probably be the next bottleneck -- something else the graphics card
+probably be the next bottleneck — something else the graphics card
 would be really good at.
 
 

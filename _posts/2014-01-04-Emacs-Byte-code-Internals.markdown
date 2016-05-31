@@ -6,8 +6,8 @@ tags: [emacs, lisp, elisp, lang]
 uuid: c03869b5-fca0-3f9e-8dda-c3f361b287a8
 ---
 
-Byte-code compilation is an underdocumented -- and in the case of the
-recent lexical binding updates, undocumented -- part of Emacs. Most
+Byte-code compilation is an underdocumented — and in the case of the
+recent lexical binding updates, undocumented — part of Emacs. Most
 users know that Elisp is usually compiled into a byte-code saved to
 `.elc` files, and that byte-code loads and runs faster than uncompiled
 Elisp. That's all users really need to know, and the *GNU Emacs Lisp
@@ -162,7 +162,7 @@ on each function invocation.
 
 #### Unibyte String Byte-code
 
-The second element is a unibyte string -- it strictly holds octets and
+The second element is a unibyte string — it strictly holds octets and
 is not to be interpreted as any sort of Unicode encoding. These
 strings should be created with `unibyte-string` because `string` may
 return a multibyte string. To disambiguate the string type to the lisp

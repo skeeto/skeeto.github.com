@@ -67,7 +67,7 @@ collection seems to always get triggered after `defvar`.
 I don't have a use-case for this at the moment. Weak references are
 mostly useful in hash tables (caches), and these functions would be
 entirely redundant in that case. I originally implemented these as
-macros, but I feel it made them too inflexible -- they couldn't be
+macros, but I feel it made them too inflexible — they couldn't be
 passed as a function.
 
 

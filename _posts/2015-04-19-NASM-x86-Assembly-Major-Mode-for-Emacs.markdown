@@ -26,8 +26,8 @@ my commitment to NASM as my primary x86 assembler.
 I need an assembler that can assemble 16-bit code (8086, 8088, 80186,
 80286), because [real mode is fun][com]. Despite its `.code16gcc`
 directive, GAS is not suitable for this purpose. It's *just* enough to
-get the CPU into protected mode -- as needed when writing an operating
-system with GCC -- and that's it. A different assembler is required
+get the CPU into protected mode — as needed when writing an operating
+system with GCC — and that's it. A different assembler is required
 for serious 16-bit programming.
 
 [GAS syntax has problems][bad]. I'm not talking about the argument
@@ -44,7 +44,7 @@ with these being the big ones for me:
   default. NASM simplifies this by using brackets `[]` for all such
   "dereferences."
 
-* GAS cannot produce pure binaries -- raw machine code without any
+* GAS cannot produce pure binaries — raw machine code without any
   headers or container (ELF, COFF, PE). Pure binaries are useful for
   developing [shellcode][shellcode], bootloaders, 16-bit COM programs,
   and [just-in-time compilers][jit].

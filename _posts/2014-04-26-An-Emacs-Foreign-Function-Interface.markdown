@@ -165,8 +165,8 @@ transmits it to Elisp.
 
 Here's a concise example that calls `cos(1.2)` (assuming libm.so is
 already linked). The actual Elisp-generated FFI bytecode doesn't plan
-things quite this way -- particularly because it needs to keep track
-of the various pointers involved -- but this example keeps it simple.
+things quite this way — particularly because it needs to keep track
+of the various pointers involved — but this example keeps it simple.
 
     d1.2d0d0w1Cp0w3McosSco
 

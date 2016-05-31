@@ -186,7 +186,7 @@ The compiled form looks fine,
 ~~~
 
 But the interpreted form of the closure has a problem. The
-`with-temp-buffer` macro silently introduced a new binding -- an
+`with-temp-buffer` macro silently introduced a new binding — an
 abstraction leak.
 
 ~~~cl

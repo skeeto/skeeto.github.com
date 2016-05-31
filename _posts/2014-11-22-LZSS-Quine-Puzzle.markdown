@@ -11,7 +11,7 @@ puzzle/action, 1993, MS-DOS game called [*God of Thunder*][got]. It
 came on a shareware CD, now long lost, called *Games People Play*. A
 couple decades later I was recently reminded of the game and decided
 [to dig it up][freeware] and play it again. It's not quite as exciting
-as I remember it -- nostalgia really warps perception -- but it's
+as I remember it — nostalgia really warps perception — but it's
 still an interesting game nonetheless.
 
 ![](/img/screenshot/god-of-thunder.jpg)
@@ -52,7 +52,7 @@ interesting than the game itself. It's a better puzzle! I [really
 enjoy][bini] studying the file formats of various applications,
 especially older ones that didn't have modern standards to build on.
 Usually lots of thought and engineering goes into the design these
-formats -- and, too often, not enough thought goes into it. The
+formats — and, too often, not enough thought goes into it. The
 format's specifics reveal insights into the internal workings of the
 application, sometimes exposing unanticipated failure modes. Prying
 apart odd, proprietary formats (i.e. "data reduction") is probably my

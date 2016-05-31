@@ -48,9 +48,9 @@ hook that's run when the toggle is used. To add more to the mode,
 `define-minor-mode` accepts a number of keywords. Here are the
 important ones.
 
- * `:lighter` -- the name, a string, to show in the modeline
- * `:keymap` -- the mode's keymap
- * `:global` -- specifies if the minor mode is *global*
+ * `:lighter`: the name, a string, to show in the modeline
+ * `:keymap`: the mode's keymap
+ * `:global`: specifies if the minor mode is *global*
 
 The `:lighter` option has one caveat: it's concatenated to the rest of
 the modeline without any delimiter. This means it needs to be prefixed

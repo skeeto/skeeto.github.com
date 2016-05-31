@@ -53,7 +53,7 @@ now. A 45-degree rotation helps break up potential patterns. I tried
 to do this, but I couldn't get the math right along with the correct
 parameters to the AffineTransform. Something was always getting
 clipped or padded incorrectly. Adding CMYK color would also be
-interesting, and would also require rotation of the dot grid -- each
+interesting, and would also require rotation of the dot grid — each
 color gets its own angle.
 
 I also thought about having it dump out the image in vector form as a

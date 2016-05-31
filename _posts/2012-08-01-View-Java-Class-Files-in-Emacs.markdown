@@ -72,7 +72,7 @@ by reading the source code around auto-compression-mode and
 auto-encryption-mode.
 
 It works by installing a handler function in `file-name-handler-alist`
--- similar to `auto-mode-alist`. The handler has complete control over
+— similar to `auto-mode-alist`. The handler has complete control over
 how a particularly-named class of files is handled by Emacs. For
 example, the most useful part is instead of actually providing the
 contents of a file, the handler can present any contents it wants. In

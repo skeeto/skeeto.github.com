@@ -37,7 +37,7 @@ password hashing functions: they're much too fast! An offline attacker
 can mount a rapid brute-force attack on these kinds of hashes. They
 also don't include a *salt*, a unique, non-secret, per-hash value used
 as additional hash function input. Without this, an attacker could
-prepare the entire attack ahead of time -- a *rainbow table*. Once the
+prepare the entire attack ahead of time — a *rainbow table*. Once the
 hashes are obtained, reversing them is just a matter of looking them
 up in the table.
 
@@ -87,7 +87,7 @@ material, and there's even good reason to believe it may already be
 broken by nation state actors. Despite this, RC4 remains the most
 widely used stream cipher today due to its inclusion in TLS. Most
 importantly here, almost none of RC4's weaknesses apply to this
-situation -- we're only using a few bytes of output -- so it's still a
+situation — we're only using a few bytes of output — so it's still a
 very strong algorithm. Besides, what I'm developing is a proof of
 concept, not something to be used in a real application. It would be
 interesting to see how long it takes for someone to break this (maybe

@@ -10,7 +10,7 @@ Project source,
 * [https://github.com/skeeto/PendulumWaves](https://github.com/skeeto/PendulumWaves)
 
 My grandfather send me this video last week:
-[Harvard Natural Sciences Lecture Demonstrations -- Pendulum Waves][pend].
+[Harvard Natural Sciences Lecture Demonstrations: Pendulum Waves][pend].
 Fifteen pendulums are tuned to oscillate at 51 cycles-per-minute to 65
 cycles-per-minutes. It creates interesting aliasing effects for one
 minute, after which the pendulums come back into sync and the system

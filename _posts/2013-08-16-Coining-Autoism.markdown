@@ -21,8 +21,8 @@ I like to assume that it had no useful software installed, so it's
 *just* the advanced hardware. I guess time-traveling erases digital
 storage in this scenario. Suppose the engineers of the day could work
 out a way to interface with it electronically using the technology of
-the time -- something that I believe would be very difficult
-considering the bandwidth and speed of the interfaces -- and use that
+the time — something that I believe would be very difficult
+considering the bandwidth and speed of the interfaces — and use that
 interface to program it. Outside of study, some of the hardware would
 be pretty useless, such as the H.264 decoder/encoder, wireless radios
 (what would it talk to?), and probably the graphics chip, but the CPU

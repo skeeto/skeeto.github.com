@@ -30,12 +30,12 @@ one of the organizations responsible for this mess. Newspapers and the
 Syndicate pushed for smaller frames and shorter comics. Authors were
 required to plan around newspapers removing frames for layout
 purposes. Many newspapers would drop comics that need meet stringent
-content limitations --- a line that even Calvin and Hobbes crossed on
+content limitations — a line that even Calvin and Hobbes crossed on
 occasion. Authors had little control over how their work was
 published.
 
 Those days are over. Today's authors can cheaply host their comics on
-the web --- *web*comics --- with full control over content, layout,
+the web — *web*comics — with full control over content, layout,
 and schedule. If they even try to monetize at all, it's generally
 through advertising, merchandising, or reader donations. Some do it
 all in their free time, while for others it's part or even full time
@@ -81,7 +81,7 @@ Every time you publish on the web, your content is accessible through
 some specific URL: that sequence of characters that starts with
 "http". **Each individual comic should be accessible through a unique,
 *unchanging* URL.** That last adjective is critically important. That
-URL should point to the same comic for as long as possible --- ideally
+URL should point to the same comic for as long as possible — ideally
 until the heat death of the universe. This will be affected by
 problems such as your host going down, but the impact should only be
 temporary and short. A URL is a promise.
@@ -95,7 +95,7 @@ On several occasions I've seen authors break all their URLs after
 revamping their site. For example, the previously the URL contained
 the date but the new URL is only the domain and the title. That breaks
 thousands of links all over the Internet. Visitors using those old
-links will be welcomed with an ugly "404 Not Found" --- or worse, as
+links will be welcomed with an ugly "404 Not Found" — or worse, as
 I've seen more than once, a "200 Found" blank page. These are missed
 opportunities for new readers.
 
@@ -176,7 +176,7 @@ published without a date. Dates put your comic in context, especially
 if it's about something topical. It also helps users navigate your
 content though time.
 
-Putting the date in the URL is sufficient --- even preferred --- if
+Putting the date in the URL is sufficient — even preferred — if
 you didn't want to display it on the page proper. Your Atom/RSS should
 *always* have the comic's date. I personally benefit from a date-time
 precision down to the publication hour. Some comics/articles are

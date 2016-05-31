@@ -217,9 +217,9 @@ This project idea occurred to me while reading the [OpenGL ES shader
 language specification][spec] (PDF). I'd been wanting to do a particle
 system, but I was stuck on the problem how to draw the particles. The
 texture data representing positions needs to somehow be fed back into
-the pipeline as vertices. Normally a [buffer texture][bt] -- a texture
-backed by an array buffer -- or a [pixel buffer object][pbo] --
-asynchronous texture data copying -- might be used for this, but WebGL
+the pipeline as vertices. Normally a [buffer texture][bt] — a texture
+backed by an array buffer — or a [pixel buffer object][pbo] —
+asynchronous texture data copying — might be used for this, but WebGL
 has none these features. Pulling texture data off the GPU and putting
 it all back on as an array buffer on each frame is out of the
 question.

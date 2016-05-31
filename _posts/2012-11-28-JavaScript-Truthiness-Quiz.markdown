@@ -29,8 +29,8 @@ refactoring: the code initially appears to be a tautology that could
 be reduced to a simpler `return false`. Since this quiz has solutions
 that's obviously not true.
 
-Had I reversed the booleans -- assign `bar` to `true` and make this
-function return a falsy value -- then almost any immutable object,
+Had I reversed the booleans — assign `bar` to `true` and make this
+function return a falsy value — then almost any immutable object,
 such as a string, would do.
 
 ~~~javascript
@@ -140,7 +140,7 @@ the language's design. While this behavior newbie-friendly, it allows
 bugs to slip by undetected, only to be found much later when they're
 more expensive to address. It makes JavaScript programs more brittle.
 
-#### Existing objects -- a third approach?
+#### Existing objects: a third approach?
 
 If you're lazy and in a browser environment, you don't even need to
 construct new objects to solve the problem. There are some already

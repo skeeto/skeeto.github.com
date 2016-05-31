@@ -13,9 +13,9 @@ this article I'm going to exploit this to solve the [shortest path
 problem][spp] for two-dimensional grids entirely on a GPU. It will be
 just as fast as traditional searches on a CPU.
 
-The JavaScript side of things is essentially the same as before -- two
+The JavaScript side of things is essentially the same as before — two
 textures with fragment shader in between that steps the automaton
-forward -- so I won't be repeating myself. The only parts that have
+forward — so I won't be repeating myself. The only parts that have
 changed are the cell state encoding (to express all automaton states)
 and the fragment shader (to code the new rules).
 

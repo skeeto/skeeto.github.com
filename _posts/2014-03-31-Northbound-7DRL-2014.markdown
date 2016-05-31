@@ -8,7 +8,7 @@ uuid: f0804d6b-83fd-38f4-654f-242dd73dce88
 
 Last year [I participated in 7DRL 2013][7drl2013] and submitted a game
 called [*Disc RL*](http://nullprogram.com/disc-rl/). 7DRL stands for
-[*Seven Day Roguelike*][7drl] -- a challenge to write a roguelike game
+[*Seven Day Roguelike*][7drl] — a challenge to write a roguelike game
 inside of one week. I participated again this year in 7DRL 2014, with
 the help of [Brian][brian]. My submission was called *Northbound*. To
 play, all you need is a modern web browser.
@@ -24,7 +24,7 @@ mysterious, spreading corruption. ("Corruption" seems to be a common
 theme in my games.) There's no combat and, instead, the game is a
 series of events with a number of possible responses by the player.
 For better or worse, other characters may join you in your journey. I
-coded the core game basically from scratch -- no rot.js this year --
+coded the core game basically from scratch — no rot.js this year —
 and Brian focused on writing story events and expanding the story
 system.
 

@@ -73,8 +73,8 @@ mathematically related composite numbers.
 
 calc has a function `calc-next-prime` for finding the next prime
 number following any arbitrary number. It uses a probabilistic
-primarily test --- the <del>Fermat</del> Miller-Rabin primality test
---- to efficiently test large integers. It increments the input until
+primarily test — the <del>Fermat</del> Miller-Rabin primality test
+— to efficiently test large integers. It increments the input until
 it finds a result that passes enough iterations of the primality test.
 
 ~~~cl

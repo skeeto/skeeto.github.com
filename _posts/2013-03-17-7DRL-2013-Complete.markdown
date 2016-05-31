@@ -63,20 +63,20 @@ creature in the game can do: melee (bash with your disc) and ranged
 bringing in four different monster classes. Note, I consider these
 game spoilers.
 
- * **Simple** -- Middle-of-the-road on abilities, these guys run up
+ * **Simple**: Middle-of-the-road on abilities, these guys run up
    and try to hit you. No ranged attacks. The strategy is to attack
    them with ranged as they close in, then melee them down. They're
    easy and these are the monsters you see in the beginning of the
    game.
 
- * **Brute** -- These guys have high health and damage (high
+ * **Brute**: These guys have high health and damage (high
    strength), but are slow moving (low dexterity). They try to run up
    to you and bash you (same AI as "simple" monsters). The strategy
    for them is to "kite" them, keeping your distance and hitting them
    with ranged attacks, especially when they're standing on
    corruption.
 
- * **Archer** -- Archers are the opposite of brutes: low health, high
+ * **Archer**: Archers are the opposite of brutes: low health, high
    ranged damage, and high speed. They chase you down and perform
    ranged attacks no matter what. The strategy for dealing with them
    is to break line-of-sight and wait. They'll run up and around the
@@ -86,7 +86,7 @@ game spoilers.
    player, can't block attacks with their disc for one turn after they
    throw it.
 
- * **Skirmisher** -- This is a hybrid of brutes and archers and are
+ * **Skirmisher**: This is a hybrid of brutes and archers and are
    the most difficult. They have high dexterity, sometimes also high
    strength, and use the appropriate attack for the situation. At
    range they use ranged attacks, they'll try to run away from you if
@@ -177,12 +177,12 @@ too easy and the late game is probably too hard. The difficulty ramps
 up quickly in the middle. Fortunately this is probably better than the
 reverse: the early game is too hard and the end game is too
 easy. Early difficulty won't be what's scaring off anyone trying out
-the game -- instead, that would be boredom! Generally if you find a
+the game — instead, that would be boredom! Generally if you find a
 level too difficult, you need to retreat to the previous level and
 grind out a few more levels. This turns out to be not very
 interesting, so there needs to be less of it.
 
-Fixing this would take a lot more play-testing -- also very
+Fixing this would take a lot more play-testing — also very
 time-consuming. At the end of the week I probably spent around six
 hours just playing legitimately (i.e. not cheating), and having fun
 doing so, but that still wasn't enough. The very end of the game with
@@ -214,7 +214,7 @@ Along with my no-images philosophy, I was intending to exploit CSS
 animations to make the map look really interesting. I wanted the
 glowing walls to pulsate with energy. Unfortunately adding a removing
 classes causes these animations to reset if reflow is allowed to occur
--- sometimes. The exact behavior is browser-dependent. All the
+— sometimes. The exact behavior is browser-dependent. All the
 individual tile animations would get out of sync and everything would
 look terrible. There is intentionally little control over this
 behavior, for optimization purposes, so I couldn't fix it.

@@ -11,8 +11,8 @@ Half of it is basically a port of [BrianScheme's PRNG][bs].
 
 JavaScript comes with an automatically-seeded global uniform PRNG,
 Math.random(). This is suitable for most purposes, but if
-repeatability and isolation is desired -- such as when generating a
-roguelike dungeon -- it's inadequate. I also wanted to be able to
+repeatability and isolation is desired — such as when generating a
+roguelike dungeon — it's inadequate. I also wanted to be able to
 sample from different probability distributions, particularly the
 normal distribution and the exponential distribution.
 

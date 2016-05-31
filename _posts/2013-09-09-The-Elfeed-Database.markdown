@@ -50,8 +50,8 @@ result.
 For the first few days of its existence Elfeed only had an in-memory
 database. Closing Emacs would lose everything. For my personal usage
 patterns, where I read, or at least address, all entries that arrive
--- and especially because I use Elfeed on a couple of different
-computers -- I don't really *need* to track things long term. I could
+— and especially because I use Elfeed on a couple of different
+computers — I don't really *need* to track things long term. I could
 easily mark everything after a certain date as read and forget about
 them. However, it would be nice to have and, more importantly, many
 people wouldn't use Elfeed without persistence between Emacs sessions.
@@ -109,8 +109,8 @@ a reason to even keep them in memory all the time, as it's rarely
 accessed. The solution is a loose-file, content-addressable database,
 very similar to an unpacked Git object database.
 
-The content database stores immutable sequences of characters -- not
-just raw bytes, but rather multibyte strings -- using an unspecified
+The content database stores immutable sequences of characters — not
+just raw bytes, but rather multibyte strings — using an unspecified
 coding system (right now it's UTF-8 for all platforms). The filename
 for the content is the content hashed with SHA-1
 ("content-addressable"). To limit the number of files per directory,
@@ -154,7 +154,7 @@ share content database storage. A small savings.
 At this point it's really tempting to get fancier and really put this
 content database to use. The core index itself could be stored as raw
 content, and the root to accessing the database would be a single
-SHA-1 hash referencing it -- again, *very* similar to Git. If an index
+SHA-1 hash referencing it — again, *very* similar to Git. If an index
 stores a reference to the previously written index, then the the
 Elfeed database would be an immutable structure tracking its entire
 history. Such a change would cost virtually nothing in performance,
@@ -208,7 +208,7 @@ Fourth, **entries need to be keyed by an ID string**. Each entry has a
 unique, unchanging identifier string, either provided by the feed
 itself (RSS's `guid` or Atom's `id`) or generated intelligently by
 Elfeed. Especially because of the `print-circle` bug, we need to be
-able to talk about feeds in terms of their ID -- an indirect pointer.
+able to talk about feeds in terms of their ID — an indirect pointer.
 
 (Actually, even when RSS `guid` tags are present, they're permalinks
 by default. So, unfortunately, RSS IDs are not at all resistant to

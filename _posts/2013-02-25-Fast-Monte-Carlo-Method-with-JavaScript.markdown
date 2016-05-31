@@ -28,7 +28,7 @@ Even though Elisp was fast enough to determine that the answer is
 probably *e*, I wanted to play around with it. This little test
 program doubles as a way to estimate the value of *e*,
 [similar to estimating *pi*][pi]. The more trial runs I give it the
-more accurate my answer will get -- to a point.
+more accurate my answer will get — to a point.
 
 Here's the Common Lisp version. (I love the loop macro, obviously.)
 
@@ -149,7 +149,7 @@ the variables are all local, so they are never "looked up" at
 run-time. Their name length doesn't matter. Remember, in JavaScript
 *global* variables are expensive, because they're (generally) hash
 table lookups on the global object at run-time. For any decent
-compiler, local variables are basically precomputed memory offsets --
+compiler, local variables are basically precomputed memory offsets —
 very fast.
 
 The function names themselves are global variables, but the V8
@@ -158,7 +158,7 @@ entire thing in another function, turning the two original functions
 into local variables, makes no difference in performance.
 
 While Common Lisp and C *may* be able to beat JavaScript if time is
-invested in optimizing them -- something to be done rarely -- in a
+invested in optimizing them — something to be done rarely — in a
 casual implementation of this algorithm, JavaScript beats them both. I
 find this really exciting.
 
