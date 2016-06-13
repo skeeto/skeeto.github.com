@@ -73,8 +73,11 @@ msvcrt.dll**, which [isn't officially supported by Microsoft][msvcrt].
 It just happens to exist on modern Windows installations. Since it's
 not supported, it's way out of date and doesn't support much of C99,
 let alone C11. If you're relying on Mingw-w64, you have to **stick to
-many C89 library features**, such as limiting yourself to the C89
-printf specifiers.
+some C89 library features**, <s>such as limiting yourself to the C89
+printf specifiers</s>.
+
+Update: Mārtiņš Možeiko has pointed out `__USE_MINGW_ANSI_STDIO`, an
+undocumented feature that fixes the printf family.
 
 ### Visual C++
 
