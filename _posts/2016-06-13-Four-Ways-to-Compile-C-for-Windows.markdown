@@ -54,17 +54,18 @@ C libraries do it this way.
 ### Mingw-w64
 
 Of course my first natural choice is MinGW, specifically the
-[Mingw-w64][mingw64] fork. It's GCC ported to Windows. I can continue
-relying on GCC-specific features when I need them. It's got all the
-core language features up through C11, plus the common extensions.
-It's probably packaged by your Linux distribution of choice, so you
-can easily cross-compile from Linux. Like regular GCC, it outputs
-GDB-friendly DWARF debugging information, so you can **debug your
-applications with GDB** ([my favorite][fav]).
+[Mingw-w64][mingw64] fork. It's GCC ported to Windows. You can
+continue relying on GCC-specific features when you need them. It's got
+all the core language features up through C11, plus the common
+extensions. It's probably packaged by your Linux distribution of
+choice, making it trivial to cross-compile programs and libraries from
+Linux — and with Wine you can even execute them on x86. Like regular
+GCC, it outputs GDB-friendly DWARF debugging information, so you can
+**debug applications with GDB** ([my favorite][fav]).
 
 If I'm using Mingw-w64 on Windows, I prefer to do so from inside
 Cygwin. Since it provides a complete POSIX environment, it maximizes
-portability for the whole tool chain.
+portability for the whole tool chain. This isn't strictly required.
 
 However, it has one big flaw. Unlike unix-like systems, Windows
 doesn't supply a system standard C library. That's the compiler's job.
@@ -72,9 +73,10 @@ But Mingw-w64 doesn't have one. Instead **it links against
 msvcrt.dll**, which [isn't officially supported by Microsoft][msvcrt].
 It just happens to exist on modern Windows installations. Since it's
 not supported, it's way out of date and doesn't support much of C99,
-let alone C11. If you're relying on Mingw-w64, you have to **stick to
-some C89 library features**, <s>such as limiting yourself to the C89
-printf specifiers</s>.
+let alone C11. A lot of these problems are patched over by the
+compiler, but if you're relying on Mingw-w64, you still have to
+**stick to some C89 library features**, <s>such as limiting yourself
+to the C89 printf specifiers</s>.
 
 Update: Mārtiņš Možeiko has pointed out `__USE_MINGW_ANSI_STDIO`, an
 undocumented feature that fixes the printf family.
@@ -102,24 +104,25 @@ suppresses some of it.
 When I said behemoth, I meant it. In my experience it literally takes
 *hours* (unattended) to install Visual Studio 2015. The good news is
 you don't actually need it all anymore. The build tools [are available
-standalone][vcbt], which is much more reasonable to install. It's good
-enough that I'd even say I'm comfortable relying on it for Windows
-builds.
+standalone][vcbt]. While it's still a larger and slower installation
+process than it really should be, it's is much more reasonable to
+install. It's good enough that I'd even say I'm comfortable relying on
+it for Windows builds.
 
 That being said, it's not without its flaws. Microsoft has never
 announced any plans to support C99. They only care about C++, with C
 as a second class citizen. Since C++11 incorporated most of C99 and
 Microsoft supports C++11, Visual Studio 2015 **very nearly supports
 all of C99**, even more than Mingw-w64. The only thing missing as far
-as I can tell is variable length arrays (VLAs), since they weren't
-accepted into C++. Some C99 features are considered extensions (as
-they would be for C89), so you'll also get warnings about them, which
-can be disabled.
+as I can tell is variable length arrays (VLAs) and complex numbers,
+since these weren't accepted into C++. Some C99 features are
+considered extensions (as they would be for C89), so you'll also get
+warnings about them, which can be disabled.
 
 The command line interface (option flags, intermediates, etc.) isn't
 quite reconcilable with the unix-like ecosystem (i.e. GCC, Clang), so
 **you'll need separate Makefiles**, or you'll need to use a build
-system that generates Visual C++ flavored Makefiles.
+system that generates Visual C++ Makefiles.
 
 **Debugging is a major problem**. Visual C++ outputs separate .pdb
 [program database][pdb] files, which aren't usable from GDB. Visual
@@ -139,9 +142,10 @@ platforms.
 
 Unlike Mingw-w64, it doesn't link against msvcrt.dll. Instead **it
 relies directly on the official Windows SDK**. You'll basically need
-to install the Visual C++ build tools just like you were going to
-build with Visual C++. This means no practical cross-platform builds
-and you're still relying on the proprietary Microsoft toolchain.
+to install the Visual C++ build tools as if were going to build with
+Visual C++. This means no practical cross-platform builds and you're
+still relying on the proprietary Microsoft toolchain. In the past you
+even had to use Microsoft's linker, but LLVM now provides its own.
 
 It generates GDB-friendly DWARF debug information (in addition to
 CodeView) so in theory **you can debug with GDB** again. I haven't
@@ -150,11 +154,11 @@ given this a thorough evaluation yet.
 ### Pelles C
 
 Finally there's [Pelles C][pellesc]. It's cost-free but not open
-source. It's a reasonable, small install that includes a full IDE and
-debugger. It has its own C library and Win32 SDK with the most
-complete C11 support around. It also supports OpenMP 3.1. All in all
-it's pretty nice and is something I wouldn't be afraid to rely on for
-Windows builds.
+source. It's a reasonable, small install that includes a full IDE with
+an integrated debugger and command line tools. It has its own C
+library and Win32 SDK with the most complete C11 support around. It
+also supports OpenMP 3.1. All in all it's pretty nice and is something
+I wouldn't be afraid to rely upon for Windows builds.
 
 Like Visual C++, it has a couple of "povars" batch files to set up the
 right environment, which includes a C compiler, linker, assembler,
