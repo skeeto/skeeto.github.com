@@ -189,11 +189,19 @@ Each also comes with a getter so you can query the current value.
 
 The deprecated `elfeed-max-connections` has been removed.
 
+Feed objects now have meta tags `:etag`, `:last-modified`, and
+`:canonical-url`. The latter can identify feeds that have been moved,
+though it needs a real UI.
+
 ### See any bugs?
 
 If you use Elfeed, grab the current update and give the cURL fetcher a
 shot. Please open a ticket if you find problems. Be sure to report
 your Emacs version, operating system, and cURL version.
+
+As of this writing there's just one thing missing compared to
+url-queue: connection reuse. cURL supports it, so I just need to code
+it up.
 
 
 [elfeed]: https://github.com/skeeto/elfeed
