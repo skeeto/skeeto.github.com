@@ -113,11 +113,11 @@ That being said, it's not without its flaws. Microsoft has never
 announced any plans to support C99. They only care about C++, with C
 as a second class citizen. Since C++11 incorporated most of C99 and
 Microsoft supports C++11, Visual Studio 2015 **very nearly supports
-all of C99**, even more than Mingw-w64. The only thing missing as far
-as I can tell is variable length arrays (VLAs) and complex numbers,
-since these weren't accepted into C++. Some C99 features are
-considered extensions (as they would be for C89), so you'll also get
-warnings about them, which can be disabled.
+all of C99**, even more than Mingw-w64. The only things missing as far
+as I can tell are variable length arrays (VLAs), complex numbers, and
+C99's array parameter declarators, since none of these were adopted by
+C++. Some C99 features are considered extensions (as they would be for
+C89), so you'll also get warnings about them, which can be disabled.
 
 The command line interface (option flags, intermediates, etc.) isn't
 quite reconcilable with the unix-like ecosystem (i.e. GCC, Clang), so
