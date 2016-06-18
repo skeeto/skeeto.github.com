@@ -168,6 +168,24 @@ connection and HTTP session being in various states when thing go
 awry. These were just the easiest to demonstrate. By using cURL, I get
 to bypass this mess.
 
+### No more GnuTLS issues
+
+At compile time, Emacs can optionally be linked against GnuTLS, giving
+it robust TLS support so long as the shared library is available.
+`url-retrieve` uses this for fetching HTTPS content. Unfortunately,
+this library is noisy and will occasionally echo non-informational
+messages in the minibuffer and in `*Messages*` that cannot be
+suppressed.
+
+When not linked against GnuTLS, Emacs will instead run the GnuTLS
+command line program as an inferior process, just like Elfeed now does
+with cURL. Unfortunately this interface is very slow and frequently
+fails, basically preventing Elfeed from fetching HTTPS feeds. I
+suspect it's in part due to an improper `coding-system-for-read`.
+
+cURL handles all the TLS negotation itself, so both these problems
+disappear. The compile-time configuration doesn't matter.
+
 ### Windows is now supported
 
 Emacs' Windows networking code is so unstable, even in Emacs 25, that
