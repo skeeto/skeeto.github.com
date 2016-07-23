@@ -102,14 +102,22 @@ was only exported starting in Windows 7 SP1 and Wine 1.7.46 (June
 negligible compared to the function call overhead anyway.
 
 As a side note: one reason besides minimalism for not implementing
-your own `memmove()` is that it's not legal to implement efficiently
-in straight C. According to the language specification, your
+your own `memmove()` is that it can't be implemented efficiently in a
+conforming C program. According to the language specification, your
 implementation of `memmove()` would not be permitted to compare its
 pointer arguments with `<`, `>`, `<=`, or `>=`. That would lead to
-undefined behavior if they pointed to unrelated objects (ISO/IEC
-9899:2011 §6.5.8¶5). So the only legal approach is to allocate a
+undefined behavior when pointing to unrelated objects (ISO/IEC
+9899:2011 §6.5.8¶5). The simplest legal approach is to allocate a
 temporary buffer, copy the source buffer into it, then copy it into
-the destination buffer.
+the destination buffer. However, buffer allocation may fail — i.e.
+NULL return from `malloc()` — introducing a failure case to
+`memmove()`, which isn't supposed to fail.
+
+Update July 2016: Alex Elsayed pointed out a solution to the
+`memmove()` problem in the comments. In short: iterate over the
+buffers bytewise (`char *`) using equality (`==`) tests to check for
+an overlap. In theory, a compiler could optimize away the loop and
+make it efficient.
 
 I keep mentioning Wine because I've been careful to ensure my
 applications run correctly with it. So far it's worked *perfectly*
