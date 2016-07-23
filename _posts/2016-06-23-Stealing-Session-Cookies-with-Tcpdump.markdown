@@ -28,9 +28,9 @@ warning, then subtly mention it after the fact. She may not have even
 noticed the problem (and then asked me about it) if not for that
 pop-up.
 
-I contacted the website's technical support almost two weeks ago and
-they never responded, nor did they fix any of their issues, so for now
-you can [see this all for yourself][rr].
+I contacted the website's technical support two weeks ago and they
+never responded, nor did they fix any of their issues, so for now you
+can [see this all for yourself][rr].
 
 ### Finding the session cookies
 
