@@ -155,7 +155,7 @@ foo(void)
 Or on x86-64 ([-fPIC, small code model][memory]), where we can see a
 few more instructions shaved off:
 
-~~~c
+~~~nasm
 section .rodata
 x:   dd     0
 
@@ -180,10 +180,6 @@ disruptive to badly-behaved programs.
 Even with this special `const` rule, only use `const` for yourself and
 for your fellow human programmers. Let the optimizer reason for itself
 about what is constant and what is not.
-
-(Side note: In May, GitHub Pages [dropped support for x86 syntax
-highlighting][github], among a few other things I was using, so that's
-why the assembly listings in this article are so plain.)
 
 
 [reddit]: https://redd.it/4udqwj
