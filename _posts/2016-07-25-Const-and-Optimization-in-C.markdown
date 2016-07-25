@@ -1,0 +1,192 @@
+---
+title: Const and Optimization in C
+layout: post
+date: 2016-07-25T02:06:04Z
+tags: [c, x86]
+uuid: f785bc3b-dd3d-3952-2696-91eafe6b019d
+---
+
+Today there was a [question on /r/C_Programming][reddit] about the
+effect of C's `const` on optimization. Variations of this question
+have been asked many times over the past two decades. Personally, I
+blame naming of `const`.
+
+Given this program:
+
+~~~c
+void foo(const int *);
+
+int
+bar(void)
+{
+    int x = 0;
+    int y = 0;
+    for (int i = 0; i < 10; i++) {
+        foo(&x);
+        y += x;  // this load not optimized out
+    }
+    return y;
+}
+~~~
+
+The function `foo` takes a `const` pointer, which is a promise from
+the author of `foo` that it won't modify the value of `x`. Given this
+information, it would seem the compiler may assume `x` is always zero,
+and therefore `y` is always zero.
+
+However, inspecting the assembly output of several different compilers
+shows that `x` is loaded each time around the loop. Here's gcc 4.9.2
+at -O3, with annotations.
+
+~~~nasm
+foo:
+     push   rbp
+     push   rbx
+     xor    ebp, ebp              ; y = 0
+     mov    ebx, 0xa              ; loop variable i
+     sub    rsp, 0x18             ; allocate x
+     mov    dword [rsp+0xc], 0    ; x = 0
+
+.L0: lea    rdi, [rsp+0xc]        ; compute &x
+     call   foo
+     add    ebp, dword [rsp+0xc]  ; y += x  (not optmized?)
+     sub    ebx, 1
+     jne    .L0
+
+     add    rsp, 0x18             ; deallocate x
+     mov    eax, ebp              ; return y
+     pop    rbx
+     pop    rbp
+     ret
+~~~
+
+The output of clang 3.5 (with -fno-unroll-loops) is the same, except
+ebp and ebx are swapped, and the computation of `&x` is hoisted out of
+the loop, into `r14`.
+
+Are both compilers failing to take advantage of this useful
+information? Wouldn't it be undefined behavior for `foo` to modify
+`x`? Surprisingly, the answer is no. *In this situation*, this would
+be a perfectly legal definition of `foo`.
+
+~~~c
+void
+foo(const int *readonly_x)
+{
+    int *x = (int *)readonly_x;  // cast away const
+    (*x)++;
+}
+~~~
+
+The key thing to remember is that [**`const` doesn't mean
+constant**][const]. Chalk it up as a misnomer. It's not an
+optimization tool. It's there to inform programmers — not the compiler
+— as a tool to catch a certain class of mistakes at compile time. I
+like it in APIs because it communicates how a function will use
+certain arguments, or how the caller is expected to handle returned
+pointers. It's usually not strong enough for the compiler to change
+its behavior.
+
+Despite what I just said, occasionally the compiler *can* take
+advantage of `const` for optimization. The C99 specification, in
+§6.7.3¶5, has one sentence just for this:
+
+> If an attempt is made to modify an object defined with a
+> const-qualified type through use of an lvalue with
+> non-const-qualified type, the behavior is undefined.
+
+The original `x` wasn't const-qualified, so this rule didn't apply.
+And there aren't any rules against casting away `const` to modify an
+object that isn't itself `const`. This means the above (mis)behavior
+of `foo` isn't undefined behavior *for this call*. Notice how the
+undefined-ness of `foo` depends on how it was called.
+
+With one tiny tweak to `bar`, I can make this rule apply, allowing the
+optimizer do some work on it.
+
+~~~c
+    const int x = 0;
+~~~
+
+The compiler may now assume that **`foo` modifying `x` is undefined
+behavior, therefore *it never happens***. For better or worse, this is
+a major part of how a C optimizer reasons about your programs. The
+compiler is free to assume `x` never changes, allowing it to optimize
+out both the per-iteration load and `y`.
+
+~~~nasm
+foo:
+     push   rbx
+     mov    ebx, 0xa            ; loop variable i
+     sub    rsp, 0x10           ; allocate x
+     mov    dword [rsp+0xc], 0  ; x = 0
+
+.L0: lea    rdi, [rsp+0xc]      ; compute &x
+     call   foo
+     sub    ebx, 1
+     jne    .L0
+
+     add    rsp, 0x10           ; deallocate x
+     xor    eax, eax            ; return 0
+     pop    rbx
+     ret
+~~~
+
+The load disappears, `y` is gone, and the function always returns
+zero.
+
+Curiously, the specification allows the compiler to go even further.
+It's permitted to allocate `x` somewhere off the stack, even in
+read-only memory. For example, it could perform a transformation like
+this:
+
+~~~c
+static int __x = 0;
+
+int
+foo(void)
+{
+    for (int i = 0; i < 10; i++)
+        bar(&__x);
+    return 0;
+}
+~~~
+
+Or on x86-64 ([-fPIC, small code model][memory]), where we can see a
+few more instructions shaved off:
+
+~~~c
+section .rodata
+x:   dd     0
+
+section .text
+foo:
+     push   rbx
+     mov    ebx, 0xa        ; loop variable i
+
+.L0: lea    rdi, [rel x]    ; compute &x
+     call   foo
+     sub    ebx, 1
+     jne    .L0
+
+     xor    eax, eax        ; return 0
+     pop    rbx
+     ret
+~~~
+
+Neither clang nor gcc took it this far, perhaps because it's more
+disruptive to badly-behaved programs.
+
+Even with this special `const` rule, only use `const` for yourself and
+for your fellow human programmers. Let the optimizer reason for itself
+about what is constant and what is not.
+
+(Side note: In May, GitHub Pages [dropped support for x86 syntax
+highlighting][github], among a few other things I was using, so that's
+why the assembly listings in this article are so plain.)
+
+
+[reddit]: https://redd.it/4udqwj
+[const]: http://yarchive.net/comp/const.html
+[memory]: http://eli.thegreenplace.net/2012/01/03/understanding-the-x64-code-models
+[github]: https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
