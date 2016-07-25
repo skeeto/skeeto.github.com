@@ -56,10 +56,10 @@ host-specific interface.
 On Linux, operating system requests at the lowest level are made
 directly via system calls. This requires a bit of assembly language
 for each supported architecture (`int 0x80` on x86, `syscall` on
-x86_64, `swi` on ARM, etc.). The POSIX functions of the various Linux
+x86-64, `swi` on ARM, etc.). The POSIX functions of the various Linux
 libc implementations are built on top of this mechanism.
 
-For example, here's a function for a 1-argument system call on x86_64.
+For example, here's a function for a 1-argument system call on x86-64.
 
 ~~~c
 long

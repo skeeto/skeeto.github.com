@@ -26,7 +26,7 @@ input as `+2 *3 -5`. If `u(0) = 0` then,
 
 Rather than write an interpreter to apply the sequence of operations,
 for [my submission][mine] ([mirror][mirror]) I took the opportunity to
-write a simple x86_64 Just-In-Time (JIT) compiler. So rather than
+write a simple x86-64 Just-In-Time (JIT) compiler. So rather than
 stepping through the operations one by one, my program converts the
 operations into native machine code and lets the hardware do the work
 directly. In this article I'll go through how it works and how I did
@@ -82,7 +82,7 @@ struct asmbuf {
 
 To keep things simple here, I'm just assuming the page size is 4kB. In
 a real program, we'd use `sysconf(_SC_PAGESIZE)` to discover the page
-size at run time. On x86_64, pages may be 4kB, 2MB, or 1GB, but this
+size at run time. On x86-64, pages may be 4kB, 2MB, or 1GB, but this
 program will work correctly as-is regardless.
 
 Instead of `malloc()`, the compiler allocates memory as an anonymous
@@ -172,7 +172,7 @@ asmbuf_immediate(struct asmbuf *, int size, const void *value);
 
 ### Calling Conventions
 
-We're only going to be concerned with three of x86_64's many
+We're only going to be concerned with three of x86-64's many
 registers: `rdi`, `rax`, and `rdx`. These are 64-bit (`r`) extensions
 of [the original 16-bit 8086 registers][old]. The sequence of
 operations will be compiled into a function that we'll be able to call
@@ -216,7 +216,7 @@ is where we get our hands dirty.
 
 #### Finding the Code
 
-If you want to do this the Right Way, you go download the x86_64
+If you want to do this the Right Way, you go download the x86-64
 documentation, look up the instructions we're using, and manually work
 out the bytes we need and how the operands fit into it. You know, like
 they used to do out of necessity back in the 60's.

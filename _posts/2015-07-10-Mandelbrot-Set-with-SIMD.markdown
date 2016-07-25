@@ -56,7 +56,7 @@ However, you don't need to worry about any of that because these both
 were superseded by *Streaming SIMD Extensions* (SSE) in 1999. SSE has
 128-bit registers — confusingly named `xmm0` - `xmm7` — and a much
 richer instruction set. SSE has been extended with SSE2 (2001), SSE3
-(2004), SSSE3 (2006), SSE4.1 (2007), and SSE4.2 (2008). x86_64 doesn't
+(2004), SSSE3 (2006), SSE4.1 (2007), and SSE4.2 (2008). x86-64 doesn't
 have SSE2 as an extension but instead as a core component of the
 architecture (adding `xmm8`- `xmm15`), baking it into its ABI.
 
@@ -292,7 +292,7 @@ mandel_neon.o : mandel_neon.c
     $(CC) -c $(CFLAGS) -mfpu=neon -o $@ $^
 ~~~
 
-All x86_64 CPUs have SSE2 but I included it anyway for clarity. But it
+All x86-64 CPUs have SSE2 but I included it anyway for clarity. But it
 should also enable it for 32-bit x86 builds.
 
 It's absolutely critical that each is done in a separate translation

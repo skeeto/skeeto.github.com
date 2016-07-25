@@ -274,7 +274,7 @@ don't need a loop at all. You usually want to use weak.
 
 The alternative to CAS is [load-link/store-conditional][llsc]. It's a
 stronger primitive that doesn't suffer from the ABA problem described
-next, but it's also not available on x86\_64. On other platforms, one
+next, but it's also not available on x86-64. On other platforms, one
 or both of `atomic_compare_exchange_*()` will be implemented using
 LL/SC, but we still have to code for the worst case (CAS).
 
@@ -326,7 +326,7 @@ to remove the node, and once to put it back in place), A will never
 mistake the recycled pointer for the old one. There's a special
 double-width CAS instruction specifically for this purpose,
 `cmpxchg16`. This is generally called DCAS. It's available on most
-x86_64 processors. On Linux you can check `/proc/cpuinfo` for support.
+x86-64 processors. On Linux you can check `/proc/cpuinfo` for support.
 It will be listed as `cx16`.
 
 If it's not available at compile-time this program won't link. The

@@ -104,7 +104,7 @@ What I finally settled on is a neat hack that involves "tricking" GCC
 into producing real mode DOS COM files, so long as it can target 80386
 (as is usually the case). The 80386 was released in 1985 and was the
 first 32-bit x86 microprocessor. GCC still targets this instruction
-set today, even in the x86_64 toolchain. Unfortunately, GCC cannot
+set today, even in the x86-64 toolchain. Unfortunately, GCC cannot
 actually produce 16-bit code, so my main goal of targeting 8086 would
 not be achievable. This doesn't matter, though, since DOSBox, my
 intended platform, is an 80386 emulator.

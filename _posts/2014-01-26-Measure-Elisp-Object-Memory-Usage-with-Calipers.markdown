@@ -91,7 +91,7 @@ struct Lisp_Cons
 
 The return value from `garbage-collect` backs this up. The first value
 after each type is the shallow size of that type. From here on, all
-values have been computed for 64-bit Emacs running on x86_64
+values have been computed for 64-bit Emacs running on x86-64
 GNU/Linux.
 
 ~~~cl

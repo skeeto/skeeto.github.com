@@ -27,7 +27,7 @@ execution context with the child.
 
 It's *so* simple that **it takes less than 15 instructions to spawn a
 thread with its own stack**, no libraries needed, and no need to call
-Pthreads! In this article I'll demonstrate how to do this on x86_64.
+Pthreads! In this article I'll demonstrate how to do this on x86-64.
 All of the code with be written in [NASM][nasm] syntax since, IMHO,
 it's by far the best (see: [nasm-mode][nasm-mode]).
 
@@ -35,14 +35,14 @@ I've put the complete demo here if you want to see it all at once:
 
 * [Pure assembly, library-free Linux threading demo][demo]
 
-### An x86_64 Primer
+### An x86-64 Primer
 
 I want you to be able to follow along even if you aren't familiar with
 x86\_64 assembly, so here's a short primer of the relevant pieces. If
-you already know x86_64 assembly, feel free to skip to the next
+you already know x86-64 assembly, feel free to skip to the next
 section.
 
-x86_64 has 16 64-bit *general purpose registers*, primarily used to
+x86-64 has 16 64-bit *general purpose registers*, primarily used to
 manipulate integers, including memory addresses. There are *many* more
 registers than this with more specific purposes, but we won't need
 them for threading.
@@ -51,7 +51,7 @@ them for threading.
 * `rbp` : "base" pointer (still used in debugging and profiling)
 * `rax` `rbx` `rcx` `rdx` : general purpose (notice: a, b, c, d)
 * `rdi` `rsi` : "destination" and "source", now meaningless names
-* `r8` `r9` `r10` `r11` `r12` `r13` `r14` `r15` : added for x86_64
+* `r8` `r9` `r10` `r11` `r12` `r13` `r14` `r15` : added for x86-64
 
 ![](/img/x86/register.png)
 
@@ -61,7 +61,7 @@ indicates the lower 32-bits of these same registers, and no prefix
 indicates the lowest 16 bits. This is because x86 was [originally a
 16-bit architecture][x86], extended to 32-bits, then to 64-bits.
 Historically each of of these registers had a specific, unique
-purpose, but on x86_64 they're almost completely interchangeable.
+purpose, but on x86-64 they're almost completely interchangeable.
 
 There's also a "rip" instruction pointer register that conceptually
 walks along the machine instructions as they're being executed, but,
@@ -80,7 +80,7 @@ the stack. This piece of information is critical when talking about
 threads, since we'll be allocating our own stacks.
 
 The stack is also sometimes used to pass arguments to another
-function. This happens much less frequently on x86_64, especially with
+function. This happens much less frequently on x86-64, especially with
 the [System V ABI][abi] used by Linux, where the first 6 arguments are
 passed via registers. The return value is passed back via rax. When
 calling another function function, integer/pointer arguments are
@@ -120,7 +120,7 @@ Each system call has an integer identifying it. This number is
 different on each platform, but, in Linux's case, [it will *never*
 change][linus]. Instead of `call`, rax is set to the number of the
 desired system call and the `syscall` instruction makes the request to
-the OS kernel. Prior to x86_64, this was done with an old-fashioned
+the OS kernel. Prior to x86-64, this was done with an old-fashioned
 interrupt. Because interrupts are slow, a special,
 statically-positioned "vsyscall" page (now deprecated as a [security
 hazard][rop]), later [vDSO][vdso], is provided to allow certain system
@@ -133,7 +133,7 @@ So, for example, the write() system call has this C prototype.
 ssize_t write(int fd, const void *buf, size_t count);
 ~~~
 
-On x86_64, the write() system call is at the top of [the system call
+On x86-64, the write() system call is at the top of [the system call
 table][table] as call 1 (read() is 0). Standard output is file
 descriptor 1 by default (standard input is 0). The following bit of
 code will write 10 bytes of data from the memory address `buffer` (a
@@ -208,7 +208,7 @@ pages][jit]. There are two system calls this on Linux to do this:
   tell the kernel specifically that you're going to use this memory as
   a stack. Also, this is simpler than using brk() anyway.
 
-On x86_64, mmap() is system call 9. I'll define a function to allocate
+On x86-64, mmap() is system call 9. I'll define a function to allocate
 a stack with this C prototype.
 
 ~~~c

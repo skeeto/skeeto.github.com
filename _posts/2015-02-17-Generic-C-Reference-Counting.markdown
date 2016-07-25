@@ -48,7 +48,7 @@ I decided to go with a signed count because it allows for better error
 checking. It may be worth putting an `assert()` in `ref_inc()` and
 `ref_dec()` to ensure the count is always non-negative. I chose an
 `int` because it's fast, and anything smaller will be padded out to
-*at least* that size anyway. On x86_64, `struct ref` is 16 bytes.
+*at least* that size anyway. On x86-64, `struct ref` is 16 bytes.
 
 This is basically all there is to a C++ [shared_ptr][shared_ptr],
 leveraging C++'s destructors and performing all increment/decrement
