@@ -39,7 +39,7 @@ shows that `x` is loaded each time around the loop. Here's gcc 4.9.2
 at -O3, with annotations.
 
 ~~~nasm
-foo:
+bar:
      push   rbp
      push   rbx
      xor    ebp, ebp              ; y = 0
@@ -115,7 +115,7 @@ compiler is free to assume `x` never changes, allowing it to optimize
 out both the per-iteration load and `y`.
 
 ~~~nasm
-foo:
+bar:
      push   rbx
      mov    ebx, 0xa            ; loop variable i
      sub    rsp, 0x10           ; allocate x
@@ -144,10 +144,10 @@ this:
 static int __x = 0;
 
 int
-foo(void)
+bar(void)
 {
     for (int i = 0; i < 10; i++)
-        bar(&__x);
+        foo(&__x);
     return 0;
 }
 ~~~
@@ -160,7 +160,7 @@ section .rodata
 x:   dd     0
 
 section .text
-foo:
+bar:
      push   rbx
      mov    ebx, 0xa        ; loop variable i
 
