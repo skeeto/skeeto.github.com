@@ -44,9 +44,9 @@ successfully appending to the same file will result in all their bytes
 in the file in order, but not necessarily contiguously.**
 
 The caveat is that not all filesystems are POSIX-compatible. Two
-famous examples are NFS (prior to NFSv5) and the Hadoop Distributed
-File System (HDFS). On these networked filesystems, appends are
-simulated and subject to race conditions.
+famous examples are NFS and the Hadoop Distributed File System (HDFS).
+On these networked filesystems, appends are simulated and subject to
+race conditions.
 
 On POSIX systems, fopen(3) with the `a` flag [will use
 `O_APPEND`][fopen], so you don't necessarily need to use open(2). On
