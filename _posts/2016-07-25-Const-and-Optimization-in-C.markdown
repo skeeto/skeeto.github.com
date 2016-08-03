@@ -29,10 +29,10 @@ bar(void)
 }
 ~~~
 
-The function `foo` takes a <s>const pointer</s> pointer to const,
-which is a promise from the author of `foo` that it won't modify the
-value of `x`. Given this information, it would seem the compiler may
-assume `x` is always zero, and therefore `y` is always zero.
+The function `foo` takes a pointer to const, which is a promise from
+the author of `foo` that it won't modify the value of `x`. Given this
+information, it would seem the compiler may assume `x` is always zero,
+and therefore `y` is always zero.
 
 However, inspecting the assembly output of several different compilers
 shows that `x` is loaded each time around the loop. Here's gcc 4.9.2
