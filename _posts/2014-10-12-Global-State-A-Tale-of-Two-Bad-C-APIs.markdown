@@ -2,7 +2,7 @@
 title: "Global State: A Tale of Two Bad C APIs"
 layout: post
 date: 2014-10-12T22:48:00Z
-tags: [c]
+tags: [c, posix]
 uuid: 8a1c5135-e669-308b-6605-58c86be3003b
 ---
 

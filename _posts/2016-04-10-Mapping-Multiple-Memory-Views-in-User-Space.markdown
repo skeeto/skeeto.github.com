@@ -2,7 +2,7 @@
 title: Mapping Multiple Memory Views in User Space
 layout: post
 date: 2016-04-10T21:59:16Z
-tags: [c, linux, win32]
+tags: [c, linux, win32, posix]
 uuid: 373e602e-0d43-3e03-f02c-2d169eb14df5
 ---
 

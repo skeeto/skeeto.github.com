@@ -1,7 +1,7 @@
 ---
 title: Pseudo-terminals
 layout: post
-tags: [c]
+tags: [c, posix]
 uuid: 269799fd-3a67-3a22-433a-c5224447e614
 ---
 
