@@ -325,7 +325,7 @@ Since B, or other threads, will increment `aba` at least twice (once
 to remove the node, and once to put it back in place), A will never
 mistake the recycled pointer for the old one. There's a special
 double-width CAS instruction specifically for this purpose,
-`cmpxchg16`. This is generally called DCAS. It's available on most
+`cmpxchg16`. This is generally called DWCAS. It's available on most
 x86-64 processors. On Linux you can check `/proc/cpuinfo` for support.
 It will be listed as `cx16`.
 
@@ -372,7 +372,7 @@ There are three ways to deal with this.
 Reference counting on the node won't work here because we can't get to
 the counter fast enough (atomically). It too would require
 dereferencing in order to increment. The reference counter could
-potentially be packed alongside the pointer and accessed by a DCAS,
+potentially be packed alongside the pointer and accessed by a DWCAS,
 but we're already using those bytes for `aba`.
 
 ##### Push
