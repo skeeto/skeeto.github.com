@@ -112,10 +112,10 @@ unnamed, temporary file in it. These files are special in that they're
 permitted to be given a name in the filesystem at some future point.
 
 For this example, I'll assume the output is relative to the current
-working directory. If it's not, you'll also need to open an additional
-file descriptor for the parent directory, and also use openat(2) to
-avoid possible race conditions (since paths can change from under
-you). The number of ways this can fail is already rapidly multiplying.
+working directory. If it's not, you'll need to open an additional file
+descriptor for the parent directory, and also use openat(2) to avoid
+possible race conditions (since paths can change from under you). The
+number of ways this can fail is already rapidly multiplying.
 
 ~~~c
 int fd = open(".", O_TMPFILE|O_WRONLY, 0600);
@@ -128,8 +128,8 @@ require a workaround.
 
 Linking a file from a file descriptor is where things get messier. The
 file descriptor must be linked with linkat(2) from its name on the
-/proc virtual filesystem. The name must be constructed as a string.
-This snippet comes straight from the Linux open(2) manpage.
+/proc virtual filesystem, constructed as a string. The following
+snippet comes straight from the Linux open(2) manpage.
 
 ~~~c
 char buf[64];
