@@ -2,7 +2,7 @@
 title: Appending to a File from Multiple Processes
 layout: post
 date: 2016-08-03T16:17:44Z
-tags: [c, linux, posix]
+tags: [c, linux, posix, win32]
 uuid: 93473b6d-3be3-3d0c-d7d5-6ad485c1e9a0
 ---
 
