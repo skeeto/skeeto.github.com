@@ -254,7 +254,7 @@ long, predictable names.
 And finally, here's the most interesting-looking graph of them all.
 
 ~~~sql
-SELECT (date % (24*60*60)) / (60*60) AS day_time,
+SELECT ((date - 4*60*60) % (24*60*60)) / (60*60) AS day_time,
        length(title) AS length
 FROM entries
 JOIN tags ON tags.entry = entries.id AND tags.feed = entries.feed;
@@ -276,10 +276,10 @@ plot 'length-vs-daytime.csv' using 1:2 with circles
 Again, all Eastern Time since I'm self-centered like that. Vertical
 lines are authors rounding their post dates to the hour. Horizontal
 lines are the length spikes from above, such as the line of entries at
-title length 10 in the early morning (Dwarf Fortress blog). There's an
-afternoon cloud of entries of various title lengths, with the shortest
-cloud around lunchtime. That's probably when most of the webcomics
-come up.
+title length 10 in the evening (Dwarf Fortress blog). There's a the
+mid-day cloud of entries of various title lengths, with the shortest
+title cloud around mid-morning. That's probably when many of the
+webcomics come up.
 
 Additional analysis could look further at textual content, beyond
 simply length, in some quantitative way (n-grams? soundex?). But
