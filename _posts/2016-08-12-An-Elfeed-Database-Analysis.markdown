@@ -150,8 +150,8 @@ The same is basically true for other types of content, including
 However, "emacs" (2,404 entries) is a different story. It doesn't slow
 down on the weekend, but Emacs users sure love to talk about Emacs on
 Mondays. In my own index, this spike largely comes from [Planet
-Emacs][planet]. Initially I thought maybe this was an artifact of
-Planet Emacs' date handling — i.e. perhaps it does a big fetch on
+Emacsen][planet]. Initially I thought maybe this was an artifact of
+Planet Emacsen's date handling — i.e. perhaps it does a big fetch on
 Mondays and groups up the dates — but I double checked: they pass the
 date directly through from the original articles.
 
