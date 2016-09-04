@@ -1,5 +1,5 @@
 ---
-title: Read and Write Other Process Memory
+title: How to Read and Write Other Process Memory
 layout: post
 date: 2016-09-03T21:53:26Z
 tags: [win32, linux, c]
