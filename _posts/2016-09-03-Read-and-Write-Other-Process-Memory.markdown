@@ -135,12 +135,13 @@ this stringly-typed method elegant — the kernel converts the data into
 string form and the caller immediately converts it right back — but
 that's the official API.
 
-Update: Konstantin Khlebnikov has pointed out the process\_vm\_readv()
-and process\_vm\_writev() system calls, available since Linux 3.2
-(January 2012) and glibc 2.15 (March 2012). These system calls not
-require ptrace(), nor does the remote process need to be stopped.
-They're equivalent to ReadProcessMemory() and WriteProcessMemory(),
-except there's no requirement to first "open" the process.
+Update: Konstantin Khlebnikov has pointed out the
+[process\_vm\_readv()][readv] and [process\_vm\_writev()][writev]
+system calls, available since Linux 3.2 (January 2012) and glibc 2.15
+(March 2012). These system calls not require ptrace(), nor does the
+remote process need to be stopped. They're equivalent to
+ReadProcessMemory() and WriteProcessMemory(), except there's no
+requirement to first "open" the process.
 
 
 [memdig]: https://github.com/skeeto/memdig
@@ -154,3 +155,5 @@ except there's no requirement to first "open" the process.
 [pread]: http://pubs.opengroup.org/onlinepubs/9699919799/functions/read.html
 [pwrite]: http://pubs.opengroup.org/onlinepubs/9699919799/functions/write.html
 [lseek]: http://pubs.opengroup.org/onlinepubs/9699919799/functions/lseek.html
+[readv]: http://man7.org/linux/man-pages/man2/process_vm_readv.2.html
+[writev]: http://man7.org/linux/man-pages/man2/process_vm_writev.2.html
