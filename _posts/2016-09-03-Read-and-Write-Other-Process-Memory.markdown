@@ -31,12 +31,12 @@ I'll start with Windows for this article.
 Only three Win32 functions are needed, and you could almost guess at
 how it works.
 
-* [OpenProcess][msopen]
-* [ReadProcessMemory][msread]
-* [WriteProcessMemory][mswrite]
+* [OpenProcess()][msopen]
+* [ReadProcessMemory()][msread]
+* [WriteProcessMemory()][mswrite]
 
-It's very straightforward and, for this purpose, is probably the
-simplest API for any platform.
+It's very straightforward <s>and, for this purpose, is probably the
+simplest API for any platform</s> (see update).
 
 As you probably guessed, you first need to open the process, given its
 process ID (integer). You'll need to select the *desired access* bit a
@@ -134,6 +134,13 @@ parse the virtual text file /proc/*pid*/maps. I don't know if I'd call
 this stringly-typed method elegant — the kernel converts the data into
 string form and the caller immediately converts it right back — but
 that's the official API.
+
+Update: Konstantin Khlebnikov has pointed out the process\_vm\_readv()
+and process\_vm\_writev() system calls, available since Linux 3.2
+(January 2012) and glibc 2.15 (March 2012). These system calls not
+require ptrace(), nor does the remote process need to be stopped.
+They're equivalent to ReadProcessMemory() and WriteProcessMemory(),
+except there's no requirement to first "open" the process.
 
 
 [memdig]: https://github.com/skeeto/memdig
