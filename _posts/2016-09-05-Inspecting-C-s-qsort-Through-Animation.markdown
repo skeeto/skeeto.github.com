@@ -143,8 +143,11 @@ implementations.
 <script type="text/javascript">
 function gifreset(img) {
     var src = img.src;
+    var height = img.height;
     img.src = "";
-    img.src = src;
+    img.height = height;
+    // setTimeout() required for IE
+    setTimeout(function() { img.src = src; }, 0);
 };
 </script>
 
