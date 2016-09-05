@@ -48,9 +48,9 @@ To help you follow along, **clicking on any animation will restart it.**
 Sorted in **307 frames**. glibc prefers to use mergesort, which,
 unlike quicksort, isn't an in-place algorithm, so it has to allocate
 memory. That allocation could fail for huge arrays, and, since qsort()
-can't fail, it uses an in-place quicksort as a backup. You can see the
+can't fail, it uses quicksort as a backup. You can really see the
 mergesort in action: changes are made that we cannot see until later,
-when they're copied back into the original array.
+when it's copied back into the original array.
 
 ### diet
 
@@ -75,17 +75,18 @@ heapsort variant.
 
 Sorted in **354 frames**. I ran it on both OpenBSD and FreeBSD with
 identical results, so, unsurprisingly, they share an implementation.
-It's quicksort, and what's neat about it is you can see it searching
-for a median for the pivot at the beginning. This helps avoid the
-O(n^2) worst case.
+It's quicksort, and what's neat about it is at the beginning you can
+see it searching for a median for use as the pivot. This helps avoid
+the O(n^2) worst case.
 
 <img class="resetable" onclick="gifreset(this)" src="/img/qsort/bsd-qsort.gif" alt="" title="BSD qsort"/>
 
-BSD also includes a mergesort() with the same prototype. This one
-sorted in **247 frames**. Like glibc before, there's some
-behind-the-scenes that isn't captured. But even more, notice how the
-markers disappear during the merge? It's running the comparator
-against copies, stored outside the original array. Sneaky!
+BSD also includes a mergesort() with the same prototype, except with
+an `int` return for reporting failures. This one sorted in **247
+frames**. Like glibc before, there's some behind-the-scenes that isn't
+captured. But even more, notice how the markers disappear during the
+merge? It's running the comparator against copies, stored outside the
+original array. Sneaky!
 
 <img class="resetable" onclick="gifreset(this)" src="/img/qsort/bsd-mergesort.gif" alt="" title="BSD mergesort"/>
 
@@ -98,20 +99,21 @@ this data.
 
 ### Cygwin
 
-It turns out Cygwin borrowed its qsort() from BSD. It's identical to
-the above. I hadn't noticed until I looked at the frame counts.
+It turns out Cygwin borrowed its qsort() from BSD. It's pixel
+identical to the above. I hadn't noticed until I looked at the frame
+counts.
 
 <img class="resetable" onclick="gifreset(this)" src="/img/qsort/cygwin.gif" alt="" title="Cygwin (BSD)"/>
 
 ### MSVCRT.DLL (MinGW) and UCRT (Visual Studio)
 
-MinGW builds against the MSVCRT.DLL found on every Windows system,
-despite its [unofficial status][msvcrt]. Until recently Microsoft
-didn't include a C standard library as part of the OS. That changed
-with their [Universal CRT][ucrt] (UCRT) announcement. I thought I'd
-try them both.
+MinGW builds against MSVCRT.DLL, found on every Windows system despite
+its [unofficial status][msvcrt]. Until recently Microsoft didn't
+include a C standard library as part of the OS, but that changed with
+their [Universal CRT (UCRT) announcement][ucrt]. I thought I'd try
+them both.
 
-Turns out they borrow their old qsort() for the UCRT, and the result
+Turns out they borrowed their old qsort() for the UCRT, and the result
 is the same: sorted in **417 frames**. It chooses a pivot from the
 median of the ends and the middle, swaps the pivot to the middle, then
 partitions. Looking to the middle for the pivot makes sorting
@@ -122,13 +124,12 @@ pre-sorted arrays much more efficient.
 ### Pelles C
 
 Finally I ran it against [Pelles C][pellesc], a C compiler for
-Windows. It sorted in **463 frames**. I can't find any information,
-but it looks like some sort of hybrid between quicksort and insertion
-sort. Like BSD qsort(), it finds a good median for the pivot,
-partitions the elements, and if a partition is small enough, it
-switches to insertion sort. This should behave very well on
-mostly-sorted arrays, but poorly on well-shuffled arrays (like this
-one).
+Windows. It sorted in **463 frames**. I can't find any information
+about it, but it looks like some sort of hybrid between quicksort and
+insertion sort. Like BSD qsort(), it finds a good median for the
+pivot, partitions the elements, and if a partition is small enough, it
+switches to insertion sort. This should behave well on mostly-sorted
+arrays, but poorly on well-shuffled arrays (like this one).
 
 <img class="resetable" onclick="gifreset(this)" src="/img/qsort/pellesc.gif" alt=""/>
 
