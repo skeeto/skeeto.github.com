@@ -84,38 +84,39 @@ header address {
     font-size: 12px;
 }
 
-header a.feed {
-    display: block;
-    background: url(/img/feed.png) no-repeat 0 0;
-    width: 4rem;
-    height: 4rem;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
 header nav {
+    box-sizing: border-box;
     font-size: 16px;
     position: absolute;
-    right: 5.5rem;
-    top: 1.5rem;
+    right: 0;
+    top: 0.8rem;
 }
 
 header nav ul {
     margin: 0;
     padding: 0;
+    width: 22rem;
     line-height: 1;
+    text-align: right;
 }
 
 header nav ul li {
+    list-style-type: none;
     display: inline-block;
-    list-style-type: disc;
-    margin: 0 0.3em;
+    height: 1.5rem;
+    width: 7rem;
+    text-align: left;
 }
 
-header nav .archives:before {
+header nav .index:before {
     font-family: 'foundation-icons';
     content: '\f169';
+    margin-right: 0.3em;
+}
+
+header nav .tags:before {
+    font-family: 'foundation-icons';
+    content: '\f19d';
     margin-right: 0.3em;
 }
 
@@ -128,6 +129,12 @@ header nav .github:before {
 header nav .toys:before {
     font-family: 'foundation-icons';
     content: '\f15b';
+    margin-right: 0.3em;
+}
+
+header nav .feed:before {
+    font-family: 'foundation-icons';
+    content: '\f1aa';
     margin-right: 0.3em;
 }
 
