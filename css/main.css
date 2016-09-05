@@ -298,3 +298,9 @@ article.tag a.feed {
     margin-right: 0.25em;
     vertical-align: -15%;
 }
+
+/* Miscellaneous */
+
+main article .resetable {
+    cursor: pointer;
+}
