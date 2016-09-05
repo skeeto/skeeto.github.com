@@ -29,8 +29,8 @@ seed so that the array will be shuffled exactly the same across all
 platforms. This makes for a better comparison.
 
 To get an optimized GIF on unix-like systems, run it like so.
-(Microsoft's [UCRT currently has serious bugs][bug] with binary pipes,
-so it was run differently in that case.)
+(Microsoft's [UCRT currently has serious bugs][bug] with pipes, so it
+was run differently in that case.)
 
     ./a.out | convert -delay 10 ppm:- gif:- | gifsicle -O3 > sort.gif
 
