@@ -4,22 +4,20 @@ layout: default
 
 <article>
   <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
-  <div class="date">
-    <time datetime="{{ page.date | date: "%Y-%m-%d" }}" class="date">
-      {{ page.date | date: "%B %d, %Y" }}
-    </time>
-  </div>
+  <time datetime="{{ page.date | date: "%Y-%m-%d" }}">
+    {{ page.date | date: "%B %d, %Y" }}
+  </time>
   <div class="print-only url">
     nullprogram.com{{page.url}}
   </div>
 
   {{ content }}
 
-  <div class="tags">
-    {% include taglist.html %}
-  </div>
-  <div class="permalink">
-    <a href="{{ page.url }}" rel="canonical">permalink</a>
+  <ul class="tags">
+    {% for tag in page.tags %}
+    <li><a href="/tags/{{ tag }}/">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
   </div>
 
   <!-- Disqus -->

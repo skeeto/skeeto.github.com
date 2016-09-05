@@ -3,19 +3,18 @@ title: Archives
 layout: default
 ---
 
-<article>
+<article class="index">
   <h2>Archives</h2>
   <p>
-    There are <b>{{ site.posts | size }}</b> posts.
+    There are <span class="post-count">{{ site.posts | size }}</span> articles.
   </p>
-  <script src="/script/archive.js"></script>
-  <ul class="archive">
+  <ul class="post-list">
     {% for post in site.posts %}
       <li>
         <time datetime="{{ post.date | date: "%Y-%m-%d" }}">
           {{ post.date | date: "%Y-%m-%d" }}
         </time>
-        - <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ post.url }}">{{ post.title }}</a>
       </li>
     {% endfor %}
   </ul>

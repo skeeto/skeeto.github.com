@@ -8,17 +8,13 @@ tags: [ai, c, clojure, compression, compsci, cpp, crypto, debian,
        tutorial, video, web, webgl, win32, x86]
 ---
 
-<article>
+<article class="tag">
   <h2>Tags</h2>
-  <ul>
+  <ul class="post-list">
   {% for tag in page.tags %}
     <li>
-      <a href="/tags/{{ tag }}/feed/" class="feed-icon">
-        <img src="/img/feed.png" alt="feed"/>
-      </a>
-      <a href="/tags/{{ tag }}/" class="tag-entry">
-        {{ tag }}
-      </a>
+      <a href="/tags/{{ tag }}/feed/" class="feed"></a>
+      <a href="/tags/{{ tag }}/" class="tag-entry">{{ tag }}</a>
     </li>
   {% endfor %}
   </ul>

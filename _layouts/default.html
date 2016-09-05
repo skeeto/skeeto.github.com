@@ -4,88 +4,48 @@
     <title>{{ page.title }} &laquo; null program</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="alternate" type="application/atom+xml" href="/feed/"/>
-    <link rel="stylesheet" href="/css/light.css" class="theme"/>
-    <link rel="stylesheet" href="/css/syntax-default.css" class="theme"/>
+    <link rel="stylesheet" href="/css/main.css" class="theme"/>
+    <link rel="stylesheet" href="/css/print.css" class="theme"/>
+    <link rel="stylesheet" href="/css/syntax.css" class="theme"/>
 
     <!-- Scripts -->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/script/ga.js"></script>
-    <script src="/script/address.js"></script>
-
-    <!--[if lt IE 9]>
-      <meta http-equiv="refresh" content="0;url=http://www.mozilla.org/">
-      <style type="text/css">body { visibility: hidden; }</style>
-    <![endif]-->
+    <script src="/script/ga.js" defer></script>
+    <script>
+      window.addEventListener('load', function() {
+          var addr = 'wellons\u0040nullprogram\u002ecom';
+          var email = document.getElementById('email');
+          email.href = 'mailto:' + addr;
+          email.textContent = addr;
+      });
+    </script>
   </head>
   <body>
-
-    <header>
-      <a href="/"><h1>null program</h1></a>
-    </header>
 
     <main>
     {{ content }}
     </main>
 
-    <div id="sidebar">
-      <aside>
+    <header>
+      <div class="container">
+        <img class="portrait" src="/img/avatar.jpg" alt=""/>
+        <h1><a href="/">null program</a></h1>
         <h2>Chris Wellons</h2>
         <address>
-          <div class="portrait">
-            <img class="portrait" src="/img/avatar.jpg" alt=""/>
-          </div>
-          <div>
-            <a id="email" href=""></a>
-            (<a href="/download/Christopher-Wellons.asc">PGP</a>)
-          </div>
+          <a id="email" href=""></a>
+          (<a href="/download/Christopher-Wellons.asc">PGP</a>)
         </address>
-      </aside>
-      <aside>
-      <div class="buttons">
-        <a href="/index/">
-          <img src="/img/archives.png" alt="Archives" title="Archives"/>
-        </a>
-        <a href="/feed/">
-          <img src="/img/feed.png" alt="Subscribe" title="Subscribe"/>
-        </a>
-        <a href="http://github.com/skeeto">
-          <img src="/img/github-button.png"
-               title="skeeto@GitHub" alt="skeeto@GitHub"/>
-        </a>
-        <a href="/toys/">
-          <img src="/img/toys-button.png" title="Toys and Games" alt="Toys">
-        </a>
+        <nav>
+          <ul>
+            <li class="archives"><a href="/index/">Archives</a></li>
+            <li class="github"><a href="http://github.com/skeeto">GitHub</a></li>
+            <li class="toys"><a href="/toys/">Showcase</a></li>
+          </ul>
+        </nav>
+        <a class="feed" href="/feed/"></a>
       </div>
-      </aside>
-      <aside>
-        <p class="center">
-          <img src="/img/hacker.png" alt="Voluntaryist Hacker"
-               title="Hacker Culture"/>
-        </p>
-        <p>
-          Born and raised in Pittsburgh, I am a computer engineer
-          living and working in Maryland. This is a blog about hobby
-          programming. To explore this site, have a look at
-          the <a href="/tags/">list of topics</a>
-          or <a href="/index/">the archives</a>.
-        </p>
-      </aside>
-      <aside>
-        <p>
-          This site is powered
-          by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and
-          edited
-          with <a href="http://www.gnu.org/software/emacs/">Emacs</a>.
-        </p>
-      </aside>
-    </div>
+    </header>
 
     <footer>
-      <!-- Navigation -->
-      <nav>
-        <a href="/index/" title="Go to archives">Archives</a>
-      </nav>
-      <!-- Uncopyright notice -->
       <p>
         All information on this blog, unless otherwise noted, is
         hereby released into the public domain, with no rights

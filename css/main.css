@@ -1,0 +1,300 @@
+@font-face {
+  font-family: 'Signika';
+  src: url(Signika.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'foundation-icons';
+  src: url('foundation-icons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.print-only {
+    display: none;
+}
+
+body {
+    color: Black;
+    background-color: White;
+    font-family: 'Signika', sans-serif;
+    font-size: 17px;
+}
+
+img {
+    border: 0;
+}
+
+a {
+    color: DarkSlateBlue;
+    text-decoration: none;
+}
+
+/* Header */
+
+header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid BlanchedAlmond;
+    box-shadow: 0 0 10px DarkGray;
+    background-color: Beige;
+}
+
+header > div.container {
+    position: relative;
+    margin: 0.5rem auto;
+    padding: 0;
+    height: 4rem;
+    max-width: 700px;
+}
+
+header img.portrait {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid LightGray;
+    border-radius: 5px;
+}
+
+header .container > h1,
+header .container > h2,
+header .container > address {
+    line-height: 1;
+    padding: 0;
+    position: static;
+    display: block;
+    margin: 0 0 0 5.3rem;
+}
+
+header .container h1 {
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 0.4rem;
+}
+
+header h2 {
+    font-size: 18px;
+}
+
+header address {
+    font-size: 12px;
+}
+
+header a.feed {
+    display: block;
+    background: url(/img/feed.png) no-repeat 0 0;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+header nav {
+    font-size: 16px;
+    position: absolute;
+    right: 5.5rem;
+    top: 1.5rem;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+header nav ul li {
+    display: inline-block;
+    list-style-type: disc;
+    margin: 0 0.3em;
+}
+
+header nav .archives:before {
+    font-family: 'foundation-icons';
+    content: '\f169';
+    margin-right: 0.3em;
+}
+
+header nav .github:before {
+    font-family: 'foundation-icons';
+    content: '\f1c9';
+    margin-right: 0.3em;
+}
+
+header nav .toys:before {
+    font-family: 'foundation-icons';
+    content: '\f15b';
+    margin-right: 0.3em;
+}
+
+/* Articles */
+
+main {
+    display: block;
+    margin: 7rem auto 0 auto;
+    max-width: 700px;
+    text-align: justify;
+    line-height: 1.3em;
+}
+
+main a:visited {
+    color: DarkMagenta;
+}
+
+main article > h2 a:visited {
+    /* Don't change title color. */
+    color: DarkSlateBlue;
+}
+
+main article h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0.5em 0;
+}
+
+main article h3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0.5em 1em;
+}
+
+main article > time {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: DimGray;
+}
+
+main article > time:before {
+    font-family: 'foundation-icons';
+    content: '\f124'
+}
+
+main article p {
+    margin: 0.75em 0;
+}
+
+main article ul li {
+    list-style-type: disc;
+    margin-left: 1.5em;
+}
+
+main article s {
+    color: DimGray;
+}
+
+main article img, main article video {
+    display: block;
+    margin: 0.5em auto;
+}
+
+main article code {
+    font-family: monospace;
+}
+
+main article pre {
+    margin: 0 1em;
+    padding: 0.5em 0 0.5em 1em;
+    font-size: 16px;
+    line-height: 1.1em;
+    background: FloralWhite;
+    border: 1px dotted LightGray;
+}
+
+main article blockquote {
+    margin: 0 1em;
+    padding: 0 1em;
+    border: 1px dashed LightGray;
+    background-color: FloralWhite;
+}
+
+main article .abstract {
+    font-style: italic;
+}
+
+main article ul.tags li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 0.25em;
+}
+
+main article ul.tags {
+    display: block;
+    text-align: right;
+}
+
+main article ul.tags:before {
+    content: 'tags ['
+}
+
+main article ul.tags:after {
+    content: ']'
+}
+
+.commentlink {
+    margin-top: 0.25em;
+    text-align: right;
+    font-size: 20px;
+}
+
+#disqus_thread {
+    margin-top: 2em;
+}
+
+article {
+    margin-bottom: 2em;
+}
+
+article:after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid LightGray;
+    width: 75%;
+    margin: auto;
+    height: 1px;
+    margin-top: 1em;
+}
+
+/* Footer */
+
+footer {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: Gray;
+    max-width: 400px;
+    margin: 0.5em auto 1em auto;
+}
+
+/* Post listings */
+
+article .post-list time {
+    display: inline-block;
+    color: DimGray;
+    margin-right: 0.5em;
+}
+
+article .post-list li {
+    list-style-type: none;
+}
+
+article .post-count {
+    font-weight: bold;
+}
+
+article.tag a.feed {
+    display: inline-block;
+    background-image: url(/img/feed.png);
+    background-repeat: no-repeat;
+    background-size: 1em 1em;
+    background-position: 0 0;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.25em;
+    vertical-align: -15%;
+}

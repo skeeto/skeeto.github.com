@@ -1,0 +1,116 @@
+@media print {
+    @page {
+        margin: 1in 1.5in 1in 1.5in;
+    }
+
+    header, footer, .permalink, .tags, .commentlink, #sidebar, #disqus_thread {
+        display: none;
+    }
+
+    body {
+        color: black;
+        background: white;
+    }
+
+    main {
+        margin: 0 auto;
+    }
+
+    main a:visited {
+        /* Override */
+        color: DarkSlateBlue;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    .print-only {
+        display: inherit;
+    }
+
+    article {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        page-break-after: always;
+    }
+
+    article p, article ul {
+        font-size: 12pt;
+    }
+
+    .date, .url {
+        text-align: center;
+        font-size: 10pt;
+        color: DimGray;
+    }
+
+    .date {
+        margin: -1em 0 0 0;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 18pt;
+        page-break-after: avoid;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 16pt;
+        page-break-after: avoid;
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 14pt;
+        page-break-after: avoid;
+    }
+
+    h5 {
+        font-weight: bold;
+        font-size: 13pt;
+        page-break-after: avoid;
+    }
+
+    h6 {
+        font-weight: bold;
+        font-size: 12pt;
+        page-break-after: avoid;
+    }
+
+    img {
+        width: 75%;
+        height: 75%;
+        page-break-inside: avoid;
+    }
+
+    .highlight {
+        page-break-inside: avoid;
+    }
+
+    p a, li a {
+        color: navy;
+        text-decoration: none;
+    }
+
+    article p {
+        line-height: 135%;
+    }
+
+    article pre {
+        margin-left: 0.15in;
+    }
+
+    article li p {
+        text-indent: 0;
+    }
+
+    code, pre {
+        font-size: 11px;
+        border: 0;
+        background-color: white;
+    }
+}
