@@ -43,7 +43,7 @@ To help you follow along, **clicking on any animation will restart it.**
 
 ### glibc
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/glibc.gif" alt="" title="glibc"/>
+![](/img/qsort/glibc.gif){: .resetable title="glibc"}
 
 Sorted in **307 frames**. glibc prefers to use mergesort, which,
 unlike quicksort, isn't an in-place algorithm, so it has to allocate
@@ -59,7 +59,7 @@ standard library for Linux. It's optimized for size, which shows
 through its slower performance. It looks like a quicksort that always
 chooses the last element as the pivot.
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/diet.gif" alt="" title="diet"/>
+![](/img/qsort/diet.gif){: .resetable title="diet"}
 
 ### musl
 
@@ -69,7 +69,7 @@ statically link Linux binaries. Its qsort() looks a lot like a
 heapsort, and with some research I see it's actually smoothsort, a
 heapsort variant.
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/musl.gif" alt="" title="musl"/>
+![](/img/qsort/musl.gif){: .resetable title="musl"}
 
 ### BSD
 
@@ -79,7 +79,7 @@ It's quicksort, and what's neat about it is at the beginning you can
 see it searching for a median for use as the pivot. This helps avoid
 the O(n^2) worst case.
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/bsd-qsort.gif" alt="" title="BSD qsort"/>
+![](/img/qsort/bsd-qsort.gif){: .resetable title="BSD qsort"}
 
 BSD also includes a mergesort() with the same prototype, except with
 an `int` return for reporting failures. This one sorted in **247
@@ -88,14 +88,14 @@ captured. But even more, notice how the markers disappear during the
 merge? It's running the comparator against copies, stored outside the
 original array. Sneaky!
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/bsd-mergesort.gif" alt="" title="BSD mergesort"/>
+![](/img/qsort/bsd-mergesort.gif){: .resetable title="BSD mergesort"}
 
 Again, BSD also includes heapsort(), so ran that too. It sorted in
 **418 frames**. It definitely looks like a heapsort, and the worse
 performance is similar to musl. It seems heapsort is a poor fit for
 this data.
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/bsd-heapsort.gif" alt="" title="BSD heapsort"/>
+![](/img/qsort/bsd-heapsort.gif){: .resetable title="BSD heapsort"}
 
 ### Cygwin
 
@@ -103,7 +103,7 @@ It turns out Cygwin borrowed its qsort() from BSD. It's pixel
 identical to the above. I hadn't noticed until I looked at the frame
 counts.
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/cygwin.gif" alt="" title="Cygwin (BSD)"/>
+![](/img/qsort/cygwin.gif){: .resetable title="Cygwin (BSD)"}
 
 ### MSVCRT.DLL (MinGW) and UCRT (Visual Studio)
 
@@ -119,7 +119,7 @@ median of the ends and the middle, swaps the pivot to the middle, then
 partitions. Looking to the middle for the pivot makes sorting
 pre-sorted arrays much more efficient.
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/ucrt.gif" alt="" title="Microsoft UCRT"/>
+![](/img/qsort/ucrt.gif){: .resetable title="Microsoft UCRT"}
 
 ### Pelles C
 
@@ -131,7 +131,7 @@ pivot, partitions the elements, and if a partition is small enough, it
 switches to insertion sort. This should behave well on mostly-sorted
 arrays, but poorly on well-shuffled arrays (like this one).
 
-<img class="resetable" onclick="gifreset(this)" src="/img/qsort/pellesc.gif" alt=""/>
+![](/img/qsort/pellesc.gif){: .resetable title="Pelles C"}
 
 ### More Implementations
 
@@ -141,14 +141,20 @@ implementations.
 
 
 <script type="text/javascript">
-function gifreset(img) {
-    var src = img.src;
-    var height = img.height;
-    img.src = "";
-    img.height = height;
-    // setTimeout() required for IE
-    setTimeout(function() { img.src = src; }, 0);
-};
+(function() {
+    var r = document.querySelectorAll('.resetable');
+    for (var i = 0; i < r.length; i++) {
+        r[i].onclick = function() {
+            var src = this.src;
+            var height = this.height;
+            this.src = "";
+            this.height = height;
+            // setTimeout() required for IE
+            var _this = this;
+            setTimeout(function() { _this.src = src; }, 0);
+        };
+    }
+}());
 </script>
 
 
