@@ -29,7 +29,7 @@
         display: inherit;
     }
 
-    article {
+    main article {
         max-width: 100%;
         margin: 0;
         padding: 0;
@@ -37,7 +37,7 @@
         page-break-after: always;
     }
 
-    article p, article ul {
+    main article p, main article ul {
         font-size: 12pt;
     }
 
@@ -96,20 +96,12 @@
         text-decoration: none;
     }
 
-    article p {
-        line-height: 135%;
+    main article p, main article pre {
+        line-height: 1.35;
     }
 
-    article pre {
-        margin-left: 0.15in;
-    }
-
-    article li p {
-        text-indent: 0;
-    }
-
-    code, pre {
-        font-size: 11px;
+    main article code, main article pre {
+        font-size: 12px;
         border: 0;
         background-color: white;
     }
