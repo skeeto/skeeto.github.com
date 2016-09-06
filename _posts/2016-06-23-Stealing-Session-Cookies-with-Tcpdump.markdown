@@ -2,7 +2,7 @@
 title: Stealing Session Cookies with Tcpdump
 layout: post
 date: 2016-06-23T21:55:24Z
-tags: []
+tags: [netsec, javascript, web]
 uuid: 309396d4-fe6e-30a1-1a96-35281b58fb77
 ---
 
