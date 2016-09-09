@@ -167,7 +167,6 @@ main article h2 {
 main article h3 {
     font-weight: bold;
     font-size: 20px;
-    margin: 0.5em 1em;
 }
 
 main article > time {
@@ -188,7 +187,7 @@ main article p {
 
 main article ul li {
     list-style-type: disc;
-    margin-left: 1.5em;
+    margin-left: 0.25em;
 }
 
 main article s {
