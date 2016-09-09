@@ -253,7 +253,7 @@ deflateEnd(&z);
 
 It's a lot more code than I expected, but it wasn't too hard to work
 out. If you want to get into the nitty gritty and *really* hack a zlib
-stream, check out [RFC 1950][1950] and [RFC 1951][rfc1951].
+stream, check out [RFC 1950][rfc1950] and [RFC 1951][rfc1951].
 
 
 [zlib]: http://www.zlib.net/
