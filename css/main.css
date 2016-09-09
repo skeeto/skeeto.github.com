@@ -195,7 +195,7 @@ main article s {
     color: DimGray;
 }
 
-main article img, main article video {
+main article img, main article video, main article svg {
     display: block;
     margin: 0.5em auto;
 }
