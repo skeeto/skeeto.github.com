@@ -2,7 +2,7 @@
 title: Modifying the Middle of a zlib Stream
 layout: post
 date: 2016-09-09T03:37:03Z
-tags: [c]
+tags: [c, compression]
 uuid: 804f0de4-93c7-3a70-d0d5-2b3b7192491f
 ---
 
