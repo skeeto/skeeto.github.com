@@ -37,7 +37,7 @@ something? This is the linear system,
 We just have to solve for the *a* vector to get our
 coefficients. I quickly wrote this GNU Octave code to try this out,
 
-~~~octave
+~~~matlab
 function a = npoly (x, y)
   X = repmat (x', 1, length(x));
 
@@ -55,7 +55,7 @@ vector. I also wrote this function that will take the coefficient
 vector and a value and do the polynomial interpolation at that point
 (Octave's `polyval`),
 
-~~~octave
+~~~matlab
 function v = psolve (x, a)
   v = zeros (size (x));
 

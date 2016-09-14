@@ -11,22 +11,22 @@ future), I wrote a [Mandelbrot][mandelbrot] fractal generator in
 prototyping your algorithms. It is very slow, however. Here is the
 code,
 
-~~~octave
+~~~matlab
 function mandel_img = mandel ()
-  ## Parameters
-  w = [-2.5 1.5]; # Domain
-  h = [-1.5 1.5]; # Range
-  s = 0.005;      # Step size
-  it = 64;        # Iteration depth
+  %% Parameters
+  w = [-2.5 1.5]; % Domain
+  h = [-1.5 1.5]; % Range
+  s = 0.005;      % Step size
+  it = 64;        % Iteration depth
 
-  ## Prepare the complex plane
+  %% Prepare the complex plane
   [wa ha] = meshgrid (w(1):s:w(2), h(1):s:h(2));
   complex_plane = wa + ha * i;
 
-  ## Preallocate image
+  %% Preallocate image
   mandel_img = zeros( length(h(1):s:h(2)), length(w(1):s:w(2)));
 
-  ## Generate mandelbrot
+  %% Generate mandelbrot
   for wi = 1:size(mandel_img, 2)
     for hi = 1:size(mandel_img, 1)
 
@@ -39,7 +39,7 @@ function mandel_img = mandel ()
       mandel_img (hi, wi) = k - 1;
 
     end
-    ## Display progress
+    %% Display progress
     waitbar (wi/size(mandel_img, 2));
   end
 end

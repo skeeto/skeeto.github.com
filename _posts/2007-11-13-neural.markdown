@@ -33,7 +33,7 @@ network output. For those who don't recognize the
 [she-bang][she-bang], save this to the file <code>plotdat</code> and
 set the execution permission (`chmod +x plotdat`).
 
-~~~octave
+~~~matlab
 #!/usr/bin/octave -qf
 # Usage:
 # plotdat filename [loop] [last index]

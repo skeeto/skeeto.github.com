@@ -62,21 +62,21 @@ slow. For a hash function, I use Octave's `hashmd5()`, so this one
 won't work in Matlab (which provides no hash function
 whatsoever). However, it *is* a lot shorter!
 
-~~~octave
-## Returns the Perlin noise value for an arbitrary point.
+~~~matlab
+%% Returns the Perlin noise value for an arbitrary point.
 function v = perlin(p)
   v = 0;
-  ## Iterate over each corner
+  %% Iterate over each corner
   for dirs = [dec2bin(0:(2 ^ length(p) - 1)) - 48]'
-    q = floor(p) + dirs'; # This iteration's corner
-    g = qgradient(q); # This corner's gradient
+    q = floor(p) + dirs'; % This iteration's corner
+    g = qgradient(q); % This corner's gradient
     m = dot(g, p - q);
     t = 1.0 - abs(p - q);
     v += m * prod(3 * t .^ 2 - 2 * t .^ 3);
   end
 end
 
-## Return the gradient at the given grid point.
+%% Return the gradient at the given grid point.
 function v = qgradient(q)
   v = zeros(size(q));
   for i = 1:length(q);

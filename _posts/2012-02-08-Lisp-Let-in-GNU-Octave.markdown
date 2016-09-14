@@ -32,7 +32,7 @@ It's possible to achieve a similar effect in GNU Octave (but not
 Matlab, due to [its flawed parser design][flaw]). The language permits
 simple lambda expressions, much like Python.
 
-~~~octave
+~~~matlab
 > f = @(x) x + 10;
 > f(4)
 ans = 14
@@ -43,7 +43,7 @@ scope. For example, I can avoid assigning a value to a temporary
 variable just because I need to use it in two places. This one-liner
 generates a random 3D unit vector.
 
-~~~octave
+~~~matlab
 (@(v) v / norm(v))(randn(1, 3))
 ~~~
 
@@ -54,7 +54,7 @@ of two. Most importantly, there's no macro system that can turn this
 into a new language feature. *However*, I enjoyed using this technique
 to create a one-liner that generates `n` random unit vectors.
 
-~~~octave
+~~~matlab
 n = 1000;
 p = (@(v) v ./ repmat(sqrt(sum(abs(v) .^ 2, 2)), 1, 3))(randn(n, 3));
 ~~~
