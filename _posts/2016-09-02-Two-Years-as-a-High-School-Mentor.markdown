@@ -143,8 +143,8 @@ influence he had over his own work. He had say on the direction of
 each project. Until he started earning a college intern pay
 (post-graduation), I had no ability to make him do anything he didn't
 want to do. I could only rely on his motivation. Fortunately what
-motives him is what also motivates me, so to find the framing for that
-motivation I only had to imagine myself in his shoes.
+motivates him is what also motivates me, so to find the framing for
+that motivation I only had to imagine myself in his shoes.
 
 ### A Comment on Respect
 
