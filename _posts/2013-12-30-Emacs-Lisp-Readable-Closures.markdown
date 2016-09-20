@@ -62,8 +62,8 @@ types print readably:
  * byte-code function object (`#[...]`)
  * symbol
 
-Here are all the non-readable types I can find. Each one has a good
-reason for not being serializable.
+Here are all the non-readable types. Each one has a good reason for
+not being serializable.
 
  * buffer
  * process (external state)
@@ -71,6 +71,7 @@ reason for not being serializable.
  * marker (live, automatically updates)
  * overlay (belongs to a buffer)
  * built-in functions (native code)
+ * user-ptr (opaque pointers from Emacs 25 dynamic modules)
 
 And that's it. Every other value in Elisp is constructed from one or
 more of these primitives, including keymaps, functions, macros, syntax
