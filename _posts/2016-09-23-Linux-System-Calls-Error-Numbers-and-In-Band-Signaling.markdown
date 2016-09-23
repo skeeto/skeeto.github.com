@@ -54,21 +54,21 @@ mouth: [mm/mmap.c:do_mmap()][mm]. Here's a sample of return
 statements.
 
 ~~~c
-    if (!len)
-            return -EINVAL;
+if (!len)
+        return -EINVAL;
 
-    /* Careful about overflows.. */
-    len = PAGE_ALIGN(len);
-    if (!len)
-            return -ENOMEM;
+/* Careful about overflows.. */
+len = PAGE_ALIGN(len);
+if (!len)
+        return -ENOMEM;
 
-    /* offset overflow? */
-    if ((pgoff + (len >> PAGE_SHIFT)) < pgoff)
-            return -EOVERFLOW;
+/* offset overflow? */
+if ((pgoff + (len >> PAGE_SHIFT)) < pgoff)
+        return -EOVERFLOW;
 
-    /* Too many mappings? */
-    if (mm->map_count > sysctl_max_map_count)
-            return -ENOMEM;
+/* Too many mappings? */
+if (mm->map_count > sysctl_max_map_count)
+        return -ENOMEM;
 ~~~
 
 It's returning the negated error number. Simple enough.
@@ -96,18 +96,18 @@ It's a lot easier to read [musl][musl] than glibc, so let's take a
 peek at how musl does it in its own mmap: [src/mman/mmap.c][muslmm].
 
 ~~~c
-    if (off & OFF_MASK) {
-        errno = EINVAL;
-        return MAP_FAILED;
-    }
-    if (len >= PTRDIFF_MAX) {
-        errno = ENOMEM;
-        return MAP_FAILED;
-    }
-    if (flags & MAP_FIXED) {
-        __vm_wait();
-    }
-    return (void *)syscall(SYS_mmap, start, len, prot, flags, fd, off);
+if (off & OFF_MASK) {
+    errno = EINVAL;
+    return MAP_FAILED;
+}
+if (len >= PTRDIFF_MAX) {
+    errno = ENOMEM;
+    return MAP_FAILED;
+}
+if (flags & MAP_FIXED) {
+    __vm_wait();
+}
+return (void *)syscall(SYS_mmap, start, len, prot, flags, fd, off);
 ~~~
 
 Hmm, it looks like its returning the result directly. What happened
