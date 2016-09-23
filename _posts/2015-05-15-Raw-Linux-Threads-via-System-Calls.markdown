@@ -8,6 +8,8 @@ uuid: 9d5de15b-9308-3715-2bd7-565d6649ab2f
 
 *This article has been [translated to Japanese][translation].*
 
+*This article has [a followup][followup].*
+
 Linux has an elegant and beautiful design when it comes to threads:
 threads are nothing more than processes that share a virtual address
 space and file descriptor table. Threads spawned by a process are
@@ -376,3 +378,4 @@ these in a future article.
 [linus]: https://www.youtube.com/watch?v=1Mg5_gxNXTo#t=8m28
 [lstack]: /blog/2014/09/02/
 [translation]: http://postd.cc/raw-linux-threads-via-system-calls/
+[followup]: /blog/2016/09/23/
