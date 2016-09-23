@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/css/main.css" class="theme"/>
     <link rel="stylesheet" href="/css/print.css" class="theme"/>
     <link rel="stylesheet" href="/css/syntax.css" class="theme"/>
+    {% if jekyll.environment == "production" %}
     <script src="/script/ga.js" defer></script>
+    {% endif %}
     <script>
       window.addEventListener('load', function() {
           var addr = 'wellons\u0040nullprogram\u002ecom';
@@ -70,12 +72,14 @@
       </p>
     </footer>
 
+    {% if jekyll.environment == "production" %}
     <!-- Disqus -->
     <script>
       var disqus_shortname = 'nullprogram';
     </script>
     <script src="/script/disqus-count.js"></script>
     <!-- End Disqus -->
+    {% endif %}
 
   </body>
 </html>

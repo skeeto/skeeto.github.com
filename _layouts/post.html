@@ -20,6 +20,7 @@ layout: default
   </ul>
   <ol class="references print-only"></ol>
 
+  {% if jekyll.environment == "production" %}
   <!-- Disqus -->
   <div class="no-print">
   <div id="disqus_thread"></div>
@@ -39,5 +40,5 @@ layout: default
   </a>
   </div>
   <!-- End Disqus -->
-
+  {% endif %}
 </article>
