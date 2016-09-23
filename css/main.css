@@ -55,14 +55,15 @@ header > div.container {
     max-width: 700px;
 }
 
-header img.portrait {
+header div.portrait {
     position: absolute;
     left: 0;
     top: 0;
     width: 4rem;
     height: 4rem;
-    border: 1px solid LightGray;
     border-radius: 5px;
+    background-image: url(/img/avatar.jpg);
+    background-size: 100% 100%;
 }
 
 header .container > h1,
@@ -72,7 +73,7 @@ header .container > address {
     padding: 0;
     position: static;
     display: block;
-    margin: 0 0 0 5.3rem;
+    margin: 0 0 0 4.6rem;
 }
 
 header .container h1 {
