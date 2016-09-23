@@ -41,6 +41,11 @@
         font-size: 12pt;
     }
 
+    article:after {
+        display: none;
+        visibility: hidden;
+    }
+
     .date, .url {
         text-align: center;
         font-size: 10pt;
