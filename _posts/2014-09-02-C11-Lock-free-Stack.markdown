@@ -181,7 +181,8 @@ just fine, but not initializing them would probably look like a
 mistake.
 
 ~~~c
-int lstack_init(lstack_t *lstack, size_t max_size)
+int
+lstack_init(lstack_t *lstack, size_t max_size)
 {
     lstack->head.aba = ATOMIC_VAR_INIT(0);
     lstack->head.node = ATOMIC_VAR_INIT(NULL);
@@ -214,7 +215,8 @@ until `lstack_init()` is used again. This one is declared `inline` and
 put in the header.
 
 ~~~c
-inline void lstack_free(lstack_t *lstack)
+static inline void
+stack_free(lstack_t *lstack)
 {
     free(lstack->node_buffer);
 }
@@ -226,7 +228,8 @@ the value. This is used in another inline function for reading the
 size of the stack.
 
 ~~~c
-inline size_t lstack_size(lstack_t *lstack)
+static inline size_t
+lstack_size(lstack_t *lstack)
 {
     return atomic_load(&lstack->size);
 }
@@ -241,7 +244,8 @@ and returning them, so they're not suitable to expose in the API
 part of lock-free stacks. Here's `pop()`.
 
 ~~~c
-static struct lstack_node *pop(_Atomic struct lstack_head *head)
+static struct lstack_node *
+pop(_Atomic struct lstack_head *head)
 {
     struct lstack_head next, orig = atomic_load(head);
     do {
@@ -380,7 +384,8 @@ but we're already using those bytes for `aba`.
 Push is a lot like pop.
 
 ~~~c
-static void push(_Atomic struct lstack_head *head, struct lstack_node *node)
+static void
+push(_Atomic struct lstack_head *head, struct lstack_node *node)
 {
     struct lstack_head next, orig = atomic_load(head);
     do {
@@ -403,7 +408,8 @@ The API push and pop functions are built on these internal atomic
 functions.
 
 ~~~c
-int lstack_push(lstack_t *lstack, void *value)
+int
+lstack_push(lstack_t *lstack, void *value)
 {
     struct lstack_node *node = pop(&lstack->free);
     if (node == NULL)
@@ -427,7 +433,8 @@ size is really only an estimate.
 Popping is the same thing in reverse.
 
 ~~~c
-void *lstack_pop(lstack_t *lstack)
+void *
+lstack_pop(lstack_t *lstack)
 {
     struct lstack_node *node = pop(&lstack->head);
     if (node == NULL)
