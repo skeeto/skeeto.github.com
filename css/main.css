@@ -151,7 +151,7 @@ main {
     margin: 7rem auto 0 auto;
     max-width: 700px;
     text-align: justify;
-    line-height: 1.3em;
+    line-height: 1.4;
 }
 
 main a:visited {
@@ -213,7 +213,7 @@ main article code {
 main article pre {
     margin: 0 1em;
     padding: 0.5em 0 0.5em 1em;
-    line-height: 1.1em;
+    line-height: 1.1;
     background: FloralWhite;
     border: 1px dotted LightGray;
 }

@@ -87,8 +87,6 @@
     }
 
     img {
-        width: 75%;
-        height: 75%;
         page-break-inside: avoid;
     }
 
@@ -109,5 +107,16 @@
         font-size: 12px;
         border: 0;
         background-color: white;
+    }
+
+    sup.cite {
+        display: inline;
+        font-size: 75%;
+        color: DarkGray;
+    }
+
+    article .references {
+        font-size: 75%;
+        color: DarkGray;
     }
 }
