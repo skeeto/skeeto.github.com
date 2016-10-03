@@ -167,5 +167,5 @@ Templates better reflect the nature of this sort of code.
 
 
 [safestack]: http://clang.llvm.org/docs/SafeStack.html
-[concepts]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4333.pdf
+[concepts]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4361.pdf
 [reject]: http://honermann.net/blog/2016/03/06/why-concepts-didnt-make-cxx17/
