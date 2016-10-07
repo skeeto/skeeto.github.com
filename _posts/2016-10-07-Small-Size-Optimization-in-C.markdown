@@ -314,7 +314,7 @@ the heap isn't touched. That's *much* better than before. The 1% case
 is still covered, too, at what is probably an insignificant cost.
 
 An important difference to SmallVector is that they parameterize the
-small buffer's size through the template. In C we're stick with fixed
+small buffer's size through the template. In C we're stuck with fixed
 sizes or macro hacks. Or are we?
 
 ### Using a Caller-Provided Buffer
