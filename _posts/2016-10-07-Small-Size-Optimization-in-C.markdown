@@ -82,7 +82,7 @@ intern_identifier(const char *prefix, long id)
     char temp[256];
     char *buffer = temp;
     size_t size = strlen(prefix) + 32;
-    if (size > sizeof(buffer))
+    if (size > sizeof(temp))
         if (!(buffer = malloc(size)))
             return NULL;
     sprintf(buffer, "%s%ld", prefix, id);
