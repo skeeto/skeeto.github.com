@@ -2,7 +2,7 @@
 title: Const and Optimization in C
 layout: post
 date: 2016-07-25T02:06:04Z
-tags: [c, x86]
+tags: [c, x86, optimization]
 uuid: f785bc3b-dd3d-3952-2696-91eafe6b019d
 ---
 

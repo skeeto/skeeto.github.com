@@ -2,7 +2,7 @@
 title: C11 Lock-free Stack
 layout: post
 date: 2014-09-02T03:10:01Z
-tags: [c, tutorial]
+tags: [c, tutorial, optimization]
 uuid: 743811a4-aaf7-32e3-8a0c-62f1e8dbaf66
 ---
 

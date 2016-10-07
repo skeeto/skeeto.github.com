@@ -2,7 +2,7 @@
 title: Small, Freestanding Windows Executables
 layout: post
 date: 2016-01-31T22:53:03Z
-tags: [c, x86, linux, win32]
+tags: [c, x86, linux, win32, optimization]
 uuid: 8eddc701-52d3-3b0c-a8a8-dd13da6ead2c
 ---
 

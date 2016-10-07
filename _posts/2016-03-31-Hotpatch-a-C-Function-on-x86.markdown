@@ -2,7 +2,7 @@
 title: Hotpatching a C Function on x86
 layout: post
 date: 2016-03-31T23:59:59Z
-tags: [x86, c, linux]
+tags: [x86, c, linux, optimization]
 uuid: 49f6ea3c-d44a-3bed-1aad-70ad47e325c6
 ---
 

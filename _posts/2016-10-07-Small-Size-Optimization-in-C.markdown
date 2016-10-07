@@ -2,7 +2,7 @@
 title: Small-Size Optimization in C
 layout: post
 date: 2016-10-07T01:43:12Z
-tags: [c]
+tags: [c, optimization]
 uuid: 1e249621-40bb-39f9-7e47-17fbe37c9fa4
 ---
 
