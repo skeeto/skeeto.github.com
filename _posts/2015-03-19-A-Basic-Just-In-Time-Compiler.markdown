@@ -106,7 +106,8 @@ Windows doesn't have POSIX `mmap()`, so on that platform we use
 struct asmbuf *
 asmbuf_create(void)
 {
-    return VirtualAlloc(NULL, PAGE_SIZE, MEM_COMMIT, PAGE_READWRITE);
+    DWORD type = MEM_RESERVE | MEM_COMMIT;
+    return VirtualAlloc(NULL, PAGE_SIZE, type, PAGE_READWRITE);
 }
 ~~~
 

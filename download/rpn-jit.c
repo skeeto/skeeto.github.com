@@ -29,7 +29,7 @@ asmbuf_create(void)
     GetSystemInfo(&system_info);
     long page_size = system_info.dwPageSize;
     struct asmbuf *buf =
-        VirtualAlloc(NULL, page_size, MEM_COMMIT, PAGE_READWRITE);
+        VirtualAlloc(NULL, page_size, MEM_RESERVE|MEM_COMMIT, PAGE_READWRITE);
     buf->size = page_size;
     return buf;
 }
