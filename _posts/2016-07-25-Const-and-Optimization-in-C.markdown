@@ -36,7 +36,7 @@ and therefore `y` is always zero.
 
 However, inspecting the assembly output of several different compilers
 shows that `x` is loaded each time around the loop. Here's gcc 4.9.2
-at -O3, with annotations.
+at -O3, with annotations, for x86-64,
 
 ~~~nasm
 bar:
@@ -135,13 +135,13 @@ bar:
 The load disappears, `y` is gone, and the function always returns
 zero.
 
-Curiously, the specification allows the compiler to go even further.
-It's permitted to allocate `x` somewhere off the stack, even in
-read-only memory. For example, it could perform a transformation like
+Curiously, the specification *almost* allows the compiler to go
+further. Consider would would happen if `x` were allocated somewhere
+off the stack in read-only memory. That transformation would look like
 this:
 
 ~~~c
-static int __x = 0;
+static const int __x = 0;
 
 int
 bar(void)
@@ -152,8 +152,8 @@ bar(void)
 }
 ~~~
 
-Or on x86-64 ([-fPIC, small code model][memory]), where we can see a
-few more instructions shaved off:
+We would see a few more instructions shaved off ([-fPIC, small code
+model][memory]):
 
 ~~~nasm
 section .rodata
@@ -174,12 +174,15 @@ bar:
      ret
 ~~~
 
-Neither clang nor gcc took it this far, perhaps because it's more
-disruptive to badly-behaved programs.
+Because the address of `x` is taken and "leaked," this last transform
+is not permitted. If `bar` is called recursively such that a second
+address is taken for `x`, that second pointer would compare equally
+(`==`) with the first pointer depsite being semantically distinct
+objects, which is forbidden (§6.5.9¶6).
 
-Even with this special `const` rule, only use `const` for yourself and
-for your fellow human programmers. Let the optimizer reason for itself
-about what is constant and what is not.
+Even with this special `const` rule, stick to using `const` for
+yourself and for your fellow human programmers. Let the optimizer
+reason for itself about what is constant and what is not.
 
 
 [reddit]: https://redd.it/4udqwj
