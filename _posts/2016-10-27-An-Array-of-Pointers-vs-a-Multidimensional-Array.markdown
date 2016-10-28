@@ -105,7 +105,7 @@ the LEA (Load Effective Address), but it's not.
 lea   rax, [rax + rcx*8]
 ~~~
 
-### Relocation and Virtual Memory
+### Relocation
 
 There's another factor to consider: relocation. Nearly every process
 running on a modern system takes advantage of a security feature
