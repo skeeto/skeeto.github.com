@@ -2,7 +2,7 @@
 title: An Array of Pointers vs. a Multidimensional Array
 layout: post
 date: 2016-10-27T21:01:33Z
-tags: [c, linux]
+tags: [c, linux, x86, optimization]
 uuid: d1302ff9-f958-3486-134d-01c8ab84aa51
 ---
 
