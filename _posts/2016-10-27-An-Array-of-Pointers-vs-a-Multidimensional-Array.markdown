@@ -6,9 +6,9 @@ tags: [c, linux]
 uuid: d1302ff9-f958-3486-134d-01c8ab84aa51
 ---
 
-In a C program, suppose I have a table of color names. There are two
-straightforward ways to construct this table. The most common would be
-an array of `char *`.
+In a C program, suppose I have a table of color names of similar
+length. There are two straightforward ways to construct this table.
+The most common would be an array of `char *`.
 
 ~~~c
 char *colors_ptr[] = {
@@ -58,7 +58,8 @@ the compiler generates different code depending on the type.
 
 ### Memory Layout
 
-Here's what `colors_ptr` typically looks like in memory.
+Here's what `colors_ptr`, a *jagged array*, typically looks like in
+memory.
 
 ![](/img/colortab/pointertab.png)
 
