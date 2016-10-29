@@ -174,8 +174,8 @@ functions, such as those in the C standard library. Sure, the loader
 *could* go through the program and fill out the address of every
 library function call, but this would modify lots and lots of code
 pages, creating a unique copy of large parts of the program. Instead,
-the loader walks along the PLT and fills out jump addresses, one per
-accessed library function.
+the dynamic linker [lazily supplies jump addresses][plt] for PLT
+function stubs, one per accessed library function.
 
 However, as I've written it above, it's unlikely that even `colors_2d`
 will be shared. It's still missing an important ingredient: const.
@@ -222,3 +222,4 @@ something broader from all this. This stuff fascinates me.
 
 [const]: /blog/2016/07/25/
 [mm]: http://eli.thegreenplace.net/2012/01/03/understanding-the-x64-code-models
+[plt]: https://www.technovelty.org/linux/plt-and-got-the-key-to-code-sharing-and-dynamic-libraries.html
