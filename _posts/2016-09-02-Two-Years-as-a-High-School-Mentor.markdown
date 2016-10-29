@@ -134,9 +134,9 @@ Together we made rapid progress — much more than I could alone. I
 can't go into the specifics, but much of his work was built on lessons
 learned from the raytracer, including an OpenGL display and
 [SIMD-optimized][simd] physics engine. I also taught him x86 assembly,
-which he applied to co-author a paper, *ROP Gadget Prevalence and
-Survival under Compiler-based Binary Diversification Schemes* (soon to
-be published, wherein this will become a link).
+which he applied to co-author a paper, [*ROP Gadget Prevalence and
+Survival under Compiler-based Binary Diversification Schemes*][paper]
+([slides][slides]).
 
 To reiterate, an important part of this entire journey was the
 influence he had over his own work. He had say on the direction of
@@ -184,3 +184,5 @@ As he moves on, I'll be starting all over again with a new student.
 [bdf]: https://www.adobe.com/content/dam/Adobe/en/devnet/font/pdfs/5005.BDF_Spec.pdf
 [simd]: /blog/2015/07/10/
 [magit]: https://magit.vc/
+[paper]: https://www.cs.virginia.edu/~jmc7tp/papers/coffman2016rop.pdf
+[slides]: https://www.cs.virginia.edu/~jmc7tp/slides/coffman2016rop.pdf
