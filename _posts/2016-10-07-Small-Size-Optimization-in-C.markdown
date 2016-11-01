@@ -136,13 +136,17 @@ having learned so much from his past talks. I recommend these all:
 * [Understanding Compiler Optimization][optim] (2015)
 * [Optimizing the Emergent Structures of C++][emergent] (2013)
 
-This year's talk was the one on hybrid data structures. I'd already
-been mulling over small-size optimization for months, and the first
-5–10 minutes of his talk showed me I was on the right track. In his
-talk he describes LLVM's SmallVector class (among others), which is
-basically a small-size-optimized version of std::vector, which, due to
-constraints on iterators under std::move() semantics, can't itself be
-small-size optimized.
+After writing this article, I saw Nicholas Ormrod's talk, [The strange
+details of std::string at Facebook][string], which is also highly
+relevant.
+
+Chandler's talk this year was the one on hybrid data structures. I'd
+already been mulling over small-size optimization for months, and the
+first 5–10 minutes of his talk showed me I was on the right track. In
+his talk he describes LLVM's SmallVector class (among others), which
+is basically a small-size-optimized version of std::vector, which, due
+to constraints on iterators under std::move() semantics, can't itself
+be small-size optimized.
 
 I picked up a new trick from this talk, which I'll explain in C's
 terms. Suppose I have a dynamically growing buffer "vector" of `long`
@@ -439,3 +443,4 @@ abusing VLAs.
 [hybrid]: https://www.youtube.com/watch?v=vElZc6zSIXM
 [emergent]: https://www.youtube.com/watch?v=eR34r7HOU14
 [ub]: http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
+[string]: https://www.youtube.com/watch?v=kPR8h4-qZdk
