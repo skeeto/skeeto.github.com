@@ -12,7 +12,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>{{ site.url }}/applets/</loc>
+    <loc>{{ site.url }}/toys/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
