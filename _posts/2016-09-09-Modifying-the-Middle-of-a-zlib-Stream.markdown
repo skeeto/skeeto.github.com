@@ -18,9 +18,9 @@ when I'm done since it's compressed in the zlib stream … *or so I
 thought*.
 
 <svg version="1.1" height="50" width="600">
-  <rect fill="#afa" width="149"  height="48" x="1"   y="1"
+  <rect fill="#dfd" width="149"  height="48" x="1"   y="1"
         stroke="black" stroke-width="2"/>
-  <rect fill="#aaf" width="449" height="48" x="150" y="1"
+  <rect fill="#ddf" width="449" height="48" x="150" y="1"
         stroke="black" stroke-width="2"/>
   <text x="75" y="32" text-anchor="middle" alignment-baseline="central"
         font-size="22px" font-family="sans serif">
