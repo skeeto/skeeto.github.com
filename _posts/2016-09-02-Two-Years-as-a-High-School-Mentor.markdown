@@ -184,5 +184,5 @@ As he moves on, I'll be starting all over again with a new student.
 [bdf]: https://www.adobe.com/content/dam/Adobe/en/devnet/font/pdfs/5005.BDF_Spec.pdf
 [simd]: /blog/2015/07/10/
 [magit]: https://magit.vc/
-[paper]: https://www.cs.virginia.edu/~jmc7tp/papers/coffman2016rop.pdf
+[paper]: http://dl.acm.org/authorize?N26363
 [slides]: https://www.cs.virginia.edu/~jmc7tp/slides/coffman2016rop.pdf
