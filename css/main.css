@@ -207,7 +207,7 @@ main article img, main article video, main article svg {
 
 main article code {
     font-size: 15px;
-    font-family: DroidSansMono;
+    font-family: DroidSansMono, monospace;
 }
 
 main article pre {
