@@ -311,7 +311,7 @@ There are a few downsides to this:
    the iterator grows the stack automatically, which would mean
    iteration could fail at any point in the middle.
 
-3. In order to destroy the trie it, needs to be traversed: Freeing
+3. In order to destroy the trie, it needs to be traversed: Freeing
    memory first requires allocating memory. If the program is out of
    memory, it cannot destroy the trie to clean up before handling the
    situation, nor to make more memory available. It's not good for
