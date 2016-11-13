@@ -470,9 +470,15 @@ temporarily reversed. With these changes, this technique would fit
 into the original `struct trie` without changes, eliminating the extra
 memory usage.
 
+Update: Over on Hacker News, [psi-squared has interesting
+suggestions][hn] such as leaving the traversal pointers intact,
+particularly in the case of a breadth-first search, which, until the
+next trie modification, allows for concurrent follow-up traversals.
+
 
 [trie]: https://en.wikipedia.org/wiki/Trie
 [morris]: http://www.geeksforgeeks.org/morris-traversal-for-preorder/
 [dsw]: https://xlinux.nist.gov/dads/HTML/SchorrWaiteGraphMarking.html
 [s9]: http://t3x.org/s9fes/
 [gen]: https://en.wikipedia.org/wiki/Generator_(computer_programming)
+[hn]: https://news.ycombinator.com/item?id=12943339
