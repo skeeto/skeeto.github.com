@@ -337,7 +337,7 @@ not without its downsides, particularly because it's a trie:
 
 2. If the code is compiled to be position-independent (`-fPIC`), each
    of those nodes is going to hold multiple dynamic relocations,
-   further exploding the size of the binary and [preventing it all
+   further exploding the size of the binary and [preventing the trie
    from being shared between processes][reloc]. It's 24 bytes per
    relocation on x86-64. This will also slow down program start up
    time. With just a few thousand strings, the simple test program was
