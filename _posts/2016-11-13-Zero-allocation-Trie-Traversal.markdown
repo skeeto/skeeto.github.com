@@ -6,13 +6,13 @@ tags: [c, compsci]
 uuid: 38dd798b-9e27-3109-590c-3a8482f634a7
 ---
 
-As part of a demonstration in an upcoming article, I wrote a simple
-[trie][trie] implementation. A trie is a search tree where the keys
-are a sequence of symbols (i.e. strings). Strings with a common prefix
-share an initial path down the trie, and the keys themselves are
-stored implicitly by the structure of the trie. It's commonly used as
-a sorted set or, when values are associated with nodes, an associative
-array.
+As part of a demonstration in [an upcoming article][next], I wrote a
+simple [trie][trie] implementation. A trie is a search tree where the
+keys are a sequence of symbols (i.e. strings). Strings with a common
+prefix share an initial path down the trie, and the keys themselves
+are stored implicitly by the structure of the trie. It's commonly used
+as a sorted set or, when values are associated with nodes, an
+associative array.
 
 This wasn't my first time writing a trie. The curse of programming in
 C is rewriting the same data structures and algorithms over and over.
@@ -482,3 +482,4 @@ next trie modification, allows for concurrent follow-up traversals.
 [s9]: http://t3x.org/s9fes/
 [gen]: https://en.wikipedia.org/wiki/Generator_(computer_programming)
 [hn]: https://news.ycombinator.com/item?id=12943339
+[next]: /blog/2016/11/15/
