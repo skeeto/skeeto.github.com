@@ -349,9 +349,12 @@ not without it's downsides, particularly because it's a trie:
    linker and run it out of memory with just some tens of thousands of
    strings. This would make for a decent linker stress test.
 
-This technique obviously doesn't scale well at all with trie data, but
-I've personally had much better luck with [other sorts of lookup
-tables][yavalath]. It's a useful tool for the C programmer's toolbelt.
+This technique obviously doesn't scale well with trie data. You're
+better off baking in the flat string list and building the trie at run
+time — though you *could* compute the exact number of needed nodes at
+compile time and statically allocate them (in .bss). I've personally
+had much better luck with [other sorts of lookup tables][yavalath].
+It's a useful tool for the C programmer's toolbelt.
 
 
 [last]: /blog/2016/11/13/
