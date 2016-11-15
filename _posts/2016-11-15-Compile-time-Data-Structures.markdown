@@ -329,7 +329,7 @@ struct trie root[] = {
 
 This trie can be immediately used at program startup without
 initialization, and it can even have new nodes inserted into it. It's
-not without it's downsides, particularly because it's a trie:
+not without its downsides, particularly because it's a trie:
 
 1. It's *really* going to blow up the size of the binary, especially
    when it holds lots of strings. These nodes are anything but
