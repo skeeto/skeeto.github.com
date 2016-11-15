@@ -268,7 +268,7 @@ trie_serialize(struct trie *t, const char *name)
     struct trie *head = t;
     struct trie *tail = t;
     t->p = NULL;
-    int count = 0;
+    size_t count = 0;
     while (head) {
         printf("    {​{");
         for (int i = 0; i < TRIE_ALPHABET_SIZE; i++) {
@@ -280,7 +280,7 @@ trie_serialize(struct trie *t, const char *name)
                 tail = next;
                 next->p = NULL;
                 /* Print the pointer to the child. */
-                printf("%s%s + %d", comma, name, ++count);
+                printf("%s%s + %zu", comma, name, ++count);
             } else {
                 printf("%s0", comma);
             }
@@ -336,12 +336,13 @@ not without it's downsides, particularly because it's a trie:
    compact.
 
 2. If the code is compiled to be position-independent (`-fPIC`), each
-   of those nodes is going to [hold multiple dynamic
-   relocations][reloc], further exploding the size of the binary. It's
-   24 bytes per relocation on x86-64. This will also slow down program
-   start up time. With just a few thousand strings, the simple test
-   program was taking 5x longer to start (25ms instead of 5ms) than
-   with an empty trie.
+   of those nodes is going to hold multiple dynamic relocations,
+   further exploding the size of the binary and [preventing it all
+   from being shared between processes][reloc]. It's 24 bytes per
+   relocation on x86-64. This will also slow down program start up
+   time. With just a few thousand strings, the simple test program was
+   taking 5x longer to start (25ms instead of 5ms) than with an empty
+   trie.
 
 3. Even without being position-independent, the linker will have to
    resolve all the compile-time relocations. I was able to overwhelm
