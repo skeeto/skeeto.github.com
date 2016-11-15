@@ -20,11 +20,12 @@ programs.
 ### The linker approach
 
 The simpler, less portable option is to have the linker do it. Both
-the GNU linker and the gold linker (ELF only) can create object files
-from arbitrary files using the `--format` (`-b`) option set to
-`binary` (raw data). It's combined with `--relocatable` (`-r`) to make
-it linkable with the rest of the program. MinGW supports all of this,
-too, so it's fairly portable so long as you stick to GNU Binutils.
+the GNU linker and the [gold linker][linkers] (ELF only) can create
+object files from arbitrary files using the `--format` (`-b`) option
+set to `binary` (raw data). It's combined with `--relocatable` (`-r`)
+to make it linkable with the rest of the program. MinGW supports all
+of this, too, so it's fairly portable so long as you stick to GNU
+Binutils.
 
 For example, to create an object file, `my_msg.o` with the
 contents of the text file `my_msg.txt`:
@@ -360,3 +361,4 @@ It's a useful tool for the C programmer's toolbelt.
 [last]: /blog/2016/11/13/
 [reloc]: /blog/2016/10/27/
 [yavalath]: https://github.com/skeeto/yavalath
+[linkers]: http://www.airs.com/blog/archives/38
