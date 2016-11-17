@@ -155,16 +155,18 @@ main(void)
 However, there are some good reasons not to use this feature in this
 way:
 
-1. The format of `table.bin` is specific to the host architecture. If
-   the host is the same as the target then this isn't a problem, but
-   it will prohibit cross-compilation.
+1. The format of `table.bin` is specific to the host architecture
+   (byte order, size, padding, etc.). If the host is the same as the
+   target then this isn't a problem, but it will prohibit
+   cross-compilation.
 
 2. The linker has no information about the alignment requirements of
-   the data. The `long long` array may not be aligned properly in the
-   final program, which is a problem on some architectures. The above
-   program might crash on these systems. The Right Way is to never
-   dereference the data directly but rather `memcpy()` it into a
-   properly-aligned variable. Byte-order is a non-issue.
+   the data. To the linker it's just a byte buffer. In the final
+   program the `long long` array will not necessarily aligned properly
+   for its type, meaning the above program might crash. The Right Way
+   is to never dereference the data directly but rather `memcpy()` it
+   into a properly-aligned variable, just as if the data was an
+   unaligned buffer.
 
 3. The data structure cannot use any pointers. Pointer values are
    meaningless to other processes and will be no different than
