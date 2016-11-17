@@ -200,9 +200,12 @@ main article s {
     color: DimGray;
 }
 
-main article img, main article video, main article svg {
+main article img,
+main article video,
+main article svg {
     display: block;
     margin: 0.5em auto;
+    max-width: 100%;
 }
 
 main article code {
