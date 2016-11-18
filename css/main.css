@@ -265,7 +265,8 @@ article {
     margin-bottom: 2em;
 }
 
-article:after {
+article.many:after,
+article.single nav:before {
     display: block;
     content: '';
     border-bottom: 2px solid LightGray;
@@ -273,6 +274,65 @@ article:after {
     margin: auto;
     height: 1px;
     margin-top: 1em;
+}
+
+/* Article Navigation */
+
+article nav {
+    position: relative;
+    height: 4em;
+    line-height: 4em;
+}
+
+article nav a {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+article nav .prev {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 4em;
+    text-align: left;
+}
+
+article nav .prev a {
+    margin-left: 1.5em;
+}
+
+article nav .next {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 4em;
+    text-align: right;
+}
+
+article nav .next a {
+    margin-right: 1em;
+}
+
+article nav .marker {
+    display: inline-block;
+    height: 4em;
+    line-height: 4em;
+    margin-left: 0.5em;
+}
+
+article nav .prev .marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+article nav .next .marker {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* Footer */

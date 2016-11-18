@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article>
+<article class="single">
   <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
   <time datetime="{{ page.date | date: "%Y-%m-%d" }}">
     {{ page.date | date: "%B %d, %Y" }}
@@ -19,6 +19,25 @@ layout: default
     {% endfor %}
   </ul>
   <ol class="references print-only"></ol>
+
+  <nav class="no-print">
+  {% if page.previous.url %}
+    <div class="prev">
+      <span class="marker">&laquo;</span>
+      <a href="{{page.previous.url}}">
+        {{page.previous.title}}
+      </a>
+    </div>
+  {% endif %}
+  {% if page.next.url %}
+    <div class="next">
+      <span class="marker">&raquo;</span>
+      <a href="{{page.next.url}}">
+        {{page.next.title}}
+      </a>
+    </div>
+  {% endif %}
+  </nav>
 
   {% if jekyll.environment == "production" %}
   <!-- Disqus -->
