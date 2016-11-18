@@ -176,6 +176,8 @@ structures: the ELF header and one program header. The binary will be
 the ELF header, followed immediately by the program header, followed
 immediately by the program.
 
+![](/img/steady-hand/elf.svg)
+
 To fill this binary out, we'd use whatever method the virus left
 behind for writing raw bytes to a file. For now I'll assume the `echo`
 command is still available, and we'll use hexadecimal `\xNN` escapes
