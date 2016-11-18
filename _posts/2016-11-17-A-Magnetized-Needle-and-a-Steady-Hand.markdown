@@ -180,10 +180,10 @@ To fill this binary out, we'd use whatever method the virus left
 behind for writing raw bytes to a file. For now I'll assume the `echo`
 command is still available, and we'll use hexadecimal `\xNN` escapes
 to write raw bytes. If this isn't available, you might need to use the
-magnetic needle and steady hand method.
+magnetic needle and steady hand method, or the butterflies.
 
-The very first data in an ELF file must be the ELF header, from the
-ELF specification (1):
+The very first structure in an ELF file must be the ELF header, from
+the ELF specification (1):
 
 ~~~c
     typedef struct {
@@ -237,13 +237,14 @@ So writing the ELF header:
     echo -ne '\x00\x00\x00\x00\x00\x00\x00\x00' >> true
 
 The next field is the `e_type`. This is an executable program, so it's
-`ET_EXEC` (2).
+`ET_EXEC` (2). Other options are object files (`ET_REL` = 1), shared
+libraries (`ET_DYN` = 3), and core files (`ET_CORE` = 4).
 
     echo -ne '\x02\x00' >> true
 
 The value for `e_machine` is `EM_X86_64` (0x3E). This value isn't in
 the ELF specification but rather the ABI document (§4.1.1). On BSD
-this is sometimes named `EM_AMD64` instead.
+this is instead named `EM_AMD64`.
 
     echo -ne '\x3E\x00' >> true
 
@@ -252,10 +253,11 @@ For `e_version` it's always 1, like in the header.
     echo -ne '\x01\x00\x00\x00' >> true
 
 The `e_entry` field will be 8 bytes because this is a 64-bit ELF. This
-is the virtual address of the program's entry point. Basically this is
-where we'll load the program. The typical entry address is somewhere
-shortly after 0x400000. For a reason I'll explain in later, our entry
-point will be 120 bytes (0x78) after this even address, at 0x40000078.
+is the virtual address of the program's entry point. It's where the
+loader will pass control and so it's where we'll load the program. The
+typical entry address is somewhere around 0x400000. For a reason I'll
+explain shortly, our entry point will be 120 bytes (0x78) after that
+nice round number, at 0x40000078.
 
     echo -ne '\x78\x00\x00\x40\x00\x00\x00\x00' >> true
 
@@ -281,13 +283,13 @@ The `e_ehsize` holds the size of the ELF header, which, as I said, is
     echo -ne '\x40\x00' >> true
 
 The `e_phentsize` is the size of one program header, which is 56 bytes
-(0x38). We'll have to fill out one of those, too.
+(0x38).
 
     echo -ne '\x38\x00' >> true
 
 The `e_phnum` field indicates how many program headers there are. We
-only need the one, which will define the segment with the 9 program
-bytes.
+only need the one: the segment with the 9 program bytes, to be loaded
+into memory.
 
     echo -ne '\x01\x00' >> true
 
@@ -324,7 +326,7 @@ Next is our program header.
 
 The `p_type` field indicates the segment type. This segment will hold
 the program and will be loaded into memory, so we want `PT_LOAD` (1).
-Other kinds of segments set up for dynamic loading and such.
+Other kinds of segments set up dynamic loading and such.
 
     echo -ne '\x01\x00\x00\x00' >> true
 
@@ -335,8 +337,8 @@ make 5.
     echo -ne '\x05\x00\x00\x00' >> true
 
 The `p_offset` is the file offset for the content of this segment.
-This will be the program we assembled. This will immediately follow
-the this header. The ELF header was 64 bytes, plus a 56 byte program
+This will be the program we assembled. It will immediately follow the
+this header. The ELF header was 64 bytes, plus a 56 byte program
 header, which is 120 (0x78).
 
     echo -ne '\x78\x00\x00\x00\x00\x00\x00\x00' >> true
@@ -362,14 +364,14 @@ it's either truncated or padded with zeroes.
 
     echo -ne '\x09\x00\x00\x00\x00\x00\x00\x00' >> true
 
-The `p_align` indicates the segments alignment. We don't care about
+The `p_align` indicates the segment's alignment. We don't care about
 alignment.
 
     echo -ne '\x00\x00\x00\x00\x00\x00\x00\x00' >> true
 
 #### Append the program
 
-Finally, append the program we assembled.
+Finally, append the program we assembled at the beginning.
 
     echo -ne '\x31\xFF\xB8\x3C\x00\x00\x00\x0F\x05' >> true
 
