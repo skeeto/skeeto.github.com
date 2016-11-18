@@ -20,21 +20,23 @@ machine code. Only *real programmers* can get anything done.
 
 The world's top software developers have been put to work
 bootstrapping a C compiler (and others) completely from scratch so
-that we can get back to where we started. Without even an assembler,
-it's a slow, tedious process.
+that we can get back to normal. Without even an assembler, it's a
+slow, tedious process.
 
 In the mean time, rather than wait around for the bootstrap work to
 complete, the rest of us have been assigned individual programs hit by
 the virus. For example, many basic unix utilities have been wiped out,
 and the bootstrap would benefit from having them. Having different
-groups write them will allow the bootstrap effort to move forward
-somewhat in parallel. At least that's what the compiler nerds told us.
-The real reason is that they're tired of being asked if they're done
-yet, and this task will keep the rest of us busy.
+groups tackle each missing program will allow the bootstrap effort to
+move forward somewhat in parallel. *At least that's what the compiler
+nerds told us.* The real reason is that they're tired of being asked
+if they're done yet, and these tasks will keep the rest of us quietly
+busy.
 
-Fortunately we've been assigned the easiest task of all: **We're to
-write the `true` command from scratch.** The target is x86-64 Linux,
-which means we'll need the following documentation:
+Fortunately you and I have been assigned the easiest task of all:
+**We're to write the `true` command from scratch.** We'll have to
+figure it out byte by byte. The target is x86-64 Linux, which means
+we'll need the following documentation:
 
 1. [Executable and Linking Format (ELF) Specification][elf]. This is
    the binary format used by modern Unix-like systems, including
@@ -57,15 +59,16 @@ which means we'll need the following documentation:
 
 The program we're writing is `true`, whose behavior is documented as
 "do nothing, successfully." All command line arguments are ignored and
-no input as read. The only thing the program needs to do is make the
-exit system call (`_exit(2)`).
+no input as read. The program only needs to perform the exit system
+call, immediately terminating the process.
 
 According to the ABI document (3) Appendix A, the registers for system
 call arguments are: `rdi`, `rsi`, `rdx`, `r10`, `r8`, `r9`. The system
 call number goes in `rax`. The exit system call takes only one
 argument, and that argument will be 0 (success), so `rdi` should be
-set to zero. It's likely that it's already zero, but the ABI document
-says its contents are undefined (§3.4).
+set to zero. It's likely that it's already zero when the program
+starts, but the ABI document says its contents are undefined (§3.4),
+so we'll set it explicitly.
 
 For Linux on x86-64, the system call number for exit is 60,
 (/usr/include/asm/unistd_64.h), so `rax` will be set to 60, followed
@@ -77,8 +80,8 @@ by `syscall`.
     syscall
 ~~~
 
-There's no assembler available for this, so it has to be assembled by
-hand. For that we need the Intel manual (2).
+There's no assembler available to turn this into machine code, so it
+has to be assembled by hand. For that we need the Intel manual (2).
 
 The first instruction is `xor`, so look up that mnemonic in the
 manual. Like most x86 mnemonics, there are many different opcodes and
@@ -87,14 +90,14 @@ options.
 
 ![](/img/steady-hand/xor.png)
 
-The operands are two 32-bit registers, and neither of them are `eax`,
-so there are two options available (opcodes 0x31 and 0x33):
+The operands are two 32-bit registers, so there are two options
+available (opcodes 0x31 and 0x33):
 
     31 /r      XOR r/m32, r32
     33 /r      XOR r32, r/m32
 
 The "r/m32" means the operand can be either a register or the address
-of a 32-bit region of memory. With two registers operands, both
+of a 32-bit region of memory. With two register operands, both
 encodings are equally valid, both have the same length (2 bytes), and
 neither is canonical, so the decision is entirely arbitrary. Let's
 pick the first one, opcode 0x31, since its listed first.
@@ -105,16 +108,16 @@ that immediately follows the opcode and specifies one of two of the
 operands.
 
 The ModR/M byte is broken into three parts: mod (2 bits), reg (3
-bits), r/m (3 bits). This gets a little complicated, bit if you stare
+bits), r/m (3 bits). This gets a little complicated, but if you stare
 at Table 2-1 in the Intel manual for long enough it eventually makes
 sense. In short, two high bits (11) for mod indicates we're working
 with a register rather than a load. Here's where we're at for ModR/M:
 
     11 ??? ???
 
-The order of the x86 registers is unintuitively: `ax`, `cx`, `dx`,
-`bx`, `sp`, `bp`, `si`, `di`. With 0-indexing, that gives `di` a value
-of 7 (111 in binary). With `edi` as both operands, this makes ModR/M:
+The order of the x86 registers is unintuitive: `ax`, `cx`, `dx`, `bx`,
+`sp`, `bp`, `si`, `di`. With 0-indexing, that gives `di` a value of 7
+(111 in binary). With `edi` as both operands, this makes ModR/M:
 
     11 111 111
 
@@ -123,29 +126,29 @@ opcode (0x31) and the ModR/M byte (0xFF):
 
     31 FF
 
-The encoding for `mov` is a bit different. Again, there are two
-options:
+The encoding for `mov` is a bit different. Look it up and match the
+operands. Like before, there are two possible options:
 
     B8+rd id   MOV r32, imm32
     C7 /0 id   MOV r/m32, imm32
 
-In the `B8+rd` notation means the 32-bit register operand (rd for
+In the `B8+rd` notation means the 32-bit register operand (*rd* for
 "register double word") is added to the opcode instead of having a
-ModR/M byte. It's followed by a 32-bit immediate value (id). That's a
-total of 5 bytes.
+ModR/M byte. It's followed by a 32-bit immediate value (*id* for
+"integer double word"). That's a total of 5 bytes.
 
 The "/0" in second means 0 goes in the "reg" field of ModR/M, and the
-whole instruction is followed by the 32-bit immediate. That's a total
-of 6 bytes. this is longer, we'll use the first encoding.
+whole instruction is followed by the 32-bit immediate (id). That's a
+total of 6 bytes. Since this is longer, we'll use the first encoding.
 
 So, that's opcode `0xB8 + 0`, since `eax` is register number 0,
-followed by 60 (0x3C) as a little endian 4-byte value. Here's the
+followed by 60 (0x3C) as a little endian, 4-byte value. Here's the
 encoding for the second instruction:
 
     B8 3C 00 00 00
 
 The final instruction is a cakewalk. There are no operands, it comes
-in only one form and has two operands.
+in only one form of two operands.
 
     0F 05   SYSCALL
 
