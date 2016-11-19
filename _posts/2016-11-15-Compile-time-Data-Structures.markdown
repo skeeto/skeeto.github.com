@@ -51,7 +51,7 @@ extern char _binary_my_msg_txt_size;
 ~~~
 
 The size symbol, `_binary_my_msg_txt_size`, is misleading. The "A"
-from nm means its an absolute symbol, not relocated. It doesn't refer
+from nm means it's an absolute symbol, not relocated. It doesn't refer
 to an integer that holds the size of the raw data. The value of the
 symbol itself is the size of the data. That is, take the address of it
 and cast it to an integer.
