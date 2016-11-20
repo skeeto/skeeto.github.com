@@ -494,14 +494,16 @@ it needs to provide: `(provide 'joymacs)`.
     env->funcall(env, provide, 1, &joymacs);
 ~~~
 
-And that's it. If you're running Linux, have Emacs 25 installed, and a
+And that's it!
+
+The source repository now includes a port to Windows (XInput). If
+you're on Linux or Windows, have Emacs 25 with modules enabled, and a
 joystick is plugged in, then `make run` in the repository should bring
 up Emacs running a joystick calibration demonstration. The module
 can't poke at Emacs when events are ready, so instead there's a timer
 that polls the module for events.
 
-It would be interesting to port this to Xinput (Win32). I'd also like
-to an Emacs Lisp game well-suited for a joystick.
+I'd like to someday see an Emacs Lisp game well-suited for a joystick.
 
 
 [tut]: http://diobla.info/blog-archive/modules-tut.html
