@@ -1,7 +1,7 @@
 ---
 title: Portable Structure Access with Member Offset Constants
 layout: post
-date: 2016-11-22T03:43:56Z
+date: 2016-11-22T12:55:29Z
 tags: [c, posix, x86]
 uuid: 81ff4064-17f1-3a9b-a5ec-61acb03385b9
 ---
