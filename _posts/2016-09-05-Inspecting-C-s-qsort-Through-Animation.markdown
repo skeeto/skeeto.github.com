@@ -139,7 +139,6 @@ That's everything that was readily accessible to me. If you can run it
 against something new, I'm certainly interested in seeing more
 implementations.
 
-
 <script type="text/javascript">
 (function() {
     var r = document.querySelectorAll('.resetable');
