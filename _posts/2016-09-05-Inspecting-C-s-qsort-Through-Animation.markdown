@@ -8,12 +8,12 @@ uuid: 7d86c669-ff40-3210-7e28-78b801e35e50
 
 The C standard library includes a qsort() function for sorting
 arbitrary buffers given a comparator function. The name comes from its
-[original Unix implemenation, "quicker sort,"][name] a variation of
+[original Unix implementation, "quicker sort,"][name] a variation of
 the well-known quicksort algorithm. The C standard doesn't specify an
 algorithm, except to say that it may be unstable (C99 §7.20.5.2¶4) —
 equal elements have an unspecified order. As such, different C
 libraries use different algorithms, and even when using the same
-algorthm they make different implementation tradeoffs.
+algorithm they make different implementation trade-offs.
 
 I added a drawing routine to a comparison function to see what the
 sort function was doing for different C libraries. Every time it's
@@ -24,7 +24,7 @@ video][poor]. Here's my code if you want to try it yourself:
 * [qsort-animate.c][source]
 
 Adjust the parameters at the top to taste. Rather than call rand() in
-the standard library, I included xorshift64star() with a hardcoded
+the standard library, I included xorshift64star() with a hard-coded
 seed so that the array will be shuffled exactly the same across all
 platforms. This makes for a better comparison.
 
