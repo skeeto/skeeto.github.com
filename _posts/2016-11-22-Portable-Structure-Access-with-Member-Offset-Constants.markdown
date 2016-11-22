@@ -6,10 +6,11 @@ tags: [c, posix, x86]
 uuid: 81ff4064-17f1-3a9b-a5ec-61acb03385b9
 ---
 
-Suppose you need to write a C program read a sequence of structures
-from a binary file. These structures have different lengths and
-contents, but also a common header identifying its type and size.
-Here's the definition of that header (no padding):
+Suppose you need to write a C program to access a long sequence of
+structures from a binary file in a specified format. These structures
+have different lengths and contents, but also a common header
+identifying its type and size. Here's the definition of that header
+(no padding):
 
 ~~~c
 struct event {
