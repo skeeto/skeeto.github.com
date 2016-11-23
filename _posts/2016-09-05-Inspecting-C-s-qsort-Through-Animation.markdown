@@ -52,14 +52,23 @@ can't fail, it uses quicksort as a backup. You can really see the
 mergesort in action: changes are made that we cannot see until later,
 when it's copied back into the original array.
 
-### diet
+### dietlibc (0.32)
 
-Sorted in **503 frames**. [diet libc][diet] is an alternative C
+Sorted in **503 frames**. [dietlibc][diet] is an alternative C
 standard library for Linux. It's optimized for size, which shows
 through its slower performance. It looks like a quicksort that always
 chooses the last element as the pivot.
 
 ![](/img/qsort/diet.gif){: .resetable title="diet"}
+
+Update: Felix von Leitner, the primary author of dietlibc, has alerted
+me that, as of version 0.33, it now chooses a random pivot. This
+comment from the source describes it:
+
+> We chose the rightmost element in the array to be sorted as pivot,
+> which is OK if the data is random, but which is horrible if the data
+> is already sorted. Try to improve by exchanging it with a random
+> other pivot.
 
 ### musl
 
