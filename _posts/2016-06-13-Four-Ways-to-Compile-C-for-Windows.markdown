@@ -79,7 +79,16 @@ compiler, but if you're relying on Mingw-w64, you still have to
 to the C89 printf specifiers</s>.
 
 Update: Mārtiņš Možeiko has pointed out `__USE_MINGW_ANSI_STDIO`, an
-undocumented feature that fixes the printf family.
+undocumented feature that fixes the printf family. I now use this by
+default in all of my Mingw-w64 builds. It fixes most of the formatted
+output issues, except that it's incompatible with the [`format`
+function attribute][format].
+
+Another problem is that [position-independent code generation is
+broken][pie], and so [ASLR is not an option][pie2]. This means
+binaries produced by Mingw-w64 are less secure than they should be.
+There are also a number of [subtle code generation bugs][gen] that
+might arise if you're doing something unusual.
 
 ### Visual C++
 
@@ -193,6 +202,10 @@ it's not going to beat these options.
 [args]: https://utcc.utoronto.ca/~cks/space/blog/python/Python3UnicodeIssue
 [fav]: http://i.imgur.com/zwKGeaa.gif
 [msvcrt]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
+[format]: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-g_t_0040code_007bformat_007d-function-attribute-3318
+[pie]: http://thelinuxjedi.blogspot.com/2014/07/tripping-up-using-mingw.html
+[pie2]: https://github.com/rust-lang/rust/issues/16514
+[gen]: https://gcc.gnu.org/ml/gcc-bugs/2015-05/msg02025.html
 [pellesc]: http://www.smorgasbordet.com/pellesc/
 [vcbt]: http://landinghub.visualstudio.com/visual-cpp-build-tools
 [clang]: http://clang.llvm.org/
