@@ -228,6 +228,11 @@ main article blockquote {
     background-color: FloralWhite;
 }
 
+article .download {
+    font-weight: bold;
+    font-size: 110%;
+}
+
 main article .abstract {
     font-style: italic;
 }
