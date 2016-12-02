@@ -12,7 +12,7 @@ warning: Many of these entries are adult humor and may not be
 appropriate for your work computer. These fortunes would be
 categorized as "offensive" (`fortune -o`).
 
-Download: [showerthoughts][sr]{: .download} (1.3 MB)
+Download: [showerthoughts][dl]{: .download} (1.3 MB)
 
 The copyright status of this file is subject to each of its thousands
 of authors. Since it's not possible to contact many of these authors —
