@@ -6,14 +6,14 @@ tags: [emacs, elfeed, optimization, elisp]
 uuid: 47002cc3-816a-3cb8-b462-327364e3f943
 ---
 
-Today I pushed an update for Elfeed that doubles the speed of the
-search filter in the worse case. This is the user-entered expression
-that dynamically narrows the entry listing to a subset that meets
-certain criteria: published after a particular date, with/without
-particular tags, and matching/non-matching zero or more regular
-expressions. The filter is live, applied to the database as the
-expression is edited, so it's important for usability that this search
-completes under a threshold that the user might notice.
+Today I pushed an update for [Elfeed][elfeed] that doubles the speed
+of the search filter in the worse case. This is the user-entered
+expression that dynamically narrows the entry listing to a subset that
+meets certain criteria: published after a particular date,
+with/without particular tags, and matching/non-matching zero or more
+regular expressions. The filter is live, applied to the database as
+the expression is edited, so it's important for usability that this
+search completes under a threshold that the user might notice.
 
 ![](/img/elfeed/filter.gif)
 
@@ -23,7 +23,7 @@ it's usually a terrible, broken design. If the user acts upon the
 asynchronous results — say, by typing the query and hitting enter to
 choose the current or expected top result — then the final behavior is
 non-deterministic, a race between the user's typing speed and the
-asynchronous search.
+asynchronous search. Elfeed will keep its synchronous live search.
 
 For anyone not familiar with Elfeed, here's a filter that finds all
 entries from within the past year tagged "youtube" (`+youtube`) that
@@ -455,3 +455,4 @@ The header explains how to run the benchmark in batch mode:
 [advice]: /blog/2013/01/22/
 [horrors]: http://emacshorrors.com/posts/when-data-becomes-code.html
 [native]: /blog/2015/03/19/
+[elfeed]: https://github.com/skeeto/elfeed
