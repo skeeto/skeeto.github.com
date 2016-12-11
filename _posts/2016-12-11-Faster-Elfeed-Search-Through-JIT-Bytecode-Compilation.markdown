@@ -68,10 +68,11 @@ virtual machine? That's what this latest update does.
 
 With six different filter components, the actual filtering routine is
 a bit too complicated for an article, so I'll set up a simpler, but
-equivalent, scenario. With a reasonable cut-off date, the filter was
-already sufficiently fast, so for benchmarking I'll focus on the worst
-case: no early bailout opportunities. An entry will be just a list of
-tags (symbols), and the filter will have to test every entry.
+roughly equivalent, scenario. With a reasonable cut-off date, the
+filter was already sufficiently fast, so for benchmarking I'll focus
+on the worst case: no early bailout opportunities. An entry will be
+just a list of tags (symbols), and the filter will have to test every
+entry.
 
 My [real-world Elfeed database][an] currently has 46,772 entries with
 36 distinct tags. For my benchmark I'll round this up to a nice
@@ -155,10 +156,10 @@ I get:
 ~~~
 
 That's actually not too bad. One of the advantages of this definition
-is that there are no function calls. The `memq` built-in function is
-special and has its own opcode (62), and the rest is special forms and
-macros expanding to special forms (`cl-loop`). It's exactly the thing
-I need to exploit to make filters faster.
+is that there are no function calls. The `memq` built-in function has
+its own opcode (62), and the rest of the definition is special forms
+and macros expanding to special forms (`cl-loop`). It's exactly the
+thing I need to exploit to make filters faster.
 
 As a sanity check, what would happen if I used `member` instead of
 `memq`? In theory it should be slower because it uses `equal` for
@@ -240,7 +241,7 @@ good idea to **avoid calling functions in the filter** if I can help
 it. I should rely on these special opcodes.
 
 Suppose `memq` was written in Emacs Lisp rather than C. How much would
-that hurt performance? My version here `my-memq` isn't exactly the
+that hurt performance? My version of `my-memq` below isn't quite the
 same since it returns t rather than the sublist, but it's good enough
 for this purpose. (I'm using `cl-loop` because writing early bailout
 in plain Elisp without recursion is, in my opinion, ugly.)
@@ -272,7 +273,7 @@ should use built-ins as much as possible** in the filter.
 
 There's one last thing to watch out for. Everything so far has been
 compiled with lexical scope. You should really turn this on by default
-for all new code.
+for all new code that you write. It has three important advantages:
 
 1. It allows the compiler to catch more mistakes.
 2. It eliminates a class of bugs related to dynamic scope: Local
@@ -368,6 +369,10 @@ the following:
                      (memq 'F entry))))
 ~~~
 
+Due to its short-circuiting behavior, `or` is a special form, so this
+function is just special forms and `memq` in its opcode form. It's as
+fast as Elisp can get.
+
 Having s-expressions is a real strength for lisp, since the
 alternative (in, say, JavaScript) would be to assemble the function by
 concatenating code strings. By contrast, this looks a lot like a
@@ -381,7 +386,7 @@ How much faster is this?
 ;; => 0.017s
 ~~~
 
-It's more than twice as fast! The big gain here is through *loop
+**It's more than twice as fast!** The big gain here is through *loop
 unrolling*. The outer loop has been unrolled into the `or` expression.
 That section of byte-code looks like this:
 
@@ -412,10 +417,10 @@ That section of byte-code looks like this:
 
 In Elfeed, not only does it unroll these loops, it completely
 eliminates the overhead for unused filter components. Comparing to
-this benchmark, I'm seeing roughly matching gains in Elfeed. In
-Elfeed, I also bind `lexical-binding` around the `byte-compile` call
-to force lexical scope, since otherwise it just uses the buffer-local
-value (usually nil).
+this benchmark, I'm seeing roughly matching gains in Elfeed's worst
+case. In Elfeed, I also bind `lexical-binding` around the
+`byte-compile` call to force lexical scope, since otherwise it just
+uses the buffer-local value (usually nil).
 
 Filter compilation can be toggled on and off by setting
 `elfeed-search-compile-filter`. If you're up to date, try out live
@@ -431,7 +436,7 @@ Here are the results in a table, all run with Emacs 24.4 on x86-64.
     dynamic   65        70        74         256       21
 
 And the same benchmarks on Aarch64 (Emacs 24.5), where I also
-occasionally run Elfeed, and where I have been very interested in
+occasionally use Elfeed, and where I have been very interested in
 improving performance.
 
     (ms)      memq      member    memq-alias my-memq   jit
