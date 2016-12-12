@@ -435,9 +435,9 @@ Here are the results in a table, all run with Emacs 24.4 on x86-64.
     lexical   41        47        52         137       17
     dynamic   65        70        74         256       21
 
-And the same benchmarks on Aarch64 (Emacs 24.5), where I also
-occasionally use Elfeed, and where I have been very interested in
-improving performance.
+And the same benchmarks on Aarch64 (Emacs 24.5, ARM Cortex-A53), where
+I also occasionally use Elfeed, and where I have been very interested
+in improving performance.
 
     (ms)      memq      member    memq-alias my-memq   jit
     lexical   170       235       242        614       79
