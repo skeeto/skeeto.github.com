@@ -252,10 +252,10 @@ considered a bug.
 ### Accidental closures
 
 I've said there are are absolutely no advantages to `lexical-binding:
-nil`. It's only the default for backwards-compatibility. However,
-there *is* one case where `lexical-binding: t` introduces a subtle
-issue that would otherwise not exist. Take this code for example (and
-nevermind `prin1-to-string` for a moment):
+nil`. It's only the default for the sake of backwards-compatibility.
+However, there *is* one case where `lexical-binding: t` introduces a
+subtle issue that would otherwise not exist. Take this code for
+example (and nevermind `prin1-to-string` for a moment):
 
 ~~~cl
 ;; -*- lexical-binding: t; -*-
@@ -278,11 +278,12 @@ pretty simple. However, this function will only work correctly under
 
 The interpreter doesn't analyze the closure, so just closes over
 everything. This includes the hidden variable `temp-buffer` created by
-the `with-temp-buffer` macro. Buffers aren't readable, so this will
-signal an error if an attempt is made to read this function back into
-an s-expression. The byte-compiler fixes this by noticing
-`temp-buffer` isn't actually closed over and so doesn't include it in
-the closure, making it work correctly.
+the `with-temp-buffer` macro, resulting in an abstraction leak.
+Buffers aren't readable, so this will signal an error if an attempt is
+made to read this function back into an s-expression. The
+byte-compiler fixes this by noticing `temp-buffer` isn't actually
+closed over and so doesn't include it in the closure, making it work
+correctly.
 
 Under `lexical-binding: nil` it works correctly either way:
 
