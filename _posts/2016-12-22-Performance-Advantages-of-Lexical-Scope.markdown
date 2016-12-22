@@ -172,12 +172,13 @@ That pops up a buffer with the disassembly listing:
 
 It's 12 instructions, 5 of which deal with dynamic bindings. The
 byte-compiler doesn't always produce optimal byte-code, but this just
-so happens to be the optimal byte-code. No more compiler smarts can
-improve on this. Since the variables `x` and `y` are visible to `foo`,
-they must be bound before the call and [loaded after the call][const].
-While generally this function will return 3, the compiler cannot
-assume so since it ultimately depends on the behavior `foo`. Its hands
-are tied.
+so happens to be *nearly* optimal byte-code. The `discard` (a very
+fast instruction) isn't necessary, but otherwise no more compiler
+smarts can improve on this. Since the variables `x` and `y` are
+visible to `foo`, they must be bound before the call and [loaded after
+the call][const]. While generally this function will return 3, the
+compiler cannot assume so since it ultimately depends on the behavior
+`foo`. Its hands are tied.
 
 Compare this to the lexical scope version (`lexical-binding: t`):
 
@@ -192,29 +193,28 @@ Compare this to the lexical scope version (`lexical-binding: t`):
     8       return
 
 It's only 8 instructions, none of which are expensive dynamic variable
-instructions. And this isn't even the optimal byte-code. In fact, as
-of Emacs 25.1 the byte-compiler often doesn't produce the optimal
-byte-code for lexical scope code and still needs some work. Despite
-not firing on all cylinders, lexical scope still manages to beat
-dynamic scope in performance benchmarks.
+instructions. And this isn't even close to the optimal byte-code. In
+fact, as of Emacs 25.1 the byte-compiler often doesn't produce the
+optimal byte-code for lexical scope code and still needs some work.
+**Despite not firing on all cylinders, lexical scope still manages to
+beat dynamic scope in performance benchmarks.**
 
 Here's the optimal byte-code, should the byte-compiler become smarter
 someday:
 
-    0       constant  3
-    1       constant  foo
-    2       call      0
-    3       discard
-    4       return
+    0       constant  foo
+    1       call      0
+    2       constant  3
+    3       return
 
-Down to 5 instructions due to computing the math operation at compile
-time. Emacs' byte-compiler only has rudimentary constant folding, so
-it doesn't notice that `x` and `y` are constants and misses this
-optimization. I speculate this is due to its roots compiling under
-dynamic scope. Since `x` and `y` are no longer exposed to `foo`, the
-compiler has the opportunity to optimize them out of existence. I
-haven't measured it, but I would expect this to be significantly
-faster than the dynamic scope version of this function.
+It's down to 4 instructions due to computing the math operation at
+compile time. Emacs' byte-compiler only has rudimentary constant
+folding, so it doesn't notice that `x` and `y` are constants and
+misses this optimization. I speculate this is due to its roots
+compiling under dynamic scope. Since `x` and `y` are no longer exposed
+to `foo`, the compiler has the opportunity to optimize them out of
+existence. I haven't measured it, but I would expect this to be
+significantly faster than the dynamic scope version of this function.
 
 ### Optional dynamic scope
 
