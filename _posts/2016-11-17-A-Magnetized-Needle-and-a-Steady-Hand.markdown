@@ -397,5 +397,5 @@ Is the C compiler done bootstrapping yet?
 [elf]: http://refspecs.linuxbase.org/elf/elf.pdf
 [man]: http://man7.org/linux/man-pages/man5/elf.5.html
 [intel]: http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
-[abi]: http://www.x86-64.org/documentation/abi.pdf
+[abi]: https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-secure.pdf
 [com]: /blog/2014/12/09/
