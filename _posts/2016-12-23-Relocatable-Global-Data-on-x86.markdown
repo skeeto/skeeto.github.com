@@ -113,7 +113,7 @@ machine code.
 ~~~
 
 This reads a 32-bit value from the address stored in `rcx`, then
-assigns `ecx` and uses `cl` (the lowest bit of `rcx`) in a shift
+assigns `ecx` and uses `cl` (the lowest byte of `rcx`) in a shift
 operation. Without register renaming, the shift couldn't be performed
 until the load in the first instruction completed. However, the second
 instruction is a 32-bit assignment, which, as I mentioned before, also
