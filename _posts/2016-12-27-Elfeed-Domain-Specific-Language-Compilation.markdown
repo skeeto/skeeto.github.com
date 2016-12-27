@@ -278,6 +278,12 @@ With xml-query so computationally cheap, I don't need to worry about
 using it more often. Compared to parsing XML text, it's virtually
 free.
 
+I'll end by describing another possible application: Apply this
+technique to regular expressions, such that static strings containing
+regular expressions are compiled into Elisp/byte-code via macro
+expansion. I wonder if situationally this would be faster than Emacs'
+own regular expression engine.
+
 
 [jit]: /blog/2016/12/11/
 [cg]: /blog/2016/06/16/
