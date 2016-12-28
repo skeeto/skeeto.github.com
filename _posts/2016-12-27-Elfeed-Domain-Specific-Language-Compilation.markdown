@@ -278,6 +278,12 @@ With xml-query so computationally cheap, I don't need to worry about
 using it more often. Compared to parsing XML text, it's virtually
 free.
 
+When it came time to validate my DSL compiler, I was *really* happy
+that Elfeed had a test suite. I essentially rewrote a core component
+from scratch, and passing all of the unit tests was a strong sign that
+it was correct. Many times that test suite has provided confidence in
+changes made both by me and by others.
+
 I'll end by describing another possible application: Apply this
 technique to regular expressions, such that static strings containing
 regular expressions are compiled into Elisp/byte-code via macro
