@@ -2,7 +2,7 @@
 title: Domain-Specific Language Compilation in Elfeed
 layout: post
 date: 2016-12-27T21:46:30Z
-tags: [elfeed, emacs, elisp]
+tags: [elfeed, emacs, elisp, optimization]
 uuid: 6a6cd6a2-b44d-35b5-503c-c496d9094ac0
 ---
 
