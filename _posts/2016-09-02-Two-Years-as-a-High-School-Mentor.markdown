@@ -121,7 +121,7 @@ made it possible to produce demo videos without any additional editing
 
 After a year on the raytracer, he had implemented most of what he
 wanted and I had an opportunity to involve him in my funded research.
-By this point he as very capable, quickly paying back his entire
+By this point he was very capable, quickly paying back his entire
 education.
 
 <p>
