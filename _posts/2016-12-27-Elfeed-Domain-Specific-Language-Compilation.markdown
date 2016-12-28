@@ -26,7 +26,8 @@ format, or encoded incorrectly, or ambiguous. It's real world data.
 To get a particular piece of information, Elfeed looks in a number of
 different places within the feed, starting with the preferred source
 and stopping when the information is found. For example, to find the
-date of an entry, Elfeed first searches for elements in this order:
+date of an Atom entry, Elfeed first searches for elements in this
+order:
 
 1. `<published>`
 2. `<updated>`
@@ -73,25 +74,25 @@ Which is parsed to into this s-expression.
 
 ~~~cl
 ((feed ((xmlns . "http://www.w3.org/2005/Atom"))
-       (title nil "Example Feed")
+       (title () "Example Feed")
        (link ((href . "http://example.org/")))
-       (updated nil "2003-12-13T18:30:02Z")
-       (author nil (name nil "John Doe"))
-       (id nil "urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6")
-       (entry nil
-              (title nil "Atom-Powered Robots Run Amok")
+       (updated () "2003-12-13T18:30:02Z")
+       (author () (name () "John Doe"))
+       (id () "urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6")
+       (entry ()
+              (title () "Atom-Powered Robots Run Amok")
               (link ((rel . "alternate")
                      (href . "http://example.org/2003/12/13/atom03")))
-              (id nil "urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a")
-              (updated nil "2003-12-13T18:30:02Z")
-              (summary nil "Some text."))))
+              (id () "urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a")
+              (updated () "2003-12-13T18:30:02Z")
+              (summary () "Some text."))))
 ~~~
 
 Each XML element is converted to a list. The first item is a symbol
 that is the element's name. The second item is an alist of attributes
-— cons pairs of symbols and strings. And the rest of the list items
-are its children, both string nodes and other elements. I've trimmed
-the extraneous string nodes from the sample s-expression.
+— cons pairs of symbols and strings. And the rest are its children,
+both string nodes and other elements. I've trimmed the extraneous
+string nodes from the sample s-expression.
 
 A subtle detail is that `xml-parse-region` doesn't just return the
 root element. It returns a *list of elements*, which always happens to
@@ -106,9 +107,9 @@ so namespaces are treated as noise.
 
 Coding up Elfeed's s-expression searches in straight Emacs Lisp would
 be tedious, error-prone, and difficult to understand. It's a lot of
-loops, `assoc`, etc. So instead I invented a jQuery-like, CSS-like,
-domain-specific language (DSL) to express these searches concisely and
-clearly.
+loops, `assoc`, etc. So instead I invented a jQuery-like, CSS
+selector-like, domain-specific language (DSL) to express these
+searches concisely and clearly.
 
 For example, all of the entry links are "selected" using this
 expression:
@@ -127,10 +128,10 @@ specific attribute value.
 Imagine hand-writing the code to navigate all these conditions for
 each piece of information that Elfeed requires. The RSS parser makes
 up to 16 such queries, and the Atom parser makes as many as 24. That
-would add up.
+would add up to a lot of tedious code.
 
 The package (included with Elfeed) that executes this query is called
-"xml-query". It comes in two flavors: `xml-query` and `xml-query-all`.
+"xml-query." It comes in two flavors: `xml-query` and `xml-query-all`.
 The former returns just the first match, and the latter returns all
 matches. The naming parallels the `querySelector()` and
 `querySelectorAll()` DOM methods in JavaScript.
