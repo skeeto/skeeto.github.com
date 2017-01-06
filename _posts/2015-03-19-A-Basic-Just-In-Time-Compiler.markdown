@@ -193,8 +193,8 @@ the result to be in `rax` when control is returned. If our recurrence
 relation is merely the identity function (it has no operations), the
 only thing it will do is copy `rdi` to `rax`.
 
-~~~gas
-mov   %rdi, %rax
+~~~nasm
+mov   rax, rdi
 ~~~
 
 There's a catch, though. You might think all the mucky
@@ -208,8 +208,8 @@ remains the same.
 The very last thing it will do, assuming the result is in `rax`, is
 return to the caller.
 
-~~~gas
-retq
+~~~nasm
+ret
 ~~~
 
 So we know the assembly, but what do we pass to `asmbuf_ins()`? This
@@ -220,31 +220,26 @@ is where we get our hands dirty.
 If you want to do this the Right Way, you go download the x86-64
 documentation, look up the instructions we're using, and manually work
 out the bytes we need and how the operands fit into it. You know, like
-they used to do out of necessity back in the 60's.
+they used to do [out of necessity][needle] back in the 60's.
 
 Fortunately there's a much easier way. We'll have an actual assembler
 do it and just copy what it does. Put both of the instructions above
-in a file `peek.s` and hand it to `as` (GAS). It will produce `a.out`,
-which we'll disassemble with `objdump -d`.
+in a file `peek.s` and hand it to `nasm`. It will produce a raw binary
+with the machine code, which we'll disassemble with `nidsasm` (the
+NASM disassembler).
 
-    $ as peek.s
-    $ objdump -d a.out
-
-    a.out:     file format elf64-x86-64
-
-    Disassembly of section .text:
-
-    0000000000000000 <.text>:
-       0:	48 89 f8                mov    %rdi,%rax
-       3:	c3                      retq
+    $ nasm peek.s
+    $ ndisasm -b64 peek
+    00000000  4889F8            mov rax,rdi
+    00000003  C3                ret
 
 That's straightforward. The first instruction is 3 bytes and the
 return is 1 byte.
 
 ~~~c
-asmbuf_ins(buf, 3, 0x4889f8);  // mov   %rdi, %rax
+asmbuf_ins(buf, 3, 0x4889f8);  // mov   rax, rdi
 // ... generate code ...
-asmbuf_ins(buf, 1, 0xc3);      // retq
+asmbuf_ins(buf, 1, 0xc3);      // ret
 ~~~
 
 For each operation, we'll set it up so the operand will already be
@@ -255,14 +250,14 @@ fewer), but I'm keeping it simple. To sneakily capture the "template"
 for this instruction I'm going to use `0x0123456789abcdef` as the
 operand.
 
-~~~gas
-mov   $0x0123456789abcdef, %rdi
+~~~nasm
+mov   rdi, 0x0123456789abcdef
 ~~~
 
-Which disassembled with `objdump -d` is,
+Which disassembled with `ndisasm` is,
 
-    0:	48 bf ef cd ab 89 67    movabs $0x123456789abcdef,%rdi
-    7:	45 23 01
+    00000000  48BFEFCDAB896745  mov rdi,0x123456789abcdef
+             -2301
 
 Notice the operand listed little endian immediately after the
 instruction. That's also easy!
@@ -270,7 +265,7 @@ instruction. That's also easy!
 ~~~c
 long operand;
 scanf("%ld", &operand);
-asmbuf_ins(buf, 2, 0x48bf);         // mov   operand, %rdi
+asmbuf_ins(buf, 2, 0x48bf);         // mov   rdi, operand
 asmbuf_immediate(buf, 8, &operand);
 ~~~~
 
@@ -279,19 +274,19 @@ want to support, accumulating the result in `rax` for each.
 
 ~~~c
 switch (operator) {
-case '+':
-    asmbuf_ins(buf, 3, 0x4801f8);   // add   %rdi, %rax
-    break;
-case '-':
-    asmbuf_ins(buf, 3, 0x4829f8);   // sub   %rdi, %rax
-    break;
-case '*':
-    asmbuf_ins(buf, 4, 0x480fafc7); // imul  %rdi, %rax
-    break;
-case '/':
-    asmbuf_ins(buf, 3, 0x4831d2);   // xor   %rdx, %rdx
-    asmbuf_ins(buf, 3, 0x48f7ff);   // idiv  %rdi
-    break;
+    case '+':
+        asmbuf_ins(buf, 3, 0x4801f8);   // add   rax, rdi
+        break;
+    case '-':
+        asmbuf_ins(buf, 3, 0x4829f8);   // sub   rax, rdi
+        break;
+    case '*':
+        asmbuf_ins(buf, 4, 0x480fafc7); // imul  rax, rdi
+        break;
+    case '/':
+        asmbuf_ins(buf, 3, 0x4831d2);   // xor   rdx, rdx
+        asmbuf_ins(buf, 3, 0x48f7ff);   // idiv  rdi
+        break;
 }
 ~~~
 
@@ -340,3 +335,4 @@ enough that I could, on some level, justify not using LLVM.
 [part2]: http://redd.it/2zna5q
 [mine2]: https://gist.github.com/anonymous/f7e4a5086a2b0acc83aa
 [mirror2]: /download/rpn-jit.c
+[needle]: /blog/2016/11/17/

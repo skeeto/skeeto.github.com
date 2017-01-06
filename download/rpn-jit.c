@@ -90,26 +90,26 @@ asmbuf_immediate(struct asmbuf *buf, int size, const void *value)
 static void
 operator2(struct asmbuf *buf, int size, uint64_t op)
 {
-    asmbuf_ins(buf, 6, 0x660f1244cff0); // movlpd  -16(%rdi, %rcx, 8), %xmm0
-    asmbuf_ins(buf, 6, 0x660f124ccff8); // movlpd  -8(%rdi, %rcx, 8), %xmm1
+    asmbuf_ins(buf, 6, 0x660f1244cff0); // movlpd  xmm0, [rdi + rcx*8 - 16]
+    asmbuf_ins(buf, 6, 0x660f124ccff8); // movlpd  xmm1, [rdi + rcx*8 - 8]
     asmbuf_ins(buf, size, op);
-    asmbuf_ins(buf, 3, 0x48ffc9);       // dec     %rcx
-    asmbuf_ins(buf, 6, 0x660f1344cff8); // movlpd  %xmm0, -8(%rdi, %rcx, 8)
+    asmbuf_ins(buf, 3, 0x48ffc9);       // dec     rcx
+    asmbuf_ins(buf, 6, 0x660f1344cff8); // movlpd  [rdi + rcx*8 - 8], xmm0
 }
 
 int
 main(void)
 {
-    /* %rdi  : pointer to the base of the stack
-     * %rsi  : index of the top of the stack when called
-     * %rcx  : index of the current top of the stack
-     * %xmm* : intermediate results
+    /* rdi  : pointer to the base of the stack
+     * rsi  : index of the top of the stack when called
+     * rcx  : index of the current top of the stack
+     * xmm* : intermediate results
      */
     struct asmbuf *buf = asmbuf_create();
     long max_backreference = 0;
     long max_stack = 0;
     long current_stack = 0;
-    asmbuf_ins(buf, 3, 0x4889f1);  // mov   %rsi, %rcx
+    asmbuf_ins(buf, 3, 0x4889f1);  // mov   rcx, rsi
     int c;
     while ((c = fgetc(stdin)) != '\n' && c != EOF) {
         if (c == ' ')
@@ -128,10 +128,10 @@ main(void)
             ungetc(c, stdin);
             double *data = &buf->constants[buf->nconstants++];
             scanf("%lf", data);
-            asmbuf_ins(buf, 2, 0x48a1);     // mov   (data), %rax
+            asmbuf_ins(buf, 2, 0x48a1);     // mov   rax, data
             asmbuf_immediate(buf, 8, &data);
-            asmbuf_ins(buf, 4, 0x488904cf); // mov   %rax, (%rdi, %rcx, 8)
-            asmbuf_ins(buf, 3, 0x48ffc1);   // inc   %rcx
+            asmbuf_ins(buf, 4, 0x488904cf); // mov   [rdi + rcx*8], rax
+            asmbuf_ins(buf, 3, 0x48ffc1);   // inc   rcx
             if (++current_stack > max_stack)
                 max_stack = current_stack;
         } break;
@@ -141,43 +141,37 @@ main(void)
             if (n > max_backreference)
                 max_backreference = n;
             int8_t offset = -8 * n;
-            asmbuf_ins(buf, 4, 0x488b44f7); // mov   -offset(%rdi,%rsi,8),%rax
+            asmbuf_ins(buf, 4, 0x488b44f7); // mov   rax, [rdi+rsi*8-offset]
             asmbuf_immediate(buf, 1, &offset);
-            asmbuf_ins(buf, 4, 0x488904cf); // mov   %rax, (%rdi, %rcx, 8)
-            asmbuf_ins(buf, 3, 0x48ffc1);   // inc   %rcx
+            asmbuf_ins(buf, 4, 0x488904cf); // mov   [rdi + rcx*8], rax
+            asmbuf_ins(buf, 3, 0x48ffc1);   // inc   rcx
             if (++current_stack > max_stack)
                 max_stack = current_stack;
         } break;
         case '+':
-            operator2(buf, 4, 0xf20f58c1);     // addsd  %xmm1,%xmm0
+            operator2(buf, 4, 0xf20f58c1);     // addsd  xmm0,xmm1
             current_stack--;
             break;
         case '-':
-            operator2(buf, 4, 0xf20f5cc1);     // subsd  %xmm1,%xmm0
+            operator2(buf, 4, 0xf20f5cc1);     // subsd  xmm0,xmm1
             current_stack--;
             break;
         case '*':
-            operator2(buf, 4, 0xf20f59c1);     // mulsd  %xmm1,%xmm0
+            operator2(buf, 4, 0xf20f59c1);     // mulsd  xmm0,xmm1
             current_stack--;
             break;
         case '/':
-            operator2(buf, 4, 0xf20f5ec1);     // divsd  %xmm1,%xmm0
+            operator2(buf, 4, 0xf20f5ec1);     // divsd  xmm0,xmm1
             current_stack--;
             break;
         case 'Q':
-            asmbuf_ins(buf, 6, 0x660f124ccff8); // movlpd -8(%rdi,%rcx,8),%xmm1
-            asmbuf_ins(buf, 4, 0xf20f51c9);     // sqrtsd %xmm1,%xmm1
-            asmbuf_ins(buf, 6, 0x660f134ccff8); // movlpd %xmm1,-8(%rdi,%rcx,8)
-            break;
-        case '@':
-            asmbuf_ins(buf, 6, 0x660f124ccff8); // movlpd -8(%rdi,%rcx,8),%xmm1
-            asmbuf_ins(buf, 6, 0x660f134ccff8); // movlpd %xmm1,-8(%rdi,%rcx,8)
-            if (++current_stack > max_stack)
-                max_stack = current_stack;
+            asmbuf_ins(buf, 6, 0x660f124ccff8); // movlpd xmm1, [rdi+rcx*8-8]
+            asmbuf_ins(buf, 4, 0xf20f51c9);     // sqrtsd xmm1, xmm1
+            asmbuf_ins(buf, 6, 0x660f134ccff8); // movlpd [rdi+rcx*8-8], xmm1
             break;
         }
     }
-    asmbuf_ins(buf, 3, 0x4889c8); // mov   %rcx, %rax
+    asmbuf_ins(buf, 3, 0x4889c8); // mov   rax, rcx
     asmbuf_ins(buf, 1, 0xc3);     // retq
     asmbuf_finalize(buf);
 
