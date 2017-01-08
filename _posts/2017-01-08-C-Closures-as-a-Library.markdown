@@ -77,11 +77,12 @@ And its usage:
 ~~~
 
 Potential problems are that it's neither thread-safe nor re-entrant.
-Two different threads cannot use this comparator at the same time.
-Also, on some platforms and configurations, repeatedly accessing a
-global variable in a comparator [may have a significant cost][reloc].
-A common workaround for thread safety is to make the global variable
-thread-local by allocating it in thread-local storage (TLS):
+Two different threads cannot use this comparator [at the same
+time][gs]. Also, on some platforms and configurations, repeatedly
+accessing a global variable in a comparator [may have a significant
+cost][reloc]. A common workaround for thread safety is to make the
+global variable thread-local by allocating it in thread-local storage
+(TLS):
 
 ~~~c
 _Thread_local struct coord *target;       // C11
@@ -387,3 +388,4 @@ architecture, or to the the Windows x64 ABI.
 [libjit]: https://www.gnu.org/software/libjit/
 [demo]: /download/closure-demo.c
 [res]: /blog/2016/09/05/
+[gs]: /blog/2014/10/12/
