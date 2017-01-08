@@ -353,7 +353,7 @@ closure_destroy(void *closure)
 
 And that's it! You can see the entire demo here:
 
-* [closure-demo.c][demo]
+* [closure-demo.c][demo]{: .download}
 
 It's a lot simpler for x86-64 than it is for x86, where there's no
 RIP-relative addressing and arguments are passed on the stack. The
