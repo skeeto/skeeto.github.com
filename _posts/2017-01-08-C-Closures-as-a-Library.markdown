@@ -140,8 +140,8 @@ would be nothing left to discuss and this article would be boring.
 In order to make things more interesting, suppose you're stuck calling
 a function in some old library that takes a callback but doesn't
 support a user data argument. A global variable is insufficient, and
-the thread-local storage solution isn't a viable option for one reason
-or another. What do you do?
+the thread-local storage solution isn't viable for one reason or
+another. What do you do?
 
 The core problem is that a function pointer is just an address, and
 it's the same address no matter the context for any particular
@@ -221,15 +221,16 @@ arguments.
 The upper page will be executable and the lower page will be writable.
 This allows new pointers to be set without writing to executable thunk
 memory. In the future I expect operating systems to enforce W^X
-("write xor execute"), and this code will be compliant. Alternatively,
-the pointers could be "baked in" with the thunk page and immutable,
-but since creating closure requires two system calls, I figure it's
-better that the pointers be mutable and the closure object reusable.
+("write xor execute"), and this code will already be compliant.
+Alternatively, the pointers could be "baked in" with the thunk page
+and immutable, but since creating closure requires two system calls, I
+figure it's better that the pointers be mutable and the closure object
+reusable.
 
 The address for the closure itself will be the upper page, being what
 other functions will call. The thunk will load the user data pointer
 from the lower page as an additional argument, then jump to the
-callback function.
+actual callback function also given by the lower page.
 
 ### Thunk assembly
 
@@ -250,11 +251,11 @@ System V ABI calling convention is: `rdi`, `rsi`, `rdx`, `rcx`, `r8`,
 `r9`. The third argument is passed through `rdx`, so the user pointer
 is loaded into this register. Then it jumps to the callback address
 with the original arguments still in place, plus the new argument. The
-`user` and `func` values are loaded relative (`rel`) to the address of
-the code. The thunk is using the callback address (its own address) to
-determine the context.
+`user` and `func` values are loaded *RIP-relative* (`rel`) to the
+address of the code. The thunk is using the callback address (its own
+address) to determine the context.
 
-The machine code for the thunk is just 13 bytes:
+The assembled machine code for the thunk is just 13 bytes:
 
 ~~~c
 unsigned char thunk2[16] = {
@@ -267,7 +268,7 @@ unsigned char thunk2[16] = {
 
 All `closure_create()` has to do is allocate two pages, copy this
 buffer into the upper page, adjust the protections, and return the
-address to thunk. Since `closure_create()` will work for `nargs`
+address of the thunk. Since `closure_create()` will work for `nargs`
 number of arguments, there will actually be 6 slightly different
 thunks, one for each of the possible register arguments (`rdi` through
 `r9`).
@@ -379,8 +380,8 @@ thunk2:
         ret
 ~~~
 
-Exercise for the reader: Port the above demo to a different
-architecture, or to the the Windows x64 ABI.
+Exercise for the reader: Port the closure demo to a different
+architecture or to the the Windows x64 ABI.
 
 
 [reloc]: /blog/2016/12/23/
