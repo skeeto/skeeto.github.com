@@ -200,11 +200,12 @@ abstraction leak.
 
 The temporary buffer is mistakenly captured in the closure making it
 unreadable, but *only* in its uncompiled form. This creates the
-awkward situation where compiled and uncompiled code has different
-behavior.
+awkward situation where compiled and uncompiled code has [different
+behavior][bc].
 
 
 [print]: /blog/2013/03/28/
 [async]: https://github.com/jwiegley/emacs-async
 [elnode]: https://github.com/nicferrier/elnode
 [internals]: /blog/2014/01/04/
+[bc]: /blog/2016/12/22/#accidental-closures
