@@ -23,11 +23,11 @@ thought*.
   <rect fill="#ddf" width="449" height="48" x="150" y="1"
         stroke="black" stroke-width="2"/>
   <text x="75" y="32" text-anchor="middle" alignment-baseline="central"
-        font-size="22px" font-family="sans serif">
+        font-size="22px" font-family="sans-serif">
     nelem
   </text>
   <text x="170" y="32" text-anchor="start" alignment-baseline="central"
-        font-size="22px" font-family="sans serif">
+        font-size="22px" font-family="sans-serif">
     samples[nelem]
   </text>
 </svg>
