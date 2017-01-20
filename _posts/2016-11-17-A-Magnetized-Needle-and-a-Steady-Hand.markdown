@@ -85,13 +85,13 @@ has to be assembled by hand. For that we need the Intel manual (2).
 
 The first instruction is `xor`, so look up that mnemonic in the
 manual. Like most x86 mnemonics, there are many different opcodes and
-many ways to encode the same operation. In this case, there are 22
-options.
+multiple ways to encode the same operation. For `xor`, we have 22
+opcodes to examine.
 
 ![](/img/steady-hand/xor.png)
 
-The operands are two 32-bit registers, so there are two options
-available (opcodes 0x31 and 0x33):
+The operands are two 32-bit registers, so there are two options:
+opcodes 0x31 and 0x33.
 
     31 /r      XOR r/m32, r32
     33 /r      XOR r32, r/m32
@@ -100,7 +100,7 @@ The "r/m32" means the operand can be either a register or the address
 of a 32-bit region of memory. With two register operands, both
 encodings are equally valid, both have the same length (2 bytes), and
 neither is canonical, so the decision is entirely arbitrary. Let's
-pick the first one, opcode 0x31, since its listed first.
+pick the first one, opcode 0x31, since it's listed first.
 
 The "/r" after the opcode means the register-only operand ("r32" in
 both cases) will be specified in the ModR/M byte. This is the byte
