@@ -213,7 +213,7 @@ Rather than overwriting the return pointer, the attacker has the
 opportunity to overwrite the function pointer on the struct. Let's
 reconstruct the exploit like before.
 
-    $ readelf -a exploit|grep self_destruct
+    $ readelf -a demo | grep self_destruct
     54: 00000000004006a5  10 FUNC  GLOBAL DEFAULT  13 self_destruct
 
 We don't know the password, but we *do* know (from peeking at the
@@ -350,7 +350,7 @@ main(void)
 
 And now attempting the exploit:
 
-    $ ./exploit < boom
+    $ ./demo < boom
     Aborted
 
 Normally `self_destruct()` wouldn't be registered since it's not a
