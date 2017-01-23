@@ -91,8 +91,15 @@ The attacker can use the buffer overflow to call this dangerous
 function.
 
 To make this attack simpler for the sake of the article, assume the
-program isn't using ASLR (e.g. compiled without `-fpie` and `-pie` on
-GCC/Clang). First, find the address of `self_destruct()`.
+program isn't using ASLR (e.g. without `-fpie`/`-pie`, or with
+`-fno-pie`/`-no-pie`). For this particular example, I'll also
+explicitly disable buffer overflow protections (e.g. `_FORTIFY_SOURCE`
+and stack protectors).
+
+    $ gcc -Os -fno-pie -D_FORTIFY_SOURCE=0 -fno-stack-protector \
+          -o demo demo.c
+
+First, find the address of `self_destruct()`.
 
     $ readelf -a demo | grep self_destruct
     46: 00000000004005c5  10 FUNC  GLOBAL DEFAULT 13 self_destruct
@@ -115,7 +122,8 @@ when that function tries to return — though, presumably, the system
 would have self-destructed already. Turning on the stack protector
 stops this exploit.
 
-    $ gcc -Os -fstack-protector -o demo demo.c
+    $ gcc -Os -fno-pie -D_FORTIFY_SOURCE=0 -fstack-protector \
+          -o demo demo.c
     $ ./demo < boom
     Hello, xxxxxxxxaaaaaaaa?@.
     *** stack smashing detected ***: ./demo terminated
