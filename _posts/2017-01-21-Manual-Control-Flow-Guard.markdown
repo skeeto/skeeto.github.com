@@ -376,6 +376,12 @@ toolchain, it would be far less cumbersome and error-prone to let the
 compiler and platform handle Control Flow Guard. That's the right
 place to implement it.
 
+*Update*: Ted Unangst pointed out [OpenBSD performing a similar
+check][tedu] in its mbuf library. Instead of a bitmap, the function
+pointer is replaced with an index into an array of registered function
+pointers. That approach is cleaner, more efficient, completely
+portable, and has no false positives.
+
 
 [pdf]: http://sjc1-te-ftp.trendmicro.com/assets/wp/exploring-control-flow-guard-in-windows10.pdf
 [rel]: /blog/2016/12/23/
@@ -385,3 +391,4 @@ place to implement it.
 [pk]: https://github.com/torvalds/linux/blob/4c9eff7af69c61749b9eb09141f18f35edbf2210/Documentation/sysctl/kernel.txt#L373
 [ss]: http://clang.llvm.org/docs/SafeStack.html
 [oop]: /blog/2014/10/21/
+[tedu]: http://www.tedunangst.com/inks/l/849
