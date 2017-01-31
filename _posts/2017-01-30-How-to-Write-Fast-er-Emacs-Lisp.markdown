@@ -19,8 +19,7 @@ completion][jit].
 Here are 5 guidelines, each very specific to Emacs Lisp, that will
 result in faster code. The non-intrusive guidelines could be applied
 at all times as a matter of style — choosing one equally expressive
-and maintainable form over another just because the it performs
-better.
+and maintainable form over another just because it performs better.
 
 There's one caveat: These guidelines are focused on Emacs 25.1 and
 "nearby" versions. Emacs is constantly evolving. Changes to the
