@@ -105,7 +105,7 @@ time in C.
 I'm talking about `mapcar` and friends.
 
 ~~~cl
-;; Slooooooooow!
+;; Slower
 (defun expt-list (list e)
   (mapcar (lambda (x) (expt x e)) list))
 ~~~
