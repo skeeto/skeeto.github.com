@@ -272,6 +272,11 @@ the unrolled definition is seven times faster. With the faster
 loop overhead accounts for about half the work of the first definition
 of this function.
 
+Update: It was pointed out in the comments that this particular
+example is equivalent to a `cond`. That's literally true all the way
+down to the byte-code, and it would be a clearer way to express the
+unrolled code. In real code it's often not *quite* equivalent.
+
 Unlike some of the other guidelines, this is certainly something you'd
 only want to do in code you know for sure is performance-critical.
 Maintaining unrolled code is tedious and error-prone.
