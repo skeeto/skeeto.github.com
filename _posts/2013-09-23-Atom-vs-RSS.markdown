@@ -151,7 +151,7 @@ have an entirely separate parser for RSS 1.0.
 What's so weird about RSS 1.0? If you thought the name "pubDate" was
 ugly you might want to skip this part. In practice it's namespace
 hell. For example, look at [this Gmane RSS 1.0 feed][hell]. Unlike the
-other RSS versions, the top level element is `rdf:RFD`. That's not a
+other RSS versions, the top level element is `rdf:RDF`. That's not a
 typo.
 
 ~~~xml
