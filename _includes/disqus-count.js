@@ -1,5 +1,3 @@
-// Disqus comment counter
-
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
