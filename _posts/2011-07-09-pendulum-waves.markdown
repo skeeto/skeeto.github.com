@@ -19,7 +19,7 @@ starts over again.
 I thought it was interesting enough to simulate in software, so I made
 an applet for it,
 
-[![](/img/screenshot/pendulum-waves.png)](http://nullprogram.com/PendulumWaves/)
+[![](/img/screenshot/pendulum-waves.png)](/PendulumWaves/)
 
 That should be exactly in sync with the video, so you can watch them
 side-by-side and see the same patterns.

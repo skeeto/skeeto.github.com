@@ -11,7 +11,7 @@ roguelike within the allotted time period, though lacking many
 features I had originally planned. It's an HTML5 game run entirely
 within the browser. You can play the final version here,
 
- * [Disc RL](http://nullprogram.com/disc-rl/)
+ * [Disc RL](/disc-rl/)
 
 [![](/img/screenshot/disc-rl-thumb.png)](/img/screenshot/disc-rl.png)
 

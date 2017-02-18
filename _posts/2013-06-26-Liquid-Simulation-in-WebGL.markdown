@@ -12,7 +12,7 @@ blurring the rendering of this simulation, and finally thresholding
 the blurred rendering. Due to [my recent affection for WebGL][webgl],
 this week I ported the whole thing to JavaScript and WebGL.
 
- * [http://nullprogram.com/fun-liquid/webgl/](http://nullprogram.com/fun-liquid/webgl/)
+ * [http://nullprogram.com/fun-liquid/webgl/](/fun-liquid/webgl/)
 
 Unlike the previous Java version, blurring and thresholding is
 performed entirely on the GPU. It *should* therefore be less CPU
@@ -114,5 +114,5 @@ in a future post.
 [box2djs]: https://github.com/kripken/box2d.js/
 [box2dweb]: http://code.google.com/p/box2dweb/
 [brian]: http://www.50ply.com/
-[sphere]: http://nullprogram.com/sphere-js/
+[sphere]: /sphere-js/
 [igloo]: https://github.com/skeeto/igloojs

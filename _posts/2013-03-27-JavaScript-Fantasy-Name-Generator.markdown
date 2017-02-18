@@ -94,4 +94,4 @@ using this library for name generation!
 [js]: https://github.com/skeeto/fantasyname
 [namegen]: /blog/2009/01/04/
 [lisp]: /blog/2009/07/03/
-[demo]: http://nullprogram.com/fantasyname/
+[demo]: /fantasyname/

@@ -329,5 +329,5 @@ We're seeing this right now with these new `for` semantics.
 [draft]: http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts
 [gotcha]: https://bugzil.la/449811
 [var]: /blog/2012/11/20/
-[stack]: http://nullprogram.com/blog/2008/07/18/
+[stack]: /blog/2008/07/18/
 [traceur]: https://github.com/google/traceur-compiler

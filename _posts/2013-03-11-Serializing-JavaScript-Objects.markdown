@@ -194,7 +194,7 @@ done. I bet I'll find it useful again.
 [disc]: https://github.com/skeeto/disc-rl
 [7drl]: http://roguebasin.roguelikedevelopment.org/index.php?title=7DRL
 [rl]: http://en.wikipedia.org/wiki/Roguelike
-[play]: http://nullprogram.com/disc-rl/
+[play]: /disc-rl/
 [ls]: http://diveintohtml5.info/storage.html
 [hydrate]: http://nanodeath.github.com/HydrateJS/
 [gavin]: http://www.devrand.org/

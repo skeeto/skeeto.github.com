@@ -118,7 +118,7 @@ interesting part of it all*! For example, after getting a handle on
 how things worked — without copy-pasting any boilerplate around — I
 ported [my OpenCL 3D perlin noise generator][opencl] to GLSL.
 
- * [http://nullprogram.com/perlin-noise/](http://nullprogram.com/perlin-noise/)
+ * [http://nullprogram.com/perlin-noise/](/perlin-noise/)
    ([source](https://github.com/skeeto/perlin-noise/tree/master/webgl))
 
 ![](/img/noise/octave-perlin2d.png)
@@ -145,7 +145,7 @@ first WebGL project. To demonstrate the
 [biased-random-point-on-a-sphere][rng] thing to a co-worker (outside
 of work), I wrote a 3D HTML5 canvas plotter. I didn't know WebGL yet.
 
- * [HTML5 Canvas 2D version](http://nullprogram.com/sphere-js/?webgl=false)
+ * [HTML5 Canvas 2D version](/sphere-js/?webgl=false)
    ([source](https://github.com/skeeto/sphere-js)) (ignore the warning)
 
 On a typical computer this can only handle about 4,000 points before
@@ -155,7 +155,7 @@ projection to OpenGL? Since I had already worked all of that out for
 the 2D canvas, this was just a straightforward port to GLSL. Except
 for the colored axes, this looks identical to the 2D canvas version.
 
- * [WebGL version](http://nullprogram.com/sphere-js/)
+ * [WebGL version](/sphere-js/)
    (a red warning means it's not working right!)
 
 ![](/img/screenshot/sphere-js.png)
@@ -164,8 +164,8 @@ This version can literally handle *millions* of points without
 breaking a sweat. The difference is dramatic. Here's 100,000 points in
 each (any more points and it's just a black sphere).
 
- * [WebGL 100,000 points](http://nullprogram.com/sphere-js/?n=100000)
- * [Canvas 100,000 points](http://nullprogram.com/sphere-js/?n=100000&webgl=false)
+ * [WebGL 100,000 points](/sphere-js/?n=100000)
+ * [Canvas 100,000 points](/sphere-js/?n=100000&webgl=false)
 
 ### A Friendly API
 
@@ -233,6 +233,6 @@ your GPU to help solve some distributed computing problem!
 [webgl]: http://en.wikipedia.org/wiki/WebGL
 [opencl]: /blog/2012/06/03/
 [fundamentals]: http://www.skorks.com/2010/04/on-the-value-of-fundamentals-in-software-development/
-[rng]: http://nullprogram.com/blog/2012/02/08/
+[rng]: /blog/2012/02/08/
 [distrib]: /blog/2013/01/26/
 [skewer]: https://github.com/skeeto/skewer-mode

@@ -144,5 +144,5 @@ rule-of-thumb][chess] for calling an AI successful.
 
 
 [orig]: http://www.cs.cornell.edu/boom/1999sp/projects/tetris/
-[global]: http://nullprogram.com/blog/2014/10/12/
-[chess]: http://nullprogram.com/blog/2011/08/24/
+[global]: /blog/2014/10/12/
+[chess]: /blog/2011/08/24/

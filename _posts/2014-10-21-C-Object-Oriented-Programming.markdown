@@ -541,5 +541,5 @@ Here's the whole example program once if you're interested in poking:
 [fnmatch]: http://man7.org/linux/man-pages/man3/fnmatch.3.html
 [regex]: http://man7.org/linux/man-pages/man3/regexec.3.html
 [qsort]: http://man7.org/linux/man-pages/man3/qsort.3.html
-[global]: http://nullprogram.com/blog/2014/10/12/
-[closure]: http://nullprogram.com/blog/2014/08/29/
+[global]: /blog/2014/10/12/
+[closure]: /blog/2014/08/29/

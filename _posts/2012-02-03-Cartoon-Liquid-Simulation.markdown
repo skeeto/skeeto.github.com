@@ -67,7 +67,7 @@ would be really good at.
 
 
 [liquid]: http://www.patrickmatte.com/stuff/physicsLiquid/
-[mine]: http://nullprogram.com/fun-liquid/
+[mine]: /fun-liquid/
 [webgl]: /blog/2012/02/03/
 [jbox2d]: http://jbox2d.org/
 [box2d]: http://box2d.org/
