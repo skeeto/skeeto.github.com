@@ -43,19 +43,11 @@
       </p>
     </footer>
 
-    {% if jekyll.environment == "production" %}
-    <!-- Disqus -->
     <script>
-      var disqus_shortname = 'nullprogram';
-      {% include disqus-count.js %}
-      {% include ga.js %}
-    </script>
-    <!-- End Disqus -->
-    {% endif %}
-
-    <script>
+      {% if jekyll.environment == "production" %}
+        {% include ga.js %}
+      {% endif %}
       {% include identity.js %}
     </script>
-
   </body>
 </html>

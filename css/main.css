@@ -256,10 +256,24 @@ main article ul.tags:after {
     content: ']'
 }
 
-.commentlink {
-    margin-top: 0.25em;
-    text-align: right;
-    font-size: 20px;
+.load-comments {
+    text-align: center;
+    background-color: gray;
+    color: white;
+    font-size: 30px;
+    padding: 0.25rem 0px;
+    width: 75%;
+    margin: 0px auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.load-comments:hover {
+    color: #aaf;
+}
+
+.load-comments:active {
+    color: #faa;
 }
 
 #disqus_thread {

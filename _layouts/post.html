@@ -39,22 +39,16 @@ layout: default
   {% endif %}
   </nav>
 
-  {% if jekyll.environment == "production" %}
-  <!-- Disqus -->
   <div class="no-print">
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_shortname = 'nullprogram';
-    var disqus_identifier = '{{ page.url }}';
-    var disqus_url = '{{ site.url }}{{ page.url }}';
-    {% include disqus.js %}
-  </script>
-  <noscript>
-    Please enable JavaScript to view
-    the <a href="http://disqus.com/?ref_noscript">comments powered by
-      Disqus.</a>
-  </noscript>
+    <div id="disqus_thread"></div>
+    <div class="load-comments" onclick="load_comments(this)">
+      Load Comments
+    </div>
+    <script>
+      var disqus_shortname = 'nullprogram';
+      var disqus_identifier = '{{ page.url }}';
+      var disqus_url = '{{ site.url }}{{ page.url }}';
+      {% include disqus.js %}
+    </script>
   </div>
-  <!-- End Disqus -->
-  {% endif %}
 </article>

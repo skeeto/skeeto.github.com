@@ -3,7 +3,7 @@
         margin: 1in 1.5in 1in 1.5in;
     }
 
-    header, footer, .permalink, .tags, .commentlink, #sidebar, #disqus_thread {
+    header, footer, .permalink, .tags, #sidebar, #disqus_thread {
         display: none;
     }
 
