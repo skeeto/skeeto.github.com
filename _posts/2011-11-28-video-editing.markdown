@@ -20,11 +20,11 @@ The first three are usually available from your Linux distribution
 repositories, making them trivial to obtain. The last one is easy to
 obtain and compile.
 
-If you're using a modern browser, you should have noticed my portrait
-on the left-hand side changed recently. That's an HTML5 WebM video —
-currently with Ogg Theora fallback due to a GitHub issue. To cut the
-video down to that portrait size, I used the above four tools on the
-original video.
+~~If you're using a modern browser, you should have noticed my
+portrait on the left-hand side changed recently~~ (update: it's been
+removed). That's an HTML5 WebM video — currently with Ogg Theora
+fallback due to a GitHub issue. To cut the video down to that portrait
+size, I used the above four tools on the original video.
 
 WebM seems to be becoming the standard HTML5 video format. Google is
 pushing it and it's supported by all the major browsers, except
