@@ -6,10 +6,10 @@ tags: [c, posix, win32, optimization]
 uuid: dfdf8ca6-51aa-3a15-6bf0-98b39f20652a
 ---
 
-The most common way I introduce multithreading to [small C
+The most common way I introduce multi-threading to [small C
 programs][simd] is with OpenMP (Open Multi-Processing). It's typically
 used as compiler pragmas to parallelize computationally expensive
-loops. — iterations are processed by different threads in some
+loops — iterations are processed by different threads in some
 arbitrary order.
 
 Here's an example that computes the [frames of a video][video] in
@@ -37,7 +37,7 @@ Adding OpenMP to this program is much simpler than introducing
 low-level threading semantics with, say, Pthreads. With care, there's
 often no need for explicit thread synchronization. It's also fairly
 well supported by many vendors, even Microsoft (up to OpenMP 2.0), so
-a multithreaded OpenMP program is quite portable without `#ifdef`.
+a multi-threaded OpenMP program is quite portable without `#ifdef`.
 
 There's real value this pragma API: **The above example would still
 compile and run correctly even when OpenMP isn't available.** The
