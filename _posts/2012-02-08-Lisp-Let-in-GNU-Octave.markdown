@@ -72,7 +72,8 @@ video, where the poles are clearly visible due to the uneven selection
 by two angles.
 
 <video src="https://s3.amazonaws.com/nullprogram/sphere/sphere-dark.webm"
-       controls="controls" height="340" width="340"/>
+       controls="controls" height="340" width="340">
+</video>
 
 This took hours to render with gnuplot! Here are stylized versions:
 [Dark][dark] and [Light][light].

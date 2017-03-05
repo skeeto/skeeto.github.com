@@ -29,7 +29,8 @@ Here's the source video for the tutorial. It's an awkward video my
 wife took of our confused cats, Calvin and Rocc.
 
 <video src="https://s3.amazonaws.com/nullprogram/calvin/calvin-dummy.webm"
-       width="480" height="360" controls="controls"/>
+       width="480" height="360" controls="controls">
+</video>
 
 My goal is to cut after Calvin looks at the camera, before he looks
 away. From roughly 3 seconds to 23 seconds. I'll have mplayer give me

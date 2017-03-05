@@ -26,7 +26,7 @@ deep space? There's no defense or security out there to stop someone
 from stealing containers. It seems like it would be better to store
 those at the home base where they can be protected.
 
-<img src="/img/misc/deep-space.jpg" class="right" alt=""/>
+![](/img/misc/deep-space.jpg)
 
 Storing items at random locations in deep space is actually *very*
 secure — more so than any lock! Space is *huge*. Even with

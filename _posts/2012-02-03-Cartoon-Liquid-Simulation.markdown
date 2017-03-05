@@ -31,7 +31,8 @@ components of the animation.
 
 <video src="https://s3.amazonaws.com/nullprogram/liquid/liquid-overview.webm"
        poster="https://s3.amazonaws.com/nullprogram/liquid/liquid-poster.png"
-       controls="controls" width="250" height="350"/>
+       controls="controls" width="250" height="350">
+</video>
 
 It's not a perfect liquid simulation. The surface never settles down,
 so the liquid is lumpy, like curdled milk. There's also a lack of

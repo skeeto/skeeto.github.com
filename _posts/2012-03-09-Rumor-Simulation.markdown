@@ -55,10 +55,12 @@ that this is *not* a cellular automata, because cell neighborship does
 not come into play.
 
 <video src="https://s3.amazonaws.com/nullprogram/rumor/rumor-small.webm"
-       controls="controls" width="400" height="250"/>
+       controls="controls" width="400" height="250">
+</video>
 
 <video src="https://s3.amazonaws.com/nullprogram/rumor/rumor.webm"
-       controls="controls" width="400" height="400"/>
+       controls="controls" width="400" height="400">
+</video>
 
 Here's are the statistics for ten different rumors.
 
