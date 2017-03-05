@@ -5,7 +5,7 @@ tags: [media, video, tutorial, reddit]
 uuid: dc4ca81c-6c35-33f6-58c5-a77a645f3fbf
 ---
 
-*This tutorial is very similar to my [video editing tutorial][vtut].
+This tutorial is very similar to my [video editing tutorial][vtut].
 That's because the process is the same up until the encoding stage,
 where I encode to GIF rather than WebM.
 
