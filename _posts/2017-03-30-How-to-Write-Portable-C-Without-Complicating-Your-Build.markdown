@@ -207,7 +207,8 @@ to Windows. In the unix world, filenames are null-terminated bytestrings.
 Typically these are Unicode strings encoded as UTF-8, but it's not
 necessarily so. The kernel just sees bytestrings. A bytestring doesn't
 necessarily have a formal Unicode representation, which can be a problem
-for [languages that want filenames to be Unicode strings][pep].
+for [languages that want filenames to be Unicode strings][pep]
+([also][emacs]).
 
 On Windows, filenames are somewhere between UCS-2 and UTF-16, but end up
 being neither. They're really null-terminated unsigned 16-bit integer
@@ -252,3 +253,4 @@ complex solution (pkg-config, CMake, Autoconf, etc.).
 [bug2]: https://marc.info/?l=openbsd-bugs&m=148734102504016&w=2
 [pep]: https://www.python.org/dev/peps/pep-0383/
 [wtf]: https://simonsapin.github.io/wtf-8/
+[emacs]: http://www.gnu.org/software/emacs/manual/html_node/elisp/Text-Representations.html
