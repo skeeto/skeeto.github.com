@@ -200,6 +200,26 @@ demonstrates that supporting a bunch of different unix-like systems is
 really easily, but introducing Windows portability adds a
 disproportionate amount of complexity.
 
+#### Caveat: paths and filenames
+
+There's one major complication with filenames for applications portable
+to Windows. In the unix world, filenames are null-terminated bytestrings.
+Typically these are Unicode strings encoded as UTF-8, but it's not
+necessarily so. The kernel just sees bytestrings. A bytestring doesn't
+necessarily have a formal Unicode representation, which can be a problem
+for [languages that want filenames to be Unicode strings][pep].
+
+On Windows, filenames are somewhere between UCS-2 and UTF-16, but end up
+being neither. They're really null-terminated unsigned 16-bit integer
+arrays. It's *almost* UTF-16 except that Windows allows unpaired
+surrogates. This means Windows filenames *also* don't have a formal
+Unicode representation, but in a completely different way than unix. Some
+[heroic efforts have gone into working around this issue][wtf].
+
+As a result, it's highly non-trivial to correctly support all possible
+filenames on both systems in the same program, *especially* when they're
+passed as command line arguments.
+
 ### Summary
 
 The key points are:
@@ -230,3 +250,5 @@ complex solution (pkg-config, CMake, Autoconf, etc.).
 [illumos]: https://en.wikipedia.org/wiki/Illumos
 [bug1]: https://marc.info/?l=openbsd-bugs&m=148815538325392&w=2
 [bug2]: https://marc.info/?l=openbsd-bugs&m=148734102504016&w=2
+[pep]: https://www.python.org/dev/peps/pep-0383/
+[wtf]: https://simonsapin.github.io/wtf-8/
