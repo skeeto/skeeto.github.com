@@ -191,6 +191,10 @@ main article p {
     margin: 0.75em 0;
 }
 
+main article p a {
+    text-decoration: underline;
+}
+
 main article ul li {
     list-style-type: disc;
     margin-left: 0.25em;
