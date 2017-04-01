@@ -45,7 +45,7 @@ to hear from your long-term partner.
 My hard rule was that I would immediately abandon my old habits cold
 turkey. Poor typing is a bad habit just like smoking, minus the cancer
 and weakened sense of smell. It was vital that I unlearn all that old
-muscle memory. That included not just my 6-finger dance, but also my
+muscle memory. That included not just my six-finger dance, but also my
 [NetHack][nh] muscle memory. NetHack uses "hjkl" for navigation just
 like Vim. The problem was that I'd spent a couple hundred hours in
 NetHack over the past decade with my index finger on "h", not the
