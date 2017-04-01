@@ -123,11 +123,12 @@ For now, Vim will continue taking over more and more of my text
 editing work. My last three articles were written in Vim. It's really
 important to keep building proficiency. I still [rely on Emacs for
 email][email] and for [syndication feeds][elfeed], and that's not
-changing any time soon. Plus I don't want to [abandon years of
-accumulated knowledge][tag] and leave the users of my various Emacs
-packages out to dry. Ultimately I believe will end up using Evil, to
-get what seems to be the best of both worlds: modal editing and Emacs'
-rich extensibility.
+changing any time soon. I also [really like Magit][magit] as a Git
+interface. Plus I don't want to [abandon years of accumulated
+knowledge][tag] and leave the users of my various Emacs packages out
+to dry. Ultimately I believe will end up using Evil, to get what seems
+to be the best of both worlds: modal editing and Emacs' rich
+extensibility.
 
 
 [tt]: http://steve-yegge.blogspot.com/2008/09/programmings-dirtiest-little-secret.html
@@ -142,3 +143,4 @@ rich extensibility.
 [email]: /blog/2013/09/03/
 [elfeed]: https://github.com/skeeto/elfeed
 [tag]: /tags/emacs/
+[magit]: https://github.com/magit/magit
