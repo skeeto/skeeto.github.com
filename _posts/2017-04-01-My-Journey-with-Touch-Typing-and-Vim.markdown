@@ -87,6 +87,11 @@ practicing along the way. I'll definitely have to pass through it a
 few more times to pick up all sorts of things that didn't stick. This
 is one way that Emacs and Vim are a lot alike.
 
+Update: [*Practical Vim: Edit Text at the Speed of Thought*][pv] was
+recommended in the comments, and it's certainly a better place to
+start than the Vim user manual. Unlike the manual, it's opinionated
+and focuses on good habits, which is exactly what a newbie needs.
+
 One of my rules when learning Vim was to resist the urge to remap
 keys. I've done it a lot with Emacs: "Hmm, that's not very convenient.
 I'll change it." It means [my Emacs configuration][conf] is fairly
@@ -144,3 +149,4 @@ extensibility.
 [elfeed]: https://github.com/skeeto/elfeed
 [tag]: /tags/emacs/
 [magit]: https://github.com/magit/magit
+[pv]: https://pragprog.com/book/dnvim2/practical-vim-second-edition
