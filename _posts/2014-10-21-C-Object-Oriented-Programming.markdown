@@ -6,12 +6,13 @@ tags: [c, cpp, tutorial]
 uuid: 3851ee30-1f9d-35af-e59f-e4be5023b2d5
 ---
 
-Object oriented programming, polymorphism in particular, is essential
-to nearly any large, complex software system. Without it, decoupling
-different system components is difficult. C doesn't come with object
-oriented capabilities, so large C programs tend to grow their own out
-of C's primitives. This includes huge C projects like the Linux
-kernel, BSD kernels, and SQLite.
+~~Object oriented programming, polymorphism in particular, is
+essential to nearly any large, complex software system. Without it,
+decoupling different system components is difficult.~~ (*Update in
+2017*: I no longer agree with this statement.) C doesn't come with
+object oriented capabilities, so large C programs tend to grow their
+own out of C's primitives. This includes huge C projects like the
+Linux kernel, BSD kernels, and SQLite.
 
 ### Starting Simple
 
