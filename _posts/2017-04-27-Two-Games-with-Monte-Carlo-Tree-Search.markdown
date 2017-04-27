@@ -34,8 +34,8 @@ good moves were never explored at all.
 
 To try out MCTS myself, I wrote two games employing it:
 
-* [**Connect Four**](https://github.com/skeeto/connect4)
-* [**Yavalath**](https://github.com/skeeto/yavalath)
+* [**Connect Four**][c4] [[.exe x64][c4bin], 173kB]
+* [**Yavalath**][y]      [[.exe x64][ybin], 174kB]
 
 They're both written in C, for both unix-like and Windows, and should
 be [easy to build][simple]. **I challenge you to beat them both.** The
@@ -218,6 +218,10 @@ to use it should I run into an appropriate problem in the future.
 
 
 [mcts]: https://jeffbradberry.com/posts/2015/09/intro-to-monte-carlo-tree-search/
+[c4]: https://github.com/skeeto/connect4
+[c4bin]: https://github.com/skeeto/connect4/releases/download/1.0/connect4.exe
+[y]: https://github.com/skeeto/yavalath
+[ybin]: https://github.com/skeeto/yavalath/releases/download/1.0/yavalath.exe
 [chess]: /blog/2011/08/24/
 [simple]: /blog/2017/03/30/
 [pi]: https://curiosity-driven.org/pi-approximation
