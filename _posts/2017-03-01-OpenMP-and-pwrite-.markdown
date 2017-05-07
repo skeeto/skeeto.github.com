@@ -111,7 +111,7 @@ isn't), keep in mind that it will work just fine when invoked like so:
 
     $ ./compute_frames > frames.ppm
 
-### Windows
+### Windows Portability
 
 I talked about OpenMP being really portable, then used POSIX
 functions. Fortunately the Win32 `WriteFile()` function has an

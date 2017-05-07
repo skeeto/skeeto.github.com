@@ -160,7 +160,7 @@ calling `request-complete` above when it's done.
 This SIGUSR1+semaphore mechanism is roughly how Elfuse currently
 processes requests.
 
-### Windows
+### Making it work on Windows
 
 Windows doesn't have signals. This isn't a problem for Elfuse since
 Windows doesn't have FUSE either. Nor does it matter for Joymacs since
