@@ -170,7 +170,7 @@ That's pretty much all there is to it.
 program][pdf]. It's a pretty fascinating story. The depth and strategy
 are disproportionately deep relative to its dead simple rules: Get four
 in a row without first getting three in a row. The game revolves around
-forces moves.
+forced moves.
 
 The engine is structured almost identically to the Connect Four engine.
 It uses 32-bit indexes instead of pointers. The game state is a pair of
