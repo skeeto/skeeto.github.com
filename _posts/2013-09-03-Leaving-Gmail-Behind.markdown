@@ -6,6 +6,10 @@ tags: [emacs]
 uuid: 8d4f4f52-2295-32c7-8452-d22d4f45a437
 ---
 
+*Update May 2017*: Shortly after [switching to modal editing][vim], I
+stopped using Emacs and Notmuch as my mail client. I now use Mutt and
+Vim.
+
 For the last 8 years I have been using Gmail as my e-mail provider,
 during which 3 years I was a student. It was very convenient,
 inexpensive (cost-free!), and especially suitable for a student using
@@ -219,3 +223,4 @@ you're not doing so already. It's been extremely liberating for me.
 [getmail]: http://www.mattcutts.com/blog/backup-gmail-in-linux-with-getmail/
 [do]: https://www.digitalocean.com/?refcode=a613ef5c79c1
 [experimental]: /blog/2013/01/26/
+[vim]: /blog/2017/04/01/
