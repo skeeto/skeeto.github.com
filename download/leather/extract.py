@@ -58,13 +58,11 @@ for i, chapter in enumerate(chapters):
         if (child.name == 'hr'):
             hr_count += 1
         elif (child.name == 'p' and hr_count == 1):
-            # Clone the element so it can be appended
-            clone = BeautifulSoup(str(child)).body.contents[0]
-            clone.attrs = {}
-            if (clone.string == '#'):
+            child.attrs = {}
+            if (child.string == '#'):
                 body.append(doc.new_tag('hr'))
             else:
-                body.append(clone)
+                body.append(child)
 
 # Output final document
 print(doc.prettify())

@@ -183,22 +183,17 @@ content when we've seen exactly one `hr` element.
         if (child.name == 'hr'):
             hr_count += 1
         elif (child.name == 'p' and hr_count == 1):
-            clone = BeautifulSoup(str(child)).body.contents[0]
-            clone.attrs = {}
-            if (clone.string == '#'):
+            child.attrs = {}
+            if (child.string == '#'):
                 body.append(doc.new_tag('hr'))
             else:
-                body.append(clone)
+                body.append(child)
 ~~~
 
-Actually transferring the content from the scraped page to my
-constructed document is, unfortunately, pretty convoluted. BeautifulSoup
-doesn't allow the element to be inserted into a different document. To
-clone it, I serialize it and reparse it with BeautifulSoup. This creates
-a dummy set of `html` and `body` parent tags, which I toss. I also strip
-away any attributes present on the `p` tag, since, for some reason, some
-of these elements have old-fashioned alignment attributes in the
-original content.
+If it's a `p` element, I copy it into the output document, taking a
+moment to strip away any attributes present on the `p` tag, since, for
+some reason, some of these elements have old-fashioned alignment
+attributes in the original content.
 
 The original content also uses the text "`#`" by itself in a `p` to
 separate sections rather than using the appropriate markup. Despite
