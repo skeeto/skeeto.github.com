@@ -139,7 +139,7 @@ enough I can manage.
         <p>A little intro.</p>
         <p>Some more intro.</p>
         <hr/>
-        <p>Actualy book content.</p>
+        <p>Actual book content.</p>
         <p>More content.</p>
         <hr/>
         <p>Footer navigation junk.</p>
