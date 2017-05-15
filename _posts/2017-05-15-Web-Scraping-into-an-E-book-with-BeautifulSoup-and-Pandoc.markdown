@@ -2,7 +2,7 @@
 title: Web Scraping into an E-book with BeautifulSoup and Pandoc
 layout: post
 date: 2017-05-15T02:39:20Z
-tags: [python]
+tags: [python, web]
 uuid: 8e05a4a5-4601-3717-d1ef-c03ea2413025
 ---
 
