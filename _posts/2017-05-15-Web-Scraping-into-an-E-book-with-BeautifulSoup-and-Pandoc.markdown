@@ -223,11 +223,11 @@ conversion.
 
     $ pandoc -t epub3 -o output.epub output.html 
 
-And that's it! It's ready to read offline in my e-book reader of choice.
-The crude version of my script took around 15–20 minutes to write and
-test, so I had my own e-book conversion in under 30 minutes. That's
-about as long as I was willing to spend to get it. Tidying the script up
-for this article took a lot longer.
+And that's it! It's ready to read offline in my e-book reader of
+choice. The crude version of my script took around 15–20 minutes to
+write and test, so I had an e-book conversion in under 30 minutes.
+That's about as long as I was willing to spend to get it. Tidying the
+script up for this article took a lot longer.
 
 I don't have permission to share the resulting e-book, but I can share
 my script so that you can generate your own, at least as long as it's
