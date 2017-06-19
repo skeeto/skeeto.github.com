@@ -6,6 +6,10 @@ tags: [vim, debian]
 uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 ---
 
+*Note: The way I manage my email wouldn't really work for most people,
+so don't read this as a recommendation. This is just a discussion of
+how I prefer to use email.*
+
 It was almost four years ago I switched from webmail to a customized
 email configuration [based on Notmuch and Emacs][gmail]. Notmuch served
 as both as a native back-end that provided indexing and tagging, as well
