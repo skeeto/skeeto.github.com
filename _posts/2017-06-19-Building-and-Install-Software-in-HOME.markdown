@@ -207,7 +207,9 @@ unset by default and it overrides the system settings, which means you
 need to manually include the system paths. The `manpath` program can
 help with this ... if it's available.
 
-    export MANPATH=$HOME/.local/share/man:$(manpath)
+~~~sh
+export MANPATH=$HOME/.local/share/man:$(manpath)
+~~~
 
 I haven't figured out a portable way to deal with this issue, so I
 mostly ignore it.
