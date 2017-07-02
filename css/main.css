@@ -212,6 +212,18 @@ main article svg {
     max-width: 100%;
 }
 
+main article .grid {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+main article .grid img,
+main article .grid video {
+    display: inline-block;
+    margin: 0;
+}
+
 main article code {
     font-size: 15px;
     font-family: DroidSansMono, monospace;
