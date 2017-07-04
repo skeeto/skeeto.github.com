@@ -58,6 +58,16 @@ write. In this case, I'll write C program that simulates rolling
 shutter. The filter could be written in any language that can read and
 write binary data from standard input to standard output.
 
+*Update*: It appears that input PPM streams are a rather recent
+feature of libavformat (a.k.a lavf, used by `x264`). Support for PPM
+input first appeared in libavformat 3.1 (released June 26th, 2016). If
+you're using an older version of libavformat, you'll need to stick
+`ppmtoy4m` in front of `x264` in the processing pipeline.
+
+    $ ffmpeg -i input.mp4 -f image2pipe -vcodec ppm pipe:1 | \
+        ppmtoy4m | \
+        x264 -o output.mp4 /dev/stdin
+
 ### Video filtering in C
 
 In the past, my go to for raw video data has been loose PPM frames and
