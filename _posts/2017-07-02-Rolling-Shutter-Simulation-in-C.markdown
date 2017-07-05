@@ -269,8 +269,20 @@ It took much longer to figure out the string-pulling contraption to
 slowly spin the fan at a constant rate than it took to write the C
 filter program.
 
+### Followup Links
 
+On Hacker News, [morecoffee shared a video of the second order
+effect][hnvid] ([direct link][dirvid]), where the rolling shutter
+speed changes over time.
+
+A deeper analysis of rolling shutter: [*Playing detective with rolling
+shutter photos*][analysis].
+
+
+[analysis]: http://danielwalsh.tumblr.com/post/54400376441/playing-detective-with-rolling-shutter-photos
 [deb]: https://lwn.net/Articles/650816/
+[dirvid]: http://antidom.com/fan.webm
+[hnvid]: https://news.ycombinator.com/item?id=14684793
 [netpbm]: https://en.wikipedia.org/wiki/Netpbm_format
 [poor]: /blog/2011/11/28/
 [ppm]: http://netpbm.sourceforge.net/doc/ppm.html
