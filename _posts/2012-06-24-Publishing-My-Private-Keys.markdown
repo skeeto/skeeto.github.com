@@ -5,6 +5,11 @@ tags: [crypto, tutorial]
 uuid: cb40de11-5f3c-306f-b792-6214d65605a1
 ---
 
+*Update March 2017: I [no longer use PGP][update]. Also, there's a
+bug in GnuPG [that silently discards these security settings][bug],
+and it's unlikely to ever get fixed. You'll need to find/build an old
+version of GnuPG if you want to properly protect your secret keys.*
+
 One of the items [in my dotfiles repository](/blog/2012/06/23/) is my
 PGP keys, both private and public. I believe this is a unique approach
 that hasn't been done before — a public experiment. It may *seem*
@@ -92,3 +97,7 @@ impossible. The install script has a `-p` switch to disable private
 dotfiles, such as when I'm using an untrusted computer. `gpg-agent`
 ensures that I only need to enter my passphrase once during the
 install process no matter how many private dotfiles there are.
+
+
+[update]: /blog/2017/03/12/
+[bug]: https://dev.gnupg.org/T1800
