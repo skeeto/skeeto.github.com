@@ -12,8 +12,9 @@ addition to my virtual toolbelt. In the past when I've needed to process
 raw HTML, I've tried nasty hacks with Unix pipes, or [routing the
 content through a web browser][skewer] so that I could manipulate it via
 the DOM API. None of that worked very well, but now I finally have
-BeautifulSoup fill that gap. It's got a selector interface and, except
-for rendering, it's is basically as comfortable with HTML as JavaScript.
+BeautifulSoup to fill that gap. It's got a selector interface and,
+except for rendering, it's basically as comfortable with HTML as
+JavaScript.
 
 Today's problem was that I wanted to read [a recommended][df] online
 book called [*Interviewing Leather*][il], a story set "in a world where
@@ -27,7 +28,7 @@ sent the Markdown to [Pandoc][pd] to convert into an e-book.
 
 For this book, I just want a quick-and-dirty scrape in order to shift
 formats. I've never read it and I may not even like it, so I definitely
-don't want to spend much time on the conversation. Despite [having fun
+don't want to spend much time on the conversion. Despite [having fun
 with typing lately][type], I'd also prefer to keep all the formating —
 italics, etc. — without re-entering it all manually.
 
@@ -216,7 +217,7 @@ have come out correctly. I won't know for sure, though, until I actually
 read through the whole book. Finally I have Pandoc perform the
 conversion.
 
-    $ pandoc -t epub3 -o output.epub output.html 
+    $ pandoc -t epub3 -o output.epub output.html
 
 And that's it! It's ready to read offline in my e-book reader of
 choice. The crude version of my script took around 15–20 minutes to
