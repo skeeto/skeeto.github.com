@@ -5,6 +5,10 @@ tags: [emacs, elisp]
 uuid: 3e3186c8-dccd-3167-1f42-79f34d08a3dd
 ---
 
+*Update June 2017*: I no longer use Emacs' `package.el` and instead
+manage packages and their dependencies (manually) through my own
+decentralized package system called `gpkg` ("git package").
+
 For those who are unaware, Emacs 24 was finally released this past
 June. I had been following the official repository for about a year
 before the release using what was becoming version 24, very quickly
