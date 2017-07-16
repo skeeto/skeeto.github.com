@@ -2,7 +2,7 @@
 title: Counting Processor Cores in Emacs
 layout: post
 date: 2015-10-14T03:17:16Z
-tags: [emacs, c, cpp]
+tags: [emacs, elisp, c, cpp]
 uuid: dbfba1a0-b3af-356d-4d01-96917d622906
 ---
 

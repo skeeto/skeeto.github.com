@@ -2,7 +2,7 @@
 title: Elfeed, cURL, and You
 layout: post
 date: 2016-06-16T18:22:16Z
-tags: [emacs, elfeed]
+tags: [emacs, elisp, elfeed]
 uuid: 76942398-f693-3127-fd45-19d508b5c044
 ---
 

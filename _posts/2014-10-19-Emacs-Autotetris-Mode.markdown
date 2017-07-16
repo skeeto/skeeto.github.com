@@ -2,7 +2,7 @@
 title: Emacs Autotetris Mode
 layout: post
 date: 2014-10-19T21:45:53Z
-tags: [emacs, interactive]
+tags: [emacs, elisp, interactive]
 uuid: e76556be-ebeb-3f65-7041-bffbe2e19952
 ---
 

@@ -2,7 +2,7 @@
 title: Emacs, Dynamic Modules, and Joysticks
 layout: post
 date: 2016-11-05T04:01:51Z
-tags: [emacs, c, linux]
+tags: [emacs, elisp, c, linux]
 uuid: c53305bb-4770-3a7f-934c-31eea37d38eb
 ---
 

@@ -2,7 +2,7 @@
 title: The Elfeed Database
 layout: post
 date: 2013-09-09T05:53:41Z
-tags: [emacs, elfeed]
+tags: [emacs, elisp, elfeed]
 uuid: 8aba2e49-22a0-330b-e664-54fb50ecdd00
 ---
 

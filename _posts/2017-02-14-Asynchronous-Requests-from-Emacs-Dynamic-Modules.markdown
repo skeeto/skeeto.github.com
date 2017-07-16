@@ -2,7 +2,7 @@
 title: Asynchronous Requests from Emacs Dynamic Modules
 layout: post
 date: 2017-02-14T02:30:00Z
-tags: [emacs, c, linux, win32]
+tags: [emacs, elisp, c, linux, win32]
 uuid: 00a59e4f-268c-343f-e6c6-bb23cde265de
 ---
 

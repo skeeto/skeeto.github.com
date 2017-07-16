@@ -1,7 +1,7 @@
 ---
 title: Emacs Abnormal Termination
 layout: post
-tags: [emacs, debian]
+tags: [emacs, elisp, debian]
 uuid: 81986f77-1a4a-3b00-ec3a-a6517f9ca4ca
 ---
 

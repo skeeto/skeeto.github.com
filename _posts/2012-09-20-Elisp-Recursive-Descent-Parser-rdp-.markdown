@@ -1,7 +1,7 @@
 ---
 title: Elisp Recursive Descent Parser (rdp)
 layout: post
-tags: [emacs, lisp]
+tags: [emacs, elisp, lisp]
 uuid: 0cb87ff3-6862-3772-6d64-3222ff8e56fe
 ---
 

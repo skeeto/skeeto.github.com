@@ -1,7 +1,7 @@
 ---
 title: A Handy Emacs Package Configuration Macro
 layout: post
-tags: [emacs]
+tags: [emacs, elisp]
 uuid: 3e64c259-69a6-3500-0e87-3a93d61c1644
 ---
 
