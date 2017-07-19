@@ -10,7 +10,7 @@ Last week I was discussing [CVE-2017-7529][cve] with [my intern][intern].
 Specially crafted input to Nginx causes an integer overflow which has the
 potential to leak sensitive information. But how could an integer overflow
 be abused to trick a program into leaking information? To answer this
-question, I put together the simplest, realistic example I could imagine.
+question, I put together the simplest practical example I could imagine.
 
 * <https://github.com/skeeto/integer-overflow-demo>
 
@@ -264,11 +264,12 @@ a subtle bug with potentially disastrous consequences.
 In practice, this sort of program wouldn't have sensitive data resident in
 memory. Instead an attacker would target the program's stack with those
 `s` commands — specifically the [return pointers][cfg] — and perform a ROP
-attack against the application. With the exploit header above, the program
-will behave as if all available memory has been allocated to the image, so
-the `s` command could be used to poke custom values *anywhere* in memory.
-This is a much more complicated exploit, and it has to contend with ASLR
-and random stack gap, but it's feasible.
+attack against the application. With the exploit header above and a
+platform where `long` the same size as a `size_t`, the program will behave
+as if all available memory has been allocated to the image, so the `s`
+command could be used to poke custom values *anywhere* in memory. This is
+a much more complicated exploit, and it has to contend with ASLR and
+random stack gap, but it's feasible.
 
 
 [cve]: https://security-tracker.debian.org/tracker/CVE-2017-7529
