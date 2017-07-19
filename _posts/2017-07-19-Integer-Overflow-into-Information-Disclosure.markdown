@@ -254,7 +254,7 @@ How do we fix this? Add an overflow check at the beginning of the
 real `calloc()` does.
 
 ~~~c
-    if (size > -1UL / nmemb)
+    if (nmemb && size > -1UL / nmemb)
         return 0;
 ~~~
 
