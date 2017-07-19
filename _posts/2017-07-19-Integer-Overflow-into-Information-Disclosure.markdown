@@ -142,7 +142,7 @@ I wonder why is this called "naive" ...
 
 ~~~c
 void *
-naive_calloc(struct mstack *m, size_t nmemb, size_t size)
+naive_calloc(struct mstack *m, unsigned long nmemb, unsigned long size)
 {
     void *p = mstack_alloc(m, nmemb * size);
     if (p)
@@ -254,7 +254,7 @@ How do we fix this? Add an overflow check at the beginning of the
 real `calloc()` does.
 
 ~~~c
-    if (size > (size_t)-1 / nmemb)
+    if (size > -1UL / nmemb)
         return 0;
 ~~~
 
