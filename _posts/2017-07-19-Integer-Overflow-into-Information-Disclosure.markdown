@@ -231,9 +231,10 @@ Here are the initial contents of `capture.txt`:
     109 121 115 101 99 114 101 116 10 0 0 0 0 0 0 0
     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
-Where did those numbers come from? Plug them into an ASCII table and
-you'll get "mysecret". Despite allocating the image with `naive_calloc()`,
-the password has found it's way into the image! How could this be?
+Where did those junk numbers come from in the image data? Plug them into
+an ASCII table and you'll get "mysecret". Despite allocating the image
+with `naive_calloc()`, the password has found its way into the image! How
+could this be?
 
 What happened is that `width * height` overflows an `unsigned long`.
 (Well, technically speaking, unsigned integers are defined *not* to
