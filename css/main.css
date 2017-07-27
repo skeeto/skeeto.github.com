@@ -224,6 +224,12 @@ main article .grid video {
     margin: 0;
 }
 
+main article img.card {
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 120px;
+}
+
 main article code {
     font-size: 15px;
     font-family: DroidSansMono, monospace;
