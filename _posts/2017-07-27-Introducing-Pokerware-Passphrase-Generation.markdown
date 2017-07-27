@@ -93,7 +93,7 @@ one:
 
 #### Example word generation
 
-Suppose in step 2 you draw King of Hearts (KS/K♥) and Queen of Clubs
+Suppose in step 2 you draw King of Hearts (KH/K♥) and Queen of Clubs
 (QC/Q♣).
 
 ![](/img/pokerware/kh.png){: .card}
