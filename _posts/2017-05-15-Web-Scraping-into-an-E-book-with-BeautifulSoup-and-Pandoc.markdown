@@ -27,10 +27,11 @@ Markdown, spent a couple of weeks editing it for mistakes, and finally
 sent the Markdown to [Pandoc][pd] to convert into an e-book.
 
 For this book, I just want a quick-and-dirty scrape in order to shift
-formats. I've never read it and I may not even like it, so I definitely
-don't want to spend much time on the conversion. Despite [having fun
-with typing lately][type], I'd also prefer to keep all the formating —
-italics, etc. — without re-entering it all manually.
+formats. I've never read it and I may not even like it (*update*: I
+enjoyed it), so I definitely don't want to spend much time on the
+conversion. Despite [having fun with typing lately][type], I'd also
+prefer to keep all the formating — italics, etc. — without re-entering
+it all manually.
 
 Fortunately Pandoc can consume HTML as input, so, in theory, I can feed
 it the original HTML and preserve all of the original markup. The
