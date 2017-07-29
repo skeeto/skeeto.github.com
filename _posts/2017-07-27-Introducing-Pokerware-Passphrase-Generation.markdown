@@ -40,6 +40,7 @@ list would be more difficult to memorize, since the list would contain
 longer and less frequently used words. Diceware strikes a nice balance
 at five dice.
 
+<!-- Photo credit: Kelsey Wellons -->
 ![](/img/pokerware/deck.jpg)
 
 One important difference for me is that *I like my Pokerware word
