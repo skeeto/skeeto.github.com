@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: 'NotoSans';
+  src: url(NotoSans.woff) format('woff');
+}
+
+@font-face {
   font-family: 'DroidSansMono';
   src: url(DroidSansMono.woff) format('woff');
 }
@@ -22,8 +27,8 @@
 body {
     color: Black;
     background-color: White;
-    font-family: 'Signika', sans-serif;
-    font-size: 17px;
+    font-family: 'NotoSans', sans-serif;
+    font-size: 18px;
 }
 
 img {
@@ -45,6 +50,7 @@ header {
     border-bottom: 1px solid BlanchedAlmond;
     box-shadow: 0 0 10px DarkGray;
     background-color: Beige;
+    font-family: 'Signika';
 }
 
 header > div.container {
@@ -74,6 +80,15 @@ header .container > address {
     position: static;
     display: block;
     margin: 0 0 0 4.6rem;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+    font-family: 'Signika', sans-serif;
 }
 
 header .container h1 {
@@ -151,7 +166,7 @@ main {
     margin: 7rem auto 0 auto;
     max-width: 700px;
     text-align: justify;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 main a:visited {
