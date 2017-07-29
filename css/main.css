@@ -237,7 +237,7 @@ main article code {
 
 main article pre {
     margin: 0 1em;
-    padding: 0.5em 0 0.5em 1em;
+    padding: 0.5em;
     line-height: 1.1;
     background: FloralWhite;
     border: 1px dotted LightGray;
