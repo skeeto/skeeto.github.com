@@ -278,7 +278,7 @@ for all new code that you write. It has three important advantages:
 1. It allows the compiler to catch more mistakes.
 2. It eliminates a class of bugs related to dynamic scope: Local
    variables are exposed to manipulation by callees.
-3. **Lexical scope has better performance.**
+3. [Lexical scope has better performance][lex].
 
 Here are all the benchmarks with the default dynamic scope:
 
@@ -461,3 +461,4 @@ The header explains how to run the benchmark in batch mode:
 [horrors]: http://emacshorrors.com/posts/when-data-becomes-code.html
 [native]: /blog/2015/03/19/
 [elfeed]: https://github.com/skeeto/elfeed
+[lex]: /blog/2016/12/22/
