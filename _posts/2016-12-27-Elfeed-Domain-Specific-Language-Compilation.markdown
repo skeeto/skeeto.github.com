@@ -99,9 +99,9 @@ root element. It returns a *list of elements*, which always happens to
 be a single element list, which is the root element. I don't know why
 this is, but I've built everything to assume this structure as input.
 
-For Elfeed, all namespaces stripped from both elements and attributes
-to make parsing simpler. As I said, it's heuristic rather than strict,
-so namespaces are treated as noise.
+Elfeed strips all namespaces stripped from both elements and
+attributes to make parsing simpler. As I said, it's heuristic rather
+than strict, so namespaces are treated as noise.
 
 ### A domain-specific language
 
