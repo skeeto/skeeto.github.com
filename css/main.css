@@ -181,19 +181,19 @@ main article > h2 a:visited {
 main article h2 {
     text-align: center;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 1.2em;
     margin: 0.5em 0;
 }
 
 main article h3 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.1em;
 }
 
 main article > time {
     display: block;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.8em;
     color: DimGray;
 }
 
@@ -206,8 +206,13 @@ main article p {
     margin: 0.75em 0;
 }
 
-main article p a {
+main article p a,
+main article li a {
     text-decoration: underline;
+}
+
+.post-list a {
+    text-decoration: none;
 }
 
 main article ul li {
@@ -245,8 +250,13 @@ main article img.card {
     max-width: 120px;
 }
 
-main article code {
-    font-size: 15px;
+main article p code,
+main article li code {
+    font-size: 0.85em;
+}
+
+main article pre code {
+    font-size: 0.83em;
     font-family: DroidSansMono, monospace;
 }
 
@@ -267,7 +277,7 @@ main article blockquote {
 
 article .download {
     font-weight: bold;
-    font-size: 110%;
+    font-size: 1.1em;
 }
 
 main article .abstract {
@@ -396,9 +406,9 @@ article nav .next .marker {
 footer {
     display: block;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.75em;
     color: Gray;
-    max-width: 500px;
+    max-width: 450px;
     margin: 0.5em auto 1em auto;
 }
 
