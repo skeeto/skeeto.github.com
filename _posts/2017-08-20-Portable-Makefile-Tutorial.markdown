@@ -473,7 +473,7 @@ Visual Studio][four]. It's *nearly* a POSIX-compatible make, but
 necessarily breaks from the standard in some places. Their cl.exe
 compiler uses `.obj` as the object file extension and `.exe` for
 binaries, both of which differ from the unix world, so it has different
-build-in inference rules. Windows also lacks a Bourne shell and the
+built-in inference rules. Windows also lacks a Bourne shell and the
 standard unix tools, so all of the commands will necessarily be
 different.
 
@@ -481,8 +481,8 @@ There's no equivalent of `rm -f` on Windows, so good luck writing a
 proper "clean" target. No, `del /f` isn't the same.
 
 So while it's close to POSIX make, it's not practical to write a
-Makefile that will simultaneously work with both POSIX make and Nmake.
-These need to be separate Makefiles.
+Makefile that will simultaneously work properly with both POSIX make
+and Nmake. These need to be separate Makefiles.
 
 ### May your Makefiles be portable
 
