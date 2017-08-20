@@ -101,13 +101,13 @@ physics.o: physics.c
 input.o: input.c
 ~~~
 
-There are six *special targets* that are used to change the behavior of
-make itself. All have uppercase names and start with a period. Names
-fitting this pattern are reserved for use by make. According to the
-standard, in order to get reliable POSIX behavior, the first target of
-the Makefile *must* be `.POSIX`. Since this is a special target, it's
-not a candidate for the default target, so `game` will remain the
-default target:
+There are six *special targets* that are used to change the behavior
+of make itself. All have uppercase names and start with a period.
+Names fitting this pattern are reserved for use by make. According to
+the standard, in order to get reliable POSIX behavior, the first
+non-comment line of the Makefile *must* be `.POSIX`. Since this is a
+special target, it's not a candidate for the default target, so `game`
+will remain the default target:
 
 ~~~make
 .POSIX:
@@ -253,12 +253,12 @@ allow the name of the macro being expanded to itself be a macro, which
 [is turing complete][turing], but this behavior is non-standard.
 
 ~~~make
+.POSIX:
+.SUFFIXES:
 CC     = cc
 CFLAGS = -W -O
 LDLIBS = -lm
 
-.POSIX:
-.SUFFIXES:
 all: game
 game: graphics.o physics.o input.o
     $(CC) $(LDFLAGS) -o game graphics.o physics.o input.o $(LDLIBS)
@@ -321,12 +321,12 @@ These extensions must be added to `.SUFFIXES` before they will work.
 With that, the commands for the rules about object files can be omitted.
 
 ~~~make
+.POSIX:
+.SUFFIXES:
 CC     = cc
 CFLAGS = -W -O
 LDLIBS = -lm
 
-.POSIX:
-.SUFFIXES:
 all: game
 game: graphics.o physics.o input.o
     $(CC) $(LDFLAGS) -o game graphics.o physics.o input.o $(LDLIBS)
@@ -364,12 +364,12 @@ installed under a fake root directory for the sake of packaging. Unlike
 PREFIX, it will not actually be run from this directory.
 
 ~~~make
+.POSIX:
 CC     = cc
 CFLAGS = -W -O
 LDLIBS = -lm
 PREFIX = /usr/local
 
-.POSIX:
 all: game
 install: game
     mkdir -p $(DESTDIR)$(PREFIX)/bin
