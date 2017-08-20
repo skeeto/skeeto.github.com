@@ -8,12 +8,12 @@ uuid: 49f54bce-b7da-374e-1e0e-1724b92e3e1f
 
 For over a decade now, GNU Make has almost exclusively been my build
 system of choice, either directly or indirectly. Unfortunately this
-means I unnecessarily depend on some GNU extensions — an annoyance
-when porting to the BSDs. In an effort to increase the portability of
-my Makefiles, I recently read [the POSIX make specification][make]. I
-learned two important things: 1) POSIX make is so barren it's not
-really worth striving for, and 2) **make's macro assignment mechanism
-is Turing-complete**.
+means I unnecessarily depend on some GNU extensions — an annoyance when
+porting to the BSDs. In an effort to increase the portability of my
+Makefiles, I recently read [the POSIX make specification][make]. I
+learned two important things: 1) ~~POSIX make is so barren it's not
+really worth striving for~~ (*update*: I've [changed my mind][mind]),
+and 2) **make's macro assignment mechanism is Turing-complete**.
 
 If you want to see it in action for yourself before reading further,
 here's a Makefile that implements Conway's Game of Life (40x40) using
@@ -307,3 +307,4 @@ Makefile. [Life, uh, finds a way][goldblum].
 [goldblum]: https://www.youtube.com/watch?v=dMjQ3hA9mEA
 [recur]: http://aegis.sourceforge.net/auug97.pdf
 [gen]: https://github.com/skeeto/makefile-game-of-life
+[mind]: /blog/2017/08/20/
