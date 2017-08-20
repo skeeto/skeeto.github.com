@@ -298,7 +298,7 @@ don't worry about them.
 
 There's repetition across the three different object files. Wouldn't it
 be nice if there was a way to communicate this pattern? Fortunately
-there is, in the form of *inteference rules*. It says that a target with
+there is, in the form of *inference rules*. It says that a target with
 a certain extension, with a prerequisite with another certain extension,
 is built a certain way. This will make more sense with an example.
 
