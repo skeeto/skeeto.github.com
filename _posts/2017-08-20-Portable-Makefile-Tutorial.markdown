@@ -392,7 +392,8 @@ opposite.
 
 Other common targets are "mostlyclean" (like "clean" but don't delete
 some slow-to-build targets), "distclean" (delete even more than
-"clean"), "test" (run the test suite), and "dist" (create a package).
+"clean"), "test" or "check" (run the test suite), and "dist" (create a
+package).
 
 ### Complexity and growing pains
 
