@@ -13,34 +13,32 @@ executed, and how the build system is operated. These effects even reach
 outside the editor to influence the overall structure of the project
 being edited.
 
-The traditional unix model, which was [eventually adopted][w32]
-everywhere else, is that each process has a particular working
-directory tracked by the operating system. When a process makes a
-request to the operating system using a relative path — a path that
-doesn't begin with a slash — the operating system uses the process'
-working directory to convert the path into an absolute path. When a
-process forks, its child starts in the same directory. A process can
-change its working directory at any time using [`chdir(2)`][chdir],
-though most programs never need to do it. The most obvious way this
-system call is exposed to regular users is through the shell's
-built-in `cd` command, which changes the working directory for a
-shell, ultimately through `chdir(2)`.
+In the traditional unix model, which was [eventually adopted][w32]
+everywhere else, each process has a particular working directory
+tracked by the operating system. When a process makes a request to the
+operating system using a relative path — a path that doesn't begin
+with a slash — the operating system uses the process' working
+directory to convert the path into an absolute path. When a process
+forks, its child starts in the same directory. A process can change
+its working directory at any time using [`chdir(2)`][chdir], though
+most programs never need to do it. The most obvious way this system
+call is exposed to regular users is through the shell's built-in `cd`
+command.
 
 Vim's spiritual heritage is obviously rooted in vi, one of the classic
 unix text editors, and the [most elaborate text editor standardized by
 POSIX][vi]. Like vi, Vim closely follows the unix model for working
 directories. At any given time Vim has exactly one working directory.
 Shell commands that are run within Vim will start in Vim's working
-directory. Like a shell, the `cd` ex command changes and queries the
+directory. Like a shell, the `cd` ex command changes and queries Vim's
 working directory.
 
-Emacs eschews this model and instead gives each buffer has its own
-unique working directory tracked using a buffer-local variable,
-`default-directory`. Emacs internally simulates working directories
-for its buffers like an operating system, resolving absolute paths
-itself, giving credence to the idea that Emacs is itself an operating
-system ("lacking only a decent editor"). Perhaps this model has some
-root in ye olde lisp machines?
+Emacs eschews this model and instead each buffer has its own working
+directory tracked using a buffer-local variable, `default-directory`.
+Emacs internally simulates working directories for its buffers like an
+operating system, resolving absolute paths itself, giving credence to
+the idea that Emacs is an operating system ("lacking only a decent
+editor"). Perhaps this model comes from ye olde lisp machines?
 
 In contrast, Emacs' `M-x cd` command manipulates the local variable
 and has no effect on the Emacs process' working directory. In fact,
@@ -56,12 +54,13 @@ working directory model is still the same.
 
 ### Single instance editors
 
-For most of my Emacs career, I've stuck to running a single, long-lived
-Emacs instance no matter how many different tasks I'm touching
-simultaneously. I start the Emacs daemon shortly after logging in, and
-it continues running until I log out — typically only when the machine
-is shut down. It's common to have multiple Emacs windows for different
-tasks, but they're all bound to the same daemon process.
+For most of my Emacs career, I've stuck to running a single,
+long-lived Emacs instance no matter how many different tasks I'm
+touching simultaneously. I start the Emacs daemon shortly after
+logging in, and it continues running until I log out — typically only
+when the machine is shut down. It's common to have multiple Emacs
+windows (frames) for different tasks, but they're all bound to the
+same daemon process.
 
 While [with care][up] it's possible to have a complex, rich Emacs
 configuration that doesn't significantly impact Emacs' startup time, the
@@ -136,9 +135,10 @@ That looks *very* roughly like this (and needs more work):
     (compile "make")))
 ~~~
 
-It's a pattern I've used again and again, working against the same old
-friction. By running one Vim instance per project at the project's
-root, I get the correct behavior for free.
+It's a pattern I've used [again][ex1] and [again][ex2] and
+[again][ex3], working against the same old friction. By running one
+Vim instance per project at the project's root, I get the correct
+behavior for free.
 
 
 [w32]: https://blogs.msdn.microsoft.com/oldnewthing/20101011-00/?p=12563
@@ -149,3 +149,6 @@ root, I get the correct behavior for free.
 [six]: /blog/2017/04/01/
 [make]: /blog/2017/08/20/
 [sw]: https://en.wikipedia.org/wiki/Linguistic_relativity
+[ex1]: https://github.com/skeeto/.emacs.d/blob/e8af63ca3585598f5e509bc274e0bb3b875206d3/lisp/ctags.el#L40
+[ex2]: https://github.com/skeeto/.emacs.d/blob/e8af63ca3585598f5e509bc274e0bb3b875206d3/etc/compile-bind.el#L38
+[ex3]: https://github.com/skeeto/ant-project-mode/blob/335070891f1fabe8d3205418374a68bb13cec8c0/ant-project-mode.el#L211
