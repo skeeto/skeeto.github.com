@@ -496,7 +496,7 @@ other sorts of special treatment.
 [four]: /blog/2016/06/13/
 [home]: /blog/2017/06/19/
 [recurse]: http://aegis.sourceforge.net/auug97.pdf
-[spec]: http://pubs.opengroup.org/onlinepubs/009695399/utilities/make.html
+[spec]: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html
 [standards]: /blog/2017/03/30/
 [turing]: /blog/2016/04/30/
 [vim]: http://vimdoc.sourceforge.net/htmldoc/quickfix.html
