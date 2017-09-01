@@ -178,7 +178,7 @@ shots to produce, by chance, a more valuable article than the single,
 precious memo.
 
 Let's broaden the scope to academic papers. Thanks to some great
-co-workers — all three of whom are smarter and hansomer than me — a
+co-workers — all three of whom are smarter and handsomer than me — a
 year ago I finally got a published academic paper under my belt (and
 more to come): [*ROP Gadget Prevalence and Survival under
 Compiler-based Binary Diversification Schemes*][paper] (and I said
