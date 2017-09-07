@@ -88,12 +88,13 @@ different places in a buffer, you place a cursor at each position, then
 drive them all in parallel using the same commands. It's super flashy
 and great for impressing all your friends.
 
-However, as a result of [improving my typing skills][typing], I've come
-to the conclusion that multiple cursors is all hat and no cattle. It
-doesn't compose well with other editing commands, it doesn't scale up to
-large operations, and it's got all sorts of flaky edge cases (off-screen
-cursors). Nearly anything you can do with multiple cursors, you can do
-better with old, well-established editing paradigms.
+However, as a result of [improving my typing skills][typing], I've
+come to the conclusion that [multiple cursors is all hat and no
+cattle][one]. It doesn't compose well with other editing commands, it
+doesn't scale up to large operations, and it's got all sorts of flaky
+edge cases (off-screen cursors). Nearly anything you can do with
+multiple cursors, you can do better with old, well-established editing
+paradigms.
 
 Somewhere around 99% of my multiple cursors usage was adding a common
 prefix to a contiguous serious of lines. As similar brute force
@@ -174,6 +175,7 @@ code. It includes a tiny gap buffer implementation:
 [mc]: https://github.com/magnars/multiple-cursors.el
 [memline]: https://github.com/vim/vim/blob/e723c42836d971180d1bf9f98916966c5543fff1/src/memline.c
 [nvi]: https://en.wikipedia.org/wiki/Nvi
+[one]: https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
 [repo]: https://github.com/skeeto/gap-buffer-animator
 [rope]: https://en.wikipedia.org/wiki/Rope_(data_structure)
 [typing]: /blog/2017/04/01/
