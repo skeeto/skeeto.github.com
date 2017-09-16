@@ -205,10 +205,10 @@ buffering the entire pipe. How can there be fixed-length messages?
 The pipe datastream is broken into 64kB *chunks*. Each chunk is
 authenticated with its own MAC. Both the MAC and chunk length are
 written in the chunk header, and the length is authenticated by the
-MAC. Furthermore, the MAC is continued from previous chunk, preventing
-chunks from being reordered. Blowpipe can output the content of a
-chunk and discard it once it's been authenticated. If any chunk fails
-to authenticate, it aborts.
+MAC. Furthermore, just like the keystream, the MAC is continued from
+previous chunk, preventing chunks from being reordered. Blowpipe can
+output the content of a chunk and discard it once it's been
+authenticated. If any chunk fails to authenticate, it aborts.
 
 ![](/img/diagram/blowpipe.svg)
 
