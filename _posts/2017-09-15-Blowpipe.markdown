@@ -216,7 +216,7 @@ This also leads to another useful trick: The pipe is terminated with a
 zero length chunk, preventing an attacker from appending to the
 datastream. Everything after the zero-length chunk is discarded. Since
 the length is authenticated by the MAC, the attacker also cannot
-truncate the pipe since that would require knowledge of both keys.
+truncate the pipe since that would require knowledge of the MAC key.
 
 The pipe itself has a 17 byte header: a 16 byte random bcrypt salt and 1
 byte for the bcrypt cost. The salt is like an initialization vector (IV)
