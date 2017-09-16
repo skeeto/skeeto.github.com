@@ -1,0 +1,267 @@
+---
+title: "Blowpipe: a Blowfish-encrypted, Authenticated Pipe"
+layout: post
+date: 2017-09-15T23:59:59Z
+tags: [crypto, c, posix]
+uuid: 1cddecb9-44b1-346c-ded6-c099069ce013
+---
+
+[**Blowpipe**][blowpipe] is a *toy* crypto tool that creates a
+[Blowfish][bf]-encrypted pipe. It doesn't open any files and instead
+encrypts and decrypts from standard input to standard output. This
+pipe can encrypt individual files or even encrypt a network
+connection (à la netcat).
+
+Most importantly, since Blowpipe is intended to be used as a pipe
+(duh), it will *never* output decrypted plaintext that hasn't been
+*authenticated*. That is, it will detect tampering of the encrypted
+stream and truncate its output, reporting an error, without producing
+the manipulated data. Some very similar tools that *aren't* considered
+toys lack this important feature, such as [aespipe][aespipe].
+
+### Purpose
+
+Blowpipe came about because I wanted to study Blowfish, a 64-bit block
+cipher designed by Bruce Schneier in 1993. It's played an important
+role in the history of cryptography and has withstood cryptanalysis
+for 24 years. Its major weakness is its small block size, leaving it
+vulnerable to birthday attacks regardless of any other property of the
+cipher. Even in 1993 the 64-bit block size was a bit on the small
+side, but Blowfish was intended as a drop-in replacement for the Data
+Encryption Standard (DES) and the International Data Encryption
+Algorithm (IDEA), other 64-bit block ciphers.
+
+The main reason I'm calling this program a toy is that, outside of
+legacy interfaces, it's simply not appropriate to deploy a 64-bit
+block cipher in 2017. Blowpipe shouldn't be used to encrypt more than
+a few tens of GBs of data at a time. Otherwise I'm *fairly* confident
+in both my message construction and my implementation. One detail is a
+little uncertain, and I'll discuss it later when describing message
+format.
+
+A tool that I *am* confident about is [Enchive][enchive], though since
+it's [intended for file encryption][good], it's not appropriate for use
+as a pipe. It doesn't authenticate until after it has produced most of
+its output. Enchive does try its best to delete files containing
+unauthenticated output when authentication fails, but this doesn't
+prevent you from consuming this output before it can be deleted,
+particularly if you pipe the output into another program.
+
+### Usage
+
+As you might expect, there are two modes of operation: encryption (`-E`)
+and decryption (`-D`). The simplest usage is encrypting and decrypting a
+file:
+
+    $ blowpipe -E < data.gz > data.gz.enc
+    $ blowpipe -D < data.gz.enc | gunzip > data.txt
+
+In both cases you will be prompted for a passphrase which can be up to
+72 bytes in length. The only verification for the key is the first
+Message Authentication Code (MAC) in the datastream, so Blowpipe
+cannot tell the difference between damaged ciphertext and an incorrect
+key.
+
+In a script it would be smart to check Blowpipe's exit code after
+decrypting. The output will be truncated should authentication fail
+somewhere in the middle. Since Blowpipe isn't aware of files, it can't
+clean up for you.
+
+Another use case is securely transmitting files over a network with
+netcat. In this example I'll use a pre-shared key file, `keyfile`.
+Rather than prompt for a key, Blowpipe will use the raw bytes of a given
+file. Here's how I would create a key file:
+
+    $ head -c 32 /dev/urandom > keyfile
+
+First the receiver listens on a socket (`bind(2)`):
+
+    $ nc -lp 2000 | blowpipe -D -k keyfile > data.zip
+
+Then the sender connects (`connect(2)`) and pipes Blowpipe through:
+
+    $ blowpipe -E -k keyfile < data.zip | nc -N hostname 2000
+
+If all went well, Blowpipe will exit with 0 on the receiver side.
+
+Blowpipe doesn't buffer its output (but see `-w`). It performs one
+`read(2)`, encrypts whatever it got, prepends a MAC, and calls
+`write(2)` on the result. This means it can comfortably transmit live
+sensitive data across the network:
+
+    $ nc -lp 2000 | blowpipe -D
+
+    # dmesg -w | blowpipe -E | nc -N hostname 2000
+
+Kernel messages will appear on the other end as they're produced by
+`dmesg`. Though keep in mind that the size of each line will be known to
+eavesdroppers. Blowpipe doesn't pad it with noise or otherwise try to
+disguise the length. Those lengths may leak useful information.
+
+### Blowfish
+
+This whole project started when I wanted to play with Blowfish as a
+small drop-in library. I wasn't satisfied with [the selection][src],
+so I figured it would be a good exercise to write my own. Besides, the
+[specification][spec] is both an enjoyable and easy read (and
+recommended). It justifies the need for a new cipher and explains the
+various design decisions.
+
+I coded from the specification, including writing [a script][script]
+to generate the subkey initialization tables. Subkeys are initialized
+to the binary representation of pi (the first ~10,000 decimal digits).
+After a couple hours of work I hooked up the official test vectors to
+see how I did, and all the tests passed on the first run. This wasn't
+reasonable, so I spent awhile longer figuring out how I screwed up my
+tests. Turns out I absolutely *nailed it* on my first shot. It's a
+really great sign for Blowfish that it's so easy to implement
+correctly.
+
+Blowfish's key schedule produces five subkeys requiring 4,168 bytes of
+storage. The key schedule is unusually complex: Subkeys are repeatedly
+encrypted with themselves as they are being computed. This complexity
+inspired the [bcrypt][bcrypt] password hashing scheme, which
+essentially works by iterating the key schedule many times in a loop,
+then encrypting a constant 24-byte string. My bcrypt implementation
+wasn't nearly as successful on my first attempt, and it took hours of
+debugging in order to match OpenBSD's outputs.
+
+The encryption and decryption algorithms are nearly identical, as is
+typical for, and a feature of, Feistel ciphers. There are no branches
+(preventing some side-channel attacks), and the only operations are
+32-bit XOR and 32-bit addition. This makes it ideal for implementation
+on 32-bit computers.
+
+One tricky point is that encryption and decryption operate on a pair
+of 32-bit integers (another giveaway that it's a Feistel cipher). To
+put the cipher to practical use, these integers have to be [serialized
+into a byte stream][endian]. The specification doesn't choose a byte
+order, even for mixing the key into the subkeys. The official test
+vectors are also 32-bit integers, not byte arrays. An implementer
+could choose little endian, big endian, or even something else.
+
+However, there's one place in which this decision *is* formally made:
+the official test vectors mix the key into the first subkey in big
+endian byte order. By luck I happened to choose big endian as well,
+which is why my tests passed on the first try. OpenBSD's version of
+bcrypt also uses big endian for all integer encoding steps, further
+cementing big endian as the standard way to encode Blowfish integers.
+
+### Blowfish library
+
+The Blowpipe repository contains a ready-to-use, public domain Blowfish
+library written in strictly conforming C99. The interface is just three
+functions:
+
+~~~c
+void blowfish_init(struct blowfish *, const void *key, int len);
+void blowfish_encrypt(struct blowfish *, uint32_t *, uint32_t *);
+void blowfish_decrypt(struct blowfish *, uint32_t *, uint32_t *);
+~~~
+
+Technically the key can be up to 72 bytes long, but the last 16 bytes
+have an incomplete effect on the subkeys, so only the first 56 bytes
+should matter. Since bcrypt runs the key schedule multiple times, all
+72 bytes have full effect.
+
+The library also includes a bcrypt implementation, though it will only
+produce the raw password hash, not the base-64 encoded form. The main
+reason for including bcrypt is to support Blowpipe.
+
+### Message format
+
+The main goal of Blowpipe was to build a robust, authenticated
+encryption tool using *only* Blowfish as a cryptographic primitive.
+
+1. It uses bcrypt with a moderately-high cost as a key derivation
+   function (KDF). Not terrible, but this is not a memory hard KDF,
+   which is important for protecting against cheap hardware brute force
+   attacks.
+
+2. Encryption is Blowfish in "counter" [CTR mode][ctr]. A 64-bit
+   counter is incremented and encrypted, producing a keystream. The
+   plaintext is XORed with this keystream like a stream cipher. This
+   allows the last block to be truncated when output and eliminates
+   some padding issues. Since CRT mode is trivially malleable, the MAC
+   becomes even more important. In CTR mode, `blowfish_decrypt()` is
+   never called. In fact, Blowpipe never uses it.
+
+3. The authentication scheme is Blowfish-CBC-MAC with a unique key and
+   [encrypt-then-authenticate][doom] (something I harmlessly got wrong
+   with Enchive). It essentially encrypts the ciphertext again with a
+   different key, but in [Cipher Block Chaining mode][cbc] (CBC), but
+   it only saves the final block. The final block is prepended to the
+   ciphertext as the MAC. On decryption the same block is computed
+   again to ensure that it matches. Only someone who knows the MAC key
+   can compute it.
+
+Of all three Blowfish uses, I'm least confident about authentication.
+[CBC-MAC is tricky to get right][cbcmac], though I am following the
+rules: fixed length messages using a different key than encryption.
+
+Wait a minute. Blowpipe is pipe-oriented and can output data without
+buffering the entire pipe. How can there be fixed-length messages?
+
+The pipe datastream is broken into 64kB *chunks*. Each chunk is
+authenticated with its own MAC. Both the MAC and chunk length are
+written in the chunk header, and the length is authenticated by the
+MAC. Furthermore, the MAC is continued from previous chunk, preventing
+chunks from being reordered. Blowpipe can output the content of a
+chunk and discard it once it's been authenticated. If any chunk fails
+to authenticate, it aborts.
+
+![](/img/diagram/blowpipe.svg)
+
+This also leads to another useful trick: The pipe is terminated with a
+zero length chunk, preventing an attacker from appending to the
+datastream. Everything after the zero-length chunk is discarded. Since
+the length is authenticated by the MAC, the attacker also cannot
+truncate the pipe since that would require knowledge of both keys.
+
+The pipe itself has a 17 byte header: a 16 byte random bcrypt salt and 1
+byte for the bcrypt cost. The salt is like an initialization vector (IV)
+that allows keys to be safely reused in different Blowpipe instances.
+The cost byte is the only distinguishing byte in the stream. Since even
+the chunk lengths are encrypted, everything else in the datastream
+should be indistinguishable from random data.
+
+### Portability
+
+Blowpipe runs on POSIX systems and Windows (Mingw-w64 and MSVC). I
+initially wrote it for POSIX (on Linux) of course, but I took an unusual
+approach when it came time to port it to Windows. Normally I'd [invent a
+generic OS interface][pwrite] that makes the appropriate host system
+calls. This time I kept the POSIX interface (`read(2)`, `write(2)`,
+`open(2)`, etc.) and implemented the tiny subset of POSIX that I needed
+in terms of Win32. That implementation can be found under `w32-compat/`.
+I even dropped in a copy of [my own `getopt()`][getopt].
+
+One really cool feature of this technique is that, on Windows, Blowpipe
+will still "open" `/dev/urandom`. It's intercepted by my own `open(2)`,
+which in response to that filename actually calls
+[`CryptAcquireContext()`][cac] and pretends like it's a file. It's all
+hidden behind the file descriptor. That's the unix way.
+
+I'm considering giving Enchive the same treatment since it would simply
+and reduce much of the interface code. In fact, this project has taught
+me a number of ways that Enchive could be improved. That's the value of
+writing "toys" such as Blowpipe.
+
+
+[aespipe]: http://loop-aes.sourceforge.net/aespipe.README
+[bcrypt]: https://www.usenix.org/legacy/events/usenix99/provos/provos_html/node1.html
+[bf]: https://www.schneier.com/academic/blowfish/
+[blowpipe]: https://github.com/skeeto/blowpipe
+[cac]: https://msdn.microsoft.com/en-us/library/windows/desktop/aa379886(v=vs.85).aspx
+[cbc]: https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CBC
+[cbcmac]: https://blog.cryptographyengineering.com/2013/02/15/why-i-hate-cbc-mac/
+[ctr]: https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29
+[doom]: https://moxie.org/blog/the-cryptographic-doom-principle/
+[enchive]: https://github.com/skeeto/enchive
+[endian]: /blog/2016/11/22/
+[getopt]: https://github.com/skeeto/getopt
+[good]: /blog/2017/03/12/
+[pwrite]: /blog/2017/03/01/
+[script]: https://github.com/skeeto/blowpipe/blob/master/gen-tables.sh
+[spec]: https://www.schneier.com/academic/archives/1994/09/description_of_a_new.html
+[src]: https://www.schneier.com/academic/blowfish/download.html
