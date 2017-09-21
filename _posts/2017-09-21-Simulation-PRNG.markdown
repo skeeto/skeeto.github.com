@@ -9,7 +9,7 @@ uuid: 637af55f-6e33-31e5-25fa-edb590a16d44
 I use pseudo-random number generators (PRNGs) a whole lot. They're an
 essential component in lots of algorithms and processes.
 
-* **Monte Carlo simulations**, where PRNGs are used to [compute a
+* **Monte Carlo simulations**, where PRNGs are used to [compute
   numeric estimates][mc] for problems that are difficult or impossible
   to solve to analytically.
 
