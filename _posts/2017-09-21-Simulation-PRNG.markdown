@@ -11,7 +11,7 @@ essential component in lots of algorithms and processes.
 
 * **Monte Carlo simulations**, where PRNGs are used to [compute
   numeric estimates][mc] for problems that are difficult or impossible
-  to solve to analytically.
+  to solve analytically.
 
 * [**Monte Carlo tree search AI**][mcts], where massive numbers of games
   are played out randomly in search of an optimal move. This is a
