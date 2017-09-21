@@ -100,12 +100,12 @@ disguise the length. Those lengths may leak useful information.
 
 ### Blowfish
 
-This whole project started when I wanted to play with Blowfish as a
-small drop-in library. I wasn't satisfied with [the selection][src],
-so I figured it would be a good exercise to write my own. Besides, the
-[specification][spec] is both an enjoyable and easy read (and
-recommended). It justifies the need for a new cipher and explains the
-various design decisions.
+This whole project started when I wanted to [play with Blowfish][play]
+as a small drop-in library. I wasn't satisfied with [the
+selection][src], so I figured it would be a good exercise to write my
+own. Besides, the [specification][spec] is both an enjoyable and easy
+read (and recommended). It justifies the need for a new cipher and
+explains the various design decisions.
 
 I coded from the specification, including writing [a script][script]
 to generate the subkey initialization tables. Subkeys are initialized
@@ -261,6 +261,7 @@ writing "toys" such as Blowpipe.
 [endian]: /blog/2016/11/22/
 [getopt]: https://github.com/skeeto/getopt
 [good]: /blog/2017/03/12/
+[play]: /blog/2017/09/21/
 [pwrite]: /blog/2017/03/01/
 [script]: https://github.com/skeeto/blowpipe/blob/master/gen-tables.sh
 [spec]: https://www.schneier.com/academic/archives/1994/09/description_of_a_new.html
