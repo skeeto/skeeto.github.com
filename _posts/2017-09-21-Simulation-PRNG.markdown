@@ -17,7 +17,7 @@ essential component in lots of algorithms and processes.
   are played out randomly in search of an optimal move. This is a
   specific application of the last item.
 
-* [**Generic algorithms**][ga], where a PRNG creates the initial
+* [**Genetic algorithms**][ga], where a PRNG creates the initial
   population, and then later guides in mutation and breeding of selected
   solutions.
 
