@@ -35,6 +35,9 @@ to return `NULL` since the return value is never inspected (Emacs
 unforgiving (a hard crash), the API is mostly intuitive and it's been
 pretty easy to feel my way around it.
 
+*Update*: Philipp Stephani has [written thorough, reliable module
+documentation][doc].
+
 ### Dynamic Module Types
 
 All Emacs values — integers, floats, cons cells, vectors, strings,
@@ -511,3 +514,4 @@ I'd like to someday see an Emacs Lisp game well-suited for a joystick.
 [js]: https://www.kernel.org/doc/Documentation/input/joystick-api.txt
 [internals]: /blog/2014/01/04/
 [read]: /blog/2013/12/30/
+[doc]: https://phst.github.io/emacs-modules
