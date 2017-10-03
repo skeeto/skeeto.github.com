@@ -21,13 +21,14 @@ of **coding to the standards** and ignoring extensions unless
 *absolutely* necessary. Knowing what's standard and what's extension is
 the tricky part, but I'll explain how to find this information.
 
-You might be tempted to reach for an overly complicated solution such as
-GNU Autoconf. Sure, it creates a configure script with the familiar,
-conventional interface. This has real value. But do you *really* need to
-run a single-threaded gauntlet of hundreds of feature/bug tests for
-things that sometimes worked incorrectly in some weird unix variant back
-in the 1990s? On a machine with many cores (parallel build, `-j`), this
-may very well be the slowest part of the whole build process.
+You might be tempted to reach for an [overly complicated][ac] solution
+such as GNU Autoconf. Sure, it creates a configure script with the
+familiar, conventional interface. This has real value. But do you
+*really* need to run a single-threaded gauntlet of hundreds of
+feature/bug tests for things that sometimes worked incorrectly in some
+weird unix variant back in the 1990s? On a machine with many cores
+(parallel build, `-j`), this may very well be the slowest part of the
+whole build process.
 
 For example, the configure script for Emacs checks that the compiler
 supplies `stdlib.h`, `string.h`, and `getenv` — things that were
@@ -254,3 +255,4 @@ complex solution (pkg-config, CMake, Autoconf, etc.).
 [pep]: https://www.python.org/dev/peps/pep-0383/
 [wtf]: https://simonsapin.github.io/wtf-8/
 [emacs]: http://www.gnu.org/software/emacs/manual/html_node/elisp/Text-Representations.html
+[ac]: https://undeadly.org/cgi?action=article;sid=20170930133438
