@@ -32,12 +32,12 @@ Encryption Standard (DES) and the International Data Encryption
 Algorithm (IDEA), other 64-bit block ciphers.
 
 The main reason I'm calling this program a toy is that, outside of
-legacy interfaces, it's simply not appropriate to deploy a 64-bit
-block cipher in 2017. Blowpipe shouldn't be used to encrypt more than
-a few tens of GBs of data at a time. Otherwise I'm *fairly* confident
-in both my message construction and my implementation. One detail is a
-little uncertain, and I'll discuss it later when describing message
-format.
+legacy interfaces, it's simply [not appropriate to deploy a 64-bit
+block cipher in 2017][sweet32]. Blowpipe shouldn't be used to encrypt
+more than a few tens of GBs of data at a time. Otherwise I'm *fairly*
+confident in both my message construction and my implementation. One
+detail is a little uncertain, and I'll discuss it later when
+describing message format.
 
 A tool that I *am* confident about is [Enchive][enchive], though since
 it's [intended for file encryption][good], it's not appropriate for use
@@ -266,3 +266,4 @@ writing "toys" such as Blowpipe.
 [script]: https://github.com/skeeto/blowpipe/blob/master/gen-tables.sh
 [spec]: https://www.schneier.com/academic/archives/1994/09/description_of_a_new.html
 [src]: https://www.schneier.com/academic/blowfish/download.html
+[sweet32]: https://sweet32.info/
