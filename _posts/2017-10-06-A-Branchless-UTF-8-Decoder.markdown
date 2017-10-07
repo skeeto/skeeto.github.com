@@ -168,7 +168,7 @@ It branches off on the highest bits of the leading byte, extracts all of
 those `x` bits from each byte, concatenates those bits, checks if it's a
 surrogate half, and returns a pointer to the next character. (This
 implementation does *not* check that the highest two bits of each
-continutation byte are correct.)
+continuation byte are correct.)
 
 The CPU must correctly predict the length of the code point or else it
 will suffer a hazard. An incorrect guess will stall the pipeline and
@@ -179,7 +179,7 @@ English language, the encoded length is nearly always a single byte.
 However, even for non-English languages, text is [usually accompanied
 by markup from the ASCII range of characters][every], and, overall,
 the encoded lengths will still have consistency. As I said, the CPU
-predicts branches based on the program's previous behvior, so this
+predicts branches based on the program's previous behavior, so this
 means it will temporarily learn some of the statistical properties of
 the language being actively decoded. Pretty cool, eh?
 
