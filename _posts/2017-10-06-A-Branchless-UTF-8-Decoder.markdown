@@ -126,8 +126,8 @@ UTF-8 has some really useful properties:
 * It's self-synchronizing. A leading byte will never be mistaken for a
   continuation byte. This allows for byte-wise substring searches,
   meaning UTF-8 unaware functions like `strstr(3)` continue to work
-  without modification. It also allows for unambiguous recovery of a
-  damaged stream.
+  without modification (except for normalization issues). It also
+  allows for unambiguous recovery of a damaged stream.
 
 A straightforward approach to decoding might look something like this:
 
