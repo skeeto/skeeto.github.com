@@ -123,8 +123,11 @@ UTF-8 has some really useful properties:
   null terminated `char` buffers, often without even realizing they
   hold UTF-8 data.
 
-* It's self-synchronizing. A leading byte will never be confused for a
-  continuation byte, making it trivial to recover from a damaged stream.
+* It's self-synchronizing. A leading byte will never be mistaken for a
+  continuation byte. This allows for byte-wise substring searches,
+  meaning UTF-8 unaware functions like `strstr(3)` continue to work
+  without modification. It also allows for unambiguous recovery of a
+  damaged stream.
 
 A straightforward approach to decoding might look something like this:
 
