@@ -364,7 +364,8 @@ randchar(uint64_t *s)
 Given the odd input zero-padding requirement and the artificial
 parameters of the benchmark, despite the supposed 20% speed boost
 under GCC, my branchless decoder is not really any better than the DFA
-decoder in practice. It's just a different approach.
+decoder in practice. It's just a different approach. In practice I'd
+prefer Bjoern's DFA decoder.
 
 
 [bh]: http://bjoern.hoehrmann.de/utf-8/decoder/dfa/
