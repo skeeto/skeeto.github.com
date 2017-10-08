@@ -53,7 +53,7 @@ hazards of misprediction.
 
 Another hazard for pipelines is *dependencies*. If an instruction
 depends on the result of a previous instruction, it may have to wait for
-the previous instruction to made sufficient progress before it can
+the previous instruction to make sufficient progress before it can
 complete one of its stages. This is known as a *pipeline stall*, and it
 is an important consideration in instruction set architecture (ISA)
 design.
