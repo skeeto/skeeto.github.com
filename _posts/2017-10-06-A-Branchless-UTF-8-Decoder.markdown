@@ -313,13 +313,19 @@ Finally the continuation prefix bits that don't matter are shifted out.
 ### The goal
 
 My primary — and totally arbitrary — goal was to beat the performance of
-[Bjoern Hoehrmann's DFA-based decoder][bh]. Under favorable (and
+[Björn Höhrmann's DFA-based decoder][bh]. Under favorable (and
 artificial) benchmark conditions I had moderate success. You can try it
 out on your own system by cloning the repository and running `make
 bench`.
 
 With GCC 6.3.0 on an i7-6700, my decoder is about 20% faster than the
 DFA decoder in the benchmark. With Clang 3.8.1 it's just 1% faster.
+
+*Update*: [Björn pointed out][issue] that his site includes a faster
+variant of his DFA decoder. It is only 10% slower than the branchless
+decoder with GCC, and it's 20% faster than the branchless decoder with
+Clang. So, in a sense, it's still faster on average, even on a
+benchmark that favors a branchless decoder.
 
 The benchmark operates very similarly to [my PRNG shootout][prng] (e.g.
 `alarm(2)`). First a buffer is filled with random UTF-8 data, then the
@@ -365,7 +371,7 @@ Given the odd input zero-padding requirement and the artificial
 parameters of the benchmark, despite the supposed 20% speed boost
 under GCC, my branchless decoder is not really any better than the DFA
 decoder in practice. It's just a different approach. In practice I'd
-prefer Bjoern's DFA decoder.
+prefer Björn's DFA decoder.
 
 
 [bh]: http://bjoern.hoehrmann.de/utf-8/decoder/dfa/
@@ -376,3 +382,4 @@ prefer Bjoern's DFA decoder.
 [every]: http://utf8everywhere.org/
 [wtf8]: https://simonsapin.github.io/wtf-8/
 [utf8]: https://en.wikipedia.org/wiki/UTF-8
+[issue]: https://github.com/skeeto/branchless-utf8/issues/1
