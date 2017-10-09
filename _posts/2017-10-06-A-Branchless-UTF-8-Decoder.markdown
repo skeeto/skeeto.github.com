@@ -373,6 +373,8 @@ under GCC, my branchless decoder is not really any better than the DFA
 decoder in practice. It's just a different approach. In practice I'd
 prefer Björn's DFA decoder.
 
+*Update*: Bryan Donlan has followed up with [a SIMD UTF-8 decoder][simd].
+
 
 [bh]: http://bjoern.hoehrmann.de/utf-8/decoder/dfa/
 [prng]: /blog/2017/09/21/
@@ -383,3 +385,4 @@ prefer Björn's DFA decoder.
 [wtf8]: https://simonsapin.github.io/wtf-8/
 [utf8]: https://en.wikipedia.org/wiki/UTF-8
 [issue]: https://github.com/skeeto/branchless-utf8/issues/1
+[simd]: https://github.com/bdonlan/branchless-utf8/commit/3802d3b0e10ea16810dd40f8116243971ff7603d
