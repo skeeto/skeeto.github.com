@@ -6,11 +6,11 @@ tags: [c, optimization, x86]
 uuid: d62a6a1f-0e34-325e-9196-d66a354bc9b1
 ---
 
-This week I took a crack at writing a branchless UTF-8 decoder: a
-function that decodes a single UTF-8 code point from a byte stream
+This week I took a crack at writing a branchless [UTF-8][rfc] decoder:
+a function that decodes a single UTF-8 code point from a byte stream
 without any `if` statements, loops, short-circuit operators, or other
-sorts of conditional jumps. You can find the source code here along with
-a test suite and benchmark:
+sorts of conditional jumps. You can find the source code here along
+with a test suite and benchmark:
 
 * <https://github.com/skeeto/branchless-utf8>
 
@@ -386,3 +386,4 @@ prefer Björn's DFA decoder.
 [utf8]: https://en.wikipedia.org/wiki/UTF-8
 [issue]: https://github.com/skeeto/branchless-utf8/issues/1
 [simd]: https://github.com/bdonlan/branchless-utf8/commit/3802d3b0e10ea16810dd40f8116243971ff7603d
+[rfc]: https://tools.ietf.org/html/rfc3629
