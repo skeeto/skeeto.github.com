@@ -63,6 +63,8 @@ int main(void)
 }
 ~~~
 
+And the result of the trace:
+
     $ strace -e open ./a.out
     open("/dev/null", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
 
