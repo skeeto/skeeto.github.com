@@ -38,7 +38,7 @@ Original credit for this visualization concept goes to [w0rthy][orig].
 All of the source code (less than 600 lines of C), ready to run, can be
 found here:
 
-* <https://github.com/skeeto/sort-circle>
+* **<https://github.com/skeeto/sort-circle>**
 
 On any modern computer, rendering is real-time, even at 60 FPS, so you
 may be able to pipe the program's output directly into your media player
@@ -254,7 +254,6 @@ of the dot.
             /* ... */
         }
     }
-}
 ```
 
 Use the x and y distances to compute the distance and smoothstep
