@@ -252,8 +252,8 @@ Originally this expression was the return value, computed at the very
 end of the function. However, after inspecting the compiler's assembly
 output, I decided to move it up, and the result was a solid performance
 boost. That's because it spreads out dependent instructions. With the
-address of the next code point known so early, the instructions that
-decode the next code point can get started early.
+address of the next code point known so early, [the instructions that
+decode the next code point can get started early][carruth].
 
 The reason for the `!len` is so that the pointer is advanced one byte
 even in the face of an error (length of zero). Adding that `!len` is
@@ -387,3 +387,4 @@ prefer Björn's DFA decoder.
 [issue]: https://github.com/skeeto/branchless-utf8/issues/1
 [simd]: https://github.com/bdonlan/branchless-utf8/commit/3802d3b0e10ea16810dd40f8116243971ff7603d
 [rfc]: https://tools.ietf.org/html/rfc3629
+[carruth]: https://www.youtube.com/watch?v=2EWejmkKlxs
