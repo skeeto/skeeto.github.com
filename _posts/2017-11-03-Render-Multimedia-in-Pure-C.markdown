@@ -24,12 +24,12 @@ simple as Netpbm) WAV format. Put them together and a small,
 standalone program can create multimedia.
 
 Here's the demonstration video I'll be going through in this article.
-It animates and visualizes various in-place sorting algorithms. The
-elements are rendered as colored dots, ordered by hue, with red at 12
-o'clock. A dot's distance from the center is proportional to its
-corresponding element's distance from its correct position. Each dot
-emits a sinusoidal tone with a unique frequency when it swaps places
-in a particular frame.
+It animates and visualizes various in-place sorting algorithms ([see
+also][libc]). The elements are rendered as colored dots, ordered by
+hue, with red at 12 o'clock. A dot's distance from the center is
+proportional to its corresponding element's distance from its correct
+position. Each dot emits a sinusoidal tone with a unique frequency
+when it swaps places in a particular frame.
 
 [![](/img/sort-circle/video.png)][video]
 
@@ -526,6 +526,7 @@ fast enough for real time rendering, it's no good for interaction.
 
 [gap]: /blog/2017/09/07/
 [hh]: https://www.youtube.com/user/handmadeheroarchive
+[libc]: /blog/2016/09/05/
 [mjpeg]: http://mjpeg.sourceforge.net/
 [netray]: /blog/2016/09/02/
 [ny]: https://en.wikipedia.org/wiki/Nyquist_frequency
