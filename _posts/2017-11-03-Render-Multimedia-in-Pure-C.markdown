@@ -464,7 +464,7 @@ as an *envelope* to shape the beginning and ending of this tone so that
 it fades in and fades out. Otherwise you get the nasty, high-frequency
 "pop" sound as the wave is given a hard cut off.
 
-![](/img/sort-circle/sin.png)
+![](/img/sort-circle/envelope.svg)
 
 ```c
     for (int i = 0; i < N; i++) {
