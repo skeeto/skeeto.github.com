@@ -199,6 +199,10 @@ color, everything else was left alone. This had two bad effects:
 * There's no blending between dots when they overlap, making the lack of
   anti-aliasing even more pronounced.
 
+<video src="/img/sort-circle/flyby.mp4"
+       loop="loop" autoplay="autoplay" width="600">
+</video>
+
 Instead the dot's position is computed in floating point and is
 actually rendered as if it were between pixels. This is done with a
 shader-like routine that uses [smoothstep][ss] — just as [found in
