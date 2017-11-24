@@ -97,7 +97,7 @@ instruction stores the source (second) operand in its destination
 rip onto the stack, then sets rip (*jumps*) to the address of the
 target function. When the callee is ready to return, it uses the `ret`
 instruction to *pop* the original rip value off the stack and back
-into rip, returning control to the callee.
+into rip, returning control to the caller.
 
 ~~~nasm
     mov rdi, 1
