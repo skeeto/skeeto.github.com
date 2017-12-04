@@ -177,11 +177,12 @@ always going to be a notable limitation of WSL.
 One of my hopes for WSL appears to be unfeasible. I thought it might
 be a way to avoid [porting software from POSIX to Win32][port]. I
 could just supply Windows users with the same Linux binary and they'd
-be fine. However, WSL requires switching Windows into a special
+be fine. ~~However, WSL requires switching Windows into a special
 "developer mode," putting it well out of reach of the vast majority of
 users, especially considering the typical corporate computing
 environment that will lock this down. In practice, WSL is only useful
-to developers. I'm sure this is no accident.
+to developers. I'm sure this is no accident.~~ (Developer mode is [no
+longer required][mode] as of October 2017.)
 
 Mostly I see WSL as a Cygwin killer. [Unix is my IDE][ide] and, on
 Windows, Cygwin has been my preferred go to for getting a solid unix
@@ -212,3 +213,4 @@ it's better than Cygwin *if* you can get access to it.
 [home]: /blog/2017/06/19/
 [ide]: https://sanctum.geek.nz/arabesque/series/unix-as-ide/
 [port]: /blog/2017/03/30/
+[mode]: https://blogs.msdn.microsoft.com/commandline/2017/10/11/whats-new-in-wsl-in-windows-10-fall-creators-update/
