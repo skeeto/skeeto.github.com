@@ -56,7 +56,7 @@ Viewer][ngram], with my own additional filters and tweaking. It's called
 "formal" because the ngrams come from formal publications and represent
 more formal kinds of speech.
 
-The "slang" list is derived from *every* reddit comment between
+The "slang" list is derived from [*every* reddit comment][db] between
 December 2005 and May 2017, tamed by the same additional filters. I
 [have this data on hand][reddit], so I may as well put it to use. I
 figured more casually-used words would be easier to remember. Due to
@@ -136,3 +136,4 @@ character-composition requirements][passwords].
 [reddit]: /blog/2016/12/01/
 [shuffle]: https://possiblywrong.wordpress.com/2011/03/27/card-shuffling-youre-not-done-yet/
 [verify]: https://lwn.net/Articles/629714/
+[db]: http://files.pushshift.io/reddit/
