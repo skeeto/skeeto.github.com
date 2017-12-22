@@ -123,7 +123,7 @@ fact, it has worse performance than straightforward dynamic scope with
    run-time within the body of `lexical-let`, the resulting closure is
    only partially byte-compiled even if the code as a whole has been
    byte-compiled. In contrast, `lexical-binding: t` closures are fully
-   compiled. How this works is worth its own article.
+   compiled. How this works is worth [its own article][followup].
 
 5. Converted lambda expressions include the additional internal
    function invocation, making them slower.
@@ -312,3 +312,4 @@ function parameters, `dotimes`, `dolist`, and `condition-case`.
 [rd]: /blog/2013/12/30/
 [bug]: https://github.com/jwiegley/emacs-async/issues/17
 [const]: /blog/2016/07/25/
+[followup]: /blog/2017/12/14/
