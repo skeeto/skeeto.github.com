@@ -74,8 +74,8 @@ comment from the source describes it:
 
 Sort in **637 frames**. [musl libc][musl] is another alternative C
 standard library for Linux. It's my personal preference when I
-statically link Linux binaries. Its qsort() looks a lot like a
-heapsort, and with some research I see it's actually smoothsort, a
+statically link Linux binaries. Its qsort() looks a lot like a heapsort,
+and with some research I see it's actually [smoothsort][smooth], a
 heapsort variant.
 
 ![](/img/qsort/musl.gif){: .resetable title="musl"}
@@ -177,3 +177,4 @@ implementations.
 [ucrt]: https://blogs.msdn.microsoft.com/vcblog/2015/03/03/introducing-the-universal-crt/
 [msvcrt]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
 [pellesc]: http://www.smorgasbordet.com/pellesc/
+[smooth]: http://www.keithschwarz.com/smoothsort/
