@@ -449,3 +449,38 @@ article.tag a.feed {
 main article .resetable {
     cursor: pointer;
 }
+
+/* Remove/hide some elements for small screens */
+
+@media screen and (max-width: 599px) {
+    .identity {
+        visibility: hidden;
+    }
+
+    article .post-list time {
+        display: none;
+    }
+
+    article .post-list {
+        text-indent: -1em;
+    }
+
+    article {
+        text-align: left;
+    }
+
+    article pre {
+        overflow-x: scroll;
+    }
+}
+
+@media screen and (max-width: 359px) {
+    header nav li.feed,
+    header nav li.toys {
+        display: none;
+    }
+
+    header nav ul {
+        width: 16rem;
+    }
+}
