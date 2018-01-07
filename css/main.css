@@ -211,6 +211,10 @@ main article li a {
     text-decoration: underline;
 }
 
+.post-list {
+    text-align: left;
+}
+
 .post-list a {
     text-decoration: none;
 }
