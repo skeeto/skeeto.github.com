@@ -132,7 +132,7 @@ There are DTrace *probes* scattered all throughout the system: on
 system calls, scheduler events, networking events, process events,
 signals, virtual memory events, etc. Using a specialized language
 called D (unrelated to the general purpose programming language D),
-you can dynamically add behavior at these instrumentation's points.
+you can dynamically add behavior at these instrumentation points.
 Generally the behavior is to capture information, but it can also
 manipulate the event being traced.
 
