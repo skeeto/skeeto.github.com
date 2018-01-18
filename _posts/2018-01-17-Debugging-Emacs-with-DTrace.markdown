@@ -316,7 +316,7 @@ report this bug months ago.*
 [home]: /blog/2017/06/19/
 [illumos]: https://illumos.org/
 [kqueue]: https://www.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2
-[kystys]: https://omnios.omniti.com/wiki.php/KYSTY
+[kysty]: https://omnios.omniti.com/wiki.php/KYSTY
 [oi]: https://www.openindiana.org/
 [omnios]: https://omnios.omniti.com/
 [oral]: https://www.youtube.com/watch?v=4PaWFYm0kEw
