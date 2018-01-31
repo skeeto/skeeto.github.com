@@ -7,8 +7,8 @@ uuid: 8d4f4f52-2295-32c7-8452-d22d4f45a437
 ---
 
 *Update May 2017*: Shortly after [switching to modal editing][vim], I
-stopped using Emacs and Notmuch as my mail client. I now use Mutt and
-Vim.
+stopped using Emacs and Notmuch as my mail client. I [now use Mutt and
+Vim][mutt].
 
 For the last 8 years I have been using Gmail as my e-mail provider,
 during which 3 years I was a student. It was very convenient,
@@ -217,6 +217,7 @@ you're not doing so already. It's been extremely liberating for me.
 [brian]: http://www.50ply.com/
 [compose]: http://gizmodo.com/gmails-new-compose-window-will-soon-be-your-only-choic-1123199551
 [maildir]: http://cr.yp.to/proto/maildir.html
+[mutt]: /blog/2017/06/15/
 [sshfs]: http://fuse.sourceforge.net/sshfs.html
 [remote]: http://notmuchmail.org/remoteusage/
 [dotfiles]: /blog/2012/06/23/
