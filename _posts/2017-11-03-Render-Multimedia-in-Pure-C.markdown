@@ -101,7 +101,7 @@ simpler and faster. I chose 800x800 as the default:
 #define S     800
 ```
 
-Rather that define some sort of color struct with red, green, and blue
+Rather than define some sort of color struct with red, green, and blue
 fields, color will be represented by a 24-bit integer (`long`). I
 arbitrarily chose red to be the most significant 8 bits. This has
 nothing to do with the order of the individual channels in Netpbm
