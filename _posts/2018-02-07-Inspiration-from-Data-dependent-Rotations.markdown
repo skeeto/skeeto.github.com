@@ -124,11 +124,11 @@ spcg32(uint64_t s[1])
 
 Notice how the final shift depends on the high order bits of the PRNG
 state. (This one weird trick from Melissa O'Neil will significantly
-improve the output of your PRNG. Xorshift experts hate her.)
+improve your PRNG. Xorshift experts hate her.)
 
 I think this raises a really interesting question: Why did it take until
 2014 for someone to apply a data-dependent shift to a PRNG? Similarly,
-why aren't data-dependent rotations used in many ciphers?
+why are [data-dependent rotations not used in many ciphers][ddr]?
 
 My own theory is that this is because many older instruction set
 architectures can't perform data-dependent shift operations efficiently.
@@ -163,6 +163,7 @@ in the middle.
 
 
 [bf]: /blog/2017/09/15/
+[ddr]: https://crypto.stackexchange.com/q/20325
 [p1]: https://www.google.com/patents/US5724428
 [p2]: https://www.google.com/patents/US6269163
 [pcg]: http://www.pcg-random.org/
