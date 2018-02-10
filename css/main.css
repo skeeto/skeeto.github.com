@@ -309,6 +309,16 @@ main article ul.tags:after {
     content: ']'
 }
 
+main article img.right {
+    float: right;
+    margin: 12px 0 12px 12px;
+}
+
+main article img.left {
+    float: left;
+    margin: 12px 12px 12px 0;
+}
+
 .load-comments {
     text-align: center;
     background-color: gray;
