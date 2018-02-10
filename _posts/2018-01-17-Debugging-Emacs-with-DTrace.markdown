@@ -46,13 +46,13 @@ For now I just had to wait to [hunt that zebra][zebra].
 ### Bryan Cantrill, DTrace, and FreeBSD
 
 Over the holidays I re-discovered [Bryan Cantrill][bc], a systems
-software developer who worked for Sun between 1996 and 2010, and is
-most well known for [DTrace][dtrace]. My first exposure to him was in
-a [BSD Now interview][bsd] in 2015. I had re-watched that interview
-and decided there was a lot more I had to learn from him. He's become
-a personal hero to me. So I scoured the internet for more of his
-writing and talks. Besides what I've already linked in this article,
-here are a couple more great presentations:
+software engineer who worked for Sun between 1996 and 2010, and is most
+well known for [DTrace][dtrace]. My first exposure to him was in a [BSD
+Now interview][bsd] in 2015. I had re-watched that interview and decided
+there was a lot more I had to learn from him. He's become a personal
+hero to me. So I scoured the internet for [more of his writing and
+talks][binge]. Besides what I've already linked in this article, here
+are a couple more great presentations:
 
 * [Oral Tradition in Software Engineering][oral]
 * [Fork Yeah! The Rise and Development of illumos][fork]
@@ -296,6 +296,7 @@ report this bug months ago.*
 
 
 [bc]: https://en.wikipedia.org/wiki/Bryan_Cantrill
+[binge]: http://dtrace.org/blogs/bmc/2018/02/03/talks/
 [bmc]: http://dtrace.org/blogs/bmc/
 [bsd]: https://www.youtube.com/watch?v=l6XQUciI-Sc
 [bug]: https://github.com/skeeto/elfeed/issues/248
