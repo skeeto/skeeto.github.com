@@ -1,53 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>
-      {% if page.title %}{{ page.title }} &laquo; {% endif %}null program
-    </title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="alternate" type="application/atom+xml" href="/feed/"/>
-    <link rel="stylesheet" href="/css/full.css"/>
-  </head>
-  <body>
+<title>{% if page.title %}{{ page.title }} « {% endif %}null program</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="alternate" type="application/atom+xml" href="/feed/"/>
+<link rel="stylesheet" href="/css/full.css"/>
 
-    <main>
-    {{ content }}
-    </main>
+<main>
+{{ content }}
+</main>
 
-    <header>
-      <div class="container">
-        <div class="portrait identity"></div>
-        <h1 class="site-title identity"><a href="/">null program</a></h1>
-        <h2 class="full-name identity">Chris Wellons</h2>
-        <address class="identity">
-          <a id="email" href=""></a>
-        </address>
-        <nav>
-          <ul>
-            <li class="index"><a href="/index/">Index</a></li>
-            <li class="tags"><a href="/tags/">Categories</a></li>
-            <li class="toys"><a href="/toys/">Showcase</a></li>
-            <li class="github"><a href="http://github.com/skeeto">GitHub</a></li>
-            <li class="feed"><a href="/feed/">Feed</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<header>
+  <div class="container">
+    <div class="portrait identity"></div>
+    <h1 class="site-title identity"><a href="/">null program</a></h1>
+    <h2 class="full-name identity">Chris Wellons</h2>
+    <address class="identity">
+      <a id="email" href=""></a>
+    </address>
+    <nav>
+      <ul>
+        <li class="index"><a href="/index/">Index</a></li>
+        <li class="tags"><a href="/tags/">Categories</a></li>
+        <li class="toys"><a href="/toys/">Showcase</a></li>
+        <li class="github"><a href="http://github.com/skeeto">GitHub</a></li>
+        <li class="feed"><a href="/feed/">Feed</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <footer>
-      <p>
-        All information on this blog, unless otherwise noted, is
-        hereby released into the public domain, with no rights
-        reserved.
-      </p>
-    </footer>
+<footer>
+  <p>
+    All information on this blog, unless otherwise noted, is
+    hereby released into the public domain, with no rights
+    reserved.
+  </p>
+</footer>
 
-    <script>
-      {% if jekyll.environment == "production" %}
-        {% include ga.js %}
-      {% endif %}
-      {% include identity.js %}
-    </script>
-  </body>
-</html>
+<script>
+{% if jekyll.environment == "production" %}
+{% include ga.js %}
+{% endif %}
+{% include identity.js %}
+</script>
