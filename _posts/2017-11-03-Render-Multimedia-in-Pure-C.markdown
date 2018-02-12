@@ -539,5 +539,5 @@ fast enough for real time rendering, it's no good for interaction.
 [ppm]: https://en.wikipedia.org/wiki/Netpbm_format
 [prev]: /blog/2017/07/02/
 [ss]: https://en.wikipedia.org/wiki/Smoothstep
-[video]: http://nullprogram.com/video/?v=sort-circle
+[video]: /video/?v=sort-circle
 [wav]: http://soundfile.sapp.org/doc/WaveFormat/

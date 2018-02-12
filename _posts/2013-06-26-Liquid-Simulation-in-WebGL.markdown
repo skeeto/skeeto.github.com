@@ -12,7 +12,7 @@ blurring the rendering of this simulation, and finally thresholding
 the blurred rendering. Due to [my recent affection for WebGL][webgl],
 this week I ported the whole thing to JavaScript and WebGL.
 
- * [http://nullprogram.com/fun-liquid/webgl/](/fun-liquid/webgl/)
+ * [nullprogram.com/fun-liquid/webgl/](/fun-liquid/webgl/)
 
 Unlike the previous Java version, blurring and thresholding is
 performed entirely on the GPU. It *should* therefore be less CPU

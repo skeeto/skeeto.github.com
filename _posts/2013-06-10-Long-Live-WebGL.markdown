@@ -118,7 +118,7 @@ interesting part of it all*! For example, after getting a handle on
 how things worked — without copy-pasting any boilerplate around — I
 ported [my OpenCL 3D perlin noise generator][opencl] to GLSL.
 
- * [http://nullprogram.com/perlin-noise/](/perlin-noise/)
+ * [/perlin-noise/](/perlin-noise/)
    ([source](https://github.com/skeeto/perlin-noise/tree/master/webgl))
 
 ![](/img/noise/octave-perlin2d.png)

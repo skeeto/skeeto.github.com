@@ -172,4 +172,4 @@ Notice because of `pwrite()` there's no piping directly into
 [simd]: /blog/2015/07/10/
 [video]: /blog/2011/11/28/
 [gist]: https://gist.github.com/skeeto/d7e17bb2aa40907a3405c3933cb1f936
-[alt]: http://nullprogram.com/video/?v=julia-256
+[alt]: /video/?v=julia-256
