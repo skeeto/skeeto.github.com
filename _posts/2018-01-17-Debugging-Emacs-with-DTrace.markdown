@@ -107,12 +107,11 @@ you're very much on your own when things don't work. The situation is
 like running Linux a couple decades ago, when it was still difficult
 to do.
 
-If you're interested in trying DTrace, the easiest option these days
-is [FreeBSD][freebsd]. It's got a big active community, thorough
-documentation, and a huge selection of packages. If Debian were to
-suddenly disappear, my new home could very well be on FreeBSD. Its
-license (the *BSD license*, duh) is compatible with the CDDL, so both
-ZFS and DTrace have been ported to FreeBSD.
+If you're interested in trying DTrace, the easiest option these days is
+probably [FreeBSD][freebsd]. It's got a big, active community, thorough
+documentation, and a huge selection of packages. Its license (the *BSD
+license*, duh) is compatible with the CDDL, so both ZFS and DTrace have
+been ported to FreeBSD.
 
 ### What is DTrace?
 
