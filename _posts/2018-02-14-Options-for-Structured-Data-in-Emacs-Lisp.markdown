@@ -281,8 +281,8 @@ function.
 
 Since cl-generic is aware of the types created by `cl-defstruct`,
 functions can specialize on them as if they were native types. It's a
-lot simpler to let cl-generic to all the hard work, and the people
-reading your code will appreciate it:
+lot simpler to let cl-generic do all the hard work. The people reading
+your code will appreciate it, too:
 
 ```cl
 (require 'cl-generic)
