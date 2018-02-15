@@ -72,13 +72,16 @@ picked up the pieces and kept going as a community under the name
 
 Naturally I wanted to get my hands on this stuff to try it out for
 myself. Is it really as good as they say? Normally I stick to Linux,
-but it (generally) doesn't have these Sun technologies available. The
-main reason is license incompatibility. Sun released its code under
-the [CDDL][cddl], which is incompatible with the GPL. Ubuntu *does*
+but it (generally) doesn't have these Sun technologies. The main
+reason is license incompatibility. Sun released its code under the
+[CDDL][cddl], which is incompatible with the GPL. Ubuntu *does*
 [infamously include ZFS][ubuntu], but other distributions are
 unwilling to take that risk. Porting DTrace is a serious undertaking
 since it's got its fingers throughout the kernel, which also makes the
 licensing issues even more complicated.
+
+(*Update Feburary 2018*: [DTrace has been released under the
+GPLv2][news], allowing it to be legally integrated with Linux.)
 
 Linux has a reputation for Not Invented Here (NIH) syndrome, and these
 licensing issues certainly contribute to that. Rather than adopt ZFS
@@ -317,6 +320,7 @@ report this bug months ago.*
 [illumos]: https://illumos.org/
 [kqueue]: https://www.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2
 [kysty]: https://omnios.omniti.com/wiki.php/KYSTY
+[news]: https://gnu.wildebeest.org/blog/mjw/2018/02/14/dtrace-for-linux-oracle-does-the-right-thing/
 [oi]: https://www.openindiana.org/
 [omnios]: https://omnios.omniti.com/
 [oral]: https://www.youtube.com/watch?v=4PaWFYm0kEw
