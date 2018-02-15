@@ -163,6 +163,43 @@ never actually exists. It's like pretending the array has value
 semantics. This seems to work as I expect with V8, but not so well
 with SpiderMonkey (yet?), at least in Firefox 52 ESR.
 
+#### Single precision
+
+I briefly considered using [`Math.fround()`][fround] to convince
+JavaScript to compute all the tail geometry in single precision. The
+double pendulum system would remain double precision, but the geometry
+doesn't need all that precision. It's all rounded to single precision
+going out to the GPU anyway.
+
+Normally when pulling values from a `Float32Array`, they're cast to
+double precision — JavaScript's only numeric type — and all operations
+are performed in double precision, even if the result is stored back
+in a `Float32Array`. This is because the JIT compiler is required to
+correctly perform all the intermediate rounding. To relax this
+requirement, [surround each operation with a call to
+`Math.fround()`][how]. Since the result of doing each operation in
+double precision with this rounding step in between is equivalent to
+doing each operation in single precision, the JIT compiler can choose
+to do the latter.
+
+```javascript
+let x = new Float32Array(n);
+let y = new Float32Array(n);
+let d = new Float32Array(n);
+// ...
+for (let i = 0; i < n; i++) {
+    let xprod = Math.fround(x[i] * x[i]);
+    let yprod = Math.fround(y[i] * y[i]);
+    d[i] = Math.sqrt(Math.fround(xprod + yprod));
+}
+```
+
+I ultimately decided not to bother with this since it would
+significantly obscures my code for what is probably a minuscule
+performance gain (in this case). It's also really difficult to tell if
+I did it all correctly. So I figure this is better suited for
+compilers that target JavaScript rather than something to do by hand.
+
 ### Lorenz system
 
 The other demo is a [Lorenz system][ls] with its famous butterfly
@@ -229,17 +266,22 @@ main loop. The FPS counter generates some garbage in the DOM due to
 reflow, but this goes away if you hide the help menu (<kbd>?</kbd>). This
 was long enough ago that destructuring assignment wasn't available, but
 Lorenz system and rendering it were so simple that using pre-allocated
-objects worked just fine.
+objects worked fine.
 
 Beyond just the programming, I've gotten hours of entertainment
-playing with each of these systems.
+playing with each of these systems. This was also the first time I've
+used WebGL in over a year, and this project was a reminder of just how
+working with it is so pleasurable. [The specification][spec] is
+superbly written and serves perfectly as its own reference.
 
 
 [chaos]: https://en.wikipedia.org/wiki/Chaos_theory
 [da]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 [dp]: https://en.wikipedia.org/wiki/Double_pendulum
 [fan]: /blog/2014/06/01/
+[fround]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround
 [gc]: https://i.imgur.com/ceqSpHg.jpg
+[how]: https://blog.mozilla.org/javascript/2013/11/07/efficient-float32-arithmetic-in-javascript/
 [ls]: https://en.wikipedia.org/wiki/Lorenz_system
 [mitch]: https://www.youtube.com/watch?v=Uk0mJSTatbw
 [mm]: /blog/2017/11/03/#dot-rendering
@@ -248,5 +290,6 @@ playing with each of these systems.
 [old]: /blog/2010/10/16/
 [poly]: https://forum.libcinder.org/topic/smooth-thick-lines-using-geometry-shader#23286000001269127
 [rk4]: https://en.wikipedia.org/wiki/Runge–Kutta_methods
+[spec]: https://www.khronos.org/registry/webgl/specs/1.0/
 [tl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 [webgl]: /blog/2013/06/10/
