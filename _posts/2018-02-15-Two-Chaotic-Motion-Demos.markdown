@@ -179,7 +179,7 @@ Normally when pulling values from a `Float32Array`, they're cast to
 double precision — JavaScript's only numeric type — and all operations
 are performed in double precision, even if the result is stored back
 in a `Float32Array`. This is because the JIT compiler is required to
-correctly perform all the intermediate rounding. To relax this
+correctly perform all the [intermediate rounding][fp]. To relax this
 requirement, [surround each operation with a call to
 `Math.fround()`][how]. Since the result of doing each operation in
 double precision with this rounding step in between is equivalent to
@@ -283,6 +283,7 @@ superbly written and serves perfectly as its own reference.
 [da]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 [dp]: https://en.wikipedia.org/wiki/Double_pendulum
 [fan]: /blog/2014/06/01/
+[fp]: https://possiblywrong.wordpress.com/2017/09/12/floating-point-agreement-between-matlab-and-c/
 [fround]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround
 [gc]: https://i.imgur.com/ceqSpHg.jpg
 [how]: https://blog.mozilla.org/javascript/2013/11/07/efficient-float32-arithmetic-in-javascript/
