@@ -24,6 +24,10 @@ This ain't my first chaotic system rodeo. About eight years ago I made
 collaborated on some eleven years ago. I really hope you're not equipped
 to run a crusty old Java applet in 2018, though.
 
+If you want to find either of these demos again in the future, you
+don't need to find this article first. They're both listed in my
+[Showcase page](/toys/), linked from the header of this site.
+
 ### Double pendulum
 
 First up is the classic [double pendulum][dp]. This one's more intuitive
