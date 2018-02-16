@@ -6,7 +6,7 @@ tags: [vim, debian]
 uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 ---
 
-*This article has been [translated to Russian][ru] by
+*This article has been [translated into Russian][ru] by
 [Howtorecover][htr].*
 
 *Note: The way I manage my email wouldn't really work for most people,

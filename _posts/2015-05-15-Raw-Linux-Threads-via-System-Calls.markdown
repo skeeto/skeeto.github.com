@@ -6,7 +6,7 @@ tags: [x86, linux, c, tutorial]
 uuid: 9d5de15b-9308-3715-2bd7-565d6649ab2f
 ---
 
-*This article has been [translated to Japanese][translation].*
+*This article has been [translated into Japanese][translation].*
 
 *This article has [a followup][followup].*
 
