@@ -22,7 +22,8 @@ features that aim to show this in action.
 This ain't my first chaotic system rodeo. About eight years ago I made
 [water wheel Java applet][old], and that was based on some Matlab code I
 collaborated on some eleven years ago. I really hope you're not equipped
-to run a crusty old Java applet in 2018, though.
+to run a crusty old Java applet in 2018, though. (**Update**: [now
+upgraded to HTML5 Canvas][ww].)
 
 If you want to find either of these demos again in the future, you
 don't need to find this article first. They're both listed in my
@@ -298,3 +299,4 @@ superbly written and serves perfectly as its own reference.
 [spec]: https://www.khronos.org/registry/webgl/specs/1.0/
 [tl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 [webgl]: /blog/2013/06/10/
+[ww]: https://github.com/skeeto/waterwheel
