@@ -6,6 +6,9 @@ tags: [emacs, elisp]
 uuid: 3837b5b2-0aba-3381-ff6f-9432f8ff03e9
 ---
 
+*This article has been [translated into Russian][tlate] by
+[ClipArtMag][tlater].*
+
 So your Emacs package has grown beyond a dozen or so lines of code, and
 the data it manages is now structured and heterogeneous. Informal plain
 old lists, the bread and butter of any lisp, are not longer cutting it.
@@ -317,3 +320,5 @@ names. Its use should feel almost as natural as defining functions.
 [fast]: /blog/2017/01/30/
 [hash]: /blog/2010/06/07/
 [read]: /blog/2013/12/30/
+[tlate]: http://clipartmag.com/ru-structured-data-in-emacs-lisp
+[tlater]: http://clipartmag.com/
