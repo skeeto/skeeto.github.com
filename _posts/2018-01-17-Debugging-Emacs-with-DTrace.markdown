@@ -6,6 +6,9 @@ tags: [emacs, elfeed, bsd]
 uuid: a55cabc9-2d87-30a4-9066-9ec5e45b8bce
 ---
 
+*Update: This article was featured on [BSD Now 233][feature] (starting
+at 21:38).*
+
 For some time [Elfeed][elfeed] was experiencing a strange, spurious
 failure. Every so often users were [seeing an error][bug] (spoiler
 warning) when updating feeds: "error in process sentinel: Search
@@ -312,6 +315,7 @@ report this bug months ago.*
 [epoll]: http://man7.org/linux/man-pages/man7/epoll.7.html
 [epoll1]: https://idea.popcount.org/2017-02-20-epoll-is-fundamentally-broken-12/
 [epoll2]: https://idea.popcount.org/2017-03-20-epoll-is-fundamentally-broken-22/
+[feature]: https://www.youtube.com/watch?v=Xi_pX2QIzho
 [fix]: https://github.com/skeeto/elfeed/commit/945765a57d2f27996b6a43bc62e803dc167d1547
 [fork]: https://www.youtube.com/watch?v=-zRN7XLCRhc
 [freebsd]: https://www.freebsd.org/
