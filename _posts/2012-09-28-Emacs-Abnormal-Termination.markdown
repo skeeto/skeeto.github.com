@@ -5,6 +5,8 @@ tags: [emacs, elisp, debian]
 uuid: 81986f77-1a4a-3b00-ec3a-a6517f9ca4ca
 ---
 
+*Update: This bug was fixed in Emacs 24.4 (released October 2014).*
+
 A few months ago I [filed a bug report for Emacs][debian]
 ([upstream][list]) when I stumbled across Emacs aborting under *very*
 specific circumstances. I was editing in [markdown-mode][mode] and a
