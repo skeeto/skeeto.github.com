@@ -214,9 +214,9 @@ point I'm about to make.
     * 40,500 unique visitors
     * #1 most popular, not even counting the Japanese publication
 
-Note that all but the last has been published for less than time than
-our paper. The average time on these pages is between 5 and 6 minutes,
-so these are actual readers, not just visitors that take one glance and
+Note that all but the last has been published for less time than our
+paper. The average time on these pages is between 5 and 6 minutes, so
+these are actual readers, not just visitors that take one glance and
 leave. Thanks to the information age, **a technical blog article on
 established blog can reach an audience 100 times larger than a journal
 for a fraction of the effort and cost**. There are other benefits, too:
