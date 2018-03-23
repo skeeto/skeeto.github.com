@@ -7,7 +7,9 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 ---
 
 *This article has been [translated into Russian][ru] by
-[Howtorecover][htr].*
+[Howtorecover][rut].*  
+*This article has been [translated into Ukrainian][uk] by
+[Open Source Initiative][ukt].*
 
 *Note: The way I manage my email wouldn't really work for most people,
 so don't read this as a recommendation. This is just a discussion of
@@ -192,7 +194,6 @@ but I've now got it basically the way I want.
 [ff]: https://joeclark.org/ffaq.html
 [gmail]: /blog/2013/09/03/
 [guilty]: https://github.com/skeeto/elfeed/issues/202
-[htr]: http://howtorecover.me/
 [incron]: http://inotify.aiken.cz/?section=incron&page=about
 [maildir]: https://cr.yp.to/proto/maildir.html
 [melpa]: https://melpa.org/
@@ -203,6 +204,9 @@ but I've now got it basically the way I want.
 [rfcff]: https://tools.ietf.org/html/rfc3676
 [rh]: https://www.youtube.com/watch?v=oyLBGkS5ICk
 [ru]: http://howtorecover.me/perehod-na-poctovyi-klient-mutt
+[rut]: http://howtorecover.me/
 [tmux]: https://tmux.github.io/
 [tt]: /blog/2017/04/01/
+[uk]: http://www.opensourceinitiative.net/edu/Mutt
+[ukt]: http://www.opensourceinitiative.net/edu/
 [vim]: http://www.vim.org/
