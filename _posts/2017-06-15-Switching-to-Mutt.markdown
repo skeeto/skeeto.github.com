@@ -9,7 +9,9 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 *This article has been [translated into Russian][ru] by
 [Howtorecover][rut].*  
 *This article has been [translated into Ukrainian][uk] by
-[Open Source Initiative][ukt].*
+[Open Source Initiative][ukt].*  
+*This article has been [translated into Estonian][et] by
+[Weronika Pawlak][ett].*
 
 *Note: The way I manage my email wouldn't really work for most people,
 so don't read this as a recommendation. This is just a discussion of
@@ -190,6 +192,8 @@ but I've now got it basically the way I want.
 
 [emacsff]: https://www.emacswiki.org/emacs/GnusFormatFlowed
 [enchive]: /blog/2017/03/12/
+[et]: https://www.piecesauto-pro.fr/blog/2018/04/12/switching-mutt-email-client/
+[ett]: https://www.piecesauto-pro.fr/blog/
 [evil]: https://github.com/emacs-evil/evil
 [ff]: https://joeclark.org/ffaq.html
 [gmail]: /blog/2013/09/03/
