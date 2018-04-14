@@ -82,7 +82,8 @@ create a drive image:
 I gave it 8GB, which is actually a bit overkill. Giving Windows 98 a
 virtual hard drive with modern sizes would probably break the
 installer. This sort of issue is a common theme among old software,
-where you may see complaints about negative available disk space.
+where there may be complaints about negative available disk space due
+to signed integer overflow.
 
 I decided to give the machine 256MB of memory (`-m 256`). This is also a
 little excessive, but I wanted to be sure memory didn't limit Borland's
@@ -154,12 +155,12 @@ what I would have been using 20 years ago.
 
 Despite being Borland *C++*, I'm personally most interested in its ANSI
 C compiler. As I already pointed out, this software pre-dates C++'s
-standardization, and a lot had changed over the past two decades. On the
+standardization, and a lot has changed over the past two decades. On the
 other hand, C *hasn't really changed all that much*. The 1999 update to
 the C standard (e.g. "C99") was big and important, but otherwise little
 has changed. The biggest drawback is the lack of "declare anywhere"
-variables, including in for-loop initializers. Otherwise I feel right at
-home.
+variables, including in for-loop initializers. Otherwise it's the same
+as writing C today.
 
 To test drive the IDE, I made a couple of test projects, built and ran
 them with different options, and poked around with the debugger. The
@@ -185,7 +186,7 @@ irritated.
 
 Like with the debugger, the Borland people did a good job modularizing
 their development tools. As part of the installation process, all of the
-Borland command line tools are all added to the system `PATH` (reminder:
+Borland command line tools are added to the system `PATH` (reminder:
 this is a single-user system). This includes compiler, linker,
 assembler, debugger, and even an [incomplete implementation][make] of
 `make`.
@@ -201,11 +202,11 @@ situation has drastically improved.
 
 [![](/img/win98/vim-thumb.png)](/img/win98/vim.png)
 
-Since I hardly use features added since Vim 7.3, this feels right at
-home to me. I can [invoke the build][build] from Vim, and it can
-populate the quickfix list from Borland's output, so I could actually
-be fairly productive in these circumstances! I'm honestly really
-impressed with how well this all works together.
+Since I hardly use features added since Vim 7.3, this feels [right at
+home][touch] to me. I can [invoke the build][build] from Vim, and it
+can populate the quickfix list from Borland's output, so I could
+actually be fairly productive in these circumstances! I'm honestly
+really impressed with how well this all works together.
 
 At this point I only have two significant annoyances:
 
@@ -240,11 +241,11 @@ I sent Enchive to a competant developer 20 years ago, would they be
 able to compile it and run it? If the answer is yes, then that means
 Enchive already has 20 years of future-proofing built into it.
 
-To accomplish this, Enchive is 3,300 lines of strict C89, 1989-style,
-with no dependencies other than the C standard library and a handful of
-operating system functions — e.g. functionality not in the C standard
-library. In practice, any ANSI C compiler targeting either POSIX, or
-Windows 95 or later, should be able to compile it.
+To accomplish this, Enchive is 3,300 lines of strict ANSI C,
+1989-style, with no dependencies other than the C standard library and
+a handful of operating system functions — e.g. functionality not in
+the C standard library. In practice, any ANSI C compiler targeting
+either POSIX, or Windows 95 or later, should be able to compile it.
 
 My Windows 98 virtual machine includes an ANSI C compiler, and can be
 used to simulate this time machine. I generated an "amalgamation" build
@@ -252,13 +253,13 @@ used to simulate this time machine. I generated an "amalgamation" build
 files — and sent this into the virtual machine. Before Borland was able
 to compile it, I needed to make three small changes.
 
-First, Enchive includes `stdint.h` to get fixed-sized integers needed
+First, Enchive includes `stdint.h` to get fixed-width integers needed
 for the encryption routines. This header comes from C99, and C89 has
 no equivalent. I anticipated this problem from the beginning and made
 it easy for the person performing the build to correct it. This header
 is included exactly once, in `config.h`, and this is placed at the top
 of the amalgamation build. The include only needs to be replaced with
-manual typedefs. For Borland that looks like this:
+a handful of manual typedefs. For Borland that looks like this:
 
 ```c
 typedef unsigned char    uint8_t;
@@ -293,10 +294,10 @@ protection key to encrypt the secret key. However, it *can* decrypt
 files, which is the important part that needs to be future-proofed.
 
 With this three changes — which took me about 10 minutes to sort out —
-Enchive builds and runs, and I correctly decrypts files I encrypted on
+Enchive builds and runs, and it correctly decrypts files I encrypted on
 Linux. So Enchive has at least 20 years of past-proofing! The
 screenshot at the top of this article shows it running successfully in
-a console.
+an MS-DOS console window.
 
 ### What's wrong? What's missing?
 
@@ -336,16 +337,16 @@ corruption to wipe out my work. Too risky.
 If I was stuck working in Windows 98 — or was at least targeting it as a
 platform — but had access to a modern tooling ecosystem, could I do
 better than Borland? Yes! Programs built by [Mingw-w64][mingw] can be
-run even in Windows 95.
+run even as far back as Windows 95.
 
 Now, there's a catch. I thought it would be this simple:
 
     $ i686-w64-mingw32-gcc -Os hello.c
 
-But when I brought this into the virtual machine it crashed when I tried
-to run it: illegal instruction. Turns out it contained a conditional
-move (`cmov`) which is an instruction not available until the Pentium
-Pro (686). The "pentium" emulation is just a 586.
+But when I brought the resulting binary into the virtual machine it
+crashed when ran it: illegal instruction. Turns out it contained a
+conditional move (`cmov`) which is an instruction not available until
+the Pentium Pro (686). The "pentium" emulation is just a 586.
 
 I tried to disable `cmov` by picking the specific architecture:
 
@@ -364,7 +365,7 @@ Mingw-64 "howto-build" document. I used GCC 7.3 (the latest version),
 and for the target I picked "i486-w64-mingw32". When it was done I could
 compile binaries on Linux to run in my Windows 98 virtual machine:
 
-    $ i486-w64-mingw32-gcc -march=pentium -Os hello.c
+    $ i486-w64-mingw32-gcc -Os hello.c
 
 This should enable quite a bit of modern software to run inside my
 virtual machine if I so wanted. I didn't actually try this (yet?),
