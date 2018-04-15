@@ -227,6 +227,14 @@ At this point I only have two significant annoyances:
    paths. If I wanted to improve my productivity, replacing this
    console and shell would be the first priority.
 
+**Update**: In an email, Aristotle Pagaltzis informed me that Windows 98
+comes with [DOSKEY.COM][doskey], which provides command history for
+COMMAND.EXE. Alternatively there's [Enhanced DOSKEY.com][edoskey], an
+open source, alternative implementation that also provides tab
+completion for commands and filesnames. This makes the console a lot
+more usable (and, honestly, in some ways better than the modern
+defaults).
+
 ### Building Enchive with Borland
 
 Last year I wrote [a backup encryption tool called Enchive][enchive],
@@ -382,6 +390,8 @@ And the only thing I'd miss about Borland is its debugger.
 [cgr]: https://msdn.microsoft.com/en-us/library/windows/desktop/aa379942(v=vs.85).aspx
 [com]: /blog/2014/12/09/
 [dl]: https://archive.org/details/BorlandC5.02
+[doskey]: https://en.wikipedia.org/wiki/DOSKEY
+[edoskey]: http://paulhoule.com/doskey/
 [enchive]: /blog/2017/03/12/
 [export]: https://en.wikipedia.org/wiki/Export_of_cryptography_from_the_United_States
 [gas]: http://x86asm.net/articles/what-i-dislike-about-gas/
