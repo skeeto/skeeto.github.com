@@ -289,11 +289,11 @@ cannot happen is harmless, but this value isn't defined in Borland's
 SDK. I only had to eliminate that check.
 
 Third, the [`CryptGenRandom()`][cgr] interface isn't defined in
-Borland's SDK. This is used by Enchive to generate keys and nonces. MSDN
-reports this function wasn't available until Windows XP, but it's
-definitely there in Windows 98, exported by ADVAPI32.dll. I'm able to
-call it, though it always reports an error. Perhaps it's been disabled
-in this version due to [cryptographic export restrictions][export]?
+Borland's SDK. This is used by Enchive to generate keys. MSDN reports
+this function wasn't available until Windows XP, but it's definitely
+there in Windows 98, exported by ADVAPI32.dll. I'm able to call it,
+though it always reports an error. Perhaps it's been disabled in this
+version due to [cryptographic export restrictions][export]?
 
 Regardless of what's wrong, I ripped this out and replaced it with a
 fatal error. This version of Enchive can't generate new keys — unless
