@@ -180,7 +180,7 @@ this little function, `new_image()`, that allocates a greyscale image
 for, say, [some multimedia library][mm].
 
 ```c
-static void *
+static unsigned char *
 new_image(size_t w, size_t h, int shade)
 {
     unsigned char *p = 0;
@@ -310,10 +310,10 @@ struct table {
 static int
 table_init(struct table *t, size_t n)
 {
-    t->counter = calloc(n, sizeof(t->counter));
+    t->counter = calloc(n, sizeof(*t->counter));
     if (t->counter) {
         /* Overflow already tested above */
-        t->values = malloc(n * sizeof(t->values));
+        t->values = malloc(n * sizeof(*t->values));
         if (!t->values) {
             free(t->counter);
             return 0; // fail
