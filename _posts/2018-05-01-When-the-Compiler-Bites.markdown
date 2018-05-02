@@ -255,11 +255,11 @@ itself. This permits the compiler to collapse the whole thing down to
 a single instruction. The path with `malloc()` became dead code and
 was trivially eliminated.
 
-Clang correctly determined that the image buffer is not actually being
-used, despite the `memset()`, so it eliminated the allocation
-altogether and then *simulated* a successful allocation despite it
-being absurdly large. Allocating memory is not an observable side
-effect as far as the language specification is concerned, so it's
+In the second test, Clang correctly determined that the image buffer is
+not actually being used, despite the `memset()`, so it eliminated the
+allocation altogether and then *simulated* a successful allocation
+despite it being absurdly large. Allocating memory is not an observable
+side effect as far as the language specification is concerned, so it's
 allowed to do this. My thinking was wrong, and the compiler outsmarted
 me.
 
