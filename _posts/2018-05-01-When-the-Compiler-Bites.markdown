@@ -6,6 +6,9 @@ tags: [c, x86, optimization, ai]
 uuid: 02b974e1-e25b-397d-a16f-c754338e9c1e
 ---
 
+*Update: There are discussions [on Reddit][reddit] and [on Hacker
+News][hn].*
+
 So far this year I've been bitten three times by compiler edge cases
 in GCC and Clang, each time catching me totally by surprise. Two were
 caused by historical artifacts, where an ambiguous specification lead
@@ -370,6 +373,7 @@ Just before the end it would pause the game and wait… forever.
 [fma]: https://en.wikipedia.org/wiki/Multiply–accumulate_operation#Fused_multiply–add
 [fround]: https://blog.mozilla.org/javascript/2013/11/07/efficient-float32-arithmetic-in-javascript/
 [hn]: https://news.ycombinator.com/item?id=13738880
+[hn]: https://news.ycombinator.com/item?id=16974770
 [icc]: https://stackoverflow.com/a/36760539
 [mcts]: /blog/2017/04/27/
 [missed]: https://github.com/gergo-/missed-optimizations
@@ -379,6 +383,7 @@ Just before the end it would pause the game and wait… forever.
 [of]: /blog/2017/07/19/
 [pc]: https://wiki.lesswrong.com/wiki/Paperclip_maximizer
 [prec]: https://possiblywrong.wordpress.com/2017/09/12/floating-point-agreement-between-matlab-and-c/
+[reddit]: https://www.reddit.com/r/cpp/comments/8gfhq3/when_the_compiler_bites/
 [smi]: http://thibaultlaurens.github.io/javascript/2013/04/29/how-the-v8-engine-works/#more-example-on-how-v8-optimized-javascript-code
 [stb]: https://github.com/nothings/stb
 [wflt]: https://en.wikipedia.org/wiki/C99#IEEE_754_floating_point_support
