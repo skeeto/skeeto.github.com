@@ -6,6 +6,9 @@ tags: [c, debian, tutorial, game]
 uuid: cff7d942-a91d-38b8-46fd-d05bbce0e212
 ---
 
+*Update 2018: RenéRebe builds upon this article in an [interesting
+follow-up video][update].*
+
 This past weekend I participated in [Ludum Dare #31][ld31]. Before the
 theme was even announced, due to [recent fascination][lzss] I wanted
 to make an old school DOS game. DOSBox would be the target platform
@@ -417,3 +420,4 @@ platform.
 [vga]: http://www.brackeen.com/vga/index.html
 [freedos]: http://www.freedos.org/
 [lzss]: /blog/2014/11/22/
+[update]: https://www.youtube.com/watch?v=Y7vU5T6rKHE
