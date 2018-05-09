@@ -2,7 +2,7 @@
 title: When the Compiler Bites
 layout: post
 date: 2018-05-01T23:28:06Z
-tags: [c, x86, optimization, ai]
+tags: [c, x86, optimization, ai, netsec]
 uuid: 02b974e1-e25b-397d-a16f-c754338e9c1e
 ---
 
