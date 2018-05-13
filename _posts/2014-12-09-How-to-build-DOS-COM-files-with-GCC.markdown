@@ -7,7 +7,7 @@ uuid: cff7d942-a91d-38b8-46fd-d05bbce0e212
 ---
 
 *Update 2018: RenéRebe builds upon this article in an [interesting
-follow-up video][update].*
+follow-up video][update] ([part 2][update2]).*
 
 This past weekend I participated in [Ludum Dare #31][ld31]. Before the
 theme was even announced, due to [recent fascination][lzss] I wanted
@@ -421,3 +421,4 @@ platform.
 [freedos]: http://www.freedos.org/
 [lzss]: /blog/2014/11/22/
 [update]: https://www.youtube.com/watch?v=Y7vU5T6rKHE
+[update2]: https://www.youtube.com/watch?v=EXiF7g8Hmt4
