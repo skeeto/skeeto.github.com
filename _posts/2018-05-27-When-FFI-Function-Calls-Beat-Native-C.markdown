@@ -274,9 +274,10 @@ measured in the loop is only a direct call.
 Given these results, it's really no mystery that LuaJIT can generate
 more efficient dynamic function calls than a PLT, *even if they still
 end up being indirect calls*. In my benchmark, the non-PLT indirect
-calls were 28% faster than the PLT, and the direct calls 43% faster than
-the PLT. That's a small edge JIT-enabled programs have over plain old
-native programs.
+calls were 28% faster than the PLT, and the direct calls 43% faster
+than the PLT. That's a small edge that JIT-enabled programs have over
+plain old native programs, though it comes at the cost of absolutely
+no code sharing between processes.
 
 
 [bite]: /blog/2018/05/01/
