@@ -6,6 +6,10 @@ tags: [emacs, elisp]
 uuid: 48023a80-358c-39b4-371b-d74dfb248897
 ---
 
+***Update**: Emacs 25.1 (released Sept. 2016) formally introduced
+finalizers to Emacs Lisp. This article is left here for historical
+purposes.
+
 **Problem**: You have a special resource, such as a buffer or process,
 associated with an Emacs Lisp object which is not managed by the
 garbage collector. You want this resource to be cleaned up when the

@@ -207,6 +207,9 @@ the C family of languages. It compares elements with `eql`.
 The `cl-case` expands into a `cond`. Since Emacs byte-code lacks
 support for jump tables, there's not much room for cleverness.
 
+**Update**: Emacs 26.1, released May 2018, introduced a jump table
+opcode.
+
 ~~~cl
 (defun op-apply (op a b)
   (cond
