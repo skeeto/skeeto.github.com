@@ -6,6 +6,8 @@ tags: [c, x86, linux, optimization]
 uuid: cb339e3b-382e-3762-4e5c-10cf049f7627
 ---
 
+*Update: There's a good discussion on [Hacker News][hn].*
+
 Over on GitHub, David Yu has an interesting performance benchmark for
 function calls of various Foreign Function Interfaces ([FFI][ffi]):
 
@@ -283,6 +285,7 @@ no code sharing between processes.
 [bite]: /blog/2018/05/01/
 [closure]: /blog/2017/01/08/
 [ffi]: https://en.wikipedia.org/wiki/Foreign_function_interface
+[hn]: https://news.ycombinator.com/item?id=17171252
 [jit]: /blog/2015/03/19/
 [luajit]: http://luajit.org/
 [map]: /blog/2016/04/10/
