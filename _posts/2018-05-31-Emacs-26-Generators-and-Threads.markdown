@@ -318,7 +318,7 @@ usual with finalizers, this is [only a last resort][cw].
 
 This thread-iterator project was my initial, little experiment with
 Emacs Lisp threads, similar to why I [connected a joystick to Emacs
-using a dynamic module][js]. While I don't expect the current thread
+using a dynamic module][joy]. While I don't expect the current thread
 API to go away, it's not really suitable for general use in its raw
 form. Bugs in Emacs Lisp programs should virtually never bring down
 Emacs and require a restart. Outside of threads, the few situations
@@ -340,7 +340,7 @@ the low-level threading API.
 [fc]: http://wiki.c2.com/?DontUseExceptionsForFlowControl
 [final]: /blog/2014/01/27/
 [flet]: /blog/2017/10/27/
-[js]: /blog/2016/11/05/
+[joy]: /blog/2016/11/05/
 [js]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
 [latch]: /blog/2013/01/14/
 [miter]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html
