@@ -138,7 +138,7 @@ that's the official API.
 Update: Konstantin Khlebnikov has pointed out the
 [process\_vm\_readv()][readv] and [process\_vm\_writev()][writev]
 system calls, available since Linux 3.2 (January 2012) and glibc 2.15
-(March 2012). These system calls not require ptrace(), nor does the
+(March 2012). These system calls do not require ptrace(), nor does the
 remote process need to be stopped. They're equivalent to
 ReadProcessMemory() and WriteProcessMemory(), except there's no
 requirement to first "open" the process.
