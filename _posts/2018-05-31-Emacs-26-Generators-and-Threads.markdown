@@ -42,13 +42,14 @@ functions isn't possible, which is what requires the special compiler
 support.
 
 Emacs Lisp generators appear to be most closely modeled after [Python
-generators][py], though it also shares some similarities to [JavaScript
-generators][js]. What makes it most like Python is the use of signals
-for flow control — something I'm [not personally enthused about][fc].
-When a Python generator completes, it throws a `StopItertion` exception.
-In Emacs Lisp, it's an `iter-end-of-sequence` signal. A signal is
-out-of-band and avoids the issue relying on some special in-band value
-to communicate the end of iteration.
+generators][py], though it also shares some similarities to
+[JavaScript generators][js]. What makes it most like Python is the use
+of signals for flow control — something I'm [not personally enthused
+about][fc] (though [see also][except]). When a Python generator
+completes, it throws a `StopItertion` exception. In Emacs Lisp, it's
+an `iter-end-of-sequence` signal. A signal is out-of-band and avoids
+the issue relying on some special in-band value to communicate the end
+of iteration.
 
 In contrast, JavaScript's solution is to return a "rich" object wrapping
 the actual yield value. This object has a `done` field that communicates
@@ -339,6 +340,7 @@ the low-level threading API.
 [clos]: /blog/2017/12/14/
 [cw]: https://utcc.utoronto.ca/~cks/space/blog/programming/GoFinalizersStopLeaks
 [e26]: https://lists.gnu.org/archive/html/emacs-devel/2018-05/msg00765.html
+[except]:https://stackoverflow.com/questions/7799610/exceptions-signaling-end-of-iterator-why-is-it-bad-in-java-and-normal-in-pyth
 [fast]: /blog/2017/01/30/
 [fc]: http://wiki.c2.com/?DontUseExceptionsForFlowControl
 [final]: /blog/2014/01/27/
