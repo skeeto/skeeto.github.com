@@ -12,6 +12,9 @@ Emacs Lisp enthusiast][tags], the two most interesting new features
 are [generators][miter] (`iter`) and [native threads][mthread]
 (`thread`).
 
+**Correction**: Generators were actually introduced in Emacs 25.1
+(Sept. 2016), not Emacs 26.1. Doh!
+
 ### Generators
 
 Generators are one of those cool language features that provide a lot of
