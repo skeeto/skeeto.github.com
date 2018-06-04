@@ -72,7 +72,7 @@ that iterates over a list:
 Here's how it might be used:
 
 ```cl
-(setf i (walk '(:a :b :c))
+(setf i (walk '(:a :b :c)))
 
 (iter-next i)  ; => :a
 (iter-next i)  ; => :b
