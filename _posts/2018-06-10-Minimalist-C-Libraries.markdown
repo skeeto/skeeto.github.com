@@ -84,7 +84,7 @@ Communicating IO preferences to libraries can be a real problem with
 C, since the standard library lacks generic input and output. Putting
 `FILE *` pointers directly into an API mingles it with the C standard
 library in potentially bad ways. Passing file names as strings is an
-option, but this limites IO to files — versus, say, sockets. On POSIX
+option, but this limits IO to files — versus, say, sockets. On POSIX
 systems, at least it could talk about IO in terms of file descriptors,
 but even that's not entirely flexible — e.g. output to a memory
 buffer, or anything not sufficiently file-like.
