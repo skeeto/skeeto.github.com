@@ -11,8 +11,9 @@ particularly header libraries. The distinction for "minimalist" is, of
 course, completely arbitrary and subjective. My definition in this
 context isn't about the library's functionality being [stupidly
 trivial][stupid] or even necessarily simple. I'm talking about
-interface (API) complexity. Complex functionality can, in some cases,
-be tucked behind a simple interface.
+interface (API) complexity and the library's run time requirements.
+Complex functionality can, in some cases, be tucked behind a simple
+interface.
 
 In this article I'll give my definition for minimalist C API, then take
 you through some of my own recent examples.
