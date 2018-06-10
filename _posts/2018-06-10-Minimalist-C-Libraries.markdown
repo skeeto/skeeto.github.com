@@ -63,10 +63,10 @@ explicit in C, too, if C++ compatibility was desired. It's just ugly.
 
 #### (3) No input or output.
 
-In simple terms, the library mustn't use functions from `stdio.h` — with
-the exception of the `sprintf()` family. Like with memory allocation, it
-leaves input and output to the main application, letting it decide
-exactly how and when information goes in and out of the program.
+In simple terms, the library mustn't use functions from `stdio.h` —
+with the exception of the `sprintf()` family. Like with memory
+allocation, it leaves input and output to the application, letting it
+decide exactly how, where, and when information comes and goes.
 
 Like with memory allocation, maybe the application prefers not to use
 the C standard library's buffered IO. Perhaps the application is using
@@ -80,10 +80,20 @@ error handling paths makes the library a lot simpler. The one major
 error condition left that's difficult to eliminate are those [pesky
 integer overflow checks][int].
 
+Communicating IO preferences to libraries can be a real problem with
+C, since the standard library lacks generic input and output. Putting
+`FILE *` pointers directly into an API mingles it with the C standard
+library in potentially bad ways. Passing file names as strings is an
+option, but this limites IO to files — versus, say, sockets. On POSIX
+systems, at least it could talk about IO in terms of file descriptors,
+but even that's not entirely flexible — e.g. output to a memory
+buffer, or anything not sufficiently file-like.
+
 Again, a common way to deal with this is for the application to
-provide IO functions to the library. But a minimalist library's API is
-designed such that not even this is needed, instead operating on
-buffers. I'll also have a couple examples of this shortly.
+provide IO function pointers to the library. But a minimalist
+library's API would be designed such that not even this is needed,
+instead operating strictly on buffers. I'll also have a couple
+examples of this shortly.
 
 With IO and memory allocation out of the picture, another frequent,
 accidental result is no dependency on the C standard library. The only
