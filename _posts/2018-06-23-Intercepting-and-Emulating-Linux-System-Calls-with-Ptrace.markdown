@@ -32,7 +32,7 @@ code listings will have them.
 
 You can find runnable code for the examples in this article here:
 
-<https://github.com/skeeto/ptrace-examples>
+**<https://github.com/skeeto/ptrace-examples>**
 
 ### strace
 
