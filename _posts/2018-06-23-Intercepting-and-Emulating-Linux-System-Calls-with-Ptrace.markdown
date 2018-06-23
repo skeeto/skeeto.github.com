@@ -118,7 +118,7 @@ call to begin, and waiting for that system call to exit. As before, a
 
 ```c
 ptrace(PTRACE_SYSCALL, pid, 0, 0);
-wait(pid, 0, 0);
+waitpid(pid, 0, 0);
 ```
 
 When `wait(2)` returns, the registers for the thread that made the
