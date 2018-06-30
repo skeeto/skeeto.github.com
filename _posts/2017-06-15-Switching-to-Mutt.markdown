@@ -11,7 +11,9 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 *This article has been [translated into Ukrainian][uk] by
 [Open Source Initiative][ukt].*  
 *This article has been [translated into Estonian][et] by
-[Weronika Pawlak][ett].*
+[Weronika Pawlak][ett].*  
+*This article has been [translated into Uzbek][uz] by
+[Printable Coloring Pages][uzt].*
 
 *Note: The way I manage my email wouldn't really work for most people,
 so don't read this as a recommendation. This is just a discussion of
@@ -213,4 +215,6 @@ but I've now got it basically the way I want.
 [tt]: /blog/2017/04/01/
 [uk]: http://www.opensourceinitiative.net/edu/Mutt
 [ukt]: http://www.opensourceinitiative.net/edu/
+[uz]: http://getcolorings.com/uz-mutt-email
+[uzt]: http://getcolorings.com/
 [vim]: http://www.vim.org/
