@@ -36,11 +36,11 @@ case WebGL doesn't work for you yet. I'm manually driving it to show
 off the different things it can do.
 
 <video width="500" height="500" controls>
-  <source src="http://nullprogram.s3.amazonaws.com/feedback/feedback.webm"
+  <source src="https://nullprogram.s3.amazonaws.com/feedback/feedback.webm"
           type="video/webm">
-  <source src="http://nullprogram.s3.amazonaws.com/feedback/feedback.mp4"
+  <source src="https://nullprogram.s3.amazonaws.com/feedback/feedback.mp4"
           type="video/mp4">
-  <img src="http://nullprogram.s3.amazonaws.com/feedback/feedback-poster.png"
+  <img src="https://nullprogram.s3.amazonaws.com/feedback/feedback-poster.png"
        width="500" height="500"/>
 </video>
 

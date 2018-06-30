@@ -30,9 +30,9 @@ hear in the actual demo.
 
 <video width="500" height="375" controls poster="/img/particles/poster.png"
        preload="none">
-  <source src="http://nullprogram.s3.amazonaws.com/particles/particles.webm"
+  <source src="https://nullprogram.s3.amazonaws.com/particles/particles.webm"
           type="video/webm">
-  <source src="http://nullprogram.s3.amazonaws.com/particles/particles.mp4"
+  <source src="https://nullprogram.s3.amazonaws.com/particles/particles.mp4"
           type="video/mp4">
   <img src="/img/particles/poster.png" width="500" height="375"/>
 </video>

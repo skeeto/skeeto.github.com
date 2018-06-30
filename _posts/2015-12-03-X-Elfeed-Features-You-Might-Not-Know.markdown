@@ -43,7 +43,7 @@ For example, your `elfeed-feeds` may initially look like this,
 especially if you imported from OPML.
 
 ~~~cl
-("http://nullprogram.com/feed/"
+("https://nullprogram.com/feed/"
  "http://nedroid.com/feed/"
  "https://www.youtube.com/feeds/videos.xml?user=quill18")
 ~~~
@@ -54,7 +54,7 @@ case — apply certain tags to all entries from a URL — it's much
 simpler to specify the information as part of the listing itself,
 
 ~~~cl
-(("http://nullprogram.com/feed/" blog emacs)
+(("https://nullprogram.com/feed/" blog emacs)
  ("http://nedroid.com/feed/" webcomic)
  ("https://www.youtube.com/feeds/videos.xml?user=quill18" youtube))
 ~~~

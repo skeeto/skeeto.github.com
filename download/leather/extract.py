@@ -3,7 +3,7 @@
 # Interviewing Leather e-book creation script
 #
 # * https://banter-latte.com/portfolio/interviewing-leather/
-# * http://nullprogram.com/blog/2017/05/15/
+# * https://nullprogram.com/blog/2017/05/15/
 
 import urllib
 from bs4 import BeautifulSoup, Doctype

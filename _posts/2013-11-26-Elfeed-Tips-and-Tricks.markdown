@@ -125,7 +125,7 @@ Programmer" (head injury, remember?). The function
 the database, given it's exact URL as listed in your `elfeed-feeds`.
 
 ~~~cl
-(let ((feed (elfeed-db-get-feed "http://nullprogram.com/feed/")))
+(let ((feed (elfeed-db-get-feed "https://nullprogram.com/feed/")))
   (setf (elfeed-feed-title feed) "Seriously Handsome Programmer"))
 ~~~
 
@@ -141,7 +141,7 @@ some "before" advice.
 
 ~~~cl
 (defadvice elfeed-search-update (before nullprogram activate)
-  (let ((feed (elfeed-db-get-feed "http://nullprogram.com/feed/")))
+  (let ((feed (elfeed-db-get-feed "https://nullprogram.com/feed/")))
     (setf (elfeed-feed-title feed) "Seriously Handsome Programmer")))
 ~~~
 
@@ -177,7 +177,7 @@ your `elfeed-feeds` list to supply automatic tags.
 
 ~~~cl
 (setq elfeed-feeds
-      '(("http://nullprogram.com/feed/" blog emacs)
+      '(("https://nullprogram.com/feed/" blog emacs)
         "http://www.50ply.com/atom.xml"  ; no autotagging
         ("http://nedroid.com/feed/" webcomic)))
 ~~~

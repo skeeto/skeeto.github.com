@@ -119,7 +119,7 @@ idea only works in fiction.
 
 [orig]: http://www.shamusyoung.com/twentysidedtale/?cat=1
 [tenth]: http://www.shamusyoung.com/twentysidedtale/?p=23755
-[epub]: http://nullprogram.s3.amazonaws.com/tst/twenty-sided-tale.epub
+[epub]: https://nullprogram.s3.amazonaws.com/tst/twenty-sided-tale.epub
 [style]: http://www.chicagomanualofstyle.org/facsimile/CMSfacsimile_all.pdf
 [pandoc]: http://pandoc.org/
 [tablet]: /blog/2013/04/27/

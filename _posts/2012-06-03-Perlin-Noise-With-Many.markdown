@@ -89,7 +89,7 @@ It took Octave an entire day to generate this "fire" video, which is
 ridiculously long. An old graphics card could probably do this in real
 time.
 
-<video src="http://nullprogram.s3.amazonaws.com/noise/fire.webm"
+<video src="https://nullprogram.s3.amazonaws.com/noise/fire.webm"
        width="300" height="300" controls="controls">
   Your browser doesn't support HTML5 video with WebM. :-(
 </video>
@@ -145,7 +145,7 @@ of time just loading data off the GPU.
 
 And finally, I turned the OpenCL output into a video,
 
-<video src="http://nullprogram.s3.amazonaws.com/noise/opencl.webm"
+<video src="https://nullprogram.s3.amazonaws.com/noise/opencl.webm"
        width="400" height="400" controls="controls">
   Your browser doesn't support HTML5 video with WebM. :-(
 </video>

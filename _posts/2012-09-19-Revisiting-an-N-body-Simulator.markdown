@@ -17,7 +17,7 @@ version with the source code. Here it is in Wine,
 Really, it's really not worth downloading but I'm putting a link here
 for my own archival purposes.
 
- * [galsim.zip](http://nullprogram.s3.amazonaws.com/galaxy/galsim.zip) (712 kB)
+ * [galsim.zip](https://nullprogram.s3.amazonaws.com/galaxy/galsim.zip) (712 kB)
 
 I didn't quite understand what I was doing so I screwed up the
 math. All the vector computations were done independently. Integration
@@ -51,7 +51,7 @@ system. If you watch (or skip) all the way to the end you'll see that
 the galaxy drifts out of view. This is due to a bias in the random
 number generator — the galaxy's mass was lopsided.
 
-<video src="http://nullprogram.s3.amazonaws.com/galaxy/attempt-1.webm"
+<video src="https://nullprogram.s3.amazonaws.com/galaxy/attempt-1.webm"
        controls="controls" width="480" height="360">
   Video requires WebM support with HTML5.
 </video>
@@ -60,7 +60,7 @@ After seeing this drift I added dynamic pan and zoom, so that the
 camera follows the action. It's a bit excessive at the beginning (the
 camera is *too* dynamic) and the end (the camera is too far out).
 
-<video src="http://nullprogram.s3.amazonaws.com/galaxy/attempt-2.webm"
+<video src="https://nullprogram.s3.amazonaws.com/galaxy/attempt-2.webm"
        controls="controls" width="480" height="360">
   Video requires WebM support with HTML5.
 </video>
@@ -69,7 +69,7 @@ I bit more tweaking of the galaxy start state (normal distribution,
 adding initial velocities) and the camera and I got this interesting
 result. The galaxy initially bunches into two globs, which then merge.
 
-<video src="http://nullprogram.s3.amazonaws.com/galaxy/v10-z9.webm"
+<video src="https://nullprogram.s3.amazonaws.com/galaxy/v10-z9.webm"
        controls="controls" width="480" height="360">
   Video requires WebM support with HTML5.
 </video>

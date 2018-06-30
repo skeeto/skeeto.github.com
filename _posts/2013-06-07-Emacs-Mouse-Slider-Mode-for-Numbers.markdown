@@ -33,7 +33,7 @@ on the problem I was able to create a working prototype:
 
  * [https://github.com/skeeto/mouse-slider-mode][msm]
 
-<video src="http://nullprogram.s3.amazonaws.com/skewer/mouse-slider-mode.webm" controls="controls" width="350" height="350">
+<video src="https://nullprogram.s3.amazonaws.com/skewer/mouse-slider-mode.webm" controls="controls" width="350" height="350">
   Demo video requires HTML5 with WebM support.
 </video>
 

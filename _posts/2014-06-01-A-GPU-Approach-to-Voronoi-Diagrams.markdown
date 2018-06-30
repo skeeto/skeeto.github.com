@@ -57,9 +57,9 @@ the "a" key, the seed points will go for a random walk, animating the
 whole diagram. Here's a (HTML5) video showing it off.
 
 <video width="500" height="280" controls preload="metadata">
-  <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi.webm"
+  <source src="https://nullprogram.s3.amazonaws.com/voronoi/voronoi.webm"
           type="video/webm">
-  <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi.mp4"
+  <source src="https://nullprogram.s3.amazonaws.com/voronoi/voronoi.mp4"
           type="video/mp4">
 </video>
 
@@ -108,8 +108,8 @@ shade/color based on distance from the seed vertex. A results of this
 was this "blood cell" image, a difference of a couple lines in the
 shader.
 
-<a href="http://nullprogram.s3.amazonaws.com/voronoi/blood.png">
-  <img src="http://nullprogram.s3.amazonaws.com/voronoi/blood.png"
+<a href="https://nullprogram.s3.amazonaws.com/voronoi/blood.png">
+  <img src="https://nullprogram.s3.amazonaws.com/voronoi/blood.png"
        width="500" height="312"/>
 </a>
 
@@ -123,11 +123,11 @@ figuring out the scene geometry.
 Here's a video ([GIF][gif]) I made that demonstrates what I mean.
 
 <video width="500" height="500" controls preload="metadata">
-  <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.webm"
+  <source src="https://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.webm"
           type="video/webm">
-  <source src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.mp4"
+  <source src="https://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.mp4"
           type="video/mp4">
-  <img src="http://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.gif"
+  <img src="https://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.gif"
        width="500" height="500"/>
 </video>
 
@@ -144,7 +144,7 @@ as above anyway.) The cone must be built out of primitive triangles,
 sort of like pizza slices, using `GL_TRIANGLE_FAN` mode. Here's a cone
 made of 16 triangles.
 
-![](http://nullprogram.s3.amazonaws.com/voronoi/triangle-fan.png)
+![](https://nullprogram.s3.amazonaws.com/voronoi/triangle-fan.png)
 
 Unlike the previous brute force approach, this is an *approximation*
 of the Voronoi diagram. The more triangles, the better the
@@ -152,7 +152,7 @@ approximation, converging on the precision of the initial brute force
 approach. I found that for this project, about 64 triangles was
 indistinguishable from brute force.
 
-<img src="http://nullprogram.s3.amazonaws.com/voronoi/resolution.gif"
+<img src="https://nullprogram.s3.amazonaws.com/voronoi/resolution.gif"
     width="500" height="500"/>
 
 #### Instancing to the Rescue
@@ -259,6 +259,6 @@ more.
 
 
 [wiki]: http://en.wikipedia.org/wiki/Voronoi_diagram
-[gif]: http://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.gif
+[gif]: https://nullprogram.s3.amazonaws.com/voronoi/voronoi-cones.gif
 [angle]: http://blog.tojicode.com/2013/07/webgl-instancing-with.html
 [igloo]: https://github.com/skeeto/igloojs

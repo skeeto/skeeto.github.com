@@ -20,7 +20,7 @@ simulating rolling shutter using a short video clip. In each frame of
 the video, a few additional rows are locked in place, showing the
 effect in slow motion, making it easier to understand.
 
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-5.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-5.mp4"
        width="500" height="500"
        loop="loop" controls="controls" autoplay="autoplay">
 </video>
@@ -226,27 +226,27 @@ Here are some of the results for different shutter rates: 1, 3, 5, 8,
 to see the full resolution video.
 
 <div class="grid">
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-1.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-1.mp4"
        width="300" height="300"
        controls="controls">
 </video>
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-3.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-3.mp4"
        width="300" height="300"
        controls="controls">
 </video>
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-5.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-5.mp4"
        width="300" height="300"
        controls="controls">
 </video>
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-8.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-8.mp4"
        width="300" height="300"
        controls="controls">
 </video>
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-10.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-10.mp4"
        width="300" height="300"
        controls="controls">
 </video>
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-15.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/rolling-shutter-15.mp4"
        width="300" height="300"
        controls="controls">
 </video>
@@ -261,7 +261,7 @@ This post contains the full source in parts, but here it is all together:
 Here's the original video, filmed by my wife using her Nikon D5500, in
 case you want to try it for yourself:
 
-<video src="http://nullprogram.s3.amazonaws.com/rolling-shutter/original.mp4"
+<video src="https://nullprogram.s3.amazonaws.com/rolling-shutter/original.mp4"
        width="300" height="300" controls="controls">
 </video>
 
