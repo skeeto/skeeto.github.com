@@ -37,7 +37,6 @@ img {
 
 a {
     color: DarkSlateBlue;
-    text-decoration: none;
 }
 
 /* Header */
@@ -51,6 +50,10 @@ header {
     box-shadow: 0 0 10px DarkGray;
     background-color: Beige;
     font-family: 'Signika';
+}
+
+header a {
+    text-decoration: none;
 }
 
 header > div.container {
@@ -153,6 +156,12 @@ header nav .toys:before {
     margin-right: 0.3em;
 }
 
+header nav .about:before {
+    font-family: 'foundation-icons';
+    content: '\f1ee';
+    margin-right: 0.3em;
+}
+
 header nav .feed:before {
     font-family: 'foundation-icons';
     content: '\f1aa';
@@ -210,6 +219,10 @@ main article p {
 main article p a,
 main article li a {
     text-decoration: underline;
+}
+
+main article h2 a {
+    text-decoration: none;
 }
 
 .post-list {
