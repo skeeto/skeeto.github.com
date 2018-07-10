@@ -36,7 +36,7 @@ particular objects really do alias.
 I want to be clear that I'm not talking about the [nasal daemon][nd]
 kind of creativity. That's not a helpful thought experiment. What I
 mean is this: **Can I imagine a conforming implementation that breaks
-any assumptions made by the code?**.
+any assumptions made by the code?**
 
 In practice, compilers typically have to bridge multiple
 specifications: the language standard, the [platform ABI][abi], and
