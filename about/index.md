@@ -43,10 +43,10 @@ Here are some of the more well known open source projects I've started.
   quite popular.
 
 * [binitools][binitools]: an old modding tool for the *Freelancer* space
-  flight sim. I wrote it in college before starting this blog. You can
-  still find copies in various modding tool collections. I could do a
-  *far* better job of it today, but there's no good reason to rewrite
-  it.
+  flight sim. I wrote it in college before starting this blog. There are
+  still old copies floating around in various modding tool collections.
+  The version linked here is a much more recent rewrite. The original
+  source is still there, but on its own branch.
 
 * [synSpace Map Editor][ssmapedit]: a map editor for [an old-school 2D
   space shooter game][synspace]. I initially developed this when I was a
