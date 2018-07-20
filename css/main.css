@@ -173,7 +173,6 @@ main {
     display: block;
     margin: 7rem auto 0 auto;
     max-width: 700px;
-    text-align: justify;
     line-height: 1.45;
     word-wrap: break-word;
 }
