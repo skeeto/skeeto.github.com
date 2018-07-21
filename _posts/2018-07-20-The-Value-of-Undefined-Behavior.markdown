@@ -203,9 +203,9 @@ aliasing (`-fno-strict-aliasing`), then the compiler must assume
 everything aliases all the time, generating a lot more precautionary
 loads than necessary.
 
-What irritates a lot of people is that compilers will still apply the
-strict aliasing rule even when it's trivial for the compiler to prove
-that aliasing is occurring:
+What [irritates][linus] a lot of people is that compilers will still
+apply the strict aliasing rule even when it's trivial for the compiler
+to prove that aliasing is occurring:
 
 ```c
 /* note: forbidden */
@@ -269,5 +269,6 @@ behavior is not without merit.
 [endian]: https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html
 [func]: https://kristerw.blogspot.com/2017/09/why-undefined-behavior-may-call-never.html
 [lex]: /blog/2016/12/22/
+[linus]: https://lkml.org/lkml/2003/2/26/158
 [llvm]: http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
 [nd]: http://www.catb.org/jargon/html/N/nasal-demons.html
