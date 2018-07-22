@@ -70,69 +70,120 @@ accurately, defined to wrap, *not* overflow. Both the undefined signed
 overflow and defined unsigned overflow are useful in different
 situations.
 
-For example, here's a fairly common situation similar what [actually
-happened in bzip2][bz2]. Suppose we have this little function to sum two
-elements in an array:
+For example, here's a fairly common situation, much like what [actually
+happened in bzip2][bz2]. Consider this function that does substring
+comparison:
 
 ```c
 int
-sum_signed(int *vals, int i)
+cmp_signed(int i1, int i2, unsigned char *buf)
 {
-    return vals[i] + vals[i * 2];
+    for (;;) {
+        int c1 = buf[i1];
+        int c2 = buf[i2];
+        if (c1 != c2)
+            return c1 - c2;
+        i1++;
+        i2++;
+    }
 }
 
 int
-sum_unsigned(int *vals, unsigned i)
+cmp_unsigned(unsigned i1, unsigned i2, unsigned char *buf)
 {
-    return vals[i] + vals[i * 2];
+    for (;;) {
+        int c1 = buf[i1];
+        int c2 = buf[i2];
+        if (c1 != c2)
+            return c1 - c2;
+        i1++;
+        i2++;
+    }
 }
 ```
 
-In this program, the index, `i`, will always be some small,
+In this function, the indices `i1` and `i2` will always be some small,
 non-negative value. Since it's non-negative, it should be `unsigned`,
-right? No, not generally. That puts an extra constraint on code
-generation and, at least on x86-64, makes for a less efficient
-function. Most of the time you actually don't want overflow to be
-defined, and instead allow the compiler to assume it just doesn't
-happen.
+right? Not necessarily. That puts an extra constraint on code generation
+and, at least on x86-64, makes for a less efficient function. Most of
+the time you actually *don't* want overflow to be defined, and instead
+allow the compiler to assume it just doesn't happen.
 
-The constraint is that **the behavior of `i` overflowing as an
-unsigned integer is defined, and the compiler is obligated to
-implement that behavior.** On x86-64, where `int` is 32 bits, the
-result of the operation must be truncated to 32 bits one way or
-another, requiring an extra instruction.
+The constraint is that **the behavior of `i1` or `i2` overflowing as an
+unsigned integer is defined, and the compiler is obligated to implement
+that behavior.** On x86-64, where `int` is 32 bits, the result of the
+operation must be truncated to 32 bits one way or another, requiring
+extra instructions inside the loop.
 
-In the signed case, the expression `i * 2` cannot overflow since that
+In the signed case, incrementing the integers cannot overflow since that
 would be undefined behavior. This permits the compiler to perform the
-multiplication in 64-bit precision without truncation if it would be
-more efficient, which, in this case, it is. The result is used as part
-of a memory address, which must be 64 bits.
+increment only in 64-bit precision without truncation if it would be
+more efficient, which, in this case, it is.
 
-Here's the output of GCC 8.1.0 on x86-64:
+Here's the output of Clang 6.0.0 with `-Os` on x86-64. Pay close
+attention to the main loop, which I named `.loop`:
 
 ```nasm
-sum_signed:
-    movsxd rsi, esi               ; sign extend i to 64 bits
-    mov    eax, [rdi + rsi * 8]   ; "i * 2" as part of addressing
-    add    eax, [rdi + rsi * 4]
-    ret
+cmp_signed:
+        movsxd rdi, edi             ; use i1 as a 64-bit integer
+        mov    al, [rdx + rdi]
+        movsxd rsi, esi             ; use i2 as a 64-bit integer
+        mov    cl, [rdx + rsi]
+        jmp    .check
 
-sum_unsigned:
-    lea    edx, [rsi + rsi]       ; "i * 2" in 64 bits
-    mov    esi, esi               ; truncate in case of overflow
-    mov    eax, [rdi + rsi * 4]
-    add    eax, [rdi + rdx * 4]
-    ret
+.loop:  mov    al, [rdx + rdi + 1]
+        mov    cl, [rdx + rsi + 1]
+        inc    rdx                  ; increment only the base pointer
+.check: cmp    al, cl
+        je     .loop
+
+        movzx  eax, al
+        movzx  ecx, cl
+        sub    eax, ecx             ; return c1 - c2
+        ret
+
+cmp_unsigned:
+        mov    eax, edi
+        mov    al, [rdx + rax]
+        mov    ecx, esi
+        mov    cl, [rdx + rcx]
+        cmp    al, cl
+        jne    .ret
+        inc    edi
+        inc    esi
+
+.loop:  mov    eax, edi             ; truncated i1 overflow
+        mov    al, [rdx + rax]
+        mov    ecx, esi             ; truncated i2 overflow
+        mov    cl, [rdx + rcx]
+        inc    edi                  ; increment i1
+        inc    esi                  ; increment i2
+        cmp    al, cl
+        je     .loop
+
+.ret:   movzx  eax, al
+        movzx  ecx, cl
+        sub    eax, ecx
+        ret
 ```
 
-Using a signed integer helps communicate the *narrow contract* of the
-function — the limited range of `i` — to the compiler. In a variant of C
-where signed integer overflow is defined (i.e. `-fwrapv`), this
-capability is lost.
+As unsigned values, `i1` and `i2` can overflow independently, so they
+have to be handled as independent 32-bit unsigned integers. As signed
+values they can't overflow, so they're treated as if they were 64-bit
+integers and, instead, the pointer, `buf`, is incremented without
+concern for overflow. The signed loop is much more efficient (5
+instructions versus 8).
 
-Side note: Using `size_t` is potentially even better on x86-64, since
-the function won't even need to do sign extension. However, this might
-simply move the sign extension out to the caller.
+The signed integer helps to communicate the *narrow contract* of the
+function — the limited range of `i1` and `i2` — to the compiler. In a
+variant of C where signed integer overflow is defined (i.e. `-fwrapv`),
+this capability is lost. In fact, using `-fwrapv` deoptimizes the signed
+version of this function.
+
+Side note: Using `size_t` (an unsigned integer) is even better on x86-64
+for this example since it's already 64 bits and the function doesn't
+need the initial sign/zero extension. However, this might simply move
+the sign extension out to the caller.
 
 ### Strict aliasing
 
