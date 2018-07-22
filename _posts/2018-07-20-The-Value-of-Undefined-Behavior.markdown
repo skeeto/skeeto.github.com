@@ -261,13 +261,14 @@ it doesn't happen.
 Undefined behavior is like nitro, a dangerous, volatile substance that
 makes things go really, really fast. You could argue that it's *too*
 dangerous to use in practice, but the aggressive use of undefined
-behavior is not without merit.
+behavior is [not without merit][intimacy].
 
 
 [bite]: /blog/2018/05/01/
 [bz2]: https://www.youtube.com/watch?v=yG1OZ69H_-o&t=38m18s
 [endian]: https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html
 [func]: https://kristerw.blogspot.com/2017/09/why-undefined-behavior-may-call-never.html
+[intimacy]: http://thoughtmesh.net/publish/367.php
 [lex]: /blog/2016/12/22/
 [linus]: https://lkml.org/lkml/2003/2/26/158
 [llvm]: http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
