@@ -136,8 +136,8 @@ simply move the sign extension out to the caller.
 
 ### Strict aliasing
 
-Another controversial undefined behavior is *strict aliasing*. This
-particular term doesn't actually appear anywhere in the C
+Another controversial undefined behavior is [*strict aliasing*][sa].
+This particular term doesn't actually appear anywhere in the C
 specification, but it's the popular name for C's aliasing rules. In
 short, variables with types that aren't compatible are not allowed to
 alias through pointers.
@@ -272,3 +272,4 @@ behavior is not without merit.
 [linus]: https://lkml.org/lkml/2003/2/26/158
 [llvm]: http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
 [nd]: http://www.catb.org/jargon/html/N/nasal-demons.html
+[sa]: https://gist.github.com/shafik/848ae25ee209f698763cffee272a58f8
