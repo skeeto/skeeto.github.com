@@ -236,13 +236,12 @@ no compiler yet exploits: `uint8_t` is not necessarily `unsigned char`.
 That's just one possible `typedef` definition for it. It could instead
 `typedef` to, say, some internal `__byte` type.
 
-In other words, technically speaking, `uint8_t` does not have the
-strict aliasing exemption. If you wanted to write bytes to a buffer
-without worrying the compiler about aliasing issues with other
-pointers, this would be the tool to accomplish it. Unfortunately
-there's far too much existing code that violates this part of strict
-aliasing that no toolchain is willing to exploit it for optimization
-purposes.
+In other words, technically speaking, `uint8_t` does not have the strict
+aliasing exemption. If you wanted to write bytes to a buffer without
+worrying the compiler about aliasing issues with other pointers, this
+would be the tool to accomplish it. Unfortunately there's far too much
+existing code that violates this part of strict aliasing that no
+toolchain is [willing to exploit it][u8] for optimization purposes.
 
 ### Other undefined behaviors
 
@@ -274,3 +273,4 @@ behavior is [not without merit][intimacy].
 [llvm]: http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
 [nd]: http://www.catb.org/jargon/html/N/nasal-demons.html
 [sa]: https://gist.github.com/shafik/848ae25ee209f698763cffee272a58f8
+[u8]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66110
