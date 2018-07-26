@@ -5,6 +5,9 @@ tags: [elisp, emacs]
 uuid: d1361157-9022-3e77-270c-5410d903c7d4
 ---
 
+**Reflection from the future**: *This library is super slow and
+inefficient. It should probably not be used for anything serious.*
+
 Last weekend I had the itch to play around with a multiple-inheritance
 prototype-based object system in lisp. It would
 [look a lot like JavaScript's object system][yegge] but wanted to try
@@ -20,13 +23,13 @@ See the README for a quick demonstration. What follows is the long
 explanation.
 
 It's called [@][at], due to the syntax that it adds to Elisp as a
-domain-specific language. It's a mini-language, really. The name is
-also a challenge to the code that supports Elisp, because so much of
-it — including emacs-lisp-mode and Paredit — doesn't properly handle
-@ in identifiers. Even [Maruku][maruku], the Markdown to HTML
-translator I use for this blog, has bugs that won't allow it to handle
-the @ characters in my code, so I had to forgo most syntax
-highlighting for this post.
+domain-specific language. It's a mini-language, really. The name is also
+a challenge to the code that supports Elisp, because so much of it —
+including emacs-lisp-mode and Paredit — doesn't properly handle @ in
+identifiers. ~~Even [Maruku][maruku], the Markdown to HTML translator I
+use for this blog, has bugs that won't allow it to handle the @
+characters in my code, so I had to forgo most syntax highlighting for
+this post.~~ (Update: I now use Kramdown so this is no longer an issue.)
 
 Fortunately `require` *does* manage just fine.
 
@@ -80,10 +83,12 @@ Like JavaScript, methods are just functions stored in properties on an
 object. In @, the first argument for a method is the object itself,
 which is called @@ by convention.
 
-    (setf (@ rectangle :area)
-      (lambda (@) (* (@ @@ :width) (@ @@ :height))))
+~~~cl
+(setf (@ rectangle :area)
+  (lambda (@) (* (@ @@ :width) (@ @@ :height))))
 
-    (funcall (@ rectangle :area) rectangle)  ; => 52
+(funcall (@ rectangle :area) rectangle)  ; => 52
+~~~
 
 ### New Syntax
 
@@ -144,10 +149,12 @@ they're already bound on `foo`.
 Here's another re-usable prototype. Notice that @: variables are
 also setf-able — using `push` in this case.
 
-    (defvar @colored (@extend :color ()))
+~~~cl
+(defvar @colored (@extend :color ()))
 
-    (def@ @colored :mix (color)
-      (push color @:color))
+(def@ @colored :mix (color)
+  (push color @:color))
+~~~
 
 The object system has multiple-inheritance, so colored rectangles can
 be created from these two objects. The parent objects of an object are
@@ -155,12 +162,14 @@ listed in the `:proto` property as a list (similar to JavaScript's
 `__proto__`), which can be modified at any time to change an object's
 prototype chain.
 
-    (defvar foo (@extend @colored @rectangle :width 10 :height 4))
+~~~cl
+(defvar foo (@extend @colored @rectangle :width 10 :height 4))
 
-    (@! foo :area)  ; => 40
-    (@! foo :mix :red)
-    (@! foo :mix :blue)
-    (@ foo :color)  ; => (:blue :red)
+(@! foo :area)  ; => 40
+(@! foo :mix :red)
+(@! foo :mix :blue)
+(@ foo :color)  ; => (:blue :red)
+~~~
 
 Even though the initial property was read from the parent, the
 assignment (`push`), like all assignments, actually occurred on `foo`.
@@ -179,10 +188,12 @@ By providing your own you can fundamentally change how your object
 works. For example, here's an `@immutable` mix-in which prevents all
 property assignments. It's provided as part of @.
 
-    (defvar @immutable (@extend))
+~~~cl
+(defvar @immutable (@extend))
 
-    (def@ @immutable :set (property _value)
-      (error "Object is immutable, cannot set %s" property))
+(def@ @immutable :set (property _value)
+  (error "Object is immutable, cannot set %s" property))
+~~~
 
 This `:set` method will be found before the @ `:set` method, so it
 gets overridden.
@@ -202,15 +213,17 @@ Pretty cool, eh?
 
 The `:get` method can be used to provide virtual properties.
 
-    (defvar @squares (@extend))
+~~~cl
+(defvar @squares (@extend))
 
-    (def@ @squares :get (property)
-      (if (numberp property)
-          (expt property 2)
-        (@^:get property)))  ; explained in a moment
+(def@ @squares :get (property)
+  (if (numberp property)
+      (expt property 2)
+    (@^:get property)))  ; explained in a moment
 
-    (mapcar (lambda (n) (@ @squares n)) '(0 1 2 3 4))
-    ; => (0 1 4 9 16)
+(mapcar (lambda (n) (@ @squares n)) '(0 1 2 3 4))
+; => (0 1 4 9 16)
+~~~
 
 I use this technique in the `@vector` class under `lib/` to expose the
 elements of the internal vector as if they were properties.
@@ -231,29 +244,33 @@ chain. For example, here's a `@watchable` mix-in (also provided by @)
 that allows other code to be notified of changes to an object. It
 needs to override `:set` but still call the original `:set`.
 
-    (defvar @watchable (@extend :watchers nil))
+~~~cl
+(defvar @watchable (@extend :watchers nil))
 
-    (def@ @watchable :watch (callback)
-      (push callback @:watchers))
+(def@ @watchable :watch (callback)
+  (push callback @:watchers))
 
-    (def@ @watchable :unwatch (callback)
-      (setf @:watchers (remove callback @:watchers)))
+(def@ @watchable :unwatch (callback)
+  (setf @:watchers (remove callback @:watchers)))
 
-    (def@ @watchable :set (property new)
-      (dolist (callback @:watchers)
-        (funcall callback @@ property new))
-      (@^:set property new))
+(def@ @watchable :set (property new)
+  (dolist (callback @:watchers)
+    (funcall callback @@ property new))
+  (@^:set property new))
+~~~
 
 This behavior is also used for constructors. By convention, the
 `:init` method is the constructor. It should generally call the next
 constructor with `(@^:init)`. @ has a no-op, no-argument `:init`
 method to bottom-out this process.
 
-    (def@ @rectangle :init (width height)
-      (@^:init)
-      (setf @:width width @:height height))
+~~~cl
+(def@ @rectangle :init (width height)
+  (@^:init)
+  (setf @:width width @:height height))
 
-    (@! (@! @rectangle :new 13.2 2.1) :area) ; => 27.72
+(@! (@! @rectangle :new 13.2 2.1) :area) ; => 27.72
+~~~
 
 As shown, the `:new` method provided by the @ object combines both
 `@extend` and `:init` to provide simple single-object inheritance.
