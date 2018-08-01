@@ -184,6 +184,11 @@ Even with this special `const` rule, stick to using `const` for
 yourself and for your fellow human programmers. Let the optimizer
 reason for itself about what is constant and what is not.
 
+Travis Downs nicely summed up this article in the comments:
+
+> In general, `const` *declarations* can't help the optimizer, but
+> `const` *definitions* can.
+
 
 [reddit]: https://redd.it/4udqwj
 [const]: http://yarchive.net/comp/const.html
