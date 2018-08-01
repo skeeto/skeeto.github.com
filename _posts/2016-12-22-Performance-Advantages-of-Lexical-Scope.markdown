@@ -251,11 +251,11 @@ considered a bug.
 
 ### Accidental closures
 
-I've said there are are absolutely no advantages to `lexical-binding:
-nil`. It's only the default for the sake of backwards-compatibility.
-However, there *is* one case where `lexical-binding: t` introduces a
-subtle issue that would otherwise not exist. Take this code for
-example (and nevermind `prin1-to-string` for a moment):
+I've said there are absolutely no advantages to `lexical-binding: nil`.
+It's only the default for the sake of backwards-compatibility. However,
+there *is* one case where `lexical-binding: t` introduces a subtle issue
+that would otherwise not exist. Take this code for example (and
+nevermind `prin1-to-string` for a moment):
 
 ~~~cl
 ;; -*- lexical-binding: t; -*-
