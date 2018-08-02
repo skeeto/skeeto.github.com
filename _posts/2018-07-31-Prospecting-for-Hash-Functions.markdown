@@ -188,7 +188,8 @@ prospector32(uint32_t x)
 According to a full (e.g. not estimated) bias evaluation, this function
 beats *the snot* out of most of 32-bit hash functions I could find. It
 even comes out ahead of this well known hash function that I *believe*
-originates from the H2 SQL Database:
+originates from the H2 SQL Database. (Update: Thomas Mueller has
+confirmed that, indeed, this is his hash function.)
 
 ```c
 uint32_t
