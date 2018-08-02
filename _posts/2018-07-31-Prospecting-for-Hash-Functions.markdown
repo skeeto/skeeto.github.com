@@ -329,9 +329,8 @@ hash64(uint64_t x)
 }
 ```
 
-Again, these follows the same construction as before. There really is
-something special about it, and lots of other people have noticed,
-too.
+Again, these follow the same construction as before. There really is
+something special about it, and many other people have noticed, too.
 
 Both functions have about the same bias. (Remember, I can only estimate
 the bias for 64-bit hash functions.) The prospector has found lots of
