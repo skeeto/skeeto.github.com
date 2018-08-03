@@ -13,7 +13,9 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 *This article has been [translated into Estonian][et] by
 [Weronika Pawlak][ett].*  
 *This article has been [translated into Uzbek][uz] by
-[Printable Coloring Pages][uzt].*
+[Printable Coloring Pages][uzt].*  
+*This article has been [translated into German][de] by
+[StudHilfe][det].*
 
 *Note: The way I manage my email wouldn't really work for most people,
 so don't read this as a recommendation. This is just a discussion of
@@ -192,6 +194,8 @@ online][muttrc]. The first few weeks I was tweaking this file hourly,
 but I've now got it basically the way I want.
 
 
+[de]: https://studhilfe.de/translations/#Switching-to-the-Mutt-Email-Client:DE
+[det]: https://studhilfe.de/
 [emacsff]: https://www.emacswiki.org/emacs/GnusFormatFlowed
 [enchive]: /blog/2017/03/12/
 [et]: https://www.piecesauto-pro.fr/blog/2018/04/12/switching-mutt-email-client/
