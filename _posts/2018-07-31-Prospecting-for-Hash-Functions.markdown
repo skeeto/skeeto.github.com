@@ -251,9 +251,10 @@ hash32(uint32_t x)
 I hadn't noticed this until after the prospector had come across it on
 its own. The pattern for all three is XOR-right-shift, multiply,
 XOR-right-shift, multiply, XOR-right-shift. There's something
-particularly useful about this construction. The XOR-right-shift
-diffuses bits rightward and the multiply diffuses bits leftward. I like
-to think it's "sloshing" the bits right, left, right, left.
+particularly useful about this [multiply-xorshift construction][mx]. The
+XOR-right-shift diffuses bits rightward and the multiply diffuses bits
+leftward. I like to think it's "sloshing" the bits right, left, right,
+left.
 
 It seems that multiplication is particularly good at diffusion, so it
 makes perfect sense to exploit it in non-cryptographic hash functions,
@@ -381,13 +382,12 @@ worth using a genetic algorithm to breed those 5-tuples towards
 optimum? Others have had [success in this area with simulated
 annealing][sa].
 
-There's probably more to exploit from the "sloshing" construction that
-keeps coming up — someone please tell me if there's a proper name for
-it. If anything, the prospector is searching too broadly, looking at
-constructions that could never really compete no matter what the
-constants. In addition to everything above, I've been looking for good
-32-bit hash functions that don't use any 32-bit constants, but I'm
-really not finding any with a competitively low bias.
+There's probably more to exploit from the multiply-xorshift construction
+that keeps popping up. If anything, the prospector is searching too
+broadly, looking at constructions that could never really compete no
+matter what the constants. In addition to everything above, I've been
+looking for good 32-bit hash functions that don't use any 32-bit
+constants, but I'm really not finding any with a competitively low bias.
 
 
 [blowpipe]: /blog/2017/09/15/
@@ -399,6 +399,7 @@ really not finding any with a competitively low bias.
 [jit]: /blog/2015/03/19/
 [m3]: https://en.wikipedia.org/wiki/MurmurHash#Algorithm
 [mulvey]: http://papa.bretmulvey.com/post/124027987928/hash-functions
+[mx]: http://www.pcg-random.org/posts/developing-a-seed_seq-alternative.html#multiplyxorshift
 [prng]: /blog/2017/09/21/
 [rot]: /blog/2018/02/07/
 [sa]: https://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
