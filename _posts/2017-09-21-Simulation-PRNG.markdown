@@ -6,6 +6,11 @@ tags: [c, compsci, x86, crypto, optimization]
 uuid: 637af55f-6e33-31e5-25fa-edb590a16d44
 ---
 
+**August 2018 Update**: *xoroshiro128+ fails [PractRand][practrand] very
+badly. Since this article was published, its authors have supplanted it
+with **xoshiro256\*\***. It has essentially the same performance, but
+better statistical properties. xoshiro256\*\* is now my preferred PRNG.*
+
 I use pseudo-random number generators (PRNGs) a whole lot. They're an
 essential component in lots of algorithms and processes.
 
@@ -467,6 +472,7 @@ what's appropriate for your own situation.
 [pcg]: http://www.pcg-random.org/
 [pcgp]: http://www.pcg-random.org/paper.html
 [plt]: /blog/2016/10/27/
+[practrand]: http://pracrand.sourceforge.net/
 [rdrand]: https://en.wikipedia.org/wiki/RdRand
 [simd]: /blog/2015/07/10/
 [xoro]: http://xoroshiro.di.unimi.it/
