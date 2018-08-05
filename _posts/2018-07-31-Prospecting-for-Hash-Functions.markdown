@@ -402,6 +402,6 @@ really not finding any with a competitively low bias.
 [prng]: /blog/2017/09/21/
 [rot]: /blog/2018/02/07/
 [sa]: https://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
-[salsa]: http://cr.yp.to/snuffle/design.pdf
+[salsa20]: http://cr.yp.to/snuffle/design.pdf
 [sr]: http://xoshiro.di.unimi.it/splitmix64.c
 [wang]: https://gist.github.com/badboy/6267743
