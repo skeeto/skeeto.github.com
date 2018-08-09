@@ -389,6 +389,29 @@ matter what the constants. In addition to everything above, I've been
 looking for good 32-bit hash functions that don't use any 32-bit
 constants, but I'm really not finding any with a competitively low bias.
 
+### Update
+
+About one week after publishing this article I found an even better hash
+function. I believe **this is the least biased *simple* 32-bit integer
+hash function ever devised**. It's even less biased than the MurmurHash3
+finalizer.
+
+```c
+// exact bias: 0.20207553121367283
+uint32_t
+lowbias32(uint32_t x)
+{
+    x ^= x >> 16;
+    x *= UINT32_C(0xe2d0d4cb);
+    x ^= x >> 15;
+    x *= UINT32_C(0x3c6ad939);
+    x ^= x >> 15;
+    return x;
+}
+```
+
+The search will continue.
+
 
 [blowpipe]: /blog/2017/09/15/
 [dict]: https://packages.debian.org/sid/wamerican-large
