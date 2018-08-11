@@ -392,20 +392,40 @@ constants, but I'm really not finding any with a competitively low bias.
 ### Update
 
 About one week after publishing this article I found an even better hash
-function. I believe **this is the least biased *simple* 32-bit integer
-hash function ever devised**. It's even less biased than the MurmurHash3
-finalizer.
+function. I believe **this is the least biased 32-bit integer hash
+function of this form ever devised**. It's even less biased than the
+MurmurHash3 finalizer.
 
 ```c
-// exact bias: 0.20207553121367283
+// exact bias: 0.19768193144773874
 uint32_t
 lowbias32(uint32_t x)
 {
+    x ^= x >> 18;
+    x *= UINT32_C(0xa136aaad);
     x ^= x >> 16;
-    x *= UINT32_C(0xe2d0d4cb);
-    x ^= x >> 15;
-    x *= UINT32_C(0x3c6ad939);
-    x ^= x >> 15;
+    x *= UINT32_C(0x9f6d62d7);
+    x ^= x >> 17;
+    return x;
+}
+```
+
+If you're willing to use an additional round of multiply-xorshift, this
+next function is *very* close to the theoretical bias limit (bias =
+~0.0217) as exhibited by a perfect integer hash function:
+
+```c
+// exact bias: 0.023431341478063347
+uint32_t
+triple32(uint32_t x)
+{
+    x ^= x >> 18;
+    x *= UINT32_C(0xed5ad4bb);
+    x ^= x >> 12;
+    x *= UINT32_C(0xac4c1b51);
+    x ^= x >> 17;
+    x *= UINT32_C(0x87d99d0f);
+    x ^= x >> 14;
     return x;
 }
 ```
