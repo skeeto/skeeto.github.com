@@ -412,14 +412,14 @@ lowbias32(uint32_t x)
 
 If you're willing to use an additional round of multiply-xorshift, this
 next function actually reaches the theoretical bias limit (bias =
-~0.0215) as exhibited by a perfect integer hash function:
+~0.021) as exhibited by a perfect integer hash function:
 
 ```c
-// exact bias: 0.021334944237993255
+// exact bias: 0.020888578919738908
 uint32_t
 triple32(uint32_t x)
 {
-    x ^= x >> 18;
+    x ^= x >> 17;
     x *= UINT32_C(0xed5ad4bb);
     x ^= x >> 11;
     x *= UINT32_C(0xac4c1b51);
