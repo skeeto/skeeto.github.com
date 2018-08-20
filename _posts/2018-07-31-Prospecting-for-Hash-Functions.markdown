@@ -397,15 +397,27 @@ function *of this form* ever devised**. It's even less biased than the
 MurmurHash3 finalizer.
 
 ```c
-// exact bias: 0.19768193144773874
+// exact bias: 0.17353355999581582
 uint32_t
 lowbias32(uint32_t x)
 {
-    x ^= x >> 18;
-    x *= UINT32_C(0xa136aaad);
     x ^= x >> 16;
-    x *= UINT32_C(0x9f6d62d7);
-    x ^= x >> 17;
+    x *= UINT32_C(0x7feb352d);
+    x ^= x >> 15;
+    x *= UINT32_C(0x846ca68b);
+    x ^= x >> 16;
+    return x;
+}
+
+// inverse
+uint32_t
+lowbias32_r(uint32_t x)
+{
+    x ^= x >> 16;
+    x *= UINT32_C(0x43021123);
+    x ^= x >> 15 ^ x >> 30;
+    x *= UINT32_C(0x1d69e2a5);
+    x ^= x >> 16;
     return x;
 }
 ```
