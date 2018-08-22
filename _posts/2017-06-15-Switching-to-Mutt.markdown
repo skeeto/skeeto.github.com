@@ -15,7 +15,9 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 *This article has been [translated into Uzbek][uz] by
 [Printable Coloring Pages][uzt].*  
 *This article has been [translated into German][de] by
-[StudHilfe][det].*
+[StudHilfe][det].*  
+*This article has been [translated into Dutch][nl] by
+[NCSM][nlt].*
 
 *Note: The way I manage my email wouldn't really work for most people,
 so don't read this as a recommendation. This is just a discussion of
@@ -210,6 +212,8 @@ but I've now got it basically the way I want.
 [mu]: https://www.djcbsoftware.nl/code/mu/
 [mutt]: http://www.mutt.org/
 [muttrc]: https://github.com/skeeto/dotfiles/blob/master/_muttrc
+[nl]: http://www.ncsm.nl/useful#Switching-to-the-Mutt-Email-Client:NL
+[nlt]: http://www.ncsm.nl/
 [py]: https://docs.python.org/3.4/library/email.html
 [rfcff]: https://tools.ietf.org/html/rfc3676
 [rh]: https://www.youtube.com/watch?v=oyLBGkS5ICk
