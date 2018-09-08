@@ -80,9 +80,9 @@ of course, so Firefox creates a fresh profile.
 In theory I could just create a *new* profile alongside the default
 within my existing `~/.mozilla` directory. However, I've never liked
 Firefox's profile feature, especially with the intentionally
-unpredicate way it stores the profile itself: behind random path. I
-also don't trust it to be fully isolated and to fully clean up when
-I'm done.
+unpredictable way it stores the profile itself: behind random path. I
+also don't trust it to be fully isolated and to fully clean up when I'm
+done.
 
 Before starting Firefox, I register a trap with the shell to clean up
 the profile directory regardless of what happens. It doesn't matter if
