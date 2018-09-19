@@ -153,7 +153,7 @@ issue.
 
 
 [binitools]: https://github.com/skeeto/binitools
-[c]: https://www.cl.cam.ac.uk/~srk31/research/papers/kell17some-preprint.pdf
+[c]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
 [cc0]: https://web.archive.org/web/20150225160057/https://dancohen.org/2013/11/26/cc0-by/
 [dl]: https://github.com/skeeto/youtube-dl-emacs
 [dotfiles]: https://github.com/skeeto/dotfiles
