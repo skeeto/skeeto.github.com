@@ -119,7 +119,7 @@ implementation to pass these assertions (and still sometimes fail).
 
 ~~~c
 void
-example(void *prt_a, void *ptr_b)
+example(void *ptr_a, void *ptr_b)
 {
     if (ptr_a == ptr_b) {
         uintptr_t int_a = (uintptr_t)ptr_a;
