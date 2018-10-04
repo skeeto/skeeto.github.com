@@ -6,7 +6,6 @@ tags: [emacs, elisp]
 uuid: 3837b5b2-0aba-3381-ff6f-9432f8ff03e9
 ---
 
-*[Russian translation][rtlate] by [ClipArtMag][rtlater].*  
 *[Ukrainian translation][utlate] by [Open Source Initiative][utlater].*
 
 So your Emacs package has grown beyond a dozen or so lines of code, and
@@ -320,7 +319,5 @@ names. Its use should feel almost as natural as defining functions.
 [fast]: /blog/2017/01/30/
 [hash]: /blog/2010/06/07/
 [read]: /blog/2013/12/30/
-[rtlate]: http://clipartmag.com/ru-structured-data-in-emacs-lisp
-[rtlater]: http://clipartmag.com/
 [utlate]: http://www.opensourceinitiative.net/edu/nullprogram
 [utlater]: http://www.opensourceinitiative.net/edu/
