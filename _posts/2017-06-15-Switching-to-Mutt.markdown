@@ -8,7 +8,6 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 
 *This article has been [translated into Russian][ru].*  
 *This article has been [translated into Ukrainian][uk].*  
-*This article has been [translated into Estonian][et].*  
 *This article has been [translated into Uzbek][uz].*  
 *This article has been [translated into Dutch][nl].*
 
@@ -191,7 +190,6 @@ but I've now got it basically the way I want.
 
 [emacsff]: https://www.emacswiki.org/emacs/GnusFormatFlowed
 [enchive]: /blog/2017/03/12/
-[et]: https://www.piecesauto-pro.fr/blog/2018/04/12/switching-mutt-email-client/
 [evil]: https://github.com/emacs-evil/evil
 [ff]: https://joeclark.org/ffaq.html
 [gmail]: /blog/2013/09/03/
