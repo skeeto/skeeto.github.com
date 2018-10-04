@@ -6,18 +6,12 @@ tags: [vim, debian]
 uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 ---
 
-*This article has been [translated into Russian][ru] by
-[Howtorecover][rut].*  
-*This article has been [translated into Ukrainian][uk] by
-[Open Source Initiative][ukt].*  
-*This article has been [translated into Estonian][et] by
-[Weronika Pawlak][ett].*  
-*This article has been [translated into Uzbek][uz] by
-[Printable Coloring Pages][uzt].*  
-*This article has been [translated into German][de] by
-[StudHilfe][det].*  
-*This article has been [translated into Dutch][nl] by
-[NCSM][nlt].*
+*This article has been [translated into Russian][ru].*  
+*This article has been [translated into Ukrainian][uk].*  
+*This article has been [translated into Estonian][et].*  
+*This article has been [translated into Uzbek][uz].*  
+*This article has been [translated into German][de].*  
+*This article has been [translated into Dutch][nl].*
 
 *Note: The way I manage my email wouldn't really work for most people,
 so don't read this as a recommendation. This is just a discussion of
@@ -197,11 +191,9 @@ but I've now got it basically the way I want.
 
 
 [de]: https://studhilfe.de/translations/#Switching-to-the-Mutt-Email-Client:DE
-[det]: https://studhilfe.de/
 [emacsff]: https://www.emacswiki.org/emacs/GnusFormatFlowed
 [enchive]: /blog/2017/03/12/
 [et]: https://www.piecesauto-pro.fr/blog/2018/04/12/switching-mutt-email-client/
-[ett]: https://www.piecesauto-pro.fr/blog/
 [evil]: https://github.com/emacs-evil/evil
 [ff]: https://joeclark.org/ffaq.html
 [gmail]: /blog/2013/09/03/
@@ -213,16 +205,12 @@ but I've now got it basically the way I want.
 [mutt]: http://www.mutt.org/
 [muttrc]: https://github.com/skeeto/dotfiles/blob/master/_muttrc
 [nl]: http://www.ncsm.nl/useful#Switching-to-the-Mutt-Email-Client:NL
-[nlt]: http://www.ncsm.nl/
 [py]: https://docs.python.org/3.4/library/email.html
 [rfcff]: https://tools.ietf.org/html/rfc3676
 [rh]: https://www.youtube.com/watch?v=oyLBGkS5ICk
 [ru]: http://howtorecover.me/perehod-na-poctovyi-klient-mutt
-[rut]: http://howtorecover.me/
 [tmux]: https://tmux.github.io/
 [tt]: /blog/2017/04/01/
 [uk]: http://www.opensourceinitiative.net/edu/Mutt
-[ukt]: http://www.opensourceinitiative.net/edu/
 [uz]: http://getcolorings.com/uz-mutt-email
-[uzt]: http://getcolorings.com/
 [vim]: http://www.vim.org/
