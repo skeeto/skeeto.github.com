@@ -6,9 +6,7 @@ tags: [vim, debian]
 uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 ---
 
-*This article has been [translated into Russian][ru].*  
 *This article has been [translated into Ukrainian][uk].*  
-*This article has been [translated into Uzbek][uz].*  
 *This article has been [translated into Dutch][nl].*
 
 *Note: The way I manage my email wouldn't really work for most people,
@@ -204,9 +202,7 @@ but I've now got it basically the way I want.
 [py]: https://docs.python.org/3.4/library/email.html
 [rfcff]: https://tools.ietf.org/html/rfc3676
 [rh]: https://www.youtube.com/watch?v=oyLBGkS5ICk
-[ru]: http://howtorecover.me/perehod-na-poctovyi-klient-mutt
 [tmux]: https://tmux.github.io/
 [tt]: /blog/2017/04/01/
 [uk]: http://www.opensourceinitiative.net/edu/Mutt
-[uz]: http://getcolorings.com/uz-mutt-email
 [vim]: http://www.vim.org/
