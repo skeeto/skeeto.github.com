@@ -10,7 +10,6 @@ uuid: ef3edda3-ddaa-37cd-6bfc-fc9d13cd3414
 *This article has been [translated into Ukrainian][uk].*  
 *This article has been [translated into Estonian][et].*  
 *This article has been [translated into Uzbek][uz].*  
-*This article has been [translated into German][de].*  
 *This article has been [translated into Dutch][nl].*
 
 *Note: The way I manage my email wouldn't really work for most people,
@@ -190,7 +189,6 @@ online][muttrc]. The first few weeks I was tweaking this file hourly,
 but I've now got it basically the way I want.
 
 
-[de]: https://studhilfe.de/translations/#Switching-to-the-Mutt-Email-Client:DE
 [emacsff]: https://www.emacswiki.org/emacs/GnusFormatFlowed
 [enchive]: /blog/2017/03/12/
 [et]: https://www.piecesauto-pro.fr/blog/2018/04/12/switching-mutt-email-client/
