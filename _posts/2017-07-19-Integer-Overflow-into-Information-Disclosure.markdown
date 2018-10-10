@@ -137,7 +137,7 @@ authenticate(struct mstack *m)
 ~~~
 
 Next here's a little version of `calloc()` for the custom allocator. Hmm,
-I wonder why is this called "naive" ...
+I wonder why this is called "naive"…
 
 ~~~c
 void *
