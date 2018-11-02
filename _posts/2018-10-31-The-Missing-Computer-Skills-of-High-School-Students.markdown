@@ -6,7 +6,8 @@ tags: [meatspace]
 uuid: 96cc0dde-1524-3030-8bfc-016439796c16
 ---
 
-*This article was [discussed on Hacker News][hn].*
+*This article was [discussed on Hacker News][hn] and [discussed on
+Reddit][reddit].*
 
 It's been just over fours years since I started [mentoring high school
 students at work][two], and I recently began mentoring my fourth such
@@ -134,5 +135,6 @@ learn this?"
 
 
 [hn]: https://news.ycombinator.com/item?id=18349847
+[reddit]: https://redd.it/9td4qx
 [tt]: /blog/2017/04/01/
 [two]: /blog/2016/09/02/
