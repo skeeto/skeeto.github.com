@@ -6,6 +6,8 @@ tags: [meatspace]
 uuid: 96cc0dde-1524-3030-8bfc-016439796c16
 ---
 
+*This article was [discussed on Hacker News][hn].*
+
 It's been just over fours years since I started [mentoring high school
 students at work][two], and I recently began mentoring my fourth such
 student. That's enough students for me to start observing patterns. Of
@@ -131,5 +133,6 @@ experience. It would be the answer to that question of, "Why should I
 learn this?"
 
 
+[hn]: https://news.ycombinator.com/item?id=18349847
 [tt]: /blog/2017/04/01/
 [two]: /blog/2016/09/02/
