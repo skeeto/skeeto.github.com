@@ -83,7 +83,7 @@ is that we're not supposed to spend a lot of time on basic skills.
 Learning to touch type takes several weeks of daily effort. That's
 just too much time that we don't have. Second, this won't work anyway
 unless the student is motivated to learn it. I have no idea how to
-provide that sort of motivation. (And if the student *is *motivated,
+provide that sort of motivation. (And if the student *is* motivated,
 they'll do it on their own time anyway.) I think that's where schools
 get stuck.
 
