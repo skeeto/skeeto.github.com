@@ -162,7 +162,7 @@ attributes of this page at the same time (another thread calling
 `hotpatch()`) I'd be in trouble.
 
 It finds the page by rounding the target address down to the nearest
-4096, the assumed page size (sorry hagepages). *Warning*: I'm being a
+4096, the assumed page size (sorry hugepages). *Warning*: I'm being a
 bad programmer and not checking the result of `mprotect()`. If it
 fails, the program will crash and burn. It will always fail systems
 with W^X enforcement, which will likely become the standard [in the
