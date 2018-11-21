@@ -6,6 +6,8 @@ tags: [c]
 uuid: 78211c4b-f553-313d-659f-15cda1339893
 ---
 
+*This article was [discussed on Hacker News][hn].*
+
 Most widely-used programming languages have at least one regular
 conference dedicated to discussing it. Heck, even [Lisp has
 one][lisp]. It's a place to talk about the latest developments of the
@@ -134,4 +136,5 @@ conferences which you can just pretend are about C:
 
 
 [essay]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
+[hn]: https://news.ycombinator.com/item?id=18504879
 [lisp]: https://www.european-lisp-symposium.org/
