@@ -131,14 +131,17 @@ they don't work. If the current page is one of those
 extension-restricted pages, these keys don't work.
 
 The worse problem of all, by *far*, is that **WebExtensions are not
-active until the current page has loaded** (or something like that).
-This is the most glaring flaw in WebExtensions, and I'm surprised it
-still hasn't been addressed. It negatively affects every extension I
-use. What this means for Tridactyl is that for a second or so after
-navigating a link, I can't interact with the extension, and the
-keystrokes are lost. It's incredibly frustrating, both having to wait
-on a slow remote server to get control back, and to forget about this
-issue and have a bunch of keystrokes eaten.
+active until the current page has loaded**. This is the most glaring
+flaw in WebExtensions, and I'm surprised it still hasn't been addressed.
+It negatively affects every single extension I use. What this means for
+Tridactyl is that for a second or so after navigating a link, I can't
+interact with the extension, and the inputs are completely lost. *This
+is incredibly frustrating.* I have to wait on slow, remote servers to
+respond before regaining control of my own browser, and I often forget
+about this issue, which results in a bunch of eaten keystrokes. (Update:
+Months have passed and I've never gotten used to this issue. It
+irritates me a hundred times every day. This is by far Firefox's worst
+design flaw.)
 
 ### Other extensions
 
@@ -156,13 +159,13 @@ navigating with just the mouse is most comfortable. However, clicking
 little buttons is not. So instead of clicking the backward and forward
 buttons, I prefer to swipe the mouse, e.g. make a gesture.
 
-I previously used FireGestures, an XUL extension. I'm now using
-[**Gesturefy**][gesturefy]. I also considered Foxy Gestures, but it
-doesn't currently support ESR releases. Unfortunately all mouse
-gesture WebExtensions suffer from the page load problem: any gesture
-given before the page loads is lost. It's less of any annoyance than
-with Tridactyl, but it still trips me up. They also don't work on
-extension-restricted pages.
+I previously used FireGestures, an XUL extension. ~~I'm now using
+[**Gesturefy**][gesturefy]~~. (Update: Gesturefy doesn't support ESR
+either.) I also considered Foxy Gestures, but it doesn't currently
+support ESR releases. Unfortunately all mouse gesture WebExtensions
+suffer from the page load problem: any gesture given before the page
+loads is lost. It's less of any annoyance than with Tridactyl, but it
+still trips me up. They also don't work on extension-restricted pages.
 
 Firefox 60 ESR is the first time I'm using a browser supported by
 [**uMatrix**][umatrix] — another blessing from the author of uBlock
@@ -257,12 +260,13 @@ So I'm back to about 85% of the functionality I had before the
 calamity, which is far better than I had imagined. Other than the
 frequent minor annoyances, I'm pretty satisfied.
 
-In exchange I get better mouseless browsing and much, *much* better
-performance. I'm not kidding, **the difference Firefox Quantum makes
-is night and day**. In my own case, Firefox 60 ESR is using *one
-third* of the memory of Firefox 52 ESR, and I'm not experiencing the
-gradual memory leak. This really makes a difference on my laptop with
-4GB of RAM.
+In exchange I get better mouseless browsing and much better performance.
+I'm not kidding, the difference Firefox Quantum makes is night and day.
+~~In my own case, Firefox 60 ESR is using *one third* of the memory of
+Firefox 52 ESR~~ (Update: after more experience with it, I realize its
+just as much of a memory hog as before), and I'm not experiencing the
+gradual memory leak. ~~This really makes a difference on my laptop with
+4GB of RAM.~~
 
 So was it worth giving up that 15% capability for these improvements?
 Perhaps it was. Now that I've finally made the leap, I'm feeling a lot
