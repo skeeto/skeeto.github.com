@@ -15,14 +15,18 @@ it have converged to the same interface, but *only* the interface.
 Each implementation differs in interesting ways. In this article we'll
 explore how `$RANDOM` is implemented in various Bourne-like shells.
 
-Unfortunately I was unable to determine the origin of `$RANDOM`. Nobody
-was doing a good job tracking source code changes before the mid-1990s,
-so that history appears to be lost. Bash was first released in 1989, but
-the earliest version I could find was 1.14.7, released in 1996.
+~~Unfortunately I was unable to determine the origin of `$RANDOM`.~~
+Nobody was doing a good job tracking source code changes before the
+mid-1990s, so that history appears to be lost. Bash was first released
+in 1989, but the earliest version I could find was 1.14.7, released in 1996.
 KornShell was first released in 1983, but the earliest source I could
 find [was from 1993][ksh]. In both cases `$RANDOM` already existed. My
 guess is that it first appeared in one of these two shells, probably
 KornShell.
+
+**Update**: Quentin Barnes has informed me that his 1986 copy of
+KornShell (a.k.a. ksh86) implements `$RANDOM`. This predates Bash and
+makes it likely that this feature originated in KornShell.
 
 ### Bash
 
@@ -272,6 +276,11 @@ shift right by three all generated numbers.
 
 Why not just look at `RAND_MAX`? I guess they didn't think of it.
 
+**Update**: Quentin Barnes pointed out that `RAND_MAX` didn't exist
+until POSIX standardization in 1988. The constant [first appeared in
+Unix in 1990][first]. This KornShell code either predates the standard
+or needed to work on systems that predate the standard.
+
 Like Bash, repeated values are not allowed. I suspect one shell got this
 idea from the other.
 
@@ -317,6 +326,7 @@ making it my favorite version `$RANDOM` for any shell.
 
 
 [c89]: http://port70.net/~nsz/c/c89/c89-draft.html#4.10.2.2
+[first]: https://github.com/dspinellis/unix-history-repo/commit/1cc1b02a4361
 [hash]: /blog/2018/07/31/
 [ksh]: https://web.archive.org/web/20120613182836/http://www.research.att.com/sw/download/man/man1/ksh.html
 [mix]: http://www.pcg-random.org/posts/developing-a-seed_seq-alternative.html
@@ -325,7 +335,7 @@ making it my favorite version `$RANDOM` for any shell.
 [prng]: /blog/2017/09/21/
 [rc4]: https://man.openbsd.org/arc4random.3
 [sh]: http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/utilities/V3_chap02.html
+[srand]: https://man.openbsd.org/rand
 [t32]: https://github.com/skeeto/hash-prospector#three-round-functions
 [vio]: https://marc.info/?l=openbsd-tech&m=141807224826859&w=2
 [xkcd]: https://xkcd.com/221/
-[srand]: https://man.openbsd.org/rand
