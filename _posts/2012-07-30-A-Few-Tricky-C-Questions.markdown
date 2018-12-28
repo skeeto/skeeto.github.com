@@ -71,13 +71,13 @@ int *example()
 }
 ~~~
 
-Here we're creating a struct called `baz` and take a pointer to one of
-its fields. According to K&R C, this is invalid. Overall, structs are
-really limited in K&R C: they can't be function arguments, nor can
-they be returned from functions, nor can pointers be taken to their
-fields. Only *pointers* to structs are first-class. They acknowledged
-that this was limiting and said they planned on fixing it in the
-future.
+~~Here we're creating a struct called `baz` and take a pointer to one of
+its fields. According to K&R C, this is invalid.~~ (**Update**: I
+misunderstood. This is allowed.) Overall, structs are really limited in
+K&R C: they can't be function arguments, nor can they be returned from
+functions, ~~nor can pointers be taken to their fields~~. Only
+*pointers* to structs are first-class. They acknowledged that this was
+limiting and said they planned on fixing it in the future.
 
 Fortunately, this *was* fixed with ANSI C and structs are first-class
 objects. This means the above program is **valid** in ANSI C.
