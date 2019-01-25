@@ -69,14 +69,15 @@ correct?
 
 ### Fuzzing
 
-I've been interested in fuzzing for years, especially [american fuzzy
-lop][afl], or *afl*. However, I wasn't having success with it. I'd fuzz
-some of the tools I use regularly, and it wouldn't find anything of
-note, at least not before I gave up. I fuzzed [my JSON library][pdjson],
-and somehow it turned up nothing. Surely my JSON parser couldn't be
-*that* robust already, could it? Fuzzing just wasn't accomplishing
-anything for me. (As it turns out, my JSON library *is* quite robust,
-thanks in large part to various contributors!)
+I've been interested in [fuzzing][fuzz] for years, especially
+[american fuzzy lop][afl], or *afl*. However, I wasn't having success
+with it. I'd fuzz some of the tools I use regularly, and it wouldn't
+find anything of note, at least not before I gave up. I fuzzed [my
+JSON library][pdjson], and somehow it turned up nothing. Surely my
+JSON parser couldn't be *that* robust already, could it? Fuzzing just
+wasn't accomplishing anything for me. (As it turns out, my JSON
+library *is* quite robust, thanks in large part to various
+contributors!)
 
 So I've got this relatively new INI parser, and while it can
 successfully parse and correctly re-assemble the game's original set of
@@ -175,6 +176,7 @@ bugs. It's got a permanent slot on my software developer toolbelt.
 [borland]: https://nullprogram.com/blog/2018/04/13/
 [fl]: https://en.wikipedia.org/wiki/Freelancer_(video_game)
 [flex]: https://github.com/westes/flex
+[fuzz]: https://labs.mwrinfosecurity.com/blog/what-the-fuzz/
 [invalid]: https://github.com/skeeto/binitools/tree/master/tests/invalid
 [jpeg]: https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html
 [lex]: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/lex.html
