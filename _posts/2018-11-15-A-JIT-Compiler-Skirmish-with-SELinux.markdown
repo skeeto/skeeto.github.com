@@ -220,7 +220,7 @@ func();
 At a high level, That's pretty close to what I was actually doing. That
 includes neglecting to check the result of `mprotect(2)`. This worked
 fine and dandy for several years, when suddenly (shown here in the style
-[of strace](strace)):
+[of strace][strace]):
 
     mprotect(ptr, len, PROT_EXEC) = -1 EACCES (Permission denied)
 
