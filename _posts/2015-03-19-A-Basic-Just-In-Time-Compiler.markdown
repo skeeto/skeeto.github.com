@@ -6,6 +6,8 @@ tags: [c, tutorial, netsec, x86, posix, optimization]
 uuid: 95e0437f-61f0-3932-55b7-f828e171d9ca
 ---
 
+*This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
+
 [Monday's /r/dailyprogrammer challenge][dp] was to write a program to
 read a recurrence relation definition and, through interpretation,
 iterate it to some number of terms. It's given an initial term
@@ -323,16 +325,18 @@ than this one, warrants having a JIT compiler, but is still simple
 enough that I could, on some level, justify not using LLVM.
 
 
-[dp]: http://redd.it/2z68di
-[mine]: https://gist.github.com/skeeto/3a1aa3df31896c9956dc
-[mirror]: /download/jit.c
-[memory]: http://marek.vavrusa.com/c/memory/2015/02/20/memory/
-[rop]: http://en.wikipedia.org/wiki/Return-oriented_programming
-[wx]: http://www.tedunangst.com/flak/post/now-or-never-exec
-[old]: /blog/2014/12/09/
 [call]: http://en.wikipedia.org/wiki/X86_calling_conventions#x86-64_calling_conventions
 [cf]: https://www.reddit.com/r/dailyprogrammer/comments/2z68di/_/cpgkcx7
-[part2]: http://redd.it/2zna5q
+[dp]: http://redd.it/2z68di
+[hn]: https://news.ycombinator.com/item?id=17747759
+[memory]: http://marek.vavrusa.com/c/memory/2015/02/20/memory/
 [mine2]: https://gist.github.com/anonymous/f7e4a5086a2b0acc83aa
+[mine]: https://gist.github.com/skeeto/3a1aa3df31896c9956dc
 [mirror2]: /download/rpn-jit.c
+[mirror]: /download/jit.c
 [needle]: /blog/2016/11/17/
+[old]: /blog/2014/12/09/
+[part2]: http://redd.it/2zna5q
+[reddit]: https://old.reddit.com/r/programming/comments/akxq8q/a_basic_justintime_compiler/
+[rop]: http://en.wikipedia.org/wiki/Return-oriented_programming
+[wx]: http://www.tedunangst.com/flak/post/now-or-never-exec
