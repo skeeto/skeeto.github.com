@@ -439,7 +439,7 @@ circle. This final example wouldn't work correctly if those lambdas
 weren't evaluated properly.
 
 
-[src]: https://www.reddit.com/r/emacs/comments/7h23ed/dynamically_construct_a_lambda_function/
+[src]: https://old.reddit.com/r/emacs/comments/7h23ed/dynamically_construct_a_lambda_function/
 [lex]: /blog/2016/12/22/
 [bc]: /blog/2014/01/04/
 [read]: /blog/2013/12/30/

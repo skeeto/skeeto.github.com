@@ -326,7 +326,7 @@ enough that I could, on some level, justify not using LLVM.
 
 
 [call]: http://en.wikipedia.org/wiki/X86_calling_conventions#x86-64_calling_conventions
-[cf]: https://www.reddit.com/r/dailyprogrammer/comments/2z68di/_/cpgkcx7
+[cf]: https://old.reddit.com/r/dailyprogrammer/comments/2z68di/_/cpgkcx7
 [dp]: http://redd.it/2z68di
 [hn]: https://news.ycombinator.com/item?id=17747759
 [memory]: http://marek.vavrusa.com/c/memory/2015/02/20/memory/

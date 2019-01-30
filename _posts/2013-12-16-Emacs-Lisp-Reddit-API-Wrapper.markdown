@@ -7,7 +7,7 @@ uuid: 3362934d-9762-3f58-e05c-4d8b28175367
 ---
 
 A couple of months ago I wrote an Emacs Lisp wrapper for the
-[reddit API](http://www.reddit.com/dev/api). I didn't put it in MELPA,
+[reddit API](http://old.reddit.com/dev/api). I didn't put it in MELPA,
 not yet anyway. If anyone is finding it useful I'll see about getting
 that done. My intention was give it some exercise and testing before
 putting it out there for people to use, locking down the API. You can
@@ -129,8 +129,8 @@ I hope other people find this library useful!
 
 
 [oath2]: http://blog.jenkster.com/2013/10/an-oauth2-in-emacs-example.html
-[civ]: http://www.reddit.com/r/civ
-[mod]: http://www.reddit.com/r/civ/comments/clxj4/lets_tidy_rciv_up_a_bit/
+[civ]: http://old.reddit.com/r/civ
+[mod]: http://old.reddit.com/r/civ/comments/clxj4/lets_tidy_rciv_up_a_bit/
 [wrappers]: https://github.com/reddit/reddit/wiki/API-Wrappers
-[bug]: http://www.reddit.com/r/bugs/comments/1t162o/
+[bug]: http://old.reddit.com/r/bugs/comments/1t162o/
 [elfeed]: /blog/2013/09/04/

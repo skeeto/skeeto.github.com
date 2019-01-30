@@ -152,6 +152,6 @@ for free.
 [findbugs]: http://findbugs.sourceforge.net/
 [checkstyle]: http://checkstyle.sourceforge.net/
 [build]: https://github.com/skeeto/sample-java-project/blob/master/build.xml
-[cr0]: http://www.reddit.com/r/javahelp/comments/1inzs7/_/cb6ojr2
-[cr1]: http://www.reddit.com/r/reviewmycode/comments/1a2fty/_/c8tpme2
-[cr2]: http://www.reddit.com/r/javahelp/comments/1balsp/_/c958num
+[cr0]: http://old.reddit.com/r/javahelp/comments/1inzs7/_/cb6ojr2
+[cr1]: http://old.reddit.com/r/reviewmycode/comments/1a2fty/_/c8tpme2
+[cr2]: http://old.reddit.com/r/javahelp/comments/1balsp/_/c958num

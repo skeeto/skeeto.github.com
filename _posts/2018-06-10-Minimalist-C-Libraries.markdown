@@ -512,7 +512,7 @@ Instead I'll save these for other articles!
 [bmp]: https://github.com/skeeto/bmp
 [buf]: https://github.com/skeeto/growable-buf
 [cpp]: https://github.com/skeeto/fantasyname/pull/2
-[dp]: https://www.reddit.com/r/dailyprogrammer/
+[dp]: https://old.reddit.com/r/dailyprogrammer/
 [endian]: https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html
 [flt]: https://www.exploringbinary.com/incorrectly-rounded-conversions-in-visual-c-plus-plus/
 [flush]: /blog/2016/09/09/

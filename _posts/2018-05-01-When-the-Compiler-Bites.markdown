@@ -383,7 +383,7 @@ Just before the end it would pause the game and wait… forever.
 [of]: /blog/2017/07/19/
 [pc]: https://wiki.lesswrong.com/wiki/Paperclip_maximizer
 [prec]: https://possiblywrong.wordpress.com/2017/09/12/floating-point-agreement-between-matlab-and-c/
-[reddit]: https://www.reddit.com/r/cpp/comments/8gfhq3/when_the_compiler_bites/
+[reddit]: https://old.reddit.com/r/cpp/comments/8gfhq3/when_the_compiler_bites/
 [smi]: http://thibaultlaurens.github.io/javascript/2013/04/29/how-the-v8-engine-works/#more-example-on-how-v8-optimized-javascript-code
 [stb]: https://github.com/nothings/stb
 [wflt]: https://en.wikipedia.org/wiki/C99#IEEE_754_floating_point_support

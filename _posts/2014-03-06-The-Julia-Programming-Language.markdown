@@ -241,7 +241,7 @@ Then we'll see if things have improved enough for real use.
 
 [manual]: http://julia.readthedocs.org/en/latest/manual/
 [matlab]: /blog/2008/08/29/
-[php]: http://www.reddit.com/r/lolphp
+[php]: http://old.reddit.com/r/lolphp
 [null]: http://yinwang0.wordpress.com/2013/06/03/null/
 [promote]: http://julia.readthedocs.org/en/latest/manual/conversion-and-promotion/
 [skewer]: /blog/2012/10/31/

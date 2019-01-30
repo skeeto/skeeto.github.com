@@ -175,7 +175,7 @@ As he moves on, I'll be starting all over again with a new student.
 
 
 [aspire]: http://www.jhuapl.edu/STEM/students/aspire
-[dp]: https://www.reddit.com/r/dailyprogrammer
+[dp]: https://old.reddit.com/r/dailyprogrammer
 [fund]: http://www.skorks.com/2010/04/on-the-value-of-fundamentals-in-software-development/
 [kr]: https://en.wikipedia.org/wiki/The_C_Programming_Language
 [ppm]: https://en.wikipedia.org/wiki/Netpbm_format
