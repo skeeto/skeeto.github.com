@@ -261,7 +261,7 @@ Why would curl think Emacs is a terminal?
 
 *Oh.* That's right. *This is the [same problem I ran into four years
 ago when writing EmacSQL][emacsql].* By default Emacs connects to
-subprocesses through a psuedo-terminal (pty). I called this a mistake
+subprocesses through a pseudo-terminal (pty). I called this a mistake
 in Emacs back then, and I still stand by that claim. The pty causes
 weird, annoying problems for little benefit:
 
