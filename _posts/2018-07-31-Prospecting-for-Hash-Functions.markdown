@@ -45,7 +45,7 @@ collision, then some outputs aren't possible, and the function isn't
 making efficient use of its entropy.
 
 This is actually a lot easier than it sounds. As long as every *n*-bit
-integer operation used in the hash function is *reversable*, then the
+integer operation used in the hash function is *reversible*, then the
 hash function has this property. An operation is reversible if, given
 its output, you can unambiguously compute its input.
 
