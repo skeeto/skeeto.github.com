@@ -22,10 +22,10 @@ browser I had been using for some time. A couple days later, Firefox
 
 The XUL extension API was never well designed. It was clunky, quirky,
 and the development process for extensions was painful, [requiring
-frequently restarts][yegge]. It was bad enough that I was never
-interested in writing my own extensions. Poorly-written extensions
-unfairly gave Firefox a bad name, causing [memory leaks][leak] and other
-issues, and Firefox couldn't tame the misbehavior.
+frequent restarts][yegge]. It was bad enough that I was never interested
+in writing my own extensions. Poorly-written extensions unfairly gave
+Firefox a bad name, causing [memory leaks][leak] and other issues, and
+Firefox couldn't tame the misbehavior.
 
 Yet this extension API was *incredibly powerful*, allowing for rather
 extreme UI transformations that really did turn Firefox into a whole
