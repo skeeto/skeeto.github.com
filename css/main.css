@@ -4,8 +4,8 @@
 }
 
 @font-face {
-  font-family: 'NotoSans';
-  src: url(NotoSans.woff) format('woff');
+  font-family: 'SourceSansPro';
+  src: url(SourceSansPro.woff) format('woff');
 }
 
 @font-face {
@@ -27,8 +27,8 @@
 body {
     color: Black;
     background-color: White;
-    font-family: 'NotoSans', sans-serif;
-    font-size: 18px;
+    font-family: 'SourceSansPro', sans-serif;
+    font-size: 19px;
 }
 
 img {
@@ -174,7 +174,8 @@ main {
     margin: 7rem auto 0 auto;
     max-width: 700px;
     line-height: 1.45;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: justify;
 }
 
 main a:visited {
@@ -189,13 +190,13 @@ main article > h2 a:visited {
 main article h2 {
     text-align: center;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 22px;
     margin: 0.5em 0;
 }
 
 main article h3 {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 20px;
 }
 
 main article > time {
@@ -270,11 +271,11 @@ main article img.card {
 
 main article p code,
 main article li code {
-    font-size: 0.85em;
+    font-size: 15px;
 }
 
 main article pre code {
-    font-size: 0.83em;
+    font-size: 15px;
     font-family: DroidSansMono, monospace;
 }
 
