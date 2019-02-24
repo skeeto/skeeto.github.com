@@ -23,7 +23,7 @@ write [to drive the interpreter efficiently and effectively][fast].
 [The Zen of Python][zen] says there should "only one obvious way to do
 it," but in practice there's a lot of room for expression. Given
 multiple ways to express the same algorithm or idea, I tend to prefer
-the one that compiles to the most efficient bytecode.
+the one that compiles to the more efficient bytecode.
 
 Fortunately CPython, the main and most widely used implementation of
 Python, is very transparent about its bytecode. It's easy to inspect
@@ -39,10 +39,10 @@ So, besides just catching up with Python the language, I've been
 studying the bytecode disassembly of the functions that I write. One
 fact has become quite apparent: **the CPython bytecode compiler is
 pretty dumb**. With a few exceptions, it's a very literal translation
-of a Python program, and there is almost no optimization. Below I'll
-demonstrate a case where it's possible to detect one of the missed
-optimizations without inspecting the bytecode disassembly thanks to a
-small abstraction leak in the optimizer.
+of a Python program, and there is almost [no optimization][peep].
+Below I'll demonstrate a case where it's possible to detect one of the
+missed optimizations without inspecting the bytecode disassembly
+thanks to a small abstraction leak in the optimizer.
 
 To be clear: This isn't to say CPython is bad, or even that it should
 necessarily change. In fact, as I'll show, **dumb bytecode compilers
