@@ -6,6 +6,8 @@ tags: [python, lang, elisp, optimization]
 uuid: 4348d611-858b-4f48-a6f5-6e4b93f71a34
 ---
 
+*This article was [discussed on Hacker News][hn].*
+
 Due to sheer coincidence of several unrelated tasks converging on
 Python at work, I recently needed to brush up on my Python skills. So
 far for me, Python has been little more than [a fancy extension
@@ -53,6 +55,10 @@ bytecode compiler: the compiler itself is simpler, easier to maintain,
 and more amenable to modification (e.g. as Python continues to
 evolve). It's also easier to debug Python (`pdb`) because it's such a
 close match to the source listing.
+
+*Update*: [Darius Bacon points out][dragon] that Guido van Rossum
+himself said, "[Python is about having the simplest, dumbest compiler
+imaginable.][quote]" So this is all very much by design.
 
 The consensus seems to be that if you want or need better performance,
 use something other than Python. (And if you can't do that, at least use
@@ -254,8 +260,8 @@ This function might document that it always returns a simple tuple,
 but we can tell if its being optimized or not using `is` like before:
 `foo() is foo()` is now `False`! In some future version of Python with
 a cleverer bytecode compiler, that expression might evaluate to
-`True`. (Unless the Python language specification is specific about
-this case, which I didn't check.)
+`True`. (Unless the [Python language specification][spec] is specific
+about this case, which I didn't check.)
 
 Note: Curiously PyPy replicates this exact behavior when examined with
 `is`. Was that deliberate? I'm impressed that PyPy matches CPython's
@@ -348,12 +354,16 @@ doesn't matter, but sometimes it does.
 
 [bs4]: /blog/2017/05/15/
 [c]: /blog/2018/05/01/
+[dragon]: https://codewords.recurse.com/issues/seven/dragon-taming-with-tailbiter-a-bytecode-compiler
 [emacs]: /blog/2014/01/04/
 [fast]: /blog/2017/01/30/
 [fround]: https://blog.mozilla.org/javascript/2013/11/07/efficient-float32-arithmetic-in-javascript/
 [hc]: https://www.youtube.com/watch?v=UJPdhx5zTaw
+[hn]: https://news.ycombinator.com/item?id=19241545
 [peep]: https://legacy.python.org/workshops/1998-11/proceedings/papers/montanaro/montanaro.html
 [photo]: http://photo.nullprogram.com/
 [pypy]: https://pypy.org/
+[quote]: https://books.google.com/books?id=bIxWAgAAQBAJ&pg=PA26&lpg=PA26&dq=%22Python+is+about+having+the+simplest,+dumbest+compiler+imaginable.%22&source=bl&ots=2OfDoWX321&sig=ACfU3U32jKZBE3VkJ0gvkKbxRRgD0bnoRg&hl=en&sa=X&ved=2ahUKEwjZ1quO89bgAhWpm-AKHfckAxUQ6AEwAHoECAkQAQ#v=onepage&q=%22Python%20is%20about%20having%20the%20simplest%2C%20dumbest%20compiler%20imaginable.%22&f=false
 [qualbum]: https://github.com/skeeto/qualbum
+[spec]: https://docs.python.org/3/reference/
 [zen]: https://www.python.org/dev/peps/pep-0020/
