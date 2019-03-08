@@ -2,7 +2,7 @@
 title: 'Python Decorators: Syntactic Artificial Sweetener'
 layout: post
 date: 2019-03-08T23:00:49Z
-tags: []
+tags: [python, lang]
 uuid: 588255e6-70a2-4733-bf58-ca9a857930f3
 ---
 
