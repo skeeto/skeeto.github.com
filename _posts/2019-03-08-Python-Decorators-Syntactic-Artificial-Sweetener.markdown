@@ -216,8 +216,22 @@ In Python's defense, this strange, limited syntax is only in a single
 place rather than everywhere, but I still wonder why it was defined
 that way.
 
+Update: Clément Pit-Claudel pointed out the explanation in the PEP,
+which references [a 2004 email by Guido van Rossum][mail]:
+
+> I have a gut feeling about this one.  I'm not sure where it comes
+> from, but I have it.  It may be that I want the compiler to be able to
+> recognize certain decorators.
+>
+> So while it would be quite easy to change the syntax to @test in the
+> future, I'd like to stick with the more restricted form unless a real
+> use case is presented where allowing @test would increase readability.
+> (@foo().bar() doesn't count because I don't expect you'll ever need
+> that).
+
 
 [bc]: /blog/2019/02/24/
+[mail]: https://mail.python.org/pipermail/python-dev/2004-August/046711.html
 [matlab]: /blog/2008/08/29/
 [pep]: https://www.python.org/dev/peps/pep-0318/
 [race]: https://blog.regehr.org/archives/490
