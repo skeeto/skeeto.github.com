@@ -17,7 +17,7 @@ In fact, both Python and JavaScript async functions are essentially just
 fancy generator functions with some specialized syntax and semantics.
 That is, they're [stackless coroutines][ss]. Both languages already had
 generators, so their generator-like async functions are a natural
-extension that — unlike *stackful* coroutines — do not require
+extension that — unlike [*stackful* coroutines][sf] — do not require
 significant, new runtime plumbing.
 
 Emacs [officially got generators in 25.1][iter] (September 2016),
@@ -440,6 +440,40 @@ of promises being single-fire. The gap is harmless so long as the
 async function doesn't await something else or get preempted. This
 needs some more thought.
 
+### Testing aio
+
+The test suite for `aio` is a bit unusual. Emacs' built-in test suite,
+ERT, doesn't support asynchronous tests. Furthermore, tests are
+generally run in batch mode, where Emacs invokes a single function and
+then exits rather than pump an event loop. Batch mode can only handle
+asynchronous process I/O, not the async functions of `aio`. So it's
+not possible to run the tests in batch mode.
+
+Instead I hacked together a really crude callback-based test suite. It
+runs in non-batch mode and writes the test results into a buffer
+(run with `make check`). Not ideal, but it works.
+
+One of the tests is a sleep sort (with reasonable tolerances). It's a
+pretty neat demonstration of what you can do with `aio`:
+
+```cl
+(aio-defun sleep-sort (values)
+  (let ((promises (mapcar (lambda (v) (aio-sleep v v)) values)))
+    (cl-loop while promises
+             for next = (aio-await (aio-select promises))
+             do (setf promises (delq next promises))
+             collect (aio-await next))))
+```
+
+To see it in action (`M-x sleep-sort-demo`):
+
+```cl
+(aio-defun sleep-sort-demo ()
+  (interactive)
+  (let ((values '(0.1 0.4 1.1 0.2 0.8 0.6)))
+    (message "%S" (aio-await (sleep-sort values)))))
+```
+
 ### Async/await is pretty awesome
 
 I'm quite happy with how this all came together. Once I had the
@@ -460,6 +494,7 @@ by accident. That feels good.
 [pep]: https://www.python.org/dev/peps/pep-0492/
 [py]: /blog/2019/02/24/
 [re]: https://en.wikipedia.org/wiki/Reification_(computer_science)
+[sf]: /blog/2017/06/21/
 [ss]: https://blog.varunramesh.net/posts/stackless-vs-stackful-coroutines/
 [struct]: /blog/2018/02/14/
 [sync]: /blog/2013/01/14/
