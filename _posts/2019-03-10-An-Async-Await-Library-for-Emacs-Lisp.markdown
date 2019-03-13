@@ -440,6 +440,10 @@ of promises being single-fire. The gap is harmless so long as the
 async function doesn't await something else or get preempted. This
 needs some more thought.
 
+***Update***: These process functions no longer exist and have been
+replaced by a small framework for building chains of promises. See
+`aio-make-callback`.
+
 ### Testing aio
 
 The test suite for `aio` is a bit unusual. Emacs' built-in test suite,
