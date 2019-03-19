@@ -107,8 +107,8 @@ lamented in the past that large `cond` and `cl-case` expressions could
 be a lot more efficient if Emacs' byte code supported jump tables. It
 turns an O(n) sequence of comparisons into an O(1) lookup and jump.
 It's essentially the perfect foundation for a generator since it can
-be used to jump straight back to the position where evaluation was
-paused.
+be used to [jump straight back to the position][jump] where evaluation
+was paused.
 
 *Buuut*, generators do not currently use jump tables. The generator
 library predates the new `switch` opcode, and, being independent of it,
@@ -347,6 +347,7 @@ the low-level threading API.
 [flet]: /blog/2017/10/27/
 [joy]: /blog/2016/11/05/
 [js]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
+[jump]: https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html
 [latch]: /blog/2013/01/14/
 [miter]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html
 [mthread]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Threads.html
