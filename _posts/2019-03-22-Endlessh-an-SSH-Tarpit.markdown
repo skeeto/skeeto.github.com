@@ -178,9 +178,9 @@ itself][tcp]. It could introduce artificial "noise" to the connection
 that requires packet retransmissions, delay ACKs, etc. It would look a
 lot more like network problems than a tarpit.
 
-I haven't taken Endlessh this far, nor, at the moment, do I plan to do
-so. At the moment attackers either have a hard timeout, so this wouldn't
-matter, or they're pretty dumb and Endlessh already works well enough.
+I haven't taken Endlessh this far, nor do I plan to do so. At the
+moment attackers either have a hard timeout, so this wouldn't matter,
+or they're pretty dumb and Endlessh already works well enough.
 
 ### asyncio and other tarpits
 
