@@ -245,7 +245,8 @@ main article s {
 
 main article img,
 main article video,
-main article svg {
+main article svg,
+main article canvas {
     display: block;
     margin: 0.5em auto;
     max-width: 100%;
