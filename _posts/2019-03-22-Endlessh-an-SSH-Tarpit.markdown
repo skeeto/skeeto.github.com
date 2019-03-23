@@ -6,6 +6,8 @@ tags: [netsec, python, c, posix]
 uuid: 5429ee15-3d42-4af2-8690-f7f402870dd0
 ---
 
+*This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
+
 I'm a big fan of tarpits: a network service that intentionally inserts
 delays in its protocol, slowing down clients by forcing them to wait.
 This arrests the speed at which a bad actor can attack or probe the
@@ -257,8 +259,10 @@ TLS connections and testing it against real spammers.
 [aio]: /blog/2019/03/10/
 [dumb]: /blog/2019/02/24/
 [endlessh]: https://github.com/skeeto/endlessh
+[hn]: https://news.ycombinator.com/item?id=19465967
 [mail]: /blog/2017/06/15/
 [raw]: /blog/2015/05/15/
+[reddit]: https://old.reddit.com/r/netsec/comments/b4dwjl/endlessh_an_ssh_tarpit/
 [rfc]: https://tools.ietf.org/html/rfc4253#section-4.2
 [tarpit]: https://en.wikipedia.org/wiki/Tarpit_(networking)
 [tcp]: https://nyman.re/super-simple-ssh-tarpit/
