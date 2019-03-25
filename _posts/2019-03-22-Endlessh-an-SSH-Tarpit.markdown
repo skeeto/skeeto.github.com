@@ -95,17 +95,19 @@ The most straightforward way to implement something like Endlessh is a
 fork server: accept a connection, fork, and the child simply alternates
 between `sleep(3)` and `write(2)`:
 
-    for (;;) {
-        ssize_t r;
-        char line[256];
+```c
+for (;;) {
+    ssize_t r;
+    char line[256];
 
-        sleep(DELAY);
-        generate_line(line);
-        r = write(fd, line, strlen(line));
-        if (r == -1 && errno != EINTR) {
-            exit(0);
-        }
+    sleep(DELAY);
+    generate_line(line);
+    r = write(fd, line, strlen(line));
+    if (r == -1 && errno != EINTR) {
+        exit(0);
     }
+}
+```
 
 A process per connection is a lot of overhead when connections are
 expected to be up hours or even weeks at a time. An attacker who knows
