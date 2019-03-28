@@ -1,5 +1,5 @@
 ---
-title: "Vim vs. Emacs: The Working Directory"
+title: "Vim vs. Emacs: the Working Directory"
 layout: post
 date: 2017-08-22T04:51:36Z
 tags: [vim, emacs]

@@ -1,5 +1,5 @@
 ---
-title: "Global State: A Tale of Two Bad C APIs"
+title: "Global State: a Tale of Two Bad C APIs"
 layout: post
 date: 2014-10-12T22:48:00Z
 tags: [c, posix]
