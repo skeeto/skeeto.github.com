@@ -22,7 +22,7 @@ not quite an apples-to-apples comparison since the POSIX version is
 slightly more powerful, and more complicated as a result. I'll cover the
 difference in this article.
 
-For the last part of this article, I'll demonstrate a async/await
+For the last part of this article, I'll walk through an async/await
 framework build on top of fibers. The framework allows coroutines in C
 programs to await on arbitrary kernel objects.
 
@@ -31,7 +31,7 @@ programs to await on arbitrary kernel objects.
 ### Fibers
 
 Windows fibers are really just [stackful][stack], symmetric coroutines.
-From a different point of view: they're cooperatively scheduled threads,
+From a different point of view, they're cooperatively scheduled threads,
 which is the source of the analogous name, *fibers*. They're symmetric
 because all fibers are equal, and no fiber is the "main" fiber. If *any*
 fiber returns from its start routine, the program exits. (Older versions
@@ -40,15 +40,15 @@ equivalent to the process' main thread returning from `main()`. The
 initial fiber is free to create a second fiber, yield to it, then the
 second fiber destroys the first.
 
-I'm going to focus on the core set of fiber functions. There are some
-additional capabilities I'm going to ignore, including support for
+For now I'm going to focus on the core set of fiber functions. There are
+some additional capabilities I'm going to ignore, including support for
 *fiber local storage*. The important functions are just these five:
 
 ```c
 void *CreateFiber(size_t stack_size, void (*proc)(void *), void *arg);
 void  SwitchToFiber(void *fiber);
 bool  ConvertFiberToThread(void);
-bool *ConvertThreadToFiber(void *arg);
+void *ConvertThreadToFiber(void *arg);
 void  DeleteFiber(void *fiber);
 ```
 
@@ -82,6 +82,7 @@ undefined behavior.
 
 ```c
 #include <stdio.h>
+#include <stdlib.h>
 #include <windows.h>
 
 void
@@ -116,8 +117,8 @@ same fiber in two different threads at the same time.
 
 ### Contrast with POSIX
 
-The equivalent over on POSIX systems was context switching. It's also
-stackful and symmetric, but it has just three important functions:
+The equivalent POSIX systems was context switching. It's also stackful
+and symmetric, but it has just three important functions:
 [`getcontext(3)`][gc], [`makecontext(3)`][msc], and
 [`swapcontext`][msc].
 
@@ -127,17 +128,19 @@ void makecontext(ucontext_t *ucp, void (*func)(), int argc, ...);
 int  swapcontext(ucontext_t *oucp, const ucontext_t *ucp);
 ```
 
-These are roughly equivalent to `GetCurrentFiber()`, `CreateFiber()`, and
-`SwitchToFiber()`. There is no need for `ConvertFiberToThread()` since
-threads can context switch without preparation. There's also no
-`DeleteFiber()` because the resources are managed by the program itself.
-That's where POSIX contexts are a little bit more powerful.
+These are roughly equivalent to [`GetCurrentFiber()`][gcf],
+`CreateFiber()`, and `SwitchToFiber()`. There is no need for
+`ConvertFiberToThread()` since threads can context switch without
+preparation. There's also no `DeleteFiber()` because the resources are
+managed by the program itself. That's where POSIX contexts are a little
+bit more powerful.
 
 The first argument to `CreateFiber()` is the desired stack size, with
 zero indicating the default stack size. The stack is allocated and freed
-by the operating system. The downside is that if you're frequently
-creating and destroying coroutines, those stacks are constantly being
-allocated and freed.
+by the operating system. The downside is that the caller doesn't have a
+choice in managing the lifetime of this stack and how it's allocated. If
+you're frequently creating and destroying coroutines, those stacks are
+constantly being allocated and freed.
 
 In `makecontext(3)`, the caller allocates and supplies the stack. Freeing
 that stack is equivalent to destroying the context. A program that
@@ -185,28 +188,29 @@ The alternatives are to use a [third-party coroutine library][pth] or to
 do it myself [with some assembly programming][raw]. However, having it
 built into the operating system is quite convenient! It's unfortunate
 that it's limited to Windows. Ironically, though, everything I wrote for
-this article, including the async/await demo, was originally written on
-Linux using Mingw-w64 and tested using [Wine][wine]. Only after I was
-done did I try it on Windows.
+this article, including the async/await demonstration, was originally
+written on Linux using Mingw-w64 and tested using [Wine][wine]. Only
+after I was done did I even try it on Windows.
 
 Before diving into how it works, there's a general concept about the
 Windows API that must be understood: **All kernel objects can be in
 either a signaled or unsignaled state.** The API provides functions that
 block on a kernel object until it is signaled. The two important ones
-are `WaitForSingleObject()` and `WaitForMultipleObjects()`. The latter
-behaves very much like `poll(2)` on POSIX.
+are [`WaitForSingleObject()`][wfso] and [`WaitForMultipleObjects()`][wfmo].
+The latter behaves very much like `poll(2)` in POSIX.
 
 Usually the signal is tied to some useful event, like a process or
 thread exiting, the completion of an I/O operation (i.e. asynchronous
-overlapped I/O), etc. It's a generic way to wait for some other event.
-**However, instead of blocking the thread, wouldn't it be nice to
-*await* on the kernel object?** In my `aio` library for Emacs, the
-fundamental "wait" object was a promise. For this API it's a kernel
-object handle.
+overlapped I/O), a semaphore being incremented, etc. It's a generic way
+to wait for some event. **However, instead of blocking the thread,
+wouldn't it be nice to *await* on the kernel object?** In my `aio`
+library for Emacs, the fundamental "wait" object was a promise. For this
+API it's a kernel object handle.
 
 So, the await function will take a kernel object, register it with the
-scheduler, then yield to the scheduler. The scheduler — a global
-variable, so there's only one scheduler per process — looks like this:
+scheduler, then yield to the scheduler. The scheduler — which is a
+global variable, so there's only one scheduler per process — looks like
+this:
 
 ```c
 struct {
@@ -218,8 +222,8 @@ struct {
 } async_loop;
 ```
 
-While fibers are symmetric, in my async/await implementation they are
-not. One fiber is the scheduler, `main_fiber`, and the other fibers
+While fibers are symmetric, coroutines in my async/await implementation
+are not. One fiber is the scheduler, `main_fiber`, and the other fibers
 always yield to it.
 
 There is an array of kernel object handles, `handles`, and an array of
@@ -228,11 +232,11 @@ it's convenient to store them separately, as I'll show soon. `fibers[0]`
 is waiting on `handles[0]`, and so on.
 
 The array is a fixed size, `MAXIMUM_WAIT_OBJECTS` (64), because there's
-a hard limit on the number of fibers that can wait at once. I'll explain
-why below. This pathetically small limitation is an unfortunate,
-hard-coded restriction of the Windows API. It kills most practical uses
-of my little library. Fortunately there's no limit on the number of
-handles we might want to wait on, just the number of fibers.
+a hard limit on the number of fibers that can wait at once. This
+pathetically small limitation is an unfortunate, hard-coded restriction
+of the Windows API. It kills most practical uses of my little library.
+Fortunately there's no limit on the number of handles we might want to
+wait on, just the number of co-existing fibers.
 
 When a fiber is about to return from its start routine, it yields one
 last time and registers itself on the `dead_fiber` member. The scheduler
@@ -255,11 +259,11 @@ async_await(HANDLE h)
 ```
 
 Caveat: The scheduler destroys this handle with `CloseHandle()` after it
-signals, so don't try to reuse it. This made my demo simpler, but it
-might be better to not do this.
+signals, so don't try to reuse it. This made my demonstration simpler,
+but it might be better to not do this.
 
-A fiber can exit at any time. Such an exit is inserted implicit before a
-fiber actually returns:
+A fiber can exit at any time. Such an exit is inserted implicitly before
+a fiber actually returns:
 
 ```c
 void
@@ -302,7 +306,8 @@ async_start(void (*func)(void *), void *arg)
 
 The library provides a single awaitable function, `async_sleep()`. It
 creates a "waitable timer" object, starts the countdown, and returns it.
-(Notice how `SetWaitableTimer()` is a typically ugly Win32 function.)
+(Notice how `SetWaitableTimer()` is a typically-ugly Win32 function with
+excessive parameters.)
 
 ```c
 HANDLE
@@ -330,22 +335,30 @@ dedicated threads][thr] as [libuv does][uv] instead of overlapped I/O.
 You can still await on these operations. You'd just await on the signal
 from the thread doing synchronous I/O, not from overlapped I/O.
 
-The most complex part is the scheduler:
+The most complex part is the scheduler, and it's really not complex at
+all:
 
 ```c
 void
 async_run(void)
 {
     while (async_loop.count) {
+        /* Wait for next event */
         DWORD nhandles = async_loop.count;
         HANDLE *handles = async_loop.handles;
         DWORD r = WaitForMultipleObjects(nhandles, handles, 0, INFINITE);
+
+        /* Remove event and fiber from waiting array */
         void *fiber = async_loop.fibers[r];
         CloseHandle(async_loop.handles[r]);
         async_loop.handles[r] = async_loop.handles[nhandles - 1];
         async_loop.fibers[r] = async_loop.fibers[nhandles - 1];
         async_loop.count--;
+
+        /* Run the fiber */
         SwitchToFiber(fiber);
+
+        /* Destroy the fiber if it exited */
         if (async_loop.dead_fiber) {
             DeleteFiber(async_loop.dead_fiber);
             async_loop.dead_fiber = 0;
@@ -366,25 +379,25 @@ changing this would break the API. Remember what I said about being
 locked into bad design decisions of the past?
 
 To be fair, `WaitForMultipleObjects()` was a doomed API anyway, just
-like `select(2)` and `poll(2)` on POSIX. It's horribly inefficient since
-the entire array of objects being waited on must be traversed on each
-call. That's horribly inefficient when waiting on large numbers of
-objects. That's why interfaces like kqueue (BSD), epoll (Linux), and
-IOCP (Windows) exist. Unfortunately IOCP doesn't really fit this
+like `select(2)` and `poll(2)` in POSIX. It scales very poorly since the
+entire array of objects being waited on must be traversed on each call.
+That's terribly inefficient when waiting on large numbers of objects.
+This sort of problem is solved by interfaces like kqueue (BSD), epoll
+(Linux), and IOCP (Windows). Unfortunately IOCP doesn't really fit this
 particular problem well — awaiting on kernel objects — so I couldn't use
 it.
 
 When the awaiting fiber count is zero and the scheduler has control, all
-fibers must have completed, so there's nothing left to do. However, the
+fibers must have completed and there's nothing left to do. However, the
 caller can schedule more fibers and then restart the scheduler if
 desired.
 
-That's really about all there is to it. Have a look at [`demo.c`][democ]
-to see how the API looks in some trivial examples. On Linux you can see
-it in action with `make check`. On Windows, you just [need to compile
+That's all there is to it. Have a look at [`demo.c`][democ] to see how
+the API looks in some trivial examples. On Linux you can see it in
+action with `make check`. On Windows, you just [need to compile
 it][four], then run it like a normal program. If there was a better
 function than `WaitForMultipleObjects()` in the Windows API, I would
-have considered turning this demo into a real library.
+have considered turning this demonstration into a real library.
 
 
 [aio]: /blog/2019/03/10/
@@ -399,6 +412,7 @@ have considered turning this demo into a real library.
 [fibers]: https://docs.microsoft.com/en-us/windows/desktop/procthread/fibers
 [four]: /blog/2016/06/13/
 [gc]: http://man7.org/linux/man-pages/man3/setcontext.3.html
+[gcf]: https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-getcurrentfiber
 [msc]: http://man7.org/linux/man-pages/man3/makecontext.3.html
 [pth]: https://www.gnu.org/software/pth/
 [raw]: /blog/2015/05/15/
