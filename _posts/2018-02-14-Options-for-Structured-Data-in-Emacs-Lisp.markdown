@@ -138,7 +138,7 @@ a perfect candidate for a macro definition. Luckily for us, Emacs
 already defines a macro to generate all this code: `cl-defstruct`.
 
 ```cl
-(require 'cl)
+(require 'cl-lib)
 
 (cl-defstruct fridge-item
   name expiry weight)
