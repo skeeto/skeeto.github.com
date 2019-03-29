@@ -169,7 +169,8 @@ than a user pointer. Unfortunately it's not, since those arguments are
 strictly limited to *integers*.
 
 Ultimately I like the fiber API better. The first time I tried it out, I
-could guess my way through it without looking closely at the API.
+could guess my way through it without looking closely at the
+documentation.
 
 ### Async / await with fibers
 
