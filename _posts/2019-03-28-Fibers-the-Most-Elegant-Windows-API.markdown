@@ -18,7 +18,7 @@ elegance is the exception.
 That's why, when I recently revisited the [Fibers API][fibers], I was
 pleasantly surprised. It's one of the exceptions — much cleaner than the
 optional, deprecated, and now obsolete [POSIX equivalent][clash]. It's
-not quite and apples-to-apples comparison since the POSIX version is
+not quite an apples-to-apples comparison since the POSIX version is
 slightly more powerful, and more complicated as a result. I'll cover the
 difference in this article.
 
