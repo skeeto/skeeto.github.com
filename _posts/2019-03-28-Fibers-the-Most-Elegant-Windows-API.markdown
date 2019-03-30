@@ -6,6 +6,8 @@ tags: [win32, c, posix]
 uuid: abad2340-99e5-4d72-857c-848e37b4af73
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 The Windows API — a.k.a. Win32 — is notorious for being clunky, ugly,
 and lacking good taste. Microsoft has done a pretty commendable job with
 backwards compatibility, but the trade-off is that the API is filled to
@@ -414,6 +416,7 @@ have considered turning this demonstration into a real library.
 [four]: /blog/2016/06/13/
 [gc]: http://man7.org/linux/man-pages/man3/setcontext.3.html
 [gcf]: https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-getcurrentfiber
+[hn]: https://news.ycombinator.com/item?id=19520078
 [msc]: http://man7.org/linux/man-pages/man3/makecontext.3.html
 [pth]: https://www.gnu.org/software/pth/
 [raw]: /blog/2015/05/15/
