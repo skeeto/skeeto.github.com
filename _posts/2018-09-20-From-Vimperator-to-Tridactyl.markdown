@@ -161,7 +161,7 @@ buttons, I prefer to swipe the mouse, e.g. make a gesture.
 
 I previously used FireGestures, an XUL extension. ~~I'm now using
 [**Gesturefy**][gesturefy]~~. (Update: Gesturefy doesn't support ESR
-either.) I also considered Foxy Gestures, but it doesn't currently
+either.) I also considered [Foxy Gestures][fg], but it doesn't currently
 support ESR releases. Unfortunately all mouse gesture WebExtensions
 suffer from the page load problem: any gesture given before the page
 loads is lost. It's less of any annoyance than with Tridactyl, but it
@@ -276,6 +276,7 @@ better about the whole situation.
 [cve]: https://www.cvedetails.com/product/3264/Mozilla-Firefox.html?vendor_id=452
 [dotfiles]: /blog/2012/06/23/
 [ff57]: https://utcc.utoronto.ca/~cks/space/blog/web/Firefox57ComingExplosion
+[fg]: https://addons.mozilla.org/en-US/firefox/addon/foxy-gestures/
 [gesturefy]: https://github.com/Robbendebiene/Gesturefy
 [gf]: https://greasyfork.org/en/users/2022-skeeto
 [gm]: https://github.com/greasemonkey/greasemonkey
