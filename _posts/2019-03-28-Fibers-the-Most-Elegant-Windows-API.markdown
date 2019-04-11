@@ -386,9 +386,9 @@ like `select(2)` and `poll(2)` in POSIX. It scales very poorly since the
 entire array of objects being waited on must be traversed on each call.
 That's terribly inefficient when waiting on large numbers of objects.
 This sort of problem is solved by interfaces like kqueue (BSD), epoll
-(Linux), and IOCP (Windows). Unfortunately IOCP doesn't really fit this
-particular problem well — awaiting on kernel objects — so I couldn't use
-it.
+(Linux), and IOCP (Windows). Unfortunately [IOCP doesn't really fit this
+particular problem well][iocp] — awaiting on kernel objects — so I
+couldn't use it.
 
 When the awaiting fiber count is zero and the scheduler has control, all
 fibers must have completed and there's nothing left to do. However, the
@@ -417,6 +417,7 @@ have considered turning this demonstration into a real library.
 [gc]: http://man7.org/linux/man-pages/man3/setcontext.3.html
 [gcf]: https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-getcurrentfiber
 [hn]: https://news.ycombinator.com/item?id=19520078
+[iocp]: https://news.ycombinator.com/item?id=11866562
 [msc]: http://man7.org/linux/man-pages/man3/makecontext.3.html
 [pth]: https://www.gnu.org/software/pth/
 [raw]: /blog/2015/05/15/
