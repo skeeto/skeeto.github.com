@@ -2,7 +2,7 @@
 title: The CPython Bytecode Compiler is Dumb
 layout: post
 date: 2019-02-24T21:56:35Z
-tags: [python, lang, elisp, optimization]
+tags: [python, lua, lang, elisp, optimization]
 uuid: 4348d611-858b-4f48-a6f5-6e4b93f71a34
 ---
 
