@@ -190,11 +190,12 @@ started close in time may have similar initial sequences.
 srand(triple32(time(NULL)));
 ```
 
-The more pressing issue is that `time(3)` as a resolution of one second.
-If the program is run twice inside of a second, they'll both have the
-same sequence of numbers. It would be better to use a higher resolution
-clock, but, **standard C doesn't provide a clock with greater than one
-second resolution**. That normally requires calling into POSIX or Win32.
+The more pressing issue is that `time(3)` has a resolution of one
+second. If the program is run twice inside of a second, they'll both
+have the same sequence of numbers. It would be better to use a higher
+resolution clock, but, **standard C doesn't provide a clock with greater
+than one second resolution**. That normally requires calling into POSIX
+or Win32.
 
 So, we need to find some other sources of entropy unique to each
 execution of the program.
