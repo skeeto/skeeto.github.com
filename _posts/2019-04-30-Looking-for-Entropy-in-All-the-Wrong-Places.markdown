@@ -516,9 +516,9 @@ end
 math.randomseed(h)
 ```
 
-Unfortunately this doesn't actually work on one platform I tested:
+Unfortunately this doesn't actually work well on one platform I tested:
 Cygwin. Cygwin has few security features, notably lacking ASLR, and
-having a deterministic allocator.
+having a largely deterministic allocator.
 
 ### When to use it
 
