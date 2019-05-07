@@ -6,8 +6,8 @@ tags: [netsec, python, c, posix]
 uuid: 5429ee15-3d42-4af2-8690-f7f402870dd0
 ---
 
-*This article was discussed [on Hacker News][hn] and [on reddit][reddit]
-([also][reddit2]).*
+*This article was discussed [on Hacker News][hn], [on reddit][reddit]
+([also][reddit2]), and featured in [BSD Now 294][bsdnow].*
 
 I'm a big fan of tarpits: a network service that intentionally inserts
 delays in its protocol, slowing down clients by forcing them to wait.
@@ -260,6 +260,7 @@ TLS connections and testing it against real spammers.
 
 
 [aio]: /blog/2019/03/10/
+[bsdnow]: https://www.youtube.com/watch?v=bM65iyRRW0A&t=3m52s
 [dumb]: /blog/2019/02/24/
 [endlessh]: https://github.com/skeeto/endlessh
 [hn]: https://news.ycombinator.com/item?id=19465967
