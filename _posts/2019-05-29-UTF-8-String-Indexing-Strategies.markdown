@@ -25,7 +25,7 @@ makes very inefficient use of memory, especially with typical strings.
 
 Despite this, UTF-8 is still chosen in a number of programming
 languages, or at least in their implementations. In this article I'll
-discuss four examples — Emacs Lisp, Julia, and Go — and how each takes a
+discuss three examples — Emacs Lisp, Julia, and Go — and how each takes a
 slightly different approach.
 
 ### Emacs Lisp
