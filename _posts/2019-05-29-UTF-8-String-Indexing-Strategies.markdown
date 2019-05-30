@@ -6,6 +6,8 @@ tags: [elisp, emacs, go, lang]
 uuid: 12e9ed44-b5c1-495f-8750-dfaf1ab008e2
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 When designing or, in some cases, implementing a programming language
 with built-in support for Unicode strings, an important decision must be
 made about how to represent or encode those strings in memory. Not all
@@ -269,5 +271,6 @@ as well be made explicit.
 
 [ext]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Text-Representations.html
 [gap]: /blog/2017/09/07/
+[hn]: https://news.ycombinator.com/item?id=20049491
 [julia]: /blog/2014/03/06/
 [pep]: https://www.python.org/dev/peps/pep-0393/
