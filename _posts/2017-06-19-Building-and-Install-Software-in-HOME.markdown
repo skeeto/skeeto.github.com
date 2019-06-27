@@ -123,11 +123,17 @@ export CPLUS_INCLUDE_PATH=$HOME/.local/include
 export LIBRARY_PATH=$HOME/.local/lib
 ~~~
 
-This is like the `-I` compiler option and the `-L` linker option,
-except you won't need to use them explicitly. Some software uses
-`pkg-config` to determine its compiler and linker flags, and your home
-directory will contain some of the needed information. So set that up
-too:
+The first two are like the `-I` compiler option and the third is like
+`-L` linker option, except you *usually* won't need to use them
+explicitly. Unfortunately [`LIBRARY_PATH` doesn't override the system
+library paths][lpath], so in some cases, you will need to explicitly set
+`-L`. Otherwise you will still end up linking against the system library
+rather than the custom packaged version. I really wish GCC and Clang
+didn't behave this way.
+
+Some software uses `pkg-config` to determine its compiler and linker
+flags, and your home directory will contain some of the needed
+information. So set that up too:
 
 ~~~sh
 export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig
@@ -161,8 +167,10 @@ per-binary `LD_LIBRARY_PATH`. The run-time linker uses this path first
 in its search for libraries, and it will only have an effect on that
 particular program/library. This also applies to `dlopen()`.
 
-Some software will configure the runpath by default, but usually you
-need to configure this yourself with the linker `-rpath` option in
+Some software will configure the runpath by default in their build
+system, but often you need to configure this yourself. The simplest way
+is to set the `LD_RUN_PATH` environment variable when building software.
+Another option is to manually pass `-rpath` options to the linker via
 `LDFLAGS`. It's used directly like this:
 
     $ gcc -Wl,-rpath=$HOME/.local/lib -o foo bar.o baz.o -lquux
@@ -298,6 +306,7 @@ builds to [fit properly into a larger ecosystem][maint].
 [debian]: https://www.debian.org/News/2017/20170617.en.html
 [enchive]: https://github.com/skeeto/enchive
 [env]: https://web.archive.org/web/20090312014334/http://blogs.sun.com/rie/entry/tt_ld_library_path_tt
+[lpath]: https://stackoverflow.com/a/29100649
 [maint]: https://www.debian.org/doc/manuals/maint-guide/
 [mutt]: /blog/2017/06/15/
 [ncurses]: https://www.gnu.org/software/ncurses/
