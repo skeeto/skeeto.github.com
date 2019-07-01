@@ -80,7 +80,7 @@ information, like communicating the number of elements or bytes:
 // NOTE: x86-64 only!
 unsigned char buf[1000];
 uintptr addr = (uintptr_t)buf & 0xffffffffffff;
-uintptr pack = (sizeof(buf) << 48) | p;
+uintptr pack = (sizeof(buf) << 48) | addr;
 void *fatptr = (void *)pack;
 ```
 
