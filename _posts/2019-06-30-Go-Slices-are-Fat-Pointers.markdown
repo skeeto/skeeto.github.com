@@ -89,7 +89,7 @@ The other side can unpack this to get the components back out. Obviously
 likely be used for [baggy bounds checks][bb].
 
 Further, if we know something about the alignment — say, that it's
-16-bit aligned — then we can also encode information in the least
+16-byte aligned — then we can also encode information in the least
 significant bits, such as a type tag.
 
 ### Fat pointers via a struct
