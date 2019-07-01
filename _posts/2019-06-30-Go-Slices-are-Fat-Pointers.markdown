@@ -6,6 +6,8 @@ tags: [c, go]
 uuid: 5ba40d47-11e4-4f82-b805-f5e7825df44c
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 One of the frequent challenges in C is that pointers are nothing but a
 memory address. A callee who is passed a pointer doesn't truly know
 anything other than the type of object being pointed at, which says some
@@ -258,4 +260,5 @@ slices when I write Go.
 [addr]: https://utcc.utoronto.ca/~cks/space/blog/programming/GoAddressableValues
 [bb]: https://www.usenix.org/legacy/event/sec09/tech/full_papers/akritidis.pdf
 [disc]: /blog/2017/07/19/
+[hn]: https://news.ycombinator.com/item?id=20321116
 [uintptr]: /blog/2016/05/30/
