@@ -126,7 +126,7 @@ To help keep this straight, we might employ some macros:
     (struct fatptr){ptr, count}
 
 #define ARRAYPTR(array) \
-    ADDROF(array, COUNTOF(array))
+    FATPTR(array, COUNTOF(array))
 
 /* ... */
 
