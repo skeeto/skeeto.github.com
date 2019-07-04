@@ -252,6 +252,9 @@ slice would be perfectly safe to use:
 fooslice = (*[1]int)(unsafe.Pointer(&foo))[:]
 ```
 
+Update: [Chris Siebenmann speculated about why this requires
+`unsafe`][cs].
+
 Of course, slices are super flexible and have many more uses that look
 less like fat pointers, but this is still how I tend to reason about
 slices when I write Go.
@@ -259,6 +262,7 @@ slices when I write Go.
 
 [addr]: https://utcc.utoronto.ca/~cks/space/blog/programming/GoAddressableValues
 [bb]: https://www.usenix.org/legacy/event/sec09/tech/full_papers/akritidis.pdf
+[cs]: https://utcc.utoronto.ca/~cks/space/blog/programming/GoVariableToArrayConversion
 [disc]: /blog/2017/07/19/
 [hn]: https://news.ycombinator.com/item?id=20321116
 [uintptr]: /blog/2016/05/30/
