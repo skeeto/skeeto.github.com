@@ -280,7 +280,7 @@ Just pipe the output straight into GnuPG:
 
     $ passphrase2pgp -uid "Foo <foo@example.com>" | gpg --import
 
-You will be prompted for a passphrase. That passphrase is be run through
+You will be prompted for a passphrase. That passphrase is run through
 [Argon2id][argon2], a memory-hard KDF, with the User ID as the salt.
 Deriving the key requires 8 passes over 1GB of state, which takes my
 current computers around 8 seconds. With the `-paranoid` option enabled,
