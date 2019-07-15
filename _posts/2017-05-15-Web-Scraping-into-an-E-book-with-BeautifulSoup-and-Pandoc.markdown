@@ -182,11 +182,11 @@ content when we've seen exactly one `hr` element.
     # Append content between hr elements
     hr_count = 0
     for child in content.children:
-        if (child.name == 'hr'):
+        if child.name == 'hr':
             hr_count += 1
-        elif (child.name == 'p' and hr_count == 1):
+        elif child.name == 'p' and hr_count == 1:
             child.attrs = {}
-            if (child.string == '#'):
+            if child.string == '#':
                 body.append(doc.new_tag('hr'))
             else:
                 body.append(child)
