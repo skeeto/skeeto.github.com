@@ -273,25 +273,29 @@ world could use an OpenPGP format debugger.
 
 ### Usage
 
-There is one required argument, `-uid`, since a key with an empty User
-ID is pretty useless. It's my own artificial restriction on the User ID.
+There is one required argument: either `--uid` (`-u`) or `--load`
+(`-l`). The former specifies a User ID since a key with an empty User ID
+is pretty useless. It's my own artificial restriction on the User ID.
+The latter loads a previously-generated key which will come with a User
+ID.
 
-Just pipe the output straight into GnuPG:
+To generate a key for use in GnuPG, just pipe the output straight into
+GnuPG:
 
-    $ passphrase2pgp -uid "Foo <foo@example.com>" | gpg --import
+    $ passphrase2pgp --uid "Foo <foo@example.com>" | gpg --import
 
 You will be prompted for a passphrase. That passphrase is run through
 [Argon2id][argon2], a memory-hard KDF, with the User ID as the salt.
 Deriving the key requires 8 passes over 1GB of state, which takes my
-current computers around 8 seconds. With the `-paranoid` option enabled,
-that becomes 16 passes over 2GB (perhaps not paranoid enough?). The
-output is 64 bytes: 32 bytes to seed the primary key and 32 bytes to
+current computers around 8 seconds. With the `--paranoid` (`-x`) option
+enabled, that becomes 16 passes over 2GB (perhaps not paranoid enough?).
+The output is 64 bytes: 32 bytes to seed the primary key and 32 bytes to
 seed the subkey.
 
 Despite the aggressive KDF settings, you will still need to choose a
 strong passphrase. Anyone who has your public key can mount an offline
-attack. A 10-word Diceware or [Pokerware][poker] passphrase is perfectly
-sufficient (~128 bits), while also being quite reasonable to memorize.
+attack. A 10-word Diceware or [Pokerware][poker] passphrase is more than
+sufficient (~128 bits) while also being quite reasonable to memorize.
 
 Since the User ID is the salt, an attacker couldn't build a single
 rainbow table to attack passphrases for different people. (Though your
@@ -325,8 +329,8 @@ datetime, *at seconds resolution*, in addition to their passphrase,
 passphrase2pgp uses the same hard-coded date by default. A date of
 January 1, 1970 is like NULL in a database: no data.
 
-If you don't like this, you can override it with the `-date` or `-now`
-options, but it's up to you to remain consistent.
+If you don't like this, you can override it with the `--time` (`-t`) or
+`--now` (`-n`) options, but it's up to you to remain consistent.
 
 #### Vanity Keys
 
@@ -337,10 +341,12 @@ would easily beat anything else I could find online.
 
 ### Reconsidering limited OpenPGP
 
-Initially my intention was *not* to output an encryption subkey at all,
-and passphrase2pgp would only produce a "sign only" primary key. You can
-still do this with the `-sign-only` option, and that's likely how I
-would use it. However, I figured it would be useful enough to include.
+Initially my intention was *never* to output an encryption subkey, and
+passphrase2pgp would only be useful for signatures. By default it still
+only produces a sign key, but you can still get an encryption subkey
+with the `--subkey` (`-s`) option. I figured it might be useful to
+generate an encryption key, even if it's not output by default. Users
+can always ask for it later if they have a need for it.
 
 Why only a signing key? Nobody should be using OpenPGP for encryption
 anymore. Use better tools instead and retire the [20th century
