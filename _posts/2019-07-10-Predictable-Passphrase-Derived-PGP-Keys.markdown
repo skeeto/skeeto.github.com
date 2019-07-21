@@ -315,6 +315,41 @@ protection passphrase:
 
 There's a lot that can be configured from this interface.
 
+If you just need the public key to publish or share, the `--public`
+(`-p`) option will suppress the private parts and output only a public
+key. It works well in combination with ASCII armor, `--armor` (`-a`).
+For example, to put your public key on the clipboard:
+
+    $ passphrase2pgp -u '...' -ap | xclip
+
+The tool can create detached signatures (`--sign`, `-S`) entirely on its
+own, too, so you don't need to import the keys into GnuPG just to make
+signatures:
+
+    $ passphrase2pgp --sign --uid '...' program.exe
+
+This would create a file named `program.exe.sig` with the detached
+signature, ready to be verified by another OpenPGP implementation. In
+fact, you can hook it directly up to Git for signing your tags and
+commits without GnuPG:
+
+    $ git config --global gpg.program passphrase2pgp
+
+This only works for signing, and it cannot verify (`verify-tag` or
+`verify-commit`).
+
+It's pretty tedious to enter the `--uid` option all the time, so, if
+omitted, passphrase2pgp will infer the User ID from the environment
+variables REALNAME and EMAIL. Combined with the KEYID environment
+variable (see the README for details), you can easily get away with
+*never* storing your keys: only generate them on demand when needed.
+
+That's how I intend to use passphrase2pgp. When I want to sign a file,
+I'll only need one option, one passphrase prompt, and a few seconds of
+patience:
+
+    $ passphrase2pgp -S path/to/file
+
 #### January 1, 1970
 
 The first time you run the tool you might notice one offensive aspect of
