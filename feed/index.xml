@@ -12,7 +12,7 @@
 
   <author>
     <name>Christopher Wellons</name>
-    <uri>{{ site.url }}</uri>
+    <uri>{{ site.url }}/</uri>
     <email>wellons@nullprogram.com</email>
   </author>
 
