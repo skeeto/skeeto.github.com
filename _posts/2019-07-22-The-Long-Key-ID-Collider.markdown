@@ -191,9 +191,15 @@ loop forever {
 }
 ```
 
-However, this still uses utterly excessive amounts of memory. Wouldn't
-it be crazy if we could somehow get this 64GB map down to just a few MBs
-of RAM? Well, we can!
+I'm incrementing a counter to generate the seeds because I don't want to
+experience the birthday paradox to apply to my seeds. Each really must
+be unique. I'm using SplitMix64 for the PRNG [since I learned it's the
+fastest][rng] for Go, so a simple increment to generate seeds [is
+perfectly fine][hp].
+
+Ultimately, this still uses utterly excessive amounts of memory.
+Wouldn't it be crazy if we could somehow get this 64GB map down to just
+a few MBs of RAM? Well, we can!
 
 #### Rainbow tables
 
@@ -313,5 +319,7 @@ generate a couple more chains than otherwise necessary.
 
 [ba]: https://en.wikipedia.org/wiki/Birthday_attack
 [gil]: https://mailarchive.ietf.org/arch/msg/openpgp/Al8DzxTH2KT7vtFAgZ1q17Nub_g
+[hp]: /blog/2018/07/31/
 [p2p]: /blog/2019/07/10/
+[rng]: https://github.com/skeeto/rng-go
 [rt]: https://en.wikipedia.org/wiki/Rainbow_table
