@@ -259,7 +259,7 @@ with a 64-bit seed as before, generate a key, get the long key ID,
 There's one big difference. In the rainbow table the purpose is to run
 the hash function backwards by looking at the previous step in the
 chain. For the collider, I want to know if any of the hash chains
-collide. So long as each chain starts from the same seed, it would mean
+collide. So long as each chain starts from a unique seed, it would mean
 we've found **two different seeds that lead to the same long key ID**.
 
 Alternatively, it could be two different seeds that lead to the same
