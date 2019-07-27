@@ -14,8 +14,7 @@ things, and observe how various OpenPGP implementations respond to
 weird inputs.
 
 For one particularly cool trick, take a look at these two (private)
-keys I generated yesterday. No, these were not derived from a
-passphrase. Here's the first:
+keys I generated yesterday. Here's the first:
 
 ```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
@@ -102,18 +101,25 @@ viable keys, not just garbage for the public key portions, since they're
 both self-signed.
 
 Creating these keys was trickier than I had anticipated, and there's an
-old, clever trick that makes it work. As a kind of easter egg, there's
-now a hidden `--collide` (`-X`) command in passphrase2pgp that will
-create a long key ID collision and print the two keypairs to standard
-output. If you have the latest version, you can make your own:
+old, clever trick that makes it work. Building atop the work I did for
+passphrase2pgp, I created a standalone tool that will create a long key
+ID collision and print the two keypairs to standard output:
 
-    $ passphrase2pgp -X --verbose --now --uid '...' > keys.asc
+* **<https://github.com/skeeto/pgpcollider>**
 
-It took around 4 hours to create the keys above — using a slower, less
-refined version of the command — generating a around 1 billion extra
-keys in the process. As discussed below, I actually got lucky that it
-only took 1 billion. If you modify the program to do short key ID
-collisions, it only takes a few seconds.
+Example usage:
+
+    $ go get -u github.com/skeeto/pgpcollider
+    $ pgpcollider --verbose > keys.asc
+
+This can take up to a day to complete when run like this. The tool can
+optionally coordinate many machines — see the `--server` / `-S` and
+`--client` / `-C` options — to work together, greatly reducing the total
+time. It took around 4 hours to create the keys above on a single
+machine, generating a around 1 billion extra keys in the process. As
+discussed below, I actually got lucky that it only took 1 billion. If
+you modify the program to do short key ID collisions, it only takes a
+few seconds.
 
 The rest of this article is about how it works.
 
