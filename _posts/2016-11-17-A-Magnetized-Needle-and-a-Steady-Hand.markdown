@@ -59,7 +59,7 @@ we'll need the following documentation:
 
 The program we're writing is `true`, whose behavior is documented as
 "do nothing, successfully." All command line arguments are ignored and
-no input as read. The program only needs to perform the exit system
+no input is read. The program only needs to perform the exit system
 call, immediately terminating the process.
 
 According to the ABI document (3) Appendix A, the registers for system
@@ -148,7 +148,7 @@ encoding for the second instruction:
     B8 3C 00 00 00
 
 The final instruction is a cakewalk. There are no operands, it comes
-in only one form of two operands.
+in only one form of two opcode bytes.
 
     0F 05   SYSCALL
 
