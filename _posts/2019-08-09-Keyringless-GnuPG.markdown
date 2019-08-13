@@ -35,7 +35,7 @@ imported. Hopefully it wasn't [garbage][poison],
 
 GnuPG *does* has a pretty good excuse. It's oriented around the Web of
 Trust model, and it can't follow this model effectively without having
-all they keys at once. However, even if you don't buy into the Web of
+all the keys at once. However, even if you don't buy into the Web of
 Trust, the GnuPG interface still requires you to play by its rules.
 Sometimes I've got a message, a signature, and a public key and I just
 want to verify that they're all consistent with each other, *damnit*.
