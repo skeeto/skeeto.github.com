@@ -31,7 +31,7 @@ library.** Rather than MP3s, it's crypto keys on a keyring. Nearly every
 operation requires keys that have been imported into the keyring. Until
 GnuPG 2.2.8 (June 2018), which added the `--show-keys` command, you
 couldn't even be sure what you were importing until after it was already
-imported. Hopefully it wasn't [garbage][poison],
+imported. Hopefully it wasn't [garbage][poison].
 
 GnuPG *does* has a pretty good excuse. It's oriented around the Web of
 Trust model, and it can't follow this model effectively without having
