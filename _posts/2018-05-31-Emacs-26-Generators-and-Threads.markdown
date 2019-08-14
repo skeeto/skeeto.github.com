@@ -22,8 +22,9 @@ power at a small implementation cost. They're like a constrained form of
 coroutines, but, unlike coroutines, they're typically built entirely on
 top of first-class functions (e.g. closures). This means *no additional
 run-time support is needed* in order to add generators to a language.
-The only complication is the changes the compiler. Generators are not
-compiled the same way as normal functions despite looking so similar.
+The only complications are the changes to the compiler. Generators are
+not compiled the same way as normal functions despite looking so
+similar.
 
 What's perhaps coolest of all about lisp-family generators, including
 Emacs Lisp, is that the compiler component can be *implemented
