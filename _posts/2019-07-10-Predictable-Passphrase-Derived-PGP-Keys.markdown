@@ -2,7 +2,7 @@
 title: Predictable, Passphrase-Derived PGP Keys
 layout: post
 date: 2019-07-10T04:18:29Z
-tags: [crypto, go]
+tags: [crypto, openpgp, go]
 uuid: cae3111c-2887-404a-bc0e-80b8c45a2d06
 ---
 

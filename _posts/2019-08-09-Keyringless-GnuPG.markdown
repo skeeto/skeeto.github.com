@@ -2,7 +2,7 @@
 title: Keyringless GnuPG
 layout: post
 date: 2019-08-09T23:52:39Z
-tags: [crypto]
+tags: [crypto, openpgp]
 uuid: c51e0800-9bf5-4b77-93d4-35480c40a0ba
 ---
 

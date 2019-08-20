@@ -1,7 +1,7 @@
 ---
 title: Publishing My Private Keys
 layout: post
-tags: [crypto, tutorial]
+tags: [crypto, openpgp, tutorial]
 uuid: cb40de11-5f3c-306f-b792-6214d65605a1
 ---
 

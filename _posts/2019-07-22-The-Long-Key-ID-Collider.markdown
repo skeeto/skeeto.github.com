@@ -2,7 +2,7 @@
 title: The Long Key ID Collider
 layout: post
 date: 2019-07-22T21:27:02Z
-tags: [go, crypto]
+tags: [crypto, openpgp, go]
 uuid: e688fdea-0699-42dd-89ac-564d0b2b65bc
 ---
 

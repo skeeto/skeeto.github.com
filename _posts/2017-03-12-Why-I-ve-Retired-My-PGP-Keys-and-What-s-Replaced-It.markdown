@@ -2,7 +2,7 @@
 title: Why I've Retired My PGP Keys and What's Replaced It
 layout: post
 date: 2017-03-12T21:54:38Z
-tags: [crypto]
+tags: [crypto, openpgp]
 uuid: d8fc83d0-4f6e-31dc-95b9-3ec4427725e1
 ---
 
