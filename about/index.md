@@ -8,9 +8,9 @@ layout: default
 My name is Chris Wellons, though I sometimes use the handle *skeeto*. I
 am a professional software engineer with a passion for software
 development. In my day job I regularly develop internal data processing
-and data reduction tools, optimize software performance, [mentor
-students][mentor], and do cybersecurity research. Occasionally I also do
-web development and data visualization.
+and data reduction tools, optimize software performance, and [mentor
+students][mentor]. Occasionally I also do web development and data
+visualization.
 
 However, this blog — [ongoing for more than a decade][ten] — is largely
 about what I do *outside* of my day job. Here I explain topics that I've
@@ -34,6 +34,10 @@ Here are some of the more well known open source projects I've started.
 
 * [Elfeed][elfeed]: an extensible syndication feed (RSS, Atom) reader
   for Emacs. I've written [lots of articles][elfeed-meta] about it.
+
+* [Endlessh][endlessh]: an SSH tarpit. It [keeps hostile bots harmlessly
+  tied up doing nothing][tarpit] while your server goes about its normal
+  business uninterrupted.
 
 * [Enchive][enchive]: encrypted personal archives. I've written about
   [the purpose behind this tool][enchive-meta].
@@ -213,6 +217,7 @@ It's wonderful having such concise keys and signatures!
 [emacsql]: https://github.com/skeeto/emacsql
 [enchive-meta]: /blog/2017/03/12/
 [enchive]: https://github.com/skeeto/enchive
+[endlessh]: https://github.com/skeeto/endlessh
 [make]: /blog/2017/08/20/
 [mentor]: /blog/2016/09/02/
 [mpv]: https://mpv.io/
@@ -228,6 +233,7 @@ It's wonderful having such concise keys and signatures!
 [src]: https://github.com/skeeto/skeeto.github.com
 [ssmapedit]: https://github.com/skeeto/ssMapEdit
 [synspace]: http://www.synthetic-reality.com/synSpace.htm
+[tarpit]: /blog/2019/03/22/
 [ten]: /blog/2017/09/01/
 [unlicense]: http://unlicense.org/
 [vim]: /blog/2017/04/01/
