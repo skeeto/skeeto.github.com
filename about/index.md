@@ -151,6 +151,57 @@ probably figure it out anyway. Don't be afraid to shoot me an email if
 you like. I don't get so much that random mail from strangers is an
 issue.
 
+### Cryptographic Identity
+
+This is the key I use to sign important pieces of information, such as
+Git tags and software releases. It interoperates perfectly with [my
+verification script][simplegpg].
+
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+xjMEAAAAABYJKwYBBAHaRw8BAQdAFBg8KN4P+OO3PW166sz9PVYoss4nXgdaxVSH
+ieFHPdTNLUNocmlzdG9waGVyIFdlbGxvbnMgPHdlbGxvbnNAbnVsbHByb2dyYW0u
+Y29tPsJhBBMWCAATBQIAAAAACRCv0VA6jI/0KgIbAwAAnC4A/jEr7DsBKzQ9ZkQf
+P6debpDKDf/oTa0gUg7xYhetIBcEAP9p4R4IS2Om1ewd7muZ2Vz2JDZdQQS42N5q
+Bd8c6WSnAQ==
+=x6Nt
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+Isn't that a little short for a PGP key?
+
+1. It's an elliptic curve key, which has better security in a smaller
+   package. You'll need newer software in order to use it.
+2. It's a sign-only primary key with no subkeys. If you want to send me
+   an encrypted message, I'll send you a short-term encryption subkey
+   first.
+3. I generated this key using [my own software][p2p], so it lacks the
+   unnecessary cruft normally attached to public keys. Further, the
+   secret key is never stored in any medium and is instead generated on
+   demand when computing signatures.
+
+Here's an example cleartext signature to try it out.
+
+```
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+My website: https://nullprogram.com/
+My GitHub account: https://github.com/skeeto
+My favorite color: Orange
+
+-----BEGIN PGP SIGNATURE-----
+
+wnUEARYIACcFAl1cV4oJEK/RUDqMj/QqFiEEXuuMjVBpxOm5SqhSr9FQOoyP9CoA
+APSAAP4+Z0enXNnvEhOgT5kEoXH65RQQoR0Optjzdh+8JgaUKQEAqURrvXq+eaTt
+Go9D+1vs/OY1xx126X850nJD7aJ8CQs=
+=BwbG
+-----END PGP SIGNATURE-----
+```
+
+It's wonderful having such concise keys and signatures!
+
 
 [binitools]: https://github.com/skeeto/binitools
 [c]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
@@ -167,11 +218,13 @@ issue.
 [mpv]: https://mpv.io/
 [mutt]: /blog/2017/06/15/
 [openbox]: http://openbox.org/wiki/Main_Page
+[p2p]: https://github.com/skeeto/passphrase2pgp
 [portable]: /blog/2017/03/30/
 [repos]: https://github.com/skeeto?tab=repositories
 [rop]: http://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
 [shadow]: https://github.com/skeeto/am-i-shadowbanned
 [showcase]: /toys/
+[simplegpg]: https://github.com/skeeto/simplegpg
 [src]: https://github.com/skeeto/skeeto.github.com
 [ssmapedit]: https://github.com/skeeto/ssMapEdit
 [synspace]: http://www.synthetic-reality.com/synSpace.htm

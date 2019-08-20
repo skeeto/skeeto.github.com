@@ -6,6 +6,9 @@ tags: [crypto]
 uuid: d8fc83d0-4f6e-31dc-95b9-3ec4427725e1
 ---
 
+*Update August 2019: I've got a PGP key again but only for signing. [I
+use another of my own tools, **passphrase2pgp**][p2p], to manage it.*
+
 **tl;dr**: [Enchive][enchive] (rhymes with "archive") has replaced my
 use of GnuPG.
 
@@ -198,3 +201,4 @@ future should Enchive have that sort of longevity.
 [enchive]: https://github.com/skeeto/enchive
 [djb]: https://cr.yp.to/djb.html
 [hmac]: https://tools.ietf.org/html/rfc2104
+[p2p]: /blog/2019/07/10/

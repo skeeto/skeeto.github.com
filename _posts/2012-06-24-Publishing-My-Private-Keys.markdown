@@ -10,6 +10,11 @@ bug in GnuPG [that silently discards these security settings][bug],
 and it's unlikely to ever get fixed. You'll need to find/build an old
 version of GnuPG if you want to properly protect your secret keys.*
 
+*Update August 2019: I've got a PGP key again, but [I'm using my own
+tool, **passphrase2pgp**][p2p], to manage it. This tool allows for a
+particular workflow that GnuPG has never and will never provide. It
+doesn't rely on S2K as described below.*
+
 One of the items [in my dotfiles repository](/blog/2012/06/23/) is my
 PGP keys, both private and public. I believe this is a unique approach
 that hasn't been done before — a public experiment. It may *seem*
@@ -101,3 +106,4 @@ install process no matter how many private dotfiles there are.
 
 [update]: /blog/2017/03/12/
 [bug]: https://dev.gnupg.org/T1800
+[p2p]: /blog/2019/07/10/
