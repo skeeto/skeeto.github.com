@@ -6,6 +6,8 @@ tags: [crypto, openpgp]
 uuid: c51e0800-9bf5-4b77-93d4-35480c40a0ba
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 My favorite music player is [Audacious][aud]. It follows the Winamp
 Classic tradition of not trying to manage my music library. Instead it
 waits patiently for me to throw files and directories at it. These
@@ -230,6 +232,7 @@ and this is how I intend to do it.
 
 [aud]: https://audacious-media-player.org/
 [bsdcan]: https://www.openbsd.org/papers/bsdcan-signify.html
+[hn]: https://news.ycombinator.com/item?id=20792472
 [man]: https://man.openbsd.org/signify
 [minisign]: https://jedisct1.github.io/minisign/
 [p2p]: /blog/2019/07/10/
