@@ -184,7 +184,7 @@ fill(struct fatptr ptr, int value)
 
 Congratulations, you've got slices! Except that in Go they're a proper
 part of the language and so doesn't rely on hazardous hacks or tedious
-bookkeeping. The `fatptr_write()` function above nearly functionally
+bookkeeping. The `fatptr_write()` function above is nearly functionally
 equivalent to the `Writer.Write()` method in Go, which accepts a slice:
 
 ```go
