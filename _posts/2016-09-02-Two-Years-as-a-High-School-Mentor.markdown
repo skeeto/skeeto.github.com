@@ -6,6 +6,9 @@ tags: [meatspace]
 uuid: 5cc4c7ae-840c-3b55-cf64-63eb3d4b5da7
 ---
 
+*Update June 2019: Dan graduated from college and is now my full-time
+colleague.*
+
 Over the past two years I've been mentoring a high school student, Dan
 Kelly, in software development though [my workplace mentoring
 program][aspire]. It's been one of the most rewarding experiences in
