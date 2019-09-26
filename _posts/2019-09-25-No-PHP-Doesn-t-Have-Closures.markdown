@@ -129,10 +129,17 @@ couple of specific forms. If JavaScript didn't have proper closures, and
 instead we all had to rely on `bind()`, nobody would claim that
 JavaScript had closures. It shouldn't be different for PHP.
 
+### References
+
 PHP *does* have references, and binding a reference to an anonymous
 function is kinda, sorta like a closure. But that's still just partial
 function evaluation, but where that argument is a reference, itself
 still passed by value.
+
+Here's how to tell these reference captures aren't actually closures:
+They work equally well for global variables as local variables. So it's
+still not *closing over* a lexical environment, just binding a reference
+to a parameter.
 
 ### Emacs Lisp partial function application
 
