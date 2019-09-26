@@ -106,7 +106,7 @@ function bar($n) {
         return $n;
     };
     $n++;  // never used!
-    return f;
+    return $f;
 }
 
 $r = bar(1)();  // $r = 1
