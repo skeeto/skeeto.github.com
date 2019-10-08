@@ -28,6 +28,11 @@ This blog is 100% transparent. Its complete source [is in a Git
 repository][src]. From there you can see every single correction and
 update I make.
 
+### Interviews
+
+* [Sacha Chua's Emacs Chat][chat] (2014)
+* [Uses This][usesthis] (2019)
+
 ### Open Source Projects
 
 Here are some of the more well known open source projects I've started.
@@ -210,6 +215,7 @@ It's wonderful having such concise keys and signatures!
 [binitools]: https://github.com/skeeto/binitools
 [c]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
 [cc0]: https://web.archive.org/web/20150225160057/https://dancohen.org/2013/11/26/cc0-by/
+[chat]: https://sachachua.com/blog/2014/05/emacs-chat-christopher-wellons/
 [dl]: https://github.com/skeeto/youtube-dl-emacs
 [dotfiles]: https://github.com/skeeto/dotfiles
 [elfeed-meta]: /tags/elfeed/
@@ -236,5 +242,6 @@ It's wonderful having such concise keys and signatures!
 [tarpit]: /blog/2019/03/22/
 [ten]: /blog/2017/09/01/
 [unlicense]: http://unlicense.org/
+[usesthis]: https://usesthis.com/interviews/chris.wellons/
 [vim]: /blog/2017/04/01/
 [youtube-dl]: https://rg3.github.io/youtube-dl/
