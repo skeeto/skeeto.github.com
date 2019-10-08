@@ -133,13 +133,32 @@ JavaScript had closures. It shouldn't be different for PHP.
 
 PHP *does* have references, and binding a reference to an anonymous
 function is kinda, sorta like a closure. But that's still just partial
-function evaluation, but where that argument is a reference, itself
-still passed by value.
+function evaluation, but where that argument is a reference.
 
 Here's how to tell these reference captures aren't actually closures:
 They work equally well for global variables as local variables. So it's
 still not *closing over* a lexical environment, just binding a reference
 to a parameter.
+
+```php
+$counter = 0;
+
+function bar($n) {
+    global $counter;
+    $f = function() use (&$n, &$counter) {
+        $counter++;
+        return $n;
+    };
+    $n++;  // now has an effect
+    return $f;
+}
+
+$r = bar(1)();  // $r = 2, $counter = 1
+```
+
+In the example above, there's no difference between `$n`, a local
+variable, and `$counter`, a global variable. It wouldn't make sense for
+a closure to close over a global variable.
 
 ### Emacs Lisp partial function application
 
