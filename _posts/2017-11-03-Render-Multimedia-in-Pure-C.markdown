@@ -77,13 +77,13 @@ rendering technique to produce these raytracer videos:
 
 <p>
 <video width="600" controls="controls">
-  <source type="video/webm" src="http://skeeto.s3.amazonaws.com/netray/bigdemo_full.webm" />
+  <source type="video/webm" src="https://skeeto.s3.amazonaws.com/netray/bigdemo_full.webm" />
 </video>
 </p>
 
 <p>
 <video width="600" controls="controls">
-  <source type="video/webm" src="http://skeeto.s3.amazonaws.com/netray/bounce720.webm" />
+  <source type="video/webm" src="https://skeeto.s3.amazonaws.com/netray/bounce720.webm" />
 </video>
 </p>
 
