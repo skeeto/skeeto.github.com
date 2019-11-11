@@ -103,7 +103,7 @@ began, the software is not expected to function properly when run in the
 
     $ DESTDIR=_destdir
     $ mkdir $DESTDIR
-    $ make DESTDIR=destdir install
+    $ make DESTDIR=$DESTDIR install
 
 A different tool will used to copy these files into place and actually
 install it. This tool can track what files were installed, allowing them
