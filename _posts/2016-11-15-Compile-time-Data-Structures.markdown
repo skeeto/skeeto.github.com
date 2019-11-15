@@ -32,6 +32,8 @@ contents of the text file `my_msg.txt`:
 
     $ ld -r -b binary -o my_file.o my_msg.txt
 
+(*Update*: [You probably also want to use `-z noexecstack`][execstack].)
+
 The object file will have three symbols, each named after the input
 file. Unfortunately there's no control over the symbol names, section
 (.data), alignment, or protections (e.g. read-only). You're completely
@@ -360,7 +362,8 @@ had much better luck with [other sorts of lookup tables][yavalath].
 It's a useful tool for the C programmer's toolbelt.
 
 
+[execstack]: /blog/2019/11/15/
 [last]: /blog/2016/11/13/
+[linkers]: http://www.airs.com/blog/archives/38
 [reloc]: /blog/2016/10/27/
 [yavalath]: https://github.com/skeeto/yavalath
-[linkers]: http://www.airs.com/blog/archives/38
