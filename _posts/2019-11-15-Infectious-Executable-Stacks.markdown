@@ -151,7 +151,7 @@ You can see that the stack will be executable using our old friend,
 
 Note the "RWE" at the bottom right, meaning read-write-execute. This is
 a really bad sign in a real binary. Do any binaries installed on your
-system right now have an executable stack? I found one on mine.
+system right now have an executable stack? [I found one on mine][mupdf].
 
 When compiling the original version using a nested function there's no
 need for that special linker option. That's because GCC saw that it
@@ -200,14 +200,15 @@ of an executable stack, and they're certainly not worth an entire
 toolchain being fail open about it.
 
 
+[alias]: /blog/2018/07/20/#strict-aliasing
 [bake]: /blog/2016/11/15/
 [dl]: /download/trampoline.c
 [lib]: /blog/2017/01/08/
 [mm]: https://eli.thegreenplace.net/2012/01/03/understanding-the-x64-code-models
+[mupdf]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=944817
 [nasm]: /blog/2015/04/19/
 [needle]: /blog/2016/11/17/
 [php]: /blog/2019/09/25/
 [sysv]: https://wiki.osdev.org/System_V_ABI
 [thr]: https://lwn.net/Articles/683118/
 [vla]: /blog/2019/10/27/
-[alias]: /blog/2018/07/20/#strict-aliasing
