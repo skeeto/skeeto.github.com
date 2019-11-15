@@ -170,9 +170,10 @@ object file must contain the (empty) section `.note.GNU-stack`. If even
 a single object file fails to do this, then the final program gets an
 executable stack.
 
-No only does one contaminated object file infects the binary, everything
+Not only does one contaminated object file infect the binary, everything
 dynamically linked with it *also* gets an executable stack. Entire
-processes are infected!
+processes are infected! This occurs even via `dlopen()`, where the stack
+is dynamically made executable to accomodate the new shared object.
 
 I've been bit myself. In [*Baking Data with Serialization*][bake] I did
 it completely by accident, and I didn't notice my mistake until three
