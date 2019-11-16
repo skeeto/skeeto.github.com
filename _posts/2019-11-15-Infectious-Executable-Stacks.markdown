@@ -6,6 +6,8 @@ tags: [c, netsec, x86]
 uuid: 7266b2ea-f39e-4b9a-87c8-e4480374af41
 ---
 
+*This article was discussed [on Hacker News][hn]*.
+
 In software development there are many concepts that at first glance
 seem useful and sound, but, after considering the consequences of their
 implementation and use, are actually horrifying. Examples include
@@ -108,7 +110,9 @@ void intsort3(int *base, size_t nmemb, _Bool invert)
 ```
 
 Here's a complete example you can try yourself on nearly any x86-64
-unix-like system: [**trampoline.c**][dl]. It even works with Clang.
+unix-like system: [**trampoline.c**][dl]. It even works with Clang. The
+two notable systems where stack trampolines won't work are
+[OpenBSD][tedu] and [WSL][wsl].
 
 (Note: The `volatile` is necessary because C compilers rightfully do
 not see the contents of `buf` as being consumed. Execution of the
@@ -166,9 +170,9 @@ default is an executable stack.**
 Since this is the default, the only way to get a non-executable stack is
 if *every* object file input to the linker explicitly declares that it
 does not need an executable stack. To request a non-executable stack, an
-object file must contain the (empty) section `.note.GNU-stack`. If even
-a single object file fails to do this, then the final program gets an
-executable stack.
+object file [must contain the (empty) section `.note.GNU-stack`][lance].
+If even a single object file fails to do this, then the final program
+gets an executable stack.
 
 Not only does one contaminated object file infect the binary, everything
 dynamically linked with it *also* gets an executable stack. Entire
@@ -204,6 +208,8 @@ toolchain being fail open about it.
 [alias]: /blog/2018/07/20/#strict-aliasing
 [bake]: /blog/2016/11/15/
 [dl]: /download/trampoline.c
+[hn]: https://news.ycombinator.com/item?id=21553882
+[lance]: https://www.airs.com/blog/archives/518
 [lib]: /blog/2017/01/08/
 [mm]: https://eli.thegreenplace.net/2012/01/03/understanding-the-x64-code-models
 [mupdf]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=944817
@@ -211,5 +217,7 @@ toolchain being fail open about it.
 [needle]: /blog/2016/11/17/
 [php]: /blog/2019/09/25/
 [sysv]: https://wiki.osdev.org/System_V_ABI
+[tedu]: https://marc.info/?l=openbsd-cvs&m=149606868308439&w=2
 [thr]: https://lwn.net/Articles/683118/
 [vla]: /blog/2019/10/27/
+[wsl]: https://github.com/microsoft/WSL/issues/286
