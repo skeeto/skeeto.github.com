@@ -156,6 +156,7 @@ You can see that the stack will be executable using our old friend,
 Note the "RWE" at the bottom right, meaning read-write-execute. This is
 a really bad sign in a real binary. Do any binaries installed on your
 system right now have an executable stack? [I found one on mine][mupdf].
+(Update: [A major one was found in the comments by Walter Misar][qt].)
 
 When compiling the original version using a nested function there's no
 need for that special linker option. That's because GCC saw that it
@@ -216,6 +217,7 @@ toolchain being fail open about it.
 [nasm]: /blog/2015/04/19/
 [needle]: /blog/2016/11/17/
 [php]: /blog/2019/09/25/
+[qt]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=944971
 [sysv]: https://wiki.osdev.org/System_V_ABI
 [tedu]: https://marc.info/?l=openbsd-cvs&m=149606868308439&w=2
 [thr]: https://lwn.net/Articles/683118/
