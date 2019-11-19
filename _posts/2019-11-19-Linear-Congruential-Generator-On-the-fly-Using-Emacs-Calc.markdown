@@ -149,7 +149,7 @@ this.
 A [Permuted Congruential Generator][pcg] (PCG) is really just a
 truncated LCG with a permutation applied to its output. Like LCGs
 themselves, there are arbitrarily many variations. The "official"
-implementation has a [data-dependent rotation][data], for which I can
+implementation has a [data-dependent shift][data], for which I can
 never remember the details. Fortunately a couple of simple, easy to
 remember transformations is sufficient. Basically anything I used
 [while prospecting for hash functions][hash]. I love xorshifts, so
