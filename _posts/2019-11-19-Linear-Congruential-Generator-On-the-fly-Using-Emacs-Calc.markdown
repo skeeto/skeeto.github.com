@@ -2,7 +2,7 @@
 title: On-the-fly Linear Congruential Generator Using Emacs Calc
 layout: post
 date: 2019-11-19T01:17:50Z
-tags: [emacs, crypto, optimization, c, java]
+tags: [emacs, crypto, optimization, c, java, javascript]
 uuid: 13e56720-ef3a-4fa4-a4ff-0a6fef914504
 ---
 
@@ -193,6 +193,18 @@ languages. For example, JavaScript has limited support for 32-bit
 integer operations (enough for a poor 32-bit LCG) and no 64-bit
 integer operations. Though [BigInt][bi] is now a thing, and should
 make a great 96- or 128-bit LCG easy to build.
+
+```js
+function lcg(seed) {
+    let s = BigInt(seed);
+    return function() {
+        s *= 0xef725caa331524261b9646cdn;
+        s += 0x213734f2c0c27c292d814385n;
+        s &= 0xffffffffffffffffffffffffn;
+        return Number(s >> 64n);
+    }
+}
+```
 
 Java doesn't have unsigned integers, so how could you build the above
 PCG in Java? Easy! First, remember is that Java has two's complement
