@@ -2,7 +2,7 @@
 title: On-the-fly Linear Congruential Generator Using Emacs Calc
 layout: post
 date: 2019-11-19T01:17:50Z
-tags: [emacs, crypto, optimization, c]
+tags: [emacs, crypto, optimization, c, java]
 uuid: 13e56720-ef3a-4fa4-a4ff-0a6fef914504
 ---
 
