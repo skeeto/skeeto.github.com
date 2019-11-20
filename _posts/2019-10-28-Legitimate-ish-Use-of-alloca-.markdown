@@ -6,6 +6,8 @@ tags: [c, optimization]
 uuid: ce906d6f-b228-4dc6-bd02-34b845d3c5e2
 ---
 
+*This article was discussed [on Hacker News][hn]*.
+
 Yesterday [I wrote about a legitimate use for variable length
 arrays][vla]. While recently discussing this topic with [a
 co-worker][who], I also thought of a semi-legitimate use for
@@ -187,6 +189,7 @@ better about optimizing it. Regardless, this is another neat little
 trick that I probably wouldn't use in practice.
 
 
+[hn]: https://news.ycombinator.com/item?id=21374863
 [lua]: https://www.lua.org/manual/5.3/manual.html#lua_Alloc
 [man]: http://man7.org/linux/man-pages/man3/alloca.3.html
 [min]: /blog/2018/06/10/

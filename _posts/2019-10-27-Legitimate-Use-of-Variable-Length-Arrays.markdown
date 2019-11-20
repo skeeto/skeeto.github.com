@@ -6,6 +6,8 @@ tags: [c, optimization]
 uuid: acf6af69-f18c-49a6-b3ae-a23ae537da6d
 ---
 
+*This article was discussed [on Hacker News][hn] and [on reddit][rd]*.
+
 The C99 (ISO/IEC 9899:1999) standard of C introduced a new, powerful
 feature called Variable Length Arrays (VLAs). The size of an array with
 automatic storage duration (i.e. stack allocated) can be determined at
@@ -310,5 +312,7 @@ VLAs.
 
 
 [clash]: /blog/2017/06/21/
+[hn]: https://news.ycombinator.com/item?id=21375580
 [linux]: https://www.phoronix.com/scan.php?page=news_item&px=Linux-Kills-The-VLA
+[rd]: https://old.reddit.com/r/programming/comments/dz1fau/variable_length_arrays_in_c_are_nearly_always_the/
 [small]: /blog/2016/10/07/
