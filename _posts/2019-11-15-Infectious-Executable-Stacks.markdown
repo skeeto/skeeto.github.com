@@ -205,6 +205,12 @@ Nested C closures are super slick, but they're just not worth the risk
 of an executable stack, and they're certainly not worth an entire
 toolchain being fail open about it.
 
+Update: A [rebuttal][rebuttal]. My short response is that the issue
+discussed in my article isn't really about C the language but rather
+about an egregious issue with one particular toolchain. The problem
+doesn't even arise if you use only C, but instead when linking in object
+files specifically *not* derived from C code.
+
 
 [alias]: /blog/2018/07/20/#strict-aliasing
 [bake]: /blog/2016/11/15/
@@ -218,6 +224,7 @@ toolchain being fail open about it.
 [needle]: /blog/2016/11/17/
 [php]: /blog/2019/09/25/
 [qt]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=944971
+[rebuttal]: http://verisimilitudes.net/2019-11-21
 [sysv]: https://wiki.osdev.org/System_V_ABI
 [tedu]: https://marc.info/?l=openbsd-cvs&m=149606868308439&w=2
 [thr]: https://lwn.net/Articles/683118/
