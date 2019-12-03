@@ -104,6 +104,17 @@ what others find most useful.
 I also have a published paper: [ROP Gadget Prevalence and Survival under
 Compiler-based Binary Diversification Schemes][rop]
 
+### Donations
+
+Occasionally someone is particularly happy with my open source work or
+articles, and they'll ask if they can somehow donate money in support. I
+make a very comfortable living outside of my blog, so such donations are
+neither needed nor motivating. I'd much prefer your donation go to more
+beneficial and effective causes than be wasted on a stingy miser like
+me. So, instead, [**donate to GiveWell**][givewell]. It's a sort of
+meta-charity that continuously analyzes where donations will have the
+greatest impact in the world and directs your money in that direction.
+
 ### Software Preferences
 
 In general I stick to smaller, simpler tools — especially those I can
@@ -224,6 +235,7 @@ It's wonderful having such concise keys and signatures!
 [enchive-meta]: /blog/2017/03/12/
 [enchive]: https://github.com/skeeto/enchive
 [endlessh]: https://github.com/skeeto/endlessh
+[givewell]: https://secure.givewell.org/
 [make]: /blog/2017/08/20/
 [mentor]: /blog/2016/09/02/
 [mpv]: https://mpv.io/
