@@ -251,10 +251,10 @@ hash32(uint32_t x)
 I hadn't noticed this until after the prospector had come across it on
 its own. The pattern for all three is XOR-right-shift, multiply,
 XOR-right-shift, multiply, XOR-right-shift. There's something
-particularly useful about this [multiply-xorshift construction][mx]. The
-XOR-right-shift diffuses bits rightward and the multiply diffuses bits
-leftward. I like to think it's "sloshing" the bits right, left, right,
-left.
+particularly useful about this [multiply-xorshift construction][mx]
+([also][mx2]). The XOR-right-shift diffuses bits rightward and the
+multiply diffuses bits leftward. I like to think it's "sloshing" the
+bits right, left, right, left.
 
 It seems that multiplication is particularly good at diffusion, so it
 makes perfect sense to exploit it in non-cryptographic hash functions,
@@ -456,6 +456,7 @@ It's statistically indistinguishable from a random permutation of all
 [m3]: https://en.wikipedia.org/wiki/MurmurHash#Algorithm
 [mulvey]: http://papa.bretmulvey.com/post/124027987928/hash-functions
 [mx]: http://www.pcg-random.org/posts/developing-a-seed_seq-alternative.html#multiplyxorshift
+[mx2]: http://ticki.github.io/blog/designing-a-good-non-cryptographic-hash-function/#designing-a-diffusion-function--by-example
 [prng]: /blog/2017/09/21/
 [rot]: /blog/2018/02/07/
 [sa]: https://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
