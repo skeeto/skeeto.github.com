@@ -117,6 +117,11 @@ variables do not alias and generate code accordingly. Otherwise every
 memory store could potentially modify any variable, which limits the
 compiler's ability to produce decent code.
 
+The original version is fine because `char *`, including both `signed`
+and `unsigned`, has a special exemption and may alias with anything. For
+the same reason, using `char *` unnecessarily can also make your
+programs slower.
+
 What could you do to keep the chunking operation while not running afoul
 of strict aliasing? Counter-intuitively, you could use `memcpy()`. Copy
 the chunks into legitimate, local `uint64_t` variables, do the work, and
