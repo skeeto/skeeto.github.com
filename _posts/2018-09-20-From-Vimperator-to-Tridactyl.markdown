@@ -186,8 +186,8 @@ maintaining XUL compatibility. I haven't taken this seriously for a
 couple of reasons:
 
 * Maintaining a feature-complete web browser like Firefox is a *very*
-  serious undertaking, and I trust few organizations to do it
-  correctly.
+  serious undertaking, and I trust few organizations to do it correctly.
+  Firefox and Chromium forks have [a poor security track record][exec].
 
 Even the Debian community gave up on that idea long ago, and they've
 made a special exception that allows recent versions of Firefox and
@@ -275,6 +275,7 @@ better about the whole situation.
 
 [cve]: https://www.cvedetails.com/product/3264/Mozilla-Firefox.html?vendor_id=452
 [dotfiles]: /blog/2012/06/23/
+[exec]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=887875
 [ff57]: https://utcc.utoronto.ca/~cks/space/blog/web/Firefox57ComingExplosion
 [fg]: https://addons.mozilla.org/en-US/firefox/addon/foxy-gestures/
 [gesturefy]: https://github.com/Robbendebiene/Gesturefy
