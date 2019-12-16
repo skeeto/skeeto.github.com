@@ -25,17 +25,17 @@ apply it to solve toy problems. Even beyond this, random number
 generators are frequently a useful tool ([1][mcts], [2][pgp]), so I
 find myself reaching for one all the time.
 
-Virtually every programming language comes with a pseudo-random number
-generation function or library. Unfortunately the language standard
-PRNG often not ideal for my purposes. It's probably not high quality,
-[slower than it needs to be][call] ([also][go]), [lacks reliable
-semantics or behavior between implementations][bsd], or is missing
-some other property I want. So I've long been a fan of *BYOPRNG:*
-Bring Your Own Pseudo-random Number Generator. Just embed a generator
-with the desired properties directly into the program. The [best
-non-cryptographic PRNGs today][prng] are tiny and exceptionally
-friendly to embedding. Though, depending on what you're doing, you
-might [need to be creative about seeding][ent].
+Nearly every programming language comes with a pseudo-random number
+generation function or library. Unfortunately the language's standard
+PRNG is usually a poor choice (C, [C++][cpp], [C#][csharp], [Go][go],
+[Rust][rust]). It's probably mediocre quality, [slower than it needs to
+be][call] ([also][go]), [lacks reliable semantics or behavior between
+implementations][bsd], or is missing some other property I want. So I've
+long been a fan of *BYOPRNG:* Bring Your Own Pseudo-random Number
+Generator. Just embed a generator with the desired properties directly
+into the program. The [best non-cryptographic PRNGs today][prng] are
+tiny and exceptionally friendly to embedding. Though, depending on what
+you're doing, you might [need to be creative about seeding][ent].
 
 ### Crafting a PRNG
 
@@ -233,9 +233,12 @@ of the finer details of your target language.
 [bsd]: https://lists.freebsd.org/pipermail/svn-src-head/2013-July/049068.html
 [calc]: /blog/2009/06/23/
 [call]: /blog/2018/05/27/
+[cpp]: https://arvid.io/2018/06/30/on-cxx-random-number-generator-quality/
+[csharp]: https://lowleveldesign.org/2018/08/15/randomness-in-net/
 [data]: /blog/2018/02/07/
 [ent]: /blog/2019/04/30/
 [go]: https://github.com/skeeto/rng-go
+[go]: https://grokbase.com/t/gg/golang-nuts/155f6kbb7a/go-nuts-why-are-high-bits-used-by-math-rand-helpers-instead-of-low-ones
 [hash]: /blog/2018/07/31/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
 [mcts]: /blog/2017/04/27/
@@ -246,5 +249,6 @@ of the finer details of your target language.
 [pgp]: /blog/2019/07/22/
 [prng]: /blog/2017/09/21/
 [rsa]: /blog/2015/10/30/
+[rust]: https://old.reddit.com/r/rust/comments/aq95oa/does_anyone_else_feel_like_rust_std_should/
 [ssh]: /blog/2019/03/22/
 [test]: http://simul.iro.umontreal.ca/testu01/tu01.html
