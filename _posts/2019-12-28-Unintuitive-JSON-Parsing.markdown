@@ -206,11 +206,10 @@ For my parser it's the same story for `truefalse`:
     };
 
 Neither rejecting nor accepting this input is wrong, per se.
-Concatenated JSON is outside of the scope of JSON itself, and it
-concatenating arbitrary JSON objects without a whitespace delimiter
-can lead to weird and ill-formed input. This is all a great argument
-in favor or [Newline Delimited JSON][ndjson], and its two simple
-rules:
+Concatenated JSON is outside of the scope of JSON itself, and
+concatenating arbitrary JSON objects without a whitespace delimiter can
+lead to weird and ill-formed input. This is all a great argument in
+favor or [Newline Delimited JSON][ndjson], and its two simple rules:
 
 1. Line separator is `'\n'`
 2. Each line is a valid JSON value
