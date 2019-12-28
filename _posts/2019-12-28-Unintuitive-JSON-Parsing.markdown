@@ -9,8 +9,8 @@ uuid: 721eda6d-a78a-41e1-9d78-db3666208a71
 Despite the goal of JSON being a subset of JavaScript — which [it failed
 to achieve][mine] — parsing JSON is quite unlike parsing a programming
 language. For invalid inputs, the specific cause of error is often
-counter-intuitive. Normally this doesn't matter, but I recently ran into
-a case where it does.
+counter-intuitive. Normally this doesn't matter, but I recently [ran into
+a case where it does][gh].
 
 Consider this invalid input to a JSON parser:
 
@@ -218,6 +218,7 @@ parsers not supporting concatenation: Split the input on newlines and
 pass each line to your JSON parser.
 
 
+[gh]: https://github.com/skeeto/pdjson/pull/19/commits/1500ca73f2ed44ed8a6129fd1fa164bd7e326874#diff-eb030bc5ad128fc13160acab7d06f3a0R702
 [jackson]: https://github.com/FasterXML/jackson
 [jq]: https://stedolan.github.io/jq/
 [mb]: /blog/2016/09/15/
