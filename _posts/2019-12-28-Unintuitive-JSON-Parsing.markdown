@@ -9,10 +9,10 @@ uuid: 721eda6d-a78a-41e1-9d78-db3666208a71
 *This article was discussed [on Hacker News][hn].*
 
 Despite the goal of JSON being a subset of JavaScript — which [it failed
-to achieve][mine] — parsing JSON is quite unlike parsing a programming
-language. For invalid inputs, the specific cause of error is often
-counter-intuitive. Normally this doesn't matter, but I recently [ran into
-a case where it does][gh].
+to achieve][mine] (update: [this was recently fixed][fix]) — parsing
+JSON is quite unlike parsing a programming language. For invalid inputs,
+the specific cause of error is often counter-intuitive. Normally this
+doesn't matter, but I recently [ran into a case where it does][gh].
 
 Consider this invalid input to a JSON parser:
 
@@ -220,6 +220,7 @@ parsers not supporting concatenation: Split the input on newlines and
 pass each line to your JSON parser.
 
 
+[fix]: https://github.com/tc39/proposal-json-superset
 [gh]: https://github.com/skeeto/pdjson/pull/19/commits/1500ca73f2ed44ed8a6129fd1fa164bd7e326874#diff-eb030bc5ad128fc13160acab7d06f3a0R702
 [hn]: https://news.ycombinator.com/item?id=21900715
 [jackson]: https://github.com/FasterXML/jackson
