@@ -172,7 +172,7 @@ this time outside of the context of an array:
     01
 
 Is this invalid, one number, or two numbers? According to the lexer and
-parser model describe above, this is valid and unambiguously two
+parser model described above, this is valid and unambiguously two
 concatenated numbers. Here's what my parser says:
 
     $ echo '01' | tests/stream
