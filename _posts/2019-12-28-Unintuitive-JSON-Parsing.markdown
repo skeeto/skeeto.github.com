@@ -2,7 +2,7 @@
 title: Unintuitive JSON Parsing
 layout: post
 date: 2019-12-28T17:23:09Z
-tags: [javascript, compsci]
+tags: [javascript, compsci, lang]
 uuid: 721eda6d-a78a-41e1-9d78-db3666208a71
 ---
 
