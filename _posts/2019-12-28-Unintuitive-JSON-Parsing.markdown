@@ -6,7 +6,7 @@ tags: [javascript, compsci, lang]
 uuid: 721eda6d-a78a-41e1-9d78-db3666208a71
 ---
 
-*This article was discussed [on Hacker News][hn].*
+*This article was discussed [on Hacker News][hn] and [on reddit][r].*
 
 Despite the goal of JSON being a subset of JavaScript — which [it failed
 to achieve][mine] (update: [this was recently fixed][fix]) — parsing
@@ -229,5 +229,6 @@ pass each line to your JSON parser.
 [ndjson]: http://ndjson.org/
 [noggit]: https://github.com/yonik/noggit
 [pdjson]: https://github.com/skeeto/pdjson
+[r]: https://old.reddit.com/r/programming/comments/egvq11/unintuitive_json_parsing/
 [spec]: https://www.json.org/json-en.html
 [yajl]: https://lloyd.github.io/yajl/
