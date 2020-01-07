@@ -225,6 +225,6 @@ to use it should I run into an appropriate problem in the future.
 [chess]: /blog/2011/08/24/
 [simple]: /blog/2017/03/30/
 [pi]: https://curiosity-driven.org/pi-approximation
-[yavalath]: http://www.cameronius.com/games/yavalath/
+[yavalath]: http://cambolbro.com/games/yavalath/
 [pdf]: http://www.genetic-programming.org/hc2012/Browne-Paper-3-Yavalath-07.pdf
 [meta]: /blog/2016/11/15/
