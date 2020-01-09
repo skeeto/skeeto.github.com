@@ -333,28 +333,15 @@ main article img.left {
     margin: 12px 12px 12px 0;
 }
 
-.load-comments {
-    text-align: center;
-    background-color: gray;
-    color: white;
-    font-size: 30px;
-    padding: 0.25rem 0px;
-    width: 75%;
-    margin: 0px auto;
-    cursor: pointer;
-    border-radius: 5px;
+.comments {
+    font-size: 90%;
+    margin: inherit 110%;
 }
 
-.load-comments:hover {
-    color: #aaf;
-}
-
-.load-comments:active {
-    color: #faa;
-}
-
-#disqus_thread {
-    margin-top: 2em;
+.comments .etiquette {
+    color: gray;
+    font-size: 85%;
+    margin-left: 5px;
 }
 
 article {

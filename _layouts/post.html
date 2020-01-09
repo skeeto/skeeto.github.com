@@ -20,6 +20,27 @@ layout: default
   </ul>
   <ol class="references print-only"></ol>
 
+  <div class="no-print comments">
+    <p>Have a comment on this article? Start a discussion in my
+    <a href="https://lists.sr.ht/~skeeto/public-inbox">public inbox</a>
+    by sending an email to
+    <a href="mailto:~skeeto/public-inbox@lists.sr.ht?Subject=Re%3A%20{{ page.title | uri_escape }}">
+        ~skeeto/public-inbox@lists.sr.ht
+    </a>
+    <span class="etiquette">
+    [<a href="https://man.sr.ht/lists.sr.ht/etiquette.md">mailing list etiquette</a>]
+    </span>
+    </p>
+
+    {% capture year %}{{ page.date | date: "%Y" }}{% endcapture %}
+    {% assign year = year | plus: 0 %}
+    {% if year < 2020 %}
+    <p>This post has
+    <a href="/blog/comments/#{{ page.date | date: "%Y-%m-%d" }}">archived comments</a>.
+    </p>
+    {% endif %}
+  </div>
+
   <nav class="no-print">
   {% if page.previous.url %}
     <div class="prev">
@@ -38,17 +59,4 @@ layout: default
     </div>
   {% endif %}
   </nav>
-
-  <div class="no-print">
-    <div id="disqus_thread"></div>
-    <div class="load-comments" onclick="load_comments(this)">
-      Load Comments
-    </div>
-    <script>
-      var disqus_shortname = 'nullprogram';
-      var disqus_identifier = '{{ page.url }}';
-      var disqus_url = '{{ site.url }}{{ page.url }}';
-      {% include disqus.js %}
-    </script>
-  </div>
 </article>
