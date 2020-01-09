@@ -4,6 +4,7 @@ layout: post
 date: 2019-10-27T19:58:00Z
 tags: [c, optimization]
 uuid: acf6af69-f18c-49a6-b3ae-a23ae537da6d
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn] and [on reddit][rd]*.
@@ -14,6 +15,8 @@ automatic storage duration (i.e. stack allocated) can be determined at
 run time. Each instance of the array may even have a different length.
 Unlike `alloca()`, they're a sanctioned form of dynamic stack
 allocation.
+
+<!--more-->
 
 At first glance, VLAs seem convenient, useful, and efficient. Heap
 allocations have a small cost because the allocator needs to do some

@@ -4,6 +4,7 @@ layout: post
 date: 2019-03-22T17:26:45Z
 tags: [netsec, python, c, posix]
 uuid: 5429ee15-3d42-4af2-8690-f7f402870dd0
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn], [on reddit][reddit]
@@ -15,6 +16,8 @@ This arrests the speed at which a bad actor can attack or probe the
 host system, and it ties up some of the attacker's resources that
 might otherwise be spent attacking another host. When done well, a
 tarpit imposes more cost on the attacker than the defender.
+
+<!--more-->
 
 The Internet is a very hostile place, and anyone who's ever stood up
 an Internet-facing IPv4 host has witnessed the immediate and

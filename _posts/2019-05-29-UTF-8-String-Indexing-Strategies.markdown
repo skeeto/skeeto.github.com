@@ -4,6 +4,7 @@ layout: post
 date: 2019-05-29T21:52:06Z
 tags: [elisp, emacs, go, lang]
 uuid: 12e9ed44-b5c1-495f-8750-dfaf1ab008e2
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn].*
@@ -13,6 +14,8 @@ with built-in support for Unicode strings, an important decision must be
 made about how to represent or encode those strings in memory. Not all
 representations are equal, and there are trade-offs between different
 choices.
+
+<!--more-->
 
 One issue to consider is that strings typically feature random access
 indexing of code points with a time complexity resembling constant

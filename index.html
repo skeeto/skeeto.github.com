@@ -12,7 +12,10 @@ layout: default
     nullprogram.com{{post.url}}
   </div>
 
-  {{ post.content }}
+  <blockquote class="excerpt" cite="{{ post.url }}">
+    {{ post.excerpt }}
+  </blockquote>
+  <div class="read-more">[<a href="{{ post.url }}">…</a>]</div>
 
   <ul class="tags">
     {% for tag in post.tags %}

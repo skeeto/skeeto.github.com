@@ -4,6 +4,7 @@ layout: post
 date: 2015-03-19T04:57:55Z
 tags: [c, tutorial, netsec, x86, posix, optimization]
 uuid: 95e0437f-61f0-3932-55b7-f828e171d9ca
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
@@ -15,6 +16,8 @@ iterate it to some number of terms. It's given an initial term
 term (`u(n + 1) = f(u(n))`) to compute the next term. Since it's an
 easy challenge, the operations are limited to addition, subtraction,
 multiplication, and division, with one operand each.
+
+<!--more-->
 
 For example, the relation `u(n + 1) = (u(n) + 2) * 3 - 5` would be
 input as `+2 *3 -5`. If `u(0) = 0` then,

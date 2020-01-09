@@ -4,6 +4,7 @@ layout: post
 date: 2019-06-30T21:27:19Z
 tags: [c, go]
 uuid: 5ba40d47-11e4-4f82-b805-f5e7825df44c
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn].*
@@ -13,6 +14,8 @@ memory address. A callee who is passed a pointer doesn't truly know
 anything other than the type of object being pointed at, which says some
 things about alignment and how that pointer can be used… maybe. If it's
 a pointer to void (`void *`) then not even that much is known.
+
+<!--more-->
 
 The number of consecutive elements being pointed at is also not known.
 It could be as few as zero, so dereferencing would be illegal. This can

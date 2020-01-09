@@ -288,7 +288,7 @@ main article pre {
     border: 1px dotted LightGray;
 }
 
-main article blockquote {
+main article blockquote:.not(.excerpt) {
     margin: 0 1em;
     padding: 0 1em;
     border: 1px dashed LightGray;
@@ -357,6 +357,24 @@ article.single nav:before {
     margin: auto;
     height: 1px;
     margin-top: 1em;
+}
+
+article blockquote.excerpt {
+    margin: 0;
+}
+
+article .read-more,
+article .read-more a,
+article .read-more a:visited {
+    color: Gray;
+    font-size: 150%;
+    margin-top: -5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+article.many .tags {
+    margin: 0 0.1em;
 }
 
 /* Article Navigation */

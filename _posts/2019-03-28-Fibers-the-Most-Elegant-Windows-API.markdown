@@ -4,6 +4,7 @@ layout: post
 date: 2019-03-28T22:26:05Z
 tags: [win32, c, posix]
 uuid: abad2340-99e5-4d72-857c-848e37b4af73
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn].*
@@ -16,6 +17,8 @@ decades is carried forward forever, and, in many cases, even built upon,
 which essentially doubles down on past mistakes. POSIX certainly has its
 own ugly corners, but those are the exceptions. In the Windows API,
 elegance is the exception.
+
+<!--more-->
 
 That's why, when I recently revisited the [Fibers API][fibers], I was
 pleasantly surprised. It's one of the exceptions — much cleaner than the

@@ -4,6 +4,7 @@ layout: post
 date: 2018-10-31T22:02:36Z
 tags: [meatspace]
 uuid: 96cc0dde-1524-3030-8bfc-016439796c16
+excerpt_separator: <!--more-->
 ---
 
 *This article was [discussed on Hacker News][hn] and [discussed on
@@ -18,6 +19,8 @@ and the other is a skill, both of which I expect an advanced high
 schooler, *especially* one interested in computers, to have before
 they arrive. This gap persists despite students taking computer
 classes at school.
+
+<!--more-->
 
 ### File, Directories, and Paths
 

@@ -4,6 +4,7 @@ layout: post
 date: 2019-10-28T00:42:23Z
 tags: [c, optimization]
 uuid: ce906d6f-b228-4dc6-bd02-34b845d3c5e2
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn]*.
@@ -13,6 +14,8 @@ arrays][vla]. While recently discussing this topic with [a
 co-worker][who], I also thought of a semi-legitimate use for
 [`alloca()`][man], a non-standard "function" for dynamically allocating
 memory on the stack.
+
+<!--more-->
 
 ```c
 void *alloca(size_t);

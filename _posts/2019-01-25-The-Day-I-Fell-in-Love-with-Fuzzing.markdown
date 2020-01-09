@@ -4,6 +4,7 @@ layout: post
 date: 2019-01-25T21:52:45Z
 tags: [c, cpp]
 uuid: 9ab4d645-222e-37f6-0d41-6db1e5c126c6
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
@@ -14,6 +15,8 @@ stores its non-art assets in the format of "binary INI" files, or "BINI"
 files. The motivation for the binary format over traditional INI files
 was probably performance: it's faster to load and read these files than
 it is to parse arbitrary text in INI format.
+
+<!--more-->
 
 Much of the in-game content can be changed simply by modifying these
 files — changing time names, editing commodity prices, tweaking ship

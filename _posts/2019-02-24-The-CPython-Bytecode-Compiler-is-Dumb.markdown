@@ -4,6 +4,7 @@ layout: post
 date: 2019-02-24T21:56:35Z
 tags: [python, lua, lang, elisp, optimization]
 uuid: 4348d611-858b-4f48-a6f5-6e4b93f71a34
+excerpt_separator: <!--more-->
 ---
 
 *This article was [discussed on Hacker News][hn].*
@@ -16,6 +17,8 @@ in the recent tradition of [writing one's own static site
 generator][qualbum], in this case for [my wife's photo blog][photo].
 I've been reading through *Fluent Python* by Luciano Ramalho, and it's
 been quite effective at getting me up to speed.
+
+<!--more-->
 
 As I write Python, [like with Emacs Lisp][emacs], I can't help but
 consider what exactly is happening inside the interpreter. I wonder if

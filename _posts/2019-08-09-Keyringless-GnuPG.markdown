@@ -4,6 +4,7 @@ layout: post
 date: 2019-08-09T23:52:39Z
 tags: [crypto, openpgp]
 uuid: c51e0800-9bf5-4b77-93d4-35480c40a0ba
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn].*
@@ -13,6 +14,8 @@ Classic tradition of not trying to manage my music library. Instead it
 waits patiently for me to throw files and directories at it. These
 selections will be informally grouped into transient, disposable
 playlists of whatever I fancy that day.
+
+<!--more-->
 
 This matters to me because my music collection is the result of around
 25 years of hoarding music files from various sources including CD rips,

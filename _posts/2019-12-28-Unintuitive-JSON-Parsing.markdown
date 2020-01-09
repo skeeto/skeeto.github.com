@@ -4,15 +4,18 @@ layout: post
 date: 2019-12-28T17:23:09Z
 tags: [javascript, compsci, lang]
 uuid: 721eda6d-a78a-41e1-9d78-db3666208a71
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn] and [on reddit][r].*
 
 Despite the goal of JSON being a subset of JavaScript — which [it failed
-to achieve][mine] (update: [this was recently fixed][fix]) — parsing
-JSON is quite unlike parsing a programming language. For invalid inputs,
-the specific cause of error is often counter-intuitive. Normally this
+to achieve][mine] (update: [this was fixed][fix]) — parsing JSON is
+quite unlike parsing a programming language. For invalid inputs, the
+specific cause of error is often counter-intuitive. Normally this
 doesn't matter, but I recently [ran into a case where it does][gh].
+
+<!--more-->
 
 Consider this invalid input to a JSON parser:
 

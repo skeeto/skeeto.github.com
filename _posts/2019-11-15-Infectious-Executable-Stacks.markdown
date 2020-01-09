@@ -4,6 +4,7 @@ layout: post
 date: 2019-11-15T03:29:37Z
 tags: [c, netsec, x86]
 uuid: 7266b2ea-f39e-4b9a-87c8-e4480374af41
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn]*.
@@ -14,6 +15,8 @@ implementation and use, are actually horrifying. Examples include
 [thread cancellation][thr], [variable length arrays][vla], and [memory
 aliasing][alias]. GCC's closure extension to C is another, and this
 little feature compromises the entire GNU toolchain.
+
+<!--more-->
 
 ### GNU C nested functions
 
