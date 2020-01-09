@@ -4,6 +4,7 @@ layout: post
 date: 2018-01-17T23:59:49Z
 tags: [emacs, elfeed, bsd]
 uuid: a55cabc9-2d87-30a4-9066-9ec5e45b8bce
+excerpt_separator: <!--more-->
 ---
 
 *Update: This article was featured on [BSD Now 233][feature] (starting
@@ -18,6 +19,8 @@ From the surface it appeared that curl, tasked with the
 incomplete output despite reporting a successful run. Since the run
 was successful, Elfeed assumed certain data was in curl's output
 buffer, but, since it wasn't, it failed hard.
+
+<!--more-->
 
 Unfortunately this issue was not reproducible. Manually running curl
 outside of Emacs never revealed any issues. Asking Elfeed to retry
