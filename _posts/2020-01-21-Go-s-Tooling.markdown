@@ -86,7 +86,7 @@ upstream source cannot change a published module for those that already
 depend on it. They *could* still publish a new version with [hostile
 changes][npm], but one should be cautious about updating dependencies —
 a deliberate action — [or even having dependencies in the first
-place][dep].
+place][dep] ([also][dep2]).
 
 With decentralized module management, you might think that each
 dependency host is a single point of failure — and you would be exactly
@@ -174,6 +174,7 @@ itself. It's an under-appreciated piece of technology!
 [cgo]: https://dave.cheney.net/2016/01/18/cgo-is-not-go
 [dcss]: https://crawl.develz.org/
 [dep]: https://research.swtch.com/deps
+[dep2]: https://feeding.cloud.geek.nz/posts/outsourcing-webapp-maintenance-to-debian/
 [go]: https://golang.org/
 [kt]: https://en.wikipedia.org/wiki/Ken_Thompson
 [linker]: http://golang.org/s/better-linker
