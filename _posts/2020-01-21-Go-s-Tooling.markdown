@@ -4,7 +4,10 @@ layout: post
 date: 2020-01-21T23:59:59Z
 tags: [go]
 uuid: fdb2d255-a6d0-4b91-86c7-013dc86ddade
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn] and [on reddit][r].*
 
 Regardless of your opinions of the [Go programming language][go], the
 primary implementation of Go, gc, is an incredible piece of software
@@ -12,6 +15,8 @@ engineering. Everyone ought to be blown away by it! Yet not only is it
 undervalued in general, even the Go community itself doesn't fully
 appreciate it. It's not perfect, but it has unique features never before
 seen in a toolchain.
+
+<!--more-->
 
 In this article, when I say "Go" I'm referring to the gc compiler.
 
@@ -176,10 +181,12 @@ itself. It's an under-appreciated piece of technology!
 [dep]: https://research.swtch.com/deps
 [dep2]: https://feeding.cloud.geek.nz/posts/outsourcing-webapp-maintenance-to-debian/
 [go]: https://golang.org/
+[hn]: https://news.ycombinator.com/item?id=22113827
 [kt]: https://en.wikipedia.org/wiki/Ken_Thompson
 [linker]: http://golang.org/s/better-linker
 [lp]: https://lwn.net/Articles/681410/
 [needle]: /blog/2016/11/17/
 [npm]: https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident
 [pypi]: https://github.com/dateutil/dateutil/issues/984
+[r]: https://old.reddit.com/r/golang/comments/es621w/gos_tooling_is_an_undervalued_technology/
 [stb]: https://github.com/nothings/stb
