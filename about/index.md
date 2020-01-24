@@ -171,6 +171,11 @@ probably figure it out anyway. Don't be afraid to shoot me an email if
 you like. I don't get so much that random mail from strangers is an
 issue.
 
+I also have a [**public inbox**][inbox] which serves as a public forum
+for my articles and open source projects. I accept patches in both my
+private and public inboxes, though the public inbox is preferred. This
+means you can contribute changes without, say, a GitHub account.
+
 ### Cryptographic Identity
 
 This is the key I use to sign important pieces of information, such as
@@ -236,6 +241,7 @@ It's wonderful having such concise keys and signatures!
 [enchive]: https://github.com/skeeto/enchive
 [endlessh]: https://github.com/skeeto/endlessh
 [givewell]: https://secure.givewell.org/
+[inbox]: https://lists.sr.ht/~skeeto/public-inbox
 [make]: /blog/2017/08/20/
 [mentor]: /blog/2016/09/02/
 [mpv]: https://mpv.io/
