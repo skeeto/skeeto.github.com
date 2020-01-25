@@ -178,8 +178,8 @@ itself. It's an under-appreciated piece of technology!
 [build]: /blog/2017/03/30/
 [cgo]: https://dave.cheney.net/2016/01/18/cgo-is-not-go
 [dcss]: https://crawl.develz.org/
-[dep]: https://research.swtch.com/deps
 [dep2]: https://feeding.cloud.geek.nz/posts/outsourcing-webapp-maintenance-to-debian/
+[dep]: https://research.swtch.com/deps
 [go]: https://golang.org/
 [hn]: https://news.ycombinator.com/item?id=22113827
 [kt]: https://en.wikipedia.org/wiki/Ken_Thompson
