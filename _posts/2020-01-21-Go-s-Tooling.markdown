@@ -7,7 +7,8 @@ uuid: fdb2d255-a6d0-4b91-86c7-013dc86ddade
 excerpt_separator: <!--more-->
 ---
 
-*This article was discussed [on Hacker News][hn] and [on reddit][r].*
+*This article was discussed [on Hacker News][hn], [on reddit][r], and
+[on Lobsters][rs].*
 
 Regardless of your opinions of the [Go programming language][go], the
 primary implementation of Go, gc, is an incredible piece of software
@@ -189,4 +190,5 @@ itself. It's an under-appreciated piece of technology!
 [npm]: https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident
 [pypi]: https://github.com/dateutil/dateutil/issues/984
 [r]: https://old.reddit.com/r/golang/comments/es621w/gos_tooling_is_an_undervalued_technology/
+[rs]: https://lobste.rs/s/vycqgn/go_s_tooling_is_undervalued_technology
 [stb]: https://github.com/nothings/stb
