@@ -128,6 +128,10 @@ is `example.com/foo` but my web server 301 redirects this request to
 `?go-get=1`? (Yes.) Did I want to configure an HTTPS server just to test
 this? (No.)
 
+**Update**: [I've been alerted][insecure] that **Go 1.14 will introduce
+`GOINSECURE`** as a finer-grained form of the old `-insecure` option.
+This nicely solves my experimentation issue!
+
 #### Vendoring
 
 I still haven't even gotten to one of the most powerful and unique
@@ -183,6 +187,7 @@ itself. It's an under-appreciated piece of technology!
 [dep]: https://research.swtch.com/deps
 [go]: https://golang.org/
 [hn]: https://news.ycombinator.com/item?id=22113827
+[insecure]: https://github.com/golang/go/issues/36746
 [kt]: https://en.wikipedia.org/wiki/Ken_Thompson
 [linker]: http://golang.org/s/better-linker
 [lp]: https://lwn.net/Articles/681410/
