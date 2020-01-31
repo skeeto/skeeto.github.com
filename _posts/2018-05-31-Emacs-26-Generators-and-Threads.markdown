@@ -4,6 +4,7 @@ layout: post
 date: 2018-05-31T17:45:16Z
 tags: [emacs, elisp, lisp, lang]
 uuid: 395c5e11-2088-32fa-53c8-0c749dca2064
+excerpt_separator: <!--more-->
 ---
 
 Emacs 26.1 was [recently released][e26]. As you would expect from a
@@ -14,6 +15,13 @@ are [generators][miter] (`iter`) and [native threads][mthread]
 
 **Correction**: Generators were actually introduced in Emacs 25.1
 (Sept. 2016), not Emacs 26.1. Doh!
+
+**Update**: [ThreadSanitizer (TSan)][tsan] quickly shows that Emacs'
+threading implementation has many data races, making it [completely
+untrustworthy][race]. Until this is fixed, ***nobody* should use Emacs
+threads for any purpose**, and threads should disabled at compile time.
+
+<!--more-->
 
 ### Generators
 
@@ -353,7 +361,9 @@ the low-level threading API.
 [miter]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html
 [mthread]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Threads.html
 [py]: https://wiki.python.org/moin/Generators
+[race]: https://hboehm.info/boehm-hotpar11.pdf
 [read]: /blog/2013/12/30/
 [sem]: /blog/2017/02/14/
 [tags]: /tags/emacs/
+[tsan]: https://github.com/google/sanitizers/wiki/ThreadSanitizerCppManual
 [ww]: /blog/2013/01/26/
