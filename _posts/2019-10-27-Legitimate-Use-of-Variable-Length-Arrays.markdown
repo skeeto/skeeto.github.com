@@ -273,7 +273,7 @@ Consider an NxN matrix expressed using a pointer to a VLA:
 
 ```c
 int n = /* run-time value */;
-/* TODO: Check for integer overflow? See note. */
+/* TODO: Check for integer overflow. See note. */
 float (*identity)[n][n] = malloc(sizeof(*identity));
 if (identity) {
     for (int y = 0; y < n; y++) {
@@ -303,9 +303,26 @@ if (identity) {
 
 Note: What's the behavior in the VLA version when `n` is so large that
 `sizeof(*identity)` doesn't fit in a `size_t`? I couldn't find anything
-in the standard about it. Both GCC and Clang both implicitly check for
-overflow and, when it occurs, the expression evaluates to zero. The
-undefined behavior sanitizer doesn't complain when this happens.
+in the standard about it, though I bet it's undefined behavior. Neither
+GCC and Clang check for overflow and, when it occurs, the overflow is
+silent. Neither the undefined behavior sanitizer nor address sanitizer
+complain when this happens.
+
+**Update**: [bru del pointed out][simple] that these multi-dimensional
+VLAs can be simplified such that the parenthesis may be omitted when
+indexing. The trick is to omit the first dimension from the VLA
+expression:
+
+```c
+float (*identity)[n] = malloc(sizeof(*identity) * n);
+if (identity) {
+    for (int y = 0; y < n; y++) {
+        for (int x = 0; x < n; x++) {
+            identity[y][x] = x == y;
+        }
+    }
+}
+```
 
 So VLAs *might* be worth the trouble when using pointers to
 multi-dimensional, dynamically-allocated arrays. However, I'm still
@@ -318,4 +335,5 @@ VLAs.
 [hn]: https://news.ycombinator.com/item?id=21375580
 [linux]: https://www.phoronix.com/scan.php?page=news_item&px=Linux-Kills-The-VLA
 [rd]: https://old.reddit.com/r/programming/comments/dz1fau/variable_length_arrays_in_c_are_nearly_always_the/
+[simple]: https://lists.sr.ht/~skeeto/public-inbox/%3CCAP-ht1CQKVByZt1EXOb3J7TF%3DMcCKi%3DEtzjEH+CaEsPtvY5%3Djg%40mail.gmail.com%3E
 [small]: /blog/2016/10/07/
