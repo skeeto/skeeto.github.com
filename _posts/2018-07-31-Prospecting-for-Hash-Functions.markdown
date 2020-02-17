@@ -445,6 +445,14 @@ triple32(uint32_t x)
 It's statistically indistinguishable from a random permutation of all
 32-bit integers.
 
+### Update, February 2020
+
+Some people have been experimenting with using my hash functions in GLSL
+shaders, and the results are looking good:
+
+* <https://www.shadertoy.com/view/WttXWX>
+* <https://www.shadertoy.com/view/ttVGDV>
+
 
 [blowpipe]: /blog/2017/09/15/
 [dict]: https://packages.debian.org/sid/wamerican-large
