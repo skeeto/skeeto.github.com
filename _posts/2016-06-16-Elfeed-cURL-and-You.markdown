@@ -109,7 +109,7 @@ What would you guess is the length of `results`? It's initially 0
 before any requests complete and over time (a very short time) I would
 expect this to top out at 10. On Emacs 24, here's the real answer:
 
-~~~
+~~~cl
 (length results)
 ;; => 46
 ~~~
