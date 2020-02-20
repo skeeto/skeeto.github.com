@@ -94,14 +94,14 @@ expectation is the callback will be invoked *exactly once* for time
 should report it through the callback. [This is not the case][invoke].
 The callback may be invoked any number of times, *including zero*.
 
-In this example, suppose you have a webserver on port 8080 that will
-return an HTTP 404 at the given URL. Below, I fire off 10
-asynchronous requests in a row.
+In this example, suppose you have a webserver that will return an HTTP
+404 for a requested URL. Below, I fire off 10 asynchronous requests in a
+row.
 
 ~~~cl
 (defvar results ())
 (dotimes (i 10)
-  (url-retrieve "http://127.0.0.1:8081/404"
+  (url-retrieve "http://127.0.0.1:8080/404"
                 (lambda (status) (push (cons i status) results))))
 ~~~
 
