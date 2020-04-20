@@ -82,7 +82,7 @@ header .container > address {
     padding: 0;
     position: static;
     display: block;
-    margin: 0 0 0 4.6rem;
+    margin-left: 4.6rem;
 }
 
 article h1,
@@ -96,12 +96,18 @@ article h6 {
 
 header .container h1 {
     font-weight: bold;
-    font-size: 26px;
-    margin-bottom: 0.4rem;
+    font-size: 22px;
+    margin-bottom: 0.1rem;
 }
 
 header h2 {
-    font-size: 18px;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+header address div {
+    line-height: 1.2;
 }
 
 header address {
@@ -483,7 +489,7 @@ main article .resetable {
 
 /* Remove/hide some elements for small screens */
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 649px) {
     .identity {
         visibility: hidden;
     }
