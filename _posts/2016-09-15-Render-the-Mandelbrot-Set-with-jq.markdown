@@ -145,6 +145,6 @@ the reader.
 [turing]: /blog/2016/04/30/
 [emacs]: /blog/2012/09/14/
 [simd]: /blog/2015/07/10/
-[zoom]: /video/fractal/mandel.ogv
+[zoom]: /blog/2007/10/01/
 [sqlite]: /blog/2016/08/12/
 [rec]: http://mathworld.wolfram.com/MandelbrotSet.html
