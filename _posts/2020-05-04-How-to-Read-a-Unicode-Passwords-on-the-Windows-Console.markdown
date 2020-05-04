@@ -1,5 +1,5 @@
 ---
-title: How to Read a Unicode Passwords on the Windows Console
+title: How to Read UTF-8 Passwords on the Windows Console
 layout: post
 date: 2020-05-04T02:14:34Z
 tags: [win32, c, tutorial]
