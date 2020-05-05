@@ -150,17 +150,19 @@ for all those people who like putting `PILE OF POO` (`U+1F4A9`) in their
 passwords:
 
 ```c
-WCHAR *wbuf = malloc((len - 1 + 2)*sizeof(*wbuf));
+WCHAR *wbuf = CryptMemAlloc((len - 1 + 2)*sizeof(*wbuf));
 DWORD nread;
 ReadConsoleW(hi, wbuf, len - 1 + 2, &nread, 0);
 wbuf[nread-2] = 0;  // truncate "\r\n"
 int r = WideCharToMultiByte(CP_UTF8, 0, wbuf, -1, buf, len, 0, 0);
-free(wbuf);
+CryptMemFree(wbuf);
 ```
 
-The `+ 2` in the allocation is for the CRLF line ending that will later
-be chopped off. The error handling version checks that the input did
-indeed end with CRLF. Otherwise it was truncated (too long).
+I've used [`CryptMemAlloc()`][cma] and [`CryptMemFree()`][cmf] since
+this memory holds sensitive information. The `+ 2` in the allocation is
+for the CRLF line ending that will later be chopped off. The error
+handling version checks that the input did indeed end with CRLF.
+Otherwise it was truncated (too long).
 
 #### Clean up
 
@@ -219,6 +221,8 @@ automatic, but I'm glad I have at least *some* solution figured out.
 [bra]: /blog/2017/10/06/
 [bug]: https://github.com/golang/crypto/commit/6d4e4cb37c7d6416dfea8472e751c7b6615267a6
 [cfa]: https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
+[cma]: https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptmemalloc
+[cmf]: https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptmemfree
 [credui]: https://docs.microsoft.com/en-us/windows/win32/api/wincred/nf-wincred-creduicmdlinepromptforcredentialsa
 [enchive]: /blog/2017/03/12/
 [gcm]: https://docs.microsoft.com/en-us/windows/console/getconsolemode
