@@ -4,7 +4,10 @@ layout: post
 date: 2020-05-04T02:14:34Z
 tags: [win32, c, tutorial]
 uuid: 338ca754-e19e-4ae0-add8-639d69967c22
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 Suppose you're writing a command line program that [prompts the user for
 a password or passphrase][enchive], and Windows is one of the supported
@@ -15,6 +18,8 @@ platforms this is, for the most part, automatic. However, on Windows
 finding the correct answer to this problem is a maze where all the signs
 lead towards dead ends. I recently navigated this maze and found the way
 out.
+
+<!--more-->
 
 I knew it was possible because [my passphrase2pgp tool][pgp] has been
 using the [golang.org/x/crypto/ssh/terminal][ssh] package, which gets it
@@ -218,6 +223,7 @@ automatic, but I'm glad I have at least *some* solution figured out.
 [enchive]: /blog/2017/03/12/
 [gcm]: https://docs.microsoft.com/en-us/windows/console/getconsolemode
 [gist]: https://gist.github.com/skeeto/a43250fefafeaa1d6d3bcd202dc4cbe3
+[hn]: https://news.ycombinator.com/item?id=23064864
 [index]: /blog/2019/05/29/
 [pgp]: /blog/2019/07/10/
 [rcw]: https://docs.microsoft.com/en-us/windows/console/readconsole
