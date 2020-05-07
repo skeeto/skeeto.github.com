@@ -4,13 +4,18 @@ layout: post
 date: 2020-04-30T22:35:51Z
 tags: [optimization, interactive, javascript, opengl, media, webgl, c]
 uuid: ac12ef1d-299f-4edb-9eb1-5ed4dac1219c
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 I've noticed a small pattern across a few of my projects where I had
 vectorized and parallelized some code. The original algorithm had a
 "push" approach, the optimized version instead took a "pull" approach.
 In this article I'll describe what I mean, though it's mostly just so I
 can show off some pretty videos, pictures, and demos.
+
+<!--more-->
 
 ### Sandpiles
 
@@ -185,6 +190,7 @@ inputs.
 [fs]: http://fabiensanglard.net/doom_fire_psx/
 [glhash]: https://www.shadertoy.com/view/WttXWX
 [gol]: /blog/2014/06/10/
+[hn]: https://news.ycombinator.com/item?id=23089729
 [lstack]: /blog/2014/09/02/
 [np]: https://www.youtube.com/watch?v=1MtEUErz7Gg
 [ppm]: /blog/2017/11/03/
