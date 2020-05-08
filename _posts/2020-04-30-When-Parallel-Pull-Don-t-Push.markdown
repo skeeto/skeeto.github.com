@@ -139,7 +139,8 @@ fact, the most obvious way to compute it was directly in the
 framebuffer, such as in [the VGA buffer][dos], with no outside state.
 
 There's a heat source at the bottom of the screen, and the algorithm
-runs from bottom up, propagating that heat upwards randomly:
+runs from bottom up, propagating that heat upwards randomly. Here's the
+algorithm using traditional screen coordinates (top-left corner origin):
 
 ```
 func rand(min, max) // random integer in [min, max]
