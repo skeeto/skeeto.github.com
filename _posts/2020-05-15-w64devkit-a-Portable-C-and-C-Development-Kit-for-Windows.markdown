@@ -51,9 +51,9 @@ development kit, so I'm already in the habit.
 I've been using Docker on and off for about 18 months now. It's an
 oddball in that it's something I learned on the job rather than my own
 time. I formed an early impression that still basically holds: **The
-main purpose of Docker is to contain and isolate misbehaved software so
-that it can be made more reliable**. Well-behaved, well-designed
-software benefits little from containers.
+main purpose of Docker is to contain and isolate misbehaved software to
+improve its reliability**. Well-behaved, well-designed software benefits
+little from containers.
 
 My unusual application of Docker here is no exception. [Most software
 builds are needlessly complicated and fragile][simple], especially
