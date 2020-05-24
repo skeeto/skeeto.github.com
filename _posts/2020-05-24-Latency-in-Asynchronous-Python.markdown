@@ -321,8 +321,8 @@ consumer. On each consumer iteration, the producer iterates twice:
 There's a really simple solution to this: [Never, ever use unbounded
 queues.][bp] In fact **every unbounded `asyncio.Queue()` is a bug**.
 It's a serious API defect that asyncio allows unbounded queues to be
-created at all. The default `maxsize` should have been 1, not infinite,
-and `maxsize=0` should raise an error.
+created at all. The default `maxsize` should have been *actually* zero
+(unbuffered), not infinite.
 
 ### Important takeaways
 
