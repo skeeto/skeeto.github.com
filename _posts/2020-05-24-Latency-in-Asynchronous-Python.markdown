@@ -327,7 +327,7 @@ created at all. The default `maxsize` should have been *actually* zero
 ### Important takeaways
 
 1. The default `asyncio.Queue()` is *always* wrong.
-2. `asyncio.sleep(0)` is *nearly always* wrong.
+2. `asyncio.sleep(0)` is *nearly always* used incorrectly.
 3. Use a `maxsize=1` job queue instead of spawning many identical tasks.
 
 Python linters should be updated to warn about 1 and 2 by default.
