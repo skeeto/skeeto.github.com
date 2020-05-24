@@ -188,11 +188,11 @@ it usually is.
 
 If you read carefully you might have noticed the queue's maximum size is
 set to 1: not much of a "queue"! [Go][go] developers will recognize this
-as an *unbuffered channel*, the default and most common kind of channel.
-So it's more a synchronized meeting point between producer (`put()`) and
-consumer (`get()`). The producer waits at the queue with a job until a
-task is free to come take it. A task waits at the queue until a producer
-arrives with a job for it.
+as being (nearly) an *unbuffered channel*, the default and most common
+kind of channel. So it's more a synchronized rendezvous between producer
+(`put()`) and consumer (`get()`). The producer waits at the queue with a
+job until a task is free to come take it. A task waits at the queue
+until a producer arrives with a job for it.
 
     heartbeat delay = 0.001s
     heartbeat delay = 0.001s
