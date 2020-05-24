@@ -322,7 +322,9 @@ There's a really simple solution to this: [Never, ever use unbounded
 queues.][bp] In fact **every unbounded `asyncio.Queue()` is a bug**.
 It's a serious API defect that asyncio allows unbounded queues to be
 created at all. The default `maxsize` should have been *actually* zero
-(unbuffered), not infinite.
+(unbuffered), not infinite. Because unbounded is the default, virtually
+every example of `asyncio.Queue` — online, offline, and even the
+official documentation — is broken in some way.
 
 ### Important takeaways
 
