@@ -7,6 +7,8 @@ uuid: d600d846-3692-474f-adbf-45db63079581
 excerpt_separator: <!--more-->
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 As a computer engineer, my job is to use computers to solve important
 problems. Ideally my solutions will be efficient, and typically that
 means making the best use of the resources at hand. Quite often these
@@ -148,6 +150,7 @@ my Dockerfiles as a kind of starter template.
 [gdb]: https://www.gnu.org/software/gdb/
 [gnupg]: https://github.com/skeeto/gnupg-windows-build
 [go]: /blog/2020/01/21/
+[hn]: https://news.ycombinator.com/item?id=23292161
 [ide]: https://sanctum.geek.nz/arabesque/unix-as-ide-introduction/
 [msys2]: https://www.msys2.org/
 [nasm]:https://www.nasm.us/ 
