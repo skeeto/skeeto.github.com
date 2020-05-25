@@ -97,6 +97,7 @@ The README explains some of my decisions, but I'll summarize a few here:
   support cross-compilation. I'd love to see a clean, straightforward
   rewrite of Git in a single (appropriate) implementation language.
   Imagine installing the latest Git with `go get git-scm.com/git`.
+  (*Update*: [libgit2 is working on it][git2]!)
 
 * Bash. It's a much nicer interactive shell than BusyBox-w32 `ash`. But
   the build system doesn't support cross-compilation, and I'm not sure
@@ -148,6 +149,7 @@ my Dockerfiles as a kind of starter template.
 [bug]: https://gcc.gnu.org/legacy-ml/gcc/2017-05/msg00219.html
 [four]: /blog/2016/06/13/
 [gdb]: https://www.gnu.org/software/gdb/
+[git2]: https://github.com/libgit2/libgit2/pull/5507
 [gnupg]: https://github.com/skeeto/gnupg-windows-build
 [go]: /blog/2020/01/21/
 [hn]: https://news.ycombinator.com/item?id=23292161
