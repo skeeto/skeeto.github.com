@@ -132,6 +132,9 @@ those builds that don't support cross-compilation, it's *the* only path
 for producing Windows builds. It's just not what I'm looking for when
 developing my own software.
 
+*Update*: [llvm-mingw][llvm] is an eerily similar project using Docker
+the same way, but instead builds LLVM.
+
 ### Using Docker for other builds
 
 I also [converted my GnuPG build script][gnupg] to a Dockerfile. Of
@@ -154,6 +157,7 @@ my Dockerfiles as a kind of starter template.
 [go]: /blog/2020/01/21/
 [hn]: https://news.ycombinator.com/item?id=23292161
 [ide]: https://sanctum.geek.nz/arabesque/unix-as-ide-introduction/
+[llvm]: https://github.com/mstorsjo/llvm-mingw
 [msys2]: https://www.msys2.org/
 [nasm]:https://www.nasm.us/ 
 [p2]: /blog/2019/07/10/
