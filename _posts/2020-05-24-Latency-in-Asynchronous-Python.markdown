@@ -334,6 +334,17 @@ official documentation — is broken in some way.
 
 Python linters should be updated to warn about 1 and 2 by default.
 
+Update: A couple of people have pointed out [an argument in the Trio
+documentation for unbounded queues][trio]. This argument conflates two
+different concepts: data structure queues and concurrent communication
+infrastructure queues. To distinguish, the latter is often called a
+channel. An unbounded *queue* (`collections.deque`) is necessary, but
+and unbounded *channel* (`asyncio.Queue`) is always wrong. The Trio
+documentation describes a web crawler, which is fundamentally a
+breadth-first search (read: queue-oriented) of a graph. So this is a
+plain old BFS queue, not a channel, which is why it's reasonable for it
+to be unbounded.
+
 
 [asyncio]: https://docs.python.org/3/library/asyncio.html
 [bp]: https://lucumr.pocoo.org/2020/1/1/async-pressure/
@@ -341,3 +352,4 @@ Python linters should be updated to warn about 1 and 2 by default.
 [dumb]: /blog/2019/02/24/
 [go]: https://golang.org/
 [q]: https://docs.python.org/3/library/asyncio-queue.html
+[trio]: https://trio.readthedocs.io/en/stable/reference-core.html#buffering-in-channels
