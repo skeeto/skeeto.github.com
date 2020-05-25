@@ -162,7 +162,7 @@ async def main_with_queue():
     async def worker():
         while True:
             coro = await queue.get()
-            await coro
+            await coro  # consider using try/except
             queue.task_done()
     workers = [asyncio.create_task(worker())
                    for _ in range(WORKER_COUNT)]
