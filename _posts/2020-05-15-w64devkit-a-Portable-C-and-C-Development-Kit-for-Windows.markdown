@@ -60,7 +60,7 @@ little from containers.
 My unusual application of Docker here is no exception. [Most software
 builds are needlessly complicated and fragile][simple], especially
 Autoconf-based builds. Ironically, the worst configure scripts I've
-dealt with come from GNU projects. They waste time doing useless checks
+dealt with come from GNU projects. They waste time on superfluous checks
 ("Does your compiler define `size_t`?") then produce a build that
 doesn't work anyway because you're doing something slightly unusual.
 Worst of all, despite my best efforts, the build will be contaminated by
