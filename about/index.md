@@ -166,15 +166,13 @@ surrendered to Git's dominance.
 
 ### Contact
 
-My email should be listed at the top of this page. If not, you can
-probably figure it out anyway. Don't be afraid to shoot me an email if
-you like. I don't get so much that random mail from strangers is an
-issue.
+For most email related to my blog and projects, I have a [**public
+inbox**][inbox] serving as a public forum. Consider using this first.
+For private or personal messages, use my personal email address listed
+at the top of this page.
 
-I also have a [**public inbox**][inbox] which serves as a public forum
-for my articles and open source projects. I accept patches in both my
-private and public inboxes, though the public inbox is preferred. This
-means you can contribute changes without, say, a GitHub account.
+I accept patches in both my private and public inboxes. This means you
+can contribute changes without, say, a GitHub account.
 
 ### Cryptographic Identity
 
