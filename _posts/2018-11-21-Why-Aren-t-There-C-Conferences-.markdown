@@ -120,6 +120,15 @@ using C++ due to its insane complexity.)
 * [Timur Doumler “Can I has grammar?”](https://www.youtube.com/watch?v=tsG95Y-C14k)
 * [Richard Powell “How to Argue(ment)"](https://www.youtube.com/watch?v=ZbVCGCy3mGQ)
 
+### 2019
+
+Only three this year. The last is about C++, but I thought it was
+interesting.
+
+* [CppCon 2019: JF Bastien “Deprecating volatile”](https://www.youtube.com/watch?v=KJW_DLaVXIY)
+* [J. Bialek, S. Block “Killing Uninitialized Memory: Protecting the OS Without Destroying Performance”](https://www.youtube.com/watch?v=rQWjF8NvqAU)
+* [CppCon 2019: Matt Godbolt “Path Tracing Three Ways: A Study of C++ Style”](https://www.youtube.com/watch?v=HG6c4Kwbv4I)
+
 ### Bonus
 
 Finally, here are a few more good presentations from other C++
