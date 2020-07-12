@@ -39,7 +39,7 @@ will appear again later since I tend to cannibalize my own projects.
 ### Color sorting
 
 [![][colorsort-i]][colorsort-v]  
-**Source**:  [colorsort.c][colorsort-i]
+**Source**:  [colorsort.c][colorsort-s]
 
 The original idea came from [an old reddit post][colorsort].
 
