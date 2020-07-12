@@ -177,7 +177,7 @@ their context.
 As he moves on, I'll be starting all over again with a new student.
 
 
-[aspire]: http://www.jhuapl.edu/STEM/students/aspire
+[aspire]: https://secwww.jhuapl.edu/stem/aspire/
 [dp]: https://old.reddit.com/r/dailyprogrammer
 [fund]: http://www.skorks.com/2010/04/on-the-value-of-fundamentals-in-software-development/
 [kr]: https://en.wikipedia.org/wiki/The_C_Programming_Language
