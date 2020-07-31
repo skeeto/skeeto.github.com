@@ -73,8 +73,8 @@ async def maybe_initialize():
 Unfortunately this has a serious downside: **asyncio locks are
 associated with the [loop][loop] where they were created**. Since the
 lock variable is global, `maybe_initialize()` can only be called from
-the same loop that loaded the module. Since `asyncio.run()` creates a
-new loop, it's incompatible.
+the same loop that loaded the module. `asyncio.run()` creates a new loop
+so it's incompatible.
 
 ```py
 # create a loop: always an error
@@ -85,9 +85,9 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete((maybe_initialize()))
 ```
 
-(IMHO, it was a serious mistake for the asyncio API to include explicit
-loop objects. It's a low-level concept that unavoidably leaks through
-most high-level abstractions.)
+(IMHO, it was a mistake for the asyncio API to include explicit loop
+objects. It's a low-level concept that unavoidably leaks through most
+high-level abstractions.)
 
 A workaround is to create the lock lazily. Thank goodness creating a
 lock isn't itself asynchronous!
@@ -98,7 +98,7 @@ initialized_lock = None
 
 async def maybe_initialize():
     global initialized, initialized_lock
-    it not initialized_lock:
+    if not initialized_lock:
         initialized_lock = asyncio.Lock()
     async with initialized_lock:
         if not initialized:
@@ -124,7 +124,7 @@ similar using a future-like object.
 future = None
 
 async def maybe_initialize():
-    it not future:
+    if not future:
         future = asyncio.create_task(one_time_setup())
     await future
 ```
