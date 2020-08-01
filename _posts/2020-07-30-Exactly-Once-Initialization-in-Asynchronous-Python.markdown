@@ -124,6 +124,7 @@ similar using a future-like object.
 future = None
 
 async def maybe_initialize():
+    global future
     if not future:
         future = asyncio.create_task(one_time_setup())
     await future
