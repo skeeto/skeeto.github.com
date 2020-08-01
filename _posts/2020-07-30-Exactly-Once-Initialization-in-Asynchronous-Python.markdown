@@ -4,12 +4,17 @@ layout: post
 date: 2020-07-30T23:39:12Z
 tags: [python]
 uuid: c6796958-9178-47be-8411-8f48c2c85d83
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 A common situation in [asyncio][asyncio] Python programs is asynchronous
 initialization. Some resource must be initialized exactly once before it
 can be used, but the initialization itself is asynchronous — such as an
 [asyncpg][asyncpg] database. Let's talk about a couple of solutions.
+
+<!--more-->
 
 The naive "solution" would be to track the initialization state in a
 variable:
@@ -166,6 +171,7 @@ async def one_time_setup():
 [asyncio]: https://docs.python.org/3/library/asyncio.html
 [asyncpg]: https://github.com/MagicStack/asyncpg
 [cpp]: https://en.cppreference.com/w/cpp/thread/call_once
+[hn]: https://news.ycombinator.com/item?id=24007354
 [lock]: https://docs.python.org/3/library/asyncio-sync.html#lock
 [loop]: https://docs.python.org/3/library/asyncio-eventloop.html
 [once]: https://pubs.opengroup.org/onlinepubs/007908799/xsh/pthread_once.html
