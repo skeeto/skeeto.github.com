@@ -4,7 +4,10 @@ layout: post
 date: 2020-08-01T00:34:23Z
 tags: [tutorial, posix, c, python, go]
 uuid: 9be2ce0e-298e-4085-8789-49674aecfeeb
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 Command line interfaces have varied throughout their brief history but
 have largely converged to some common, sound conventions. The core
@@ -13,6 +16,8 @@ particularly via the GNU project. Unfortunately some tools initially
 *appear* to follow the conventions, but subtly get them wrong, usually
 for no practical benefit. I believe in many cases the authors simply
 didn't know any better, so I'd like to review the conventions.
+
+<!--more-->
 
 ### Short Options
 
@@ -260,5 +265,6 @@ to break them!
 [flag]: https://golang.org/pkg/flag/
 [getopt]: https://github.com/skeeto/getopt
 [go]: https://github.com/skeeto/optparse-go
+[hn]: https://news.ycombinator.com/item?id=24020952
 [long]: https://github.com/skeeto/optparse
 [util]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html
