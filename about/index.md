@@ -1,9 +1,7 @@
 ---
 title: About Me
-layout: default
+layout: about
 ---
-
-## About Me
 
 My name is Chris Wellons, though I sometimes use the handle *skeeto*. I
 am a professional software engineer with a passion for software
