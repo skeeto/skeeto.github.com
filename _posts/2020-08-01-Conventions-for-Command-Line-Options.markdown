@@ -7,7 +7,8 @@ uuid: 9be2ce0e-298e-4085-8789-49674aecfeeb
 excerpt_separator: <!--more-->
 ---
 
-*This article was discussed [on Hacker News][hn].*
+*This article was discussed [on Hacker News][hn] and critiqued [on
+Wandering Thoughts][wt].*
 
 Command line interfaces have varied throughout their brief history but
 have largely converged to some common, sound conventions. The core
@@ -268,3 +269,4 @@ to break them!
 [hn]: https://news.ycombinator.com/item?id=24020952
 [long]: https://github.com/skeeto/optparse
 [util]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html
+[wt]: https://utcc.utoronto.ca/~cks/space/blog/unix/MyOptionsConventions
