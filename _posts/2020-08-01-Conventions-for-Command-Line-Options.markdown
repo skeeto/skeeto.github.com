@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn] and critiqued [on
-Wandering Thoughts][wt] ([also][wt2]).*
+Wandering Thoughts][wt] ([2][wt2], [3][wt3]).*
 
 Command line interfaces have varied throughout their brief history but
 have largely converged to some common, sound conventions. The core
@@ -271,3 +271,4 @@ to break them!
 [util]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html
 [wt]: https://utcc.utoronto.ca/~cks/space/blog/unix/MyOptionsConventions
 [wt2]: https://utcc.utoronto.ca/~cks/space/blog/unix/UnixOptionsConventions
+[wt3]: https://utcc.utoronto.ca/~cks/space/blog/python/ArgparseSomeUnixNotes
