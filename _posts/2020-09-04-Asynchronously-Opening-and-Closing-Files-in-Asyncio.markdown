@@ -2,7 +2,7 @@
 title: Asynchronously Opening and Closing Files in Asyncio
 layout: post
 date: 2020-09-04T01:36:20Z
-tags: [python, asyncio]
+tags: [c, linux, python, asyncio]
 uuid: ae94da45-f65d-4c72-a10e-9e421ea843ec
 ---
 
