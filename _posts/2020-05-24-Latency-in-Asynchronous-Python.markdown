@@ -2,7 +2,7 @@
 title: Latency in Asynchronous Python
 layout: post
 date: 2020-05-24T02:44:50Z
-tags: [python]
+tags: [python, asyncio]
 uuid: 529e2382-d4ec-47a9-93a8-f450311e5a05
 ---
 

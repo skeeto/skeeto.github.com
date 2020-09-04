@@ -2,7 +2,7 @@
 title: 'Endlessh: an SSH Tarpit'
 layout: post
 date: 2019-03-22T17:26:45Z
-tags: [netsec, python, c, posix]
+tags: [netsec, python, c, posix, asyncio]
 uuid: 5429ee15-3d42-4af2-8690-f7f402870dd0
 excerpt_separator: <!--more-->
 ---

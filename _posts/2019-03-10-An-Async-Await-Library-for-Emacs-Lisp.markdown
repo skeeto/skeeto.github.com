@@ -2,7 +2,7 @@
 title: 'An Async / Await Library for Emacs Lisp'
 layout: post
 date: 2019-03-10T20:57:03Z
-tags: [emacs, elisp, lisp, python, javascript, lang]
+tags: [emacs, elisp, lisp, python, javascript, lang, asyncio]
 uuid: 5d1462fa-a30d-432e-9a4f-827eb67862b2
 ---
 

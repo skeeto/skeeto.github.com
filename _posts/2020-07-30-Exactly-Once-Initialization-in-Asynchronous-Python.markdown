@@ -2,7 +2,7 @@
 title: Exactly-Once Initialization in Asynchronous Python
 layout: post
 date: 2020-07-30T23:39:12Z
-tags: [python]
+tags: [python, asyncio]
 uuid: c6796958-9178-47be-8411-8f48c2c85d83
 excerpt_separator: <!--more-->
 ---
