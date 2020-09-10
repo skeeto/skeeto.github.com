@@ -6,6 +6,9 @@ tags: [c, ai, game]
 uuid: b6f77cb1-01df-3714-4ba0-1859614364da
 ---
 
+*Update 2020: A DOS build of Connect Four [was featured on GET OFF MY
+LAWN][lawn].*
+
 [Monte Carlo tree search][mcts] (MCTS) is the most impressive game
 artificial intelligence I've ever used. At its core it simulates a
 large number of games (*playouts*), starting from the current game
@@ -217,14 +220,15 @@ neat algorithm. Now that I've wrapped my head around it, I'll be ready
 to use it should I run into an appropriate problem in the future.
 
 
-[mcts]: https://jeffbradberry.com/posts/2015/09/intro-to-monte-carlo-tree-search/
 [c4]: https://github.com/skeeto/connect4
 [c4bin]: https://github.com/skeeto/connect4/releases/download/1.0/connect4.exe
-[y]: https://github.com/skeeto/yavalath
-[ybin]: https://github.com/skeeto/yavalath/releases/download/1.0/yavalath.exe
 [chess]: /blog/2011/08/24/
-[simple]: /blog/2017/03/30/
-[pi]: https://curiosity-driven.org/pi-approximation
-[yavalath]: http://cambolbro.com/games/yavalath/
-[pdf]: http://www.genetic-programming.org/hc2012/Browne-Paper-3-Yavalath-07.pdf
+[lawn]: https://www.youtube.com/watch?v=K00BylbOQUo
+[mcts]: https://jeffbradberry.com/posts/2015/09/intro-to-monte-carlo-tree-search/
 [meta]: /blog/2016/11/15/
+[pdf]: http://www.genetic-programming.org/hc2012/Browne-Paper-3-Yavalath-07.pdf
+[pi]: https://curiosity-driven.org/pi-approximation
+[simple]: /blog/2017/03/30/
+[y]: https://github.com/skeeto/yavalath
+[yavalath]: http://cambolbro.com/games/yavalath/
+[ybin]: https://github.com/skeeto/yavalath/releases/download/1.0/yavalath.exe
