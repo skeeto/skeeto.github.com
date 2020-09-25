@@ -4,7 +4,10 @@ layout: post
 date: 2020-09-25T00:04:11Z
 tags: [c, cpp, win32, rant]
 uuid: e594c82d-a2e1-4035-8527-1b998045ceeb
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 [This past May][intro] I put together my own C and C++ development
 distribution for Windows called [**w64devkit**][gh]. The *entire*
@@ -16,6 +19,8 @@ increase reliability, [disconnect it from the internet][up].) Despite
 its simple nature and small packaging, w64devkit is *almost* everything
 you need to develop *any* professional desktop application, from a
 command line utility to a AAA game.
+
+<!--more-->
 
 I don't mean this in some [useless Turing-complete sense][make], but in
 a practical, *get-stuff-done* sense. It's much more a matter of
@@ -185,6 +190,7 @@ happy answers to all these questions.
 [gb]: https://godbolt.org/
 [gh]: https://github.com/skeeto/w64devkit
 [go]: /blog/2020/01/21/
+[hn]: https://news.ycombinator.com/item?id=24586556
 [intro]: /blog/2020/05/15/
 [jb]: https://www.youtube.com/watch?v=ZSRHeXYDLko
 [lsp]: https://old.reddit.com/r/vim/comments/b3yzq4/a_lsp_client_maintainers_view_of_the_lsp_protocol/
