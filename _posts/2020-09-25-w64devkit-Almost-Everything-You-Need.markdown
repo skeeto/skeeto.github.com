@@ -64,8 +64,8 @@ output is insufficient, use [SIMD intrinsics][simd]. In the worst case
 there are two different assemblers available. Real time graphics? Use an
 operating system API like OpenGL, DirectX, or Vulkan.
 
-w64devkit *really is* nearly everything you need in a single, no
-nonsense, fully-*offline* package! It's difficult to emphasize this
+w64devkit *really is* nearly everything you need in a [single, no
+nonsense, fully-*offline* package][cm]! It's difficult to emphasize this
 point as much as I'd like. When interacting with the broader software
 ecosystem, I often despair that [software development has lost its
 way][jb]. This distribution is my way of carving out an escape from some
@@ -173,6 +173,7 @@ happy answers to all these questions.
 
 [3d]: https://www.blender.org/
 [bb]: https://frippery.org/busybox/
+[cm]: https://www.youtube.com/watch?v=W3ml7cO96F0&t=1h25m50s
 [compl]: https://georgebrock.github.io/talks/vim-completion/
 [ctags]: https://github.com/universal-ctags/ctags
 [dan]: /blog/2016/09/02/
