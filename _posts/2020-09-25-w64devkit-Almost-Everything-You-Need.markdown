@@ -46,10 +46,10 @@ editor includes a tutorial (`vimtutor`) and complete, built-in manual
 (`:help`) in case you're not yet familiar with it.
 
 What about navigation? Use the included [ctags][ctags] to generate a
-tags database (`ctags -R`), then jump instantly to any definition at any
-time. No need for [that Language Server Protocol rubbish][lsp]. This
-does not mean you must laboriously type identifiers as you work. Use
-[built-in completion][compl]!
+tags database (`ctags -R`), then [jump instantly][tags] to any
+definition at any time. No need for [that Language Server Protocol
+rubbish][lsp]. This does not mean you must laboriously type identifiers
+as you work. Use [built-in completion][compl]!
 
 Build system? That's also covered, via a Windows-aware unix-like
 environment that includes `make`. [Learning how to use it][tut] is a
@@ -88,10 +88,11 @@ itself. It is [one of your dependencies][deps] after all. Unfortunately
 the build initially requires an internet connection even when working
 from source tarballs, but at least it's a one-time event.
 
-If you choose to take on dependencies, and you build those dependencies
-using w64devkit, all the better! You can tweak them to your needs and
-choose precisely how they're built. You won't be relying on the goodwill
-of internet randos nor the generosity of a free package registry.
+If you choose to [take on dependencies][stb], and you build those
+dependencies using w64devkit, all the better! You can tweak them to your
+needs and choose precisely how they're built. You won't be relying on
+the goodwill of internet randos nor the generosity of a free package
+registry.
 
 ### Customization examples
 
@@ -196,5 +197,7 @@ happy answers to all these questions.
 [simd]: /blog/2015/07/10/
 [simple]: https://nullprogram.com/blog/2017/03/30/
 [static]: https://drewdevault.com/dynlib
+[stb]: https://github.com/nothings/stb
+[tags]: http://vimdoc.sourceforge.net/htmldoc/tagsrch.html#tagsrch.txt
 [tut]: /blog/2017/08/20/
 [up]: https://jacquesmattheij.com/why-johnny-wont-upgrade/
