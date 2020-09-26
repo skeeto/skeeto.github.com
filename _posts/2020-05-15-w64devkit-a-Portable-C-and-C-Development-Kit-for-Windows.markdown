@@ -92,12 +92,13 @@ it creates greater timing variance.
 
 The README explains some of my decisions, but I'll summarize a few here:
 
-* Git. Important and useful, so I'd love to have it. But it has weird
-  dependencies (Perl, Bourne shell, etc.), and the build system doesn't
-  support cross-compilation. I'd love to see a clean, straightforward
-  rewrite of Git in a single (appropriate) implementation language.
-  Imagine installing the latest Git with `go get git-scm.com/git`.
-  (*Update*: [libgit2 is working on it][git2]!)
+* Git. Important and useful, so I'd love to have it. But it has a weird
+  installation (many [.zip-unfriendly symlinks][sym]) tightly-coupled
+  with msys2, and its build system does not support cross-compilation.
+  I'd love to see a clean, straightforward rewrite of Git in a single,
+  appropriate implementation language. Imagine installing the latest Git
+  with `go get git-scm.com/git`. (*Update*: [libgit2 is working on
+  it][git2]!)
 
 * Bash. It's a much nicer interactive shell than BusyBox-w32 `ash`. But
   the build system doesn't support cross-compilation, and I'm not sure
@@ -163,6 +164,7 @@ my Dockerfiles as a kind of starter template.
 [p2]: /blog/2019/07/10/
 [repo]: https://github.com/skeeto/w64devkit
 [simple]: /blog/2017/03/30/
+[sym]: https://github.com/skeeto/w64devkit/issues/1
 [vim]: https://www.vim.org/
 [w64]: http://mingw-w64.org/
 [wine]: /blog/2018/11/15/
