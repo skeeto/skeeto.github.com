@@ -1,9 +1,4 @@
 window.addEventListener('load', function() {
-    var addr = 'wellons\u0040nullprogram\u002ecom';
-    var email = document.getElementById('email');
-    email.href = 'mailto:' + addr;
-    email.textContent = addr;
-
     var articles = document.getElementsByTagName('article');
     for (var i = 0; i < articles.length; i++) {
         var links = articles[i].querySelectorAll('p > a');
