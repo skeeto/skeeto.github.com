@@ -7,9 +7,9 @@ uuid: 5429ee15-3d42-4af2-8690-f7f402870dd0
 excerpt_separator: <!--more-->
 ---
 
-*This article was discussed [on Hacker News][hn], [on reddit][reddit]
-([also][reddit2]), featured in [BSD Now 294][bsdnow]. Also check out
-[this Endlessh analysis][analysis].*
+*This article was discussed [on Hacker News][hn] ([later][hn2]), [on
+reddit][reddit] ([also][reddit2]), featured in [BSD Now 294][bsdnow].
+Also check out [this Endlessh analysis][analysis].*
 
 I'm a big fan of tarpits: a network service that intentionally inserts
 delays in its protocol, slowing down clients by forcing them to wait.
@@ -269,6 +269,7 @@ TLS connections and testing it against real spammers.
 [dumb]: /blog/2019/02/24/
 [endlessh]: https://github.com/skeeto/endlessh
 [hn]: https://news.ycombinator.com/item?id=19465967
+[hn2]: https://news.ycombinator.com/item?id=24491453
 [mail]: /blog/2017/06/15/
 [raw]: /blog/2015/05/15/
 [reddit]: https://old.reddit.com/r/programming/comments/b4iq00/endlessh_an_ssh_tarpit/
