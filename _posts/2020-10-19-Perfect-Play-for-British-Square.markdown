@@ -19,6 +19,7 @@ fully solve the game and play *perfectly*.
 **Source**: [British Square Engine (Analysis and Perfect AI Player)][repo]
 
 [![](/img/british-square/british-square-thumb.jpg)](/img/british-square/british-square.jpg)
+<!-- Photo credit: Kelsey Wellons -->
 
 <!--more-->
 
