@@ -32,7 +32,7 @@ have no legal moves, and the game ends when both players pass. The score
 is the difference between the piece counts for each player.
 
 In the default configuration, my engine takes a few seconds to explore
-the full game tee, then presents the [minimax][mm] values for the
+the full game tree, then presents the [minimax][mm] values for the
 current game state along with the list of perfect moves. The UI allows
 manually exploring down the game tree. It's intended for analysis, but
 there's enough UI present to "play" against the AI should you so wish.
