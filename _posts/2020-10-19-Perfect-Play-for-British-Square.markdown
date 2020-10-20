@@ -16,7 +16,8 @@ This is *exactly* the sort of problem that [nerd snipes][nerd], and so I
 sunk a couple of evenings building an analysis engine in C — enough to
 fully solve the game and play *perfectly*.
 
-**Source**: [British Square Engine (Analysis and Perfect AI Player)][repo]
+**Repository**: [**British Square Analysis Engine**][repo]
+(and [prebuilt binaries][bins])
 
 [![](/img/british-square/british-square-thumb.jpg)](/img/british-square/british-square.jpg)
 <!-- Photo credit: Kelsey Wellons -->
@@ -291,6 +292,7 @@ small number of cases would be pretty reasonable.
 
 
 [bb]: https://www.chessprogramming.org/Bitboards
+[bins]: https://github.com/skeeto/british-square/releases
 [bs]: https://boardgamegeek.com/boardgame/3719/british-square
 [chess]: /blog/2010/10/17/
 [fmr]: https://www.chessprogramming.org/Flipping_Mirroring_and_Rotating
