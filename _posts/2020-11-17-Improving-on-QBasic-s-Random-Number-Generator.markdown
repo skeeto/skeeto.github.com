@@ -86,7 +86,9 @@ bits when storing the state. As expected for the 8086, there was nothing
 gained by using only the lower 24 bits.
 
 To illustrate how poor it is, here's a [randogram][rando] for this PRNG,
-which shows obvious structure:
+which shows obvious structure. (This is a small slice of a 4096x4096
+randogram where each of the 2^23 24-bit samples is plotted as two 12-bit
+coordinates.)
 
 ![](/img/qbasic/rnd-thumb.png)
 
@@ -210,7 +212,7 @@ However, I have a better idea: a PRNG based on [RC4][rc4]. Specifically,
 my own design called [**Sponge4**][sp4], a [sponge construction][sponge]
 built atop RC4. In short: Mixing in more input is just a matter of running
 the key schedule again. Implementing this PRNG requires just two simple
-operations: addition over 2^8, and array swap. QBasic has a `SWAP`
+operations: modular addition over 2^8, and array swap. QBasic has a `SWAP`
 statement, so it's a natural fit!
 
 Sponge4 (RC4) has much higher quality output than the 24-bit LCG, and I
@@ -250,8 +252,8 @@ documentation that started with the core language semantics:
 * Variables may be declared explicitly with `DIM`. Declaring a variable
   with `DIM` allows the suffix to be omitted. It also locks that name out
   of the other type namespaces, i.e. `DIM i AS LONG` makes any use of `i%`
-  invalid in that scope. Though arrays and non-arrays can still have the
-  same name even with `DIM` declarations.
+  invalid in that scope. Though arrays and scalars can still have the same
+  name even with `DIM` declarations.
 
 * Numeric operations with mixed types implicitly promote like C.
 
