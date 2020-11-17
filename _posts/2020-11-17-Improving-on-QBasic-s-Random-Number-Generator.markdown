@@ -4,7 +4,10 @@ layout: post
 date: 2020-11-17T02:51:23Z
 tags: [c, optimization]
 uuid: 9aba5382-01e4-41fc-bc27-b996b3c17f07
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 [Pixelmusement][pm] produces videos about [MS-DOS games][bs] and software.
 Each video ends with a short, randomly-selected listing of financial
@@ -14,6 +17,8 @@ His program relies on QBasic's built-in pseudo random number generator
 (PRNG). Even accounting for the platform's limitations, the PRNG is much
 poorer quality than it could be. Let's discuss these weaknesses and figure
 out how to make the selection more fair.
+
+<!--more-->
 
 Kris's program seeds the PRNG with the system clock (`RANDOMIZE TIMER`, a
 QBasic idiom), populates an array with the backers represented as integers
@@ -479,6 +484,7 @@ source:
 [bs]: /blog/2020/10/19/
 [const]: /blog/2019/11/19/
 [ent]: /blog/2019/04/30/
+[hn]: https://news.ycombinator.com/item?id=25120083
 [info]: http://www.qb64.net/forum/index_topic_10727-0/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
 [lfg]: https://en.wikipedia.org/wiki/Lagged_Fibonacci_generator
