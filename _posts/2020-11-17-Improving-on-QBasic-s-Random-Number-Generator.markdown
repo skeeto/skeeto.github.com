@@ -185,8 +185,8 @@ itself acts like an extended PRNG state, supplementing the 24-bit `RND`
 state.
 
 Since iterations fly by quickly, the exact number of iterations becomes
-another source of entropy. The results will be quite different if it runs
-214,600 iterations versus 273,500 iterations.
+another [source of entropy][ent]. The results will be quite different if it
+runs 214,600 iterations versus 273,500 iterations.
 
 Possible improvement: Only exit the loop when a certain key is pressed. If
 any other key is pressed then that input and the `TIMER` are mixed into
@@ -476,6 +476,7 @@ source:
 [bp]: /blog/2019/07/22/
 [bs]: /blog/2020/10/19/
 [const]: /blog/2019/11/19/
+[ent]: /blog/2019/04/30/
 [info]: http://www.qb64.net/forum/index_topic_10727-0/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
 [lfg]: https://en.wikipedia.org/wiki/Lagged_Fibonacci_generator
