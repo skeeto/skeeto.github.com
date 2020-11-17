@@ -141,7 +141,7 @@ GNU-style pre-ANSI C):
 
 ```c
 static unsigned long
-triple32 (x)
+hash32 (x)
      unsigned long x;
 {
   x ^= x >> 17;
