@@ -80,10 +80,10 @@ between 0 and 1 (exclusive).
 Needless to say, this is a very poor PRNG. The [LCG constants are
 *reasonable*][const], but the choice to limit the state to 24 bits is
 strange. According to the [QBasic 16-bit assembly][asm] (note: the LCG
-constants listed here are wrong), the implementation is a full 32-bit
-multiply using 16-bit limbs, and it allocates and writes a full 32 bits
-when storing the state. As expected for the 8086, there was nothing gained
-by using only the lower 24 bits.
+constants listed here [are wrong][info]), the implementation is a full
+32-bit multiply using 16-bit limbs, and it allocates and writes a full 32
+bits when storing the state. As expected for the 8086, there was nothing
+gained by using only the lower 24 bits.
 
 To illustrate how poor it is, here's a [randogram][rando] for this PRNG,
 which shows obvious structure:
@@ -475,6 +475,7 @@ source:
 [bp]: /blog/2019/07/22/
 [bs]: /blog/2020/10/19/
 [const]: /blog/2019/11/19/
+[info]: http://www.qb64.net/forum/index_topic_10727-0/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
 [lfg]: https://en.wikipedia.org/wiki/Lagged_Fibonacci_generator
 [pcg]: https://www.pcg-random.org/paper.html
