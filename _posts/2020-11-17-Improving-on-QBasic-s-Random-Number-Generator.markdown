@@ -214,7 +214,8 @@ operations: addition over 2^8, and array swap. QBasic has a `SWAP`
 statement, so it's a natural fit!
 
 Sponge4 (RC4) has much higher quality output than the 24-bit LCG, and I
-can mix in more sources of entropy.
+can mix in more sources of entropy. With its 1,700-bit state, it can
+absorb quite a bit of entropy without loss.
 
 #### Learning QBasic
 
