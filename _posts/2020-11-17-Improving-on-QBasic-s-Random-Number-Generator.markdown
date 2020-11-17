@@ -472,9 +472,7 @@ LOOP
 ```
 
 If you want to try it out for yourself in, say, DOSBox, here's the full
-source:
-
-<https://gist.github.com/skeeto/17cb335d9652b2fc6f11485393362543>
+source: [**`sponge4.bas`**][gist]
 
 
 [adg]: https://www.youtube.com/watch?v=YVV9bkbpaPY
@@ -484,6 +482,7 @@ source:
 [bs]: /blog/2020/10/19/
 [const]: /blog/2019/11/19/
 [ent]: /blog/2019/04/30/
+[gist]: https://gist.github.com/skeeto/17cb335d9652b2fc6f11485393362543
 [hn]: https://news.ycombinator.com/item?id=25120083
 [info]: http://www.qb64.net/forum/index_topic_10727-0/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
