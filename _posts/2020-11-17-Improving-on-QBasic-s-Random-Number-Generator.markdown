@@ -451,9 +451,9 @@ Though if you really love Kris's loop idea:
 ```qbasic
 PRINT "Press Esc to finish, any other key for entropy..."
 DO
-    c% = c% + 1
+    c& = c& + 1
     LOCATE 2, 1
-    PRINT "cycles ="; c%; "; keys ="; k%
+    PRINT "cycles ="; c&; "; keys ="; k%
 
     FOR i% = ntickets - 1 TO 1 STEP -1
         j% = squeezen%(sponge, i% + 1)
