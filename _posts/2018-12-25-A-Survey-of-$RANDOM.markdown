@@ -188,7 +188,7 @@ varies by platform — typicially `long` is either 32 bits or 64 bits —
 so the results also vary. Here's how the paper defined it:
 
 ```c
-  unsigned long test;
+  long test;
 
   test = 16807 * l - 2836 * h;
   if (test > 0)
