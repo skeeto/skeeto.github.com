@@ -207,7 +207,7 @@ we saw [in Bash][sh]) or a [lagged Fibonacci generator][lfg] (as used by
 Emacs, which was for a long time constrained to 29-bit integers).
 
 However, I have a better idea: a PRNG based on [RC4][rc4]. Specifically,
-my own modification called [Sponge4][sp4], a [sponge construction][sponge]
+my own design called [**Sponge4**][sp4], a [sponge construction][sponge]
 built atop RC4. In short: Mixing in more input is just a matter of running
 the key schedule again. Implementing this PRNG requires just two simple
 operations: addition over 2^8, and array swap. QBasic has a `SWAP`
