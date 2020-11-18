@@ -241,7 +241,8 @@ documentation that started with the core language semantics:
 
 * The basic types are INTEGER (int16), LONG (int32), SINGLE (float32),
   DOUBLE (float64), and two flavors of STRING, fixed-width and
-  variable-width. There's also a 10,000x fixed-point CURRENCY (int64).
+  variable-width. Late versions also had incomplete support for a 64-bit,
+  10,000x fixed-point CURRENCY type.
 
 * Variables are SINGLE by default and do not need to be declared ahead of
   time. Arrays have 11 elements by default.
