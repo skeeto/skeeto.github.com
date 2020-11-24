@@ -7,6 +7,8 @@ uuid: 91aa121d-c796-4c11-99d4-41c707637672
 excerpt_separator: <!--more-->
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 Machine learning is a trendy topic, so naturally it's often used for
 inappropriate purposes where a simpler, more efficient, and more reliable
 solution suffices. The other day I saw an illustrative and fun example of
@@ -95,8 +97,9 @@ using the colors documented in the source header.
 
 
 [gist]: https://gist.github.com/skeeto/da7b2ac95730aa767c8faf8ec309815c
+[hn]: https://news.ycombinator.com/item?id=25196574
+[mm]: /blog/2017/11/03/
 [orig]: https://www.youtube.com/watch?v=-sg-GgoFCP0
 [qr]: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
-[troj]: https://arxiv.org/abs/1903.06638
-[mm]: /blog/2017/11/03/
 [racetrack]: https://nullprogram.com/video/?v=racetrack
+[troj]: https://arxiv.org/abs/1903.06638
