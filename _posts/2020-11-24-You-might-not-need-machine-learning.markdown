@@ -99,4 +99,4 @@ using the colors documented in the source header.
 [qr]: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
 [troj]: https://arxiv.org/abs/1903.06638
 [mm]: /blog/2017/11/03/
-[racetrack]: https://skeeto.s3.amazonaws.com/share/racetrack.mp4
+[racetrack]: https://nullprogram.com/video/?v=racetrack
