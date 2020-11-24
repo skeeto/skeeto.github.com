@@ -57,7 +57,7 @@ and more about navigating the course quickly.
 
 The lengths of the red lines below are the driver's three inputs:
 
-<video src="/video/racecar.mp4" width="530" height="330"
+<video src="/vid/racecar.mp4" width="530" height="330"
        loop muted autoplay controls>
 </video>
 
@@ -80,7 +80,7 @@ others. If I was developing a racing game using this as the AI, I'd not
 just pick constants that successfully complete the track, but the ones
 that do it quickly. Here's what the spread can look like:
 
-<video src="/video/racecars.mp4" width="530" height="330"
+<video src="/vid/racecars.mp4" width="530" height="330"
        loop muted autoplay controls>
 </video>
 
