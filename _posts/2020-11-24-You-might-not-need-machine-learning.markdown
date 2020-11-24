@@ -90,6 +90,9 @@ above][mm]:
 
 **[aidrivers.c][gist]**
 
+Racetracks are just images drawn in your favorite image editing program
+using the colors documented in the source header.
+
 
 [gist]: https://gist.github.com/skeeto/da7b2ac95730aa767c8faf8ec309815c
 [orig]: https://www.youtube.com/watch?v=-sg-GgoFCP0
