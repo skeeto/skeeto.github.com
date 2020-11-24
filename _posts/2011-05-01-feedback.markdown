@@ -44,7 +44,7 @@ You can interact with the mouse — like the lit match. And that really is
 a feedback loop. In this video, you can see the mouse hop travel down
 through the iterations.
 
-<video src="/video/feedback/hop.ogv" controls="controls" width="640" height="640">
+<video src="/vid/feedback/hop.ogv" controls="controls" width="640" height="640">
 </video>
 
 Unfortunately I didn't seem to be able to achieve emergent behavior. The

@@ -100,8 +100,8 @@ paused, and it looks great. Here's GNOME Terminal's rendering, which I
 think looked the best by default.
 
 <video width="480" height="400" controls loop autoplay>
-  <source src="/video/gcom.webm" type="video/webm">
-  <source src="/video/gcom.mp4" type="video/mp4">
+  <source src="/vid/gcom.webm" type="video/webm">
+  <source src="/vid/gcom.mp4" type="video/mp4">
 </video>
 
 I'll talk about how G-COM actually communicates with the terminal in

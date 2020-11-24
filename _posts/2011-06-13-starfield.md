@@ -119,7 +119,7 @@ private static int mix(int a, int b, int c) {
 }
 ```
 
-<video src="/video/hypernova/hypernova.ogv" controls
-       poster="/video/hypernova/hypernova-poster-small.png"
+<video src="/vid/hypernova/hypernova.ogv" controls
+       poster="/vid/hypernova/hypernova-poster-small.png"
        width="600" height="450">
 </video>
