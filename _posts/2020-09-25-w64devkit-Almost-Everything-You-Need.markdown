@@ -134,7 +134,7 @@ Do you enjoy NetHack? Perhaps you'd like to [try a few of the custom
 patches][nhp]. This one is a little more complicated, but I was able to
 build NetHack 3.6.6 like so:
 
-    $ cd src/winnt/
+    $ cd sys/winnt/
     $ nhsetup.bat
     $ cd ../../src/
     $ sed -i s/mingw32-make/make/g Makefile.gcc
