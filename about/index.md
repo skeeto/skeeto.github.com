@@ -135,11 +135,13 @@ adornments (panels, taskbar, etc.).
 
 My favorite programming language is C. It's [fast, simple][c], and
 compiles *very* quickly. Unlike many other languages, it's quite
-reasonable for an individual to have a comprehensive understanding of
-the entire language. C is my default choice unless something else is
-particularly better suited (Python, shell script, etc.). There's also a
-special place in my heart for Emacs Lisp, a venerable goofball language
-that's so much fun to discuss.
+reasonable for an individual to have a comprehensive understanding of the
+entire language. C is my default choice unless something else is
+particularly better suited (Go, Python, shell script, etc.). My second
+favorite language is Go: it has most of C's strengths and [the best
+tooling of any language][gotooling]. There's also a special place in my
+heart for Emacs Lisp, a venerable goofball language that's so much fun to
+discuss.
 
 My preferred build tool is plain old POSIX `make`. If this sounds
 strange, then it's [probably cleaner and more capable than you
@@ -237,6 +239,7 @@ It's wonderful having such concise keys and signatures!
 [enchive]: https://github.com/skeeto/enchive
 [endlessh]: https://github.com/skeeto/endlessh
 [givewell]: https://secure.givewell.org/
+[gotooling]: /blog/2020/01/21/
 [inbox]: https://lists.sr.ht/~skeeto/public-inbox
 [make]: /blog/2017/08/20/
 [mentor]: /blog/2016/09/02/
