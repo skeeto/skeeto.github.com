@@ -6,6 +6,9 @@ tags: [rant, lang]
 uuid: 35f29378-6e92-3d11-43df-9c40139f142e
 ---
 
+*Update 2020: This is an old, outdated review. With the benefit of more
+experience, I no longer agree with my criticsms in this article.*
+
 Julia is a new programming language primarily intended for scientific
 computing. It's attempting to take on roles that are currently
 occupied by Matlab, its clones, and R. "Matlab done right" could very
