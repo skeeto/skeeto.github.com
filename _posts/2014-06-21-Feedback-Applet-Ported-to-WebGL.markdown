@@ -27,7 +27,7 @@ computation][gol] with fragment shaders.
 The next project introduced me to *alpha blending*. **I ported [my old
 feedback applet][applet] to WebGL!**
 
-* [http://skeeto.github.io/Feedback/webgl/](http://skeeto.github.io/Feedback/webgl/)
+* [https://skeeto.github.io/Feedback/webgl/](https://skeeto.github.io/Feedback/webgl/)
   ([source](http://github.com/skeeto/Feedback))
 
 Since finishing the port I've already spent a couple of hours just
@@ -254,9 +254,9 @@ become a powerful platform for rapid prototyping with OpenGL.
 
 [fund]: http://www.skorks.com/2010/04/on-the-value-of-fundamentals-in-software-development/
 [applet]: /blog/2011/05/01/
-[sphere]: http://skeeto.github.io/sphere-js/
+[sphere]: https://skeeto.github.io/sphere-js/
 [toys]: /toys/
-[perlin]: http://skeeto.github.io/perlin-noise/
+[perlin]: https://skeeto.github.io/perlin-noise/
 [liquid]: /blog/2013/06/26/
 [depth]: /blog/2014/06/01/
 [gol]: /blog/2014/06/10/

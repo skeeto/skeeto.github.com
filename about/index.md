@@ -249,7 +249,7 @@ It's wonderful having such concise keys and signatures!
 [p2p]: https://github.com/skeeto/passphrase2pgp
 [portable]: /blog/2017/03/30/
 [repos]: https://github.com/skeeto?tab=repositories
-[rop]: http://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
+[rop]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
 [shadow]: https://github.com/skeeto/am-i-shadowbanned
 [showcase]: /toys/
 [simplegpg]: https://github.com/skeeto/simplegpg

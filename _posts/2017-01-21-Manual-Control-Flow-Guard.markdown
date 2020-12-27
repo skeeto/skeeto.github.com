@@ -386,7 +386,7 @@ portable, and has no false positives.
 [pdf]: http://sjc1-te-ftp.trendmicro.com/assets/wp/exploring-control-flow-guard-in-windows10.pdf
 [rel]: /blog/2016/12/23/
 [hash]: /blog/2016/05/30/
-[rop]: http://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
+[rop]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
 [chain]: https://github.com/JonathanSalwan/ROPgadget
 [pk]: https://github.com/torvalds/linux/blob/4c9eff7af69c61749b9eb09141f18f35edbf2210/Documentation/sysctl/kernel.txt#L373
 [ss]: http://clang.llvm.org/docs/SafeStack.html

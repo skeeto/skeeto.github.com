@@ -48,7 +48,7 @@ really this shader, but the result looks identical. There are two
 different WebGL implementations included, but only the smarter one is
 active. (There's also a really slow HTML5 canvas fallback.)
 
-* [http://skeeto.github.io/voronoi-toy/](http://skeeto.github.io/voronoi-toy/)
+* [https://skeeto.github.io/voronoi-toy/](http://skeeto.github.io/voronoi-toy/)
   ([source](http://github.com/skeeto/voronoi-toy))
 
 You can click and drag points around the diagram with your mouse. You

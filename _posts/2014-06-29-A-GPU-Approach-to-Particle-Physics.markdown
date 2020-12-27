@@ -14,7 +14,7 @@ by the OpenGL ES 2.0 specification, so it may not work on some
 platforms, especially mobile devices. It will be discussed later in
 the article.
 
-* [http://skeeto.github.io/webgl-particles/][demo] ([source][source])
+* [https://skeeto.github.io/webgl-particles/][demo] ([source][source])
 
 It's interactive. The mouse cursor is a circular obstacle that the
 particles bounce off of, and clicking will place a permanent obstacle
@@ -337,7 +337,7 @@ I think there's still some more to explore with this project.
 [pbo]: http://www.opengl.org/wiki/Pixel_Buffer_Object
 [gpgpu]: /tags/gpgpu/
 [source]: https://github.com/skeeto/webgl-particles
-[demo]: http://skeeto.github.io/webgl-particles/
+[demo]: https://skeeto.github.io/webgl-particles/
 [gol]: /blog/2014/06/10/
 [path]: /blog/2014/06/22/
 [ek]: http://en.wikipedia.org/wiki/Signed_number_representations#Excess-K

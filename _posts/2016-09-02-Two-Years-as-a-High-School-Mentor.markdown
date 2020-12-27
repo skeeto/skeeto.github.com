@@ -104,11 +104,9 @@ blog):
 > new teacher and Prof tried to stick with me, thumb-fingered and
 > slow, but happy to be stretching his mind.
 
-<p>
 <video width="600" controls="controls">
-  <source type="video/webm" src="http://skeeto.s3.amazonaws.com/netray/bigdemo_full.webm" />
+  <source type="video/webm" src="https://skeeto.s3.amazonaws.com/netray/bigdemo_full.webm" />
 </video>
-</p>
 
 Since this was first and foremost an educational project, I decided we
 would use no libraries other than the (POSIX) C standard library. He
@@ -129,7 +127,7 @@ education.
 
 <p>
 <video width="600" controls="controls">
-  <source type="video/webm" src="http://skeeto.s3.amazonaws.com/netray/bounce720.webm" />
+  <source type="video/webm" src="https://skeeto.s3.amazonaws.com/netray/bounce720.webm" />
 </video>
 </p>
 
@@ -187,5 +185,5 @@ As he moves on, I'll be starting all over again with a new student.
 [bdf]: https://www.adobe.com/content/dam/Adobe/en/devnet/font/pdfs/5005.BDF_Spec.pdf
 [simd]: /blog/2015/07/10/
 [magit]: https://magit.vc/
-[paper]: http://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
-[slides]: http://skeeto.s3.amazonaws.com/share/p15-coffman-slides.pdf
+[paper]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
+[slides]: https://skeeto.s3.amazonaws.com/share/p15-coffman-slides.pdf

@@ -163,7 +163,7 @@ Notice because of `pwrite()` there's no piping directly into
 
 [output.mp4][alt]{: .download}
 
-<video src="http://skeeto.s3.amazonaws.com/share/julia-256.mp4"
+<video src="https://skeeto.s3.amazonaws.com/share/julia-256.mp4"
        controls="" loop="" crossorigin="anonymous">
 </video>
 

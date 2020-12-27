@@ -47,5 +47,5 @@ expected. If you have any insight on this, please share.
 [activity]: http://www.perrier.eu.org/weblog/2012/10/09#690000
 [6-year]: http://www.donarmstrong.com/posts/bug_reporting_rate/
 [popcon]: http://popcon.debian.org/
-[data]: http://skeeto.s3.amazonaws.com/share/bts-dates-2012-10.txt.gz
+[data]: https://skeeto.s3.amazonaws.com/share/bts-dates-2012-10.txt.gz
 [soap]: http://wiki.debian.org/DebbugsSoapInterface

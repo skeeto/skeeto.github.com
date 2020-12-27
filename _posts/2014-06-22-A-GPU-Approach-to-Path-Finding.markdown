@@ -19,7 +19,7 @@ forward — so I won't be repeating myself. The only parts that have
 changed are the cell state encoding (to express all automaton states)
 and the fragment shader (to code the new rules).
 
-* [Online Demo](http://skeeto.github.io/webgl-path-solver/)
+* [Online Demo](https://skeeto.github.io/webgl-path-solver/)
   ([source](https://github.com/skeeto/webgl-path-solver))
 
 Included is a pure JavaScript implementation of the cellular

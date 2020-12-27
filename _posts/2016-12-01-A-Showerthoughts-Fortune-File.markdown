@@ -220,7 +220,7 @@ file from your own inputs!
 
 
 [fortune]: https://en.wikipedia.org/wiki/Fortune_(Unix)
-[dl]: http://skeeto.s3.amazonaws.com/share/showerthoughts
+[dl]: https://skeeto.s3.amazonaws.com/share/showerthoughts
 [sr]: https://old.reddit.com/r/Showerthoughts/
 [db]: http://files.pushshift.io/reddit/
 [c2]: http://www.hardkernel.com/main/products/prdt_info.php

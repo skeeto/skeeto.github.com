@@ -17,7 +17,7 @@ ported to the Skew programming language</a>.
 workload][voronoi] for GPUs. Here's the actual WebGL demo if you want
 to check it out before continuing.
 
-* [http://skeeto.github.io/webgl-game-of-life/](http://skeeto.github.io/webgl-game-of-life/)
+* [https://skeeto.github.io/webgl-game-of-life/](http://skeeto.github.io/webgl-game-of-life/)
   ([source](http://github.com/skeeto/webgl-game-of-life/))
 
 To quickly summarize the rules:

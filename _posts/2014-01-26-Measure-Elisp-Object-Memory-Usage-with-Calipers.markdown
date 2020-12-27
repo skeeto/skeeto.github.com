@@ -311,7 +311,7 @@ About 44MB, down from JSON's 53MB. With `print-circle` set to nil it's about
 
 [reddit]: http://old.reddit.com/r/datasets/comments/1uyd0t/
 [archive]: http://www.j-archive.com/
-[json]: http://skeeto.s3.amazonaws.com/share/JEOPARDY_QUESTIONS1.json.gz
+[json]: https://skeeto.s3.amazonaws.com/share/JEOPARDY_QUESTIONS1.json.gz
 [skewer]: https://github.com/skeeto/skewer-mode
 [clojure]: https://github.com/clojure/data.json
 [predd]: /blog/2013/12/18/

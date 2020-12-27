@@ -273,7 +273,7 @@ September 1st, 2027, we'll see how I did.
 [url]: https://www.w3.org/Provider/Style/URI
 [mentor]: /blog/2016/09/02/
 [meme]: http://slatestarcodex.com/2016/07/25/how-the-west-was-won/
-[paper]: http://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
+[paper]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
 [science]: http://daniellakens.blogspot.com/2017/04/five-reasons-blog-posts-are-of-higher.html
 [shutter]: /blog/2017/07/02/
 [make]: /blog/2017/08/20/
