@@ -31,8 +31,6 @@ I was inspired to simulate this with software (and I [passed that on to
 Gavin too][gavin]). Take an image, rescale it, rotate it, compose it
 with itself, repeat.
 
-[Feedback applet][applet]
-
 Here are some images I created with it.
 
 ![](/img/feedback/dense-tunnel.png)
@@ -80,4 +78,3 @@ turned on in the source code.
 [vid1]: http://www.youtube.com/watch?v=Jj9pbs-jjis
 [vid2]: http://www.youtube.com/watch?v=xzJVbmqcj7k
 [gavin]: http://devrand.org/view/emergentFeedback
-[applet]: http://skeeto.github.com/Feedback/

@@ -8,7 +8,6 @@ uuid: a0616bd6-6e00-38c5-c84c-12335f388d88
 ![](/img/screenshot/maze-thumb.png)
 
 * [https://github.com/skeeto/RunMaze](https://github.com/skeeto/RunMaze)
-* [MazeApplet](http://skeeto.github.com/RunMaze/)
 
 In preparation for showing off the maze-navigating robot I made last
 week, I give you this program I wrote last year.
