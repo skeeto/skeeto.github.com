@@ -1,0 +1,38 @@
+digraph {
+    node [shape=circle,fontname="Noto Sans Bold",fontsize=16,penwidth=2];
+    edge [penwidth=2]
+    a->E; a->T;
+    E->I; E->A;
+    T->N; T->M;
+    I->S; I->U;
+    A->R; A->W;
+    N->D; N->K;
+    M->G; M->O;
+    S->H; S->V;
+    U->F; U->b;
+    R->L; R->c;
+    W->P; W->J;
+    D->B; D->X;
+    K->C; K->Y;
+    G->Z; G->Q;
+    O->d; O->e;
+    H->5; H->4;
+    V->f; V->3;
+    b->g; b->2;
+    J->h; J->1;
+    B->6; B->i;
+    Z->7; Z->j;
+    d->8; d->k;
+    e->9; e->0;
+    a [label="", shape=circle, style=filled, fillcolor=pink];
+    b [label="", shape=circle, style=filled, fillcolor=pink];
+    c [label="", shape=circle, style=filled, fillcolor=pink];
+    d [label="", shape=circle, style=filled, fillcolor=pink];
+    e [label="", shape=circle, style=filled, fillcolor=pink];
+    f [label="", shape=circle, style=filled, fillcolor=pink];
+    g [label="", shape=circle, style=filled, fillcolor=pink];
+    h [label="", shape=circle, style=filled, fillcolor=pink];
+    i [label="", shape=circle, style=filled, fillcolor=pink];
+    j [label="", shape=circle, style=filled, fillcolor=pink];
+    k [label="", shape=circle, style=filled, fillcolor=pink];
+}

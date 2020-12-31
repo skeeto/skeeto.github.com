@@ -1,0 +1,11 @@
+digraph {
+    graph [fontname="Noto Sans", rankdir=LR];
+    node [fontname="Noto Sans Bold", shape=oval];
+    edge [fontname="Noto Sans", arrowsize=0.5, fontsize=10];
+    LOW  -> HIGH [label="non-space"];
+    LOW  -> LOW  [label="space"];
+    HIGH -> LOW  [label="(count++)\n\nspace"];
+    HIGH -> HIGH [label="non-space"];
+    root [style="invis", shape=point, width=0];
+    root:e -> LOW:w;
+}

@@ -1,0 +1,39 @@
+digraph {
+    graph [fontname="sans",rankdir=LR];
+    node [shape=circle, fontname="sans"];
+    edge [arrowsize=0.65, fontname="Noto Mono"];
+
+    s0->s8 [label="00–7f"];
+    s0->s2 [label="\nee–ef"];
+    s0->s2 [label="e1–ec"];
+    s0->s3 [label="e0–e0"];
+    s0->s4 [label="\ned–ed"];
+    s0->s1 [label="\nc2–df"];
+    s0->s5 [label="\nf0–f0"];
+    s0->s6 [label="\nf1–f3"];
+    s0->s7 [label="\nf4–f4"];
+
+    s1->s8 [label="80–bf"];
+
+    s2->s1 [label=" 80–bf"];
+
+    s3->s1 [label="a0–bf"];
+
+    s4->s1 [label="\n80–9f"];
+
+    s5->s2 [label="90–bf  "];
+
+    s6->s2 [label="80–bf  "];
+
+    s7->s2 [label="\n80–8f"];
+
+    s0 [label="s₀"];
+    s1 [label="s₁"];
+    s2 [label="s₂"];
+    s3 [label="s₃"];
+    s4 [label="s₄"];
+    s5 [label="s₅"];
+    s6 [label="s₆"];
+    s7 [label="s₇"];
+    s8 [label="s₈", shape=doublecircle];
+}
