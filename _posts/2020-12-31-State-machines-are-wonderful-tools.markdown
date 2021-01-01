@@ -27,8 +27,8 @@ expressions][cox] to traffic lights.
 ### Morse code decoder state machine
 
 Inspired by [a puzzle][au], I came up with this deterministic state
-machine for decoding [Morse code][mc]. One at a time it accepts a dot
-(`'.'`), dash (`'-'`), or terminator (0), advancing through a state
+machine for decoding [Morse code][mc]. It accepts a dot (`'.'`), dash
+(`'-'`), or terminator (0) one at a time, advancing through a state
 machine step by step:
 
 ```c
