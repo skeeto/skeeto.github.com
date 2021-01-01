@@ -1,11 +1,13 @@
 digraph {
-    graph [fontname="Noto Sans", rankdir=LR];
-    node [fontname="Noto Sans Bold", shape=oval];
-    edge [fontname="Noto Sans", arrowsize=0.5, fontsize=10];
-    LOW  -> HIGH [label="non-space"];
-    LOW  -> LOW  [label="space"];
-    HIGH -> LOW  [label="(count++)\n\nspace"];
-    HIGH -> HIGH [label="non-space"];
-    root [style="invis", shape=point, width=0];
-    root:e -> LOW:w;
+    graph [rankdir=LR];
+    node [fontname="sans" fontsize=40 width=2.5 margin=0.15 shape=oval penwidth=1.5];
+    edge [fontname="sans" fontsize=28 penwidth=1.5];
+    low [label=<<b>low</b>>]
+    high [label=<<b>high</b>>]
+    low  -> high [label="non-space"];
+    low  -> low  [label="space"];
+    high -> low  [label="\nspace"];
+    high -> high [label="non-space"];
+    root [style="invis" shape=point width=0];
+    root:e -> low:w;
 }

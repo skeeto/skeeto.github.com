@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="584pt" height="159pt" viewBox="0 0 584 159.2" xmlns="http://www.w3.org/2000/svg">
+ <g id="graph0" class="graph" transform="scale(1) translate(4 155.2)">
+  <title>%3</title>
+  <polygon points="-4 4 -4 -155.2 580 -155.2 580 4" fill="#fff" stroke="transparent"/>
+  <g id="node1" class="node">
+   <title>low</title>
+   <ellipse cx="127" cy="-55.532" rx="90" ry="46.839" fill="none" stroke="#000" stroke-width="1.5"/>
+   <text x="88" y="-46.5319" fill="#000000" font-family="sans" font-size="40" font-weight="bold">low</text>
+  </g>
+  <g id="edge2" class="edge">
+   <title>low-&gt;low</title>
+   <path d="m107.11-101.16c1.5548-10.939 8.1858-19.044 19.893-19.044 7.8657 0 13.44 3.6589 16.723 9.3778" fill="none" stroke="#000" stroke-width="1.5"/>
+   <polygon points="147.1 -111.75 146.89 -101.16 140.45 -109.57" stroke="#000" stroke-width="1.5"/>
+   <text x="127" y="-128.801" fill="#000000" font-family="sans" font-size="28" text-anchor="middle">space</text>
+  </g>
+  <g id="node2" class="node">
+   <title>high</title>
+   <ellipse cx="486" cy="-55.532" rx="90" ry="46.839" fill="none" stroke="#000" stroke-width="1.5"/>
+   <text x="436" y="-46.5319" fill="#000000" font-family="sans" font-size="40" font-weight="bold">high</text>
+  </g>
+  <g id="edge1" class="edge">
+   <title>low-&gt;high</title>
+   <path d="m209.59-74.116c8.547-1.3944 17.133-2.5808 25.414-3.4157 63.235-6.3751 79.765-6.3751 143 0 5.0467 0.5088 10.206 1.1481 15.401 1.8854" fill="none" stroke="#000" stroke-width="1.5"/>
+   <polygon points="394.06 -79.087 403.41 -74.116 393 -72.167" stroke="#000" stroke-width="1.5"/>
+   <text x="306.5" y="-90.1319" fill="#000000" font-family="sans" font-size="28" text-anchor="middle">non-space</text>
+  </g>
+  <g id="edge3" class="edge">
+   <title>high-&gt;low</title>
+   <path d="m421.11-22.949c-13.895 5.5601-28.728 10.482-43.105 13.417-62.272 12.709-80.728 12.709-143 0-11.12-2.2695-22.512-5.7283-33.533-9.7516" fill="none" stroke="#000" stroke-width="1.5"/>
+   <polygon points="199.98 -16.104 191.89 -22.949 202.49 -22.642" stroke="#000" stroke-width="1.5"/>
+   <text x="306.5" y="-18.1319" fill="#000000" font-family="sans" font-size="28" text-anchor="middle">space</text>
+  </g>
+  <g id="edge4" class="edge">
+   <title>high-&gt;high</title>
+   <path d="m452.83-99.054c1.6025-11.987 12.66-21.146 33.171-21.146 14.422 0 24.17 4.5285 29.244 11.384" fill="none" stroke="#000" stroke-width="1.5"/>
+   <polygon points="518.69 -109.64 519.17 -99.054 512.19 -107.03" stroke="#000" stroke-width="1.5"/>
+   <text x="486" y="-128.801" fill="#000000" font-family="sans" font-size="28" text-anchor="middle">non-space</text>
+  </g>
+  <g id="edge5" class="edge">
+   <title>root:e-&gt;low:w</title>
+   <path d="m0-55.532h26.872" fill="none" stroke="#000" stroke-width="1.5"/>
+   <polygon points="27 -59.032 37 -55.532 27 -52.032" stroke="#000" stroke-width="1.5"/>
+  </g>
+ </g>
+</svg>

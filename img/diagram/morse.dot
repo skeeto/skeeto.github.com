@@ -1,5 +1,5 @@
 digraph {
-    node [shape=circle,fontname="Noto Sans Bold",fontsize=16,penwidth=2];
+    node [shape=circle fontname="sans" fontsize=16 penwidth=2];
     edge [penwidth=2]
     a->E; a->T;
     E->I; E->A;
@@ -24,15 +24,53 @@ digraph {
     Z->7; Z->j;
     d->8; d->k;
     e->9; e->0;
-    a [label="", shape=circle, style=filled, fillcolor=pink];
-    b [label="", shape=circle, style=filled, fillcolor=pink];
-    c [label="", shape=circle, style=filled, fillcolor=pink];
-    d [label="", shape=circle, style=filled, fillcolor=pink];
-    e [label="", shape=circle, style=filled, fillcolor=pink];
-    f [label="", shape=circle, style=filled, fillcolor=pink];
-    g [label="", shape=circle, style=filled, fillcolor=pink];
-    h [label="", shape=circle, style=filled, fillcolor=pink];
-    i [label="", shape=circle, style=filled, fillcolor=pink];
-    j [label="", shape=circle, style=filled, fillcolor=pink];
-    k [label="", shape=circle, style=filled, fillcolor=pink];
+
+    a [label="" shape=circle style=filled fillcolor=pink];
+    b [label="" shape=circle style=filled fillcolor=pink];
+    c [label="" shape=circle style=filled fillcolor=pink];
+    d [label="" shape=circle style=filled fillcolor=pink];
+    e [label="" shape=circle style=filled fillcolor=pink];
+    f [label="" shape=circle style=filled fillcolor=pink];
+    g [label="" shape=circle style=filled fillcolor=pink];
+    h [label="" shape=circle style=filled fillcolor=pink];
+    i [label="" shape=circle style=filled fillcolor=pink];
+    j [label="" shape=circle style=filled fillcolor=pink];
+    k [label="" shape=circle style=filled fillcolor=pink];
+
+    0 [label=<<b>0</b>>]
+    1 [label=<<b>1</b>>]
+    2 [label=<<b>2</b>>]
+    3 [label=<<b>3</b>>]
+    4 [label=<<b>4</b>>]
+    5 [label=<<b>5</b>>]
+    6 [label=<<b>6</b>>]
+    7 [label=<<b>7</b>>]
+    8 [label=<<b>8</b>>]
+    9 [label=<<b>9</b>>]
+    A [label=<<b>A</b>>]
+    B [label=<<b>B</b>>]
+    C [label=<<b>C</b>>]
+    D [label=<<b>D</b>>]
+    E [label=<<b>E</b>>]
+    F [label=<<b>F</b>>]
+    G [label=<<b>G</b>>]
+    H [label=<<b>H</b>>]
+    I [label=<<b>I</b>>]
+    J [label=<<b>J</b>>]
+    K [label=<<b>K</b>>]
+    L [label=<<b>L</b>>]
+    M [label=<<b>M</b>>]
+    N [label=<<b>N</b>>]
+    O [label=<<b>O</b>>]
+    P [label=<<b>P</b>>]
+    Q [label=<<b>Q</b>>]
+    R [label=<<b>R</b>>]
+    S [label=<<b>S</b>>]
+    T [label=<<b>T</b>>]
+    U [label=<<b>U</b>>]
+    V [label=<<b>V</b>>]
+    W [label=<<b>W</b>>]
+    X [label=<<b>X</b>>]
+    Y [label=<<b>Y</b>>]
+    Z [label=<<b>Z</b>>]
 }

@@ -66,7 +66,7 @@ comprehensive test suite:
 The state machine is trie-shaped, and the 100-byte table `t` is the static
 [encoding of the Morse code trie][trie]:
 
-[![](/img/diagram/morse.png)](/img/diagram/morse.dot)
+[![](/img/diagram/morse.svg)](/img/diagram/morse.dot)
 
 Dots traverse left, dashes right, terminals emit the character at the
 current node (terminal state). Stopping on red nodes, or attempting to
@@ -102,7 +102,7 @@ UTF-8 decoder.
 I wanted to try my own hand at it, so I re-derived the same canonical
 UTF-8 automaton:
 
-[![](/img/diagram/utf8.png)](/img/diagram/utf8.dot)
+[![](/img/diagram/utf8.svg)](/img/diagram/utf8.dot)
 
 Then I encoded this diagram directly into a much larger (2,064-byte), less
 elegant table, too large to display inline here:
@@ -166,7 +166,7 @@ mechanism. The sign of the state tracks whether the "signal" is "high"
 (inside of a word) or "low" (outside of a word), and so it counts rising
 edges.
 
-[![](/img/diagram/wordcount.png)](/img/diagram/wordcount.dot)
+[![](/img/diagram/wordcount.svg)](/img/diagram/wordcount.dot)
 
 The counter is not *technically* part of the state machine — though it
 eventually overflows for practical reasons, it isn't really "finite" — but

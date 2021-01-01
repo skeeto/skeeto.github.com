@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="601pt" height="516pt" viewBox="0 0 601.49 515.78" xmlns="http://www.w3.org/2000/svg">
+ <g id="graph0" class="graph" transform="scale(1) translate(4 511.78)">
+  <title>%3</title>
+  <polygon points="-4 4 -4 -511.78 597.49 -511.78 597.49 4" fill="#fff" stroke="transparent"/>
+  <g id="node1" class="node">
+   <title>s0</title>
+   <ellipse cx="24.749" cy="-248.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="24.7487" y="-243.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₀</text>
+  </g>
+  <g id="node2" class="node">
+   <title>s8</title>
+   <ellipse cx="564.74" cy="-318.78" rx="24.965" ry="24.965" fill="none" stroke="#000"/>
+   <ellipse cx="564.74" cy="-318.78" rx="29" ry="29" fill="none" stroke="#000"/>
+   <text x="564.7386" y="-313.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₈</text>
+  </g>
+  <g id="edge1" class="edge">
+   <title>s0-&gt;s8</title>
+   <path d="m27.676-273.52c5.8161-45.69 19.998-141.04 39.822-167.26 27.644-36.562 44.912-49 90.749-49h274c68.471 0 106.62 86.728 122.9 136.65" fill="none" stroke="#000"/>
+   <polygon points="557.41 -353.52 557.21 -346.64 553.07 -352.14" stroke="#000"/>
+   <text x="297.7437" y="-494.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">00–7f</text>
+  </g>
+  <g id="node3" class="node">
+   <title>s2</title>
+   <ellipse cx="297.74" cy="-282.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="297.7437" y="-277.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₂</text>
+  </g>
+  <g id="edge2" class="edge">
+   <title>s0-&gt;s2</title>
+   <path d="m42.462-230.95c28.923 26.847 88.308 72.559 140.53 53.172 41.123-15.266 76.261-53.437 96.451-79.297" fill="none" stroke="#000"/>
+   <polygon points="277.76 -258.62 283.52 -262.4 281.37 -255.86" stroke="#000"/>
+   <text x="158.2462" y="-182.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">ee–ef</text>
+  </g>
+  <g id="edge3" class="edge">
+   <title>s0-&gt;s2</title>
+   <path d="m27.529-273.67c5.2394-41.878 18.063-123.6 39.969-141.12 66.024-52.796 128.84-28.878 187.5 32 18.402 19.099 29.48 47.347 35.731 68.952" fill="none" stroke="#000"/>
+   <polygon points="292.98 -314.23 292.51 -307.36 288.59 -313.02" stroke="#000"/>
+   <text x="158.2462" y="-448.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">e1–ec</text>
+  </g>
+  <g id="node4" class="node">
+   <title>s3</title>
+   <ellipse cx="227.99" cy="-128.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="227.9949" y="-123.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₃</text>
+  </g>
+  <g id="edge4" class="edge">
+   <title>s0-&gt;s3</title>
+   <path d="m30.654-224.69c7.791 29.626 22.233 77.299 36.843 87.907 37.779 27.429 94.749 22.417 129.68 15.655" fill="none" stroke="#000"/>
+   <polygon points="197.03 -123.42 203.85 -122.49 197.94 -118.96" stroke="#000"/>
+   <text x="91.4975" y="-141.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">e0–e0</text>
+  </g>
+  <g id="node5" class="node">
+   <title>s4</title>
+   <ellipse cx="227.99" cy="-74.783" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="227.9949" y="-69.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₄</text>
+  </g>
+  <g id="edge5" class="edge">
+   <title>s0-&gt;s4</title>
+   <path d="m27.238-224c4.8956 43.114 17.344 129.07 40.259 147.22 37.017 29.317 95.351 20.699 130.56 11.521" fill="none" stroke="#000"/>
+   <polygon points="197.49 -67.464 204.35 -66.973 198.68 -63.073" stroke="#000"/>
+   <text x="91.4975" y="-81.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">ed–ed</text>
+  </g>
+  <g id="node6" class="node">
+   <title>s1</title>
+   <ellipse cx="432.24" cy="-147.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="432.2412" y="-142.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₁</text>
+  </g>
+  <g id="edge6" class="edge">
+   <title>s0-&gt;s1</title>
+   <path d="m27.294-223.9c5.212 46.443 18.475 143.91 40.204 169.12 41.467 48.11 71.037 39.475 133.5 51 91.484 16.88 120.02-28.036 188.5-91 8.8749-8.1599 17.463-18.23 24.584-27.393" fill="none" stroke="#000"/>
+   <polygon points="412.34 -123.65 418.09 -127.44 415.96 -120.9" stroke="#000"/>
+   <text x="227.9949" y="-8.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">c2–df</text>
+  </g>
+  <g id="node7" class="node">
+   <title>s5</title>
+   <ellipse cx="158.25" cy="-382.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="158.2462" y="-377.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₅</text>
+  </g>
+  <g id="edge7" class="edge">
+   <title>s0-&gt;s5</title>
+   <path d="m29.473-273.32c5.5129-22.428 16.729-55.111 38.024-75.459 16.213-15.492 40.143-24.068 59.359-28.731" fill="none" stroke="#000"/>
+   <polygon points="126.6 -379.79 133.44 -379.01 127.6 -375.35" stroke="#000"/>
+   <text x="91.4975" y="-378.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">f0–f0</text>
+  </g>
+  <g id="node8" class="node">
+   <title>s6</title>
+   <ellipse cx="158.25" cy="-315.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="158.2462" y="-310.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₆</text>
+  </g>
+  <g id="edge8" class="edge">
+   <title>s0-&gt;s6</title>
+   <path d="m41.033-268.08c7.3861-7.705 16.658-16.068 26.464-21.706 18.348-10.549 41.278-17.071 59.498-20.945" fill="none" stroke="#000"/>
+   <polygon points="126.66 -312.98 133.48 -312.04 127.56 -308.52" stroke="#000"/>
+   <text x="91.4975" y="-312.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">f1–f3</text>
+  </g>
+  <g id="node9" class="node">
+   <title>s7</title>
+   <ellipse cx="158.25" cy="-248.78" rx="25" ry="25" fill="none" stroke="#000"/>
+   <text x="158.2462" y="-243.7831" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₇</text>
+  </g>
+  <g id="edge9" class="edge">
+   <title>s0-&gt;s7</title>
+   <path d="m49.546-248.78h76.862" fill="none" stroke="#000"/>
+   <polygon points="126.63 -251.06 133.13 -248.78 126.63 -246.51" stroke="#000"/>
+   <text x="91.4975" y="-253.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">f4–f4</text>
+  </g>
+  <g id="edge11" class="edge">
+   <title>s2-&gt;s1</title>
+   <path d="m315.33-265.13c24.266 24.357 68.025 68.279 94.578 94.931" fill="none" stroke="#000"/>
+   <polygon points="411.68 -171.65 414.65 -165.44 408.45 -168.44" stroke="#000"/>
+   <text x="364.9924" y="-243.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">80–bf</text>
+  </g>
+  <g id="edge12" class="edge">
+   <title>s3-&gt;s1</title>
+   <path d="m253.04-131.11c37.234-3.4636 107.15-9.9676 147.77-13.746" fill="none" stroke="#000"/>
+   <polygon points="400.63 -147.13 407.31 -145.46 401.05 -142.6" stroke="#000"/>
+   <text x="297.7437" y="-141.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">a0–bf</text>
+  </g>
+  <g id="edge13" class="edge">
+   <title>s4-&gt;s1</title>
+   <path d="m252.97-77.248c19.346-2.3903 46.62-6.8194 69.525-14.535 29.647-9.9864 61.239-26.839 82.878-39.454" fill="none" stroke="#000"/>
+   <polygon points="404.44 -133.33 411.2 -134.67 406.76 -129.41" stroke="#000"/>
+   <text x="297.7437" y="-96.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">80–9f</text>
+  </g>
+  <g id="edge10" class="edge">
+   <title>s1-&gt;s8</title>
+   <path d="m447.44-167.4c23.422-30.228 68.444-88.332 95.385-123.1" fill="none" stroke="#000"/>
+   <polygon points="541.21 -292.13 546.99 -295.87 544.8 -289.34" stroke="#000"/>
+   <text x="496.4899" y="-257.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">80–bf</text>
+  </g>
+  <g id="edge14" class="edge">
+   <title>s5-&gt;s2</title>
+   <path d="m180.86-371.95c20.343 10.256 50.566 26.789 74.136 45.166 7.4962 5.845 14.961 12.962 21.506 19.755" fill="none" stroke="#000"/>
+   <polygon points="278.51 -308.21 281.31 -301.92 275.2 -305.09" stroke="#000"/>
+   <text x="227.9949" y="-365.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">90–bf  </text>
+  </g>
+  <g id="edge15" class="edge">
+   <title>s6-&gt;s2</title>
+   <path d="m182.54-310.03c23.36 5.5262 58.768 13.902 84.159 19.909" fill="none" stroke="#000"/>
+   <polygon points="267.45 -292.29 273.26 -288.58 266.41 -287.86" stroke="#000"/>
+   <text x="227.9949" y="-309.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">80–bf  </text>
+  </g>
+  <g id="edge16" class="edge">
+   <title>s7-&gt;s2</title>
+   <path d="m182.81-245.64c19.992 1.6451 48.651 1.8988 72.186-6.1419 6.775-2.3146 13.395-6.1018 19.323-10.248" fill="none" stroke="#000"/>
+   <polygon points="272.98 -263.87 279.55 -265.91 275.68 -260.21" stroke="#000"/>
+   <text x="227.9949" y="-256.9831" fill="#000000" font-family="sans" font-size="16" text-anchor="middle">80–8f</text>
+  </g>
+ </g>
+</svg>
