@@ -1,7 +1,7 @@
 digraph {
     graph [fontname="sans" rankdir=LR];
     node [fontname="sans" shape=circle fontsize=20];
-    edge [fontname="sans" arrowsize=0.65 fontsize=16];
+    edge [fontname="monospace" arrowsize=0.65 fontsize=16];
 
     s0->s8 [label="00–7f"];
     s0->s2 [label="\nee–ef"];
