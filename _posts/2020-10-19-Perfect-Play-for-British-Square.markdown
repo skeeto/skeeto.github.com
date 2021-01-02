@@ -257,7 +257,7 @@ These transform both players' bitboards in parallel while leaving the
 turn counter intact. The logic here is quite simple: Shift the bitboard
 a little bit at a time while using a mask to deposit bits in their new
 home once they're lined up. It's like a coin sorter. Vertical flip is
-analagous to byte-swapping, though with 5-bit "bytes".
+analogous to byte-swapping, though with 5-bit "bytes".
 
 Canonicalizing a bitboard now looks like this:
 
