@@ -1,6 +1,6 @@
 digraph {
-    graph [fontname="sans" rankdir=LR];
-    node [fontname="sans" shape=circle fontsize=20];
+    graph [fontname="sans-serif" rankdir=LR];
+    node [fontname="sans-serif" shape=circle fontsize=20];
     edge [fontname="monospace" arrowsize=0.65 fontsize=16];
 
     s0->s8 [label="00–7f"];

@@ -7,13 +7,13 @@
   <g id="node1" class="node">
    <title>s0</title>
    <ellipse cx="24.749" cy="-249.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="24.7487" y="-244.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₀</text>
+   <text x="24.7487" y="-244.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₀</text>
   </g>
   <g id="node2" class="node">
    <title>s8</title>
    <ellipse cx="596.74" cy="-319.59" rx="24.965" ry="24.965" fill="none" stroke="#000"/>
    <ellipse cx="596.74" cy="-319.59" rx="29" ry="29" fill="none" stroke="#000"/>
-   <text x="596.7386" y="-314.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₈</text>
+   <text x="596.7386" y="-314.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₈</text>
   </g>
   <g id="edge1" class="edge">
    <title>s0-&gt;s8</title>
@@ -24,7 +24,7 @@
   <g id="node3" class="node">
    <title>s2</title>
    <ellipse cx="313.74" cy="-283.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="313.7437" y="-278.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₂</text>
+   <text x="313.7437" y="-278.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₂</text>
   </g>
   <g id="edge2" class="edge">
    <title>s0-&gt;s2</title>
@@ -41,7 +41,7 @@
   <g id="node4" class="node">
    <title>s3</title>
    <ellipse cx="236.49" cy="-129.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="236.4949" y="-124.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₃</text>
+   <text x="236.4949" y="-124.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₃</text>
   </g>
   <g id="edge4" class="edge">
    <title>s0-&gt;s3</title>
@@ -52,7 +52,7 @@
   <g id="node5" class="node">
    <title>s4</title>
    <ellipse cx="236.49" cy="-75.589" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="236.4949" y="-70.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₄</text>
+   <text x="236.4949" y="-70.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₄</text>
   </g>
   <g id="edge5" class="edge">
    <title>s0-&gt;s4</title>
@@ -63,7 +63,7 @@
   <g id="node6" class="node">
    <title>s1</title>
    <ellipse cx="458.24" cy="-148.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="458.2412" y="-143.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₁</text>
+   <text x="458.2412" y="-143.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₁</text>
   </g>
   <g id="edge6" class="edge">
    <title>s0-&gt;s1</title>
@@ -74,7 +74,7 @@
   <g id="node7" class="node">
    <title>s5</title>
    <ellipse cx="159.25" cy="-383.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="159.2462" y="-378.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₅</text>
+   <text x="159.2462" y="-378.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₅</text>
   </g>
   <g id="edge7" class="edge">
    <title>s0-&gt;s5</title>
@@ -85,7 +85,7 @@
   <g id="node8" class="node">
    <title>s6</title>
    <ellipse cx="159.25" cy="-316.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="159.2462" y="-311.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₆</text>
+   <text x="159.2462" y="-311.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₆</text>
   </g>
   <g id="edge8" class="edge">
    <title>s0-&gt;s6</title>
@@ -96,7 +96,7 @@
   <g id="node9" class="node">
    <title>s7</title>
    <ellipse cx="159.25" cy="-249.59" rx="25" ry="25" fill="none" stroke="#000"/>
-   <text x="159.2462" y="-244.5893" fill="#000000" font-family="sans" font-size="20" text-anchor="middle">s₇</text>
+   <text x="159.2462" y="-244.5893" fill="#000000" font-family="sans-serif" font-size="20" text-anchor="middle">s₇</text>
   </g>
   <g id="edge9" class="edge">
    <title>s0-&gt;s7</title>

@@ -1,5 +1,5 @@
 digraph {
-    node [shape=circle fontname="sans" fontsize=16 penwidth=2];
+    node [shape=circle fontname="sans-serif" fontsize=16 penwidth=2];
     edge [penwidth=2]
     a->E; a->T;
     E->I; E->A;
