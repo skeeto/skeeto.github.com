@@ -7,6 +7,8 @@ uuid: c93d7a7b-6ae0-4b7e-afa6-424ef40b9d9c
 excerpt_separator: <!--more-->
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 I love when my current problem can be solved with a state machine. They're
 fun to design and implement, and I have high confidence about correctness.
 They tend to:
@@ -301,6 +303,7 @@ between any pair of input/output bytes.
 [dfa]: https://bjoern.hoehrmann.de/utf-8/decoder/dfa/
 [gen]: /blog/2018/05/31/
 [heap]: https://en.wikipedia.org/wiki/Binary_heap#Heap_implementation
+[hn]: https://news.ycombinator.com/item?id=25601821
 [knife]: /blog/2019/12/09/
 [mc]: https://en.wikipedia.org/wiki/Morse_code
 [min]: /blog/2018/06/10/
