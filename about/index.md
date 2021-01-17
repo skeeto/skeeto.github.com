@@ -171,8 +171,8 @@ inbox**][inbox] serving as a public forum. Consider using this first.
 For private or personal messages, use my personal email address listed
 at the top of this page.
 
-I accept patches in both my private and public inboxes. This means you
-can contribute changes without, say, a GitHub account.
+I [accept patches][send-email] in both my private and public inboxes. This
+means you can contribute changes without, say, a GitHub account.
 
 ### Cryptographic Identity
 
@@ -250,6 +250,7 @@ It's wonderful having such concise keys and signatures!
 [portable]: /blog/2017/03/30/
 [repos]: https://github.com/skeeto?tab=repositories
 [rop]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
+[send-email]: https://git-send-email.io/
 [shadow]: https://github.com/skeeto/am-i-shadowbanned
 [showcase]: /toys/
 [simplegpg]: https://github.com/skeeto/simplegpg
