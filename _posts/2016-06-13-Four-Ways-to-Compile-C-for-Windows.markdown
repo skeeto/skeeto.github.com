@@ -6,6 +6,10 @@ tags: [c, cpp, win32]
 uuid: 1e99288c-0500-36f5-9fe7-262e6c6287c4
 ---
 
+*Update 2020: If you're on Windows, just use [**w64devkit**][w64devkit].
+It's [my own toolchain distribution][announce], and it's by far the best
+option available. [Everything you need][everything] is in one package.*
+
 I primarily work on and develop for unix-like operating systems —
 Linux in particular. However, when it comes to desktop applications,
 most potential users are on Windows. Rather than develop on Windows,
@@ -111,22 +115,23 @@ every invocation, so get used to passing `-nologo` every time, which
 suppresses some of it.
 
 When I said behemoth, I meant it. In my experience it literally takes
-*hours* (unattended) to install Visual Studio 2015. The good news is
-you don't actually need it all anymore. The build tools [are available
+*hours* (unattended) to install Visual Studio 2015. ~~The good news is you
+don't actually need it all anymore. The build tools [are available
 standalone][vcbt]. While it's still a larger and slower installation
 process than it really should be, it's is much more reasonable to
 install. It's good enough that I'd even say I'm comfortable relying on
-it for Windows builds.
+it for Windows builds.~~ (Update: The build tools are unfortunately no
+longer standalone.)
 
 That being said, it's not without its flaws. Microsoft has never
-announced any plans to support C99. They only care about C++, with C
-as a second class citizen. Since C++11 incorporated most of C99 and
-Microsoft supports C++11, Visual Studio 2015 **very nearly supports
-all of C99**. The only things missing as far as I can tell are
-variable length arrays (VLAs), complex numbers, and C99's array
-parameter declarators, since none of these were adopted by C++. Some
-C99 features are considered extensions (as they would be for C89), so
-you'll also get warnings about them, which can be disabled.
+announced any plans to support C99. They only care about C++, with C as
+a second class citizen. Since C++11 incorporated most of C99 and
+Microsoft supports C++11, Visual Studio 2015 supports most of C99. The
+only things missing as far as I can tell are variable length arrays
+(VLAs), complex numbers, and C99's array parameter declarators, since
+none of these were adopted by C++. Some C99 features are considered
+extensions (as they would be for C89), so you'll also get warnings about
+them, which can be disabled.
 
 The command line interface (option flags, intermediates, etc.) isn't
 quite reconcilable with the unix-like ecosystem (i.e. GCC, Clang), so
@@ -211,3 +216,6 @@ it's not going to beat these options.
 [clang]: http://clang.llvm.org/
 [make]: /blog/2016/04/30/
 [pdb]: https://en.wikipedia.org/wiki/Program_database
+[w64devkit]: https://github.com/skeeto/w64devkit
+[announce]: /blog/2020/05/15/
+[everything]: /blog/2020/09/25/
