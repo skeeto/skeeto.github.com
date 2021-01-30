@@ -309,6 +309,9 @@ concatenate the key with the ciphertext. Or more specifically:
 
     MAC = hash(key || ctr || ciphertext)
 
+**Update**: [Dimitrije Erdeljan explains why this is broken][broken] and
+how to fix it. Given a valid MAC, attackers can forge arbitrary messages.
+
 The counter is because xxtea uses chunked authentication with one megabyte
 chunks. It can authenticate a chunk at a time, which allows it to decrypt,
 with authentication, arbitrary amounts of ciphertext in a fixed amount of
@@ -353,6 +356,7 @@ glaring mistakes with practical consequences.
 
 [birthday]: /blog/2019/07/22/
 [blowfish]: /blog/2017/09/15/
+[broken]: https://lists.sr.ht/~skeeto/public-inbox/%3C5b3ef28a-c8b7-2835-9a56-6968aca5606c%40gmail.com%3E
 [cbc]: https://blog.cryptographyengineering.com/2013/02/15/why-i-hate-cbc-mac/
 [doom]: https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html
 [gcm]: https://en.wikipedia.org/wiki/Galois/Counter_Mode
