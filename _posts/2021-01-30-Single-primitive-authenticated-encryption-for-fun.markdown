@@ -362,7 +362,7 @@ glaring mistakes with practical consequences.
 [gcm]: https://en.wikipedia.org/wiki/Galois/Counter_Mode
 [getopt]: /blog/2020/08/01/
 [md]: https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction
-[repo]: https://github.com/skeeto/xxtea
+[repo]: https://github.com/skeeto/xxtea/tree/v0.1
 [right]: https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html
 [utf8]: /blog/2020/05/04/
 [w64]: https://github.com/skeeto/w64devkit
