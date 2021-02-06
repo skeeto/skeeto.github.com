@@ -213,6 +213,11 @@ This operation "ties off" the last block so that the hash can't be
 extended with more input. *Or so I hope.* This is my own invention, and so
 it may not actually work right. Again, this is for fun and learning!
 
+**Update**: Aristotle Pagaltzis pointed out that when these two words are
+identical the hash result will be unchanged, leaving it vulnerable to
+length extension attack. This occurs about once every 2<sup>32</sup>
+messages, which is far too small a security margin.
+
 #### Caveats
 
 Despite all that care, there are still two more potential weaknesses.
