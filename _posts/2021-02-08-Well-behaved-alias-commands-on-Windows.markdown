@@ -90,16 +90,16 @@ elegant and powerful.
 The closest available on Windows is a .bat batch file. However, like some
 other parts of DOS and Windows, the Batch language was designed as though
 its designer once glimpsed at someone using a unix shell, perhaps looking
-oer their shoulder, then copied some of the ideas without understanding
-them. As a result, it's not nearly as useful for powerful. Here's the
-Batch equivalent:
+over their shoulder, then copied some of the ideas without understanding
+them. As a result, it's not nearly as useful or powerful. Here's the Batch
+equivalent:
 
 ```bat
 @cc -std=c99 %*
 ```
 
-The `@` is necessary because Batch prints its commands by default
-(Bourne's `-x` option), and `@` disables it. Windows lacks the concept of
+The `@` is necessary because Batch prints its commands by default (Bourne
+shell's `-x` option), and `@` disables it. Windows lacks the concept of
 `exec(3)`, so Batch file interpreter `cmd.exe` continues running alongside
 the compiler. A little wasteful but that hardly matters. What does matter
 though is that `cmd.exe` doesn't behave itself! If you, say, Ctrl+C to
@@ -127,7 +127,7 @@ Speaking of PowerShell, could we use that instead? Unfortunately not:
 
 2. PowerShell is not a first class citizen on Windows, and will likely
    never be. Even under the friendliest policy it's not normally possible
-   put a PowerShell script on the `PATH` and run it by name. (I'm sure
+   to put a PowerShell script on the `PATH` and run it by name. (I'm sure
    there are ways to make this work via system-wide configuration, but
    that's off the table.)
 
