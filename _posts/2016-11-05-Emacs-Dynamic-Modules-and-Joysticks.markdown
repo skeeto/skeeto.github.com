@@ -448,38 +448,23 @@ this is in fact the correct way to normalize it.
 
 #### Initialization
 
-All that's left is the initialization function. First declare some
-global variables to keep track of frequently-used symbols.
+*Update 2021*: In a previous version of this article, I talked about
+interning symbols during initialziation so that they do not need to be
+re-interned each time the module is called. This [no longer works][bug],
+and it was probably never intended to be work in the first place. The
+lesson is simple: **Do not reuse Emacs objects between module calls.**
+
+First grab the `fset` symbol since this function will be needed to bind
+names to the module's functions.
 
 ~~~c
-static emacs_value nil;
-static emacs_value t;
-static emacs_value button;
-static emacs_value axis;
-~~~
-
-These are interned at the very beginning of initialization. The
-symbols `:button` and `:axis` are given global references so that the
-garbage collector doesn't rip them out from under the module. It's
-unclear from the API, but the `make_global_ref()` function returns the
-object being referenced. I trust that the t and nil symbols will never
-be garbage collected, so these don't need global references.
-
-~~~c
-    nil = env->intern(env, "nil");
-    t = env->intern(env, "t");
-    button = env->make_global_ref(env, env->intern(env, ":button"));
-    axis = env->make_global_ref(env, env->intern(env, ":axis"));
-
     emacs_value fset = env->intern(env, "fset");
 ~~~
 
-It also grabs `fset` locally since it will soon be needed.
-
-Finally, bind the functions. The second and third arguments to
+Using `fset`, bind the functions. The second and third arguments to
 `make_function` are the minimum and maximum number of arguments, which
-[may look familiar][internals]. The last argument is that closure
-pointer I mentioned at the beginning.
+[may look familiar][internals]. The last argument is that closure pointer
+I mentioned at the beginning.
 
 ~~~c
     emacs_value args[2];
@@ -509,9 +494,10 @@ that polls the module for events.
 I'd like to someday see an Emacs Lisp game well-suited for a joystick.
 
 
-[tut]: http://diobla.info/blog-archive/modules-tut.html
-[header]: http://git.savannah.gnu.org/cgit/emacs.git/tree/src/emacs-module.h?h=emacs-25.1
-[js]: https://www.kernel.org/doc/Documentation/input/joystick-api.txt
-[internals]: /blog/2014/01/04/
-[read]: /blog/2013/12/30/
+[bug]: https://github.com/skeeto/joymacs/issues/1
 [doc]: https://phst.github.io/emacs-modules
+[header]: http://git.savannah.gnu.org/cgit/emacs.git/tree/src/emacs-module.h?h=emacs-25.1
+[internals]: /blog/2014/01/04/
+[js]: https://www.kernel.org/doc/Documentation/input/joystick-api.txt
+[read]: /blog/2013/12/30/
+[tut]: http://diobla.info/blog-archive/modules-tut.html
