@@ -125,9 +125,21 @@ using C++ due to its insane complexity.)
 Only three this year. The last is about C++, but I thought it was
 interesting.
 
-* [CppCon 2019: JF Bastien “Deprecating volatile”](https://www.youtube.com/watch?v=KJW_DLaVXIY)
+* [JF Bastien "Deprecating volatile"](https://www.youtube.com/watch?v=KJW_DLaVXIY)
 * [J. Bialek, S. Block “Killing Uninitialized Memory: Protecting the OS Without Destroying Performance”](https://www.youtube.com/watch?v=rQWjF8NvqAU)
-* [CppCon 2019: Matt Godbolt “Path Tracing Three Ways: A Study of C++ Style”](https://www.youtube.com/watch?v=HG6c4Kwbv4I)
+* [Matt Godbolt “Path Tracing Three Ways: A Study of C++ Style”](https://www.youtube.com/watch?v=HG6c4Kwbv4I)
+
+### 2020
+
+Four more worthwhile talks in 2020. The first is about the C++ abstract
+machine, but is nearly identical to the C abstract machine. The second is
+a proverbial warning about builds. The rest are about performance, and
+while the context is C++ the concepts are entirely applicable to C.
+
+* [Bob Steagall "Back to Basics - The Abstract Machine"](https://www.youtube.com/watch?v=ZAji7PkXaKY)
+* [Dave Steffen "Build Everything From Source - A Case Study in Fear"](https://www.youtube.com/watch?v=54uVTkhinDE)
+* [Bob Steagall "Adventures in SIMD-Thinking"](https://www.youtube.com/watch?v=qejTqnxQRcw) ([part 2](https://www.youtube.com/watch?v=qXleSwCCEvY))
+* [Alex Reinking "Halide - A Language for Fast, Portable Computation on Images and Tensors"](https://www.youtube.com/watch?v=1ir_nEfKQ7A)
 
 ### Bonus
 
