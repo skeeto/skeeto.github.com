@@ -188,11 +188,9 @@ just a handful of `kernel32.dll` calls. My alias command programs can be
 so small that would no longer matter that I have 150 of them, and I get
 complete control over their behavior.
 
-In my old article I mentioned an issue where GCC dynamically links its own
-stack probe functions. I've fixed this in w64devkit, so `-nostdlib` and
-`-ffreestanding` are sufficient, plus `-lkernel32` to pull that back in. I
-still use `-Os` (optimize for size) and `-s` (strip) to make the result as
-small as possible.
+To compile, I use `-nostdlib` and `-ffreestanding` to disable all system
+libraries, `-lkernel32` to pull that one back in, `-Os` (optimize for
+size), and `-s` (strip) all to make the result as small as possible.
 
 I don't want to write a little program for each alias command. Instead
 I'll use a couple of C defines, `EXE` and `CMD`, to inject the target
@@ -205,20 +203,20 @@ command at compile time. So this Batch file:
 Is equivalent to this alias compilation:
 
 ```sh
-gcc -DEXE='L"target.exe"' -DCMD='L"target arg1 arg2"' \
+gcc -DEXE="target.exe" -DCMD="target arg1 arg2" \
     -s -Os -nostdlib -ffreestanding -o alias.exe alias.c -lkernel32
 ```
 
 The `EXE` string is the actual *module* name, so the `.exe` extension is
 required. The `CMD` string replaces the first complete token of the
 command line string (think `argv[0]`) and may contain arbitrary additional
-arguments (e.g. `-std=c99`). Both are wide strings (`L"..."`) since the
-alias program uses the wide Win32 API in order to be fully transparent.
-Though unfortunately at this time it makes no difference. All currently
-aliased programs use the "ANSI" API since the underlying C and C++
-standard libraries only use the ANSI API. (As far as I know, nobody has
-ever written fully-functional C and C++ standard libraries for Windows,
-not even Microsoft.)
+arguments (e.g. `-std=c99`). Both are handled as wide strings (`L"..."`)
+since the alias program uses the wide Win32 API in order to be fully
+transparent. Though unfortunately at this time it makes no difference: All
+currently aliased programs use the "ANSI" API since the underlying C and
+C++ standard libraries only use the ANSI API. (As far as I know, nobody
+has ever written fully-functional C and C++ standard libraries for
+Windows, not even Microsoft.)
 
 You might wonder why the heck I'm gluing strings together for the
 arguments. These will need to be parsed (word split, etc.) by someone
