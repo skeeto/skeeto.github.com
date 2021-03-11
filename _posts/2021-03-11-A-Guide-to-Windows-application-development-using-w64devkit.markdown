@@ -25,6 +25,10 @@ to fill in the gaps. The guide is capped with a small game I wrote
 entirely using my development kit, serving as a demonstration of what
 sorts of things are not only possible, but quite reasonably attainable.
 
+<video src="https://nullprogram.s3.amazonaws.com/asteroids/asteroids.mp4"
+       width="600" height="600" controls>
+</video>
+
 <!--more-->
 
 ### Initial setup
@@ -521,11 +525,8 @@ I've focused on C, but everything above also applies to C++. To learn C++
 
 To illustrate how much you can do with nothing beyond than this 76MB
 development kit, here's a taste in the form of a weekend project: an
-[Asteroids Clone for Windows][repo].
-
-<video src="https://nullprogram.s3.amazonaws.com/asteroids/asteroids.mp4"
-       width="600" height="600" controls>
-</video>
+[Asteroids Clone for Windows][repo]. That's the game in the video at the
+top of this guide.
 
 The development kit doesn't include Git so you'd need to install it
 separately in order to clone the repository, but you could at least skip
