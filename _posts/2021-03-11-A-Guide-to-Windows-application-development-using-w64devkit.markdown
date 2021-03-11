@@ -510,7 +510,7 @@ From here you can set breakpoints and such, then run the program with
 `start` or `run`, then `step` through it line by line. See [*Beej's Quick
 Guide to GDB*][gdb] for a guide.
 
-#### Learning C
+#### Learning C and C++
 
 So far this guide hasn't actually assumed any C knowledge. One of the best
 ways to learn C is by reading the highly-regarded [*The C Programming
