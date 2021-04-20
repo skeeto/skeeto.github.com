@@ -31,6 +31,9 @@ sorts of things are not only possible, but quite reasonably attainable.
 
 <!--more-->
 
+Game repository: <https://github.com/skeeto/asteroids-demo>  
+Guide to source: [Understanding Asteroids][guide]
+
 ### Initial setup
 
 Of course you cannot use the development kit if you don't have it yet. Go
@@ -543,6 +546,7 @@ mean about w64devkit being [(almost) everything you need][all].
 [deps]: https://research.swtch.com/deps
 [e]: https://deftly.net/posts/2017-06-01-measuring-the-weight-of-an-electron.html
 [gdb]: https://beej.us/guide/bggdb/
+[guide]: https://idle.nprescott.com/2021/understanding-asteroids.html
 [hh]: https://handmadehero.org/
 [intro]: /blog/2020/05/15/
 [kern]: https://www.youtube.com/watch?v=tc4ROCJYbm0&t=4m57s
