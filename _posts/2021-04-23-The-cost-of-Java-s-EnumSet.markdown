@@ -63,7 +63,7 @@ ceremony:
 Set<Color> purple = new HashSet<>(Arrays.asList(Color.R, Color.B));
 ```
 
-As you might guess, compared to the original integer operation this
+As you might guess, compared to the original integer operation, this
 HashSet is incredibly slow and inefficient. The type safety comes at a
 serious cost. Attempting to mitigate this, Java provides a special Set
 implementation for enumerations:
