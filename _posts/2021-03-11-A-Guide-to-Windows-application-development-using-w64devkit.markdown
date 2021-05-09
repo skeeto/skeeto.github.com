@@ -52,7 +52,7 @@ it.
 
 ### Entering the development environment
 
-There is an `activate.bat` in the unzipped `w64devkit` directory. This is
+There is an `w64devkit.exe` in the unzipped `w64devkit` directory. This is
 the easiest way to enter the development environment, and will not require
 system configuration changes. This batch file puts the kit's programs in
 the `PATH` environment variable then runs a Bourne shell — the standard
@@ -60,7 +60,7 @@ unix shell. Aside from the text editor, this is the primary interface for
 developing software. In time you may even extend this environment with
 your own tools.
 
-If you want an additional "terminal" window, run `activate.bat` again. If
+If you want an additional "terminal" window, run `w64devkit.exe` again. If
 you use it a lot, you may want to create a shortcut and even pin it to
 your task bar.
 
@@ -80,7 +80,7 @@ PATH="$HOME/bin:$PATH"
 PATH="$HOME/bin;$PATH"
 ```
 
-For more advanced users: Rather than use `activate.bat`, you could "Edit
+For more advanced users: Rather than use `w64devkit.exe`, you could "Edit
 environment variables for your account" and manually add w64devkit's `bin`
 directory to your `PATH`, making the tools generally available everywhere
 on your system. If you've gone this route, you can start a Bourne shell at
