@@ -28,7 +28,7 @@ that returns the square of its input (`square.c`):
 ```c
 long square(long x)
 {
-    return x;
+    return x * X;
 }
 ```
 
