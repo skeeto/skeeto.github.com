@@ -45,7 +45,7 @@ long square(long);
 
 To build a stripped, size-optimized DLL, `square.dll`:
 
-    $ cc -shared -Os -s -shared -o square.dll square.c
+    $ cc -shared -Os -s -o square.dll square.c
 
 Now a test program to link against it (`main.c`), which "imports" `square`
 from `square.dll`:
@@ -100,7 +100,7 @@ This can be helpful when debugging. It also works outside of Windows, such
 as on Linux. By the way, the output format is no accident: This is the
 `.def` file format, which will be particularly useful in a moment.
 
-Alternatively Visual Studio it provides `dumpbin`. It's not as concise as
+Alternatively Visual Studio provides `dumpbin`. It's not as concise as
 `exports.sh` but it's a lot less verbose than `objdump -p`.
 
     $ dumpbin /nologo /exports square.dll
@@ -213,7 +213,7 @@ need `square.dll` present at link time.
     $ ./main
     4
 
-What if you already have the DLL and you need an import library? GNU
+What if you already have the DLL and you just need an import library? GNU
 Binutils' `dlltool` can do this, though not without help. It cannot
 generate an import library from a DLL alone since it requires a `.def`
 file enumerating the exports. (Why?) What luck that we have a tool for
@@ -229,7 +229,7 @@ Mingw-w64, is nearly as easy as the pure Mingw-w64 case, though it
 requires that all exports are tagged with `dllexport`. The `/LD` (case
 sensitive) is just like GCC's `-shared`.
 
-    $ cl /nologo /Os /LD square.c
+    $ cl /nologo /LD /Os square.c
     $ cc -shared -Os -s main.c square.dll
     $ ./a
     4
