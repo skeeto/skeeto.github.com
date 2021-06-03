@@ -25,11 +25,11 @@ to fill in the gaps. The guide is capped with a small game I wrote
 entirely using my development kit, serving as a demonstration of what
 sorts of things are not only possible, but quite reasonably attainable.
 
+<!--more-->
+
 <video src="https://nullprogram.s3.amazonaws.com/asteroids/asteroids.mp4"
        width="600" height="600" controls>
 </video>
-
-<!--more-->
 
 Game repository: <https://github.com/skeeto/asteroids-demo>  
 Guide to source: [Understanding Asteroids][guide]
