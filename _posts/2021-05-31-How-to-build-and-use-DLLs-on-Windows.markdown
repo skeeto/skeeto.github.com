@@ -98,7 +98,7 @@ Running this on `square.dll` above:
 
 This can be helpful when debugging. It also works outside of Windows, such
 as on Linux. By the way, the output format is no accident: This is the
-`.def` file format, which will be particularly useful in a moment.
+[`.def` file format][def], which will be particularly useful in a moment.
 
 Alternatively Visual Studio provides `dumpbin`. It's not as concise as
 `exports.sh` but it's a lot less verbose than `objdump -p`.
@@ -388,11 +388,12 @@ Now that I have this article, I'm glad I won't have to figure this all out
 again next time I need it!
 
 
-[MSVC]: https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B
-[PLT]: https://www.airs.com/blog/archives/41
+[def]: https://sourceware.org/binutils/docs/binutils/def-file-format.html
 [jn]: https://begriffs.com/
 [libderp]: https://github.com/begriffs/libderp
 [make]: /blog/2017/08/20/
+[MSVC]: https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B
+[PLT]: https://www.airs.com/blog/archives/41
 [share]: https://github.com/skeeto/w64devkit/issues/7
 [vc]: /blog/2016/06/13/#visual-c
 [w64devkit]: /blog/2020/05/15/
