@@ -182,7 +182,7 @@ that returns the result. (Weird, but stick with me here!)
 The compiled form looks fine,
 
 ~~~cl
-(foo 3)
+(bar 3)
 ;; => #[0 "\300\207" ["0123"] 1]
 ~~~
 
@@ -191,7 +191,7 @@ But the interpreted form of the closure has a problem. The
 abstraction leak.
 
 ~~~cl
-(foo 3)
+(bar 3)
 ;; => (closure ((string . "0123")
 ;;              (temp-buffer . #<killed buffer>)
 ;;              (n . 3) t)
