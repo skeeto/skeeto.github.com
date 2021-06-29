@@ -100,6 +100,15 @@ This can be helpful when debugging. It also works outside of Windows, such
 as on Linux. By the way, the output format is no accident: This is the
 [`.def` file format][def], which will be particularly useful in a moment.
 
+Mingw-w64 has a `gendef` tool to produce the above output, and this tool
+will be included in future versions of w64devkit. To print the exports to
+standard output:
+
+    $ gendef - square.dll
+    LIBRARY "square.dll"
+    EXPORTS
+    square
+
 Alternatively Visual Studio provides `dumpbin`. It's not as concise as
 `exports.sh` but it's a lot less verbose than `objdump -p`.
 
