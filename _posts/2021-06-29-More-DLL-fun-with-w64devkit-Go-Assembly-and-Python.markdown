@@ -147,7 +147,7 @@ dist(float x, float y)
 As discussed in the previous article, each function is exported using
 `__declspec` so that they're available for import. As before:
 
-    $ cc -shared -fPIC -Os -s -o hello1.dll hello1.c
+    $ cc -shared -Os -s -o hello1.dll hello1.c
 
 Side note: This could be trivially converted into a C++ implementation
 just by adding `extern "C"` to each declaration. It disables C++ features
