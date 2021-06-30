@@ -16,7 +16,7 @@ way every time this happens. While it's all fresh in my head, I will now
 document what I know works.
 
 In this article, all commands and examples are being run in the context of
-w64devkit (1.7.0).
+w64devkit (1.8.0).
 
 ### Mingw-w64
 
@@ -101,8 +101,7 @@ as on Linux. By the way, the output format is no accident: This is the
 [`.def` file format][def], which will be particularly useful in a moment.
 
 Mingw-w64 has a `gendef` tool to produce the above output, and this tool
-will be included in future versions of w64devkit. To print the exports to
-standard output:
+is now included in w64devkit. To print the exports to standard output:
 
     $ gendef - square.dll
     LIBRARY "square.dll"
