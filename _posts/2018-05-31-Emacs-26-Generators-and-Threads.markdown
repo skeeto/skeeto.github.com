@@ -358,8 +358,8 @@ the low-level threading API.
 [js]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
 [jump]: https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html
 [latch]: /blog/2013/01/14/
-[miter]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Generators.html
-[mthread]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Threads.html
+[miter]: https://www.gnu.org/software/emacs/manual/html_node/elisp/Generators.html
+[mthread]: https://www.gnu.org/software/emacs/manual/html_node/elisp/Threads.html
 [py]: https://wiki.python.org/moin/Generators
 [race]: https://hboehm.info/boehm-hotpar11.pdf
 [read]: /blog/2013/12/30/

@@ -272,7 +272,7 @@ with an internal optimization. Since the abstraction is leaky, it may
 as well be made explicit.
 
 
-[ext]: https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Text-Representations.html
+[ext]: https://www.gnu.org/software/emacs/manual/html_node/elisp/Text-Representations.html
 [gap]: /blog/2017/09/07/
 [hn]: https://news.ycombinator.com/item?id=20049491
 [julia]: /blog/2014/03/06/
