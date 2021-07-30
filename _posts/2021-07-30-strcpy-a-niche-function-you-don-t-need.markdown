@@ -235,7 +235,7 @@ MSVC. However, as noted, there are no practical implementations of Annex
 K. The functions in MSVC have different semantics and behavior, and they
 do not attempt to implement the standard.
 
-Worse, they don't even what's promised in [their own documentation][ms].
+Worse, they don't even do what's promised in [their documentation][ms].
 The following program should cause a runtime-constraint violation since
 `-1` is an invalid `rsize_t` in any reasonable implementation:
 
