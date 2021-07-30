@@ -263,7 +263,7 @@ security. Don't use these functions.
 [rep]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1967.htm
 [strcat]: https://man7.org/linux/man-pages/man3/strcat.3.html
 [strcpy]: https://man7.org/linux/man-pages/man3/strcpy.3.html
-[stncpy]: https://man7.org/linux/man-pages/man3/strncpy.3.html
+[strncpy]: https://man7.org/linux/man-pages/man3/strncpy.3.html
 [strlcpy]: https://man.openbsd.org/strlcpy.3
 [utf]: /blog/2017/10/06/
 [ms]: https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/strcpy-s-wcscpy-s-mbscpy-s?view=msvc-160
