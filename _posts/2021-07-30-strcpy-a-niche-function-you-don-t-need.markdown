@@ -16,9 +16,9 @@ answers are incorrect. `strcpy` and friends are, at best, incredibly
 niche, and the correct replacement is `memcpy`.
 
 If `strcpy` is not easily replaced with `memcpy` then the code is
-fundamentally wrong. Either it's not using `strcpy` safely or it's doing
-something dumb and should be rewritten. Highlighting such problems is part
-of what makes `memcpy` such an effective replacement.
+fundamentally wrong. Either it's not using `strcpy` correctly or it's
+doing something dumb and should be rewritten. Highlighting such problems
+is part of what makes `memcpy` such an effective replacement.
 
 Note: Everything here applies just as much to [`strcat`][strcat] and
 friends.
@@ -96,15 +96,15 @@ void set_oom_v4(struct err *err)
 }
 ```
 
-This covers the vast majority of cases of already-safe `strcpy`.
+This covers the vast majority of cases of already-correct `strcpy`.
 
 ### Less common cases
 
-`strcpy` can still be safe without knowing the exact source string length.
-It is enough to know its *upper bound* does not exceed the destination
-length. In this example — assuming the input is guaranteed to be
-null-terminated — this `strcpy` is safe without ever knowing the source
-string length:
+`strcpy` can still be correct without knowing the exact source string
+length. It is enough to know its *upper bound* does not exceed the
+destination length. In this example — assuming the input is guaranteed to
+be null-terminated — this `strcpy` is correct without ever knowing the
+source string length:
 
 ```c
 struct reply {
@@ -158,7 +158,7 @@ vmovups  ymm0, [rsi]
 vmovups  [rdi + 8], ymm0
 ```
 
-It's faster, safer, and there's no `strcpy` to attract complaints.
+It's faster and there's no `strcpy` to attract complaints.
 
 ### Niche cases
 
