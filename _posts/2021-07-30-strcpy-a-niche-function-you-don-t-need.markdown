@@ -23,6 +23,10 @@ is part of what makes `memcpy` such an effective replacement.
 Note: Everything here applies just as much to [`strcat`][strcat] and
 friends.
 
+Clarification update: This article is about correctness (objective), not
+safety (subjective). If the word "safety" comes to mind then you've missed
+the point.
+
 ### Common cases
 
 Buffer overflows arise when the destination is smaller than the source.
@@ -166,9 +170,9 @@ So where *is* `strcpy` useful? Only where all of the following apply:
 
 1. You only know the upper bound of the source string.
 
-2. It's undesirable to read beyond that length. Maybe it's unsafe to read
-   extra, or the upper bound is very large so an unconditional copy is too
-   expensive.
+2. It's undesirable to read beyond that length. Maybe storage is limited
+   to the exact length of the string, or the upper bound is very large so
+   an unconditional copy is too expensive.
 
 3. The source string is so long, and the function so hot, that it's worth
    avoiding two passes: `strlen` followed by `memcpy`.
