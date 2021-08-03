@@ -113,12 +113,10 @@ patched to play more nicely with Emacs. If you wanted to do the same,
 grab the source tarball, unpack it using the provided tools, then in the
 unpacked source:
 
-    $ cd windows
-    $ make -f Makefile.mgw CC="cc -fcommon"
+    $ make -C windows -f Makefile.mgw
 
-(The `-fcommon` flag is [currently necessary][fcommon] due to a bug in
-PuTTY.) You'll have a custom-built putty.exe, as well as the other
-tools. If you have any patches, apply those first!
+You'll have a custom-built putty.exe, as well as the other tools. If you
+have any patches, apply those first!
 
 Would you like to embed an extension language in your application? Lua
 is a solid choice, in part because it's such a well-behaved dependency.
@@ -134,17 +132,14 @@ Do you enjoy NetHack? Perhaps you'd like to [try a few of the custom
 patches][nhp]. This one is a little more complicated, but I was able to
 build NetHack 3.6.6 like so:
 
-    $ cd sys/winnt/
-    $ nhsetup.bat
-    $ cd ../../src/
-    $ sed -i s/mingw32-make/make/g Makefile.gcc
-    $ make -f Makefile.gcc cc="cc -fcommon" link="cc"
+    $ sys/winnt/nhsetup.bat
+    $ make -C src -f Makefile.gcc cc="cc -fcommon" link="cc"
 
-NetHack has the same bug as PuTTY, necessitating `-fcommon`. If you
-have any patches, apply them with `patch` before the last step. I don't
-belabor it here, but with just a little more effort, I was also able to
-produce a NetHack binary with curses support via [PDCurses][pd] —
-statically-linked of course.
+NetHack has [a bug necessitating `-fcommon`][fcommon]. If you have any
+patches, apply them with `patch` before the last step. I won't belabor it
+here, but with just a little more effort I was also able to produce a
+NetHack binary with curses support via [PDCurses][pd] — statically-linked
+of course.
 
 How about my archive encryption tool, [Enchive][enchive]? The one that
 [even works with 16-bit DOS compilers][dos]. It requires nothing special
