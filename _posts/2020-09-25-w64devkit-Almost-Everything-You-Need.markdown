@@ -28,9 +28,9 @@ a practical, *get-stuff-done* sense. It's much more a matter of
 about?
 
 * The distribution does not have WinAPI documentation. It's notoriously
-  difficult to obtain and, besides, unfriendly to redistribution. It's
-  essential for interfacing with the operating system and difficult to
-  work without. Even a dead tree reference book would suffice.
+  [difficult to obtain][chm] and, besides, unfriendly to redistribution.
+  It's essential for interfacing with the operating system and difficult
+  to work without. Even a dead tree reference book would suffice.
 
 * Depending on what you're building, you may still need specialized
   tools. For instance, game development requires [tools for editing art
@@ -173,6 +173,7 @@ happy answers to all these questions.
 
 [3d]: https://www.blender.org/
 [bb]: https://frippery.org/busybox/
+[chm]: http://laurencejackson.com/win32/
 [cm]: https://www.youtube.com/watch?v=W3ml7cO96F0&t=1h25m50s
 [compl]: https://georgebrock.github.io/talks/vim-completion/
 [ctags]: https://github.com/universal-ctags/ctags
