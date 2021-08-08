@@ -256,7 +256,7 @@ your own well-behaved alias commands.
 
 [all]: /blog/2020/09/25/
 [argv]: https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw
-[c]: https://github.com/skeeto/w64devkit/blob/master/alias.c
+[c]: https://github.com/skeeto/w64devkit/blob/master/src/alias.c
 [com]: /blog/2014/12/09/
 [free]: /blog/2016/01/31/
 [intro]: /blog/2020/05/15/
