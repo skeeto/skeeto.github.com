@@ -91,12 +91,12 @@ here's an awful hash function I made it generate as an example:
 uint32_t
 badhash32(uint32_t x)
 {
-    x *= UINT32_C(0x1eca7d79);
+    x *= 0x1eca7d79U;
     x ^= x >> 20;
     x  = (x << 8) | (x >> 24);
     x  = ~x;
     x ^= x << 5;
-    x += UINT32_C(0x10afe4e7);
+    x += 0x10afe4e7U;
     return x;
 }
 ```
@@ -177,9 +177,9 @@ uint32_t
 prospector32(uint32_t x)
 {
     x ^= x >> 15;
-    x *= UINT32_C(0x2c1b3c6d);
+    x *= 0x2c1b3c6dU;
     x ^= x >> 12;
-    x *= UINT32_C(0x297a2d39);
+    x *= 0x297a2d39U;
     x ^= x >> 15;
     return x;
 }
@@ -195,8 +195,8 @@ confirmed that, indeed, this is his hash function.)
 uint32_t
 hash32(uint32_t x)
 {
-    x = ((x >> 16) ^ x) * UINT32_C(0x45d9f3b);
-    x = ((x >> 16) ^ x) * UINT32_C(0x45d9f3b);
+    x = ((x >> 16) ^ x) * 0x45d9f3bU;
+    x = ((x >> 16) ^ x) * 0x45d9f3bU;
     x = (x >> 16) ^ x;
     return x;
 }
@@ -215,9 +215,9 @@ uint32_t
 murmurhash32_mix32(uint32_t x)
 {
     x ^= x >> 16;
-    x *= UINT32_C(0x85ebca6b);
+    x *= 0x85ebca6bU;
     x ^= x >> 13;
-    x *= UINT32_C(0xc2b2ae35);
+    x *= 0xc2b2ae35U;
     x ^= x >> 16;
     return x;
 }
@@ -240,9 +240,9 @@ uint32_t
 hash32(uint32_t x)
 {
     x ^= x >> 16;
-    x *= UINT32_C(0x45d9f3b);
+    x *= 0x45d9f3bU;
     x ^= x >> 16;
-    x *= UINT32_C(0x45d9f3b);
+    x *= 0x45d9f3bU;
     x ^= x >> 16;
     return x;
 }
@@ -308,9 +308,9 @@ uint64_t
 splittable64(uint64_t x)
 {
     x ^= x >> 30;
-    x *= UINT64_C(0xbf58476d1ce4e5b9);
+    x *= 0xbf58476d1ce4e5b9U;
     x ^= x >> 27;
-    x *= UINT64_C(0x94d049bb133111eb);
+    x *= 0x94d049bb133111ebU;
     x ^= x >> 31;
     return x;
 }
@@ -323,9 +323,9 @@ uint64_t
 hash64(uint64_t x)
 {
     x ^= x >> 32;
-    x *= UINT64_C(0xd6e8feb86659fd93);
+    x *= 0xd6e8feb86659fd93U;
     x ^= x >> 32;
-    x *= UINT64_C(0xd6e8feb86659fd93);
+    x *= 0xd6e8feb86659fd93U;
     x ^= x >> 32;
     return x;
 }
@@ -367,9 +367,9 @@ uint32_t
 lowbias32(uint32_t x)
 {
     x ^= x >> 16;
-    x *= UINT32_C(0x7feb352d);
+    x *= 0x7feb352dU;
     x ^= x >> 15;
-    x *= UINT32_C(0x846ca68b);
+    x *= 0x846ca68bU;
     x ^= x >> 16;
     return x;
 }
@@ -379,9 +379,9 @@ uint32_t
 lowbias32_r(uint32_t x)
 {
     x ^= x >> 16;
-    x *= UINT32_C(0x43021123);
+    x *= 0x43021123U;
     x ^= x >> 15 ^ x >> 30;
-    x *= UINT32_C(0x1d69e2a5);
+    x *= 0x1d69e2a5U;
     x ^= x >> 16;
     return x;
 }
@@ -397,11 +397,11 @@ uint32_t
 triple32(uint32_t x)
 {
     x ^= x >> 17;
-    x *= UINT32_C(0xed5ad4bb);
+    x *= 0xed5ad4bbU;
     x ^= x >> 11;
-    x *= UINT32_C(0xac4c1b51);
+    x *= 0xac4c1b51U;
     x ^= x >> 15;
-    x *= UINT32_C(0x31848bab);
+    x *= 0x31848babU;
     x ^= x >> 14;
     return x;
 }
