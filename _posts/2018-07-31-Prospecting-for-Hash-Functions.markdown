@@ -316,7 +316,22 @@ splittable64(uint64_t x)
 }
 ```
 
-I also came across [this one][h2]:
+Here's its inverse since it's sometimes useful:
+
+```c
+uint64_t
+splittable64_r(uint64_t x)
+{
+    x ^= x >> 31 ^ x >> 62;
+    x *= 0x319642b2d24d8ec3U;
+    x ^= x >> 27 ^ x >> 54;
+    x *= 0x96de1b173f119089U;
+    x ^= x >> 30 ^ x >> 60;
+    return x;
+}
+```
+
+I also came across [this function][h2]:
 
 ```c
 uint64_t
