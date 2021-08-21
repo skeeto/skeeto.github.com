@@ -339,41 +339,6 @@ the bias for 64-bit hash functions.) The prospector has found lots of
 functions with about the same bias, but nothing provably better. Until
 it does, I have no new 64-bit integer hash functions to offer.
 
-### String hash
-
-I'm also experimenting with using my hash function as a sort of
-primitive for a string hash function. Here I'm using my function in
-the loop to mix in one byte at a time, and finishing it with the same
-finalizer as MurmurHash3.
-
-```c
-uint32_t
-prospector32s(const void *buf, uint32_t len, uint32_t key)
-{
-    uint32_t hash = key;
-    const unsigned char *p = buf;
-    for (uint32_t i = 0; i < len; i++) {
-        hash += p[i];
-        hash ^= hash >> 15;
-        hash *= UINT32_C(0x2c1b3c6d);
-        hash ^= hash >> 12;
-        hash *= UINT32_C(0x297a2d39);
-        hash ^= hash >> 15;
-    }
-    hash ^= len;
-    hash ^= hash >> 16;
-    hash *= UINT32_C(0x85ebca6b);
-    hash ^= hash >> 13;
-    hash *= UINT32_C(0xc2b2ae35);
-    hash ^= hash >> 16;
-    return hash + key;
-}
-```
-
-It has the typical amount of collisions when running it on a [large
-dictionary][dict], so it *seems* decent enough but I don't know if this
-hash function is worth much. More experimentation needed.
-
 ### Beyond random search
 
 Right now the prospector does a completely random, unstructured search
@@ -455,7 +420,6 @@ shaders, and the results are looking good:
 
 
 [blowpipe]: /blog/2017/09/15/
-[dict]: https://packages.debian.org/sid/wamerican-large
 [h2]: https://gist.github.com/degski/6e2069d6035ae04d5d6f64981c995ec2
 [inv1]: https://naml.us/post/inverse-of-a-hash-function/
 [inv2]: http://c42f.github.io/2015/09/21/inverting-32-bit-wang-hash.html
