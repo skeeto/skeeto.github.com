@@ -169,6 +169,6 @@ in the middle.
 [pcg]: http://www.pcg-random.org/
 [prng]: /blog/2017/09/21/
 [rc5]: http://people.csail.mit.edu/rivest/Rivest-rc5rev.pdf
-[speck]: https://github.com/skeeto/speck-cipher
+[speck]: https://github.com/skeeto/scratch/tree/master/speck
 [ss]: http://eprint.iacr.org/2013/404.pdf
 [utf8]: /blog/2017/10/06/

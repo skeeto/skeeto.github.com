@@ -522,7 +522,7 @@ Instead I'll save these for other articles!
 [int]: /blog/2017/07/19/
 [ivan]: https://github.com/Attnam/ivan
 [js]: /blog/2013/03/27/
-[lc4]: https://github.com/skeeto/elsiefour
+[lc4]: https://github.com/skeeto/scratch/tree/master/elsiefour
 [locale]: https://www.sigbus.info/how-i-wrote-a-self-hosting-c-compiler-in-40-days.html#day42
 [merge]: https://github.com/Attnam/ivan/pull/363
 [perl]: /blog/2009/01/04
@@ -532,7 +532,7 @@ Instead I'll save these for other articles!
 [reloc]: /blog/2016/12/23/
 [rs]: https://en.wikipedia.org/wiki/Reservoir_sampling
 [rw]: http://www.rinkworks.com/namegen/
-[set32]: https://github.com/skeeto/set32
+[set32]: https://github.com/skeeto/scratch/tree/master/set32
 [stupid]: https://www.npmjs.com/package/is-odd
 [thr]: /blog/2018/05/31/
 [utf7]: https://github.com/skeeto/utf-7
