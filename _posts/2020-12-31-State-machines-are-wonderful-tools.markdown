@@ -109,7 +109,7 @@ UTF-8 automaton:
 Then I encoded this diagram directly into a much larger (2,064-byte), less
 elegant table, too large to display inline here:
 
-<https://gist.github.com/skeeto/945ab20bb6a8852da1cb3e504b7e7200>
+<https://github.com/skeeto/scratch/blob/master/misc/utf8_decode.c>
 
 However, the trade-off is that the executable code is smaller, faster, and
 [branchless again][bra] (by accident, I swear!):
