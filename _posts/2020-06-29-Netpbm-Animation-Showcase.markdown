@@ -158,7 +158,7 @@ small this can get!
 [lcg]: /blog/2019/11/19/
 [lorenz-i]: /img/showcase/lorenz.jpg
 [lorenz-obf]: https://gist.github.com/skeeto/45d825c01b00c10452634933d03e766d
-[lorenz-s]: https://gist.github.com/skeeto/19918b561f66ee0065f9e49cc4380d4a
+[lorenz-s]: https://github.com/skeeto/scratch/blob/master/animation/lorenz.c
 [lorenz-v]: https://nullprogram.com/video/?v=lorenz
 [lorenz-webgl]: /blog/2018/02/15/
 [magnet-i]: /img/showcase/magnet.jpg
@@ -175,11 +175,11 @@ small this can get!
 [pixelsort-v]: https://nullprogram.com/video/?v=pixelsort
 [pixelsort]: https://old.reddit.com/r/generative/comments/9o1plu/generative_pixel_sorting_variant/
 [randu-i]: /img/showcase/randu.jpg
-[randu-s]: https://gist.github.com/skeeto/05c1dce49140fc4ca709f5e887ddb527
+[randu-s]: https://github.com/skeeto/scratch/blob/master/animation/randu.c
 [randu-v]: https://nullprogram.com/video/?v=randu
 [randu]: https://en.wikipedia.org/wiki/RANDU
 [rooks-i]: /img/showcase/rooks.jpg
-[rooks-s]: https://gist.github.com/skeeto/ea9afb36629d89eccd638ad1da870cfc
+[rooks-s]: https://github.com/skeeto/scratch/blob/master/animation/rooks.c
 [rooks-v]: https://nullprogram.com/video/?v=rooks
 [rooks]: https://possiblywrong.wordpress.com/2020/05/20/sliding-rooks-and-queens/
 [voronoi-i]: /img/showcase/voronoi.jpg
@@ -187,7 +187,7 @@ small this can get!
 [voronoi-v]: https://nullprogram.com/video/?v=voronoi
 [voronoi]: https://old.reddit.com/r/proceduralgeneration/comments/fuy6tk/voronoi_with_manhattan_distance_in_c/
 [walk3d-i]: /img/showcase/walk3d.jpg
-[walk3d-s]: https://gist.github.com/skeeto/550fb3171bd24019567702cd0c513b3d
+[walk3d-s]: https://github.com/skeeto/scratch/blob/master/animation/walk3d.c
 [walk3d-v]: https://nullprogram.com/video/?v=walk3d
 [walk3d]: https://old.reddit.com/r/proceduralgeneration/comments/geka1q/random_walking_in_3d/
 [walkers-i]: /img/showcase/walkers.jpg
