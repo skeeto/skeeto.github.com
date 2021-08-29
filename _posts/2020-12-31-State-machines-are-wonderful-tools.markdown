@@ -63,7 +63,7 @@ few bytes of memory to operate, and will fit on even the smallest of
 microcontrollers. The full source listing, documentation, and
 comprehensive test suite:
 
-<https://gist.github.com/skeeto/f9e198b913b228f3fd773a0c4e266579>
+<https://github.com/skeeto/scratch/blob/master/misc/morsecode.c>
 
 The state machine is trie-shaped, and the 100-byte table `t` is the static
 [encoding of the Morse code trie][trie]:
