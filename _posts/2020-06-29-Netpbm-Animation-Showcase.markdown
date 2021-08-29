@@ -143,15 +143,15 @@ small this can get!
 
 
 [animaze-i]: /img/showcase/animaze.jpg
-[animaze-s]: https://gist.github.com/skeeto/8b5c8c3475f4a02fb0c0eab1fe018e9b
+[animaze-s]: https://github.com/skeeto/scratch/blob/master/animaze/animaze.c
 [animaze-v]: https://nullprogram.com/video/?v=kruskal
 [animaze]: /blog/2016/09/02/
 [colorsort-i]: /img/showcase/colorsort.jpg
-[colorsort-s]: https://gist.github.com/skeeto/a58bb8c5eb5b9124435bc1fd41ced891
+[colorsort-s]: https://github.com/skeeto/scratch/blob/master/animation/colorsort.c
 [colorsort-v]: https://nullprogram.com/video/?v=colors-odd-even
 [colorsort]: https://old.reddit.com/r/woahdude/comments/73oz1x/from_chaos_to_order/
 [fire-i]: /img/showcase/fire.jpg
-[fire-s]: https://gist.github.com/skeeto/871f6b56684608ab64131afe8e7c7280
+[fire-s]: https://github.com/skeeto/scratch/blob/master/animation/fire.c
 [fire-v]: https://nullprogram.com/video/?v=fire
 [fire-webgl]: /blog/2020/04/30/
 [fire]: https://fabiensanglard.net/doom_fire_psx/
@@ -162,16 +162,16 @@ small this can get!
 [lorenz-v]: https://nullprogram.com/video/?v=lorenz
 [lorenz-webgl]: /blog/2018/02/15/
 [magnet-i]: /img/showcase/magnet.jpg
-[magnet-s]: https://gist.github.com/skeeto/132437a454242ff1eb988655361a390a
+[magnet-s]: https://github.com/skeeto/scratch/blob/master/animation/magnet.c
 [magnet-v]: https://nullprogram.com/video/?v=magnet
 [magnet]: http://bit-player.org/2019/glaubers-dynamics
 [mm]: /blog/2017/11/03/
 [mt-i]: /img/showcase/mt.jpg
-[mt-s]: https://gist.github.com/skeeto/7f582c44add49edd23afd03e2d4bd304
+[mt-s]: https://github.com/skeeto/scratch/blob/master/animation/mtvisualize.c
 [mt-v]: https://nullprogram.com/video/?v=mt19937-shuffle
 [opengl]: /blog/2015/06/06/
 [pixelsort-i]: /img/showcase/pixelsort.jpg
-[pixelsort-s]: https://gist.github.com/skeeto/29ce8af8c911033bd8c5a2bb3dd591f6
+[pixelsort-s]: https://github.com/skeeto/scratch/blob/master/animation/pixelsort.c
 [pixelsort-v]: https://nullprogram.com/video/?v=pixelsort
 [pixelsort]: https://old.reddit.com/r/generative/comments/9o1plu/generative_pixel_sorting_variant/
 [randu-i]: /img/showcase/randu.jpg
@@ -183,7 +183,7 @@ small this can get!
 [rooks-v]: https://nullprogram.com/video/?v=rooks
 [rooks]: https://possiblywrong.wordpress.com/2020/05/20/sliding-rooks-and-queens/
 [voronoi-i]: /img/showcase/voronoi.jpg
-[voronoi-s]: https://gist.github.com/skeeto/871ff25a9c3c92c335a31a4f87f5c4d8
+[voronoi-s]: https://github.com/skeeto/scratch/blob/master/animation/voronoi.c
 [voronoi-v]: https://nullprogram.com/video/?v=voronoi
 [voronoi]: https://old.reddit.com/r/proceduralgeneration/comments/fuy6tk/voronoi_with_manhattan_distance_in_c/
 [walk3d-i]: /img/showcase/walk3d.jpg
@@ -191,6 +191,6 @@ small this can get!
 [walk3d-v]: https://nullprogram.com/video/?v=walk3d
 [walk3d]: https://old.reddit.com/r/proceduralgeneration/comments/geka1q/random_walking_in_3d/
 [walkers-i]: /img/showcase/walkers.jpg
-[walkers-s]: https://gist.github.com/skeeto/c0262de33f7222f85a19144c8be2a725
+[walkers-s]: https://github.com/skeeto/scratch/blob/master/animation/walkers.c
 [walkers-v]: https://nullprogram.com/video/?v=walk2d
 [walkers]: https://old.reddit.com/r/proceduralgeneration/comments/g49qwk/random_walkers_abstract_art/

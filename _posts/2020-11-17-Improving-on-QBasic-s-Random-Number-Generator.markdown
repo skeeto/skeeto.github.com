@@ -483,7 +483,7 @@ source: [**`sponge4.bas`**][gist]
 [bs]: /blog/2020/10/19/
 [const]: /blog/2019/11/19/
 [ent]: /blog/2019/04/30/
-[gist]: https://gist.github.com/skeeto/17cb335d9652b2fc6f11485393362543
+[gist]: https://github.com/skeeto/scratch/blob/master/sp4/sponge4.bas
 [hn]: https://news.ycombinator.com/item?id=25120083
 [info]: http://www.qb64.net/forum/index_topic_10727-0/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
@@ -498,6 +498,6 @@ source: [**`sponge4.bas`**][gist]
 [rc4]: https://en.wikipedia.org/wiki/RC4
 [rnd]: https://www.qb64.org/wiki/RND
 [sh]: /blog/2018/12/25/
-[sp4]: https://gist.github.com/skeeto/f872ec5672f7fc90c6085ecbaa16b2f3
+[sp4]: https://github.com/skeeto/scratch/tree/master/sp4
 [sponge]: https://en.wikipedia.org/wiki/Sponge_function
 [timer]: https://www.qb64.org/wiki/TIMER
