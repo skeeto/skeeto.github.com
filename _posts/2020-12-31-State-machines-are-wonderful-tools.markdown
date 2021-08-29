@@ -283,7 +283,7 @@ wc(string.byte(' '))  -- => 2
 Finally, a couple more examples not worth describing in detail here. First
 a Unicode case folding state machine:
 
-<https://gist.github.com/skeeto/1b6443fb8dc85673a76c46027b3e3467>
+<https://github.com/skeeto/scratch/blob/master/misc/casefold.c>
 
 It's just an interface to do a lookup into the [official case folding
 table][cs]. It was an experiment, and I *probably* wouldn't use it in a
