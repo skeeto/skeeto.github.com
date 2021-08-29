@@ -226,7 +226,7 @@ automatic, but I'm glad I have at least *some* solution figured out.
 [credui]: https://docs.microsoft.com/en-us/windows/win32/api/wincred/nf-wincred-creduicmdlinepromptforcredentialsa
 [enchive]: /blog/2017/03/12/
 [gcm]: https://docs.microsoft.com/en-us/windows/console/getconsolemode
-[gist]: https://gist.github.com/skeeto/a43250fefafeaa1d6d3bcd202dc4cbe3
+[gist]: https://github.com/skeeto/scratch/blob/master/misc/read-password-w32.c
 [hn]: https://news.ycombinator.com/item?id=23064864
 [index]: /blog/2019/05/29/
 [pgp]: /blog/2019/07/10/
