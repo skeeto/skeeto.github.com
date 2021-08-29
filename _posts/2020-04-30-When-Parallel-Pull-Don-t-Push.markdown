@@ -57,7 +57,7 @@ eventually computed this 10000x10000 identity configuration:
 
 This took 10 days to compute using my optimized implementation:
 
-<https://gist.github.com/skeeto/4662a96a2e55d9b78294ac98b1dbc0f1>
+<https://github.com/skeeto/scratch/blob/master/animation/sandpiles.c>
 
 I picked an algorithm described [in a code golf challenge][algo]:
 
