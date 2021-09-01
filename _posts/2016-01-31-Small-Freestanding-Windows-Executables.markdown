@@ -40,10 +40,10 @@ Mingw-w64 not to link against it. An alternative would be
 Cygwin, which is a very complete POSIX environment, but is heavy and
 GPL-encumbered.
 
-Sometimes I'd prefer to be more direct: skip the C library altogether
-and talk directly to the operating system. On Windows that's the Win32
-API. Ultimately I want a tiny, standalone .exe that only links against
-system DLLs.
+Sometimes I'd prefer to be more direct: [skip the C standard library
+altogether][hh] and talk directly to the operating system. On Windows
+that's the Win32 API. Ultimately I want a tiny, standalone .exe that only
+links against system DLLs.
 
 ### Linux vs. Windows
 
@@ -206,3 +206,4 @@ I may go this route for [the upcoming 7DRL 2016][7drl] in March.
 [small]: http://www.phreedom.org/research/tinype/
 [opengl]: /blog/2015/06/06/
 [7drl]: http://7drl.org/2016/01/13/7drl-2016-announced-for-5-13-march/
+[hh]: https://hero.handmade.network/forums/code-discussion/t/94-guide_-_how_to_avoid_c_c++_runtime_on_windows
