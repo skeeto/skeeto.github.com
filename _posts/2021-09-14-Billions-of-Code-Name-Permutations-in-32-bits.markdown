@@ -30,11 +30,11 @@ noun, but as discussed it wouldn't take long for a collision. The naive
 approach is to keep a database of previously-generated names, and to
 consult this database when generating new names. That works, but there's
 an even better solution: use a random permutation. Done well, we don't
-need to keep track of previous names, the generator won't repeat until
+need to keep track of previous names, and the generator won't repeat until
 it's exhausted all possibilities.
 
 Further, the total number of possible code names, 4028, is suspiciously
-shy of 4,096 a power of two (`2**12`). That makes designing and
+shy of 4,096, a power of two (`2**12`). That makes designing and
 implementing an efficient permutation that much easier.
 
 ### A linear congruential generator
@@ -236,7 +236,7 @@ is cycle-walking, allowing for random-access to a permutation of a smaller
 domain (e.g. 4,028 elements) through permutation of a larger domain (e.g.
 4096 elements).
 
-Here's such a code name generator build around a bespoke 12-bit
+Here's such a code name generator built around a bespoke 12-bit
 xorshift-multiply permutation. I used 4 "rounds" since xorshift-multiply
 is less effective the smaller the permutation.
 
