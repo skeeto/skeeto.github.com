@@ -68,7 +68,7 @@ try:
     _pledge.restype = ctypes.c_int
     _pledge.argtypes = ctypes.c_char_p, ctypes.c_char_p
 except Exception:
-    pass
+    _pledge = None
 ```
 
 Catching a broad Exception isn't great, but it's the best we can do since
@@ -89,7 +89,7 @@ try:
     _unveil.restype = ctypes.c_int
     _unveil.argtypes = ctypes.c_char_p, ctypes.c_char_p
 except Exception:
-    pass
+    _unveil = None
 ```
 
 ### Pythonic wrappers
