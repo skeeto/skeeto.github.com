@@ -4,7 +4,10 @@ layout: post
 date: 2021-09-15T02:46:56Z
 tags: [bsd, c, python]
 uuid: cd3857dd-270c-430e-824d-6512688687a3
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 Years ago, OpenBSD gained two new security system calls, [`pledge(2)`][p]
 (originally [`tame(2)`][t]) and [`unveil`][u]. In both, an application
@@ -19,6 +22,8 @@ As [discussed previously][dll], it's quite easy to access C APIs from
 Python through its [`ctypes`][ctypes] package, and this is no exception.
 In this article shows how to do it. Here's the full source if you want to
 dive in: [**`openbsd.py`**][src].
+
+<!--more-->
 
 I've chosen these extra constraints:
 
@@ -225,6 +230,7 @@ reasonably need to do many arbitrary, undocumented things at any time.
 [ctypes]: https://docs.python.org/3/library/ctypes.html
 [dll]: /blog/2021/06/29/
 [dlopen]: https://man.openbsd.org/dlopen.3
+[hn]: https://news.ycombinator.com/item?id=28535255
 [p]: https://man.openbsd.org/pledge.2
 [src]: https://github.com/skeeto/scratch/tree/master/misc/openbsd.py
 [str]: https://flak.tedunangst.com/post/string-interfaces
