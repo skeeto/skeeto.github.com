@@ -20,7 +20,7 @@ it shouldn't. So how can a Python program access these system calls?
 
 As [discussed previously][dll], it's quite easy to access C APIs from
 Python through its [`ctypes`][ctypes] package, and this is no exception.
-In this article shows how to do it. Here's the full source if you want to
+In this article I show how to do it. Here's the full source if you want to
 dive in: [**`openbsd.py`**][src].
 
 <!--more-->
@@ -126,7 +126,7 @@ As usual, a return of -1 means there was an error, in which case we fetch
 Python functions that accept paths, such as `open`, generally accept
 either strings or bytes. On unix-like systems, [paths are fundamentally
 bytestrings][wtf] and not necessarily Unicode, so it's necessary to accept
-bytes. Since strings are nearly always more convenient, they takes both.
+bytes. Since strings are nearly always more convenient, they take both.
 The `unveil` wrapper here will do the same. If it's a string, encode it,
 otherwise pass it straight through.
 
