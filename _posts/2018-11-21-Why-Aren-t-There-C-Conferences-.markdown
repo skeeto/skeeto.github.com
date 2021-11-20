@@ -154,6 +154,7 @@ conferences which you can just pretend are about C:
 * [Meeting Cpp 2015: Chandler Carruth: Understanding Compiler Optimization](https://www.youtube.com/watch?v=FnGCDLhaxKU)
 * [BoostCon 2013: Chandler Carruth: Optimizing the Emergent Structures of C++ ](https://www.youtube.com/watch?v=eR34r7HOU14)
 * [CppCon 2016: Nicholas Ormrod “The strange details of std::string at Facebook" ](https://www.youtube.com/watch?v=kPR8h4-qZdk)
+* [Handmade Seattle 2021: Context is Everything: Andreas Fredriksson](https://vimeo.com/644068002)
 
 
 [essay]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
