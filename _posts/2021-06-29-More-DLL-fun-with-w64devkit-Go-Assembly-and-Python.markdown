@@ -68,14 +68,14 @@ Similarly `:make` invokes `go build` and, as expected, populates the
 quickfix list.
 
 ```vim
-autocmd filetype go setlocal makeprg=go\ build
-autocmd filetype go map <silent> <buffer> <leader>i
+autocmd FileType go setlocal makeprg=go\ build
+autocmd FileType go map <silent> <buffer> <leader>i
     \ :update \|
     \ :cexpr system("goimports -w " . expand("%")) \|
     \ :silent edit<cr>
-autocmd filetype go map <buffer> [[
+autocmd FileType go map <buffer> [[
     \ ?^\(func\\|var\\|type\\|import\\|package\)\><cr>
-autocmd filetype go map <buffer> ]]
+autocmd FileType go map <buffer> ]]
     \ /^\(func\\|var\\|type\\|import\\|package\)\><cr>
 ```
 
