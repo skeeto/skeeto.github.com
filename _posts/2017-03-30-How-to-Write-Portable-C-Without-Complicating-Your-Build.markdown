@@ -198,8 +198,8 @@ my_sleep(int s)
 Then the rest of the program calls `my_sleep()`. There's another example
 in [the OpenMP article][openmp] with `pwrite(2)` and `WriteFile()`. This
 demonstrates that supporting a bunch of different unix-like systems is
-really easily, but introducing Windows portability adds a
-disproportionate amount of complexity.
+really easy, but introducing Windows portability adds a disproportionate
+amount of complexity.
 
 #### Caveat: paths and filenames
 
