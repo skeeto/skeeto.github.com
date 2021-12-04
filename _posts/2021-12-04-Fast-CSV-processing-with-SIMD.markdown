@@ -4,6 +4,7 @@ layout: post
 date: 2021-12-04T01:13:33Z
 tags: [c, optimization]
 uuid: ba6e0ccf-1e11-4c5d-bc53-dd11fbc6da6c
+excerpt_separator: <!--more-->
 ---
 
 *This article was discussed [on Hacker News][hn].*
@@ -18,6 +19,8 @@ there's yet another approach using SIMD intrinsics, plus some bit
 twiddling tricks, which increases the processing speed by an order of
 magnitude. [**My csvquote implementation**][fast] includes both
 approaches.
+
+<!--more-->
 
 ### Background
 
