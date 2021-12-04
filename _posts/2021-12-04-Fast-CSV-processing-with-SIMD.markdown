@@ -132,10 +132,10 @@ void encode(unsigned char *buf, size_t len)
 }
 ```
 
-(Well, strictly speaking, the decoder need not process quotes.) By my
-benchmark — `csvdump` in my implementation — this is 3x faster than the
-original on my laptop. However, there's still low-hanging fruit to be
-picked!
+Well, strictly speaking, the decoder need not process quotes. By my
+benchmark (`csvdump` in my implementation) this processes at ~1 GiB/s on
+my laptop — 3x faster than the original. However, there's still
+low-hanging fruit to be picked!
 
 ### SIMD and two's complement
 
@@ -300,9 +300,9 @@ few instructions.
 ### Results
 
 In my benchmark, which includes randomly occurring quoted fields, the SIMD
-version is 10x faster than the original. I haven't profiled, but I expect
-mispredictions on the bit-mask loop are the main obstacle preventing the
-hypothetical 32x speedup.
+version processes at ~4 GiB/s — 10x faster than the original. I haven't
+profiled, but I expect mispredictions on the bit-mask loop are the main
+obstacle preventing the hypothetical 32x speedup.
 
 My version also optionally rejects inputs containing the two special
 control characters since the encoding would be irreversible. This is
