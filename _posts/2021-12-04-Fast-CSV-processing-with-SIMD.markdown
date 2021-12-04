@@ -6,6 +6,8 @@ tags: [c, optimization]
 uuid: ba6e0ccf-1e11-4c5d-bc53-dd11fbc6da6c
 ---
 
+*This article was discussed [on Hacker News][hn].*
+
 I recently learned of [csvquote][], a tool that encodes troublesome
 [CSV][] characters such that unix tools can correctly process them. It
 reverses the encoding at the end of the pipeline, recovering the original
@@ -308,12 +310,23 @@ My version also optionally rejects inputs containing the two special
 control characters since the encoding would be irreversible. This is
 implemented in SIMD when available, and it slows processing by around 10%.
 
+### Followup: PCLMULQDQ
+
+Geoff Langdale and others have [graciously pointed out PCLMULQDQ][mail],
+which can [compute the quote masks using carryless multiplication][clmul1]
+([also][clmul2]) entirely in SIMD and without a loop. I haven't yet quite
+worked out exactly how to apply it, but it should be much faster.
+
 
 [CSV]: https://datatracker.ietf.org/doc/html/rfc4180
 [br]: /blog/2017/10/06/
-[csvquote]: https://github.com/dbro/csvquote
+[clmul1]: https://wunkolo.github.io/post/2020/05/pclmulqdq-tricks/
+[clmul2]: https://branchfree.org/2019/03/06/code-fragment-finding-quote-pairs-with-carry-less-multiply-pclmulqdq/
 [context]: https://vimeo.com/644068002
+[csvquote]: https://github.com/dbro/csvquote
 [fast]: https://github.com/skeeto/scratch/tree/master/csvquote
+[hn]: https://news.ycombinator.com/item?id=29439403
 [k]: https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
+[mail]: https://lists.sr.ht/~skeeto/public-inbox/%3CCABwTFSrDpNkmJs6TpkAfofcZq6e8YWaJUur20xZBz7mDBnvQ2w%40mail.gmail.com%3E
 [mm]: https://stackoverflow.com/questions/21622212/how-to-perform-the-inverse-of-mm256-movemask-epi8-vpmovmskb
 [sm]: /blog/2020/12/31/
