@@ -23,7 +23,7 @@ bad, even the [early ones][blast]? Microsoft's C runtime has defined how
 the standard library should work on the platform, and everyone else
 followed along for the sake of compatibility. I'm excluding [Cygwin][] and
 its major fork, [MSYS2][], despite not inheriting any of these flaws. They
-change so much that they're effectively a whole new platforms, not truly
+change so much that they're effectively whole new platforms, not truly
 "native" to Windows.
 
 In practice, C++ standard libraries are implemented on top of a C standard
