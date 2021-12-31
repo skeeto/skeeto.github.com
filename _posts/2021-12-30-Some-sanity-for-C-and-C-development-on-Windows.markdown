@@ -30,7 +30,7 @@ In practice, C++ standard libraries are implemented on top of a C standard
 library, which is why C++ shares the same problems. CPython dodges these
 issues: Though written in C, on Windows it bypasses the broken C standard
 library and directly calls the proprietary interfaces. Other language
-implementations, such "gc" Go, simply aren't build on C at all, and
+implementations, such "gc" Go, simply aren't built on C at all, and
 instead do things correctly in the first place — the behaviors the C
 runtimes should have had all along.
 
@@ -49,7 +49,7 @@ I've put together a "library" named **[libwinsane][]**. It solves all
 problems discussed in this article, except for one. No source changes
 required, simply link it into your program.
 
-### What's exactly is broken?
+### What exactly is broken?
 
 The Windows API comes in two flavors: narrow with an "A" ("ANSI") suffix,
 and wide (Unicode, UTF-16) with a "W" suffix. The former is the legacy
@@ -188,12 +188,12 @@ programs, including Git, grew their own, annoying, newline conversion
 
 ### libwinsane
 
-I introduced libwinsane the beginning of the article, which fixes all this
-simply by being linked into a program. It includes the magic XML manifest
-`.rsrc` section, configures the console for UTF-8 output, and sets
-standard streams to binary before `main` (via a GCC constructor). I called
-it a "library", but it's actually a single object file. It can't be a
-static library since it must be linked into the program despite not
+I introduced libwinsane at the beginning of the article, which fixes all
+this simply by being linked into a program. It includes the magic XML
+manifest `.rsrc` section, configures the console for UTF-8 output, and
+sets standard streams to binary before `main` (via a GCC constructor). I
+called it a "library", but it's actually a single object file. It can't be
+a static library since it must be linked into the program despite not
 actually being referenced by the program.
 
 So normally this program:
