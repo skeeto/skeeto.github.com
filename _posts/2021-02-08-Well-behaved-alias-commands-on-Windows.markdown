@@ -131,6 +131,14 @@ Speaking of PowerShell, could we use that instead? Unfortunately not:
    there are ways to make this work via system-wide configuration, but
    that's off the table.)
 
+3. Everything in PowerShell is broken. For example, it does not support
+   input redirection with files, and instead you must use the `cat`-like
+   command, `Get-Content`, to pipe file contents. However, `Get-Content`
+   translates its input and quietly damages your data. There is no way to
+   disable this "feature" in the version of PowerShell that ships with
+   Windows, meaning it cannot accomplish the simplest of tasks. This is
+   just one of many ways that PowerShell is broken beyond usefulness.
+
 Item (2) also affects w64devkit. It has a Bourne shell, but shell scripts
 are still not first class citizens since Windows doesn't know what to do
 with them. Fixing would require system-wide configuration, antithetical to

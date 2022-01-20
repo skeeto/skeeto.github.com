@@ -112,10 +112,11 @@ standard commands. Unfortunately there are no manual pages, but you can
 access basic usage information for any command with `busybox CMD --help`.
 
 Windows' standard command shell is `cmd.exe`. Unfortunately this shell is
-terrible and exists mostly for legacy compatibility. For users who
-regularly need a shell, the intended replacement is PowerShell. It's a
-significant improvement, but 1) it's still mediocre, 2) sticking to POSIX
-shell conventions significantly improves build portability, 3) unix tool
+terrible and exists mostly for legacy compatibility. The intended
+replacement is PowerShell for users who regularly use a shell. However,
+PowerShell is fundamentally broken, does virtually everything incorrectly,
+and manages to be even worse than `cmd.exe`. Besides, sticking to POSIX
+shell conventions significantly improves build portability, and unix tool
 knowledge is transferable to basically every other operating system.
 
 Unix's standard shell was the Bourne shell, `sh`. The shells in use today
