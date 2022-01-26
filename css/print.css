@@ -35,7 +35,6 @@
         margin: 0;
         padding: 0;
         box-shadow: none;
-        page-break-after: always;
     }
 
     article:after {
