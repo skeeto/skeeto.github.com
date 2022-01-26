@@ -1,19 +1,4 @@
 @font-face {
-  font-family: 'Signika';
-  src: url(Signika.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'SourceSansPro';
-  src: url(SourceSansPro.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'DroidSansMono';
-  src: url(DroidSansMono.woff) format('woff');
-}
-
-@font-face {
   font-family: 'foundation-icons';
   src: url('foundation-icons.woff') format('woff');
   font-weight: normal;
@@ -27,8 +12,8 @@
 body {
     color: Black;
     background-color: White;
-    font-family: 'SourceSansPro', sans-serif;
-    font-size: 19px;
+    font-family: sans-serif;
+    font-size: 16px;
 }
 
 img {
@@ -49,7 +34,6 @@ header {
     border-bottom: 1px solid BlanchedAlmond;
     box-shadow: 0 0 10px DarkGray;
     background-color: Beige;
-    font-family: 'Signika';
 }
 
 header a {
@@ -91,12 +75,12 @@ article h3,
 article h4,
 article h5,
 article h6 {
-    font-family: 'Signika', sans-serif;
+    font-family: sans-serif;
 }
 
 header .container h1 {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 0.1rem;
 }
 
@@ -111,12 +95,12 @@ header address div {
 }
 
 header address {
-    font-size: 12px;
+    font-size: 11px;
 }
 
 header nav {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 14px;
     position: absolute;
     right: 0;
     top: 0.8rem;
@@ -179,7 +163,7 @@ main {
     display: block;
     margin: 7rem auto 0 auto;
     max-width: 700px;
-    line-height: 1.45;
+    line-height: 1.5;
     overflow-wrap: break-word;
     text-align: justify;
 }
@@ -196,13 +180,13 @@ main article > h2 a:visited {
 main article h2 {
     text-align: center;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
     margin: 0.5em 0;
 }
 
 main article h3 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 main article > time {
@@ -283,7 +267,7 @@ main article li code {
 
 main article pre code {
     font-size: 15px;
-    font-family: DroidSansMono, monospace;
+    font-family: monospace;
 }
 
 main article pre {
