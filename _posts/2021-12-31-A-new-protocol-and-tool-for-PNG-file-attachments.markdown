@@ -228,6 +228,6 @@ int main(int argc, char **argv)
 [Graphviz]: https://graphviz.org/
 [ImageMagick]: https://www.imagemagick.org/
 [cmd]: /blog/2020/08/01/
-[gnuplot]: https://graphviz.org/
+[gnuplot]: http://www.gnuplot.info/
 [pngattach]: https://github.com/skeeto/scratch/tree/master/pngattach
 [sm]: /blog/2020/12/31/
