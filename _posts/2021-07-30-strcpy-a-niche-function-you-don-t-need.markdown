@@ -230,9 +230,10 @@ errno_t strcpy_s(char *restrict s1,
 The `rsize_t` is a `size_t` with a "restricted" range (`RSIZE_MAX`,
 probably `SIZE_MAX/2`) intended to catch integer underflows. If you
 [accidentally compute a negative length][ovf], it will be a very large
-number in unsigned form. (An indicator that `size_t` should have
-originally been defined as signed.) This will be outside the restricted
-range, and so the operation isn't attempted due to a likely underflow.
+number in unsigned form. (An indicator that [`size_t` should have
+originally been defined as signed][signed].) This will be outside the
+restricted range, and so the operation isn't attempted due to a likely
+underflow.
 
 These "safe" functions were modeled after functions of the same name in
 MSVC. However, as noted, there are no practical implementations of Annex
@@ -263,11 +264,12 @@ security. Don't use these functions.
 
 
 [fat]: /blog/2019/06/30/
+[ms]: https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/strcpy-s-wcscpy-s-mbscpy-s?view=msvc-160
 [ovf]: /blog/2017/07/19/
 [rep]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1967.htm
+[signed]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [strcat]: https://man7.org/linux/man-pages/man3/strcat.3.html
 [strcpy]: https://man7.org/linux/man-pages/man3/strcpy.3.html
-[strncpy]: https://man7.org/linux/man-pages/man3/strncpy.3.html
 [strlcpy]: https://man.openbsd.org/strlcpy.3
+[strncpy]: https://man7.org/linux/man-pages/man3/strncpy.3.html
 [utf]: /blog/2017/10/06/
-[ms]: https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/strcpy-s-wcscpy-s-mbscpy-s?view=msvc-160
