@@ -8,7 +8,7 @@ uuid: 04c886e0-3434-4292-b7de-e8213461838c
 
 I've been experimenting again lately with [writing software without a
 runtime][fs] aside from the operating system itself, both on Linux and
-windows. Another way to look at it: I write and embed a bespoke, minimal
+Windows. Another way to look at it: I write and embed a bespoke, minimal
 runtime within the application. One of the runtime's core jobs is
 retrieving command line arguments from the operating system. On Windows
 this is a deeper rabbit hole than I expected, and far more complex than I
@@ -91,13 +91,13 @@ wchar_t *cmdline_fetch(void)
 }
 ```
 
-This (currently) returns exactly the same address as GetCommandLineW.
-There's little reason to do it this way other than to annoy Raymond Chen,
-but it's still neat and maybe has some super niche use. Technically some
-of these offsets are undocumented and/or subject to change, except
-Microsoft's own static link CRT also hardcodes all these offsets. It's
-easy to find: disassemble any statically linked program, look for the `gs`
-register, and you'll find it using these offsets, too.
+From Windows XP through Windows 11, this returns exactly the same address
+as GetCommandLineW. There's little reason to do it this way other than to
+annoy Raymond Chen, but it's still neat and maybe has some super niche
+use. Technically some of these offsets are undocumented and/or subject to
+change, except Microsoft's own static link CRT also hardcodes all these
+offsets. It's easy to find: disassemble any statically linked program,
+look for the `gs` register, and you'll find it using these offsets, too.
 
 If you look carefully at the `UNICODE_STRING` you'll see the length is
 given by a `USHORT` in units of bytes, despite being a 16-bit `wchar_t`
@@ -108,9 +108,9 @@ GetCommandLineW is from `kernel32.dll`, but CommandLineToArgvW is a bit
 more off the beaten path in `shell32.dll`. If you wanted to avoid linking
 to `shell32.dll` for whatever reason, you'd need to do the command line
 parsing yourself. Many runtimes, including Microsoft's own CRTs, don't
-call GetCommandLineW and instead do their own parsing. It's all a lot
-messier than I expected, and when I started digging into it I wasn't
-expecting it to involve a few days of research.
+call GetCommandLineW and instead do their own parsing. It's messier than I
+expected, and when I started digging into it I wasn't expecting it to
+involve a few days of research.
 
 The GetCommandLineW has a rough explanation: split arguments on whitespace
 (not defined), quoting is involved, and there's something about counting
@@ -176,7 +176,7 @@ confident in the result.
 
 I also peeked at some language runtimes to see how others handle it. Just
 as expected, Mingw-w64 has the behavior of an old (pre-2008) Microsoft
-CRT. Also expected, CPython it implicitly does whatever the underlying C
+CRT. Also expected, CPython implicitly does whatever the underlying C
 runtime does, so its exact command line behavior depends on which version
 of Visual Studio was used to build the Python binary. [Both OpenJDK][jdk]
 and Rust (LLVM) [pragmatically call CommandLineToArgvW][rust]. Go (gc)
