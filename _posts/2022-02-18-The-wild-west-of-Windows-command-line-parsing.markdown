@@ -108,7 +108,7 @@ GetCommandLineW is from `kernel32.dll`, but CommandLineToArgvW is a bit
 more off the beaten path in `shell32.dll`. If you wanted to avoid linking
 to `shell32.dll` for [important reasons][shell32], you'd need to do the
 command line parsing yourself. Many runtimes, including Microsoft's own
-CRTs, don't call GetCommandLineW and instead do their own parsing. It's
+CRTs, don't call CommandLineToArgvW and instead do their own parsing. It's
 messier than I expected, and when I started digging into it I wasn't
 expecting it to involve a few days of research.
 
