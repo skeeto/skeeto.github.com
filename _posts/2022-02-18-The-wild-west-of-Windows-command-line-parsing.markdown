@@ -106,11 +106,11 @@ of [32,767 characters][cp] (including terminator).
 
 GetCommandLineW is from `kernel32.dll`, but CommandLineToArgvW is a bit
 more off the beaten path in `shell32.dll`. If you wanted to avoid linking
-to `shell32.dll` for whatever reason, you'd need to do the command line
-parsing yourself. Many runtimes, including Microsoft's own CRTs, don't
-call GetCommandLineW and instead do their own parsing. It's messier than I
-expected, and when I started digging into it I wasn't expecting it to
-involve a few days of research.
+to `shell32.dll` for [important reasons][shell32], you'd need to do the
+command line parsing yourself. Many runtimes, including Microsoft's own
+CRTs, don't call GetCommandLineW and instead do their own parsing. It's
+messier than I expected, and when I started digging into it I wasn't
+expecting it to involve a few days of research.
 
 The GetCommandLineW has a rough explanation: split arguments on whitespace
 (not defined), quoting is involved, and there's something about counting
@@ -178,10 +178,12 @@ I also peeked at some language runtimes to see how others handle it. Just
 as expected, Mingw-w64 has the behavior of an old (pre-2008) Microsoft
 CRT. Also expected, CPython implicitly does whatever the underlying C
 runtime does, so its exact command line behavior depends on which version
-of Visual Studio was used to build the Python binary. [Both OpenJDK][jdk]
-and Rust (LLVM) [pragmatically call CommandLineToArgvW][rust]. Go (gc)
-[does its own parsing][go], with behavior mixed between CommandLineToArgvW
-and some of Microsoft's CRTs, but not quite matching either.
+of Visual Studio was used to build the Python binary. OpenJDK
+[pragmatically calls CommandLineToArgvW][jdk]. Go (gc) [does its own
+parsing][go], with behavior mixed between CommandLineToArgvW and some of
+Microsoft's CRTs, but not quite matching either. The same goes for Rust
+(LLVM) [doing its own argument parsing][rust] as of just a few months ago,
+but previously calling GetCommandLineW.
 
 ### Building a command line string
 
@@ -258,8 +260,9 @@ for myself!
 [peb]: https://docs.microsoft.com/en-us/windows/win32/api/winternl/ns-winternl-peb
 [psp]: https://en.wikipedia.org/wiki/Program_Segment_Prefix
 [py]: https://github.com/python/cpython/blob/3.10/Lib/subprocess.py#L529
-[rust]: https://github.com/rust-lang/rust/issues/44650
+[rust]: https://github.com/rust-lang/rust/blob/b17226fcc/library/std/src/sys/windows/args.rs#L35
 [seg]: https://en.wikipedia.org/wiki/X86_memory_segmentation
+[shell32]: https://randomascii.wordpress.com/2018/12/03/a-not-called-function-can-cause-a-5x-slowdown/
 [sm]: /blog/2020/12/31/
 [src]: https://devblogs.microsoft.com/oldnewthing/20031210-00/?p=41553
 [tib]: https://en.wikipedia.org/wiki/Win32_Thread_Information_Block
