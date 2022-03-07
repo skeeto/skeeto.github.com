@@ -111,14 +111,14 @@ header nav ul {
     padding: 0;
     width: 22rem;
     line-height: 1;
-    text-align: right;
+    text-align: center;
 }
 
 header nav ul li {
     list-style-type: none;
     display: inline-block;
     height: 1.5rem;
-    width: 7rem;
+    width: 5rem;
     text-align: left;
 }
 
@@ -155,6 +155,11 @@ header nav .about:before {
 header nav .feed:before {
     font-family: 'foundation-icons';
     content: '\f1aa';
+}
+
+header nav .tools:before {
+    font-family: 'foundation-icons';
+    content: '\f215';
 }
 
 /* Articles */
