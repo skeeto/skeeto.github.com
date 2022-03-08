@@ -107,8 +107,8 @@ unix command line tools. It's not my original idea, but this is the
 
 ### [pngattach][]
 
-Attaches source scripts to PNG images so that they do not become
-separated. Behaves similar to archival programs like `tar`. Highly
+Attaches source scripts to PNG images so that [they do not become
+separated][png]. Behaves similar to archival programs like `tar`. Highly
 portable, with optional zlib dependency.
 
     $ dot -Tpng graph.dot | pngattach graph.dot >graph.png
@@ -122,13 +122,14 @@ portable, with optional zlib dependency.
 
 Prints ranges of IPv4 addresses like `seq`. Also supports CIDR notation
 inputs and outputs. Not my idea, but a much-improved, feature-complete,
-drop-in clone of the original. This implementation is highly portable, and
-on some platforms does not even require a C runtime.
+drop-in clone of [the original][orig]. This implementation is highly
+portable, and on some platforms does not even require a C runtime.
 
     $ prips -e ...255 192.168.1.0/24 |
           xargs -n1 -P16 host |
           grep -v NXDOMAIN
 
+[orig]: https://devel.ringlet.net/sysutils/prips/
 [prips]: https://github.com/skeeto/scratch/tree/master/prips
 
 * * *
