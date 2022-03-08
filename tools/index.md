@@ -56,7 +56,7 @@ Source: **[enchive-3.5.tar.xz][enchive-src]** ([sig][enchive-sig])
 [enchive-src]: https://github.com/skeeto/enchive/releases/download/3.5/enchive-3.5.tar.xz
 [enchive-sig]: https://github.com/skeeto/enchive/releases/download/3.5/enchive-3.5.tar.xz.sig
 [enchive]: https://github.com/skeeto/enchive
-[port]: http://localhost:8001/blog/2018/04/13/
+[port]: /blog/2018/04/13/
 [retire]: /blog/2017/03/12/
 
 * * *
