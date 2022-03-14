@@ -47,7 +47,7 @@ functions. Also note how it only uses two bits.
 
 When I was done with my experiment, I did a quick search online for other
 spin-lock barriers to see if anyone came up with the same idea. I found a
-couple of [subtly-incorrect][bug] spin-lock barriers, and otherwise
+couple of [subtly-incorrect][bug] spin-lock barriers, and some
 straightforward barrier constructions using a mutex spin-lock.
 
 Before diving into how this works, and how to generalize it, let's discuss
@@ -124,8 +124,8 @@ static int experiment(_Atomic int *w0, _Atomic int *w1)
 
 Since this is a *race* and I want both threads to run their two experiment
 instructions as simultaneously as possible, it would be wise to use some
-sort of *starting barrier*… exactly purpose of a thread barrier! It will
-hold the threads back until they're both ready.
+sort of *starting barrier*… exactly the purpose of a thread barrier! It
+will hold the threads back until they're both ready.
 
 ```c
 int w0, w1, r0, r1;
@@ -142,9 +142,9 @@ if (!r0 && !r1) {
 ```
 
 The second thread goes straight into the barrier, but the first thread
-does a little more work to initialize the experiment, plus a little more
-work at the end to check the result. The second barrier ensures they're
-both done before checking.
+does a little more work to initialize the experiment and a little more at
+the end to check the result. The second barrier ensures they're both done
+before checking.
 
 Running this only once isn't so useful, so each thread loops a few million
 times, hence the re-initialization in thread#1. The barriers keep them
