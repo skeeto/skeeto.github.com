@@ -4,7 +4,10 @@ layout: post
 date: 2022-03-13T23:55:08Z
 tags: [c, cpp, go, x86, optimization]
 uuid: 5a72d27a-60f4-4b52-a4c2-f1c3b72e6c85
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 The other day I wanted try the famous [memory reordering experiment][act]
 for myself. It's the double-slit experiment of concurrency, where a
@@ -14,6 +17,8 @@ possible, I designed a possibly-novel thread barrier. It's purely
 spin-locked, the entire footprint is a zero-initialized integer, it
 automatically resets, it can be used across processes, and the entire
 implementation is just three to four lines of code.
+
+<!--more-->
 
 Here's the entire barrier implementation for two threads in C11.
 
@@ -334,6 +339,7 @@ just as the one in my experiment is hard-coded for exactly two threads.
 [coop]: https://gist.github.com/skeeto/bdb5a0d2aa36b68b6f66ca39989e1444
 [ctx]: https://vimeo.com/644068002
 [gist]: https://gist.github.com/skeeto/c63b9ddf2c599eeca86356325b93f3a7
+[hn]: https://news.ycombinator.com/item?id=30671979
 [mm]: https://research.swtch.com/hwmm
 [pthr]: https://pubs.opengroup.org/onlinepubs/9699919799/functions/pthread_barrier_wait.html
 [sane]: /blog/2021/12/30/
