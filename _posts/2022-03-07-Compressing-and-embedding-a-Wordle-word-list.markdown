@@ -548,7 +548,8 @@ there's an advantage to customizing compression to a particular dataset.
 
 *Update*: [Johannes Rudolph has pointed out][jr] a compression scheme for
 a Game Boy Wordle clone last month that gets it [down to 17,871 bytes,
-*and* supports iteration][gb].
+*and* supports iteration][gb]. I improved on this scheme to [further
+reduce it to 16,659 bytes][misc].
 
 
 [1]: https://gist.github.com/cfreshman/cdcdf777450c5b5301e439061d29694c
@@ -559,6 +560,7 @@ a Game Boy Wordle clone last month that gets it [down to 17,871 bytes,
 [gb]: http://alexanderpruss.blogspot.com/2022/02/game-boy-wordle-how-to-compress-12972.html
 [huffman]: https://en.wikipedia.org/wiki/Huffman_coding
 [jr]: https://lists.sr.ht/~skeeto/public-inbox/%3CCAKF7Hnc4nVKS%3D2adUjyiRb5yBZUdw5z0K_Fb9kFbaW5S6i7POw%40mail.gmail.com%3E
+[misc]: https://github.com/skeeto/scratch/blob/master/misc/wordle.c
 [qb]: /blog/2020/11/17/
 [sd]: https://www.youtube.com/watch?v=Yi2mTMWC4BM&t=1270s
 [sm]: /blog/2020/12/31/
