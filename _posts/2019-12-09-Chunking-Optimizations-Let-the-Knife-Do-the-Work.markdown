@@ -141,7 +141,7 @@ xor512c(void *dst, void *src)
 }
 ```
 
-Since `memcopy()` is a built-in function, your compiler knows its
+Since `memcpy()` is a built-in function, your compiler knows its
 semantics and can ultimately elide all that copying. The assembly
 listing for `xor512c` is identical to `xor512b`, but it won't go haywire
 when integrated into a real program.
