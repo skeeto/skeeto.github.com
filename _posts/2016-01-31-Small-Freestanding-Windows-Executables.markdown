@@ -146,12 +146,10 @@ using the `--entry` option to the GNU linker.
 One problem I've run into is Mingw-w64 generating code that calls
 `__chkstk_ms()` from libgcc. I believe this is a long-standing bug,
 since `-ffreestanding` should prevent these sorts of helper functions
-from being used. The workaround I've found is to disable stack
-protection.
+from being used. The workaround I've found is to disable [the stack
+probe][probe] and pre-commit the whole stack.
 
-    -fno-stack-check -fno-stack-protector -mno-stack-arg-probe
-
-(If you always write perfect code you don't need this, amiright?)
+    -mno-stack-arg-probe -Xlinker --stack=0x100000,0x100000
 
 Alternatively you could link against libgcc (statically) with `-lgcc`,
 but, again, I'm going for a tiny executable.
@@ -178,7 +176,7 @@ To build it:
 
     x86_64-w64-mingw32-gcc -std=c99 -Wall -Wextra \
         -nostdlib -ffreestanding -mconsole -Os \
-        -fno-stack-check -fno-stack-protector -mno-stack-arg-probe \
+        -mno-stack-arg-probe -Xlinker --stack=0x100000,0x100000 \
         -o example.exe example.c \
         -lkernel32
 
@@ -207,3 +205,4 @@ I may go this route for [the upcoming 7DRL 2016][7drl] in March.
 [opengl]: /blog/2015/06/06/
 [7drl]: http://7drl.org/2016/01/13/7drl-2016-announced-for-5-13-march/
 [hh]: https://hero.handmade.network/forums/code-discussion/t/94-guide_-_how_to_avoid_c_c++_runtime_on_windows
+[probe]: https://metricpanda.com/rival-fortress-update-45-dealing-with-__chkstk-__chkstk_ms-when-cross-compiling-for-windows/
