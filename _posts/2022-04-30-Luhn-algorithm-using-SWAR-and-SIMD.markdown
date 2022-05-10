@@ -232,9 +232,38 @@ On my machine, the SIMD version is around another 3x increase over SWAR,
 and so nearly an order of magnitude faster than a digit-by-digit
 implementation.
 
+*Update*: Const-me on Hacker News [suggests a better option][cm] for
+handling the tens digit in the function above, shaving off 7% of the
+function's run time on my machine:
+
+```c
+    // if (digit > 9) digit -= 9
+    __m128i nine = _mm_set1_epi8(9);
+    __m128i gt = _mm_cmpgt_epi8(r, nine);
+    r = _mm_sub_epi8(r, _mm_and_si128(gt, nine));
+```
+
+*Update*: u/aqrit on reddit has come up with a more optimized SSE2
+solution, 12% faster than mine on my machine:
+
+```c
+int luhn(const char *s)
+{
+    __m128i v = _mm_loadu_si128((void *)s);
+    __m128i m = _mm_cmpgt_epi8(_mm_set1_epi16('5'), v);
+    v = _mm_add_epi8(v, _mm_slli_epi16(v, 8));
+    v = _mm_add_epi8(v, m);  // subtract 1 if less than 5
+    v = _mm_sad_epu8(v, _mm_setzero_si128());
+    v = _mm_add_epi32(v, _mm_shuffle_epi32(v, 2));
+    return (_mm_cvtsi128_si32(v) - 4) % 10;
+    // (('0' * 24) - 8) % 10 == 4
+}
+```
+
 
 [bcd]: https://en.wikipedia.org/wiki/Binary-coded_decimal
 [bof]: https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html
+[cm]: https://news.ycombinator.com/item?id=31320853
 [dl]: https://lemire.me/blog/2022/01/21/swar-explained-parsing-eight-digits/
 [ex]: https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
 [luhn]: https://en.wikipedia.org/wiki/Luhn_algorithm
