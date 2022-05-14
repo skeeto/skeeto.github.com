@@ -231,10 +231,10 @@ for (;;) {
     struct job job;
     do {
         do {
-            i = queue_pop(&q, EXP, &save);
+            i = queue_mpop(&q, EXP, &save);
         } while (i < 0);  // note: busy-wait while empty
         job = slots[i];
-    } while (!queue_pop_commit(&q, save));
+    } while (!queue_mpop_commit(&q, save));
     job_run(job);
 }
 ```
