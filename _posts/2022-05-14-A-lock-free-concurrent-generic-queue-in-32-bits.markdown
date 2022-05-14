@@ -336,7 +336,8 @@ with the commit. (Though there's still certainly false sharing happening.)
 ### Real implementation and tests
 
 If you want to try it out, especially with my tests: [**queue.c**][src].
-It has both single-consumer and multiple-consumer, and supports at least:
+It has both single-consumer and multiple-consumer queues, and supports at
+least:
 
 * atomics: C11, GNU, MSC
 * threads: pthreads, win32
@@ -344,12 +345,13 @@ It has both single-consumer and multiple-consumer, and supports at least:
 * hosts: Linux, Windows, BSD
 
 Since I wanted to test across a variety of implementations, especially
-under Thread Sanitizer (TSan).
-
+under Thread Sanitizer (TSan). On a similar note, I also implemented a
+concurrent queue shared between C and Go: [**queue.go**][go].
 
 [aba]: /blog/2014/09/02/
 [asyncio]: /blog/2020/05/24/
 [b]: /blog/2022/03/13/
+[go]: https://github.com/skeeto/scratch/blob/master/misc/queue.go
 [min]: /blog/2018/06/10/
-[tear]: https://lwn.net/Articles/793253/
 [src]: https://github.com/skeeto/scratch/blob/master/misc/queue.c
+[tear]: https://lwn.net/Articles/793253/
