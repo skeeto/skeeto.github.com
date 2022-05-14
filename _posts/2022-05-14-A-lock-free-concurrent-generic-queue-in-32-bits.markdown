@@ -55,18 +55,18 @@ I mentioned, the queue fits in a 32-bit integer, and so it's represented
 by an `_Atomic uint32_t`. Here's the entire interface:
 
 ```c
-int  queue_pop(_Atomic uint32_t *, int);
-void queue_pop_commit(_Atomic uint32_t *q);
+int  queue_pop(_Atomic uint32_t *queue, int exp);
+void queue_pop_commit(_Atomic uint32_t *queue);
 
-int  queue_push(_Atomic uint32_t *, int);
-void queue_push_commit(_Atomic uint32_t *);
+int  queue_push(_Atomic uint32_t *queue, int exp);
+void queue_push_commit(_Atomic uint32_t *queue);
 ```
 
 Both `queue_pop` and `queue_push` return -1 if the queue is empty/full.
 
 To create a queue, initialize an atomic 32-bit integer to zero. Also
 choose a size exponent and allocate some storage. Here's a 63-element
-queue of doubles:
+queue of jobs:
 
 ```c
 #define EXP 6  // note; 2**6 == 64
@@ -214,7 +214,8 @@ into assembly.
 The next cost is that committing can fail. Another consumer might have won
 the race, which means you must start over. Here's my multiple-consumer
 interface, which I've uncreatively called `mpop` ("multiple-consumer
-pop"):
+pop"). Besides a `_Bool` for indicating failure, the main change is a new
+`save` parameter:
 
 ```c
 int   queue_mpop(_Atomic uint32_t *, int, uint32_t *save);
