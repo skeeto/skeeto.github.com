@@ -4,7 +4,10 @@ layout: post
 date: 2022-05-14T04:22:24Z
 tags: [c, optimization]
 uuid: b5a6b85a-19af-4f2f-8a32-0098f6e87edb
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 While considering concurrent queue design I came up with a generic,
 lock-free queue that fits in a 32-bit integer. The queue is "generic" in
@@ -16,6 +19,8 @@ will first present a single-consumer, single-producer queue, then expand
 support to multiple consumers at a cost. Like [my lightweight barrier][b],
 I'm not presenting this as a packaged solution, but rather as a technique
 you can apply when circumstances call.
+
+<!--more-->
 
 How can the queue store so many elements when it's just 32 bits? It only
 handles the indexes of a circular buffer. The [caller is responsible][min]
@@ -352,6 +357,7 @@ concurrent queue shared between C and Go: [**queue.go**][go].
 [asyncio]: /blog/2020/05/24/
 [b]: /blog/2022/03/13/
 [go]: https://github.com/skeeto/scratch/blob/master/misc/queue.go
+[hn]: https://news.ycombinator.com/item?id=31384602
 [min]: /blog/2018/06/10/
 [src]: https://github.com/skeeto/scratch/blob/master/misc/queue.c
 [tear]: https://lwn.net/Articles/793253/
