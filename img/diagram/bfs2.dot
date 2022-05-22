@@ -1,0 +1,20 @@
+digraph {
+    node [shape=circle fontname="sans-serif" fontsize=16 penwidth=2]
+    edge [penwidth=2]
+
+    subgraph 1 {
+        rank=same
+        edge [color=darkgreen]
+        b->c->d
+    }
+    subgraph 2 {
+        rank=same
+        edge [color=darkgreen]
+        e->f
+        g->h->i
+    }
+
+    a->b
+    b->e
+    d->g
+}

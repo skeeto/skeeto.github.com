@@ -1,0 +1,12 @@
+digraph {
+    node [shape=circle fontname="sans-serif" fontsize=16 penwidth=2]
+    edge [penwidth=2]
+    a->b
+    a->c
+    a->d
+    b->e
+    b->f
+    d->g
+    d->h
+    d->i
+}
