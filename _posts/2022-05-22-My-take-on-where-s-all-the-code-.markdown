@@ -130,7 +130,7 @@ only because of its sheer volume but also because it has generally has
 relatively long names. So for my maximum buffer size I just maxed it out
 (explained in a moment) and called it good. Even with UTF-16, that's only
 8MiB which is perfectly reasonable to allocate all at once up front. Since
-my string handles don't contain pointers, this buffer could be freely
+my [string handles][h] don't contain pointers, this buffer could be freely
 relocated in the case of `realloc`.
 
 The operating system provides a null-terminated string. The buffer makes a
@@ -517,6 +517,7 @@ Aside from overall portability, I'm quite happy with the results.
 [db]: https://remedybg.handmade.network/
 [fast]: https://flak.tedunangst.com/post/compiling-an-openbsd-kernel-50-faster
 [gdb]: https://github.com/skeeto/w64devkit/commit/1513aa7
+[h]: https://floooh.github.io/2018/06/17/handles-vs-pointers.html
 [max]: https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation
 [par]: https://flak.tedunangst.com/post/parallel-tree-running
 [post]: https://flak.tedunangst.com/post/watc
