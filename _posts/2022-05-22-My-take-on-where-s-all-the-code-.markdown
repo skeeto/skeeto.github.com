@@ -160,7 +160,7 @@ hexadecimal during debugging, but oh well.
 A couple of helper functions are in order:
 
 ```c
-int     str_len(int32_t s) { return s >> 22;     }
+int     str_len(int32_t s) { return s >> 22;      }
 int32_t str_off(int32_t s) { return s & 0x3fffff; }
 ```
 
@@ -285,16 +285,17 @@ Recursion makes me nervous, but besides this, a queue is already a natural
 fit for this problem. The tree I build in `dirs` is also the breadth-first
 processing queue. (Note: This is entirely distinct from the *message*
 queue that I'll introduce later, and is not a concurrent queue.) Further,
-building the tree in `dirs` via breadth-first traversal will have
-extremely useful properties later.
+building the tree in `dirs` via breadth-first traversal will have useful
+properties later.
 
 The queue is initialized with the root directory, then iterated over until
 the iterator reaches the end. Additional directories may added during
 iteration, per the last section.
 
 ```c
-dirs[ndirs++].name = buf_push(&b, L".");
-dirs[ndirs++].link = -1;  // terminator
+int32_t root = ndirs++;
+dirs[root].name = buf_push(&b, L".");
+dirs[root].link = -1;  // terminator
 
 for (int32_t parent = 0; parent < ndirs; parent++) {
     // ... FindFirstFileW / FindNextFileW ...
@@ -305,7 +306,7 @@ When the loop exits, the program has traversed the full tree. Counts are
 now propagated up the tree using the `link` field, pointing from leaves to
 root. In this direction it's just a linked list. Propagation starts at the
 root and works towards leaves to avoid multiple-counting, and the
-breadth-first `dirs` is already ordered for it.
+breadth-first `dirs` is already ordered for this.
 
 ```c
 for (int32_t i = 1; i < ndirs; i++) {
@@ -395,7 +396,7 @@ void printstat(struct dir *d, struct buf *b, int depth);
 Here's a simplified depth-first traversal calling `printstat`. (The real
 one has to make decisions about when to stop and summarize, and it's
 dominated by edge cases.) I initialize the stack with the root directory,
-then loop until its empty.
+then loop until it's empty.
 
 ```c
 int n = 0;  // top of stack
@@ -460,7 +461,7 @@ but now it's a great way to supply strings to other threads. I push the
 string into the buffer, then send the handle through the queue. The
 recipient re-constructs the path on its end using the directory tree and
 this file name. Unfortunately this puts more stress on the string buffer,
-which is why I had to max out the size.
+which is why I had to max out the size, but it's worth it.
 
 The "process files" part now looks like this:
 
@@ -476,8 +477,8 @@ if (!queue_send(&queue, parent, name)) {
 }
 ```
 
-If `queue_send()` returns false, the queue is full, so it processes the
-job itself. There might be room later for the next file.
+If `queue_send()` returns false then the queue is full, so it processes
+the job itself. There might be room later for the next file.
 
 Worker threads look similar, spinning until an item arrives in the queue:
 
@@ -497,8 +498,8 @@ Worker threads look similar, spinning until an item arrives in the queue:
 
 A special directory entry handle of -1 tells the worker to exit. When
 traversal completes, the main thread becomes a worker until the queue
-empties, pushes one such handle for each worker thread, then joins the
-worker threads — a synchronization point that indicates all work is
+empties, pushes one termination handle for each worker thread, then joins
+the worker threads — a synchronization point that indicates all work is
 complete, and the main thread can move on to propagation and sorting.
 
 This was a substantial performance boost. At least on my system, running
