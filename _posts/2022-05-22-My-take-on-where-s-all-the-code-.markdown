@@ -4,7 +4,10 @@ layout: post
 date: 2022-05-22T23:59:59Z
 tags: [c, optimization]
 uuid: 2eb07dcf-0d4c-44e7-9133-fd9cf8e83227
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Lobsters][rs].*
 
 Earlier this month Ted Unangst researched [compiling the OpenBSD kernel
 50% faster][fast], which involved stubbing out the largest, extraneous
@@ -17,6 +20,8 @@ queue][q]. Turning it over in my mind, I saw opportunities for interesting
 data structures and memory management, and so I wanted to write my own
 version of the tool, [**`watc.c`**][src], which is the subject of this
 article.
+
+<!--more-->
 
 The original `watc` is interactive and written in idiomatic Go. My version
 is non-interactive, written in C, and currently only supports Windows. Not
@@ -522,6 +527,7 @@ Aside from overall portability, I'm quite happy with the results.
 [par]: https://flak.tedunangst.com/post/parallel-tree-running
 [post]: https://flak.tedunangst.com/post/watc
 [q]: /blog/2022/05/14/
+[rs]: https://lobste.rs/s/ny4ymx
 [simd]: /blog/2021/12/04/
 [src]: https://github.com/skeeto/scratch/blob/master/misc/watc.c
 [w64]: /blog/2020/05/15/
