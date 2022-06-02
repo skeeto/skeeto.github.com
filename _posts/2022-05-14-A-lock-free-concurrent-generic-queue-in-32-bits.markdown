@@ -96,10 +96,10 @@ for (;;) {
 ```
 
 This is a busy-wait loop, which makes for a simple illustration but isn't
-ideal. In a real program I'd have the producer run a job while it waits
-for a queue slot, or just have it turn into a consumer (if this wasn't a
-single-consumer queue). Similarly, if the queue is empty, then maybe a
-consumer turns into the producer. It all depends on the context.
+ideal. In a [real program][watc] I'd have the producer run a job while it
+waits for a queue slot, or just have it turn into a consumer (if this
+wasn't a single-consumer queue). Similarly, if the queue is empty, then
+maybe a consumer turns into the producer. It all depends on the context.
 
 The consumer might look like so:
 
@@ -361,3 +361,4 @@ concurrent queue shared between C and Go: [**queue.go**][go].
 [min]: /blog/2018/06/10/
 [src]: https://github.com/skeeto/scratch/blob/master/misc/queue.c
 [tear]: https://lwn.net/Articles/793253/
+[watc]: /blog/2022/05/22/
