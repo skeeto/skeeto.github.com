@@ -10,9 +10,9 @@ The C [`strcpy`][strcpy] function is a common sight in typical C programs.
 It's also a source of buffer overflow defects, so linters and code
 reviewers commonly recommend alternatives such as [`strncpy`][strncpy]
 (difficult to use correctly; mismatched semantics), [`strlcpy`][strlcpy]
-(non-standard), or C11's optional `strcpy_s` ([no correct or practical
-implementations][rep]). Besides their individual shortcomings, these
-answers are incorrect. `strcpy` and friends are, at best, incredibly
+(non-standard, [flawed][]), or C11's optional `strcpy_s` ([no correct or
+practical implementations][rep]). Besides their individual shortcomings,
+these answers are incorrect. `strcpy` and friends are, at best, incredibly
 niche, and the correct replacement is `memcpy`.
 
 If `strcpy` is not easily replaced with `memcpy` then the code is
@@ -264,6 +264,7 @@ security. Don't use these functions.
 
 
 [fat]: /blog/2019/06/30/
+[flawed]: https://nrk.neocities.org/articles/not-a-fan-of-strlcpy.html
 [ms]: https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/strcpy-s-wcscpy-s-mbscpy-s?view=msvc-160
 [ovf]: /blog/2017/07/19/
 [rep]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1967.htm
