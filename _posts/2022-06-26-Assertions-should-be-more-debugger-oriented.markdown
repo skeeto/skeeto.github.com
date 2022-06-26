@@ -46,8 +46,8 @@ hardware. Examples of implicit assertion failures:
 Programs are generally not intended to recover from these situations
 because, had they been anticipated, the invalid operation wouldn't have
 been attempted in the first place. The program simply crashes because
-there's no better alternative. Sanitizers, including as Address Sanitizer
-(ASan) and Undefined Behavior Sanitizer (UBSan), are in essense
+there's no better alternative. Sanitizers, including Address Sanitizer
+(ASan) and Undefined Behavior Sanitizer (UBSan), are in essence
 additional, implicit assertions, checking invariants that aren't normally
 checked.
 
@@ -69,7 +69,7 @@ Ideally a failing assertion should have these two effects:
 I examined standard `assert` features across various language
 implementations, and none strictly meet the criteria. Fortunately, in some
 cases, it's trivial to build a better assertion, and you can substitute
-your own definition. First, let's discuess the way assertions disappoint.
+your own definition. First, let's discuss the way assertions disappoint.
 
 ### A test assertion
 
@@ -305,7 +305,7 @@ inspecting a core dump than a paused process.
 The situation in Python is similar: `assert` raises AssertionError — a
 plain old exception — and `pdb` won't break until the stack has unwound,
 exiting context managers and such. Only once the exception reaches the top
-level goes it enter "post mortem debugging," like a core dump. At least
+level does it enter "post mortem debugging," like a core dump. At least
 there are no junk stack frames on top. If you're using asyncio then your
 program may continue running for quite awhile before the right tasks are
 scheduled and the exception finally propagates to the top level, if ever.
