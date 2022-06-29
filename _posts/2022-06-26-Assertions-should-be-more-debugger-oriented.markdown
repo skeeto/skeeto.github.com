@@ -166,7 +166,7 @@ Same with FreeBSD:
     #3  __assert
     #4  main
 
-OpenBSD has one less frame:
+OpenBSD has one fewer frame:
 
     #0  thrkill
     #1  _libc_abort
