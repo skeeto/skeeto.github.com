@@ -98,7 +98,8 @@ Running this on `square.dll` above:
 
 This can be helpful when debugging. It also works outside of Windows, such
 as on Linux. By the way, the output format is no accident: This is the
-[`.def` file format][def], which will be particularly useful in a moment.
+[`.def` file format][def] ([also][stdcall]), which will be particularly
+useful in a moment.
 
 Mingw-w64 has a `gendef` tool to produce the above output, and this tool
 is now included in w64devkit. To print the exports to standard output:
@@ -403,5 +404,6 @@ again next time I need it!
 [MSVC]: https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B
 [PLT]: https://www.airs.com/blog/archives/41
 [share]: https://github.com/skeeto/w64devkit/issues/7
+[stdcall]: https://www.willus.com/mingw/yongweiwu_stdcall.html
 [vc]: /blog/2016/06/13/#visual-c
 [w64devkit]: /blog/2020/05/15/
