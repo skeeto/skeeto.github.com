@@ -12,9 +12,9 @@ works with any debugger — GDB, RemedyBG, Visual Studio, etc. — since the
 hotkey simply raises a breakpoint [structured exception][seh]. It's been
 surprisingly useful, and I've wanted it available in more contexts, such
 as console programs or even on Linux. The result is a new [`debugbreak`
-command][src], which will be available in the next [w64devkit][] release.
-Though, of course, you already have [everything you need][every] to build
-it and try it out right now. I've also worked out a Linux implementation.
+command][src], now included in [w64devkit][]. Though, of course, you
+already have [everything you need][every] to build it and try it out right
+now. I've also worked out a Linux implementation.
 
 It's named after an [MSVC intrinsic and Win32 function][db]. It takes no
 arguments, and its operation is indiscriminate: It raises a breakpoint
