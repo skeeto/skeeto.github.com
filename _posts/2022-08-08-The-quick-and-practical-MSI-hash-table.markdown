@@ -116,16 +116,19 @@ However, when you *do* need it, reserve a gravestone value in addition to
 the empty value.
 
 ```c
-char *gravestone = "(deleted)";
+static char gravestone[] = "(deleted)";
 
 char *intern(struct ht *t, char *key)
 {
-`   // ...
+    char *dest = 0;
+    // ...
         if (!t->ht[i]) {
             // ...
-        } else if (t->ht[i] == gravestone) {
-            t->ht[i] = key;
+            dest = dest ? dest : &t->ht[i];
+            *dest = key;
             return key;
+        } else if (t->ht[i] == gravestone) {
+            dest = dest ? dest : &t->ht[i];
         } else if (!strcmp(...)) {
             // ...
         }
@@ -148,8 +151,9 @@ char *unintern(struct ht *t, char *key)
 }
 ```
 
-When searching, skip over gravestones. When inserting, use the first
-gravestone found.
+When searching, skip over gravestones. Note that gravestones are compared
+with `==` (identity), so this does not preclude a string `"(deleted)"`.
+When inserting, use the first gravestone found if no entry was found.
 
 ### As a database index
 
