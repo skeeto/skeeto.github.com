@@ -226,7 +226,7 @@ which these British Square boards lack, so this is the best I could come
 up with:
 
 ```c
-// Transpose a board or mask along (flip along the diagonal).
+// Transpose a board or mask (flip along the diagonal).
 uint64_t
 transpose(uint64_t b)
 {

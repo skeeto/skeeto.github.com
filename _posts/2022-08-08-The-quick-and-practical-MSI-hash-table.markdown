@@ -28,7 +28,7 @@ entries.
 The core of the MSI hash table is this iterator function:
 
 ```c
-// Compute the next candidate index. Initialze idx to the hash.
+// Compute the next candidate index. Initialize idx to the hash.
 int32_t ht_lookup(uint64_t hash, int exp, int32_t idx)
 {
     uint32_t mask = ((uint32_t)1 << exp) - 1;
