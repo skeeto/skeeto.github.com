@@ -9,14 +9,14 @@ uuid: 4a7d8c3d-3bcf-4b10-b50a-64227c02b254
 I [generally prefer C][c], so I'm accustomed to building whatever I need
 on the fly, such as heaps, linked lists, and especially hash tables. Few
 programs use more than a small subset of a data structure's features,
-making their implementation smaller, simpler, and more efficient than the
-general case, which must handle every edge case. A typical hash table
-tutorial will describe a relatively lengthy program, but in practice,
-bespoke hash tables are [only a few lines of code][bs]. Over the years
-I've worked out some basic principles for hash table construction that aid
-in quick and efficient implementation. This article covers the technique
-and philosophy behind what I've come to call the "mask-step-index" (MSI)
-hash table, which is my standard approach.
+making their implementation smaller, simpler, and [more efficient][bench]
+than the general case, which must handle every edge case. A typical hash
+table tutorial will describe a relatively lengthy program, but in
+practice, bespoke hash tables are [only a few lines of code][bs]. Over the
+years I've worked out some basic principles for hash table construction
+that aid in quick and efficient implementation. This article covers the
+technique and philosophy behind what I've come to call the
+"mask-step-index" (MSI) hash table, which is my standard approach.
 
 MSI hash tables are nothing novel, just a [double hashed][dh], [open
 address][oa] hash table layered generically atop an external array. It's
@@ -422,7 +422,8 @@ If your input is made of integers, or is a short, fixed length, use an
 [integer permutation][hp], particularly multiply-xorshift. It takes very
 little to get a sufficient distribution. Sometimes one multiplication does
 the trick. Fixed-sized, integer-permutation hashes tend to be the fastest,
-easily beating fancier SIMD-based hashes, including AES-NI. For example:
+easily beating fancier SIMD-based hashes, [including AES-NI][bench]. For
+example:
 
 ```c
 // Hash a timestamp-based, version 1 UUID
@@ -450,9 +451,22 @@ calls, I hope the MSI technique will make the difference next time. I have
 more hash table tricks up my sleeve, but since they're not specific to MSI
 I'll save them for a future article.
 
+### Benchmarks
 
+There have been objections to my claims about performance, so [I've
+assembled some benchmarks][bench]. These demonstrate that:
+
+* AES-NI slower than an integer permutation, at least for short keys.
+* A custom, 10-line MSI hash table is easily an order of magnitude faster
+  than a typical generic hash table from your language's standard library.
+  This isn't because the standard hash table is inferior, but because [it
+  wasn't written for your specific problem][context].
+
+
+[bench]: https://gist.github.com/skeeto/8e7934318560ac739c126749d428a413
 [bs]: /blog/2020/10/19/#hash-table-memoization
 [c]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
+[context]: https://vimeo.com/644068002
 [dh]: https://en.wikipedia.org/wiki/Double_hashing
 [exp]: /blog/2022/05/14/
 [fnv]: https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
