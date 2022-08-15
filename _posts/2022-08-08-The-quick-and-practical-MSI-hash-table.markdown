@@ -7,16 +7,16 @@ uuid: 4a7d8c3d-3bcf-4b10-b50a-64227c02b254
 ---
 
 I [generally prefer C][c], so I'm accustomed to building whatever I need
-on the fly, such as heaps, linked lists, and especially hash tables. Few
-programs use more than a small subset of a data structure's features,
-making their implementation smaller, simpler, and [more efficient][bench]
-than the general case, which must handle every edge case. A typical hash
-table tutorial will describe a relatively lengthy program, but in
-practice, bespoke hash tables are [only a few lines of code][bs]. Over the
-years I've worked out some basic principles for hash table construction
-that aid in quick and efficient implementation. This article covers the
-technique and philosophy behind what I've come to call the
-"mask-step-index" (MSI) hash table, which is my standard approach.
+on the fly, such as heaps, [linked lists][list], and especially hash
+tables. Few programs use more than a small subset of a data structure's
+features, making their implementation smaller, simpler, and [more
+efficient][bench] than the general case, which must handle every edge
+case. A typical hash table tutorial will describe a relatively lengthy
+program, but in practice, bespoke hash tables are [only a few lines of
+code][bs]. Over the years I've worked out some basic principles for hash
+table construction that aid in quick and efficient implementation. This
+article covers the technique and philosophy behind what I've come to call
+the "mask-step-index" (MSI) hash table, which is my standard approach.
 
 MSI hash tables are nothing novel, just a [double hashed][dh], [open
 address][oa] hash table layered generically atop an external array. It's
@@ -471,6 +471,7 @@ assembled some benchmarks][bench]. These demonstrate that:
 [exp]: /blog/2022/05/14/
 [fnv]: https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
 [hp]: /blog/2018/07/31/
+[list]: /blog/2022/05/22/#inverting-the-tree-links
 [oa]: https://en.wikipedia.org/wiki/Open_addressing
 [ss]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [tar]: https://mort.coffee/home/tar/
