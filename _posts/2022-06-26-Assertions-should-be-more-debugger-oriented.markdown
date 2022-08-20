@@ -261,7 +261,7 @@ is involved.
 
 ### Other languages
 
-Unfortunately the situation mostly gets worse with other language
+Unfortunately the situation [mostly gets worse][rs] with other language
 implementations, and it's generally not possible to build a better
 assertion. Assertions typically have exception-like semantics, if not
 literally just another exception, and so they are far less reliable. If a
@@ -440,5 +440,6 @@ cases: `r`, `c`, `n`, `s`, `disp`, `k`, `b`, `i`, `d`, `p`.
 [fuzz]: /blog/2019/01/25/
 [go]: https://go.dev/doc/faq#assertions
 [rbg]: https://www.youtube.com/watch?v=r9eQth4Q5jg
+[rs]: https://github.com/rust-lang/rust/issues/21102
 [tt]: /blog/2017/04/01/
 [w64]: /blog/2020/05/15/
