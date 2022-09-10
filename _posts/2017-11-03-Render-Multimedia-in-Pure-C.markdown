@@ -6,6 +6,9 @@ tags: [c, media, trick, tutorial]
 uuid: 4b36dd78-e85d-3637-8cd5-e44a2d3e683a
 ---
 
+*Update 2020*: I've produced [many more examples][showcase] over the years
+([even more][more]).
+
 In a previous article [I demonstrated video filtering with C and a
 unix pipeline][prev]. Thanks to the ubiquitous support for the
 ridiculously simple [Netpbm formats][ppm] — specifically the "Portable
@@ -532,12 +535,14 @@ fast enough for real time rendering, it's no good for interaction.
 [hh]: https://www.youtube.com/user/handmadeheroarchive
 [libc]: /blog/2016/09/05/
 [mjpeg]: http://mjpeg.sourceforge.net/
+[more]: https://github.com/skeeto/scratch/tree/master/animation
 [netray]: /blog/2016/09/02/
 [ny]: https://en.wikipedia.org/wiki/Nyquist_frequency
 [opengl]: /tags/opengl/
 [orig]: https://www.youtube.com/watch?v=sYd_-pAfbBw
 [ppm]: https://en.wikipedia.org/wiki/Netpbm_format
 [prev]: /blog/2017/07/02/
+[showcase]: /blog/2020/06/29/
 [ss]: https://en.wikipedia.org/wiki/Smoothstep
 [video]: /video/?v=sort-circle
 [wav]: http://soundfile.sapp.org/doc/WaveFormat/
