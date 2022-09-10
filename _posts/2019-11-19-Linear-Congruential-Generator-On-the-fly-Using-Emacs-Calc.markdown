@@ -27,9 +27,9 @@ find myself reaching for one all the time.
 
 Nearly every programming language comes with a pseudo-random number
 generation function or library. Unfortunately the language's standard
-PRNG is usually a poor choice (C, [C++][cpp], [C#][csharp], [Go][go],
-[Rust][rust]). It's probably mediocre quality, [slower than it needs to
-be][call] ([also][go]), [lacks reliable semantics or behavior between
+PRNG is usually a poor choice (C, [C++][cpp], [C#][csharp], [Go][go]).
+It's probably mediocre quality, [slower than it needs to be][call]
+([also][go]), [lacks reliable semantics or behavior between
 implementations][bsd], or is missing some other property I want. So I've
 long been a fan of *BYOPRNG:* Bring Your Own Pseudo-random Number
 Generator. Just embed a generator with the desired properties directly
@@ -249,6 +249,5 @@ of the finer details of your target language.
 [pgp]: /blog/2019/07/22/
 [prng]: /blog/2017/09/21/
 [rsa]: /blog/2015/10/30/
-[rust]: https://old.reddit.com/r/rust/comments/aq95oa/does_anyone_else_feel_like_rust_std_should/
 [ssh]: /blog/2019/03/22/
 [test]: http://simul.iro.umontreal.ca/testu01/tu01.html

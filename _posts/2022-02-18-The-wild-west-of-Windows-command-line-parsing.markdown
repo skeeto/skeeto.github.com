@@ -181,9 +181,7 @@ runtime does, so its exact command line behavior depends on which version
 of Visual Studio was used to build the Python binary. OpenJDK
 [pragmatically calls CommandLineToArgvW][jdk]. Go (gc) [does its own
 parsing][go], with behavior mixed between CommandLineToArgvW and some of
-Microsoft's CRTs, but not quite matching either. The same goes for Rust
-(LLVM) [doing its own argument parsing][rust] as of just a few months ago,
-but previously calling GetCommandLineW.
+Microsoft's CRTs, but not quite matching either.
 
 ### Building a command line string
 
@@ -260,7 +258,6 @@ for myself!
 [peb]: https://docs.microsoft.com/en-us/windows/win32/api/winternl/ns-winternl-peb
 [psp]: https://en.wikipedia.org/wiki/Program_Segment_Prefix
 [py]: https://github.com/python/cpython/blob/3.10/Lib/subprocess.py#L529
-[rust]: https://github.com/rust-lang/rust/blob/b17226fcc/library/std/src/sys/windows/args.rs#L35
 [seg]: https://en.wikipedia.org/wiki/X86_memory_segmentation
 [shell32]: https://randomascii.wordpress.com/2018/12/03/a-not-called-function-can-cause-a-5x-slowdown/
 [sm]: /blog/2020/12/31/

@@ -95,12 +95,9 @@ above][mm]:
 Racetracks are just images drawn in your favorite image editing program
 using the colors documented in the source header.
 
-*Update: Check out [a Rust reimplementation by Kaligule][kaligule].*
-
 
 [gist]: https://github.com/skeeto/scratch/blob/master/aidrivers/aidrivers.c
 [hn]: https://news.ycombinator.com/item?id=25196574
-[kaligule]: https://schauderbasis.de/posts/fun_errors/
 [mm]: /blog/2017/11/03/
 [orig]: https://www.youtube.com/watch?v=-sg-GgoFCP0
 [qr]: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
