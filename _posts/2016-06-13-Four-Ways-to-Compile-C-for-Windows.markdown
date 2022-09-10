@@ -7,8 +7,8 @@ uuid: 1e99288c-0500-36f5-9fe7-262e6c6287c4
 ---
 
 *Update 2020: If you're on Windows, just use [**w64devkit**][w64devkit].
-It's [my own toolchain distribution][announce], and it's by far the best
-option available. [Everything you need][everything] is in one package.*
+It's [my own toolchain distribution][announce], and it's the best option
+available. [Everything you need][everything] is in one package.*
 
 I primarily work on and develop for unix-like operating systems —
 Linux in particular. However, when it comes to desktop applications,
@@ -34,13 +34,13 @@ Before I get into the specifics, let me point out a glaring problem
 common to all four: Unicode arguments and filenames. Microsoft jumped
 the gun and adopted UTF-16 early. UTF-16 is a kludge, a worst of all
 worlds, being a variable length encoding (surrogate pairs), backwards
-incompatible ([unlike UTF-8][utf8]), and having byte-order issues
-(BOM). Most Win32 functions that accept strings generally come in two
-flavors, ANSI and UTF-16. The standard, portable C library functions
-wrap the ANSI-flavored functions. This means **portable C programs
-can't interact with Unicode filenames**. They must call the
-non-portable, Windows-specific versions. This includes `main` itself,
-which is only handed ANSI-truncated arguments.
+incompatible ([unlike UTF-8][utf8]), and having byte-order issues (BOM).
+Most Win32 functions that accept strings generally come in two flavors,
+ANSI and UTF-16. The standard, portable C library functions wrap the
+ANSI-flavored functions. This means **portable C programs can't interact
+with Unicode filenames**. (Update 2021: [Now they can][sane].) They must
+call the non-portable, Windows-specific versions. This includes `main`
+itself, which is only handed ANSI-truncated arguments.
 
 Compare this to unix-like systems, which generally adopted UTF-8, but
 rather as a convention than as a hard rule. The operating system
@@ -65,34 +65,34 @@ extensions. It's probably packaged by your Linux distribution of
 choice, making it trivial to cross-compile programs and libraries from
 Linux — and with Wine you can even execute them on x86. Like regular
 GCC, it outputs GDB-friendly DWARF debugging information, so you can
-**debug applications with GDB** ([my favorite][fav]).
+debug applications with GDB.
 
-If I'm using Mingw-w64 on Windows, I prefer to do so from inside
-Cygwin. Since it provides a complete POSIX environment, it maximizes
+If I'm using Mingw-w64 on Windows, ~~I prefer to do so from inside
+Cygwin~~. Since it provides a complete POSIX environment, it maximizes
 portability for the whole tool chain. This isn't strictly required.
 
-However, it has one big flaw. Unlike unix-like systems, Windows
-doesn't supply a system standard C library. That's the compiler's job.
-But Mingw-w64 doesn't have one. Instead **it links against
-msvcrt.dll**, which [isn't officially supported by Microsoft][msvcrt].
-It just happens to exist on modern Windows installations. Since it's
-not supported, it's way out of date and doesn't support much of C99,
-let alone C11. A lot of these problems are patched over by the
-compiler, but if you're relying on Mingw-w64, you still have to
-**stick to some C89 library features**, <s>such as limiting yourself
-to the C89 printf specifiers</s>.
+However, it has one big flaw. Unlike unix-like systems, Windows doesn't
+supply a system standard C library. That's the compiler's job. But
+Mingw-w64 doesn't have one. Instead it links against `msvcrt.dll`,
+~~which [isn't officially supported by Microsoft][msvcrt]. It just
+happens to exist on modern Windows installations. Since it's not
+supported,~~ it's way out of date and doesn't support much of C99. A lot
+of these problems are patched over by the compiler, ~~but if you're
+relying on Mingw-w64, you still have to stick to some C89 library
+features, such as limiting yourself to the C89 printf specifiers~~.
 
-Update: Mārtiņš Možeiko has pointed out `__USE_MINGW_ANSI_STDIO`, an
+~~Update: Mārtiņš Možeiko has pointed out `__USE_MINGW_ANSI_STDIO`, an
 undocumented feature that fixes the printf family. I now use this by
 default in all of my Mingw-w64 builds. It fixes most of the formatted
-output issues, except that it's incompatible with the [`format`
-function attribute][format].
+output issues, except that it's incompatible with the [`format` function
+attribute][format].~~ (Update 2021: Mingw-w64 now does the right thing
+out of the box.)
 
-Another problem is that [position-independent code generation is
-broken][pie], and so [ASLR is not an option][pie2]. This means
-binaries produced by Mingw-w64 are less secure than they should be.
-There are also a number of [subtle code generation bugs][gen] that
-might arise if you're doing something unusual.
+~~Another problem is that [position-independent code generation is
+broken][pie], and so ASLR is not an option. This means binaries produced
+by Mingw-w64 are less secure than they should be. There are also a
+number of [subtle code generation bugs][gen] that might arise if you're
+doing something unusual.~~ (Update 2021: Mingw-w64 makes PIE mandatory.)
 
 ### Visual C++
 
@@ -138,12 +138,13 @@ quite reconcilable with the unix-like ecosystem (i.e. GCC, Clang), so
 **you'll need separate Makefiles**, or you'll need to use a build
 system that generates Visual C++ Makefiles.
 
-**Debugging is a major problem**. Visual C++ outputs separate .pdb
+~~Debugging is a major problem.~~ (Update 2022: It's actually quite good
+once [you know how to do it][db].) Visual C++ outputs separate .pdb
 [program database][pdb] files, which aren't usable from GDB. Visual
 Studio has a built-in debugger, though it's not included in the
-standalone Visual C++ build tools. I'm still searching for a decent
-debugging solution for this scenario. I tried WinDbg, but I can't
-stand it.
+standalone Visual C++ build tools. ~~I'm still searching for a decent
+debugging solution for this scenario. I tried WinDbg, but I can't stand
+it.~~ (Update 2022: [RemedyBG is amazing][rdb].)
 
 In general the output code performance is on par with GCC and Clang,
 so you're not really gaining or losing performance with Visual C++.
@@ -205,11 +206,9 @@ it's not going to beat these options.
 [mingw64]: http://mingw-w64.org/doku.php
 [utf8]: http://utf8everywhere.org/
 [args]: https://utcc.utoronto.ca/~cks/space/blog/python/Python3UnicodeIssue
-[fav]: http://i.imgur.com/zwKGeaa.gif
 [msvcrt]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
 [format]: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-g_t_0040code_007bformat_007d-function-attribute-3318
 [pie]: http://thelinuxjedi.blogspot.com/2014/07/tripping-up-using-mingw.html
-[pie2]: https://github.com/rust-lang/rust/issues/16514
 [gen]: https://gcc.gnu.org/ml/gcc-bugs/2015-05/msg02025.html
 [pellesc]: http://www.smorgasbordet.com/pellesc/
 [vcbt]: http://landinghub.visualstudio.com/visual-cpp-build-tools
@@ -219,3 +218,6 @@ it's not going to beat these options.
 [w64devkit]: https://github.com/skeeto/w64devkit
 [announce]: /blog/2020/05/15/
 [everything]: /blog/2020/09/25/
+[sane]: /blog/2021/12/30/
+[rdb]: https://www.youtube.com/watch?v=r9eQth4Q5jg
+[db]: /blog/2022/06/26/
