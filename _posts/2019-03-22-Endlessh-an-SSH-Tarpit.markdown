@@ -193,7 +193,7 @@ or they're pretty dumb and Endlessh already works well enough.
 
 ### asyncio and other tarpits
 
-Since writing Endless [I've learned about Python's `asycio`][aio], and
+Since writing Endless [I've learned about Python's `asyncio`][aio], and
 it's actually a near perfect fit for this problem. I should have just
 used it in the first place. The hard part is already implemented within
 `asyncio`, and the problem isn't CPU-bound, so being written in Python
@@ -224,7 +224,7 @@ asyncio.run(main())
 ```
 
 Since Python coroutines are stackless, the per-connection memory
-overhead is comparable to the C version. So it seems asycio is
+overhead is comparable to the C version. So it seems asyncio is
 perfectly suited for writing tarpits! Here's an HTTP tarpit to trip up
 attackers trying to exploit HTTP servers. It slowly sends a random,
 endless HTTP header:
