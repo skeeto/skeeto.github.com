@@ -6,6 +6,9 @@ tags: [c, crypto, optimization]
 uuid: e865266a-2896-30c5-3f7d-cfad767b1ae2
 ---
 
+*Update 2022*: [TheIronBorn has found even better permutations][tib] using
+a smarter technique.
+
 I recently got an itch to design my own non-cryptographic integer hash
 function. Firstly, I wanted to [better understand][blowpipe] how hash
 functions work, and the best way to learn is to do. For years I'd been
@@ -449,4 +452,5 @@ shaders, and the results are looking good:
 [sa]: https://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
 [salsa20]: http://cr.yp.to/snuffle/design.pdf
 [sr]: http://xoshiro.di.unimi.it/splitmix64.c
+[tib]: https://github.com/skeeto/hash-prospector/issues/19
 [wang]: https://gist.github.com/badboy/6267743
