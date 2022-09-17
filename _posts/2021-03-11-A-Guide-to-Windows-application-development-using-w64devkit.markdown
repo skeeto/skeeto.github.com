@@ -52,11 +52,11 @@ it.
 
 ### Entering the development environment
 
-There is an `w64devkit.exe` in the unzipped `w64devkit` directory. This is
+There is a `w64devkit.exe` in the unzipped `w64devkit` directory. This is
 the easiest way to enter the development environment, and will not require
-system configuration changes. This batch file puts the kit's programs in
-the `PATH` environment variable then runs a Bourne shell — the standard
-unix shell. Aside from the text editor, this is the primary interface for
+system configuration changes. This program puts the kit's programs in the
+`PATH` environment variable then runs a Bourne shell — the standard unix
+shell. Aside from the text editor, this is the primary interface for
 developing software. In time you may even extend this environment with
 your own tools.
 
@@ -258,11 +258,11 @@ filetype plugin indent on
 syntax on
 ```
 
-The graphical interface defaults to a white background. Many people
-(including me) prefer "dark mode" when editing code, so inverting this is
-simply a matter of choosing a dark color scheme. Vim comes with a handful
-of color schemes, around half of which have dark backgrounds. Use
-`:colorscheme` to change it, and put it in your `~/_vimrc` to persist it.
+The graphical interface defaults to a white background. Many people prefer
+"dark mode" when editing code, so inverting this is simply a matter of
+choosing a dark color scheme. Vim comes with a handful of color schemes,
+around half of which have dark backgrounds. Use `:colorscheme` to change
+it, and put it in your `~/_vimrc` to persist it.
 
 ```vim
 colorscheme slate
@@ -281,7 +281,6 @@ own entire Vim configuration for C which makes it obey my own style:
 
 ```
 set cinoptions+=t0,l1,:0 cinkeys-=0#
-let c_no_curly_error=1
 ```
 
 Once you're comfortable with the basics, the best next step is to read
@@ -368,11 +367,11 @@ When you're working on a program, you often don't want optimization
 enabled since it makes it more difficult to debug. However, some warnings
 aren't fired unless optimization is enabled. Fortunately there's an
 optimization level to resolve this, `-Og` (optimize for debugging).
-Combine this with `-g` to embed debug information in the program. This
+Combine this with `-g3` to embed debug information in the program. This
 will be handy later.
 
 ```sh
-cc -Wall -Wextra -Og -g -o hello.exe hello.c
+cc -Wall -Wextra -Og -g3 -o hello.exe hello.c
 ```
 
 These are the compiler flags you typically want to enable while developing
@@ -388,7 +387,7 @@ look like this, in a file literally named `Makefile`:
 
 ```makefile
 hello.exe: hello.c
-    cc -Wall -Wextra -Og -g -o hello.exe hello.c
+    cc -Wall -Wextra -Og -g3 -o hello.exe hello.c
 ```
 
 This tells `make` that the file named `hello.exe` is derived from another
@@ -421,7 +420,7 @@ Ultimately I'd probably write my "hello world" Makefile like so:
 ```makefile
 .POSIX:
 CC      = cc
-CFLAGS  = -Wall -Wextra -Og -g
+CFLAGS  = -Wall -Wextra -Og -g3
 LDFLAGS =
 LDLIBS  =
 EXE     = .exe
@@ -463,7 +462,7 @@ supporting cross-compilation. A common convention for GNU toolchains is a
 .POSIX:
 CROSS   =
 CC      = $(CROSS)gcc
-CFLAGS  = -Wall -Wextra -Og -g
+CFLAGS  = -Wall -Wextra -Og -g3
 LDFLAGS =
 LDLIBS  =
 
@@ -501,18 +500,20 @@ backward and forward buttons in a browser.
 
 #### Debugging
 
-I had mentioned that the `-g` option embeds extra information in the
+I had mentioned that the `-g3` option embeds extra information in the
 executable. This is for debuggers, and the development kit includes the
-GNU Debugger, `gdb`, to help you debug your programs. The most common way
-to use the debugger is to invoke your program directly from it:
+GNU Debugger, `gdb`, to help you debug your programs. To use it, invoke
+GDB on your executable:
 
 ```sh
-gdb --args ./hello
+gdb hello.exe
 ```
 
 From here you can set breakpoints and such, then run the program with
 `start` or `run`, then `step` through it line by line. See [*Beej's Quick
-Guide to GDB*][gdb] for a guide.
+Guide to GDB*][gdb] for a guide. During development, always run your
+program through GDB, and never exit GDB. See also: [*Assertions should be
+more debugger-oriented*][assert].
 
 #### Learning C and C++
 
@@ -542,6 +543,7 @@ mean about w64devkit being [(almost) everything you need][all].
 
 
 [all]: /blog/2020/09/25/
+[assert]: /blog/2022/06/26/
 [beej]: http://beej.us/guide/bgc/
 [bm]: https://www.moolenaar.net/habits.html
 [deps]: https://research.swtch.com/deps
