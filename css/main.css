@@ -493,7 +493,8 @@ main article .resetable {
     }
 
     article {
-        text-align: left;
+        text-align: justify;
+        hyphens: auto;
     }
 
     article pre {
