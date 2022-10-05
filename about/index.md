@@ -35,6 +35,10 @@ update I make.
 
 Here are some of the more well known open source projects I've started.
 
+* [w64devkit][]: a portable C and C++ development kit for Windows. It
+  includes [every tool you need][w64-all] to comfortably build anything
+  from high performance data crunchers [to graphical games][w64-game].
+
 * [Elfeed][elfeed]: an extensible syndication feed (RSS, Atom) reader
   for Emacs. I've written [lots of articles][elfeed-meta] about it.
 
@@ -262,4 +266,7 @@ It's wonderful having such concise keys and signatures!
 [unlicense]: http://unlicense.org/
 [usesthis]: https://usesthis.com/interviews/chris.wellons/
 [vim]: /blog/2017/04/01/
+[w64-all]: /blog/2020/09/25/
+[w64-game]: /blog/2021/03/11/
+[w64devkit]: https://github.com/skeeto/w64devkit
 [youtube-dl]: https://rg3.github.io/youtube-dl/
