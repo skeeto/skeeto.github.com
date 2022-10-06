@@ -196,12 +196,12 @@ static void wake(int *p)
 ```
 
 The `INT_MAX` means "wake as many as possible." The other common value is
-1 for waking a single waiter. Also, since these system calls can't
-meaningfully fail, so there's no need to check the return value. If `wait`
-wakes up early (e.g. `EINTR`), it's going to check the counter again
-anyway. In fact, if your kernel is more than 20 years old, predating
-futexes, and returns `ENOSYS` ("Function not implemented"), it will
-*still* work correctly, though it will be incredibly inefficient.
+1 for waking a single waiter. Also, these system calls can't meaningfully
+fail, so there's no need to check the return value. If `wait` wakes up
+early (e.g. `EINTR`), it's going to check the counter again anyway. In
+fact, if your kernel is more than 20 years old, predating futexes, and
+returns `ENOSYS` ("Function not implemented"), it will *still* work
+correctly, though it will be incredibly inefficient.
 
 ### Four elements: Windows
 
