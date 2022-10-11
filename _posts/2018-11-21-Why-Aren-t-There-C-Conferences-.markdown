@@ -141,6 +141,14 @@ while the context is C++ the concepts are entirely applicable to C.
 * [Bob Steagall "Adventures in SIMD-Thinking"](https://www.youtube.com/watch?v=qejTqnxQRcw) ([part 2](https://www.youtube.com/watch?v=qXleSwCCEvY))
 * [Alex Reinking "Halide - A Language for Fast, Portable Computation on Images and Tensors"](https://www.youtube.com/watch?v=1ir_nEfKQ7A)
 
+### 2021 and 2022
+
+CppCon's current sponsor interferes with scheduling and video releases,
+deliberately reducing accessibility to the outside (unlisted videos,
+uploading talks multiple times, etc.). Since it's too time consuming to
+track it all myself, I've given up on following CppCon, at least until
+they get better-behaved sponsor.
+
 ### Bonus
 
 Finally, here are a few more good presentations from other C++
