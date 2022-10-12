@@ -7,6 +7,9 @@ uuid: c500b91a-046f-4320-8eff-9bc8f8443ef3
 excerpt_separator: <!--more-->
 ---
 
+*Update*: I [solved another game][dandelions] using essentially the same
+technique.
+
 [British Square][bs] is a 1978 abstract strategy board game which I
 recently discovered [from a YouTube video][pm]. It's well-suited to play
 by pencil-and-paper, so my wife and I played a few rounds to try it out.
@@ -295,6 +298,7 @@ small number of cases would be pretty reasonable.
 [bins]: https://github.com/skeeto/british-square/releases
 [bs]: https://boardgamegeek.com/boardgame/3719/british-square
 [chess]: /blog/2010/10/17/
+[dandelions]: /blog/2022/10/12/
 [fmr]: https://www.chessprogramming.org/Flipping_Mirroring_and_Rotating
 [hash]: /blog/2018/07/31/
 [mcts]: /blog/2017/04/27/
