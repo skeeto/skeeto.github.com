@@ -120,7 +120,7 @@ static char gravestone[] = "(deleted)";
 
 char *intern(struct ht *t, char *key)
 {
-    char *dest = 0;
+    char **dest = 0;
     // ...
         if (!t->ht[i]) {
             // ...
