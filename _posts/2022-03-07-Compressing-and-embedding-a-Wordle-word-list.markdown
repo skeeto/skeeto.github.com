@@ -134,7 +134,7 @@ def flatten(tree, prefix=""):
 I used `isinstance` to distinguish leaves (`str`) from internal nodes
 (`tuple`). With `sorted(flatten(tree))`, I get something like Morse Code:
 
-    [('a', '1110'),       ('j', '10111110'),   ('s', '001'),:
+    [('a', '1110'),       ('j', '10111110'),   ('s', '001'),
      ('b', '111111'),     ('k', '111110'),     ('t', '0100'),
      ('c', '10011'),      ('l', '0101'),       ('u', '11011'),
      ('d', '11010'),      ('m', '01111'),      ('v', '011010'),
