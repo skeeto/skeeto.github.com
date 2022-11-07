@@ -405,9 +405,12 @@ context in Vim in the other window:
     gdb>
     gdb>
 
-(I wish GDB could print a source listing around the breakpoint as context,
-like Delve, but no such feature exists. The woeful `list` command is
-inadequate.)
+(~~I wish GDB could print a source listing around the breakpoint as
+context, like Delve, but no such feature exists. The woeful `list` command
+is inadequate.~~ **Update**: GDB's TUI is a reasonable compromise for GUI
+applications or terminal applications running under a separate tty/console
+with either `tty` or `set new-console`. I can access it everywhere since
+w64devkit now supports GDB TUI.)
 
 If I want to advance to the next breakpoint, I use `continue` (`c`):
 
