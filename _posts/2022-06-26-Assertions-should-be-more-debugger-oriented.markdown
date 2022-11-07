@@ -225,6 +225,25 @@ frames, though it prints no diagnostic. As a bonus, it also means you
 don't need to link `libubsan`. Thanks to the bonus, it fully supplants
 `-ftrapv` for me on all platforms.
 
+**Update November 2022**: This "stop" hook eliminates ASan friction by
+popping runtime frames — functions with the reserved `__` prefix — from
+the call stack so that they're not in the way when GDB takes control. It
+requires Python support, which is the purpose of the feature-sniff outer
+condition.
+
+    if !$_isvoid($_caller_matches)
+        define hook-stop
+            if $_caller_matches("^__")
+                while $_caller_matches("^__")
+                    up-silently
+                end
+                up-silently
+            end
+        end
+    end
+
+This is now part of my `.gdbinit`.
+
 ### A better assertion
 
 At least when under a debugger, here's a much better assertion macro for
