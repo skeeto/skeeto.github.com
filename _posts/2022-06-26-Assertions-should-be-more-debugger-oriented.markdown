@@ -231,12 +231,9 @@ the call stack so that they're not in the way when GDB takes control. It
 requires Python support, which is the purpose of the feature-sniff outer
 condition.
 
-    if !$_isvoid($_caller_matches)
+    if !$_isvoid($_any_caller_matches)
         define hook-stop
-            if $_caller_matches("^__")
-                while $_caller_matches("^__")
-                    up-silently
-                end
+            while $_thread && $_any_caller_matches("^__")
                 up-silently
             end
         end
