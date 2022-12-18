@@ -4,7 +4,10 @@ layout: post
 date: 2022-12-18T03:45:44Z
 tags: [c, compression]
 uuid: 184bb5f6-3c31-4faf-9a15-3a693b8f4c7d
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 The [Quite OK Image (QOI) format][qoi] was announced late last year and
 finalized into a specification a month later. Initially dismissive, a
@@ -13,6 +16,8 @@ in the trade-off space between complexity, speed, and compression ratio.
 Also considering its alpha channel support, QOI has become my default
 choice for embedded image assets. It's not perfect, but at the very least
 it's a solid foundation.
+
+<!--more-->
 
 Since I'm now working with QOI images, I need a good QOI viewer, and so I
 added support to my ill-named [pbmview][pbmview] tool, which I wrote to
@@ -201,6 +206,7 @@ permanent slot on my developer toolbelt.
 [chess]: https://github.com/skeeto/chess/commit/5c123b3
 [farbfeld]: https://tools.suckless.org/farbfeld/
 [hash]: /blog/2018/07/31/
+[hn]: https://news.ycombinator.com/item?id=34035024
 [int]: /blog/2017/07/19/
 [mini]: /blog/2018/06/10/
 [msi]: /blog/2022/08/08/#hash-functions
