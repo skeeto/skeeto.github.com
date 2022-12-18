@@ -192,7 +192,7 @@ int loadimage(Image *image, const uint8_t *qoi, int len)
 
 Note the aforementioned awkward RGB shuffle.
 
-It's safe to say that I'm excited about QOI, and that its now has a
+It's safe to say that I'm excited about QOI, and that it now has a
 permanent slot on my developer toolbelt.
 
 
