@@ -253,7 +253,7 @@ for myself!
 [go]: https://go.googlesource.com/go/+/refs/tags/go1.17.7/src/os/exec_windows.go#115
 [jdk2]: https://github.com/openjdk/jdk/blob/jdk-17%2B35/src/java.base/windows/classes/java/lang/ProcessImpl.java#L229
 [jdk]: https://github.com/openjdk/jdk/blob/jdk-17+35/src/jdk.jpackage/windows/native/common/WinSysInfo.cpp#L141
-[mine]: https://github.com/skeeto/scratch/blob/master/misc/cmdline.c#L27
+[mine]: https://github.com/skeeto/scratch/blob/master/parsers/cmdline.c#L27
 [pcl]: https://docs.microsoft.com/en-us/previous-versions/17w5ykft(v=vs.85)
 [peb]: https://docs.microsoft.com/en-us/windows/win32/api/winternl/ns-winternl-peb
 [psp]: https://en.wikipedia.org/wiki/Program_Segment_Prefix

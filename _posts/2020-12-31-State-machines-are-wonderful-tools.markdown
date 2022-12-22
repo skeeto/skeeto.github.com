@@ -63,7 +63,7 @@ few bytes of memory to operate, and will fit on even the smallest of
 microcontrollers. The full source listing, documentation, and
 comprehensive test suite:
 
-<https://github.com/skeeto/scratch/blob/master/misc/morsecode.c>
+<https://github.com/skeeto/scratch/blob/master/parsers/morsecode.c>
 
 The state machine is trie-shaped, and the 100-byte table `t` is the static
 [encoding of the Morse code trie][trie]:
@@ -109,7 +109,7 @@ UTF-8 automaton:
 Then I encoded this diagram directly into a much larger (2,064-byte), less
 elegant table, too large to display inline here:
 
-<https://github.com/skeeto/scratch/blob/master/misc/utf8_decode.c>
+<https://github.com/skeeto/scratch/blob/master/parsers/utf8_decode.c>
 
 However, the trade-off is that the executable code is smaller, faster, and
 [branchless again][bra] (by accident, I swear!):

@@ -202,7 +202,7 @@ permanent slot on my developer toolbelt.
 
 
 [bikeshed]: https://github.com/nigeltao/qoi2-bikeshed
-[c]: https://github.com/skeeto/scratch/blob/master/misc/qoi.c
+[c]: https://github.com/skeeto/scratch/blob/master/parsers/qoi.c
 [chess]: https://github.com/skeeto/chess/commit/5c123b3
 [farbfeld]: https://tools.suckless.org/farbfeld/
 [hash]: /blog/2018/07/31/
