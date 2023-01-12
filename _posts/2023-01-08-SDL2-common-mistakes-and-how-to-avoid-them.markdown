@@ -4,7 +4,10 @@ layout: post
 date: 2023-01-08T02:09:26Z
 tags: [c, win32]
 uuid: 5b345c81-80d1-4459-981f-b5826a2bb8e7
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on reddit][r].*
 
 [SDL][] has grown on me over the past year. I didn't understand its value
 until viewing it in the right lens: as a complete platform and runtime
@@ -14,10 +17,12 @@ against host libraries, though in practice it's somewhat porous. With care
 — particularly in avoiding mistakes covered in this article — that ideal
 is quite achievable for C applications that fit within SDL's feature set.
 
+<!--more-->
+
 SDL applications are always interesting one way or another, so I like to
 dig in when I come across them. The items in this article are mistakes
 I've either made myself or observed across many such passion projects in
-the wild. 
+the wild.
 
 ### Mistake 1: Not using `sdl2-config`
 
@@ -298,7 +303,7 @@ For months I had wondered why SDL provides no memory allocation API. I'm
 fine if it doesn't have a general purpose allocator since I just want to
 grab a chunk of host memory [for an arena][arena]. However, SDL *does*
 have allocations functions — `SDL_malloc`, etc. I didn't know about them
-until I stopped making mistake 4. 
+until I stopped making mistake 4.
 
 It was the same story again with math functions: I'd like not to stray
 from SDL as a platform, but what if I need transcendental functions? I
@@ -341,6 +346,7 @@ the very least I expect to use SDL increasingly in my own projects.
 [ods]: https://learn.microsoft.com/en-us/windows/win32/api/debugapi/nf-debugapi-outputdebugstringw
 [prng]: /blog/2017/09/21/
 [qoi]: /blog/2022/12/18/
+[r]: https://old.reddit.com/r/C_Programming/comments/106djd0/sdl2_common_mistakes_and_how_to_avoid_them/
 [sdl]: https://www.libsdl.org/
 [sdlamp]: https://www.youtube.com/playlist?list=PL6m6sxLnXksbqdsAcpTh4znV9j70WkmqG
 [seed]: /blog/2019/04/30/
