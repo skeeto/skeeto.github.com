@@ -150,7 +150,7 @@ time in your editor, treating the SDL headers like a hyperlinked wiki
 built into your editor. Just like building, `sdl2-config` can tell ctags
 where find those headers:
 
-    $ ctags -a -R --kinds-c=dept $(sdl2-config --prefix)/include
+    $ ctags -a -R --kinds-c=dept $(sdl2-config --prefix)/include/SDL2
 
 I'm using `-a` (`--append`) to append to the tags file I've already
 generated for my own program, `-R` (`--recurse`) to automatically find all
