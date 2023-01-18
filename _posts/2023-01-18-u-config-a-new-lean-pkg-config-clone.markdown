@@ -183,7 +183,7 @@ cognitive load.
 
 In recent years I've been convinced that unsigned sizes were a serious
 error, probably even one of the great early computing mistakes, and that
-[sizes and subscripts should be typed][signed]. Not only that, pkg-config
+[sizes and subscripts should be signed][signed]. Not only that, pkg-config
 has no business dealing with gigantic objects! We're talking about short
 strings and tiny files. If it ends up with a large object, then there's a
 defect somewhere — either in itself or the system — and it should abort.
