@@ -85,11 +85,14 @@ As for the original pkg-config, I've been unable to produce a functioning
 Windows build. It's obvious from the compiler warnings that there are many
 problems, and my builds immediately crash on start. I'd try debugging it,
 except that I've been cross-compiling this whole time. I cannot build it
-on Windows because (1) GNU Autotools and (2) pkg-config requires
+on Windows because (1) GNU Autotools and (2) pkg-config ~~requires~~wants
 pkg-config as a build dependency. That's right, *you have to bootstrap
 pkg-config*! Remember, this is a tool whose entire job is to copy some
 bits of text from a text file to its output. One could use pkg-config as a
 case study of accidental complexity, and this is just the beginning.
+
+*Update*: It was [pointed out][debug] that I wouldn't need the full,
+two-stage bootstrap just for my debugging scenario.
 
 The bootstrap issue is part of pkgconf's popularity as an alternative.
 It's also a tidier code base, does a *far* better job of sorting and
@@ -483,6 +486,7 @@ out. It already works flawlessly with at least SDL2.
 [b]: https://en.wikipedia.org/wiki/Billion_laughs_attack
 [busybox-w32]: https://frippery.org/busybox/
 [c]: /blog/2021/12/30/
+[debug]: https://lists.sr.ht/~skeeto/public-inbox/%3C1750680.o7JgDH7DvH%40laptop%3E
 [hn]: https://news.ycombinator.com/item?id=34426430
 [p9]: https://9p.io/sys/doc/comp.html
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
