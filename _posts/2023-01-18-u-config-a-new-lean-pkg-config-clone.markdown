@@ -4,7 +4,10 @@ layout: post
 date: 2023-01-18T06:39:51Z
 tags: []
 uuid: c07ce83a-7871-4561-a77f-3b62b7a817bd
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 In [my common SDL2 mistakes listing][sdl2], the first was about winging it
 instead of using the `sdl2-config` script. It's just one of three official
@@ -17,6 +20,8 @@ that it lacks pkg-config — not the first time this has come up. So last
 weekend I wrote a new pkg-config from scratch with first-class Windows
 support: **[u-config][]** ("*micro*-config"). It will serve as pkg-config
 in w64devkit starting in the next release.
+
+<!--more-->
 
 Ultimately pkg-config's entire job is to find named `.pc` text files in
 one of several predetermined locations, read fields from them, then write
@@ -478,6 +483,7 @@ out. It already works flawlessly with at least SDL2.
 [b]: https://en.wikipedia.org/wiki/Billion_laughs_attack
 [busybox-w32]: https://frippery.org/busybox/
 [c]: /blog/2021/12/30/
+[hn]: https://news.ycombinator.com/item?id=34426430
 [p9]: https://9p.io/sys/doc/comp.html
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
 [pkgconf]: http://pkgconf.org/
