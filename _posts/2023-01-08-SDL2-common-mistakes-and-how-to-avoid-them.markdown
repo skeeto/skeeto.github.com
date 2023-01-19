@@ -46,16 +46,21 @@ users can, and do, trivially substitute a different SDL2 binary, such as
 one patched for their system. In my experience, static linking works
 reliably on Windows but poorly on Linux.
 
+Alternatively, use the general purpose `pkg-config`. Don't forget `eval`!
+
+    $ eval cc app.c $(pkg-config sdl2 --cflags --libs)
+
+I wrote [a pkg-config for Windows][u-config] specifically for this case.
+
 Caveats:
 
 * Some circumstances require special treatment, and `sdl2-config` may be
   too blunt a tool. That's fine, but generally prefer `sdl2-config` as the
   default approach.
 
-* The script does not support extensions such as `SDL2_image`. These
-  require their own, separate configuration (via `pkg-config`, etc.).
-  Personally I don't think they're worth the trouble, such as, for
-  example, when you can use [stb][], or [QOI instead of PNG][qoi].
+* `sdl2-config` does not support extensions such as `SDL2_image`, so you
+  will need to use `pkg-config`. Personally I don't think they're worth
+  the trouble when there's [stb][], or [QOI instead of PNG][qoi].
 
 * There's an alternative build option using CMake, without any use of
   `sdl2-config`, but I won't discuss it here.
@@ -351,6 +356,7 @@ the very least I expect to use SDL increasingly in my own projects.
 [sdlamp]: https://www.youtube.com/playlist?list=PL6m6sxLnXksbqdsAcpTh4znV9j70WkmqG
 [seed]: /blog/2019/04/30/
 [stb]: https://github.com/nothings/stb
+[u-config]: /blog/2023/01/18/
 [unity build]: https://en.wikipedia.org/wiki/Unity_build
 [w64devkit]: https://github.com/skeeto/w64devkit
 [wild]: /blog/2022/02/18/
