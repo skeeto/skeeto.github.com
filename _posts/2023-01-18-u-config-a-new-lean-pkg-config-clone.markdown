@@ -64,7 +64,7 @@ For SDL2, where you might use:
 
 You could instead use:
 
-    $ cc app.c $(pkg-config sdl2 --cflags --libs)
+    $ eval cc app.c $(pkg-config sdl2 --cflags --libs)
 
 Which is still a build command that works uniformly for all supported
 platforms, even cross-compiling, given a correctly-configured pkg-config.
