@@ -158,7 +158,7 @@ variables, and console outputs.
 
 Building is *slightly* more complicated:
 
-    $ cc -o pkg-config -nostlib win32_main.c -lkernel32
+    $ cc -o pkg-config -nostartfiles win32_main.c
 
 ### Implementation highlights
 
