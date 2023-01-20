@@ -401,10 +401,11 @@ Then pkg-config will escape spaces in the expansion:
 
     -I/Program\ Files/include
 
-This will actually work correctly, *but* only as long as the output isn't
-parsed again by a shell, i.e. exactly what happens in a Makefile. Doh!
-Note the trend: None of the edge cases of this system actually work or
-make sense, so there's nothing to get "right" when it comes up.
+This will actually work correctly in the `eval` context where `pkg-config`
+is intended for use (read: *not command substitution*). I've made u-config
+automatically quote the prefix if it contains spaces, so it will work
+correctly despite the lack of `.pc` file quotes when the library is under
+a path containing a space.
 
 Here's a fun input. pkg-config has its own [billion laughs][b]:
 
