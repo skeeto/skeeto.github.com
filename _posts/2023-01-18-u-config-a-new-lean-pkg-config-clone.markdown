@@ -453,13 +453,17 @@ But that's a crazy edge case right? Well, it also overflows on *empty
 `.pc` files*, or for all sorts of inputs. I probed both pkg-config and
 pkgconf with weird inputs to learn how it's supposed to work, and it was
 rather irritating having pkgconf crash for so many of them. Someone on the
-project ought to do testing with ASan sometime.
+project ought to do testing with ASan sometime. Important note: *This is
+not a security vulnerability*!
 
 Further, as you might notice when you build it, pkgconf first tries to
 link the system `strlcpy`, if it exists. Failing that, it uses its own
 version. That's one of the annoying details about building it. However,
 [using `strlcpy` never, ever makes sense][strcpy]! Now that I think about
 it, there's probably a connection with those buffer overflows.
+
+In general, neither pkg-config nor pkgconf fare well when [fuzz tested
+with sanitizers][fuzz].
 
 ### Conclusions
 
@@ -488,6 +492,7 @@ out. It already works flawlessly with at least SDL2.
 [busybox-w32]: https://frippery.org/busybox/
 [c]: /blog/2021/12/30/
 [debug]: https://lists.sr.ht/~skeeto/public-inbox/%3C1750680.o7JgDH7DvH%40laptop%3E
+[fuzz]: /blog/2019/01/25/
 [hn]: https://news.ycombinator.com/item?id=34426430
 [p9]: https://9p.io/sys/doc/comp.html
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
