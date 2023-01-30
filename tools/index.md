@@ -27,12 +27,12 @@ them at rest. Instead, generate keys on the fly as needed.
     $ passphrase2pgp -u "Real Name <name@example.com>" | gpg --import
     $ passphrase2pgp -u name@example.com -f ssh | ssh-add -
 
-Source: **[passphrase2pgp-1.2.0.tar.xz][passphrase2pgp-src]**
+Source: **[passphrase2pgp-1.2.1.tar.xz][passphrase2pgp-src]**
 ([sig][passphrase2pgp-sig])
 
 [p2]: /blog/2019/07/10/
-[passphrase2pgp-sig]: https://github.com/skeeto/passphrase2pgp/releases/download/v1.2.0/passphrase2pgp-1.2.0.tar.xz.sig
-[passphrase2pgp-src]: https://github.com/skeeto/passphrase2pgp/releases/download/v1.2.0/passphrase2pgp-1.2.0.tar.xz
+[passphrase2pgp-sig]: https://github.com/skeeto/passphrase2pgp/releases/download/v1.2.1/passphrase2pgp-1.2.1.tar.xz.sig
+[passphrase2pgp-src]: https://github.com/skeeto/passphrase2pgp/releases/download/v1.2.1/passphrase2pgp-1.2.1.tar.xz
 [passphrase2pgp]: https://github.com/skeeto/passphrase2pgp
 
 * * *
