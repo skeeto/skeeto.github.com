@@ -402,10 +402,10 @@ Then pkg-config will escape spaces in the expansion:
     -I/Program\ Files/include
 
 This will actually work correctly in the `eval` context where `pkg-config`
-is intended for use (read: *not command substitution*). I've made u-config
-automatically quote the prefix if it contains spaces, so it will work
-correctly despite the lack of `.pc` file quotes when the library is under
-a path containing a space.
+is intended for use (read: [*not command substitution*][cs]). I've made
+u-config automatically quote the prefix if it contains spaces, so it will
+work correctly despite the lack of `.pc` file quotes when the library is
+under a path containing a space.
 
 Here's a fun input. pkg-config has its own [billion laughs][b]:
 
@@ -491,6 +491,7 @@ out. It already works flawlessly with at least SDL2.
 [b]: https://en.wikipedia.org/wiki/Billion_laughs_attack
 [busybox-w32]: https://frippery.org/busybox/
 [c]: /blog/2021/12/30/
+[cs]: https://github.com/skeeto/u-config/issues/1#issuecomment-1397700442
 [debug]: https://lists.sr.ht/~skeeto/public-inbox/%3C1750680.o7JgDH7DvH%40laptop%3E
 [fuzz]: /blog/2019/01/25/
 [hn]: https://news.ycombinator.com/item?id=34426430
