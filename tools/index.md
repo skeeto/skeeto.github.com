@@ -37,6 +37,26 @@ Source: **[passphrase2pgp-1.2.1.tar.xz][passphrase2pgp-src]**
 
 * * *
 
+### [u-config][]
+
+"*micro*-config" is a small, highly portable [pkg-config][] / [pkgconf][]
+clone with [first-class Windows support][u-config-intro]. Integrated into
+the [w64devkit][] toolchain, and a drop-in replacement on other platforms.
+It is the most robust, most performant, most tested pkg-config available.
+
+    $ eval cc game.c $(pkg-config --cflags --libs sdl2)
+
+Source: **[u-config-0.30.2.tar.gz][u-config-src]** ([sig][u-config-sig])
+
+[pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
+[pkgconf]: http://pkgconf.org/
+[u-config-intro]: /blog/2023/01/18/
+[u-config-sig]: https://github.com/skeeto/u-config/releases/download/v0.30.2/u-config-0.30.2.tar.gz.sig
+[u-config-src]: https://github.com/skeeto/u-config/releases/download/v0.30.2/u-config-0.30.2.tar.gz
+[u-config]: https://github.com/skeeto/u-config
+
+* * *
+
 ### [enchive][]
 
 Encrypts [personal archives][retire] for long-term storage and backup.
