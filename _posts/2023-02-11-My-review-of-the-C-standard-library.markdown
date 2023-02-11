@@ -163,7 +163,7 @@ and jump. These macros are fine, but don't overdo it.
 Variadic functions are occasionally useful, and the `va_start`/`va_end`
 macros make them possible. These are, unfortunately, notoriously complex
 because calling conventions do not go out of their way to make them any
-simpler. They require compiler assistance, and in practice they're
+simpler. They [require compiler assistance][va], and in practice they're
 implemented as part of the compiler rather than libc. They're okay, but I
 can live without it.
 
@@ -461,4 +461,5 @@ evolving along practical dimensions.
 [system]: /blog/2022/02/18/
 [tale]: https://drewdevault.com/2020/09/25/A-story-of-two-libcs.html
 [uc]: /blog/2023/01/18/#implementation-highlights
+[va]: https://blog.nelhage.com/2010/10/amd64-and-va_arg/
 [w]: /blog/2022/10/05/#four-elements-windows
