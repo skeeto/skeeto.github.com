@@ -419,8 +419,8 @@ and `clock` [for seeding][seed].
 I hand-waved away a long list of vestigial wide character functions, but
 the above is pretty much all there is to the C standard library. The only
 things I miss when avoiding it altogether are the math functions, and
-occasionally `setjmp`/`longjmp`. Everything else I can do better myself,
-with little difficulty, starting from the platform layer.
+[occasionally `setjmp`/`longjmp`][setjmp]. Everything else I can do better
+myself, with little difficulty, starting from the platform layer.
 
 All of the C implementations I had in mind above are very old. They will
 rarely, if ever, *change*, just accrue. There isn't a lot of innovation
@@ -454,6 +454,7 @@ evolving along practical dimensions.
 [rt]: https://possiblywrong.wordpress.com/2015/06/21/floating-point-round-trips/
 [scanf]: https://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html
 [seed]: /blog/2019/04/30/
+[setjmp]: /blog/2023/02/12/
 [strcpy]: /blog/2021/07/30/
 [strerror]: https://man.freebsd.org/cgi/man.cgi?query=strerror&sektion=0
 [strtod]: https://www.exploringbinary.com/a-better-way-to-convert-integers-in-david-gays-strtod/
