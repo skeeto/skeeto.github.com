@@ -3,6 +3,7 @@ markdown: kramdown
 highlighter: rouge
 timezone: GMT
 safe: true
+future: true
 
 url: https://nullprogram.com
 title: null program
