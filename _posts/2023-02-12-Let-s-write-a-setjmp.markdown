@@ -278,7 +278,7 @@ the function will read the latest value out of the stack. In practice, if
 probably determined by the optimization level.
 
 The solution is to qualify `r` with `volatile`, which forces the compiler
-to store the variable on the stack and never cache it in a variable.
+to store the variable on the stack and never cache it in a register.
 
 ```c
     volatile int r = 0;
