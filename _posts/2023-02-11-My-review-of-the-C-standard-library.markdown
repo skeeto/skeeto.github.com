@@ -258,8 +258,8 @@ to the platform layer, then put a small buffered stream implementation in
 the application which flushes to the platform layer. UTF-8 for text input
 and output, and if the platform layer detects it's connected to a terminal
 or console, it does the appropriate translation. It doesn't take much to
-get something more reliable than stdio. The details are probably the topic
-for a future article, especially since you might be wondering about
+get something more reliable than stdio. The details are [the topic for a
+future article][fo], especially since you might be wondering about
 formatted output.
 
 As for formatted input, [don't ever bother with `scanf`][scanf].
@@ -445,6 +445,7 @@ evolving along practical dimensions.
 [crt]: /blog/2021/12/30/
 [drafts]: https://stackoverflow.com/a/83763
 [fbsd]: https://github.com/openssl/openssl/issues/3281
+[fo]: /blog/2023/02/13/
 [fread]: https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/fread#remarks
 [gcc]: https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html
 [hn]: https://news.ycombinator.com/item?id=34752400
