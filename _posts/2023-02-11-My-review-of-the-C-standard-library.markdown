@@ -4,7 +4,10 @@ layout: post
 date: 2023-02-11T03:04:11Z
 tags: [c]
 uuid: 31a77d1d-219c-4677-995a-8e869f9ab610
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 In general, when working in C I avoid the standard library, libc, as much
 as possible. If possible I won't even link it. For people not used to
@@ -15,6 +18,8 @@ Fortunately, it's easy to build a better, simpler wheel when you know the
 terrain ahead of time. In this article I'll review the functions and
 function-like macros of the C standard library and discuss practical
 issues I've faced with them.
+
+<!--more-->
 
 Fortunately the flexibility of C-in-practice makes up for the standard
 library. I already have all the tools at hand to do what I need — not
@@ -442,6 +447,7 @@ evolving along practical dimensions.
 [fbsd]: https://github.com/openssl/openssl/issues/3281
 [fread]: https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/fread#remarks
 [gcc]: https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html
+[hn]: https://news.ycombinator.com/item?id=34752400
 [il]: https://docs.microsoft.com/en-us/windows/win32/sync/interlocked-variable-access
 [locale]: https://github.com/mpv-player/mpv/commit/1e70e82baa9193f6f027338b0fab0f5078971fbe
 [m0]: https://yarchive.net/comp/linux/malloc_0.html
