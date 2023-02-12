@@ -4,13 +4,18 @@ layout: post
 date: 2023-02-12T02:23:11Z
 tags: [c]
 uuid: ab83cc5d-7877-4cba-98e4-d36059297ead
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 Yesterday I wrote that [`setjmp` is handy][libc] and that it would be nice
 to have without linking the C standard library. It's conceptually simple,
 after all. Today let's explore some differently-portable implementation
 possibilities with distinct trade-offs. At the very least it should
 illuminate why `setjmp` sometimes requires the use of `volatile`.
+
+<!--more-->
 
 First, a quick review: `setjmp` and `longjmp` are a form of *non-local
 goto*.
@@ -418,3 +423,4 @@ program.
 [uc]: https://github.com/skeeto/u-config/blob/master/test_main.c
 [w64devkit]: https://github.com/skeeto/w64devkit
 [x64]: https://learn.microsoft.com/en-us/cpp/build/x64-calling-convention
+[hn]: https://news.ycombinator.com/item?id=34760828
