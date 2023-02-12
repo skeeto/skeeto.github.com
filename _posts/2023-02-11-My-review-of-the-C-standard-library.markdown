@@ -24,8 +24,8 @@ How does one write portable software while relying little on libc?
 Implement the bulk of the program as platform-agnostic, libc-free code
 then write platform-specific code per target — a platform layer — each in
 its own source file. The platform code is small in comparison: mostly
-unportable code, perhaps raw system calls, graphics functions, or even
-assembly. It's where you get access to all the coolest toys. On some
+unportable code, perhaps [raw system calls][raw], graphics functions, or
+even assembly. It's where you get access to all the coolest toys. On some
 platforms it will still link libc anyway because it's got useful
 platform-specific features, or because it's mandatory.
 
@@ -450,6 +450,7 @@ evolving along practical dimensions.
 [prng]: /blog/2017/09/21/
 [q]: /blog/2022/05/14/
 [qsort]: /blog/2016/09/05/
+[raw]: /blog/2015/05/15/
 [res]: https://devblogs.microsoft.com/oldnewthing/20230109-00/?p=107685
 [rt]: https://possiblywrong.wordpress.com/2015/06/21/floating-point-round-trips/
 [scanf]: https://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html
