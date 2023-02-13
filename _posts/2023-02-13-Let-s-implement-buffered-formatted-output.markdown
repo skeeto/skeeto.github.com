@@ -4,7 +4,10 @@ layout: post
 date: 2023-02-13T00:00:00Z
 tags: [c]
 uuid: 4a4af83f-4fd8-4b3b-99aa-089d01f90fad
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on reddit][r].*
 
 When [not using the C standard library][libc], how does one deal with
 formatted output? Re-implementing the entirety of `printf` from scratch
@@ -13,6 +16,8 @@ necessary. With the right mindset, and considering your program's *actual*
 formatting needs, it's not as difficult as it might appear. Since it goes
 hand-in-hand with buffering, I'll cover both topics at once, including
 `sprintf`-like capabilities, which is where we'll start.
+
+<!--more-->
 
 ### The print-is-append mindset
 
@@ -352,3 +357,4 @@ Except for the lack of format DSL, this should feel familiar.
 [dtoa]: https://netlib.org/fp/dtoa.c
 [fmemopen]: https://man7.org/linux/man-pages/man3/fmemopen.3.html
 [libc]: /blog/2023/02/11/
+[r]: https://old.reddit.com/r/C_Programming/comments/111238u/lets_implement_buffered_formatted_output/
