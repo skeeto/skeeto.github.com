@@ -339,8 +339,9 @@ environment block directly, *a la* the non-standard third argument to
 
 ### Sorting and searching
 
-`qsort` is fine, though [quality varies][qsort]. Not difficult to
-implement from scratch if necessary. I rarely need to sort.
+`qsort` is ~~[fine][]~~poor because it [lacks a context argument][ctx].
+[Quality varies][qsort]. Not difficult to implement from scratch if
+necessary. I rarely need to sort.
 
 Similar story  for `bsearch`. Though if I need a binary search over an
 array, `bsearch` probably isn't sufficient because I usually want to find
@@ -443,8 +444,10 @@ evolving along practical dimensions.
 [cm]: https://www.youtube.com/watch?v=f4ioc8-lDc0&t=4407s
 [cosmo]: https://justine.lol/sizetricks/
 [crt]: /blog/2021/12/30/
+[ctx]: /blog/2017/01/08/
 [drafts]: https://stackoverflow.com/a/83763
 [fbsd]: https://github.com/openssl/openssl/issues/3281
+[fine]: https://lists.sr.ht/~skeeto/public-inbox/%3C1676216350-sup-9306%40thyestes.tartarus.org%3E
 [fo]: /blog/2023/02/13/
 [fread]: https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/fread#remarks
 [gcc]: https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html
