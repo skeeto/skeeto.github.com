@@ -7,7 +7,8 @@ uuid: 31a77d1d-219c-4677-995a-8e869f9ab610
 excerpt_separator: <!--more-->
 ---
 
-*This article was discussed [on Hacker News][hn].*
+*This article was discussed [on Hacker News][hn] and critiqued [on
+Wandering Thoughts][wt].*
 
 In general, when working in C I avoid the standard library, libc, as much
 as possible. If possible I won't even link it. For people not used to
@@ -475,3 +476,4 @@ evolving along practical dimensions.
 [uc]: /blog/2023/01/18/#implementation-highlights
 [va]: https://blog.nelhage.com/2010/10/amd64-and-va_arg/
 [w]: /blog/2022/10/05/#four-elements-windows
+[wt]: https://utcc.utoronto.ca/~cks/space/blog/programming/CaseForAtomicTypes
