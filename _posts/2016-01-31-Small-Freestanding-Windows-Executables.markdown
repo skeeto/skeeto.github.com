@@ -6,6 +6,8 @@ tags: [c, x86, linux, win32, optimization]
 uuid: 8eddc701-52d3-3b0c-a8a8-dd13da6ead2c
 ---
 
+**Update**: This is old and [was **updated in 2023**](/blog/2023/02/15/)!
+
 Recently I've been experimenting with freestanding C programs on
 Windows. *Freestanding* refers to programs that don't link, either
 statically or dynamically, against a standard library (i.e. libc).

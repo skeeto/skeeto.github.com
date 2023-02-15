@@ -1,0 +1,397 @@
+---
+title: "CRT-free in 2023: tips and tricks"
+layout: post
+date: 2023-02-15T02:12:00Z
+tags: [c, win32]
+uuid: 025441bf-084e-4c3e-9a37-269e2ac1a4d6
+---
+
+Seven years ago I wrote about ["freestanding" Windows executables][old].
+After an additional seven years of practical experience both writing and
+distributing such programs, half using [a custom-built toolchain][w64],
+it's time to revisit these cabalistic incantations and otherwise scant
+details. I've tweaked my older article over the years as I've learned, but
+this is a full replacement and does not assumes you've read it. The ["why"
+has been covered][why] and the focus will be on the "how". Both the GNU
+and MSVC toolchains will be considered.
+
+I no longer call these "freestanding" programs since that term is, at
+best, inaccurate. In fact, we will be actively avoiding GCC features
+associated with that label. Instead I call these *CRT-free* programs,
+where CRT stands for the *C runtime* the Windows-oriented term for
+*libc*. This term communicates both intent and scope.
+
+### Entry point
+
+You should already know that `main` is not the program's entry point, but
+a C application's entry point. The CRT provides the entry point, where it
+initializes the CRT, including [parsing command line options][cmd], then
+calls the application's `main`. The real entry point doesn't have a name.
+It's just the address of the function to be called by the loader without
+arguments.
+
+You might naively assume you could continue using the name `main` and tell
+the linker to use it as the entry point. You would be wrong. **Avoid the
+name `main`!** It has a special meaning in C gets special treatment. Using
+it without a conventional CRT will confuse your tools an may cause build
+issues.
+
+While you can use almost any other name you like, the conventional names
+are `mainCRTStartup` (console subsystem) and `WinMainCRTStartup` (windows
+subsystem). It's easy to remember: Append `CRTStartup` to the name you'd
+use in a normal CRT-linking application. I strongly recommend using these
+names because it reduces friction. Your tools are already familiar with
+them, so you won't need to do anything special.
+
+```c
+int mainCRTStartup(void);     // console subsystem
+int WinMainCRTStartup(void);  // windows subsystem
+```
+
+The MSVC linker documentation says the entry point uses the `__stdcall`
+calling convention. Ignore this and **do not use `__stdcall` for your
+entry point!** Since entry points take no arguments, there is no practical
+difference from the `__cdecl` calling convention, so it does not actually
+matter. Rather, the goal is to avoid `__stdcall` *function decorations*.
+In particular, the GNU linker `--entry` option does not understand them,
+nor can it find decorated entry points on its own. If you use `__stdcall`,
+then the 32-bit GNU linker will silently (!) choose the beginning of your
+`.text` section as the entry point.
+
+If you're using C++, then of course you will also need to use `extern "C"`
+so that it's not name-mangled. Otherwise the results are similarly bad.
+
+If using `-fwhole-program`, you will need to mark your entry point as
+externally visible for GCC so that it knows its an entry point. While
+linkers are familiar with conventional entry point names, GCC the
+*compiler* is not. Normally you do not need to worry about this.
+
+```c
+__attribute__((externally_visible))  // for -fwhole-program
+int mainCRTStartup(void)
+{
+    return 0;
+}
+```
+
+The entry point returns `int`. *If there are no other threads* then the
+process will exit with the returned value as its exit status. In practice
+this is only useful for console programs. Windows subsystem programs have
+threads started automatically, without warning, and it's almost certain
+your main thread is not the last thread. You probably want to use
+`ExitProcess` or even `TerminateProcess` instead of returning. The latter
+exits more abruptly and can avoid issues with certain subsystems, like
+DirectSound, not shutting down gracefully: It doesn't even let them try.
+
+```c
+int WinMainCRTStartup(void)
+{
+    // ...
+    TerminateProcess(GetCurrentProcess(), 0);
+}
+```
+
+### Compilation
+
+Starting with the GNU toolchain, you have two ways to get into "CRT-free
+mode": `-nostartfiles` and `-nostdlib`. The former is more dummy-proof,
+and it's what I use in build documentation. The latter can be a more
+complicated, but when it succeeds you get guarantees about the result. I
+use it in build scripts I intend to run myself, which I want to fail if
+they don't do exactly what I expect. To illustrate, consider this trivial
+program:
+
+```c
+#include <windows.h>
+
+int mainCRTStartup(void)
+{
+    ExitProcess(0);
+}
+```
+
+This program uses `ExitProcess` from `kernel32.dll`. Compiling is easy:
+
+    $ cc -nostartfiles example.c
+
+The `-nostartfiles` prevents it from linking the CRT entry point, but it
+still implicitly passes other "standard" linker flags, including libraries
+`-lmingw32` and `-lkernel32`. Programs can use `kernel32.dll` functions
+without explicitly linking that DLL. But, hey, isn't `-lmingw32` the CRT,
+the thing we're avoiding? It is, but it wasn't actually linked because the
+program didn't reference it.
+
+    $ objdump -p a.exe | grep -Fi .dll
+            DLL Name: KERNEL32.dll
+
+However, `-nostdlib` does not pass any of these libraries, so you need to
+do so explicitly.
+
+    $ cc -nostdlib example.c -lkernel32
+
+The MSVC toolchain behaves a little like `-nostartfiles`, not linking a
+CRT unless you need it, semi-automatically. However, you'll need to list
+`kernel32.dll` and tell it which subsystem you're using.
+
+    $ cl example.c /link /subsystem:console kernel32.lib
+
+However, MSVC has a handy little feature to list these arguments in the
+source file.
+
+```c
+#ifdef _MSC_VER
+  #pragma comment(linker, "/subsystem:console")
+  #pragma comment(lib, "kernel32.lib")
+#endif
+```
+
+This information must go somewhere, and I prefer the source file rather
+than a build script. Then anyone can point MSVC at the source without
+worrying about options.
+
+    $ cl example.c
+
+I try to make all my Windows programs so simply built.
+
+### Stack probes
+
+On Windows, it's expected that stacks will commit dynamically. That is,
+the stack is merely *reserved* address space, and it's only committed when
+the stack actually grows into it. This made sense 30 years ago as a memory
+saving technique, but today it no longer makes sense. However, programs
+are still built to use this mechanism.
+
+To function properly, programs must touch each stack page for the first
+time in order. Normally that's not an issue, but if your stack frame
+exceeds the page size, there's a chance it might step over a page. When a
+function has a large stack frame, GCC inserts a call to a "stack probe" in
+`libgcc` that touches its pages in the prologue. It's not unlike [stack
+clash protection][clash].
+
+For example, if I have a 4kiB local variable:
+
+```c
+int mainCRTStartup(void)
+{
+    char buf[1<<12] = {0};
+    return 0;
+}
+```
+
+When I compile with `-nostdlib`:
+
+    $ cc -nostdlib example.c
+    ld: ... undefined reference to `___chkstk_ms'
+
+It's trying to link the CRT stack probe. You can disable this behavior
+with `-mno-stack-arg-probe`.
+
+    $ cc -mno-stack-arg-probe -nostdlib example.c
+
+Or you can just link `-lgcc` to provide a definition:
+
+    $ cc -nostdlib example.c -lgcc
+
+Had you used `-nostartfiles`, you wouldn't have noticed because it passes
+`-lgcc` automatically. It's "dummy-proof" because this sort of issue goes
+away before it comes up, though for the same reason it's harder to tell
+exactly what went into a program.
+
+If you disable the probe altogether — my preference — you've only solved
+the linker problem, but the underlying stack commit problem remains and
+your program may crash. You can solve that by telling the linker to ask
+the loader to commit a larger stack up front rather than grow it at run
+time. Say, 2MiB:
+
+    $ cc -mno-stack-arg-probe -Xlinker --stack=0x200000,0x200000 example.c
+
+Of course, I wish that this was simply the default behavior because it's
+far more sensible! Another option is to avoid large stack frames in the
+first place. Allocate locals larger than 4kiB in, say, a scratch arena
+instead of on the stack.
+
+MSVC doesn't have `libgcc` of course, but it still generates stack probes
+both for growing the stack and for security checks. The latter requires
+`kernel32.dll`, so if I compile the same program with MSVC, I get a bunch
+of linker failures:
+
+    $ cl example.c /link /subsystem:console
+    ... unresolved external symbol __imp_RtlCaptureContext ...
+    ... and 7 more ...
+
+Using `/Gs1000000000` turns off the stack probes, `/GS-` turns off the
+checks, `/stack` commits a larger stack:
+
+    $ cl /GS- /Gs1000000000 example.c /link
+         /subsystem:console /stack:0x200000,200000
+
+Though, as before, you could also avoid large stack frames in the first
+place.
+
+### Built-in functions… ugh
+
+The three major C and C++ compilers — GCC, MSVC, Clang — share a common,
+evil weakness: "built-in" functions. *No matter what*, they each assume
+you will supply definitions for standard string functions at link time,
+particularly `memset` and `memcpy`. They do this no matter how many
+"seriously now, do not use standard C functions" options you pass. When
+you don't link a CRT, you may need to define them yourself.
+
+In case that sounds easy, there's a catch-22: The compiler will transform
+your `memset` definition — that is, *in a function named `memset`* — into
+a call to itself. After all, it looks an awful lot like `memset`! This
+typically manifests as an infinite loop. This will even compile and
+*appear* work — until your program hangs. It's amazing that each of the
+major compilers have this crummy behavior.
+
+No matter what you may have read, **`-fno-builtin` is not a solution**.
+It's merely a sometimes-honored request, and both GCC and Clang will
+continue inserting calls to built-in functions you said do not exist. For
+example, making an especially large local variable (and using `volatile`
+to prevent it from being optimized out):
+
+```c
+int mainCRTStartup(void)
+{
+    volatile char buf[1<<14] = {0};
+    return 0;
+}
+```
+
+As of this writing, the latest GCC and Clang will generate a `memset` call
+despite `-fno-builtin`:
+
+    $ cc -mno-stack-arg-probe -fno-builtin -nostdlib example.c
+    ld: ... undefined reference to `memset' ...
+
+If you want to be absolutely pure, you will need to address this in just
+about any non-trivial program. On the other hand, `-nostartfiles` will
+grab a definition from `msvcrt.dll` for you:
+
+    $ cc -nostartfiles example.c
+    $ objdump -p a.exe | grep -Fi .dll
+            DLL Name: msvcrt.dll
+
+To be clear, *this is a completely legitimate and pragmatic route!* You
+get the benefits of both worlds: the CRT is still out of the way, but
+there's also no hassle from misbehaving compilers. If this sounds like a
+good deal, then do it! (For on-lookers feeling smug: there is no such
+easy, general solution for this problem on Linux.)
+
+But me, I want that CRT-free purity, damnit! There are a few of options.
+Option 1, make it unoptimizable. Here I've added fake-out inline assembly:
+
+```c
+void *memset(void *p, int c, size_t n)
+{
+    char *s = p;
+    for (size_t i = 0; i < n; i++) {
+        __asm("");
+        s[i] = c;
+    }
+    return p;
+}
+```
+
+Alternatively use `volatile`. The downside is your program may be slower
+since it prevents optimizations you *do* want. Option 2, disable the
+particular troublesome optimization.
+
+```c
+__attribute__((optimize("no-tree-loop-distribute-patterns")))
+void *memset(void *p, int c, size_t n)
+{
+    // ...
+}
+```
+
+Or for the whole program:
+
+    $ cc -fno-tree-loop-distribute-patterns ...
+
+But will that work reliably in the future? Option 3, implement it with
+[inline assembly][asm] since it's opaque to optimization.
+
+```c
+void *memset(void *d, int c, size_t n)
+{
+    void *r = d;
+    __asm volatile (
+        "rep stosb"
+        : "=D"(d), "=a"(c), "=c"(n)
+        : "0"(d), "1"(c), "2"(n)
+        : "memory"
+    );
+    return r;
+}
+```
+
+Normally this option could be severe since you'd need assembly for every
+target architecture, but Windows (currently) supports few architectures.
+You probably only care about x86 and x64, and the inline assembly above is
+a polyglot! Important: Be wary of copy-pasting such inline assembly from
+Stack Overflow because it's often wrong.
+
+Regardless, I suggest putting each definition in its own section so that
+they can be discarded via `-Wl,--gc-sections` when unused:
+
+```c
+__attribute__((section(".text.memset")))
+void *memset(void *d, int c, size_t n)
+{
+    // ...
+}
+```
+
+In the past I've needed to provide definitions for `memcmp`, `memset`,
+`memcpy`, `memmove`, and even `strlen`.
+
+Unfortunately the MSVC situation is mostly worse. When it inserts such a
+CRT call it will not automatically pick up a CRT like `-nostartfiles`.
+There's no inline assembly, and it's harder to selectively disable the
+troublesome optimizations. Instead I've been using intrinsics like
+`__stosb`. MSVC has a larger variety of them, which makes up a bit for its
+lack of inline assembly.
+
+```c
+#pragma function(memset)
+void *memset(void *d, int c, size_t n)
+{
+    __stosb(d, c, n);
+    return d;
+}
+```
+
+I don't quite understand the purpose of the `#pragma`, but this works.
+
+### Putting it all together
+
+If I've written a graphical application with `WinMainCRTStartup`, used
+large stack frames, marked my entry point as externally visible, and
+defined a couple of string functions defined appropriately, my "optimize
+all the things" release build may look something like:
+
+    $ cc -mno-stack-arg-probe -Xlinker --stack=0x200000,0x200000
+         -O3 -fwhole-program -Wl,--gc-sections -s -nostdlib -mwindows
+         -o app.exe app.c -lkernel32
+
+Or with MSVC:
+
+    $ cl /O2 /GS- /Gs1000000000 app.c /link kernel32.lib
+         /subsystem:windows /stack:0x200000,200000
+
+Or if I'm taking it easy maybe just:
+
+    $ cc -O3 -s -nostartfiles -mwindows -o app.exe app.c
+
+Or with MSVC (linker flags in source):
+
+    $ cl /O2 app.c
+
+
+[asm]: https://www.felixcloutier.com/documents/gcc-asm.html
+[clash]: /blog/2017/06/21/
+[cmd]: /blog/2022/02/18/
+[old]: /blog/2016/01/31/
+[w64]: https://github.com/skeeto/w64devkit
+[why]: /blog/2023/02/11/
