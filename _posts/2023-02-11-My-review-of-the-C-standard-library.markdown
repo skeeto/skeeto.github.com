@@ -280,12 +280,18 @@ player's position in a debug window, etc. Or you only need to parse
 medium-precision non-integral inputs following a relatively simple format.
 These are not so difficult.
 
-The parsing functions (`atoi`, `strtol`, `strtod`, etc.) require
-null-terminated strings, which is generally inconvenient. These integers
-likely came from something *not* null-terminated like a file, and so I
-need to first append a null terminator. I can't just feed it a token from
-a memory-mapped file. Even when using libc, I often write my own integer
-parser anyway since the libc parsers lack an appropriate interface.
+Parsing (`atoi`, `strtol`, `strtod`, etc.) requires null-terminated
+strings, which is generally inconvenient. These integers likely came from
+something *not* null-terminated like a file, and so I need to first append
+a null terminator. I can't just feed it a token from a memory-mapped file.
+Even when using libc, I often write my own integer parser anyway since the
+libc parsers lack an appropriate interface.
+
+**Update**: NRK points out that [unsigned integer parsing treats negative
+inputs as in range][strtoul]. This is both surprising and rarely useful.
+Looking more closely at the specification, I see it is also affected by
+locale. Given these revelations, I would ban without exception `atoi`,
+`atol`, `strtoul`, and `strtoull`, and avoid `strtol` and `strtoll`.
 
 Formatting integers is easy. Parsing integers within in narrow range (e.g.
 up to a million) is easy. Parsing integers to the very limits of the
@@ -471,6 +477,7 @@ evolving along practical dimensions.
 [strerror]: https://man.freebsd.org/cgi/man.cgi?query=strerror&sektion=0
 [strtod]: https://www.exploringbinary.com/a-better-way-to-convert-integers-in-david-gays-strtod/
 [strtonum]: https://github.com/skeeto/scratch/blob/master/parsers/strtonum.c
+[strtoul]: https://lists.sr.ht/~skeeto/public-inbox/%3C20230218081805.z57kyrbc6xzqlnx6%40gen2.localdomain%3E
 [system]: /blog/2022/02/18/
 [tale]: https://drewdevault.com/2020/09/25/A-story-of-two-libcs.html
 [uc]: /blog/2023/01/18/#implementation-highlights
