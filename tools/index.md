@@ -46,13 +46,13 @@ It is the most robust, most performant, most tested pkg-config available.
 
     $ eval cc game.c $(pkg-config --cflags --libs sdl2)
 
-Source: **[u-config-0.30.2.tar.gz][u-config-src]** ([sig][u-config-sig])
+Source: **[u-config-0.31.0.tar.gz][u-config-src]** ([sig][u-config-sig])
 
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
 [pkgconf]: http://pkgconf.org/
 [u-config-intro]: /blog/2023/01/18/
-[u-config-sig]: https://github.com/skeeto/u-config/releases/download/v0.30.2/u-config-0.30.2.tar.gz.sig
-[u-config-src]: https://github.com/skeeto/u-config/releases/download/v0.30.2/u-config-0.30.2.tar.gz
+[u-config-sig]: https://github.com/skeeto/u-config/releases/download/v0.31.0/u-config-0.31.0.tar.gz.sig
+[u-config-src]: https://github.com/skeeto/u-config/releases/download/v0.31.0/u-config-0.31.0.tar.gz
 [u-config]: https://github.com/skeeto/u-config
 
 * * *
