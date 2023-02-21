@@ -136,7 +136,7 @@ The load disappears, `y` is gone, and the function always returns
 zero.
 
 Curiously, the specification *almost* allows the compiler to go
-further. Consider would would happen if `x` were allocated somewhere
+further. Consider what would happen if `x` were allocated somewhere
 off the stack in read-only memory. That transformation would look like
 this:
 
