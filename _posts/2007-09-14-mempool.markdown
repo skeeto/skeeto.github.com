@@ -5,11 +5,10 @@ tags: [c]
 uuid: 032a6065-a4f8-3c90-c64b-7be3e7ec0e1e
 ---
 
-*I wrote this code and writeup some time ago and have used it in
-several projects for building parse trees quickly. Using the pool is
-faster than making a system call with `malloc` each time you add a new
-node. In fact, one of my programs ran 25% faster when I dropped in the
-this memory allocation pool. This code is very solid and reliable.*
+Update: *I wrote this very long ago as an undergraduate still learning the
+basics. Therefore, **do not use this or take it seriously**.* I retain
+this article merely as a historical record. It is nothing more than a
+novice's overcomplicated take on [region-based memory management][arena].
 
  * [/download/alloc-pool.tar.gz](/download/alloc-pool.tar.gz) (2.58KB)
 
@@ -41,4 +40,5 @@ remains untouched and your pool will have some slight internal
 fragmentation.
 
 
+[arena]: https://en.wikipedia.org/wiki/Region-based_memory_management
 [svn]: http://svnbook.red-bean.com/
