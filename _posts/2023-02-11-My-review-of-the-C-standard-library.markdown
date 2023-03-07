@@ -51,8 +51,8 @@ I [wrote about the `assert` macro last year][assert]. While C assertions
 are better than the same in any other language I know — a trap *without
 first unwinding the stack* — the typical implementation doesn't have the
 courtesy to trap in the macro itself, creating friction. Or worse, it
-doesn't trap at at all and instead exits the process normally with a
-non-zero status. It's not optimized for debuggers.
+doesn't trap at all and instead exits the process normally with a non-zero
+status. It's not optimized for debuggers.
 
 My non-trivial programs quickly pick up this definition instead, adjusted
 later as needed:
@@ -218,7 +218,7 @@ opened as text streams, and there is no standard function for changing
 them to binary streams.
 
 When using `fread`, some implementations use the entire buffer as a
-[temporary work space][fread], even if the returns a length less than the
+[temporary work space][fread], even if it returns a length less than the
 entire buffer. So the following won't work reliably:
 
 ```c
