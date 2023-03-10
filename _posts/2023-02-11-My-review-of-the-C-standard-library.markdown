@@ -42,8 +42,8 @@ already writing platform-specific code and I might as well take full
 advantage of that fact, bypassing the original issue entirely by calling
 directly into the platform.
 
-The rest of this article is goes through the standard library listing in
-[the C18 draft][drafts] mostly in order.
+The rest of this article goes through the standard library listing in [the
+C18 draft][drafts] mostly in order.
 
 ### assert and abort
 
