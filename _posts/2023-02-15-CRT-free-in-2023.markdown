@@ -67,7 +67,7 @@ linkers are familiar with conventional entry point names, GCC the
 *compiler* is not. Normally you do not need to worry about this.
 
 ```c
-__attribute__((externally_visible))  // for -fwhole-program
+__attribute((externally_visible))  // for -fwhole-program
 int mainCRTStartup(void)
 {
     return 0;
@@ -298,7 +298,7 @@ since it prevents optimizations you *do* want. Option 2, disable the
 particular troublesome optimization.
 
 ```c
-__attribute__((optimize("no-tree-loop-distribute-patterns")))
+__attribute((optimize("no-tree-loop-distribute-patterns")))
 void *memset(void *p, int c, size_t n)
 {
     // ...
@@ -336,7 +336,7 @@ Regardless, I suggest putting each definition in its own section so that
 they can be discarded via `-Wl,--gc-sections` when unused:
 
 ```c
-__attribute__((section(".text.memset")))
+__attribute((section(".text.memset")))
 void *memset(void *d, int c, size_t n)
 {
     // ...
@@ -364,16 +364,67 @@ void *memset(void *d, int c, size_t n)
 
 I don't quite understand the purpose of the `#pragma`, but this works.
 
+### Stack alignment on 32-bit x86
+
+GCC expects a 16-byte aligned stack and generates code accordingly. Such
+is dictated by the x64 ABI, so that's a given on 64-bit Windows. However,
+the x86 ABIs only guarantee 4-byte alignment. If no care is taken to deal
+with it, there will likely be unaligned loads. Some may not be valid (e.g.
+SIMD) leading to a crash. UBSan disapproves, too. Fortunately there's a
+function attribute for this:
+
+```c
+__attribute((force_align_arg_pointer))
+int mainCRTStartup(void)
+{
+    // ...
+}
+```
+
+GCC will now align the stack in this function's prologue. Adjustment is
+only necessary at entry points, as GCC will maintain alignment through its
+own frames. This includes *all* entry points, not just the program entry
+point, particularly thread start functions. Rule of thumb for i686 GCC:
+**If `WINAPI` or `__stdcall` appears in a definition, the stack likely
+requires alignment**.
+
+```c
+__attribute((force_align_arg_pointer))
+DWORD WINAPI mythread(void *arg)
+{
+    // ...
+}
+```
+
+It's harmless to use this attribute on x64. The prologue will just be a
+smidge larger. If you're worried about it, use `#ifdef __i686__` to limit
+it to 32-bit builds.
+
 ### Putting it all together
 
 If I've written a graphical application with `WinMainCRTStartup`, used
-large stack frames, marked my entry point as externally visible, and
-defined a couple of string functions defined appropriately, my "optimize
-all the things" release build may look something like:
+large stack frames, marked my entry point as externally visible, plan to
+support 32-bit builds, and defined a couple of needed string functions, my
+optimal entry point may look something like:
+
+```c
+#ifdef __GNUC__
+__attribute((externally_visible))
+#endif
+#ifdef __i686__
+__attribute((force_align_arg_pointer))
+#endif
+int WinMainCRTStartup(void)
+{
+    // ...
+}
+```
+
+Then my "optimize all the things" release build may look something like:
 
     $ cc -mno-stack-arg-probe -Xlinker --stack=0x200000,0x200000
          -O3 -fwhole-program -Wl,--gc-sections -s -nostdlib -mwindows
-         -o app.exe app.c -lkernel32
+         -fno-asynchronous-unwind-tables -o app.exe app.c -lkernel32
 
 Or with MSVC:
 
