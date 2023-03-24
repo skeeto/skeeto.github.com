@@ -214,14 +214,14 @@ sets the futex to non-zero and wakes all waiters, which might be nobody.
 
 Caveat: It's not safe to free/reuse the stack after a successful join. It
 only indicates the thread is done with its work, not that it exited. You'd
-need to wait for its `SIGCHLD`. If this sounds like a problem, consider
-[your context][ctx] more carefully: Why do you feel the need to free the
-stack? It will be freed when the process exits. Worried about leaking
-stacks? Why are you starting and exiting an unbounded number of threads?
-In the worst case park the thread in a thread pool until you need it
-again. Only worry about this sort of thing if you're building a general
-purpose threading API like pthreads. I know it's tempting, but avoid doing
-that unless you absolutely must.
+need to wait for its `SIGCHLD` (or use `CLONE_CHILD_CLEARTID`). If this
+sounds like a problem, consider [your context][ctx] more carefully: Why do
+you feel the need to free the stack? It will be freed when the process
+exits. Worried about leaking stacks? Why are you starting and exiting an
+unbounded number of threads? In the worst case park the thread in a thread
+pool until you need it again. Only worry about this sort of thing if
+you're building a general purpose threading API like pthreads. I know it's
+tempting, but avoid doing that unless you absolutely must.
 
 What's with the `force_align_arg_pointer`? Linux doesn't align the stack
 for the process entry point like a System V ABI function call. Processes
