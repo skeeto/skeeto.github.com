@@ -190,13 +190,16 @@ atomic, *loads* and *stores* are atomic. Predating standardization, C
 implementations have been expressing these loads and stores using
 intrinsics, functions, or macros rather than through types.
 
-However, I don't think the atomic functions require `_Atomic`-qualified
-arguments (right?), so it would seem to let me have my cake and eat it,
-too. Except one major implementation (MSVC) still doesn't support them.
-Anywhere I care about using C atomics, I can already use the [richer set
-of GCC built-ins][gcc], which Clang also supports. If I'm writing code
-intended for Windows, I'll use the [interlocked macros][il], which work
-[across all the compilers][w] for that platform.
+The `_Atomic` qualifier provides access to the most basic and most strict
+atomic operations without libc. That is, it's implemented purely in the
+compiler. However, everything outside that involves libc, and potentially
+even requires linking a special atomics library.
+
+Even more, one major implementation (MSVC) still doesn't support C11
+atomics. Anywhere I care about using C atomics, I can already use the
+[richer set of GCC built-ins][gcc], which Clang also supports. If I'm
+writing code intended for Windows, I'll use the [interlocked macros][il],
+which work [across all the compilers][w] for that platform.
 
 ### stdio
 
