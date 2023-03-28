@@ -13,7 +13,7 @@ solved, but a lot of software benefits from concurrency. It would be nice
 to also have thread spawning capability. This article will demonstrate a
 simple, practical, and robust approach to spawning and managing threads
 using only raw system calls. It only takes about a dozen lines of C,
-including 4 or so inline assembly instructions.
+including a few inline assembly instructions.
 
 The catch is that there's no way to avoid using a bit of assembly. Neither
 the `clone` nor `clone3` system calls have threading semantics compatible
@@ -114,23 +114,23 @@ I call the `clone` wrapper `newthread`. It has the inline assembly for the
 system call, and since it includes a `ret` to diverge the threads, it's a
 "naked" function [just like with `setjmp`][setjmp]. The compiler will
 generate no prologue or epilogue, and the function body is limited to
-inline assembly. It cannot even reliably reference its parameters by name.
-Like `clone`, it doesn't accept a thread entry point. Instead it accepts a
-`stack_head` seeded with the entry point. The whole wrapper is just four
-instructions:
+inline assembly without input/output operands. It cannot even reliably
+reference its parameters by name. Like `clone`, it doesn't accept a thread
+entry point. Instead it accepts a `stack_head` seeded with the entry
+point. The whole wrapper is just six instructions:
 
 ```c
 __attribute((naked))
 static long newthread(struct stack_head *stack)
 {
     __asm volatile (
-        "xchg   %%rdi, %%rsi\n"
+        "mov  %%rdi, %%rsi\n"     // arg2 = stack
+        "mov  $0x50f00, %%edi\n"  // arg1 = clone flags
+        "mov  $56, %%eax\n"       // SYS_clone
         "syscall\n"
-        "mov    %%rsp, %%rdi\n"
+        "mov  %%rsp, %%rdi\n"     // entry point argument
         "ret\n"
-        :
-        : "a"(SYS_clone), "S"(0x50f00L)
-        : "rdi", "rcx", "r11", "memory"
+        : : : "rax", "rcx", "rsi", "rdi", "r11", "memory"
     );
 }
 ```
@@ -139,16 +139,15 @@ On x86-64, both function calls and system calls use `rdi` and `rsi` for
 their first two parameters. Per the reference `clone(2)` prototype above:
 the first system call argument is `flags` and the second argument is the
 new `stack`, which will point directly at the `stack_head`. However, the
-stack pointer arrives in `rdi`. So I load the flags (`0x50f00L`) into
-`rsi`, then exchange (`xchg`) the registers in the inline assembly,
-preparing both system call arguments at once.
+stack pointer arrives in `rdi`. So I copy `stack` into the second argument
+register, `rsi`, then load the flags (`0x50f00`) into the first argument
+register, `rdi`. The system call number goes in `rax`.
 
-Where does that `0x50f00L` come from? That's the bare minimum thread spawn
-flag set expressed as a constant. If any flag is missing then threads will
-not spawn reliably — as discovered the hard way by trial and error across
-different system configurations, not from documentation. Give it a name if
-you like, but don't use an automatic local variable because it's a naked
-function.
+Where does that `0x50f00` come from? That's the bare minimum thread spawn
+flag set in hexadecimal. If any flag is missing then threads will not
+spawn reliably — as discovered the hard way by trial and error across
+different system configurations, not from documentation. It's computed
+normally like so:
 
 ```c
     long flags = 0;
@@ -203,7 +202,7 @@ void _start(void)
 }
 ```
 
-Despite the minimalist, 4-instruction clone wrapper, this is taking the
+Despite the minimalist, 6-instruction clone wrapper, this is taking the
 shape of a conventional threading API. It would only take a bit more to
 hide the futex, too. Speaking of which, what's going on there? The [same
 principal as a WaitGroup][wg]. The futex, an integer, is zero-initialized,
