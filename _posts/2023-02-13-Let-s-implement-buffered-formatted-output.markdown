@@ -234,11 +234,11 @@ void append_double(struct buf *b, double x)
     }
 
     x += 0.5 / prec;  // round last decimal
-    long integral = x;
-    long fractional = (x - integral)*prec;
-    if (fractional < 0) {
+    if (x >= (double)(-1UL>>1)) {  // out of long range?
         APPEND_STR(b, "inf");
     } else {
+        long integral = x;
+        long fractional = (x - integral)*prec;
         append_long(b, integral);
         append_byte(b, '.');
         for (long i = prec/10; i > 1; i /= 10) {
