@@ -281,13 +281,15 @@ The buffered stream will be polymorphic: Output can go to a memory buffer
 or to an operating system handle using the same append interface. This is
 a handy feature standard C doesn't even have, though POSIX does in the
 form of [`fmemopen`][fmemopen]. Nothing else changes except `append`,
-which, if given a valid handle, will flush when full.
+which, if given a valid handle, will flush when full. Attempting to flush
+a memory buffer sets the error flag.
 
 ```c
 _Bool os_write(int fd, void *, int);
 
 void flush(struct buf *b)
 {
+    b->error |= b->fd < 0;
     if (!b->error && b->len) {
         b->error |= !os_write(b->fd, b->buf, b->len);
         b->len = 0;
@@ -322,11 +324,7 @@ void append(struct buf *b, unsigned char *src, int len)
         src += amount;
 
         if (amount < left) {
-            if (b->fd >= 0) {
-                flush(b);
-            } else {
-                b->error |= 1;
-            }
+            flush(b);
         }
     }
 }
