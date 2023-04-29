@@ -6,7 +6,7 @@ tags: [c, cpp]
 uuid: a90f3f5b-b4c3-4153-ac8e-6cdbf235f44b
 ---
 
-The major compilers have an [enormous number of of knobs][man]. Most are
+The major compilers have an [enormous number of knobs][man]. Most are
 highly specialized, but others are generally useful even if uncommon. For
 warnings, the venerable `-﻿Wall -﻿Wextra` is a good start, but
 circumstances improve by tweaking this warning set. This article covers
