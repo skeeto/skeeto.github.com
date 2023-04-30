@@ -4,7 +4,10 @@ layout: post
 date: 2023-04-29T22:55:25Z
 tags: [c, cpp]
 uuid: a90f3f5b-b4c3-4153-ac8e-6cdbf235f44b
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
 
 The major compilers have an [enormous number of knobs][man]. Most are
 highly specialized, but others are generally useful even if uncommon. For
@@ -12,6 +15,8 @@ warnings, the venerable `-﻿Wall -﻿Wextra` is a good start, but
 circumstances improve by tweaking this warning set. This article covers
 high-hitting development-time options in GCC, Clang, and MSVC that ought
 to get more consideration.
+
+<!--more-->
 
 There's an irony that the more you use these options, the less useful they
 become. Given a reasonable workflow, they are a harsh mistress in a fast,
@@ -318,11 +323,13 @@ anyway.
 [debug]: /blog/2022/06/26/
 [edge]: /blog/2022/10/03/
 [fuzz]: /blog/2019/01/25/
+[hn]: https://news.ycombinator.com/item?id=35758898
 [int]: /blog/2017/07/19/
 [lcg]: /blog/2019/11/19/
 [libc]: /blog/2023/02/11/
 [man]: https://man7.org/linux/man-pages/man1/gcc.1.html
 [openmp]: /blog/2017/03/01/
+[reddit]: https://old.reddit.com/r/C_Programming/comments/133bjlp
 [rtc]: https://learn.microsoft.com/en-us/cpp/build/reference/rtc-run-time-error-checks
 [size]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [w64]: https://github.com/skeeto/w64devkit
