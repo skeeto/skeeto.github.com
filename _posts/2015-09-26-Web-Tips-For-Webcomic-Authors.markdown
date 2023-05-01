@@ -122,8 +122,8 @@ comic's URL by clicking on the comic's image.
 
 #### Have an Atom or RSS feed
 
-Comics without feeds is much less of a problem [than it used to
-be][old], but it still comes up on occasion. If you need to pick
+Comics without feeds is much less of a problem than it used to
+be, but it still comes up on occasion. If you need to pick
 between Atom and RSS, [I recommend Atom][vs], but, honestly, it's only
 important that you have a valid feed with a date. You don't even need
 to put the comic in the feed itself (possibly costing you ad revenue),
@@ -212,5 +212,4 @@ me. After all, I don't hesitate to bug you when something's not right!
 [nedroid]: http://nedroid.com/
 [cardboard]: http://mycardboardlife.com/
 [vs]: /blog/2013/09/23/
-[old]: /blog/2009/04/22/
 [valid]: https://validator.w3.org/feed/
