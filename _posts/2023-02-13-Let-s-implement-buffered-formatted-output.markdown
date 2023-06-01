@@ -179,7 +179,7 @@ now have enough to format the example:
 
 ```c
 char message[256];
-struct buf b = MEMBUF(buf, sizeof(buf));
+struct buf b = MEMBUF(message, sizeof(message));
 
 APPEND_STR(&b, "found ");
 append_long(&b, count);
