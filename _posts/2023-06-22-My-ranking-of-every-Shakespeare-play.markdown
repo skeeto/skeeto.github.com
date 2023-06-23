@@ -108,13 +108,13 @@ scripts today. Also, around 20% of plays credited to Shakespeare were
 collaborations of some degree, though the collaboration details have been
 long lost. For simplicity, I will just refer to the author as Shakespeare.
 
-### Timon of Athens
+### (37) Timon of Athens
 
 I have nothing positive to say about this play. It's about a man who
 borrows and spends recklessly, then learns all the wrong lessons from the
 predictable results.
 
-### The Two Gentlemen of Verona
+### (36) The Two Gentlemen of Verona
 
 Involves a couple of love triangles, a woman disguised as a man — a common
 Shakespeare trope — and perhaps the worst ending to a play ever written.
@@ -122,7 +122,7 @@ The two "gentlemen" are terrible people and undeserving of their happy
 ending. Though I enjoyed the scenes with Proteus and Crab, the play's fool
 and his dog.
 
-### Troilus and Cressida
+### (35) Troilus and Cressida
 
 Interesting that it's set during the *Iliad* and features legendary
 characters such as Achilles, Ajax, and Hector. I have no other positives
@@ -130,7 +130,7 @@ to note. Cressida's abrupt change of character in the Greek camp later in
 the play is baffling, as though part of the play has been lost, and ruins
 an already dull play for me.
 
-### The Winter's Tale
+### (34) The Winter's Tale
 
 A baby princess is lost, presumed dead, and raised by shepherds. She is
 later rediscovered by her father as a young adult. It has a promising
@@ -138,7 +138,7 @@ start, but in the final act the main plot is hastily resolved off-stage
 and seemingly replaced with a hastily rewritten ending that nonsensically
 resolves a secondary story line.
 
-### Cymbeline
+### (33) Cymbeline
 
 The title refers to a legendary early King of Britain and is set in the
 first century, but it is primarily about his daughter. The plot is
@@ -146,7 +146,7 @@ complicated so I won't summarize it here. It's long and I just didn't
 enjoy it. This is the second play in the list to feature a woman disguised
 as a man.
 
-### The Tempest
+### (32) The Tempest
 
 A political exile stranded on an island in the Mediterranean gains magical
 powers through study, with the help of a spirit creates a tempest that
@@ -161,7 +161,7 @@ just a couple of years, but she did meet his rival, Ben Jonson. I spent
 far more time catching up on real history, including reading the
 fascinating [*True Reportory*][tr], than I did on the play.
 
-### The Taming of the Shrew
+### (31) The Taming of the Shrew
 
 About a man courting and "taming" an ill-tempered woman, the shrew. The
 seeming moral of the play was outdated even in Shakespeare's time, and
@@ -171,7 +171,7 @@ the outer frame is dropped and never revisited, indicating that perhaps
 this part of the play was lost. The BBC production skips this framing
 entirely and plays it straight.
 
-### All's Well That Ends Well
+### (30) All's Well That Ends Well
 
 Helena, a low-born enterprising young woman, saves a king's life. She's in
 love with a nobleman, Bertram, and the king orders him to marry her as
@@ -180,7 +180,7 @@ country. She gives chase, and eventually wins him over. Helena is a great
 character, and Bertram is utterly undeserving of her, which ruins the play
 for me in an unearned ending.
 
-### Antony and Cleopatra
+### (29) Antony and Cleopatra
 
 A tragedy about people who we know for sure existed, the first such on the
 list so far. The sequel to *Julius Caesar*, completing the story of the
@@ -190,21 +190,21 @@ interesting enough to make up for it.
 
 I enjoyed the portrayal of Octavian as a shrewd politician.
 
-### Julius Caesar
+### (28) Julius Caesar
 
 A classic school reading assignment. Caesar's death in front of the Statue
 of Pompey is obviously poetic, and so every performance loves playing it
 up. Antony's speech is my favorite part of the play. I didn't dislike this
 play, but nor did I find it interesting revisiting it as an adult.
 
-### Coriolanus
+### (27) Coriolanus
 
 About the career of a legendary Roman general and war hero who attempts to
 enter politics. He despises the plebeians, which gets him into trouble,
 but all he really wants is to please is mother. Stratford Festival has [a
 worthy adaption in a contemporary setting][coriolanus].
 
-### Henry VIII
+### (26) Henry VIII
 
 He reigned from 1509 to 1547, but the play only covers Henry VIII's first
 divorce. It paved the way for the English Reformation, though the play has
@@ -219,12 +219,12 @@ Katherine (Catherine in the history books) firmly rejecting the court's
 jurisdiction and walking out. My favorite line: "No man's pie is freed
 from his ambitious finger."
 
-### Romeo and Juliet
+### (25) Romeo and Juliet
 
 Another classic reading assignment that requires no description. A
 beautiful play, but I just don't connect with its romantic core.
 
-### The Merchant of Venice
+### (24) The Merchant of Venice
 
 An infamously antisemitic play where a Jewish moneylender, Shylock, loans
 to the titular merchant of Venice where the collateral is the original
@@ -233,7 +233,7 @@ prejudice, Shakespeare can't help but write multifaceted characters,
 particularly with Shylock's famous "If you prick us, do we not bleed?"
 speech.
 
-### Twelfth Night
+### (23) Twelfth Night
 
 Twins, a young man and a woman, are separated by a shipwreck. The woman
 disguises herself as a man and takes employment with a local duke and
@@ -249,7 +249,7 @@ achieve greatness, and some have greatness thrust upon them." It's used as
 part of a joke, and when I heard it, I had thought the play was mocking
 some original source.
 
-### Pericles
+### (22) Pericles
 
 A Greek play about a royal family — father, mother, daughter — separated
 by unfortunate — if contrived — circumstances, each thinking the others
@@ -260,7 +260,7 @@ freeze the god Priapus and undo a whole generation."
 The BBC production stirred me, particularly the scene where Pericles and
 Marina are reunited.
 
-### Richard II
+### (21) Richard II
 
 Richard II, grandson of the famed Edward III, was a young King of England
 from 1367 to 1400. At least in the play, he carelessly makes dangerous
@@ -277,7 +277,7 @@ The BBC production of the first Henriad has "linked" casting where the
 same actors play the same roles through the four plays, which makes this
 an even more important watch.
 
-### Othello
+### (20) Othello
 
 Another of the famous tragedy. Othello, an important Venetian general, and
 "the Moore of Venice" is dispatched to Venice-controlled Cyprus to defend
@@ -290,7 +290,7 @@ I watched a few adaptions, and I most enjoyed the [2015 Royal Shakespeare
 Company *Othello*](https://www.youtube.com/watch?v=4dcwVLGyTkk), which
 places it in a modern setting and requires few changes to do so.
 
-### The Comedy of Errors
+### (19) The Comedy of Errors
 
 A fun, short play about a highly contrived situation: Two pairs of twins,
 where each pair of brothers has been given the same name, is separated at
@@ -298,7 +298,7 @@ birth. As adults they all end up in the same town, and everyone mixes them
 up leading to comedy. It's the lightest of Shakespeare's plays, but also
 lacks depth.
 
-### Hamlet
+### (18) Hamlet
 
 Another common, more senior, high school reading assignment. Shakespeare's
 longest play, and probably the most subtle. In everything spoken between
@@ -311,7 +311,7 @@ appreciate the play more than I would have otherwise.
 You'd be hard-pressed to find something that beats the faithful,
 star-studded [1996 major film adaption][hamlet].
 
-### Richard III
+### (17) Richard III
 
 The final play of the second Henriad. Much of the play is Richard III
 winking at the audience, monologuing about his villainous plans, then
@@ -327,7 +327,7 @@ parts of Henry VI, which allows one to enjoy it in full in its broader
 context. It's also well-performed, but obviously has less spectacle and a
 lower budget.
 
-### The Merry Wives of Windsor
+### (16) The Merry Wives of Windsor
 
 The comedy spin-off of Henry IV. Allegedly, Elizabeth I liked the
 character of John Falstaff from Henry IV so much — I can't blame her! —
@@ -345,7 +345,7 @@ The confusion leads to the comedy.
 The [2018 Royal Shakespeare Company production][windsor] aptly puts it in
 a modern suburban setting.
 
-### Titus Andronicus
+### (15) Titus Andronicus
 
 A play about a legendary Roman general committed to duty above all else,
 even the lives of his own sons. He and his family become brutal victims of
@@ -359,7 +359,7 @@ life I did, I do repent it from my very soul."
 I enjoyed the [1999 major film][titus], which puts it in a contemporary
 setting.
 
-### King Lear
+### (14) King Lear
 
 The titular, mythological king of pre-Roman Britain wants to retire, and
 so he divides his kingdom between his three daughters. However, after
@@ -377,7 +377,7 @@ his face, the only character that can do so without repercussions.
 My favorite performance was [the 2015 Stratford Festival stage
 production][lear], especially for its Edmund, Lear, and Fool.
 
-### Macbeth
+### (13) Macbeth
 
 The shortest tragedy, a common reading assignment, and a perfect example
 of literature I could not appreciate without more maturity. Even the plays
@@ -407,7 +407,7 @@ porter scenes I watched, the best porter as the [2017 Stratford Festival
 production][porter], where he is both charismatic and hilarious. I wish I
 could share a clip.
 
-### King John
+### (12) King John
 
 King John, brother of "*Coeur de Lion*" Richard I, ruled in early 13th
 century. His reign led to the Magna Carta, and he's also the Prince John
@@ -422,7 +422,7 @@ Eleanor, impressed, essentially adopts him on the spot.
 [The 2015 Stratford Festival stage performance][john] is wonderful, and
 I've re-watched it a few times. The performances are all great.
 
-### Henry VI
+### (11–9) Henry VI
 
 As previously noted, this is actually three plays. At 3–4 hours apiece,
 it's about the length of a modern television season. I thought it might
@@ -449,7 +449,7 @@ limited budget and means. It has hilarious and clever cinematography for
 the scene where the Countess of Auvergne attempts to trap Talbot (Part 1,
 Act 2, Scene 3). Again, I wish I could share a clip!
 
-### Henry V
+### (8) Henry V
 
 Due to his amazing victories, most notably [at Agincourt][agin] where, for
 once, Shakespeare isn't exaggerating the odds, Henry V is one of the great
@@ -474,7 +474,7 @@ The BBC production is also worthy, in large part because of its linked
 casting with *Richard II* and *Henry IV*. It's also unabridged, including
 the whole glove thing, for better or worse.
 
-### Henry IV
+### (7–6) Henry IV
 
 People will think I'm crazy, but yes, I'm placing *Henry IV* above *Henry
 V*. My reason is just two words: John Falstaff. This character is one of
@@ -491,7 +491,7 @@ great even beyond Falstaff, of course. At the end of part 2, I tear up
 seeing Henry V test the chief justice. I adore this production. What a
 masterpiece.
 
-### A Midsummer Night's Dream
+### (5) A Midsummer Night's Dream
 
 A popular, fun, frivolous play that I enjoyed even more than I expected,
 where faeries interfere with Athenians who wander into their forest. The
@@ -503,7 +503,7 @@ great performances all around, great cinematography, and incredible
 effects. Highly recommended. Honorable mention goes to the great Nick
 Bottom performances of the BBC production and the 1999 major film.
 
-### As You Like It
+### (4) As You Like It
 
 A pastoral comedy about idyllic rural life, and the source of the famous
 quote "All the world's a stage." A duke has deposed his duke brother,
@@ -527,7 +527,7 @@ the park — but it's just so enjoyable. Their Rosalind is fantastic and
 really makes the play work. I've listened to just the audio of the play,
 like a podcast, many times now.
 
-### Measure for Measure
+### (3) Measure for Measure
 
 A comedy about justice and mercy. The duke of Vienna announces he will be
 away on a trip to Poland, but secretly poses as a monk in order to get his
@@ -549,7 +549,7 @@ Like so many already, a big part of my love for the play is [the BBC
 production][bootleg], which is full of great performances, particularly
 the duke, Isabella, and Lucio.
 
-### Much Ado About Nothing
+### (2) Much Ado About Nothing
 
 As the play that finally got me interested in Shakespeare, of course it's
 near the top of the list. Forget Romeo and Juliet: Benedick and Beatrice
@@ -567,7 +567,7 @@ watched a few of them. The previously-mentioned 1993 adaption remains my
 favorite. It does some abridging, but honestly, it makes the play better
 and improves the comedic beats.
 
-### Love's Labour's Lost
+### (1) Love's Labour's Lost
 
 Finally, my favorite play of all, and an unusual one to be at the top of
 the list. Much of the play is subtle parody and so makes for a poor first
