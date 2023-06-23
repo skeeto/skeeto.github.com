@@ -4,7 +4,10 @@ layout: post
 date: 2023-06-22T19:10:25Z
 tags: [rant, meatspace]
 uuid: 98eae9a1-cd7f-4d1c-be53-85058f1b2649
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 A few years ago I set out on a personal journey to study and watch a
 performance of each of Shakespeare's 37 plays. I've reached my goal and,
@@ -17,6 +20,8 @@ recording of a live stage or an adaptation, so they're also available to
 you if you're interested, though in most cases not for free. I'll mention
 notable performances when applicable. The availability of a great
 performance certainly influenced my play rankings.
+
+<!--more-->
 
 Like many of you, I had assigned reading for several Shakespeare plays in
 high school. I loathed these assignments. I wasn't interested at the time,
@@ -596,6 +601,7 @@ within the first minute.
 [ex]: https://www.youtube.com/watch?v=mKHihAPr2Rc
 [foraging]: https://acoup.blog/2022/07/29/collections-logistics-how-did-they-do-it-part-ii-foraging/
 [hamlet]: https://www.youtube.com/watch?v=Tt_QkXy3uuQ
+[hn]: https://news.ycombinator.com/item?id=36438620
 [intro]: https://www.youtube.com/watch?v=HS7OG9zcV-M
 [isabella]: https://www.youtube.com/watch?v=paAYJUx9MfQ
 [john]: https://www.youtube.com/watch?v=YkRBRoh_0QQ
