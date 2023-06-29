@@ -2,7 +2,7 @@
 title: 'Solving "Two Sum" in C with a tiny hash table'
 layout: post
 date: 2023-06-26T19:38:18Z
-tags: [c, optimization]
+tags: [c, go, optimization]
 uuid: 5d15318f-6915-4f72-8690-74a84d43d2f7
 ---
 
