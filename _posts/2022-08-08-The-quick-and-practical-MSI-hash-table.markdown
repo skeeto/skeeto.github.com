@@ -4,7 +4,10 @@ layout: post
 date: 2022-08-08T23:57:08Z
 tags: [c, optimization]
 uuid: 4a7d8c3d-3bcf-4b10-b50a-64227c02b254
+excerpt_separator: <!--more-->
 ---
+
+*Follow-up: [Solving "Two Sum" in C with a tiny hash table][twosum]*
 
 I [generally prefer C][c], so I'm accustomed to building whatever I need
 on the fly, such as heaps, [linked lists][list], and especially hash
@@ -17,6 +20,8 @@ code][bs]. Over the years I've worked out some basic principles for hash
 table construction that aid in quick and efficient implementation. This
 article covers the technique and philosophy behind what I've come to call
 the "mask-step-index" (MSI) hash table, which is my standard approach.
+
+<!--more-->
 
 MSI hash tables are nothing novel, just a [double hashed][dh], [open
 address][oa] hash table layered generically atop an external array. It's
@@ -475,5 +480,6 @@ assembled some benchmarks][bench]. These demonstrate that:
 [oa]: https://en.wikipedia.org/wiki/Open_addressing
 [ss]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [tar]: https://mort.coffee/home/tar/
+[twosum]: /blog/2023/06/26/
 [v4]: https://www.rfc-editor.org/rfc/rfc4122#section-4.4
 [watc]: /blog/2022/05/22/
