@@ -41,8 +41,8 @@ normalize some particular aspect, such as heading consistency or image
 usage. (Running a macro over an Emacs' [Dired][dired] buffer is great
 for this.)
 
-I decided in those early days to [Capitalize Every Word of the
-Title][js], and I've stuck with this convention purely out of
+I decided in those early days to Capitalize Every Word of the
+Title, and I've stuck with this convention purely out of
 consistency even though it's looked weird to me for years. I don't
 want to edit the old titles, and any hard changeover date would be
 even weirder (in the index listing).
@@ -269,7 +269,6 @@ September 1st, 2027, we'll see how I did.
 [mb]: https://github.com/skeeto/mandelbrot
 [html5]: /blog/2009/06/30/
 [dired]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html
-[js]: https://twitter.com/officialjaden/status/329768040235413504
 [url]: https://www.w3.org/Provider/Style/URI
 [mentor]: /blog/2016/09/02/
 [meme]: http://slatestarcodex.com/2016/07/25/how-the-west-was-won/
