@@ -19,7 +19,7 @@ The catch is that there's no way to avoid using a bit of assembly. Neither
 the `clone` nor `clone3` system calls have threading semantics compatible
 with C, so you'll need to paper over it with a bit of inline assembly per
 architecture. This article will focus on x86-64, but the basic concept
-should work on all architecture supported by Linux. The [glibc `clone(2)`
+should work on all architectures supported by Linux. The [glibc `clone(2)`
 wrapper][man] fits a C-compatible interface on top of the raw system call,
 but we won't be using it here.
 
