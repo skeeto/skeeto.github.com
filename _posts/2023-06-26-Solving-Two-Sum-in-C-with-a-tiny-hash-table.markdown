@@ -13,7 +13,7 @@ table, the latter sounds onerous. However, a [mask-step-index table][msi],
 a hash table construction suitable for many problems, requires only a few
 lines of code. This approach is useful even when a standard hash table is
 available, because by [exploiting the known problem constraints][ctx], it
-beats typical generic hash table performance by 1–2 orders of magnitude
+beats typical generic hash table performance by an order of magnitude
 ([demo][gist]).
 
 The Two Sum exercise, restated:
