@@ -209,7 +209,7 @@ In summary:
 * Repeat variables are forced to the value of the first instance
 * Variables may contain ill-formed UTF-16
 * Empty environment blocks have a superfluous special case
-* Entries cannot being with `=`
+* Entries cannot begin with `=`
 * Entries must contain at least one `=`
 * Sort order is ambiguous, so you cannot reliably do it yourself
 * Case-insensitivity of names is ambiguous, so rely on get/set
