@@ -153,8 +153,9 @@ block. How does case-insensitivity work? Sorting is "without regard to
 locale" but what about when comparing variable names? The documentation
 doesn't say. When enumerating variables using get/free, you might read
 what get/set considers to be duplicates, though at least values will
-always agree with get/set. Windows maintains that invariant in my tests.
-The above algorithm would also delete these duplicates.
+always agree with get/set, i.e. they're aliases of one variables. Windows
+maintains that invariant in my tests. The above algorithm would also
+delete these duplicates.
 
 For example, if someone passed you a "dirty" environment with duplicates,
 or that was unsorted, this would clean it up in a way that allows get/free
