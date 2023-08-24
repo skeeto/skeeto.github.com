@@ -529,7 +529,7 @@ Aside from overall portability, I'm quite happy with the results.
 [q]: /blog/2022/05/14/
 [rs]: https://lobste.rs/s/ny4ymx
 [simd]: /blog/2021/12/04/
-[src]: https://github.com/skeeto/scratch/blob/master/misc/watc.c
+[src]: https://github.com/skeeto/scratch/blob/master/windows/watc.c
 [w64]: /blog/2020/05/15/
 [watc]: https://humungus.tedunangst.com/r/watc
 [wide]: /blog/2021/12/30/
