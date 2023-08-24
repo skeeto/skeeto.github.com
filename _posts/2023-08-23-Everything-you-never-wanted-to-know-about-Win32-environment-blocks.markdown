@@ -128,6 +128,10 @@ as `U+D83C U+DF1E`. Maybe it's case-insensitive only in ASCII? Nope, π
 kind of case-insensitive, but not case-*folded*, undocumented early 1990s
 UCS-2 sorting logic for environment variables.
 
+**Update**: John Doty [suspects][doty] the [RtlCompareUnicodeString][rtl]
+function for sorting. It lines up perfectly with get/set in all my tests,
+so it seems quite likely!
+
 Without better guidance, the only reliable way to "correctly" sort an
 environment block is to build it with get/set, then retrieve the result
 with get/free. The algorithm looks like:
@@ -218,12 +222,14 @@ In summary:
 
 
 [cp]: https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessw
+[doty]: https://lists.sr.ht/~skeeto/public-inbox/%3Cc2a4c4d7-95cc-48a4-8047-c79b55eba261%40app.fastmail.com%3E
 [env]: https://learn.microsoft.com/en-us/windows/win32/procthread/changing-environment-variables
 [feb]: https://web.archive.org/web/20180110151515/http://msdn.microsoft.com/en-us/library/ms682425(VS.85).aspx
 [fold]: https://www.unicode.org/Public/15.0.0/ucd/CaseFolding.txt
 [free]: https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-freeenvironmentstringsw
 [get]: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getenvironmentvariable
 [peb]: https://www.geoffchappell.com/studies/windows/km/ntoskrnl/inc/api/pebteb/peb/index.htm
+[rtl]: https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlcompareunicodestring
 [set]: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setenvironmentvariable
 [ss]: https://utcc.utoronto.ca/~cks/space/blog/programming/ProgrammingViaSuperstition
 [str]: https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-getenvironmentstringsw
