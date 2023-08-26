@@ -206,8 +206,8 @@ time. Say, 2MiB:
     $ cc -mno-stack-arg-probe -Xlinker --stack=0x200000,0x200000 example.c
 
 Of course, I wish that this was simply the default behavior because it's
-far more sensible! Another option is to avoid large stack frames in the
-first place. Allocate locals larger than 4kiB in, say, a scratch arena
+far more sensible! A much better option is to avoid large stack frames in
+the first place. Allocate locals larger than, say, 1KiB in a scratch arena
 instead of on the stack.
 
 MSVC doesn't have `libgcc` of course, but it still generates stack probes
@@ -225,8 +225,7 @@ checks, `/stack` commits a larger stack:
     $ cl /GS- /Gs1000000000 example.c /link
          /subsystem:console /stack:0x200000,200000
 
-Though, as before, you could also avoid large stack frames in the first
-place.
+Though, as before, better to avoid large stack frames in the first place.
 
 ### Built-in functions… ugh
 
@@ -237,18 +236,16 @@ particularly `memset` and `memcpy`. They do this no matter how many
 "seriously now, do not use standard C functions" options you pass. When
 you don't link a CRT, you may need to define them yourself.
 
-In case that sounds easy, there's a catch-22: The compiler will transform
-your `memset` definition — that is, *in a function named `memset`* — into
-a call to itself. After all, it looks an awful lot like `memset`! This
-typically manifests as an infinite loop. This will even compile and
-*appear* work — until your program hangs. It's amazing that each of the
-major compilers have this crummy behavior.
+With GCC there's a catch: it will transform your `memset` definition —
+that is, *in a function named `memset`* — into a call to itself. After
+all, it looks an awful lot like `memset`! This typically manifests as an
+infinite loop. **Use `-fno-builtin` to prevent GCC from mis-compiling
+built-in functions.**
 
-No matter what you may have read, **`-fno-builtin` is not a solution**.
-It's merely a sometimes-honored request, and both GCC and Clang will
-continue inserting calls to built-in functions you said do not exist. For
-example, making an especially large local variable (and using `volatile`
-to prevent it from being optimized out):
+Even with `-fno-builtin`, both GCC and Clang will continue inserting calls
+to built-in functions elsewhere. For example, making an especially large
+local variable (and using `volatile` to prevent it from being optimized
+out):
 
 ```c
 int mainCRTStartup(void)
@@ -264,9 +261,9 @@ despite `-fno-builtin`:
     $ cc -mno-stack-arg-probe -fno-builtin -nostdlib example.c
     ld: ... undefined reference to `memset' ...
 
-If you want to be absolutely pure, you will need to address this in just
-about any non-trivial program. On the other hand, `-nostartfiles` will
-grab a definition from `msvcrt.dll` for you:
+To be absolutely pure, you will need to address this in just about any
+non-trivial program. On the other hand, `-nostartfiles` will grab a
+definition from `msvcrt.dll` for you:
 
     $ cc -nostartfiles example.c
     $ objdump -p a.exe | grep -Fi .dll
@@ -278,62 +275,9 @@ there's also no hassle from misbehaving compilers. If this sounds like a
 good deal, then do it! (For on-lookers feeling smug: there is no such
 easy, general solution for this problem on Linux.)
 
-But me, I want that CRT-free purity, damnit! There are a few of options.
-Option 1, make it unoptimizable. Here I've added fake-out inline assembly:
-
-```c
-void *memset(void *p, int c, size_t n)
-{
-    char *s = p;
-    for (size_t i = 0; i < n; i++) {
-        __asm("");
-        s[i] = c;
-    }
-    return p;
-}
-```
-
-Alternatively use `volatile`. The downside is your program may be slower
-since it prevents optimizations you *do* want. Option 2, disable the
-particular troublesome optimization.
-
-```c
-__attribute((optimize("no-tree-loop-distribute-patterns")))
-void *memset(void *p, int c, size_t n)
-{
-    // ...
-}
-```
-
-Or for the whole program:
-
-    $ cc -fno-tree-loop-distribute-patterns ...
-
-But will that work reliably in the future? Option 3, implement it with
-[inline assembly][asm] since it's opaque to optimization.
-
-```c
-void *memset(void *d, int c, size_t n)
-{
-    void *r = d;
-    __asm volatile (
-        "rep stosb"
-        : "=D"(d), "=a"(c), "=c"(n)
-        : "0"(d), "1"(c), "2"(n)
-        : "memory"
-    );
-    return r;
-}
-```
-
-Normally this option could be severe since you'd need assembly for every
-target architecture, but Windows (currently) supports few architectures.
-You probably only care about x86 and x64, and the inline assembly above is
-a polyglot! Important: Be wary of copy-pasting such inline assembly from
-Stack Overflow because it's often wrong.
-
-Regardless, I suggest putting each definition in its own section so that
-they can be discarded via `-Wl,--gc-sections` when unused:
+When you write your own definitions, I suggest putting each definition in
+its own section so that they can be discarded via `-Wl,--gc-sections` when
+unused:
 
 ```c
 __attribute((section(".text.memset")))
@@ -343,26 +287,8 @@ void *memset(void *d, int c, size_t n)
 }
 ```
 
-In the past I've needed to provide definitions for `memcmp`, `memset`,
-`memcpy`, `memmove`, and even `strlen`.
-
-Unfortunately the MSVC situation is mostly worse. When it inserts such a
-CRT call it will not automatically pick up a CRT like `-nostartfiles`.
-There's no inline assembly, and it's harder to selectively disable the
-troublesome optimizations. Instead I've been using intrinsics like
-`__stosb`. MSVC has a larger variety of them, which makes up a bit for its
-lack of inline assembly.
-
-```c
-#pragma function(memset)
-void *memset(void *d, int c, size_t n)
-{
-    __stosb(d, c, n);
-    return d;
-}
-```
-
-I don't quite understand the purpose of the `#pragma`, but this works.
+So far, for all three compilers, I've only needed to provide definitions
+for `memset` and `memcpy`.
 
 ### Stack alignment on 32-bit x86
 
@@ -422,18 +348,16 @@ int WinMainCRTStartup(void)
 
 Then my "optimize all the things" release build may look something like:
 
-    $ cc -mno-stack-arg-probe -Xlinker --stack=0x200000,0x200000
-         -O3 -fwhole-program -Wl,--gc-sections -s -nostdlib -mwindows
+    $ cc -O3 -fno-builtin -Wl,--gc-sections -s -nostdlib -mwindows
          -fno-asynchronous-unwind-tables -o app.exe app.c -lkernel32
 
 Or with MSVC:
 
-    $ cl /O2 /GS- /Gs1000000000 app.c /link kernel32.lib
-         /subsystem:windows /stack:0x200000,200000
+    $ cl /O2 /GS- app.c /link kernel32.lib /subsystem:windows
 
 Or if I'm taking it easy maybe just:
 
-    $ cc -O3 -s -nostartfiles -mwindows -o app.exe app.c
+    $ cc -O3 -fno-builtin -s -nostartfiles -mwindows -o app.exe app.c
 
 Or with MSVC (linker flags in source):
 
