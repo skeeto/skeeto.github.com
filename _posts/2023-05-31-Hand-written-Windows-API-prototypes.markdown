@@ -180,30 +180,30 @@ HANDLE __stdcall GetStdHandle(DWORD);
 
 This works with both Mingw-w64 and MSVC. MSVC requires `__stdcall` between
 the return type and function name, so don't get clever about it. If you
-only care about GCC then you can declare both using attributes, which I
-think is a bit nicer:
+only care about GCC then you can declare both at once using attributes:
 
 ```c
 HANDLE GetStdHandle(DWORD)
     __attribute__((dllimport,stdcall));
 ```
 
-The prototype for [WriteFile][writefile]:
+I like to hide all this behind a macro, with a "table" of all my imports
+listed just below:
 
 ```c
-__declspec(dllimport)
-BOOL __stdcall WriteFile(HANDLE, const void *, DWORD, DWORD *, void *);
+#define W32(r) __declspec(dllimport) r __stdcall
+W32(HANDLE) GetStdHandle(DWORD);
+W32(BOOL)   WriteFile(HANDLE, const void *, DWORD, DWORD *, void *);
 ```
 
-You may have noticed I'm taking some shortcuts. The "official" definition
-uses an ugly pointer typedef, `LPCVOID`, instead of pointer syntax, but I
-skipped that type definition. I also replaced the last argument, an
-`OVERLAPPED` pointer, with a generic pointer. I only need to pass null. I
-can keep sanding it down to something more ergonomic:
+In WriteFile you may have noticed I'm taking shortcuts. The "official"
+definition uses an ugly pointer typedef, `LPCVOID`, instead of pointer
+syntax, but I skipped that type definition. I also replaced the last
+argument, an `OVERLAPPED` pointer, with a generic pointer. I only need to
+pass null. I can keep sanding it down to something more ergonomic:
 
 ```c
-__declspec(dllimport)
-int __stdcall WriteFile(void *, void *, int, int *, void *);
+W32(int)    WriteFile(void *, void *, int, int *, void *);
 ```
 
 That's how I typically write these prototypes. I dropped the `const`
@@ -226,10 +226,9 @@ Vulkan work, with applications [defining the API for themselves][gl].
 Considering all this, my new hello world:
 
 ```c
-__declspec(dllimport)
-int __stdcall WriteFile(void *, void *, int, int *, void *);
-__declspec(dllimport)
-void *__stdcall GetStdHandle(int);
+#define W32(r) __declspec(dllimport) r __stdcall
+W32(void *) GetStdHandle(int);
+W32(int)    WriteFile(void *, void *, int, int *, void *);
 
 int mainCRTStartup(void)
 {
