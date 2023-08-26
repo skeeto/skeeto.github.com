@@ -79,6 +79,19 @@ and I could [always pass][wild] such "UTF-16" through into the child
 environment block. Keep that in mind even when using the get/set
 interface.
 
+The SetEnvironmentVariable documentation gives a maximum variable size:
+
+> The maximum size of a user-defined environment variable is 32,767
+> characters. There is no technical limitation on the size of the
+> environment block.
+
+At least on more recent versions of Windows, my experiments proved exactly
+the opposite. There is no limit on a user-defined environment variables,
+but environment blocks are limited to 2GiB, for both 32-bit and 64-bit
+processes. I could even create such huge environments in [large address
+aware][laa] 32-bit processes, though the interfaces are prone to error due
+to allocations problems.
+
 There's one special case where CreateProcess is illogical, and it's
 certainly a case of confusion within its implementation. **An environment
 block is not allowed to be empty.** An empty environment is represented as
@@ -229,6 +242,7 @@ In summary:
 [fold]: https://www.unicode.org/Public/15.0.0/ucd/CaseFolding.txt
 [free]: https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-freeenvironmentstringsw
 [get]: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getenvironmentvariable
+[laa]: https://learn.microsoft.com/en-us/cpp/build/reference/largeaddressaware-handle-large-addresses
 [peb]: https://www.geoffchappell.com/studies/windows/km/ntoskrnl/inc/api/pebteb/peb/index.htm
 [rtl]: https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlcompareunicodestring
 [set]: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setenvironmentvariable
