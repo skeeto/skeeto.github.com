@@ -239,7 +239,7 @@ requires that all exports are tagged with `dllexport`. The `/LD` (case
 sensitive) is just like GCC's `-shared`.
 
     $ cl /nologo /LD /Os square.c
-    $ cc -shared -Os -s main.c square.dll
+    $ cc -Os -s main.c square.dll
     $ ./a
     4
 
@@ -403,7 +403,7 @@ again next time I need it!
 [make]: /blog/2017/08/20/
 [MSVC]: https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B
 [PLT]: https://www.airs.com/blog/archives/41
-[share]: https://github.com/skeeto/w64devkit/issues/7
+[share]: /blog/2023/08/27/
 [stdcall]: https://www.willus.com/mingw/yongweiwu_stdcall.html
 [vc]: /blog/2016/06/13/#visual-c
 [w64devkit]: /blog/2020/05/15/
