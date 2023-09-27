@@ -4,7 +4,10 @@ layout: post
 date: 2023-09-27T03:58:59Z
 tags: [c]
 uuid: 46b2ee54-9169-4070-ad5d-aa0e2700a65e
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 Over the past year I've refined my approach to [arena allocation][arena].
 With practice, it's effective, simple, and fast; typically as easy to use
@@ -14,6 +17,8 @@ runtime][crt]. With the core details of my own technique settled, now is a
 good time to document and share lessons learned. This is certainly not the
 only way to approach arena allocation, but these are practices I've worked
 out to simplify programs and reduce mistakes.
+
+<!--more-->
 
 An arena is a memory buffer and an offset into that buffer, initially
 zero. To allocate an object, grab a pointer at the offset, advance the
@@ -443,6 +448,7 @@ the subject for my next article!
 [crt]: /blog/2023/02/15/
 [fuzz]: /blog/2019/01/25/
 [hashtrie]: https://nrk.neocities.org/articles/hash-trees-and-tries
+[hn]: https://news.ycombinator.com/item?id=37670740
 [objsize]: https://gcc.gnu.org/onlinedocs/gcc/Object-Size-Checking.html
 [purge]: /blog/2019/12/29/
 [setjmp]: /blog/2023/02/12/
