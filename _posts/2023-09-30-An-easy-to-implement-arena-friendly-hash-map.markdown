@@ -333,7 +333,8 @@ responsibility.** These likely require further synchronization. If
 `valtype` is a shared counter then an atomic increment is sufficient. In
 other cases, `upsert` should probably be modified to accept an initial
 value to be assigned alongside the key so that the entire key/value pair
-inserted atomically. The details depend on the needs of the program.
+inserted atomically. Alternatively, [break it into two steps][q]. The
+details depend on the needs of the program.
 
 On small trees there will much contention near the root of the tree during
 inserts. However, a contentious tree will not stay small for long! The
