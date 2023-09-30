@@ -447,7 +447,7 @@ the subject for my next article!
 [comm]: https://sourceware.org/binutils/docs/as/Comm.html
 [crt]: /blog/2023/02/15/
 [fuzz]: /blog/2019/01/25/
-[hashtrie]: https://nrk.neocities.org/articles/hash-trees-and-tries
+[hashtrie]: /blog/2023/09/30/
 [hn]: https://news.ycombinator.com/item?id=37670740
 [objsize]: https://gcc.gnu.org/onlinedocs/gcc/Object-Size-Checking.html
 [purge]: /blog/2019/12/29/
