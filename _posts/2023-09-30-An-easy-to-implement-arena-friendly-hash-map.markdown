@@ -71,8 +71,8 @@ In particular, note:
 
 * A null pointer is an empty hash map and initialization is trivial. As
   discussed in the last article, one of my arena allocation principles is
-  default zero-initializion. Put together, than means any data structure
-  containing a map already has a ready-to-use empty map.
+  default zero-initializion. Put together, that means any data structure
+  containing a map comes with a ready-to-use, empty map.
 
 * The map is allocated out of the scratch arena so it's automatically
   freed upon any return. It's as care-free as garbage collection.
@@ -99,10 +99,9 @@ typedef struct {
 They `child` and `key` fields are essential to the map. Adding a `child`
 to any data structure turns it into a hash map over whatever field you
 choose as the key. In other words, a hash-trie can serve as an *intrusive
-hash map*. In several programs I've combined intrusive lists and intrusive
-hash maps simultaneous to create an insert-ordered hash map. Going the
-other direction, omitting `value` turns it into a hash set. (Which is what
-`unique` *really* needs!)
+hash map*. In several programs I've combined intrusive lists and hash maps
+to create an insert-ordered hash map. Going the other direction, omitting
+`value` turns it into a hash set. (Which is what `unique` *really* needs!)
 
 As you probably guessed, this hash-trie is a 4-ary tree. It can easily be
 2-ary (leaner but slower) or 8-ary (bigger and usually no faster), but
@@ -137,7 +136,7 @@ contain the key.
 We need two "methods" for keys: `hash` and `equals`. The hash function
 should return a uniformly distributed integer. As is usually the case,
 less uniform fast hashes generally do better than highly-uniform slow
-hashes. For hash maps under ~100K elements, a 32-bit hash is fine, but
+hashes. For hash maps under ~100K elements a 32-bit hash is fine, but
 larger maps should use a 64-bit hash state and result. Hash collisions
 revert to linear, linked list performance and, per the birthday paradox,
 that will happen often with 32-bit hashes on large hash maps.
@@ -148,10 +147,10 @@ specifics depend on your security model. It's not an issue for most hash
 maps, so I don't demonstrate it here.
 
 The top two bits of the hash are used to select a branch. These tend to be
-higher quality for [multiplicative hash functions][hash]. At each level,
+higher quality for [multiplicative hash functions][hash]. At each level
 two bits are shifted out. This is what gives it its name: a *trie* of the
-*hash bits*. Though it's un-trie-like for elements to be deposited at the
-first empty spot found. To make it 2-ary or 8-ary, use 1 or 3 bits at a
+*hash bits*. Though it's un-trie-like in the way it deposits elements at
+the first empty spot. To make it 2-ary or 8-ary, use 1 or 3 bits at a
 time.
 
 I initially tried a [Multiplicative Congruential Generator][mcg] (MCG) to
@@ -234,7 +233,6 @@ ptrdiff_t unique(str *strings, ptrdiff_t len, arena scratch)
 
 The FNV hash multiplier is 19 ones, my favorite prime. I don't bother with
 an xorshift finalizer because the bits are used most-significant first.
-
 Exercise for the reader: Support retaining the original input order using
 an intrusive linked list on `strset`.
 
@@ -337,9 +335,9 @@ inserted atomically. Alternatively, [break it into two steps][q]. The
 details depend on the needs of the program.
 
 On small trees there will much contention near the root of the tree during
-inserts. However, a contentious tree will not stay small for long! The
-hash function will spread threads around the tree, generally keeping them
-off each other's toes.
+inserts. Fortunately, a contentious tree will not stay small for long! The
+hash function will spread threads around a large tree, generally keeping
+them off each other's toes.
 
 A complete demo you can try yourself: **[`concurrent-hash-trie.c`][c]**.
 It returns a value pointer like above, and store/load is synchronized by
