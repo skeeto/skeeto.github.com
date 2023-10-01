@@ -41,7 +41,7 @@ off multiple features:
 
 ```c
 typedef struct {
-    uint8_t  *data
+    uint8_t  *data;
     ptrdiff_t len;
 } str;
 

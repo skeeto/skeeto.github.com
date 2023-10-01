@@ -32,7 +32,7 @@ of pointer+length strings, as defined last time:
 
 ```c
 typedef struct {
-    uint8_t  *data
+    uint8_t  *data;
     ptrdiff_t len;
 } str;
 ```
@@ -113,7 +113,7 @@ form of `upsert` looks like this:
 ```c
 static valtype *upsert(hashmap **m, keytype key, arena *perm)
 {
-    for (uint64_t h = hash(key); *m; key <<= 2) {
+    for (uint64_t h = hash(key); *m; h <<= 2) {
         if (equals(key, (*m)->key)) {
             return &(*m)->value;
         }
@@ -207,13 +207,13 @@ typedef struct {
 
 static bool ismember(strset **m, str key, arena *perm)
 {
-    for (uint64_t h = hash(key); *m; key <<= 2) {
+    for (uint64_t h = hash(key); *m; h <<= 2) {
         if (equals(key, (*m)->key)) {
             return 1;
         }
         m = &(*m)->child[h>>62];
     }
-    *m = new(perm, hashmap);
+    *m = new(perm, strset);
     (*m)->key = key;
     return 0;
 }
