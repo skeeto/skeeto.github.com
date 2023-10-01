@@ -111,7 +111,7 @@ As you probably guessed, this hash-trie is a 4-ary tree. It can easily be
 form of `upsert` looks like this:
 
 ```c
-static valtype *upsert(hashmap **m, keytype key, arena *perm)
+valtype *upsert(hashmap **m, keytype key, arena *perm)
 {
     for (uint64_t h = hash(key); *m; h <<= 2) {
         if (equals(key, (*m)->key)) {
@@ -205,7 +205,7 @@ typedef struct {
     str     key;
 } strset;
 
-static bool ismember(strset **m, str key, arena *perm)
+bool ismember(strset **m, str key, arena *perm)
 {
     for (uint64_t h = hash(key); *m; h <<= 2) {
         if (equals(key, (*m)->key)) {
@@ -285,7 +285,7 @@ tree root. To illustrate I will use [GCC atomics][gcc], also supported by
 Clang.
 
 ```c
-static valtype *upsert(map **m, keytype key, arena *perm)
+valtype *upsert(map **m, keytype key, arena *perm)
 {
     for (uint64_t h = hash(key);; h <<= 2) {
         map *n = __atomic_load_n(m, __ATOMIC_ACQUIRE);
