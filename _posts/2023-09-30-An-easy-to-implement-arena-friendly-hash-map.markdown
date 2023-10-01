@@ -151,7 +151,7 @@ The top two bits of the hash are used to select a branch. These tend to be
 higher quality for [multiplicative hash functions][hash]. At each level,
 two bits are shifted out. This is what gives it its name: a *trie* of the
 *hash bits*. Though it's un-trie-like for elements to be deposited at the
-first empty spot found. To make it 2-ary or 8-ary, use 1 or 4 bits at a
+first empty spot found. To make it 2-ary or 8-ary, use 1 or 3 bits at a
 time.
 
 I initially tried a [Multiplicative Congruential Generator][mcg] (MCG) to
