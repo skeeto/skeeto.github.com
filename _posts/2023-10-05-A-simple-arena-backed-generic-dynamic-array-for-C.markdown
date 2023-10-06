@@ -272,9 +272,9 @@ range is invalid and so defects tend to quickly trip these assertions.
 ### Alignment
 
 Alignment is unfortunately fixed, and I picked a "safe" value of 16. In my
-`new` macro I used `_Alignof` to pass type information to `alloc`. [Due to
-an oversight][alignof], unlike `sizeof`, `_Alignof` cannot be applied to
-expressions, and so it cannot be used in dynamic arrays. GCC and Clang
+`new()` macro I used `_Alignof` to pass type information to `alloc`. [Due
+to an oversight][alignof], unlike `sizeof`, `_Alignof` cannot be applied
+to expressions, and so it cannot be used in dynamic arrays. GCC and Clang
 support `_Alignof` on expressions just like `sizeof`, as it's such an
 obvious idea, but Microsoft chose to strictly follow the oversight in the
 standard. To support MSVC, I've deliberately limited the capabilities of
@@ -304,9 +304,62 @@ want to switch `push` to a [statement expression][stmt] so that the slice
 header `s` does not get evaluated more than once — i.e. so that `upsert()`
 in my example above could be used inside the `push()` expession.
 
+```c
+#define push(s, a) ({ \
+    typeof(s) s_ = (s); \
+    typeof(a) a_ = (a); \
+    if (s_->len >= s_->cap) { \
+        grow(s_, sizeof(*s_->data), _Alignof(*s_->data), a_); \
+    } \
+    s_->data + s_->len++; \
+})
+```
+
 So far this approach to dynamic arrays has been useful on a number of
 occasions, and I'm quite happy with the results. As with arena-friendly
 hash maps, I've no doubt they'll become a staple in my C programs.
+
+### Addendum: extend the last allocation
+
+Dennis Schön suggests a check if the array ends at the next arena
+allocation and, if so, extend the array into the arena in place. `grow()`
+already has the necessary information on hand, so it needs only the
+additional check:
+
+```c
+static void grow(void *slice, ptrdiff_t size, ptrdiff_t align, arena *a)
+{
+    struct {
+        char     *data;
+        ptrdiff_t len;
+        ptrdiff_t cap;
+    } replica;
+    memcpy(&replica, slice, sizeof(replica));
+
+    if (!replica.data) {
+        replica.cap = 1;
+        replica.data = alloc(a, 2*size, align, replica.cap);
+    } else if (a->beg == replica.data + size*replica.cap) {
+        alloc(a, size, 1, replica.cap);
+    } else {
+        void *data = alloc(a, 2*size, align, replica.cap);
+        memcpy(data, replica.data, size*replica.len);
+        replica.data = data;
+    }
+
+    replica.cap *= 2;
+    memcpy(slice, &replica, sizeof(replica));
+}
+```
+
+Because that's yet another check for null, I've split it out into an
+independent third case:
+
+1. If the data pointer is null, make an initial allocation.
+2. If the array ends at the next arena allocation, extend it.
+3. Otherwise allocate a fresh array and copy.
+
+Not *quite* as simple, but it improves the most common case.
 
 
 [alignof]: https://groups.google.com/g/comp.std.c/c/v5hsWOu5vSw
