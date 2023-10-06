@@ -45,12 +45,10 @@ int32s fibonacci(int32_t max, arena *perm)
         int32_t a = fib.data[fib.len-2];
         int32_t b = fib.data[fib.len-1];
         if (a+b > max) {
-            break;
+            return fib;
         }
         *push(&fib, perm) = a + b;
     }
-
-    return fib;
 }
 ```
 
@@ -115,7 +113,7 @@ void renderobj(char *buf, ptrdiff_t len, arena scratch)
 {
     GLverts vs = {0};
     objparser parser = newobjparser(buf, len);
-    for (;;) {
+    for (...) {
         *push(&vs, &scratch) = nextvert(&parser);
     }
     glVertexPointer(3, GL_FLOAT, 0, vs.data);
