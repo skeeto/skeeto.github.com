@@ -437,13 +437,13 @@ structure is great with arenas. It only takes a few of lines of code to
 implement a linked list on top of an arena, and no "destroy" code is
 needed. Simple.
 
-What about [arena-backed associative arrays][hashtrie]? Or arena-backed
-dynamic arrays? I have simple, fast, easy solutions for each, but that's
-the subject for my next article!
+What about [arena-backed associative arrays][hashtrie]? Or [arena-backed
+dynamic arrays][array]? See these follow-up articles for details!
 
 
 [alloca]: https://man7.org/linux/man-pages/man3/alloca.3.html
 [arena]: https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator
+[array]: /blog/2023/10/05/
 [comm]: https://sourceware.org/binutils/docs/as/Comm.html
 [crt]: /blog/2023/02/15/
 [fuzz]: /blog/2019/01/25/

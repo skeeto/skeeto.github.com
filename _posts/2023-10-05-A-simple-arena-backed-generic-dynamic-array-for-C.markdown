@@ -144,7 +144,8 @@ map *example(..., arena *perm)
     for (...) {
         str name = ...;
         vert v = ...;
-        *push(upsert(&m, name, perm), perm) = v;
+        verts *vs = upsert(&m, name, perm);
+        *push(vs, perm) = v;
     }
     return m;
 }
@@ -302,7 +303,8 @@ standard. To support MSVC, I've deliberately limited the capabilities of
 
 Though while you're at it, if you're already using extensions you might
 want to switch `push` to a [statement expression][stmt] so that the slice
-header `s` does not get evaluated more than once.
+header `s` does not get evaluated more than once — i.e. so that `upsert()`
+in my example above could be used inside the `push()` expession.
 
 So far this approach to dynamic arrays has been useful on a number of
 occasions, and I'm quite happy with the results. As with arena-friendly
