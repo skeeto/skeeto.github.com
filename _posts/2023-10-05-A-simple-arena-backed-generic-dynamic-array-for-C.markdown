@@ -54,8 +54,8 @@ int32s fibonacci(int32_t max, arena *perm)
 
 Anyone familiar with Go will quickly notice a pattern: `int32s` looks an
 awful lot like a [Go *slice*][slice]. That was indeed my inspiration, and
-there is enough context that you could infer similar semantics. I will
-even call these "slice headers." Initially I had tried a design based on
+there is enough context that you could infer [similar semantics][fat]. I
+will even call these "slice headers." Initially I tried a design based on
 [stretchy buffers][stb], but I didn't like the macros nor the ergonomics.
 
 I wouldn't write a `fibonacci` this way in practice, but it's useful for
@@ -209,9 +209,9 @@ static void grow(void *slice, ptrdiff_t size, arena *a)
 ```
 
 The slice header is copied over a local replica, avoiding conflicts with
-strict aliasing. It still requires that different pointers have identical
-memory representation. That's virtually always true, and certainly true
-anywhere I'd use an arena.
+strict aliasing. This is the archetype slice header. It still requires
+that different pointers have identical memory representation. That's
+virtually always true, and certainly true anywhere I'd use an arena.
 
 If the capacity was zero, it behaves as though it was one, and so, through
 doubling, zero-capacity arrays become capacity-2 arrays on the first push.
@@ -310,6 +310,7 @@ hash maps, I've no doubt they'll become a staple in my C programs.
 
 
 [alignof]: https://groups.google.com/g/comp.std.c/c/v5hsWOu5vSw
+[fat]: /blog/2019/06/30/
 [map]: /blog/2023/09/30/
 [mem]: /blog/2023/02/11/
 [slice]: https://go.dev/blog/slices-intro
