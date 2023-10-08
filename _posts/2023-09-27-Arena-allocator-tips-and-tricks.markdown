@@ -237,7 +237,7 @@ void *alloc(..., int flags)
 
 Similarly, perhaps there's a critical moment where you're holding a
 non-memory resource (lock, file handle), or you don't want allocation
-failure to be fatal. In either case, it important that the out-of-memory
+failure to be fatal. In either case, it's important that the out-of-memory
 policy isn't invoked. You could request a "soft" failure with another
 flag, and then do the usual null pointer check:
 
@@ -255,7 +255,7 @@ void *alloc(..., int flags)
 }
 ```
 
-Most non-trivial programs will probably at least one of these flags.
+Most non-trivial programs will probably have at least one of these flags.
 
 In case it wasn't obvious, allocating an arena is simple:
 
