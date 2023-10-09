@@ -4,7 +4,10 @@ layout: post
 date: 2023-10-08T23:30:57Z
 tags: [c]
 uuid: 60db7343-43f1-469f-9e9a-8af4d4c46b5a
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
 
 This has been a ground-breaking year for my C skills, and paradigm shifts
 in my technique has provoked me to reconsider my habits and coding style.
@@ -15,6 +18,8 @@ is certainly subjective, it likely includes a few objective improvements.
 I'm not saying everyone should write C this way, and when I contribute
 code to a project I follow their local style. This is about what works
 well for me.
+
+<!--more-->
 
 ### Primitive types
 
@@ -369,8 +374,10 @@ testing grounds for [hash-tries][ht], or for a slightly larger program,
 [buf]: /blog/2023/02/13/
 [fat]: /blog/2019/06/30/
 [fuzz]: /blog/2019/01/25/
+[hn]: https://news.ycombinator.com/item?id=37815674
 [ht]: /blog/2023/09/30/
 [null]: https://ljabl.com/nullptr.xhtml
+[reddit]: https://old.reddit.com/r/C_Programming/comments/173e0vn/
 [sign]: /blog/2023/09/27/
 [str]: /blog/2023/01/18/#implementation-highlights
 [w32]: /blog/2023/05/31/
