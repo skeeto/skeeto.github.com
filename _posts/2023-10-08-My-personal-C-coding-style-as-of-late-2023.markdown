@@ -221,7 +221,7 @@ it available helps me think more clearly, and makes for simpler programs.
 It has a natural UTF-16 counterpart, `s16`:
 
 ```c
-#define s16(s) (s16){u##s, lengthof(s)}
+#define s16(s) (s16){u##s, lengthof(u##s)}
 typedef struct {
     c16 *data;
     size len;
