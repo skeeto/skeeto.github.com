@@ -358,11 +358,13 @@ static u64 rdtscp(void)
 ```
 
 There's surely a lot more to my style than this, but unlike the above,
-those details haven't changed this year. To see a number of the mentioned
-items in action in a recent small program, see [`wordhist.c`][wh], one of
-my testing grounds for [hash-tries][ht].
+those details haven't changed this year. To see most of the mentioned
+items in action in a small program, see [`wordhist.c`][wh], one of my
+testing grounds for [hash-tries][ht], or for a slightly larger program,
+[`asmint.c`][asm], a mini programming language implementation.
 
 
+[asm]: https://github.com/skeeto/scratch/blob/master/misc/asmint.c
 [assert]: /blog/2022/06/26/
 [buf]: /blog/2023/02/13/
 [fat]: /blog/2019/06/30/
