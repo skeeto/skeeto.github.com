@@ -42,8 +42,8 @@ That should be the baseline on any new project, and closer to what these
 compilers should do by default. Not using these means leaving value on the
 table. If you come across such a project, there's a good chance you can
 find bugs statically just by using this baseline. Some warnings only occur
-at higher optimization levels, so leave these on for your release builds,
-too.
+at higher [optimization levels][opt], so leave these on for your release
+builds, too.
 
 For MSVC, including `clang-cl`, a similar baseline is **`/W4`**. Though it
 goes a bit far, warning about use of unary minus on unsigned types
@@ -329,6 +329,7 @@ anyway.
 [libc]: /blog/2023/02/11/
 [man]: https://man7.org/linux/man-pages/man1/gcc.1.html
 [openmp]: /blog/2017/03/01/
+[opt]: https://www.openwall.com/lists/musl/2023/05/22/2/1
 [reddit]: https://old.reddit.com/r/C_Programming/comments/133bjlp
 [rtc]: https://learn.microsoft.com/en-us/cpp/build/reference/rtc-run-time-error-checks
 [size]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
