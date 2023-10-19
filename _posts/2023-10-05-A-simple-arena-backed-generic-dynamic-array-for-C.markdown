@@ -266,8 +266,8 @@ it would direct execution towards assertions in `grow`:
     assert(replica.len <= replica.cap);
 ```
 
-This also demonstrates another benefit of signed sizes: Exactly half the
-range is invalid and so defects tend to quickly trip these assertions.
+This also demonstrates another benefit of [signed sizes][ss]: Exactly half
+the range is invalid and so defects tend to quickly trip these assertions.
 
 ### Alignment
 
@@ -367,5 +367,6 @@ Not *quite* as simple, but it improves the most common case.
 [map]: /blog/2023/09/30/
 [mem]: /blog/2023/02/11/
 [slice]: https://go.dev/blog/slices-intro
+[ss]: https://web.archive.org/web/20151009055354/http://oss.sgi.com/archives/ogl-sample/2005-07/msg00003.html
 [stb]: https://github.com/nothings/stb/blob/master/deprecated/stretchy_buffer.txt
 [stmt]: https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html
