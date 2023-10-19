@@ -344,6 +344,10 @@ It returns a value pointer like above, and store/load is synchronized by
 the thread join. Each thread is given a per-thread subarena allocated out
 of the main arena, and the final tree is built from these subarenas.
 
+For a practical example: a [**multithreaded rainbow table**][rt] to find
+hash function collisions. Threads are synchronized solely through atomics
+in the shared hash-trie.
+
 A complete fast, concurrent, lock-free hash map in under 30 lines of C
 sounds like a sweet deal to me!
 
@@ -359,3 +363,4 @@ sounds like a sweet deal to me!
 [nrk]: https://nrk.neocities.org/articles/hash-trees-and-tries
 [q]: /blog/2022/05/14/
 [rel]: https://www.youtube.com/watch?v=Z0tsNFZLxSU
+[rt]: https://github.com/skeeto/scratch/blob/master/misc/rainbow.c
