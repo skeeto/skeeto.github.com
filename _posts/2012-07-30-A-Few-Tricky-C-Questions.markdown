@@ -6,7 +6,7 @@ uuid: 29f59a9d-86b9-387d-60bf-16417ea9888c
 ---
 
 At work I recently came across an abandoned copy of the first edition
-of *The C Programming Language* by Ken Thompson and Dennis Ritchie —
+of *The C Programming Language* by Brian Kernighan and Dennis Ritchie —
 often lovingly abbreviated as *K&R*. It's a
 [significant piece of computer science history](http://en.wikipedia.org/wiki/The_C_Programming_Language)
 and I highly recommend it to anyone who writes software. As far as
