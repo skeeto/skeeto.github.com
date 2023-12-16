@@ -118,7 +118,7 @@ However, the trade-off is that the executable code is smaller, faster, and
 int utf8_decode(int state, long *cp, int byte)
 {
     static const signed char table[8][256] = { /* ... */ };
-    static unsigned char masks[2][8] = { /* ... */ };
+    static const unsigned char masks[2][8] = { /* ... */ };
     int next = table[state][byte];
     *cp = (*cp << 6) | (byte & masks[!state][next&7]);
     return next;
