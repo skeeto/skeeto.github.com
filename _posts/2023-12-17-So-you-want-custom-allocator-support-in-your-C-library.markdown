@@ -357,6 +357,7 @@ and `memcpy`:
 ```c
 void arena_realloc(void *ptr, ptrdiff_t old, ptrdiff_t new, void *ctx)
 {
+    assert(new > old);
     void *r = arena_malloc(new, ctx);
     return memcpy(r, ptr, old);
 }
