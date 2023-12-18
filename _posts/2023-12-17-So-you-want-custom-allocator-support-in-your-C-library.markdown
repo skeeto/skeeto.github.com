@@ -302,8 +302,8 @@ void *lib_free(void *ptr, ptrdiff_t len, void *ctx);
 And calls inside the library might look like:
 
 ```c
-lib_free(p, sizeof(*p));
-lib_free(a, sizeof(*a)*len);
+lib_free(p, sizeof(*p), ctx);
+lib_free(a, sizeof(*a)*len, ctx);
 ```
 
 Now that `arena_free` has size information, it can free an allocation if
@@ -314,7 +314,7 @@ void arena_free(void *ptr, ptrdiff_t size, void *ctx)
 {
     arena *a = ctx;
     if (ptr == a->end) {
-        ptrdiff_t alignment += -size & 15;
+        ptrdiff_t alignment = -size & 15;
         a->end += size + alignment;
     }
 }
