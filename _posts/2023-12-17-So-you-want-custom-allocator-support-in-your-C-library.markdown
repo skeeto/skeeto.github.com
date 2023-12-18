@@ -140,7 +140,7 @@ standard library using the pass-through definitions above. Used together
 with the standard library allocator:
 
 ```c
-typedef {
+typedef struct {
     double sum;
     bool   ok;
 } sum_result;
