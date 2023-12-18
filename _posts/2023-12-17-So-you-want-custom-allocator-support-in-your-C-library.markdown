@@ -89,7 +89,7 @@ static allocator lib_allocator = {lib_malloc, lib_free, 0};
 Note that the context pointer came after the "standard" arguments. All
 things being equal, "extra" arguments should go after standard ones. But
 don't sweat it! In the most common calling conventions this allows stub
-implementations be merely an unconditional jump. It's *as though* the
+implementations to be merely an unconditional jump. It's *as though* the
 stubs are a kind of subtype of the original functions.
 
 ```nasm
@@ -109,7 +109,7 @@ arena allocator][arena]. To demonstrate, consider this fictional string
 set and partial JSON API, each of which supports a custom allocator. For
 simplicity — I'm attempting to balance substance and brevity — they share
 an allocator interface. (Note: Because [subscripts and sizes should be
-signed][sign], and we're breaking out way free from the standard library
+signed][sign], and we're now breaking away from the standard library
 allocator, I will use `ptrdiff_t` for the rest of the examples.)
 
 ```c
