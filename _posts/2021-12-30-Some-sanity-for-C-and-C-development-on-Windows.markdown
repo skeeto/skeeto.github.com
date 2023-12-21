@@ -233,7 +233,7 @@ convenience and for succinctly capturing the concept. You may even want to
 [Cygwin]: https://www.cygwin.com/
 [MSYS2]: https://www.msys2.org/
 [ai]: /blog/2020/11/24/
-[ansi]: https://github.com/skeeto/hastyhex/blob/master/hastyhex.c#L220
+[ansi]: https://github.com/skeeto/hastyhex/blob/f03b6e0f/hastyhex.c#L298-L309
 [bin]: /blog/2017/07/02/
 [blast]: /blog/2018/04/13/
 [broken]: https://github.com/microsoft/terminal/issues/4551#issuecomment-585487802
