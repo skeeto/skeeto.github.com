@@ -4,7 +4,10 @@ layout: post
 date: 2023-12-17T17:52:26Z
 tags: [c]
 uuid: 1ffa33fe-c701-4cf7-b8fb-6c30a14497a3
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn] and [on reddit][reddit].*
 
 Users of mature C libraries conventionally get to choose how memory is
 allocated — that is, when it [cannot be avoided entirely][mini]. The C
@@ -14,6 +17,8 @@ equal, and most repeat a few fundamental mistakes. Often the interface is
 merely a token effort, to check off that it's "supported" without actual
 consideration to its use. This article describes the critical features of
 a practical allocator interface, and demonstrates why they're important.
+
+<!--more-->
 
 Before diving into the details, here's the checklist for library authors:
 
@@ -412,9 +417,11 @@ simple allocator's best friend!
 [arena]: /blog/2023/09/27/
 [c++]: https://www.youtube.com/watch?v=LIb3L4vKZ7U
 [closure]: /blog/2017/01/08/
+[hn]: https://news.ycombinator.com/item?id=38675379
 [libc]: /blog/2023/02/11/
 [lua]: https://www.lua.org/manual/5.4/manual.html#lua_Alloc
 [mini]: /blog/2018/06/10/
+[reddit]: https://old.reddit.com/r/C_Programming/comments/18ks5qg/
 [sign]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [sized]: https://isocpp.org/files/papers/n3778.html
 [slice]: /blog/2023/10/05/#addendum-extend-the-last-allocation
