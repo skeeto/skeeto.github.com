@@ -129,7 +129,7 @@ set  *set_new(allocator *);
 set  *set_free(set *);
 bool  set_add(set *, char *);
 
-typdef struct json json;
+typedef struct json json;
 json     *json_load(char *buf, ptrdiff_t len, allocator *);
 json     *json_free(json *);
 ptrdiff_t json_length(json *);
