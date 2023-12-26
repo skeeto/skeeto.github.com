@@ -141,7 +141,7 @@ Vim instance per project at the project's root, I get the correct
 behavior for free.
 
 
-[w32]: https://blogs.msdn.microsoft.com/oldnewthing/20101011-00/?p=12563
+[w32]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20101011-00/?p=12563
 [chdir]: http://pubs.opengroup.org/onlinepubs/9699919799/functions/chdir.html
 [vi]: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/vi.html
 [up]: https://github.com/jwiegley/use-package

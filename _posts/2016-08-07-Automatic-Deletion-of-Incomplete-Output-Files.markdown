@@ -155,5 +155,5 @@ tried-and-true approach for this one.
 
 [range]: https://tools.ietf.org/html/rfc7233
 [fsync]: http://blog.httrack.com/blog/2013/11/15/everything-you-always-wanted-to-know-about-fsync/
-[chen]: https://blogs.msdn.microsoft.com/oldnewthing/20160108-00/?p=92821
+[chen]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20160108-00/?p=92821
 [createfile]: https://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx

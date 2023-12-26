@@ -200,7 +200,7 @@ I may go this route for [the upcoming 7DRL 2016][7drl] in March.
 [com]: /blog/2014/12/09/
 [mingw]: http://mingw-w64.org/
 [deb]: https://packages.debian.org/search?keywords=mingw-w64
-[msvcrt]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
+[msvcrt]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
 [plibc]: http://plibc.sourceforge.net/
 [entry]: https://msdn.microsoft.com/en-us/library/f9t8842e.aspx
 [small]: http://www.phreedom.org/research/tinype/

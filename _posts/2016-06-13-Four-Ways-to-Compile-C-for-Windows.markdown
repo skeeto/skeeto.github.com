@@ -206,7 +206,7 @@ it's not going to beat these options.
 [mingw64]: http://mingw-w64.org/doku.php
 [utf8]: http://utf8everywhere.org/
 [args]: https://utcc.utoronto.ca/~cks/space/blog/python/Python3UnicodeIssue
-[msvcrt]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
+[msvcrt]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
 [format]: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-g_t_0040code_007bformat_007d-function-attribute-3318
 [pie]: http://thelinuxjedi.blogspot.com/2014/07/tripping-up-using-mingw.html
 [gen]: https://gcc.gnu.org/ml/gcc-bugs/2015-05/msg02025.html

@@ -241,7 +241,7 @@ complex solution (pkg-config, CMake, Autoconf, etc.).
 [openmp]: /blog/2017/03/01/
 [msdn]: https://msdn.microsoft.com/en-us/library/windows/desktop/ms686298(v=vs.85).aspx
 [enchive]: https://github.com/skeeto/enchive
-[ms]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
+[ms]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
 [vs]: /blog/2016/06/13/
 [shell]: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
 [turing]: /blog/2016/04/30/

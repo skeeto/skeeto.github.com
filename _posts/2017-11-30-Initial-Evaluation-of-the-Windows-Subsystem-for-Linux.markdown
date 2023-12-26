@@ -196,7 +196,7 @@ it's better than Cygwin *if* you can get access to it.
 
 
 [binfmt]: https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/binfmt-misc.rst
-[blog]: https://blogs.msdn.microsoft.com/wsl/
+[blog]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/wsl/
 [four]: /blog/2016/06/13/
 [joy]: /blog/2016/11/05/
 [mm]: /blog/2017/11/03/
@@ -204,7 +204,7 @@ it's better than Cygwin *if* you can get access to it.
 [pa]: https://trzeci.eu/configure-graphic-and-sound-on-wsl/
 [sshfs]: https://github.com/libfuse/sshfs
 [wine]: https://www.winehq.org/
-[wsl]: https://blogs.msdn.microsoft.com/wsl/2016/04/22/windows-subsystem-for-linux-overview/
+[wsl]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/wsl/2016/04/22/windows-subsystem-for-linux-overview/
 [xming]: https://sourceforge.net/projects/xming/
 [raw]: /blog/2015/05/15/
 [case]: http://yarchive.net/comp/linux/case_insensitive_filenames.html
@@ -213,4 +213,4 @@ it's better than Cygwin *if* you can get access to it.
 [home]: /blog/2017/06/19/
 [ide]: https://sanctum.geek.nz/arabesque/series/unix-as-ide/
 [port]: /blog/2017/03/30/
-[mode]: https://blogs.msdn.microsoft.com/commandline/2017/10/11/whats-new-in-wsl-in-windows-10-fall-creators-update/
+[mode]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/commandline/2017/10/11/whats-new-in-wsl-in-windows-10-fall-creators-update/

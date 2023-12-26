@@ -174,7 +174,7 @@ implementations.
 [bug]: http://radiance-online.org:82/pipermail/radiance-dev/2016-March/001578.html
 [diet]: https://www.fefe.de/dietlibc/
 [musl]: https://www.musl-libc.org/
-[ucrt]: https://blogs.msdn.microsoft.com/vcblog/2015/03/03/introducing-the-universal-crt/
-[msvcrt]: https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
+[ucrt]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/vcblog/2015/03/03/introducing-the-universal-crt/
+[msvcrt]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20140411-00/?p=1273
 [pellesc]: http://www.smorgasbordet.com/pellesc/
 [smooth]: http://www.keithschwarz.com/smoothsort/

@@ -177,6 +177,6 @@ you've taken for granted by turning it on its head.
 [abi]: /blog/2016/11/17/
 [nd]: http://www.catb.org/jargon/html/N/nasal-demons.html
 [py]: https://docs.python.org/3/reference/datamodel.html
-[inf]: https://blogs.msdn.microsoft.com/oldnewthing/20100809-00/?p=13203
+[inf]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/oldnewthing/20100809-00/?p=13203
 [pypy]: https://utcc.utoronto.ca/~cks/space/blog/programming/NondeterministicGCII
 [std]: /blog/2017/03/30/
