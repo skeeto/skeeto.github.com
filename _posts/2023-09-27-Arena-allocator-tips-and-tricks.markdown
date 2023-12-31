@@ -135,23 +135,20 @@ typedef struct {
 
 void *alloc(arena *a, ptrdiff_t size, ptrdiff_t align, ptrdiff_t count)
 {
-    ptrdiff_t avail = a->end - a->beg;
     ptrdiff_t padding = -(uintptr_t)a->beg & (align - 1);
-    if (count > (avail - padding)/size) {
+    ptrdiff_t available = a->end - a->beg - padding;
+    if (available < 0 || count > available/size) {
         abort();  // one possible out-of-memory policy
     }
-    ptrdiff_t total = size * count;
-    char *p = a->beg + padding;
-    a->beg += padding + total;
-    return memset(p, 0, total);
+    void *p = a->beg + padding;
+    a->beg += padding + count*size;
+    return memset(p, 0, count*size);
 }
 ```
 
 Yup, just a pair of pointers! When allocating, all sizes are signed [just
 as they ought to be][signed]. Unsigned sizes are another historically
 common source of defects, and offer no practical advantages in return.
-Case in point exercise for the reader: Change each `ptrdiff_t` to `size_t`
-in `alloc`, find the defect that results, then fix it.
 
 The `align` parameter allows the arena to handle any unusual alignments,
 something that's surprisingly difficult to do with libc. It's difficult to
@@ -200,7 +197,7 @@ typedef struct {
 void *alloc(...)
 {
     // ...
-    if (count > (avail - padding)/size) {
+    if (/* out of memory */) {
         __builtin_longjmp(a->jmp_buf, 1);
     }
     // ...
@@ -245,7 +242,7 @@ flag, and then do the usual null pointer check:
 void *alloc(..., int flags)
 {
     // ...
-    if (count > (avail - padding)/size) {
+    if (/* out of memory */) {
         if (flags & SOFTFAIL) {
             return 0;
         }
