@@ -84,13 +84,12 @@ Even in the most recent articles I've used `ptrdiff_t` instead of `size`.
 
 ### Macros
 
-Next, my "standard" set of macros:
+Next, some "standard" macros:
 
 ```c
-#define sizeof(x)    (size)sizeof(x)
-#define alignof(x)   (size)_Alignof(x)
-#define countof(a)   (sizeof(a) / sizeof(*(a)))
-#define lengthof(s)  (countof(s) - 1)
+#define countof(a)    (size)(sizeof(a) / sizeof(*(a)))
+#define lengthof(s)   (countof(s) - 1)
+#define new(a, t, n)  (t *)alloc(a, sizeof(t), _Alignof(t), n)
 ```
 
 While I still prefer `ALL_CAPS` for constants, I've adopted lowercase for
