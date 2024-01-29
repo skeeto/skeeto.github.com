@@ -13,8 +13,8 @@ seen either discussed elsewhere, so I really ought to share them.
 ### Continuable assertions
 
 The `assert` macro in typical C implementations [leaves a lot to be
-desired][assert], and so I've suggested alternative definitions that
-behave better under debuggers:
+desired][assert], as does `raise` and `abort`, so I've suggested
+alternative definitions that behave better under debuggers:
 
 ```c
 #define assert(c)  while (!(c)) __builtin_trap()
