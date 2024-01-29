@@ -115,7 +115,7 @@ no longer correct. Instead it drifts, requiring manual replacement. This
 is tedious and GDB ought to do better. Think that's unreasonable? The
 Visual Studio debugger does exactly that [quite effectively][vs] through
 external code edits! GDB front ends tend to handle it better, especially
-when they're also the code editor, and so directly observes all edits.
+when they're also the code editor and so directly observe all edits.
 
 As a workaround we can get the first kind by temporarily *naming* a line
 number. This requires editing the source, but remember, the very reason we
