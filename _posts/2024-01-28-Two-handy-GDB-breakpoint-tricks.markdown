@@ -142,8 +142,18 @@ source.
     (gdb) dprintf example:loop,"nums[%d] = %g\n",i,nums[i]
 
 One downside is dealing with `-Wunused-label` (enabled by `-Wall`), and so
-I've considered disabling the warning in [my defaults][fav]. I more often
-use an assembly label, usually named `b` for convenience:
+I've considered disabling the warning in [my defaults][fav]. **Update**:
+Matthew Fernandez pointed out that the `unused` label attribute eliminates
+the warning, solving my problem:
+
+```c
+    for (int i = 0; i < n; i++) {
+        loop: __attribute((unused))
+        // ...
+    }
+```
+
+More often I use an assembly label, usually named `b` for convenience:
 
 ```c
     for (int i = 0; i < n; i++) {
