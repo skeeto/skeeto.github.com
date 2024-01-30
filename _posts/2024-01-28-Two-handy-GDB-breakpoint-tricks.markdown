@@ -82,8 +82,10 @@ for (int i = 0; i < 1000000000; i++) {
 }
 ```
 
-As far as I know there is no ARM equivalent compatible with GDB (or even
-LLDB). The closest instruction, `brk #0x1`, does not behave as needed.
+Could GDB handle `int3` better? Yes! Visual Studio, for instance, does not
+require the `nop` instruction. As far as I know there is no ARM equivalent
+compatible with GDB (or even LLDB). The closest instruction, `brk #0x1`,
+does not behave as needed.
 
 ### Named positions
 
