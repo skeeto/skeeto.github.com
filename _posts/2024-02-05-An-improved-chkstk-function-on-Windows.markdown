@@ -112,6 +112,11 @@ a custom ABI. That's the argument to chkstk. Further note that it uses
 `rax` on the return. That's not the value returned by chkstk, but rather
 that x64 *chkstk preserves all registers*.
 
+Well, maybe. The official documentation says that registers [r10 and r11
+are volatile][pe], but that information conflicts with Microsoft's own
+implementation. Just in case, I choose a conservative interpretation that
+all registers are preserved.
+
 ### Implementing chkstk
 
 In a high level language, chkstk might look something like so:
@@ -211,6 +216,15 @@ bytes.
 
 I'm no assembly guru, and I bet this can be even smaller without hurting
 the fast path, but this is the best I could come up with at this time.
+
+**Update**: Stefan Kanthak, who has [extensively explored this
+topic][kanthak], points out that large stack frame requests might overflow
+my low frame address calculation at (3), effectively disabling the probe.
+Such requests might occur from alloca calls or variable-length arrays
+(VLAs) with untrusted sizes. As far as I'm concerned, such programs are
+already broken, but it only cost a two-byte instruction to deal with it. I
+have not changed this article, but the source in w64devkit [has been
+updated][fix].
 
 ### 32-bit chkstk
 
@@ -382,14 +396,17 @@ article before it was published!
 [crt]: /blog/2023/02/15/
 [env]: /blog/2023/08/23/
 [exc]: https://www.gnu.org/licenses/gcc-exception-3.1.html
+[fix]: https://github.com/skeeto/w64devkit/commit/50b343db
 [gp]: https://devblogs.microsoft.com/oldnewthing/20220203-00/?p=106215
 [gs]: https://learn.microsoft.com/en-us/cpp/build/reference/gs-control-stack-checking-calls
 [hdr]: /blog/2023/05/31/
 [henry]: /blog/2023/06/22/#119-henry-vi
+[kanthak]: https://skanthak.homepage.t-online.de/msvcrt.html
 [libc]: /blog/2023/02/11/
 [linux]: /blog/2023/03/23/
 [lm]: https://github.com/skeeto/w64devkit/blob/master/src/libmemory.c
 [long]: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation
+[pe]: https://learn.microsoft.com/en-us/cpp/build/prolog-and-epilog
 [sab]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=59532
 [src]: https://github.com/skeeto/w64devkit/blob/master/src/libchkstk.S
 [stack]: https://learn.microsoft.com/en-us/cpp/build/reference/stack-stack-allocations
