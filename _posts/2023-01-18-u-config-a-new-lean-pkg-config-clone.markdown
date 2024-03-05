@@ -2,7 +2,7 @@
 title: 'u-config: a new, lean pkg-config clone'
 layout: post
 date: 2023-01-18T06:39:51Z
-tags: []
+tags: [c]
 uuid: c07ce83a-7871-4561-a77f-3b62b7a817bd
 excerpt_separator: <!--more-->
 ---
