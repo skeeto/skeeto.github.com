@@ -375,6 +375,8 @@ prefer Björn's DFA decoder.
 
 *Update*: Bryan Donlan has followed up with [a SIMD UTF-8 decoder][simd].
 
+*Update 2024*: NRK has followed up with [parallel extract decoder][nrk].
+
 
 [bh]: http://bjoern.hoehrmann.de/utf-8/decoder/dfa/
 [prng]: /blog/2017/09/21/
@@ -388,3 +390,4 @@ prefer Björn's DFA decoder.
 [simd]: https://github.com/bdonlan/branchless-utf8/commit/3802d3b0e10ea16810dd40f8116243971ff7603d
 [rfc]: https://tools.ietf.org/html/rfc3629
 [carruth]: https://www.youtube.com/watch?v=2EWejmkKlxs
+[nrk]: https://nrk.neocities.org/articles/utf8-pext.html
