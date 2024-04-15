@@ -173,6 +173,19 @@ means `#include`-ing it, and whatever comes in with it. Or ask an expert
 capable of writing such a definition from scratch, though both are
 probably too busy.
 
+**Update**: One of those experts, Jonathan Müller, kindly reached out to
+say that [a static cast is sufficient][fwd]. This is easy to do:
+
+```c++
+template<typename T, typename ...A>
+static T *make(arena *a, size count = 1, A &&...args)
+{
+    // ...
+        new ((void *)&r[i]) T{(A &&)args...};
+    // ...
+}
+```
+
 One small gotcha: placement new doesn't work out of the box, and you need
 to provide a definition. That means including `<new>` or writing one out.
 Fortunately it's trivial, but the prototype must exactly match, including
@@ -334,6 +347,9 @@ downgrade from the macro, which works perfectly in these lookup tables.
 Once a non-default constructor is defined, I've been unable to find an
 escape hatch back to the original, dumb, reliable behavior.
 
+**Update**: Jonathan Müller points out the reinterpret cast is forbidden
+in a `constexpr` function, so it's not required to happen at compile time.
+
 ### Other features
 
 Having a generic dynamic array would be handy, and more ergonomic than [my
@@ -391,6 +407,7 @@ sizable project.
 [arena]: /blog/2023/09/27/
 [buf]: /blog/2023/02/13/
 [fuzz]: /blog/2019/01/25/
+[fwd]: https://www.foonathan.net/2020/09/move-forward/
 [hh]: https://www.youtube.com/watch?v=uHSLHvWFkto&t=4386s
 [libc]: /blog/2023/02/11/
 [map]: /blog/2023/09/30/
