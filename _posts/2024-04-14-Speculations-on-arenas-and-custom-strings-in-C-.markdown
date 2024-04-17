@@ -397,6 +397,12 @@ print(bufout *, vec3);
 
 Same goes for a `hash()` function on different types.
 
+C++ has better null pointer semantics than C. Addition or subtraction of
+zero with a null pointer produces a null pointer, and subtracting null
+pointers results in zero. This eliminates some boneheaded special case
+checks required in C, though not all: `memcpy`, for instance, arbitrarily
+still does not accept null pointers even in C++.
+
 ### Ultimately worth it?
 
 The static data problem is a real bummer, but perhaps it's worth it for
