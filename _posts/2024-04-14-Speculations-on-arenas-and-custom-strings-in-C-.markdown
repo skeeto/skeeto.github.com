@@ -349,6 +349,25 @@ escape hatch back to the original, dumb, reliable behavior.
 
 **Update**: Jonathan Müller points out the reinterpret cast is forbidden
 in a `constexpr` function, so it's not required to happen at compile time.
+After some thought, I've figured out a workaround using a union:
+
+```c++
+struct s8 {
+    union {
+        u8         *data = 0;
+        const char *cdata;
+    };
+    size len = 0;
+
+    template<size N>
+    constexpr s8(const char (&s)[N]) : cdata{s}, len{N-1} {}
+
+    // ...
+}
+```
+
+In all three C++ implementations, in all configurations, this reliably
+constructs strings at compile time. The other semantics are unchanged.
 
 ### Other features
 
