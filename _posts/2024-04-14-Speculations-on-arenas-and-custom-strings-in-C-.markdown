@@ -13,8 +13,8 @@ trade-offs? Are the benefits worth the costs? In this article I lay out my
 goals, review implementation possibilities, and discuss my findings.
 Following along will require familiarity with those previous two articles.
 
-Some of C++ is beyond my intellectual capabilities, and so I cannot wield
-those parts effectively. Other parts I *can* wrap my head around, but it
+Some of C++ is beyond my mental capabilities, and so I cannot wield those
+parts effectively. Other parts I *can* wrap my head around, but it
 requires substantial effort and the inevitable mistakes are difficult to
 debug. So a general goal is to minimize contact with that complexity, only
 touching a few higher-value features that I can use confidently.
