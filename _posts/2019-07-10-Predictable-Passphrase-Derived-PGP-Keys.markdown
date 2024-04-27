@@ -22,7 +22,7 @@ backups. The [OpenPGP specification, RFC 4880][rfc4880] has many options
 for deriving a key from this passphrase, called *String-to-Key*, or S2K,
 algorithms. None of the options are great.
 
-In 2012, [I selected the strongest S2K configuration][publish] and,
+In 2012, I selected the strongest S2K configuration at the time and,
 along with a very strong passphrase, put my GnuPG keyring on the
 internet as part of [my public dotfiles repository][dotfiles]. It was a
 kind of super-backup that would guarantee their availability anywhere
@@ -425,7 +425,6 @@ them on the fly only when I occasionally need them.
 [old]: https://github.com/skeeto/passphrase2pgp/tree/old-version
 [p2p]: https://github.com/skeeto/passphrase2pgp
 [poker]: /blog/2017/07/27/
-[publish]: /blog/2012/06/24/
 [rfc4880]: https://tools.ietf.org/html/rfc4880
 [rsa]: /blog/2015/10/30/
 [sha]: https://shattered.io/

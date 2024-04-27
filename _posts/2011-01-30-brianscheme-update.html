@@ -48,8 +48,8 @@ this, perhaps through FASLs or some kind of image dump.
 <p>
 After discussing it with Brian I decided to try for a memory dump,
 <a href="http://www.sbcl.org/manual/Saving-a-Core-Image.html">
-SBCL-style</a>. My old <a href="/blog/2007/09/14/">memory pool
-allocator</a>, which I thought I've never use again, really came in
+SBCL-style</a>. My old memory pool
+allocator, which I thought I've never use again, really came in
 handy, and now has a home — modified of course — in BS. It no longer
 uses malloc(), instead using mmap() to get more memory, and now has
 the ability to free() memory, completely replacing malloc(),

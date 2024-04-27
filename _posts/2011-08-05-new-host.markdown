@@ -18,9 +18,7 @@ The repository that houses my entire blog is here,
 
 You can run an entirely local version of my blog from that repository.
 You could also make corrections, commit them, and give me a pull
-request — not that I'm expecting that to happen. (Oh, also, cloning
-the repository won't work in Windows, because my
-[URL mangling test][mangle] is in here.)
+request — not that I'm expecting that to happen.
 
 Initially I considered going in the opposite direction. I looked into
 renting out a VM, rebuilding my site from scratch as a Java Servlet,
@@ -88,7 +86,6 @@ could very easily move to any host at this point.
 
 [github]: https://github.com/
 [ago]: /blog/2009/09/01/
-[mangle]: /download/slashtest/
 [pages]: http://pages.github.com/
 [jekyll]: https://github.com/mojombo/jekyll
 [htmlize]: /blog/2009/04/23/

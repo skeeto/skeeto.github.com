@@ -16,7 +16,7 @@ roguelike dungeon — it's inadequate. I also wanted to be able to
 sample from different probability distributions, particularly the
 normal distribution and the exponential distribution.
 
-The underlying number generator is the elegant [RC4][rc4]. Seeds are
+The underlying number generator is the elegant RC4. Seeds are
 strings and anything else (except functions) is run through
 JSON.stringify(). Characters above code 255 are treated as two-byte
 values. If no seed is provided it will grab some of the available
@@ -88,6 +88,5 @@ Gamma (mean = 4):
 
 [rngjs]: https://github.com/skeeto/rng-js
 [bs]: https://github.com/skeeto/brianscheme/blob/master/random.sch
-[rc4]: /blog/2008/08/09/
 [rot]: http://ondras.github.com/rot.js/hp/
 [dilbert]: http://search.dilbert.com/comic/Random%20Number%20Generator

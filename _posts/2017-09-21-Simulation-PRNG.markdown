@@ -104,10 +104,6 @@ running Linux 4.9.0.
     xorshift128+      0     2       7660        6530
     xorshift64*       0     3       4990        5060
 
-And the actual dieharder outputs:
-
-* [shootout-results.zip](/download/shootout-results.zip)
-
 **The clear winner is [xoroshiro128+][xoro]**, with a function body of
 just 7 lines of C. It's clearly the fastest, and the output had no
 observed statistical failures. However, that's not the whole story. A

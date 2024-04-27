@@ -132,8 +132,7 @@ So I wrote my own install script which installs any file beginning
 with an underscore. I've since added support for "private" dotfiles
 along the way. These are dotfiles that contain sensitive information
 and are encrypted in the repository, allowing me to continue
-publishing it safely. I'll elaborate
-[in a future post](/blog/2012/06/24/).
+publishing it safely.
 
 If you'd like to create your own dotfiles repository, my dotfile
 repository may not be useful beyond standing as an example but my

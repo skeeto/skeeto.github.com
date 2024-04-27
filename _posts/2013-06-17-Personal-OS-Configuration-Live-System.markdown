@@ -31,8 +31,7 @@ configuration baked in.
 try it out, burn it to a CD, write it onto a flash drive (it's a
 hybrid ISO), or just fire it up in your favorite virtual machine. You
 will be booted directly into *very nearly* my exact configuration,
-down to the same random wallpaper selection and PGP keys
-([don't worry, they're safe!][private]). It's extremely minimal and
+down to the same random wallpaper selection. It's extremely minimal and
 will look like this.
 
 ![](/img/screenshot/live-skeeto.jpg)
@@ -108,7 +107,6 @@ user-data persistence stored on a separate writable medium.
 [dotfiles]: /blog/2012/06/23/
 [live]: https://github.com/skeeto/live-dev-env
 [debian]: http://www.debian.org/
-[private]: /blog/2012/06/24/
 [netinst]: http://www.debian.org/CD/netinst/
 [live-build]: http://live.debian.net/
 [pentadactyl]: http://5digits.org/pentadactyl/

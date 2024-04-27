@@ -48,7 +48,7 @@ Each key is encrypted *individually* within this file with a
 passphrase. If you try to use the key, GPG will attempt to decrypt it
 by asking for the passphrase. If someone were to somehow gain access
 to your `secring.gpg`, they'd still need to get your passphrase, so
-[pick a strong one](/blog/2009/02/07/). The official documentation
+pick a strong one. The official documentation
 advises you to keep your `secring.gpg` well-guarded and only rely on
 the passphrase as a cautionary measure. I'm ignoring that part.
 

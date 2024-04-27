@@ -63,8 +63,7 @@ was loosely inspired by [OpenBSD's signify][signify]. It has the tiny
 subset of PGP features that I need — using modern algorithms — plus
 one more feature I've always wanted: the ability to **generate a
 keypair from a passphrase**. This means I can reliably access my
-archive keypair anywhere without doing something strange like
-[uploading my private keys onto the internet][pub].
+archive keypair anywhere.
 
 ### On Enchive
 
@@ -197,7 +196,6 @@ future should Enchive have that sort of longevity.
 [mg]: https://blog.cryptographyengineering.com/2014/08/13/whats-matter-with-pgp/
 [fv]: https://blog.filippo.io/giving-up-on-long-term-pgp/
 [mm]: https://moxie.org/blog/gpg-and-me/
-[pub]: /blog/2012/06/24/
 [enchive]: https://github.com/skeeto/enchive
 [djb]: https://cr.yp.to/djb.html
 [hmac]: https://tools.ietf.org/html/rfc2104

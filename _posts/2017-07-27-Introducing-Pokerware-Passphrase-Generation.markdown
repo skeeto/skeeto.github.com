@@ -120,17 +120,15 @@ would be the first word in your passphrase.
 
 I now have an excuse to keep a deck of cards out on my desk at work.
 I've been using Diceware — or something approximating it since I'm not
-so paranoid about hardware RNGs — for passwords [for over 8 years
-now][old]. From now I'll deal new passwords from an in-reach deck of
-cards. Though typically I need to tweak the results to meet [outdated
-character-composition requirements][passwords].
+so paranoid about hardware RNGs. From now I'll deal new passwords from an
+in-reach deck of cards. Though typically I need to tweak the results to
+meet [outdated character-composition requirements][passwords].
 
 
 [dd]: /blog/2011/01/10/
 [diceware]: http://world.std.com/~reinhold/diceware.html
 [enchive]: /blog/2017/03/12/
 [ngram]: https://books.google.com/ngrams
-[old]: /blog/2009/02/07/
 [passwords]: https://www.troyhunt.com/passwords-evolved-authentication-guidance-for-the-modern-era/
 [pokerware]: https://github.com/skeeto/pokerware
 [reddit]: /blog/2016/12/01/

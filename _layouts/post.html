@@ -33,14 +33,6 @@ layout: default
     or see
     <a href="https://lists.sr.ht/~skeeto/public-inbox?search={{ page.title | url_encode }}">existing discussions</a>.
     </p>
-
-    {% capture year %}{{ page.date | date: "%Y" }}{% endcapture %}
-    {% assign year = year | plus: 0 %}
-    {% if year < 2020 %}
-    <p>This post has
-    <a href="/blog/comments/#{{ page.date | date: "%Y-%m-%d" }}">archived comments</a>.
-    </p>
-    {% endif %}
   </div>
 
   <nav class="no-print">

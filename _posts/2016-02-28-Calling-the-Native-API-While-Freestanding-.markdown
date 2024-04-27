@@ -128,18 +128,6 @@ and ARM). It's a good fit for graphical applications (games), but I
 would *never* write a command line application like this. The command
 line has always been a second class citizen on Windows.
 
-Mostly for my own future reference, here are export lists for two
-different versions of kernel32.dll and ntdll.dll:
-
-* [7sp1.kernel32.txt.gz](/download/exports/7sp1.kernel32.txt.gz)
-* [7sp1.ntdll.txt.gz](/download/exports/7sp1.ntdll.txt.gz)
-* [xpsp3.kernel32.txt.gz](/download/exports/xpsp3.kernel32.txt.gz)
-* [xpsp3.ntdll.txt.gz](/download/exports/xpsp3.ntdll.txt.gz)
-
-As I collect more of these export lists, I'll be able to paint a full
-picture of when particular functions first appeared as exports. These
-lists were generated with `objdump -p <path_to_dll>`.
-
 Now that I've got these Native API issues sorted out, I've
 significantly expanded the capabilities of my tiny, freestanding
 programs without adding anything to their size. Functions like
