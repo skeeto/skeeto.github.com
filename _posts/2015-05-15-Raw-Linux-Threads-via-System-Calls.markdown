@@ -6,9 +6,6 @@ tags: [x86, linux, c, tutorial]
 uuid: 9d5de15b-9308-3715-2bd7-565d6649ab2f
 ---
 
-*This article has been [translated into Japanese][jtrans].*  
-*This article has been [translated into Chinese][ctrans].*
-
 *This article has [a followup][followup].*
 
 Linux has an elegant and beautiful design when it comes to threads:
@@ -378,6 +375,4 @@ these in a future article.
 [demo]: https://github.com/skeeto/pure-linux-threads-demo
 [linus]: https://www.youtube.com/watch?v=1Mg5_gxNXTo#t=8m28
 [lstack]: /blog/2014/09/02/
-[ctrans]: https://liam0205.me/2018/04/10/Raw-Linux-Threads-via-System-Calls/
-[jtrans]: http://postd.cc/raw-linux-threads-via-system-calls/
 [followup]: /blog/2016/09/23/
