@@ -16,10 +16,10 @@ has been covered][why] and the focus will be on the "how". Both the GNU
 and MSVC toolchains will be considered.
 
 I no longer call these "freestanding" programs since that term is, at
-best, inaccurate. In fact, we will be actively avoiding GCC features
-associated with that label. Instead I call these *CRT-free* programs,
-where CRT stands for the *C runtime* the Windows-oriented term for
-*libc*. This term communicates both intent and scope.
+best, [inaccurate][ubuntu]. In fact, we will be actively avoiding GCC
+features associated with that label. Instead I call these *CRT-free*
+programs, where CRT stands for the *C runtime* the Windows-oriented term
+for *libc*. This term communicates both intent and scope.
 
 ### Entry point
 
@@ -368,5 +368,6 @@ Or with MSVC (linker flags in source):
 [clash]: /blog/2017/06/21/
 [cmd]: /blog/2022/02/18/
 [old]: /blog/2016/01/31/
+[ubuntu]: https://github.com/ipxe/ipxe/commit/e8393c372
 [w64]: https://github.com/skeeto/w64devkit
 [why]: /blog/2023/02/11/
