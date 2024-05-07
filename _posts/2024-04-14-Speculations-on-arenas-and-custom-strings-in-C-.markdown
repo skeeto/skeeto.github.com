@@ -215,7 +215,8 @@ Since it doesn't own the underlying buffer — region-based allocation has
 already solved the ownership problem — this is what C++ long-windedly
 calls a `std::string_view`. In C++ we won't need the `countof` macro for
 strings, but it's still generally useful. Converting it to a template,
-which is *theoretically* more robust (rejects pointers):
+which is *theoretically* more robust (rejects pointers), but comes with [a
+non-zero cost][debug]:
 
 ```c
 template<typename T, size N>
@@ -431,6 +432,7 @@ sizable project.
 
 [arena]: /blog/2023/09/27/
 [buf]: /blog/2023/02/13/
+[debug]: https://vittorioromeo.info/index/blog/debug_performance_cpp.html
 [fuzz]: /blog/2019/01/25/
 [fwd]: https://www.foonathan.net/2020/09/move-forward/
 [hh]: https://www.youtube.com/watch?v=uHSLHvWFkto&t=4386s
