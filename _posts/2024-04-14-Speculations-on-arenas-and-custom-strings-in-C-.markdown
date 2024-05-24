@@ -173,7 +173,7 @@ means `#include`-ing it, and whatever comes in with it. Or ask an expert
 capable of writing such a definition from scratch, though both are
 probably too busy.
 
-**Update**: One of those experts, Jonathan Müller, kindly reached out to
+**Update 1**: One of those experts, Jonathan Müller, kindly reached out to
 say that [a static cast is sufficient][fwd]. This is easy to do:
 
 ```c++
@@ -182,6 +182,22 @@ static T *make(arena *a, size count = 1, A &&...args)
 {
     // ...
         new ((void *)&r[i]) T{(A &&)args...};
+    // ...
+}
+```
+
+**Update 2**: I later realized that because I do not care about copy or
+move semantics, I also don't care about perfect forwarding. I can simply
+expand the parameter pack without casting or `&&`. I also don't want the
+extra restrictions on braced initializer conversions, so better to use
+parentheses with `new`.
+
+```c++
+template<typename T, typename ...A>
+static T *make(arena *a, size count = 1, A ...args)
+{
+    // ...
+        new ((void *)&r[i]) T(args...);
     // ...
 }
 ```
