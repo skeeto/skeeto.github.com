@@ -349,7 +349,14 @@ is more suited to having multiple "open" dynamic arrays at once.
 This concatenative concept has been a useful way to think about a variety
 of situations in order to solve them effectively with arena allocation.
 
+**Update**: NRK [sharply points out][nrk] that "extend in place" as
+expressed in `concat` is incompatible with the [`alloc_size` and `malloc`
+GCC function attributes][attr]. I've recommended these attributes in
+previous articles, and we've each put them to use. Additional annotation
+is necessary to update the pointer's semantics after concatenation.
 
+
+[attr]: https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
 [arena]: /blog/2023/09/27/
 [buf]: /blog/2023/02/13/
 [chkstk]: /blog/2024/02/05/
@@ -357,4 +364,5 @@ of situations in order to solve them effectively with arena allocation.
 [da]: /blog/2023/10/05/
 [dumb]: /blog/2021/07/30/
 [map]: /blog/2023/09/30/
+[nrk]: https://lists.sr.ht/~skeeto/public-inbox/%3Cane2ee7fpnyn3qxslygprmjw2yrvzppxuim25jvf7e6f5jgxbd@p7y6own2j3it%3E#%3C2qzyqky3jtv6w64vicwnkrwa7nb52uohuu625bc3zrkaoor6ml@v57pb72uozpy%3E
 [sizes]: /blog/2024/05/24/
