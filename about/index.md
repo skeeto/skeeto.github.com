@@ -10,11 +10,11 @@ and data reduction tools, optimize software performance, and [mentor
 students][mentor]. Occasionally I also do web development and data
 visualization.
 
-However, this blog — [ongoing for more than a decade][ten] — is largely
-about what I do *outside* of my day job. Here I explain topics that I've
-recently learned, share software development techniques I've discovered
-or even invented, [showcase cool demos][showcase], and discuss my
-contributions to open source.
+However, this blog — [ongoing since 2007][ten] — is largely about what I
+do *outside* of my day job. Here I explain topics that I've recently
+learned, share software development techniques I've discovered or even
+invented, [showcase cool demos][showcase], and discuss my contributions to
+open source.
 
 In general, each of my articles should be unique on the internet at the
 time they're published. I will not write a tutorial on some topic if
@@ -39,6 +39,9 @@ Here are some of the more well known open source projects I've started.
   includes [every tool you need][w64-all] to comfortably build anything
   from high performance data crunchers [to graphical games][w64-game].
 
+* [u-config][]: a small, highly-portable pkg-config implementation with
+  first-class Windows support. Its primary use case is w64devkit.
+
 * [Elfeed][elfeed]: an extensible syndication feed (RSS, Atom) reader
   for Emacs. I've written [lots of articles][elfeed-meta] about it.
 
@@ -48,10 +51,6 @@ Here are some of the more well known open source projects I've started.
 
 * [Enchive][enchive]: encrypted personal archives. I've written about
   [the purpose behind this tool][enchive-meta].
-
-* [Am I Shadowbanned?][shadow]: test if your reddit account has been
-  shadowbanned. Not nearly as important as it once was, but still
-  quite popular.
 
 * [binitools][binitools]: an old modding tool for the *Freelancer* space
   flight sim. I wrote it in college before starting this blog. There are
@@ -84,24 +83,20 @@ domain.
 If you use my work I do appreciate getting credit, but I do not legally
 mandate it.
 
-### Most Popular Articles
+### Popular Articles
 
-These are my ten most visited articles. Some of these articles are
-popular enough to have been translated.
+Some of my most popular articles:
 
-1.  [Raw Linux Threads via System Calls](/blog/2015/05/15/)
-2.  [Interactive Programming in C](/blog/2014/12/23/)
-3.  [A GPU Approach to Path Finding](/blog/2014/06/22/)
-4.  [A GPU Approach to Particle Physics](/blog/2014/06/29/)
-5.  [C11 Lock-free Stack](/blog/2014/09/02/)
-6.  [Switching to the Mutt Email Client](/blog/2017/06/15/)
-7.  [Minimalist C Libraries](/blog/2018/06/10/)
-8.  [Small, Freestanding Windows Executables](/blog/2016/01/31/)
-9.  [Leaving Gmail Behind](/blog/2013/09/03/)
-10. [A Basic Just-In-Time Compiler](/blog/2015/03/19/)
-
-These are not necessarily my personal favorites, but they do seem to be
-what others find most useful.
+* [Arena allocator tips and tricks](/blog/2023/09/27/)
+* [Raw Linux Threads via System Calls](/blog/2015/05/15/)
+* [Interactive Programming in C](/blog/2014/12/23/)
+* [A GPU Approach to Path Finding](/blog/2014/06/22/)
+* [A GPU Approach to Particle Physics](/blog/2014/06/29/)
+* [C11 Lock-free Stack](/blog/2014/09/02/)
+* [Switching to the Mutt Email Client](/blog/2017/06/15/)
+* [Minimalist C Libraries](/blog/2018/06/10/)
+* [Small, Freestanding Windows Executables](/blog/2016/01/31/)
+* [A Basic Just-In-Time Compiler](/blog/2015/03/19/)
 
 I also have a published paper: [ROP Gadget Prevalence and Survival under
 Compiler-based Binary Diversification Schemes][rop]
@@ -130,43 +125,39 @@ still be productive on other Linux distributions or even any of the
 various BSDs. My dotfiles are quite portable and mostly work across all
 of them.
 
-Despite all my articles about Emacs over the years, I actually [do most
-of my work in Vim][vim], including writing blog articles and email. Like
-a vice, I pretty much only use Emacs for writing Emacs extensions.
+Contrast to earlier in my career, Windows has grown on me as a development
+platform. It's better than Linux on some dimensions, particularly as a
+target, and for graphical applications. Though Windows has steadily grown
+worse since 2012, and at an accelerating pace. w64devkit snapshots my
+preferred development environment for any platform, even if lacking a few
+important capabilities, such as [fuzz testing][fuzz]. My long-term goal is
+to correct that situation.
 
-I use [Openbox][openbox] as my window manager, and without any extra
-adornments (panels, taskbar, etc.).
+For text editing, I [exclusively use Vim][vim]. That includes composing
+blog articles and mail. I've never learned how to extend it, and probably
+never will.
 
-My favorite programming language is C. It's [fast, simple][c], and
-compiles *very* quickly. Unlike many other languages, it's quite
-reasonable for an individual to have a comprehensive understanding of the
-entire language. C is my default choice unless something else is
-particularly better suited (Go, Python, shell script, etc.). My second
-favorite language is Go: it has most of C's strengths and [the best
-tooling of any language][gotooling]. There's also a special place in my
-heart for Emacs Lisp, a venerable goofball language that's so much fun to
-discuss.
+I use [Openbox][openbox] as my window manager, without adornments (panels,
+taskbar, etc.).
 
-My preferred build tool is plain old POSIX `make`. If this sounds
-strange, then it's [probably cleaner and more capable than you
-realize][make]. There's little need for GNU Autoconf and friends when
-[you write portable code][portable].
+My favorite programming language is C, and I've acquired [my own personal
+style][style]. It's [fast, simple][c], and compiles at lightning speed.
+Unlike most languages, it's quite reasonable for an individual to have a
+comprehensive understanding of the entire language. C++ written in a C
+style is also acceptable. While my day job requires mastery of a variety
+of languages and technologies, for my own purposes I find little reason to
+write software in anything other than C.
 
 [I use Mutt][mutt] for reading email. It's not *perfect*, but it's close
 enough. OpenPGP and email encryption are a technological dead end, so [I
 don't bother with it][enchive]. I've never needed end-to-end encrypted
-communication with strangers, so I haven't investigated the
-alternatives.
+communication with strangers, so I haven't investigated the alternatives.
 
 For consuming multimedia, I use [mpv][mpv]. I love how I can drive it
 completely and precisely from the keyboard. If anything, its minimal
 interface is *still* too cluttered for my tastes. Combined with
-[youtube-dl][youtube-dl] (and [my front-end][dl]), I watch more
-(ad-free) YouTube than is probably healthy.
-
-In years past I may have proudly listed my favorite source control tool,
-but these days you have to be a little nutty not to have already
-surrendered to Git's dominance.
+[yt-dlp][yt-dlp], I watch more (ad-free) YouTube than is probably
+healthy.
 
 ### Contact
 
@@ -234,7 +225,6 @@ It's wonderful having such concise keys and signatures!
 [c]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
 [cc0]: https://web.archive.org/web/20150225160057/https://dancohen.org/2013/11/26/cc0-by/
 [chat]: https://sachachua.com/blog/2014/05/emacs-chat-christopher-wellons/
-[dl]: https://github.com/skeeto/youtube-dl-emacs
 [dotfiles]: https://github.com/skeeto/dotfiles
 [elfeed-meta]: /tags/elfeed/
 [elfeed]: https://github.com/skeeto/elfeed
@@ -242,31 +232,30 @@ It's wonderful having such concise keys and signatures!
 [enchive-meta]: /blog/2017/03/12/
 [enchive]: https://github.com/skeeto/enchive
 [endlessh]: https://github.com/skeeto/endlessh
+[fuzz]: /blog/2019/01/25/
 [givewell]: https://secure.givewell.org/
-[gotooling]: /blog/2020/01/21/
 [inbox]: https://lists.sr.ht/~skeeto/public-inbox
-[make]: /blog/2017/08/20/
 [mentor]: /blog/2016/09/02/
 [mpv]: https://mpv.io/
 [mutt]: /blog/2017/06/15/
 [openbox]: http://openbox.org/wiki/Main_Page
 [p2p]: https://github.com/skeeto/passphrase2pgp
-[portable]: /blog/2017/03/30/
 [repos]: https://github.com/skeeto?tab=repositories
 [rop]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
 [send-email]: https://git-send-email.io/
-[shadow]: https://github.com/skeeto/am-i-shadowbanned
 [showcase]: /toys/
 [simplegpg]: https://github.com/skeeto/simplegpg
 [src]: https://github.com/skeeto/skeeto.github.com
 [ssmapedit]: https://github.com/skeeto/ssMapEdit
+[style]: /blog/2023/10/08/
 [synspace]: http://www.synthetic-reality.com/synSpace.htm
 [tarpit]: /blog/2019/03/22/
 [ten]: /blog/2017/09/01/
+[u-config]: https://github.com/skeeto/u-config
 [unlicense]: http://unlicense.org/
 [usesthis]: https://usesthis.com/interviews/chris.wellons/
 [vim]: /blog/2017/04/01/
 [w64-all]: /blog/2020/09/25/
 [w64-game]: /blog/2021/03/11/
 [w64devkit]: https://github.com/skeeto/w64devkit
-[youtube-dl]: https://rg3.github.io/youtube-dl/
+[yt-dlp]: https://github.com/yt-dlp/yt-dlp
