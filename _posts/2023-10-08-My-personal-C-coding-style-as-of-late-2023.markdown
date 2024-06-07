@@ -325,7 +325,7 @@ Prefer `__attribute` to `__attribute__`. The `__` suffix is excessive and
 unnecessary.
 
 ```c
-__attribute((malloc, alloc_size(2, 4)))
+__attribute((malloc, warn_unused_result))
 ```
 
 For Win32 systems programming, which typically only requires a modest

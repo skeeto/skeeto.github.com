@@ -351,9 +351,10 @@ of situations in order to solve them effectively with arena allocation.
 
 **Update**: NRK [sharply points out][nrk] that "extend in place" as
 expressed in `concat` is incompatible with the [`alloc_size` and `malloc`
-GCC function attributes][attr]. I've recommended these attributes in
-previous articles, and we've each put them to use. Additional annotation
-is necessary to update the pointer's semantics after concatenation.
+GCC function attributes][attr], which I've suggested in the past. While
+considering how to mitigate this, we've also discovered that `alloc_size`
+has always been fundamentally broken in GCC. Correct use is impossible,
+and so *it must not be used*.
 
 
 [attr]: https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html

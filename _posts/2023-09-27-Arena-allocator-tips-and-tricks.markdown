@@ -359,6 +359,12 @@ compiler warnings about some out bounds accesses of arena objects, and
 with Undefined Behavior Sanitizer you'll get run-time bounds checking.
 It's a great [complement to fuzzing][fuzz].
 
+**Update June 2024**: I've learned that [`alloc_size` is fundamentally
+broken][broken] since its [introduction in GCC 4.3.0 (March 2008)][rel].
+Correct use is impossible, and existing instances all rely on luck. In
+certain cases, such as function inlining, the pointer information is lost,
+and GCC may generate invalid code based on stale data.
+
 In theory `alloc_align` may also allow better code generation, but I've
 yet to observe a case. Consider it optional and low-priority. I mention it
 only for completeness.
@@ -441,6 +447,7 @@ dynamic arrays][array]? See these follow-up articles for details!
 [alloca]: https://man7.org/linux/man-pages/man3/alloca.3.html
 [arena]: https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator
 [array]: /blog/2023/10/05/
+[broken]: https://lists.sr.ht/~skeeto/public-inbox/%3Cane2ee7fpnyn3qxslygprmjw2yrvzppxuim25jvf7e6f5jgxbd@p7y6own2j3it%3E
 [comm]: https://sourceware.org/binutils/docs/as/Comm.html
 [crt]: /blog/2023/02/15/
 [fuzz]: /blog/2019/01/25/
@@ -448,6 +455,7 @@ dynamic arrays][array]? See these follow-up articles for details!
 [hn]: https://news.ycombinator.com/item?id=37670740
 [objsize]: https://gcc.gnu.org/onlinedocs/gcc/Object-Size-Checking.html
 [purge]: /blog/2019/12/29/
+[rel]: https://gcc.gnu.org/gcc-4.3/changes.html
 [setjmp]: /blog/2023/02/12/
 [signed]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [u-config]: /blog/2023/01/18/
