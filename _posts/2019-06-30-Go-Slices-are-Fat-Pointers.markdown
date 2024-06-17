@@ -119,7 +119,9 @@ fatptr_write(int fd, struct fatptr);
 
 In typical C implementations, the structure fields would be passed
 practically, if not exactly, same way as the individual parameters would
-have been passed, so it's really no less efficient.
+have been passed, so it's really no less efficient. (**Update June 2024**:
+Pengji Zhang pointed out that this [applies only to the 2-element `struct
+fatptr`][pengji], and not to 3-element slice headers discussed below.)
 
 To help keep this straight, we might employ some macros:
 
@@ -268,4 +270,5 @@ slices when I write Go.
 [cs]: https://utcc.utoronto.ca/~cks/space/blog/programming/GoVariableToArrayConversion
 [disc]: /blog/2017/07/19/
 [hn]: https://news.ycombinator.com/item?id=20321116
+[pengji]: https://lists.sr.ht/~skeeto/public-inbox/%3CCANOCUiz9ZjRi06pvSDmKsXcHcTiWfAJCeKQUn3EYCh7Tv0poVA@mail.gmail.com%3E
 [uintptr]: /blog/2016/05/30/
