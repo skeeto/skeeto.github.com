@@ -80,7 +80,7 @@ To do this correctly, **check integers not pointers**. Like before,
 subtract before adding.
 
     available = end - beg;
-    if (size > end - beg) error();
+    if (size > available) error();
     beg += size;
 
 Mind mixing signed and unsigned operands for the comparison operator (3),
