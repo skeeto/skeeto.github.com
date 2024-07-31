@@ -70,7 +70,7 @@ the best we could do is quadratic time.
 
 If we're free to *temporarily* modify the original list, then we can use
 memory as a map. After all, memory itself is a kind of pointer-to-object
-map! Since we only get one such map per process, we'll need to comandeer
+map! Since we only get one such map per process, we'll need to commandeer
 the original list during the copy. The trick is to interleave the two
 lists when constructing the new list:
 
