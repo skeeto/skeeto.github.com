@@ -2,7 +2,7 @@
 title: Giving C++ std::regex a C makeover
 layout: post
 date: 2024-09-04T17:15:07Z
-tags: [c, c++, win32]
+tags: [c, cpp, win32]
 uuid: 83fb81ed-290e-4bc7-87bd-d0bbc6c01d25
 ---
 
