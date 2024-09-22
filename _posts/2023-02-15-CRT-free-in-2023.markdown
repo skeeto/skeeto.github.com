@@ -49,14 +49,15 @@ int WinMainCRTStartup(void);  // windows subsystem
 ```
 
 The MSVC linker documentation says the entry point uses the `__stdcall`
-calling convention. Ignore this and **do not use `__stdcall` for your
-entry point!** Since entry points take no arguments, there is no practical
-difference from the `__cdecl` calling convention, so it does not actually
-matter. Rather, the goal is to avoid `__stdcall` *function decorations*.
+calling convention. ~~Ignore this and **do not use `__stdcall` for your
+entry point!**~~ Since entry points may take no arguments, there is no
+practical difference from the `__cdecl` calling convention, so it matters
+little. ~~Rather, the goal is to avoid `__stdcall` *function decorations*.
 In particular, the GNU linker `--entry` option does not understand them,
 nor can it find decorated entry points on its own. If you use `__stdcall`,
 then the 32-bit GNU linker will silently (!) choose the beginning of your
-`.text` section as the entry point.
+`.text` section as the entry point.~~ (This bug was fixed in Binutils
+2.42, released January 2024. `__stdcall` entry points now link correctly.)
 
 If you're using C++, then of course you will also need to use `extern "C"`
 so that it's not name-mangled. Otherwise the results are similarly bad.
