@@ -401,7 +401,7 @@ slightly less pure `MAP_ANONYMOUS` flag.
 [map]: /blog/2016/04/10/
 [mem]: https://akkadia.org/drepper/selinux-mem.html
 [port]: /blog/2017/03/30/
-[qpkg]: https://nullprogram.com/blog/2018/03/27/
+[qpkg]: /blog/2018/03/27/
 [wx]: https://en.wikipedia.org/wiki/W%5EX
 [strace]: /blog/2018/06/23/
 [win]: /blog/2016/06/13/

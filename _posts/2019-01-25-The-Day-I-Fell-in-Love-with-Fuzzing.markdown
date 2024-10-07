@@ -178,7 +178,7 @@ bugs. It's got a permanent slot on my software developer toolbelt.
 [afl]: http://lcamtuf.coredump.cx/afl/
 [bini]: https://github.com/skeeto/binitools
 [bison]: https://www.gnu.org/software/bison/
-[borland]: https://nullprogram.com/blog/2018/04/13/
+[borland]: /blog/2018/04/13/
 [fl]: https://en.wikipedia.org/wiki/Freelancer_(video_game)
 [flex]: https://github.com/westes/flex
 [fuzz]: https://labs.mwrinfosecurity.com/blog/what-the-fuzz/
@@ -186,12 +186,12 @@ bugs. It's got a permanent slot on my software developer toolbelt.
 [invalid]: https://github.com/skeeto/binitools/tree/master/tests/invalid
 [jpeg]: https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html
 [lex]: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/lex.html
-[make]: https://nullprogram.com/blog/2017/08/20/
-[msvc]: https://nullprogram.com/blog/2016/06/13/
+[make]: /blog/2017/08/20/
+[msvc]: /blog/2016/06/13/
 [orig]: https://github.com/skeeto/binitools/tree/original
 [pdjson]: https://github.com/skeeto/pdjson
 [reddit]: https://old.reddit.com/r/programming/comments/akrcyp/the_day_i_fell_in_love_with_fuzzing/
-[simple]: https://nullprogram.com/blog/2017/03/30/
+[simple]: /blog/2017/03/30/
 [stale]: https://github.com/skeeto/binitools/commit/b695aec7d0021299cbd83c8c6983055f16d11507
 [taoup]: http://www.catb.org/esr/writings/taoup/html/
 [valid]: https://github.com/skeeto/binitools/tree/master/tests/valid

@@ -198,7 +198,7 @@ happy answers to all these questions.
 [quilt]: https://wiki.debian.org/UsingQuilt
 [rel]: https://drewdevault.com/2020/02/06/Dependencies-and-maintainers.html
 [simd]: /blog/2015/07/10/
-[simple]: https://nullprogram.com/blog/2017/03/30/
+[simple]: /blog/2017/03/30/
 [static]: https://drewdevault.com/dynlib
 [stb]: https://github.com/nothings/stb
 [tags]: http://vimdoc.sourceforge.net/htmldoc/tagsrch.html#tagsrch.txt

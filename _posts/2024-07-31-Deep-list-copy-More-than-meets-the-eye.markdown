@@ -182,4 +182,4 @@ around with it yourself.
 [ht]: /blog/2023/09/30/
 [leet]: https://leetcode.com/problems/copy-list-with-random-pointer/
 [lt]: https://www.youtube.com/watch?v=f4ioc8-lDc0&t=4407s
-[map]: https://nullprogram.com/blog/2023/09/30/
+[map]: /blog/2023/09/30/

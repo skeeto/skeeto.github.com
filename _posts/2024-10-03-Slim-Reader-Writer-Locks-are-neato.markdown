@@ -167,14 +167,14 @@ while (remaining) {
 A satisfying, powerful synchronization interface with hardly any code!
 
 
-[32]: https://nullprogram.com/blog/2022/10/05/
+[32]: /blog/2022/10/05/
 [3]: https://en.cppreference.com/w/cpp/language/rule_of_three
-[arena]: https://nullprogram.com/blog/2023/09/27/
-[c++]: https://nullprogram.com/blog/2024/04/14/
+[arena]: /blog/2023/09/27/
+[c++]: /blog/2024/04/14/
 [cond]: https://learn.microsoft.com/en-us/windows/win32/sync/condition-variables
 [gist]: https://gist.github.com/skeeto/42adc0c90a156d4457422e034be697e8
 [dtor]: https://quuxplusone.github.io/blog/2023/05/05/deprecated-copy-with-dtor/
-[rename]: https://nullprogram.com/blog/2023/08/27/
+[rename]: /blog/2023/08/27/
 [sleep]: https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleepconditionvariablesrw
 [srw]: https://learn.microsoft.com/en-us/windows/win32/sync/slim-reader-writer--srw--locks
-[w32]: https://nullprogram.com/blog/2023/05/31/
+[w32]: /blog/2023/05/31/
