@@ -54,10 +54,13 @@ is usually, but not always, sorted. It may contain repeated variables, but
 they're always assigned the same value, which is also strictly enforced by
 Windows.
 
-The get/free interface has no "set" function, and a process cannot set its
-own environment block to a custom buffer. There *is* one interface where a
-process gets to provide a raw environment block: [CreateProcess][cp]. That
-is, a parent can construct one for its children.
+~~The get/free interface has no "set" function, and a process cannot set
+its own environment block to a custom buffer.~~ (Update: Stefan Kanthak
+points out [SetEnvironmentStringsW][sesw]. I missed it because it was only
+officially documented a few months before this article was written.) There
+*is* one interface where a process gets to provide a raw environment
+block: [CreateProcess][cp]. That is, a parent can construct one for its
+children.
 
 ```c
     wchar_t env[] = L"HOME=C:\\Users\\me\0PATH=C:\\bin;C:\\Windows\0";
@@ -250,6 +253,7 @@ came to the wrong conclusion.
 [laa]: https://learn.microsoft.com/en-us/cpp/build/reference/largeaddressaware-handle-large-addresses
 [peb]: https://www.geoffchappell.com/studies/windows/km/ntoskrnl/inc/api/pebteb/peb/index.htm
 [rtl]: https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlcompareunicodestring
+[sesw]: https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-setenvironmentstringsw
 [set]: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setenvironmentvariable
 [ss]: https://utcc.utoronto.ca/~cks/space/blog/programming/ProgrammingViaSuperstition
 [str]: https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-getenvironmentstringsw
