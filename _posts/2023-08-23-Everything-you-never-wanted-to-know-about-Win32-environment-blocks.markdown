@@ -121,8 +121,9 @@ even outside the special case being discussed. GetEnvironmentVariable
 works fine on an unsorted environment block. SetEnvironmentVariable
 maintains sorting, but given an unsorted block it goes somewhere in the
 middle, probably wherever a bisection happens to land. Perhaps look-ups in
-sorted blocks are faster, but environment blocks are so small — a maximum
-of 32K characters — that, in practice, it really does not matter.
+sorted blocks are faster, but environment blocks are so small — ~~a
+maximum of 32K characters~~ (Update: only true for ANSI) — that, in
+practice, it really does not matter.
 
 Suppose you're meticulous and want to sort your environment block before
 spawning a process. How do you go about it? There's the rub: The official
