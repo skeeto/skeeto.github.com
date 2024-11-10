@@ -125,7 +125,8 @@ stands for. Get used that. This is a technological frontier, and if the
 information exists at all, it's not in the obvious place. If you're
 considering asking your LLM about this once it's running: Sweet summer
 child, we'll soon talk about why that doesn't work. As far as I can tell,
-"GGUF" has no authoritative definition.)
+"GGUF" has no authoritative definition (**update**: [the U stands for
+"Unified"][unified], but the rest is still ambiguous).)
 
 Since llama.cpp is named after the Meta's flagship model, their model is a
 reasonable start, though it's not my personal favorite. The latest is
@@ -582,4 +583,5 @@ I've been about a new technology in years!
 [sdl2]: /blog/2023/01/08/
 [smol]: https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct
 [tr]: https://github.com/skeeto/scratch/blob/master/userscript/reddit-llm-translate.user.js
+[unified]: https://github.com/ggerganov/ggml/issues/220
 [use]: https://ai.meta.com/llama/use-policy/
