@@ -22,10 +22,10 @@ In case you've been living under a rock — as an under-the-rock inhabitant
 myself, welcome! — LLMs are neural networks that underwent a breakthrough
 in 2022 when trained for conversational "chat." Through it, users converse
 with a wickedly creative artificial intelligence indistinguishable from a
-human, which smashes the Turing test and can be . Interacting with one for
-the first time is unsettling, a feeling which will last for days. When you
-bought your most recent home computer, you probably did not expect to have
-a meaningful conversation with it.
+human, which smashes the Turing test and can be wickedly creative.
+Interacting with one for the first time is unsettling, a feeling which
+will last for days. When you bought your most recent home computer, you
+probably did not expect to have a meaningful conversation with it.
 
 I've found this experience reminiscent of the desktop computing revolution
 of the 1990s, where your newly purchased computer seemed obsolete by the
