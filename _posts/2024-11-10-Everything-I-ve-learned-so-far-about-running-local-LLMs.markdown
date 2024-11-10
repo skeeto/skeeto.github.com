@@ -4,7 +4,10 @@ layout: post
 date: 2024-11-10T05:05:20Z
 tags: [ai, rant, tutorial]
 uuid: 975c2748-2c8f-4bb8-a108-b2be68a10fc5
+excerpt_separator: <!--more-->
 ---
+
+*This article was discussed [on Hacker News][hn].*
 
 Over the past month I've been exploring the rapidly evolving world of
 Large Language Models (LLM). It's now accessible enough to run a LLM on a
@@ -17,6 +20,8 @@ wish I had when starting. Keep in mind that I'm a LLM layman, I have no
 novel insights to share, and it's likely I've misunderstood certain
 aspects. In a year this article will mostly be a historical footnote,
 which is simultaneously exciting and scary.
+
+<!--more-->
 
 In case you've been living under a rock — as an under-the-rock inhabitant
 myself, welcome! — LLMs are neural networks that underwent a breakthrough
@@ -563,6 +568,7 @@ I've been about a new technology in years!
 [fim]: https://arxiv.org/abs/2207.14255
 [gguf]: https://github.com/ggerganov/ggml/blob/8a3d7994/docs/gguf.md
 [hf]: https://huggingface.co/
+[hn]: https://news.ycombinator.com/item?id=42100560
 [illume]: https://github.com/skeeto/illume
 [llama.cpp]: https://github.com/ggerganov/llama.cpp
 [llama]: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
