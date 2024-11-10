@@ -65,10 +65,10 @@ w64devkit][doc]. What can I say? These folks have good taste! That being
 said, you should only do CPU inference if GPU inference is impractical. It
 works reasonably up to ~10B parameter models on a desktop or laptop, but
 it's slower. My primary use case is not built with w64devkit because I'm
-using CUDA for inference, which requires a MSVC toolchain. However, just
-for fun, I ported llama.cpp to Windows XP and ran [a 360M model][smol] on
-a 2008-era laptop. It was magical to load that old laptop with technology
-that, at the time it was new, would have been worth billions of dollars.
+using CUDA for inference, which requires a MSVC toolchain. Just for fun, I
+ported llama.cpp to Windows XP and ran [a 360M model][smol] on a 2008-era
+laptop. It was magical to load that old laptop with technology that, at
+the time it was new, would have been worth billions of dollars.
 
 The bottleneck for GPU inference is video RAM, or VRAM. These models are,
 well, *large*. The more RAM you have, the larger the model and the longer
@@ -210,10 +210,10 @@ the case. The rest place restrictions on both use and distribution.
 * Phi3.5-Mini (4B) [MIT]
 
   Microsoft's niche is training on synthetic data. The result is a model
-  is does well in tests, but doesn't work well in practice. However, it's
-  unusually good for document evaluation. I've loaded the context with up
-  to 40K-token documents — which helps that it's only a 4B model — and
-  successfully queried accurate summaries and data listings.
+  that does well in tests, but doesn't work so well in practice. For me,
+  its strength is document evaluation. I've loaded the context with up to
+  40K-token documents — it helps that it's a 4B model — and successfully
+  queried accurate summaries and data listings.
 
 * SmolLM2-360M [Apache 2.0]
 
@@ -343,9 +343,8 @@ the "profile" for talking to llama.cpp looks like this:
 
 Where `cache_prompt` is a llama.cpp-specific JSON parameter (`!:`). Prompt
 cache nearly always better enabled, yet for some reason it's disabled by
-default. However, other APIs refuse requests with this parameter, so I
-must be able to omit or otherwise disable it. The Hugging Face "profile"
-looks like this:
+default. Other APIs refuse requests with this parameter, so then I must
+omit or otherwise disable it. The Hugging Face "profile" looks like this:
 
     !api https://api-inference.huggingface.co/models/{model}/v1
     !:model Qwen/Qwen2.5-72B-Instruct
