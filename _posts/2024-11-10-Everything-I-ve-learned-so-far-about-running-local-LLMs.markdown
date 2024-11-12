@@ -192,7 +192,7 @@ the case. The rest place restrictions on both use and distribution.
   as open source is bad with naming, AI companies do not comprehend
   versioning.
 
-* Qwen2.5-14B and Qwen2.5-72B
+* Qwen2.5-14B [Apache 2.0]
 
   Qwen models, by Alibaba Cloud, impressively punch above their weight at
   all sizes. 14B inference starts at 11 t/s, with capabilities on par with
@@ -273,7 +273,7 @@ here are relative to other models, not about overall capability.
   out-competes ~30B models at code generation. If I'm playing around with
   FIM, this is my default choice.
 
-* Qwen2.5-Coder-7B
+* Qwen2.5-Coder-7B [Apache 2.0]
 
   Qwen Coder is a close second. It works about as well, but slightly
   slower since it's not MoE. It's a better choice than DeepSeek if you're
