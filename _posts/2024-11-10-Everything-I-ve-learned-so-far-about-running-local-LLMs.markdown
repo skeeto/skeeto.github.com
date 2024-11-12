@@ -262,7 +262,7 @@ In other words, you get better FIM results from base models, though you
 lose the ability to converse with them.
 
 There will be a section on evaluation later, but I want to note now that
-*LLMs still produce poor code*, even at the state-of-the-art. The rankings
+*LLMs produce mediocre code*, even at the state-of-the-art. The rankings
 here are relative to other models, not about overall capability.
 
 * DeepSeek-Coder-V2-Lite (16B)
@@ -483,8 +483,15 @@ Third, **LLMs are poor programmers**. At best they write code at maybe an
 undergraduate student level who's read a lot of documentation. That sounds
 better than it is. The typical fresh graduate enters the workforce knowing
 practically nothing about software engineering. Day one on the job is the
-first day of their real education. In that sense, LLMs today haven't even
-begun their real education.
+first day of their [real education][aspire]. In that sense, LLMs today
+haven't even begun their education.
+
+To be fair, that LLMs work as well as they do is amazing! Thrown into the
+middle of a program in [my unconvential style][style], LLMs figure it out
+and make use of the custom interfaces. (Caveat: My code and writing is in
+the training data of most of these LLMs.) So the more context, the better,
+within the effective context length. The challenge is getting something
+useful out of an LLM in less time than writing it myself.
 
 *Writing new code is the easy part*. The hard part is maintaining code,
 and writing new code with that maintenance in mind. Even when an LLM
@@ -561,6 +568,7 @@ I've been about a new technology in years!
 
 [abliterated]: https://huggingface.co/blog/mlabonne/abliteration
 [api]: https://github.com/ggerganov/llama.cpp/blob/ec450d3b/examples/server/README.md#api-endpoints
+[aspire]: /blog/2016/09/02/
 [bfloat16]: https://en.wikipedia.org/wiki/Bfloat16_floating-point_format
 [change]: https://arxiv.org/pdf/2307.09009
 [doc]: https://github.com/ggerganov/llama.cpp/blob/ec450d3b/docs/build.md
@@ -582,6 +590,7 @@ I've been about a new technology in years!
 [ruler]: https://github.com/NVIDIA/RULER
 [sdl2]: /blog/2023/01/08/
 [smol]: https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct
+[style]: /blog/2023/10/08/
 [tr]: https://github.com/skeeto/scratch/blob/master/userscript/reddit-llm-translate.user.js
 [unified]: https://github.com/ggerganov/ggml/issues/220
 [use]: https://ai.meta.com/llama/use-policy/
