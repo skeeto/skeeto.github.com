@@ -275,14 +275,15 @@ here are relative to other models, not about overall capability.
 
 * Qwen2.5-Coder-7B [Apache 2.0]
 
-  Qwen Coder is a close second. It works about as well, but slightly
+  Qwen Coder is a close second. Output is nearly as good, but slightly
   slower since it's not MoE. It's a better choice than DeepSeek if you're
-  memory-constrained, or, similarly, if your choices are GPU inference
-  Qwen versus CPU inference DeepSeek. While writing this article, Alibaba
-  Cloud released a new Qwen2.5-Coder-7B that's reported to be better. They
-  failed to increment the version number, which is horribly confusing. The
-  community has taken to calling it Qwen2.5.1. (Remember what I said about
-  AI companies and versions?)
+  memory-constrained. While writing this article, Alibaba Cloud released a
+  new Qwen2.5-Coder-7B but failed to increment the version number, which
+  is horribly confusing. The community has taken to calling it Qwen2.5.1.
+  Remember what I said about AI companies and versions? (**Update**: One
+  day publication, 14B and 32B coder models were released. I tried both,
+  and neither are quite as good as DeepSeek-Coder-V2-Lite, so my rankings
+  are unchanged.)
 
 * Granite-8B-Code [Apache 2.0]
 
