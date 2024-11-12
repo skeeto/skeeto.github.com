@@ -258,7 +258,7 @@ an existing program. I'll discuss what that entails in a moment. As far as
 I can tell, they're no better at code review nor other instruct-oriented
 tasks. It's the opposite: FIM training is done in the base model, with
 instruct training applied later on top, so instruct works *against* FIM!
-In other words, you get better FIM results from base models, though you
+In other words, **base model FIM outputs are markedly better**, though you
 lose the ability to converse with them.
 
 There will be a section on evaluation later, but I want to note now that
