@@ -315,6 +315,11 @@ For `cl` and `clang-cl`, my personal baseline looks like this:
 I don't normally need `/D_CRT_SECURE_NO_WARNINGS` since I don't use a CRT
 anyway.
 
+**Update**: Peter0x44 points out `-D_GLIBCXX_DEBUG` if you're working in
+C++ with libstdc++, including on Windows with Mingw-w64. I agree, this is
+an excellent option! ASan does not "see" C++ containers, and it fills in
+some of those gaps.
+
 
 [buf]: /blog/2023/02/13/
 [clone]: /blog/2023/03/23/
