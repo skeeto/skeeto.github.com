@@ -229,6 +229,12 @@ rather than always link against this loose object file. This is more for
 convenience and for succinctly capturing the concept. You may even want to
 [enable ANSI escape processing][ansi] in your version.
 
+**Update December 2024**: Pavel Galkin [demonstrates how `libwinsane.so`
+changes the console state][global], which affects all processes associated
+with the terminal. This is mostly unavoidable, and it's one reason I've
+since concluded that UTF-8 manifests are a poor solution. Better to [solve
+the problem using a platform layer][layer].
+
 
 [Cygwin]: https://www.cygwin.com/
 [MSYS2]: https://www.msys2.org/
@@ -244,6 +250,8 @@ convenience and for succinctly capturing the concept. You may even want to
 [four]: /blog/2016/06/13/
 [git1]: https://github.com/skeeto/w64devkit/issues/10
 [git2]: https://github.com/skeeto/binitools/commit/2efd690c3983856c9633b0be66d57483491d1e10
+[global]: https://lists.sr.ht/~skeeto/public-inbox/%3Cdf749edc-0413-4735-9cf2-c77db202cc6e@app.fastmail.com%3E
+[layer]: /blog/2023/01/18/
 [libwinsane]: https://github.com/skeeto/scratch/tree/master/libwinsane
 [ppm]: /blog/2020/06/29/
 [pw]: /blog/2020/05/04/
