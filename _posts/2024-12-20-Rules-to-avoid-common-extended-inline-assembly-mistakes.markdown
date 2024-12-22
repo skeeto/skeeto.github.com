@@ -32,10 +32,10 @@ replace nearly all the old inline assembly use cases. They allow access to
 low level features from the high level language. No need to bridge the gap
 between low and high yourself when there's an intrinsic.
 
-I'm not aware of any compiler with a built-in for system calls, and other
-times they simply [lack a useful intrinsic][int3]. These remaining cases
-are mostly about interacting with external systems, not optimization nor
-performance.
+Compilers do not have built-ins for system calls, and occasionally [lack a
+useful intrinsic][int3]. Other times you might be building [foundational
+infrastructure][gc]. These remaining cases are mostly about interacting
+with external interfaces, not optimization nor performance.
 
 ### (2) It should nearly always be volatile
 
@@ -157,6 +157,7 @@ they've been been trained to produce these common defects.
 
 
 [docs]: https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
+[gc]: https://github.com/skeeto/scratch/blob/fbd3260e/misc/buddy.c#L594-#L616
 [ibiblio]: https://web.archive.org/web/20241216071150/https://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html
 [int3]: /blog/2024/01/28/
 [ll]: https://sourceware.org/binutils/docs/as/Symbol-Names.html
