@@ -7,7 +7,8 @@ uuid: e865266a-2896-30c5-3f7d-cfad767b1ae2
 ---
 
 *Update 2022*: [TheIronBorn has found even better permutations][tib] using
-a smarter technique.
+a smarter technique. That thread completely eclipses my efforts in this
+article.
 
 I recently got an itch to design my own non-cryptographic integer hash
 function. Firstly, I wanted to [better understand][blowpipe] how hash
@@ -425,8 +426,10 @@ triple32(uint32_t x)
 }
 ```
 
-It's statistically indistinguishable from a random permutation of all
-32-bit integers.
+~~It's statistically indistinguishable from a random permutation of all
+32-bit integers.~~(*Update 2025*: Peter Schmidt-Nielsen has provided a
+second-order characteristic test that quickly identifies statistically
+significant biases in `triple32`.)
 
 ### Update, February 2020
 
