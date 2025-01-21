@@ -377,17 +377,22 @@ prefer Björn's DFA decoder.
 
 *Update 2024*: NRK has followed up with [parallel extract decoder][nrk].
 
+*Update 2025*: Charles Eckman followed up [sharing a branchless
+encoder][enc], which inspired me to [give it a shot][gist].
+
 
 [bh]: http://bjoern.hoehrmann.de/utf-8/decoder/dfa/
-[prng]: /blog/2017/09/21/
-[uarch]: http://www.agner.org/optimize/microarchitecture.pdf
-[reorder]: http://preshing.com/20120515/memory-reordering-caught-in-the-act/
-[lf]: /blog/2014/09/02/
-[every]: http://utf8everywhere.org/
-[wtf8]: https://simonsapin.github.io/wtf-8/
-[utf8]: https://en.wikipedia.org/wiki/UTF-8
-[issue]: https://github.com/skeeto/branchless-utf8/issues/1
-[simd]: https://github.com/bdonlan/branchless-utf8/commit/3802d3b0e10ea16810dd40f8116243971ff7603d
-[rfc]: https://tools.ietf.org/html/rfc3629
 [carruth]: https://www.youtube.com/watch?v=2EWejmkKlxs
+[enc]: https://cceckman.com/writing/branchless-utf8-encoding/
+[every]: http://utf8everywhere.org/
+[gist]: https://github.com/skeeto/scratch/blob/master/misc/utf8_branchless.c
+[issue]: https://github.com/skeeto/branchless-utf8/issues/1
+[lf]: /blog/2014/09/02/
 [nrk]: https://nrk.neocities.org/articles/utf8-pext.html
+[prng]: /blog/2017/09/21/
+[reorder]: http://preshing.com/20120515/memory-reordering-caught-in-the-act/
+[rfc]: https://tools.ietf.org/html/rfc3629
+[simd]: https://github.com/bdonlan/branchless-utf8/commit/3802d3b0e10ea16810dd40f8116243971ff7603d
+[uarch]: http://www.agner.org/optimize/microarchitecture.pdf
+[utf8]: https://en.wikipedia.org/wiki/UTF-8
+[wtf8]: https://simonsapin.github.io/wtf-8/
