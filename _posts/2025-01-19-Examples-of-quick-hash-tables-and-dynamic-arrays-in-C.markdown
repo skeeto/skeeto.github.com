@@ -229,7 +229,7 @@ that the caller can assign it. Usage differs only slightly:
     *lookup(env, S("hello"), &scratch) = S("world");
 
     // lookup
-    Str *val = flatlookup(env, key, 0);
+    Str *val = lookup(env, key, 0);
     if (val) {
         printf("%.*s = %.*s\n", (int)key.len, key.data,
                                 (int)val->len, val->data);
