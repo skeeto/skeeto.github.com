@@ -35,7 +35,7 @@ typedef struct {
 void *alloc(Arena *a, ptrdiff_t count, int size, int align)
 {
     int pad = -(uintptr_t)a->beg & (align - 1);
-    assert(count < (a->end - a->beg)/size);  // TODO: OOM policy
+    assert(count < (a->end - a->beg - pad)/size);  // TODO: OOM policy
     void *r = a->beg + pad;
     a->beg += pad + count*size;
     return memset(r, 0, count*size);
