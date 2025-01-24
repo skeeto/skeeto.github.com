@@ -282,7 +282,7 @@ char **flat_to_envp(FlatEnv *env, Arena *a)
 {
     int    cap  = 1<<ENVEXP;
     char **envp = new(a, cap, char *);
-    int len = 0;
+    int    len  = 0;
     for (int i = 0; i < cap; i++) {
         if (env->vals[i].data) {
             Str pair = env->keys[i];
