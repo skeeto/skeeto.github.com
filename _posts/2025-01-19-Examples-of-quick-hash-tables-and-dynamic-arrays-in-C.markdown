@@ -358,7 +358,7 @@ char **flat_to_envp(FlatEnv *env, Arena *a)
 Continuing the theme, a zero-initialized slice is a ready-to-use empty
 slice, and most begin life this way. The immediate dereference on `push`
 is just like those calls to `lookup`. If expansion is needed, the `push`
-macro's job is to pull elements off the slice, pass them into a helper
+macro's job is to pull fields off the slice, pass them into a helper
 function which agnostically, strict-aliasing-legally, manipulates the
 slice header:
 
