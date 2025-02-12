@@ -32,9 +32,9 @@ typedef struct {
     char *end;
 } Arena;
 
-void *alloc(Arena *a, ptrdiff_t count, int size, int align)
+void *alloc(Arena *a, ptrdiff_t count, ptrdiff_t size, ptrdiff_t align)
 {
-    int pad = -(uintptr_t)a->beg & (align - 1);
+    ptrdiff_t pad = -(uintptr_t)a->beg & (align - 1);
     assert(count < (a->end - a->beg - pad)/size);  // TODO: OOM policy
     void *r = a->beg + pad;
     a->beg += pad + count*size;
@@ -588,7 +588,7 @@ The seed is irrelevant until the second insert, at which point we've
 established a seed. This delay establishing the seed means hash tries are
 even more randomized.
 
-With the proper tools and representations, working in C isn't difficult,
+With the proper tools and representations, working in C isn't difficult
 even if you need containers and string manipulation. Aside from `memcmp`
 and `memcpy` — each easily replaceable — we did all this without runtime
 assistance, not even its allocator. What a pleasant way to work!
