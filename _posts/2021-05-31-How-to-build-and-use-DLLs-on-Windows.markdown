@@ -206,12 +206,13 @@ Compiled with MSVC `cl` (via [`vcvars.bat`][vc]):
     $ ./loadlib
     4
 
-However, the MSVC toolchain is rather primitive and, unlike the GNU
-toolchain, cannot link directly with DLLs. It requires an *import
-library*. Conventionally this matches the DLL name but has a `.lib`
-extension — `square.lib` in this case. The most convenient way to get an
-import library is to ask GCC to generate one at link-time via
-`--out-implib`:
+However, the MSVC linker, unlike Binutils `ld`, cannot link directly with
+DLLs. It requires an *import library*. Conventionally this matches the DLL
+name but has a `.lib` extension — `square.lib` in this case. The Mingw-w64
+ecosystem conventionally uses `.dll.a`, as in `square.dll.a`, in order to
+distinguish it from a static library, but it's the same format. The most
+convenient way to get an import library is to ask GCC to generate one at
+link-time via `--out-implib`:
 
     $ cc -shared -Wl,--out-implib,square.lib -o square.dll square.c
 
