@@ -17,7 +17,7 @@ the past six years][first], I've accumulated tips for picking that fruit.
 The checklist format has worked well in the past ([1][asm], [2][sdl2]), so
 I'll use it again. This article discusses [AFL++][afl] on source-available
 C and C++ targets, running on glibc-based Linux distributions, currently
-the best fuzzing platform for C and C++.
+the *indisputable* best fuzzing platform for C and C++.
 
 My tips complement the official, upstream documentation, so consult them,
 too:
