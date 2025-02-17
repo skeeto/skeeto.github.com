@@ -201,12 +201,12 @@ for bug compatibility, so these are not present in rexxd.
 
 ### Platform layer
 
-The xxd man page suggests using strace to examine the execution of `-r`
-reverse. That is, to monitor the seeks and writes of a binary patch in
-order to debug it. That's so insightful that I decided to build that as a
-new `-x` option (think `sh -x`). That is, *rexxd has a built-in strace on
-all platforms!* The trace is expressed in terms of unix system calls, even
-on Windows:
+The [xxd man page][man] suggests using strace to examine the execution of
+`-r` reverse. That is, to monitor the seeks and writes of a binary patch
+in order to debug it. That's so insightful that I decided to build that as
+a new `-x` option (think `sh -x`). That is, *rexxd has a built-in strace
+on all platforms!* The trace is expressed in terms of unix system calls,
+even on Windows:
 
     $ printf '00:41 \n02:42 \n04:43' | rexxd -x -r - data.bin
     open("data.bin", O_CREAT|O_WRONLY, 0666) = 1
@@ -451,6 +451,7 @@ better than I expected and I'm very pleased with the results.
 [getline]: https://man7.org/linux/man-pages/man3/getline.3.html
 [long]: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation
 [make]: /blog/2016/04/30/
+[man]: https://manpages.debian.org/bookworm/xxd/xxd.1.en.html
 [peports]: /blog/2024/06/30/
 [ptrace]: /blog/2018/06/23/
 [raw]: /blog/2023/03/23/
