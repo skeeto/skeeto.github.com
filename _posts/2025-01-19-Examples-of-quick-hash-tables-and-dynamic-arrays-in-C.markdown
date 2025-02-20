@@ -331,7 +331,7 @@ typedef struct {
 
 The bad news is that we don't have templates, and so we'll need to define
 one such structure for each type of which we want a dynamic array. This
-one is set up to create an `envp` array. The good news that manipulation
+one is set up to create an `envp` array. The good news is that manipulation
 occurs through generic code, so everything else is reusable.
 
 I want a `push` macro that creates an empty slot in which to insert a new
