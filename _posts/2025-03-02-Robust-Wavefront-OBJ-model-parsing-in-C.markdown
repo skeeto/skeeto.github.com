@@ -175,7 +175,8 @@ zero-initialized `Str` objects) that would otherwise work out naturally.
 The space character and all control characters are treated as whitespace
 for simplicity. When I started writing this parser, I didn't define all
 these functions up front. I defined them as needed. (A [good standard
-library][libc] would have provided similar definitions out-of-the-box.)
+library][libc] would have provided similar definitions out-of-the-box.) If
+you're worried about misuse, add the appropriate assertions.
 
 A powerful and useful string function I've discovered, and which I use in
 every string-heavy program, is `cut`, a concept I shamelessly stole [from
@@ -255,7 +256,7 @@ Str loadfile(Arena *a, int fd)
     for (;;) {
         ptrdiff_t r = read(fd, r.data+r.len, cap-r.len);
         if (r < 1) {
-            return r;
+            return r;  // ignoring read errors
         }
         r.len += r;
     }
