@@ -357,7 +357,8 @@ float parsefloat(Str s)
 ```
 
 Probably not as precise as `strtof`, but good enough for loading a model.
-If it hits an exponent, it combines `parseint` and `expt10` to augment the
+It's also ~30% faster for this purpose than my system's `strtof`. If it
+hits an exponent, it combines `parseint` and `expt10` to augment the
 result so far. At least for all the models I tried, the exponent only
 appeared for tiny values. They round to zero with no visible effects, so
 you can cut the implementation by more than half in one fell swoop if you
