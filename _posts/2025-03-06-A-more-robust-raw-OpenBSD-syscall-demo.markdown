@@ -187,7 +187,7 @@ struct whats {
 Those offsets — offsets from the beginning of the ELF image — were entered
 manually, and it kind of ruins the whole demo. We don't have a good way to
 get at those offsets from C, or any high level language. However, we can
-solve that by tweaking the inline assembly with some `.equ` labels:
+solve that by tweaking the inline assembly with some labels:
 
 ```c
 __attribute((noinline))
@@ -195,8 +195,7 @@ long w(void *what, long len)
 {
     // ...
     asm volatile (
-        ".equ _w, .\n"
-        "syscall\n"
+        "_w: syscall"
         // ...
     );
     // ...
@@ -206,8 +205,7 @@ __attribute((noinline,noreturn))
 void x(int status)
 {
     asm volatile (
-        ".equ _x, .\n"
-        "syscall\n"
+        "_x: syscall"
         // ...
     );
     // ...
