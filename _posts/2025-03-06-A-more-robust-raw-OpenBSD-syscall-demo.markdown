@@ -21,8 +21,8 @@ x86-64 assembly, plus that's the hardware I have readily on hand. So the
 assembly language will be different, but all the concepts apply to both
 these architectures. Almost none of these OpenBSD system interfaces are
 formally documented (or stable for that matter), and I had to dig around
-the OpenBSD source tree to figure some of it out. So don't be afraid to
-get your hands dirty.
+the OpenBSD source tree to figure it out (along with a [helpful jart
+nudge][nudge]). So don't be afraid to get your hands dirty.
 
 There are lots of subtle problems in the original demo, so let's go
 through the program piece by piece, starting with the entry point:
@@ -270,6 +270,7 @@ objects isn't trivial.
 [linux]: /blog/2016/09/23/
 [llm]: /blog/2024/11/10/
 [mem]: https://github.com/skeeto/w64devkit/blob/master/src/libmemory.c
+[nudge]: https://news.ycombinator.com/item?id=26290723
 [orig]: https://flak.tedunangst.com/post/dude-where-are-your-syscalls
 [pkg]: /blog/2023/01/18/
 [src]: https://github.com/skeeto/u-config/blob/openbsd/openbsd_main.c
