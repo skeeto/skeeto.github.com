@@ -243,7 +243,7 @@ portable pkg-config clone, u-config][pkg], to use raw OpenBSD syscalls:
 **[`openbsd_main.c`][src]**. Everything still works at high optimization
 levels.
 
-    $ cc -static -nostdlib -no-pie -o pkg-config openbsd_main.c libmemory.a
+    $ cc -static -nostartfiles -no-pie -o pkg-config openbsd_main.c libmemory.a
     $ ./pkg-config --cflags --libs libcurl
     -I/usr/local/include -L/usr/local/lib -lcurl
 
@@ -256,9 +256,13 @@ Despite making no libc calls, it's not possible stop compilers from
 fabricating ([hallucinating?][llm]) string function calls, so the build
 above depends on external definitions. In the command above, `libmemory.a`
 comes from [`libmemory.c`][mem] found [in w64devkit][w64]. Alternatively,
-[and on topic][libc], you could link the OpenBSD libc (`-lc`). Though it
-pulls in a lot of bloat (~8x size increase), and teasing out the necessary
-objects isn't trivial.
+[and on topic][libc], you could link the OpenBSD libc string functions by
+omitting `libmemory.a` from the build.
+
+    $ cc -static -nostartfiles -no-pie -o pkg-config openbsd_main.c
+
+Though it pulls in a lot of bloat (~8x size increase), and teasing out the
+necessary objects isn't trivial.
 
 
 [align]: https://gcc.gnu.org/onlinedocs/gcc/x86-Function-Attributes.html#index-force_005falign_005farg_005fpointer-function-attribute_002c-x86
