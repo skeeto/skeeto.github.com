@@ -37,10 +37,12 @@ start()
 ```
 
 This function is registered as the entry point in the ELF image, so it has
-no caller. That means no return address on the stack, so the stack is not
-aligned for a function. In toy programs that goes unnoticed, but compilers
-generate code assuming the stack is aligned. In a real application this is
-likely to crash deep on the first SIMD register spill.
+no caller. ~~That means no return address on the stack, so the stack is
+not aligned for a function.~~(**Correction**: The stack alignment issue is
+true for x86, but not ARM, so the original demo is fine.) In toy programs
+that goes unnoticed, but compilers generate code assuming the stack is
+aligned. In a real application this is likely to crash deep on the first
+SIMD register spill.
 
 We could fix this with a [`force_align_arg_pointer`][align] attribute, at
 least for architectures that support it, but I prefer to write the entry
