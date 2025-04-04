@@ -97,15 +97,16 @@ with WASM, particularly `wasm2wat` to inspect WASM modules, sort of like
 `objdump` or `readelf`. It converts WASM to the WebAssembly Text Format
 (WAT).
 
-Learning WASM I had quite some difficultly finding information. Outside
-of the WASM specification, which, despite its length, is merely a narrow
+Learning WASM I had quite some difficultly finding information. Outside of
+the WASM specification, which, despite its length, is merely a narrow
 slice of the ecosystem, important technical details are scattered all over
 the place. Some is only available as source code, some buried comments in
 GitHub issues, and some lost behind dead links as repositories have moved.
-Large parts of LLVM are undocumented beyond an mention of existence. The
-WASI project has no official documentation in a web-friendly format, just
-source files in a Git repository. An old [`wasi.h`][wasi.h] was the most
-readable, complete source of truth I could find.
+Large parts of LLVM are undocumented beyond an mention of existence. WASI
+has no documentation in a web-friendly format — so I have nothing to link
+from here when I mention its system calls — just some IDL sources in a Git
+repository. An old [`wasi.h`][wasi.h] was the most readable, complete
+source of truth I could find.
 
 Fortunately WASM is old enough that [LLMs][llm] are well-versed in it, and
 simply asking questions, or for usage examples, was more effective than
@@ -336,11 +337,11 @@ DrawList *game_render(i32 width, i32 height, i32 mousex, i32 mousey);
 void      game_update(i32 input, i32 mousex, i32 mousey, i64 now);
 ```
 
-The game uses IMGUI-style rendering. The caller passes in the inputs, and
-the game returns a kind of *display list* telling it what to draw. In the
-SDL version these turn into SDL renderer calls. In the web version, these
-turn into canvas draws, and "mouse" inputs may be touch events. It plays
-and feels the same on both platforms. Simple!
+The game uses [IMGUI-style][imgui] rendering. The caller passes in the
+inputs, and the game returns a kind of *display list* telling it what to
+draw. In the SDL version these turn into SDL renderer calls. In the web
+version, these turn into canvas draws, and "mouse" inputs may be touch
+events. It plays and feels the same on both platforms. Simple!
 
 I didn't realize it at the time, but building the SDL version first was
 critical to my productivity. **Debugging WASM programs is really dang
@@ -352,6 +353,11 @@ it, then *port* your application to WASM after you've [got the issues
 worked out][fuzz]. The less WASM-specific code you write, the better, even
 if it means writing more code overall. Treat it as you would some weird
 embedded target.
+
+The game comes with 10,000 seeds. I generated ~200 million puzzles, sorted
+them by difficulty, and skimmed the top 10k most challenging. In the game
+they're still sorted by increading difficulty, so it gets harder as you
+make progress.
 
 ### WASM System Interface
 
@@ -394,15 +400,15 @@ Technically those `iz` variables are supposed to be `size_t`, passed
 through WASM as `i32`, but this is a foreign function, I know the ABI, and
 so [I can do as I please][win32]. I absolutely love that WASI barely uses
 null-terminated strings, not even for paths, which is a breath of fresh
-air, but I they still [marred the API with unsigned sizes][ssize]. Which I
+air, but they still [marred the API with unsigned sizes][ssize]. Which I
 choose to ignore.
 
-This function is shaped like POSIX `writev()`, but does not move the file
-cursor. That requires `fd_seek`, or, probably better, tracking it yourself
-and using `fd_pwrite`, but that won't matter for this program. I've also
-set it up for import, including a module name. The oldest, most stable
-version of WASI is called `wasi_unstable`. (I suppose it shouldn't be
-surprising that finding information in this ecosystem is difficult.)
+This function is shaped like [POSIX `writev()`][writev], but does not move
+the file cursor. That requires `fd_seek`, or, probably better, tracking it
+yourself and using `fd_pwrite`, but that won't matter for this program.
+I've also set it up for import, including a module name. The oldest, most
+stable version of WASI is called `wasi_unstable`. (I suppose it shouldn't
+be surprising that finding information in this ecosystem is difficult.)
 
 Every returning WASI function returns an `errno` value, with zero as
 success rather than some kind of [in-band signaling][band]. Hence the
@@ -456,13 +462,13 @@ case:
 WASI("path_open") i32 path_open(i32,i32,u8*,iz,i32,i64,i64,i32,i32*);
 ```
 
-That's 9 parameters — and I had thought Win32 `CreateFileW` was over the
-top. It's actually even more complex than it looks. It works more like
-POSIX `openat()`, except there's no current working directory and so no
-`AT_FDCWD`. Every file and directory is opened *relative to* another
-directory, and absolute paths are invalid. If there's no `AT_FDCWD`, how
-does one open the *first* directory? That's called a *preopen* and it's
-core to the file system security mechanism of WASI.
+That's 9 parameters — and I had thought [Win32 `CreateFileW`][cfw] was
+over the top. It's even more complex than it looks. It works more like
+[POSIX `openat()`][openat], except there's no current working directory
+and so no `AT_FDCWD`. Every file and directory is opened *relative to*
+another directory, and absolute paths are invalid. If there's no
+`AT_FDCWD`, how does one open the *first* directory? That's called a
+*preopen* and it's core to the file system security mechanism of WASI.
 
 The WASM runtime preopens zero or more directories before starting the
 program and assigns them the lowest numbered file descriptors starting at
@@ -518,13 +524,16 @@ trying WASM, and the results are pretty neat.
 [bsd]: /blog/2025/03/06/
 [buf]: /blog/2023/02/13/
 [bulk]: https://github.com/WebAssembly/bulk-memory-operations
+[cfw]: https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew
 [crt]: /blog/2023/02/15/
 [demo]: https://skeeto.github.io/u-config/
 [ex]: /blog/2025/01/19/
 [fuzz]: /blog/2025/02/05/
 [game]: /water-sort/
+[imgui]: https://www.youtube.com/watch?v=DYWTw19_8r4
 [llm]: /blog/2024/11/10/
 [main]: https://github.com/skeeto/u-config/blob/0c86829e/main_wasm.c
+[openat]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/openat.html
 [pkg-config.wasm]: https://skeeto.github.io/u-config/pkg-config.wasm
 [review]: /blog/2023/02/11/
 [rules]: https://www.coolmathgames.com/blog/how-to-play-lipuzz-water-sort
@@ -538,3 +547,4 @@ trying WASM, and the results are pretty neat.
 [wasi.h]: https://github.com/WebAssembly/wasi-libc/blob/e9524a09/libc-bottom-half/headers/public/wasi/api.h
 [wazero]: https://wazero.io/
 [win32]: /blog/2023/05/31/
+[writev]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/writev.html
