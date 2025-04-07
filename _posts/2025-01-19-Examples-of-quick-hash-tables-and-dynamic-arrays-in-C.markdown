@@ -407,6 +407,28 @@ the beginning of the arena if necessary, and extend the allocation by
 allocating the usual way, being careful not to increment the capacity
 until after it succeeds.
 
+**Update**: [NRK points out][nrk] we can use `__typeof__` (extension) or
+`typeof` (C23), to work around this syntactical limitation of `_Alignof`.
+Convert the `align` local variable into a parameter:
+
+```c
+void *push_(..., ptrdiff_t align);
+```
+
+Then in the macro pass it via `_Alignof(__typeof__(…))`:
+
+```c
+#define push(a, s) \
+  ((s)->len == (s)->cap \
+    ? (s)->data = push_((a), (s)->data, &(s)->cap, \
+          sizeof(*(s)->data), _Alignof(__typeof__(*(s)->data))), \
+      (s)->data + (s)->len++ \
+    : (s)->data + (s)->len++)
+```
+
+Spelled as an extension, it already works with all major C compilers from
+the past decade, and without requiring special compiler flags.
+
 We can now use `push` on any structure with `data`, `len`, and `cap`
 fields of the appropriate types.
 
@@ -608,6 +630,7 @@ Source from this article in runnable form, which I used to test my samples:
 [exec]: https://man7.org/linux/man-pages/man2/execve.2.html
 [fix]: https://developers.redhat.com/articles/2024/12/11/making-memcpynull-null-0-well-defined
 [msi]: /blog/2022/08/08/
+[nrk]: https://old.reddit.com/r/C_Programming/comments/1i74hii/_/m8l40fo/
 [null]: /blog/2023/02/11/#strings
 [r]: https://old.reddit.com/r/C_Programming/comments/1hrvhfl/_/m51saq2/
 [size]: /blog/2024/05/24/
