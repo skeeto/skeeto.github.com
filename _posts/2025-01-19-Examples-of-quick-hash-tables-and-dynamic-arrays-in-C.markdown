@@ -390,11 +390,15 @@ void *push_(Arena *a, void *data, ptrdiff_t *pcap, ptrdiff_t size)
     }
 
     ptrdiff_t extend = cap ? cap : SLICE_INITIAL_CAP;
-    alloc(a, extend, size, 1);
+    alloc(a, extend, size, 1);  // already aligned
     *pcap = cap + extend;
     return data;
 }
 ```
+
+(**Update**: Aleh pointed out an inefficiency in the original code:
+[applying alignment in the second `alloc` may introduce unnecessary
+fragmentation][comment]. This has been corrected above.)
 
 For unfathomable reasons, standard C does not permit `_Alignof` on
 expressions, so slice data is simply pointer-aligned. (The more shrewd
@@ -598,6 +602,7 @@ Source from this article in runnable form, which I used to test my samples:
 
 
 [arena]: /blog/2023/09/27/
+[comment]: https://lists.sr.ht/~skeeto/public-inbox/%3CCAB2_dQWNOKCSCa8L8khH2W0eunsKK-_CkJZaDUpRAA4AFMG8Jg@mail.gmail.com%3E
 [concat]: /blog/2024/05/25/
 [cstr]: https://www.symas.com/post/the-sad-state-of-c-strings
 [exec]: https://man7.org/linux/man-pages/man2/execve.2.html
