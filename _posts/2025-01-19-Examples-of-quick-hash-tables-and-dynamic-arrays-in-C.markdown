@@ -390,7 +390,7 @@ void *push_(Arena *a, void *data, ptrdiff_t *pcap, ptrdiff_t size)
     }
 
     ptrdiff_t extend = cap ? cap : SLICE_INITIAL_CAP;
-    alloc(a, extend, size, align);
+    alloc(a, extend, size, 1);
     *pcap = cap + extend;
     return data;
 }
