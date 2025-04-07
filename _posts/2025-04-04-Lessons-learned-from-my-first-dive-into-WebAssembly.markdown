@@ -295,7 +295,8 @@ void clear(void *buf, long len)
 }
 ```
 
-In WAT we see this as `memory.fill`:
+([Below LLVM 20][llvm] you'll need `-mbulk-memory`.) In WAT we see this as
+`memory.fill`:
 
 ```racket
 (module
@@ -532,6 +533,7 @@ trying WASM, and the results are pretty neat.
 [game]: /water-sort/
 [imgui]: https://www.youtube.com/watch?v=DYWTw19_8r4
 [llm]: /blog/2024/11/10/
+[llvm]: https://releases.llvm.org/20.1.0/docs/ReleaseNotes.html#changes-to-the-webassembly-backend
 [main]: https://github.com/skeeto/u-config/blob/0c86829e/main_wasm.c
 [openat]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/openat.html
 [pkg-config.wasm]: https://skeeto.github.io/u-config/pkg-config.wasm
