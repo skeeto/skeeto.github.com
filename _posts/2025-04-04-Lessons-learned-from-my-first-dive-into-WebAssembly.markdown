@@ -318,14 +318,82 @@ That's great! I wish this worked so well outside of WASM. It's one reason
 onto the `unreachable` instruction, so we can reliably generate those as
 well.
 
-Finally, what about structures? They're passed by address. Parameter
-structures go on the stack and then its address passed. To return a
-structure, a function accepts an implicit *out* parameter in which to
-write the return. This isn't unusual, *except* that it's challenging to
-manage across module boundaries, i.e. in imports and exports, because
-caller and callee are in different address spaces. It's especially hard to
-return a structure from an export, as the caller must somehow allocate
-space in the callee's address space for the result.
+What about structures? They're passed by address. Parameter structures go
+on the stack, then its address passed. To return a structure, a function
+accepts an implicit *out* parameter in which to write the return. This
+isn't unusual, except that it's challenging to manage across module
+boundaries, i.e. in imports and exports, because caller and callee are in
+different address spaces. It's especially tricky to return a structure
+from an export, as the caller must somehow allocate space in the callee's
+address space for the result. The [multi-value extension][multi-value]
+solves this, but using it in C involves an ABI change, which is still
+experimental.
+
+### Allocating memory
+
+WASM programs can grow linear memory using an [sbrk][]-like [`memory.grow`
+instruction][grow]. It operates in quantities of pages (64kB), and returns
+the old memory size. Because memory starts at zero, the old memory size is
+also the base address of the new allocation. Clang provides access to this
+instruction via an undocumented built-in.
+
+```c
+unsigned long __builtin_wasm_memory_grow(int, unsigned long delta);
+```
+
+The first parameter selects a memory because [someday there might be more
+than one][multi-memory]. From this built-in we can define `sbrk`:
+
+```c
+void *sbrk(long size)
+{
+    unsigned long npages = (size + 0xffffu) >> 16;  // round up
+    unsigned long old    = __builtin_wasm_memory_grow(0, npages);
+    if (old == -1ul) {
+        return 0;
+    }
+    return (void *)(old << 16);
+}
+```
+
+To which Clang compiles (note the `memory.grow`):
+
+```racket
+(func $sbrk (param i32) (result i32)
+  (select
+    (i32.const 0)
+    (i32.shl
+      (local.tee 0
+        (memory.grow
+          (i32.shr_u
+            (i32.add
+              (local.get 0)
+              (i32.const 65535))
+            (i32.const 16))))
+      (i32.const 16))
+    (i32.eq
+      (local.get 0)
+      (i32.const -1))))
+```
+
+Now we can properly allocate [memory arenas][arena] or other allocators:
+
+```c
+typedef struct {
+    char *beg;
+    char *end;
+} Arena;
+
+Arena newarena(long cap)
+{
+    Arena a = {0};
+    a.beg = sbrk(cap);
+    if (a.beg) {
+        a.end = a.beg + cap;
+    }
+    return a;
+}
+```
 
 ### Water Sort Game
 
@@ -519,6 +587,7 @@ trying WASM, and the results are pretty neat.
 [WABT]: https://github.com/WebAssembly/wabt
 [WASI]: https://wasi.dev/
 [abi]: https://github.com/WebAssembly/tool-conventions/blob/main/BasicCABI.md
+[arena]: /blog/2023/09/27/
 [band]: /blog/2016/09/23/
 [blast]: /blog/2018/04/13/
 [bs]: /blog/2020/10/19/
@@ -531,14 +600,18 @@ trying WASM, and the results are pretty neat.
 [ex]: /blog/2025/01/19/
 [fuzz]: /blog/2025/02/05/
 [game]: /water-sort/
+[grow]: https://webassembly.github.io/spec/core/bikeshed/#syntax-instr-memory
 [imgui]: https://www.youtube.com/watch?v=DYWTw19_8r4
 [llm]: /blog/2024/11/10/
 [llvm]: https://releases.llvm.org/20.1.0/docs/ReleaseNotes.html#changes-to-the-webassembly-backend
 [main]: https://github.com/skeeto/u-config/blob/0c86829e/main_wasm.c
+[multi-memory]: https://github.com/WebAssembly/multi-memory/blob/main/proposals/multi-memory/Overview.md
+[multi-value]: https://github.com/WebAssembly/multi-value/blob/master/proposals/multi-value/Overview.md
 [openat]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/openat.html
 [pkg-config.wasm]: https://skeeto.github.io/u-config/pkg-config.wasm
 [review]: /blog/2023/02/11/
 [rules]: https://www.coolmathgames.com/blog/how-to-play-lipuzz-water-sort
+[sbrk]: https://pubs.opengroup.org/onlinepubs/7908799/xsh/sbrk.html
 [sdl]: /blog/2023/01/08/
 [source]: https://github.com/skeeto/scratch/tree/master/water-sort
 [spec]: https://webassembly.github.io/spec/
