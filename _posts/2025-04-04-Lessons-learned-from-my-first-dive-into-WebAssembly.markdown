@@ -561,8 +561,9 @@ causes a fast fault. Fortunately there's a switch for that:
 
     $ clang --target=wasm32 ... -Wl,--stack-first ...
 
-This is probably what you want to use by default, and I don't know why
-it's not the default for the linker.
+This is what you want by default. The actual default layout is left over
+from an early design flaw in `wasm-ld`, and it's an oversight that it has
+not yet been corrected.
 
 ### u-config
 
