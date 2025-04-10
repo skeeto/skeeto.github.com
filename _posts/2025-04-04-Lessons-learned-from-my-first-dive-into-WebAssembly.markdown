@@ -295,8 +295,8 @@ void clear(void *buf, long len)
 }
 ```
 
-([Below LLVM 20][llvm] you'll need `-mbulk-memory`.) In WAT we see this as
-`memory.fill`:
+([Below LLVM 20][llvm] you will need the undocumented `-mbulk-memory`
+option.) In WAT we see this as `memory.fill`:
 
 ```racket
 (module
