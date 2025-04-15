@@ -1711,6 +1711,140 @@ const SEEDS = [
 const WASM =
 "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"
 
+function webgl_renderer(canvas) {
+    let gl = canvas.getContext("webgl")
+    if (gl == null) {
+        return null
+    }
+    let ext = gl.getExtension("ANGLE_instanced_arrays")
+    let program = gl.createProgram()
+    let vert = gl.createShader(gl.VERTEX_SHADER)
+    let frag = gl.createShader(gl.FRAGMENT_SHADER)
+    gl.shaderSource(vert, `
+        precision mediump float;
+        uniform vec2 u_dims;
+        attribute vec2 a_point;
+        attribute vec3 a_color;
+        attribute vec4 a_xywh;
+        varying vec3 v_color;
+        void main() {
+            vec2 point = a_point;
+            point = point*a_xywh.zw + a_xywh.xy;
+            point = (point/u_dims - 0.5) * vec2(2, -2);
+            v_color = a_color;
+            gl_Position = vec4(point, 0, 1);
+        }
+    `)
+    gl.shaderSource(frag, `
+        precision mediump float;
+        varying vec3 v_color;
+        void main() {
+            gl_FragColor = vec4(v_color, 1);
+        }
+    `)
+    gl.compileShader(vert)
+    gl.compileShader(frag)
+    gl.attachShader(program, vert)
+    gl.attachShader(program, frag)
+    gl.linkProgram(program)
+    gl.useProgram(program)
+    let a_point = gl.getAttribLocation(program, "a_point")
+    let a_color = gl.getAttribLocation(program, "a_color")
+    let a_xywh = gl.getAttribLocation(program, "a_xywh")
+    let u_dims = gl.getUniformLocation(program, "u_dims")
+    let rect = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, rect)
+    gl.enableVertexAttribArray(a_point)
+    gl.vertexAttribPointer(a_point, 2, gl.FLOAT, false, 0, 0)
+    let rects = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, rects)
+    gl.enableVertexAttribArray(a_color)
+    gl.enableVertexAttribArray(a_xywh)
+    gl.vertexAttribPointer(a_color, 3, gl.FLOAT, false, 4*7, 4*0)
+    gl.vertexAttribPointer(a_xywh, 4, gl.FLOAT, false, 4*7, 4*3)
+    return function(ops) {
+        let len = ops.byteLength / 24
+        let fillcount = 0
+        let fillattrs = new Float32Array(len * 7)
+        let boxcount = 0
+        let boxattrs = new Float32Array(len * 7)
+        function push(attrs, n, r, g, b, x, y, w, h) {
+            attrs[n*7 + 0] = r
+            attrs[n*7 + 1] = g
+            attrs[n*7 + 2] = b
+            attrs[n*7 + 3] = x
+            attrs[n*7 + 4] = y
+            attrs[n*7 + 5] = w
+            attrs[n*7 + 6] = h
+        }
+        for (let i = 0; i < len; i++) {
+            let mode = ops.getInt32(24*i + 0, true)
+            let rgb = ops.getInt32(24*i + 4, true)
+            let x = ops.getInt32(24*i + 8, true)
+            let y = ops.getInt32(24*i + 12, true)
+            let w = ops.getInt32(24*i + 16, true)
+            let h = ops.getInt32(24*i + 20, true)
+            let r = (rgb>>16 & 0xff) / 255.0
+            let g = (rgb>> 8 & 0xff) / 255.0
+            let b = (rgb>> 0 & 0xff) / 255.0
+            switch (mode) {
+            case DRAW_BOX:
+                push(boxattrs, boxcount++, r, g, b, x, y, w-1, h-1)
+                break
+            case DRAW_FILL:
+                push(fillattrs, fillcount++, r, g, b, x, y, w, h )
+                break
+            }
+        }
+        let width = gl.drawingBufferWidth
+        let height = gl.drawingBufferHeight
+        gl.viewport(0, 0, width, height)
+        gl.uniform2f(u_dims, width, height)
+        gl.bindBuffer(gl.ARRAY_BUFFER, rect)
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+            0,0, 1,0, 0,1, 1,1
+        ]), gl.STATIC_DRAW)
+        gl.bindBuffer(gl.ARRAY_BUFFER, rects)
+        gl.bufferData(gl.ARRAY_BUFFER, fillattrs, gl.STATIC_DRAW)
+        ext.vertexAttribDivisorANGLE(a_color, 2)
+        ext.vertexAttribDivisorANGLE(a_xywh, 2)
+        ext.drawArraysInstancedANGLE(gl.TRIANGLE_STRIP, 0, 4, fillcount*2)
+        gl.bindBuffer(gl.ARRAY_BUFFER, rect)
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+            0,0, 1,0, 1,1, 0,1
+        ]), gl.STATIC_DRAW)
+        gl.bindBuffer(gl.ARRAY_BUFFER, rects)
+        gl.bufferData(gl.ARRAY_BUFFER, boxattrs, gl.STATIC_DRAW)
+        ext.vertexAttribDivisorANGLE(a_color, 4)
+        ext.vertexAttribDivisorANGLE(a_xywh, 4)
+        ext.drawArraysInstancedANGLE(gl.LINE_LOOP, 0, 4, boxcount*4)
+    }
+}
+function canvas_renderer(canvas) {
+    let ctx = canvas.getContext("2d")
+    return function(ops) {
+        let len = ops.byteLength / 24
+        for (let i = 0; i < len; i++) {
+            let mode = ops.getInt32(24*i + 0, true)
+            let rgb = ops.getInt32(24*i + 4, true)
+            let x = ops.getInt32(24*i + 8, true)
+            let y = ops.getInt32(24*i + 12, true)
+            let w = ops.getInt32(24*i + 16, true)
+            let h = ops.getInt32(24*i + 20, true)
+            let style = `#${rgb.toString(16).padStart(6, "0")}`
+            switch (mode) {
+            case DRAW_BOX:
+                ctx.strokeStyle = style
+                ctx.strokeRect(x, y, w, h)
+                break
+            case DRAW_FILL:
+                ctx.fillStyle = style
+                ctx.fillRect(x, y, w, h)
+                break
+            }
+        }
+    }
+}
 async function main() {
     let bytes = Uint8Array.from(atob(WASM), function(c) {
         return c.charCodeAt(0)
@@ -1721,16 +1855,20 @@ async function main() {
     let html = document.querySelector("html")
     let title = document.querySelector("#title")
     let canvas = document.querySelector("canvas")
-    let ctx = canvas.getContext("2d")
     let memory = exports.memory
     let start = Date.now()
     let mousex = -1
     let mousey = -1
+    let renderer = webgl_renderer(canvas)
+    if (renderer == null) {
+        renderer = canvas_renderer(canvas)
+        document.title += " (canvas)"
+    }
     function now() {
         return Date.now() - start
     }
     function min(a, b) {
-        return b<a ? b : a;
+        return b<a ? b : a
     }
     function max_width() {
         return html.clientHeight * 0.7 | 0
@@ -1739,24 +1877,11 @@ async function main() {
         let width = canvas.width = min(html.clientWidth, max_width())
         let height = canvas.height = width
         let ptr = exports.game_render(width, height, mousex, mousey)
-        let dl = new Int32Array(memory.buffer, ptr)
-        let active = dl[0]
-        let len = dl[1]
-        let ops = dl.subarray(2)
-        for (let i = 0; i < len; i++) {
-            let op = ops.subarray(6*i, 6*i+6)
-            let style = `#${op[1].toString(16).padStart(6, "0")}`
-            switch (op[0]) {
-            case DRAW_BOX:
-                ctx.strokeStyle = style
-                ctx.strokeRect(op[2], op[3], op[4], op[5])
-                break
-            case DRAW_FILL:
-                ctx.fillStyle = style
-                ctx.fillRect(op[2], op[3], op[4], op[5])
-                break
-            }
-        }
+        let dl = new DataView(memory.buffer, ptr)
+        let active = dl.getInt32(0, true)
+        let len = dl.getInt32(4, true)
+        let ops = new DataView(memory.buffer, ptr+8, 24*len)
+        renderer(ops)
         if (active >= 0) {
             canvas.style.cursor = "pointer"
         } else {
@@ -1764,7 +1889,7 @@ async function main() {
         }
     }
     function onresize() { html.style.maxWidth = `${max_width()}px` }
-    window.addEventListener("resize", onresize);
+    window.addEventListener("resize", onresize)
     onresize()
     canvas.addEventListener("mousemove", function(e) {
         mousex = e.clientX
