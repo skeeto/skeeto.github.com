@@ -406,12 +406,10 @@ null-terminated strings, not even for paths, which is a breath of fresh
 air, but they still [marred the API with unsigned sizes][ssize]. Which I
 choose to ignore.
 
-This function is shaped like [POSIX `writev()`][writev], but does not move
-the file cursor. That requires `fd_seek`, or, probably better, tracking it
-yourself and using `fd_pwrite`, but that won't matter for this program.
-I've also set it up for import, including a module name. The oldest, most
-stable version of WASI is called `wasi_unstable`. (I suppose it shouldn't
-be surprising that finding information in this ecosystem is difficult.)
+This function is shaped like [POSIX `writev()`][writev]. I've also set it
+up for import, including a module name. The oldest, most stable version of
+WASI is called `wasi_unstable`. (I suppose it shouldn't be surprising that
+finding information in this ecosystem is difficult.)
 
 Every returning WASI function returns an `errno` value, with zero as
 success rather than some kind of [in-band signaling][band]. Hence the
