@@ -90,6 +90,10 @@ wink*) it's really the same address. Because the heap was "used" by the
 black box, Clang won't optimize the heap out of existence beneath us. Also
 note that `a.end` was derived from the laundered pointer.
 
+**Update**: The next C standard [will improve this situation][n3238] and
+so pointer laundering will no longer be unnecessary. A straight `char`
+array could be used as an arena.
+
 This static variable technique works well only in an *exported* memory
 configuration, which is what `wasm-ld` uses by default. When a module
 exports its memory, it indicates how much linear memory it requires on
@@ -268,10 +272,11 @@ provide. Hopefully it's enough!
 [boehm]: https://www.hboehm.info/gc/
 [bss]: https://en.wikipedia.org/wiki/.bss
 [buddy]: https://github.com/skeeto/scratch/blob/master/misc/buddy.c
+[bulk]: https://github.com/WebAssembly/bulk-memory-operations/blob/master/proposals/bulk-memory-operations/Overview.md
 [gc]: https://en.wikipedia.org/wiki/Tracing_garbage_collection#Precise_vs._conservative_and_internal_pointers
 [grow]: https://webassembly.github.io/spec/core/bikeshed/#syntax-instr-memory
 [mdn]: https://developer.mozilla.org/en-US/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow
 [multi-memory]: https://github.com/WebAssembly/multi-memory/blob/main/proposals/multi-memory/Overview.md
+[n3238]: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3238.pdf
 [sbrk]: https://pubs.opengroup.org/onlinepubs/7908799/xsh/brk.html
 [wasm]: /blog/2025/04/04/
-[bulk]: https://github.com/WebAssembly/bulk-memory-operations/blob/master/proposals/bulk-memory-operations/Overview.md
