@@ -125,8 +125,8 @@ export LIBRARY_PATH=$HOME/.local/lib
 
 The first two are like the `-I` compiler option and the third is like
 `-L` linker option, except you *usually* won't need to use them
-explicitly. Unfortunately [`LIBRARY_PATH` doesn't override the system
-library paths][lpath], so in some cases, you will need to explicitly set
+explicitly. Unfortunately `LIBRARY_PATH` doesn't override the system
+library paths, so in some cases, you will need to explicitly set
 `-L`. Otherwise you will still end up linking against the system library
 rather than the custom packaged version. I really wish GCC and Clang
 didn't behave this way.
@@ -306,7 +306,6 @@ builds to [fit properly into a larger ecosystem][maint].
 [debian]: https://www.debian.org/News/2017/20170617.en.html
 [enchive]: https://github.com/skeeto/enchive
 [env]: https://web.archive.org/web/20090312014334/http://blogs.sun.com/rie/entry/tt_ld_library_path_tt
-[lpath]: https://stackoverflow.com/a/29100649
 [maint]: https://www.debian.org/doc/manuals/maint-guide/
 [mutt]: /blog/2017/06/15/
 [ncurses]: https://www.gnu.org/software/ncurses/

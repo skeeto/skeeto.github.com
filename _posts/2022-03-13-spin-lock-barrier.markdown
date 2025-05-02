@@ -335,7 +335,7 @@ just as the one in my experiment is hard-coded for exactly two threads.
 
 
 [act]: https://preshing.com/20120515/memory-reordering-caught-in-the-act/
-[bug]: https://stackoverflow.com/questions/33598686/spinning-thread-barrier-using-atomic-builtins
+[bug]: https://web.archive.org/web/20151109230817/https://stackoverflow.com/questions/33598686/spinning-thread-barrier-using-atomic-builtins
 [coop]: https://gist.github.com/skeeto/bdb5a0d2aa36b68b6f66ca39989e1444
 [ctx]: https://vimeo.com/644068002
 [gist]: https://gist.github.com/skeeto/c63b9ddf2c599eeca86356325b93f3a7

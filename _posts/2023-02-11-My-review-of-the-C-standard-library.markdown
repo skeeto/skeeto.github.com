@@ -455,7 +455,7 @@ evolving along practical dimensions.
 [cosmo]: https://justine.lol/sizetricks/
 [crt]: /blog/2021/12/30/
 [ctx]: /blog/2017/01/08/
-[drafts]: https://stackoverflow.com/a/83763
+[drafts]: https://web.archive.org/web/20181230041359if_/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf
 [fbsd]: https://github.com/openssl/openssl/issues/3281
 [fine]: https://lists.sr.ht/~skeeto/public-inbox/%3C1676216350-sup-9306%40thyestes.tartarus.org%3E
 [fo]: /blog/2023/02/13/

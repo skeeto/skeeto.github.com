@@ -279,4 +279,4 @@ been stuck.
 
 [resurrect]: https://github.com/skeeto/resurrect-js
 [strict]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode
-[hack]: http://stackoverflow.com/a/14378462
+[hack]: https://web.archive.org/web/20130612133353/http://stackoverflow.com/a/14378462

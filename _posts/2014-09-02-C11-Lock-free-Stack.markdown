@@ -468,7 +468,7 @@ particularly for common consumer-producer scenarios.
 [atomic.h]: http://lxr.free-electrons.com/source/include/linux/atomic.h
 [stdatomic.h]: http://en.cppreference.com/w/c/atomic
 [gcc]: https://gcc.gnu.org/gcc-4.9/changes.html
-[draft]: http://stackoverflow.com/a/83763
+[draft]: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
 [cas]: http://en.wikipedia.org/wiki/Compare-and-swap
 [volatile]: https://www.kernel.org/doc/Documentation/volatile-considered-harmful.txt
 [malloc]: http://www.research.ibm.com/people/m/michael/pldi-2004.pdf

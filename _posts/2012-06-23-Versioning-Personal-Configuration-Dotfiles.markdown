@@ -97,8 +97,7 @@ data, then it rewrites the data, and, if it's not *too* stupid, calls
 work with symlinks.
 
 The conscientious application will write the data to a temporary file,
-call `fsync()` (well,
-[sort of](http://stackoverflow.com/questions/7433057/is-rename-without-fsync-safe)),
+call `fsync()`,
 then atomically `rename()` the new file over top the original file. If
 there's any failure along the way, *some* intact version of the data
 will be on the disk. The problem is that this will replace your

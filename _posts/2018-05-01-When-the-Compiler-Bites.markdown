@@ -374,7 +374,7 @@ Just before the end it would pause the game and wait… forever.
 [fround]: https://blog.mozilla.org/javascript/2013/11/07/efficient-float32-arithmetic-in-javascript/
 [hn]: https://news.ycombinator.com/item?id=13738880
 [hn]: https://news.ycombinator.com/item?id=16974770
-[icc]: https://stackoverflow.com/a/36760539
+[icc]: https://web.archive.org/web/20180908113552/https://stackoverflow.com/a/36760539
 [mcts]: /blog/2017/04/27/
 [missed]: https://github.com/gergo-/missed-optimizations
 [mm]: /blog/2017/11/03/

@@ -71,8 +71,8 @@ portion, so it could be re-used almost untouched in another project.
 
 To avoid maintaining a whole bunch of function pointer assignments in
 several places, the API to the "game" is enclosed in a struct. This
-also eliminates warnings from the C compiler about [mixing data and
-function pointers][fp]. The layout and contents of the `game_state`
+also eliminates warnings from the C compiler about mixing data and
+function pointers. The layout and contents of the `game_state`
 struct is private to the game itself. The wrapper will only handle a
 pointer to this struct.
 
@@ -282,5 +282,4 @@ appealing.
 [hh]: http://handmadehero.org/
 [global]: /blog/2014/10/12/
 [oop]: /blog/2014/10/21/
-[fp]: /blog/2010/02/18/
 [ld]: /blog/2014/12/09/

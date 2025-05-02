@@ -287,6 +287,6 @@ multiple memory views.
 
 [baggy]: https://www.usenix.org/legacy/event/sec09/tech/full_papers/akritidis.pdf
 [hotpatch]: /blog/2016/03/31/
-[amd64]: http://stackoverflow.com/a/18905927
+[amd64]: https://web.archive.org/web/20190323050330/http://stackoverflow.com/a/18905927
 [tmpfile]: http://comments.gmane.org/gmane.linux.man/9815
 [mkstemp]: http://man.openbsd.org/OpenBSD-current/man3/shm_mkstemp.3

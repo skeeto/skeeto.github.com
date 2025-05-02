@@ -389,7 +389,7 @@ In fact, this sounds like a fun weekend project.
 [dtrace]: /blog/2018/01/17/
 [fakeroot]: https://fakeroot-ng.lingnu.com/index.php/Home_Page
 [flaw]: /blog/2017/07/19/
-[orig]: https://stackoverflow.com/a/6469069
+[orig]: https://web.archive.org/web/20190323050358/https://stackoverflow.com/a/6469069
 [pclone]: https://www.youtube.com/watch?v=uXgxMDglxVM
 [pledge2]: https://man.openbsd.org/pledge.2
 [pledge]: http://www.openbsd.org/papers/hackfest2015-pledge/mgp00001.html

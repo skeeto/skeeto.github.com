@@ -90,8 +90,7 @@ int compare_age(const void *a, const void *b)
 ~~~
 
 And since we'll need it later, here's a `COUNT_OF` macro to get the
-length of arrays at compile time. There's a [less error prone
-version][countof] out there, but I'm keeping it simple.
+length of arrays at compile time.
 
 ~~~c
 #define COUNT_OF(x) (sizeof(x) / sizeof(0[x]))
@@ -220,5 +219,4 @@ are added is O(n) and not O(n!) despite using an unstable sort.
 [arc4random]: http://www.openbsd.org/cgi-bin/man.cgi?query=arc4random&sektion=3
 [chacha20]: http://marc.info/?l=openbsd-cvs&m=138065251627052&w=2
 [timsort]: http://en.wikipedia.org/wiki/Timsort
-[countof]: http://stackoverflow.com/a/1598827
 [gnu]: http://www.gnu.org/software/libc/manual/html_node/Array-Sort-Function.html

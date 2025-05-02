@@ -180,4 +180,4 @@ code. It includes a tiny gap buffer implementation:
 [rope]: https://en.wikipedia.org/wiki/Rope_(data_structure)
 [typing]: /blog/2017/04/01/
 [vim]: http://www.free-soft.org/FSM/english/issue01/vim.html
-[fsync]: https://stackoverflow.com/a/7433149
+[fsync]: https://www.youtube.com/watch?v=LMe7hf2G1po

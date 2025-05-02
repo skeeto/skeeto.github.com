@@ -331,5 +331,5 @@ worked out exactly how to apply it, but it should be much faster.
 [hn]: https://news.ycombinator.com/item?id=29439403
 [k]: https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
 [mail]: https://lists.sr.ht/~skeeto/public-inbox/%3CCABwTFSrDpNkmJs6TpkAfofcZq6e8YWaJUur20xZBz7mDBnvQ2w%40mail.gmail.com%3E
-[mm]: https://stackoverflow.com/questions/21622212/how-to-perform-the-inverse-of-mm256-movemask-epi8-vpmovmskb
+[mm]: https://web.archive.org/web/20150506071030/https://stackoverflow.com/questions/21622212/how-to-perform-the-inverse-of-mm256-movemask-epi8-vpmovmskb
 [sm]: /blog/2020/12/31/
