@@ -24,7 +24,7 @@ at zero, and which doesn't include code, memory addresses will be small
 numbers, and less distinguishable from common integer values. There's also
 the issue that the garbage collector cannot scan the WASM stack, which is
 hidden from WASM programs by design. Only the ABI stack is visible. So a
-garage collector requires cooperation from the compiler — essentially as a
+garbage collector requires cooperation from the compiler — essentially as a
 distinct calling convention — to spill all heap pointers on the ABI stack
 before function calls. WASM C and C++ toolchains do not yet support this
 in a practical capacity.
@@ -32,7 +32,7 @@ in a practical capacity.
 ### Exporting a static heap
 
 Let's start with the embedded case because it's simpler, and reserve a
-dynamic memory region at link time. WebAssembly is just reached 8 years
+dynamic memory region at link time. WebAssembly has just reached 8 years
 old, so it's early, and as we keep discovering, WASM tooling is still
 immature. `wasm-ld` doesn't understand linker scripts, and there's no
 stable, low-level assembly language on which to build, e.g. to reserve
@@ -113,7 +113,7 @@ sections. Instead it uses an [*active data segment*][bulk] — a chunk of
 data copied into linear memory by the WASM runtime during initialization,
 before running the start function.
 
-That is, when importing memory, LLVM *actually stores all those those
+That is, when importing memory, LLVM *actually stores all those
 zeros in the WASM module* so that the runtime can copy it into linear
 memory. WASM has no built-in compression, so **your WASM module will be at
 least as large as your heap**! Exporting or importing memory is determined
