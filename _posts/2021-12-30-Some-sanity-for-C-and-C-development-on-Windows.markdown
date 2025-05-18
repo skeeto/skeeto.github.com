@@ -229,7 +229,7 @@ rather than always link against this loose object file. This is more for
 convenience and for succinctly capturing the concept. You may even want to
 [enable ANSI escape processing][ansi] in your version.
 
-**Update December 2024**: Pavel Galkin [demonstrates how `libwinsane.so`
+**Update December 2024**: Pavel Galkin [demonstrates how `libwinsane.o`
 changes the console state][global], which affects all processes associated
 with the terminal. This is mostly unavoidable, and it's one reason I've
 since concluded that UTF-8 manifests are a poor solution. Better to [solve
