@@ -11,14 +11,14 @@ It began as a [water sort puzzle][rules] solver, constructed similarly to
 interface [with SDL2][sdl]. My wife enjoyed it on her desktop, but wished
 to play on her phone. So then I needed to either rewrite it in JavaScript
 and hope the solver was still fast enough for real-time use, or figure out
-WebAssembly (WASM). I succeeded, and now [my game runs in browsers][game]
+WebAssembly (Wasm). I succeeded, and now [my game runs in browsers][game]
 ([source][]). Like [before][bsd], next I ported [my pkg-config clone][u]
-to the WASM System Interface ([WASI][]), whipped up a proof-of-concept UI,
+to the Wasm System Interface ([WASI][]), whipped up a proof-of-concept UI,
 and [it too runs in browsers][demo]. Neither use a language runtime,
-resulting in little 8kB and 28kB WASM binaries respectively. In this
+resulting in little 8kB and 28kB Wasm binaries respectively. In this
 article I share my experiences and techniques.
 
-WASM is a [specification][spec] defining an abstract stack machine with a
+Wasm is a [specification][spec] defining an abstract stack machine with a
 Harvard architecture, and related formats. There are just four types, i32,
 i64, f32, and f64. It also has "linear" octet-addressable memory starting
 at zero, with no alignment restrictions on loads and stores. Address zero
@@ -34,23 +34,23 @@ JavaScript is to Java.
 There are distinct components at play, and much of the online discussion
 doesn't do a great job drawing lines between them:
 
-* WASM module: A compiled and linked image — like ELF or PE — containing
+* Wasm module: A compiled and linked image — like ELF or PE — containing
   sections for code, types, globals, import table, export table, and so
   on. The export table lists the module's entry points. It has an optional
   *start section* indicating which function initializes a loaded image.
-  (In practice almost nobody actually uses the start section.) A WASM
+  (In practice almost nobody actually uses the start section.) A Wasm
   module can only affect the outside world through imported functions.
-  WASM itself defines no external interfaces for WASM programs, not even
+  Wasm itself defines no external interfaces for Wasm programs, not even
   printing or logging.
 
-* WASM runtime: Loads WASM modules, linking import table entries into the
-  module. Because WASM modules include types, the runtime can type check
+* Wasm runtime: Loads Wasm modules, linking import table entries into the
+  module. Because Wasm modules include types, the runtime can type check
   this linkage at load time. With imports resolved, it executes the start
   function, if any, then executes zero or more of its entry points, which
   hopefully invokes import functions such a way as to produce useful
   results, or perhaps simply return useful outputs.
 
-* WASM compiler: Converts a high-level language to low-level WASM. In
+* Wasm compiler: Converts a high-level language to low-level Wasm. In
   order to do so, it requires some kind of Application Binary Interface
   (ABI) to map the high-level language concepts onto the machine. This
   typically introduces additional execution elements, and it's important
@@ -59,46 +59,46 @@ doesn't do a great job drawing lines between them:
   there are many. During compilation the *function indices* are yet
   unknown and so references will need to be patched in by a linker.
 
-* WASM linker: Settles the shape of the WASM module and links up the
+* Wasm linker: Settles the shape of the Wasm module and links up the
   functions emitted by the compiler. LLVM comes with `wasm-ld`, and it
   goes hand-in-hand with Clang as a compiler.
 
-* Language runtime: Unless you're hand-writing raw WASM, your high-level
+* Language runtime: Unless you're hand-writing raw Wasm, your high-level
   language probably has a standard library with operating system
   interfaces. C standard library, POSIX interfaces, etc. This runtime
   likely maps onto some standardized set of imports, most likely the
   aforementioned WASI, which defines a set of POSIX-like functions that
-  WASM modules may import. Because I [think we could do better][review],
+  Wasm modules may import. Because I [think we could do better][review],
   [as usual][crt] [around here][thr], in this article we're going to
   eschew the language runtime and code directly against raw WASI. You
   still have [easy access hash tables and dynamic arrays][ex].
 
 A combination of compiler-linker-runtime is conventionally called a
 *toolchain*. However, because almost any Clang installation can target
-WASM out-of-the-box, and we're skipping the language runtime, you can
+Wasm out-of-the-box, and we're skipping the language runtime, you can
 compile any of programs discussed in this article, including my game, with
 nothing more than Clang (invoking `wasm-ld` implicitly). If you have a
-WASM runtime, which includes your browser, you can run them, too! Though
+Wasm runtime, which includes your browser, you can run them, too! Though
 this article will mostly focus on WASI, and you'll need a WASI-capable
 runtime to run those examples, which doesn't include browsers (short of
 implementing the API with JavaScript).
 
-I wasn't particularly happy with the WASM runtimes I tried, so I cannot
+I wasn't particularly happy with the Wasm runtimes I tried, so I cannot
 enthusiastically recommend one. I'd love if I could point to one and say,
 "Use the same Clang to compile the runtime that you're using to compile
-WASM!" Alas, I had issues compiling, the runtime was buggy, or WASI was
+Wasm!" Alas, I had issues compiling, the runtime was buggy, or WASI was
 incomplete. However, [wazero][] (Go) was the easiest for me to use and it
 worked well enough, so I will use it in examples:
 
     $ go install github.com/tetratelabs/wazero/cmd/wazero@latest
 
-The WASM Binary Toolkit ([WABT][]) is good to have on hand when working
-with WASM, particularly `wasm2wat` to inspect WASM modules, sort of like
-`objdump` or `readelf`. It converts WASM to the WebAssembly Text Format
+The Wasm Binary Toolkit ([WABT][]) is good to have on hand when working
+with Wasm, particularly `wasm2wat` to inspect Wasm modules, sort of like
+`objdump` or `readelf`. It converts Wasm to the WebAssembly Text Format
 (WAT).
 
-Learning WASM I had quite some difficultly finding information. Outside of
-the WASM specification, which, despite its length, is merely a narrow
+Learning Wasm I had quite some difficultly finding information. Outside of
+the Wasm specification, which, despite its length, is merely a narrow
 slice of the ecosystem, important technical details are scattered all over
 the place. Some is only available as source code, some buried comments in
 GitHub issues, and some lost behind dead links as repositories have moved.
@@ -108,10 +108,10 @@ from here when I mention its system calls — just some IDL sources in a Git
 repository. An old [`wasi.h`][wasi.h] was the most readable, complete
 source of truth I could find.
 
-Fortunately WASM is old enough that [LLMs][llm] are well-versed in it, and
+Fortunately Wasm is old enough that [LLMs][llm] are well-versed in it, and
 simply asking questions, or for usage examples, was more effective than
 searching online. If you're stumped on how to achieve something in the
-WASM ecosystem, try asking a state-of-the-art LLM for help.
+Wasm ecosystem, try asking a state-of-the-art LLM for help.
 
 ### Example programs
 
@@ -125,11 +125,11 @@ float norm(float x, float y)
 }
 ```
 
-To compile to WASM (32-bit) with Clang, we use the `--target=wasm32`:
+To compile to Wasm (32-bit) with Clang, we use the `--target=wasm32`:
 
     $ clang -c --target=wasm32 -O example.c
 
-The object file `example.o` is in WASM format, so WABT can examine it.
+The object file `example.o` is in Wasm format, so WABT can examine it.
 Here's the output of `wasm2wat -f`, where `-f` produces output in the
 "folded" format, which is how I prefer to read it.
 
@@ -149,7 +149,7 @@ Here's the output of `wasm2wat -f`, where `-f` produces output in the
 
 We can see [the ABI][abi] taking shape: Clang has predictably mapped
 `float` into `f32`. It similarly maps `char`, `short`, `int` and `long`
-onto `i32`. In 64-bit WASM, the Clang ABI is LP64 and maps `long` onto
+onto `i32`. In 64-bit Wasm, the Clang ABI is LP64 and maps `long` onto
 `i64`. There's a also `$norm` function which takes two `f32` parameters
 and returns an `f32`.
 
@@ -177,7 +177,7 @@ list it in the export table. Linking it will make things a little clearer:
 The `-nostdlib` is because we won't be using a language runtime, and
 `--no-entry` to tell the linker not to implicitly export a function
 (default: `_start`) as an entry point. You might think this is connected
-with the WASM *start function*, but `wasm-ld` does not support the *start
+with the Wasm *start function*, but `wasm-ld` does not support the *start
 section* at all! We'll have use for an entry point later. The folded WAT:
 
 ```racket
@@ -216,22 +216,22 @@ There's a lot to unfold:
   assembly after all.
 
 * There's now a `__stack_pointer`, which is part of the Clang ABI, not
-  WASM. The WASM abstract machine is a stack machine, but that stack
+  Wasm. The Wasm abstract machine is a stack machine, but that stack
   doesn't exist in linear memory. So you cannot take the address of values
-  on the WASM stack. There are lots of things C needs from a stack that
-  WASM doesn't provide. So, *in addition to the WASM stack*, Clang
+  on the Wasm stack. There are lots of things C needs from a stack that
+  Wasm doesn't provide. So, *in addition to the Wasm stack*, Clang
   maintains another downward-growing stack in linear memory for these
   purposes, and the `__stack_pointer` global is the stack register of its
   ABI. We can see it's allocated something like 64kB for the stack. (It's
   a little more because program data is placed below the stack.)
 
-* It should be mostly readable without knowing WASM: The function
+* It should be mostly readable without knowing Wasm: The function
   subtracts a 16-byte stack frame, stores a copy of the argument in it,
   then uses its memory offset for the first parameter to the import `f`.
   Why 16 bytes when it only needs 4? Because the stack is kept 16-byte
   aligned. Before returning, the function restores the stack pointer.
 
-As mentioned earlier, address zero is valid as far as the WASM runtime is
+As mentioned earlier, address zero is valid as far as the Wasm runtime is
 concerned, though dereferences are still undefined in C. This makes it
 more difficult to catch bugs. Given a null pointer this function would
 most likely read a zero at address zero and the program keeps running:
@@ -284,7 +284,7 @@ existing frames. (This can be worked around by exporting `__stack_pointer`
 and `__stack_high` via the `--export` linker flag, then restoring the
 stack pointer in the runtime after traps.)
 
-WASM was extended with [bulk memory operations][bulk], and so there are
+Wasm was extended with [bulk memory operations][bulk], and so there are
 single instructions for `memset` and `memmove`, which Clang maps onto the
 built-ins:
 
@@ -313,7 +313,7 @@ option.) In WAT we see this as `memory.fill`:
         (local.get 1)))))
 ```
 
-That's great! I wish this worked so well outside of WASM. It's one reason
+That's great! I wish this worked so well outside of Wasm. It's one reason
 [w64devkit][] has `-lmemory`, after all. Similarly `__builtin_trap()` maps
 onto the `unreachable` instruction, so we can reliably generate those as
 well.
@@ -347,13 +347,13 @@ version, these turn into canvas draws, and "mouse" inputs may be touch
 events. It plays and feels the same on both platforms. Simple!
 
 I didn't realize it at the time, but building the SDL version first was
-critical to my productivity. **Debugging WASM programs is really dang
-hard!** WASM tooling has yet to catch up with 1995, let alone 2025.
+critical to my productivity. **Debugging Wasm programs is really dang
+hard!** Wasm tooling has yet to catch up with 1995, let alone 2025.
 Source-level debugging is still experimental and impractical. Developing
-applications on the WASM platform. It's about as ergonomic as [developing
+applications on the Wasm platform. It's about as ergonomic as [developing
 in MS-DOS][blast]. Instead, develop on a platform much better suited for
-it, then *port* your application to WASM after you've [got the issues
-worked out][fuzz]. The less WASM-specific code you write, the better, even
+it, then *port* your application to Wasm after you've [got the issues
+worked out][fuzz]. The less Wasm-specific code you write, the better, even
 if it means writing more code overall. Treat it as you would some weird
 embedded target.
 
@@ -362,7 +362,7 @@ them by difficulty, and skimmed the top 10k most challenging. In the game
 they're still sorted by increading difficulty, so it gets harder as you
 make progress.
 
-### WASM System Interface
+### Wasm System Interface
 
 WASI allows us to get a little more hands on. Let's start with a Hello
 World program. A WASI application exports a traditional `_start` entry
@@ -400,7 +400,7 @@ WASI("fd_write")  i32  fd_write(i32, IoVec *, iz, iz *);
 ```
 
 Technically those `iz` variables are supposed to be `size_t`, passed
-through WASM as `i32`, but this is a foreign function, I know the ABI, and
+through Wasm as `i32`, but this is a foreign function, I know the ABI, and
 so [I can do as I please][win32]. I absolutely love that WASI barely uses
 null-terminated strings, not even for paths, which is a breath of fresh
 air, but they still [marred the API with unsigned sizes][ssize]. Which I
@@ -471,13 +471,13 @@ another directory, and absolute paths are invalid. If there's no
 `AT_FDCWD`, how does one open the *first* directory? That's called a
 *preopen* and it's core to the file system security mechanism of WASI.
 
-The WASM runtime preopens zero or more directories before starting the
+The Wasm runtime preopens zero or more directories before starting the
 program and assigns them the lowest numbered file descriptors starting at
 file descriptor 3 (after standard input, output, and error). A program
 intending to use `path_open` must first traverse the file descriptors,
 probing for preopens with `fd_prestat_get` and retrieving their path name
 with `fd_prestat_dir_name`. This name may or may not map back onto a real
-system path, and so this is a kind of virtual file system for the WASM
+system path, and so this is a kind of virtual file system for the Wasm
 module. The probe stops on the first error.
 
 To open an absolute path, it must find a matching preopen, then from it
@@ -499,9 +499,9 @@ not yet been corrected.
 
 ### u-config
 
-The above is in action in the [u-config WASM port][main]. You can download
-the WASM module, [pkg-config.wasm][], used in the web demo to run it in
-your favorite WASI-capable WASM runtime:
+The above is in action in the [u-config Wasm port][main]. You can download
+the Wasm module, [pkg-config.wasm][], used in the web demo to run it in
+your favorite WASI-capable Wasm runtime:
 
     $ wazero run pkg-config.wasm --modversion pkg-config
     0.33.3
@@ -514,7 +514,7 @@ root file system read-only (`ro`) as `/`.
     -I/usr/include/SDL2 -D_REENTRANT
 
 I doubt this is useful for anything, but it was a vehicle for learning and
-trying WASM, and the results are pretty neat.
+trying Wasm, and the results are pretty neat.
 
 In the next article I discuss [allocating the allocator][next].
 

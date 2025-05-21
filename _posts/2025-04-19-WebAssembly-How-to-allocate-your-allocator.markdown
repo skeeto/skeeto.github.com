@@ -11,7 +11,7 @@ allocator. On a server or desktop with virtual memory, the allocator asks
 the operating system to map fresh pages into its address space ([sbrk][],
 anonymous mmap, [VirtualAlloc][]), which it then dynamically allocates to
 different purposes. In an embedded context, dynamic allocation memory is
-typically a fixed, static region chosen at link time. The WASM execution
+typically a fixed, static region chosen at link time. The Wasm execution
 environment more resembles an embedded system, but both kinds of obtaining
 raw memory are viable and useful in different situations.
 
@@ -22,18 +22,18 @@ GC][boehm]. Though WebAssembly's linear memory is a poor fit for such a
 [conservative][gc] garbage collector. In a compact address space starting
 at zero, and which doesn't include code, memory addresses will be small
 numbers, and less distinguishable from common integer values. There's also
-the issue that the garbage collector cannot scan the WASM stack, which is
-hidden from WASM programs by design. Only the ABI stack is visible. So a
+the issue that the garbage collector cannot scan the Wasm stack, which is
+hidden from Wasm programs by design. Only the ABI stack is visible. So a
 garbage collector requires cooperation from the compiler — essentially as a
 distinct calling convention — to spill all heap pointers on the ABI stack
-before function calls. WASM C and C++ toolchains do not yet support this
+before function calls. Wasm C and C++ toolchains do not yet support this
 in a practical capacity.
 
 ### Exporting a static heap
 
 Let's start with the embedded case because it's simpler, and reserve a
 dynamic memory region at link time. WebAssembly has just reached 8 years
-old, so it's early, and as we keep discovering, WASM tooling is still
+old, so it's early, and as we keep discovering, Wasm tooling is still
 immature. `wasm-ld` doesn't understand linker scripts, and there's no
 stable, low-level assembly language on which to build, e.g. to reserve
 space, define symbols, etc. WAT is too high level and inflexible for this
@@ -67,7 +67,7 @@ memory outside the high-level language. In practice this works fine so
 long as everything is aligned, but strictly speaking, allocating any
 variable except `char` from this arena involves incompatible loads and
 stores on a `char` array. Clang doesn't document any [inline assembly
-interface][asm] for WASM, but neither does Clang forbid it. That leaves
+interface][asm] for Wasm, but neither does Clang forbid it. That leaves
 just enough room to launder the pointer if you're worried about this
 technicality:
 
@@ -97,7 +97,7 @@ array could be used as an arena.
 This static variable technique works well only in an *exported* memory
 configuration, which is what `wasm-ld` uses by default. When a module
 exports its memory, it indicates how much linear memory it requires on
-start, and the WASM runtime allocates and zero-initializes it at module
+start, and the Wasm runtime allocates and zero-initializes it at module
 initialization time. C and C++ toolchains depend on that runtime zeroing
 to initialize static and global variables, which are defined to be so
 initialized. Compilers generate code assuming these variables are zero
@@ -110,16 +110,16 @@ may contain arbitrary data. In that case, C and C++ toolchains must zero
 the memory explicitly. It could potentially be done with a `memory.fill`
 instruction in the *start section*, but LLVM does not support start
 sections. Instead it uses an [*active data segment*][bulk] — a chunk of
-data copied into linear memory by the WASM runtime during initialization,
+data copied into linear memory by the Wasm runtime during initialization,
 before running the start function.
 
 That is, when importing memory, LLVM *actually stores all those
-zeros in the WASM module* so that the runtime can copy it into linear
-memory. WASM has no built-in compression, so **your WASM module will be at
+zeros in the Wasm module* so that the runtime can copy it into linear
+memory. Wasm has no built-in compression, so **your Wasm module will be at
 least as large as your heap**! Exporting or importing memory is determined
 at *link-time*, so at *compile-time* the compiler must assume the worst
 case. If you compile the example above, you get a 16MiB "object" file (in
-WASM format):
+Wasm format):
 
     $ clang --target=wasm32 -c -O example.c
     $ du -h example.o
@@ -128,7 +128,7 @@ WASM format):
 The WAT version of this file is 48MiB — clearly unsuitable as a low-level
 assembler. If linking with exported memory, `wasm-ld` discards all-zero
 active data segments. If using an imported memory configuration, it's
-copied into the final image, producing a huge WASM image, though highly
+copied into the final image, producing a huge Wasm image, though highly
 compressible. As a rule, avoid importing memory when using an LLVM
 toolchain. Regardless, large heaps created this way will have a
 significant compile-time cost.
@@ -143,7 +143,7 @@ allow `heap` to be uninitialized…)
 
 ### Growing a dynamic heap
 
-WASM programs can grow linear memory using an [sbrk][]-like [`memory.grow`
+Wasm programs can grow linear memory using an [sbrk][]-like [`memory.grow`
 instruction][grow]. It operates in quantities of pages (64kB), and returns
 the old memory size. Because memory starts at zero, the old memory size is
 also the base address of the new allocation. Clang provides access to this
@@ -207,21 +207,21 @@ multiple arenas (e.g. permanent, scratch, etc.). We could even continue
 growing the last-created arena in-place when it's full.
 
 If there was no `memory.grow` instruction, it could be implemented as a
-request through an imported function. The embedder using the WASM runtime
+request through an imported function. The embedder using the Wasm runtime
 [can grow the memory on the module's behalf][mdn] in the same manner. But
 as that documentation indicates, either way growing the memory comes with
-a downside in the most common WASM runtimes, browsers: It "detaches" the
+a downside in the most common Wasm runtimes, browsers: It "detaches" the
 memory from references, which complicates its use for the embedder. If a
-WASM module may grow its memory at any time, the embedder must reacquire
+Wasm module may grow its memory at any time, the embedder must reacquire
 the memory handle after every call. It's not difficult, but it's easy to
 forget, and mistakes are likely to go unnoticed until later.
 
 ### Importing a dynamic heap
 
-There's a middle ground where a WASM module imports a dynamic-sized heap.
+There's a middle ground where a Wasm module imports a dynamic-sized heap.
 That is, linear memory beyond the module's base initialization. This might
 be the case, for instance, in a programming competition, where contestants
-submit WASM modules which must complete a task using the supplied memory.
+submit Wasm modules which must complete a task using the supplied memory.
 In that case we don't reserve a static heap, so we're not facing the
 storing-zeros issue. However, how do we "find" the memory? Linear memory
 layout will look something like so:
@@ -231,7 +231,7 @@ layout will look something like so:
 
 This diagram reflects the more sensible `wasm-ld --stack-first` layout,
 where the ABI stack overflows off the bottom end of memory. The heap is
-just excess memory beyond the data. To find the upper bound, WASM has a
+just excess memory beyond the data. To find the upper bound, Wasm has a
 [`memory.size`][grow] instruction to query linear memory size, which again
 Clang provides as an undocumented built-in:
 
