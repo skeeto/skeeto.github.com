@@ -113,12 +113,12 @@ because that's the only `cmd` feature Autotools uses. So it's completely
 unnecessary, just poor code generation.
 
 With that work in place, you can download a NASM source release, untar it,
-run `./configure`, `make -j`, and copy the resulting `nasm.exe` into w64dk
-or wherever else on your `$PATH` is convenient. The same is true for quite
-a bit of software! You can build Binutils, including `as` itself, exactly
-the same way. Being so easy for users to build their own tools means I'm
-less concerned with including extraneous, more specialized tools, such as
-NASM.
+run `./configure`, `make -j$(nproc)`, and copy the resulting `nasm.exe`
+into w64dk or wherever else on your `$PATH` is convenient. The same is
+true for quite a bit of software! You can build Binutils, including `as`
+itself, exactly the same way. Being so easy for users to build their own
+tools means I'm less concerned with including extraneous, more specialized
+tools, such as NASM.
 
 ### Path Style
 
