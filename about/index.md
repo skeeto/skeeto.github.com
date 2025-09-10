@@ -3,18 +3,12 @@ title: About Me
 layout: about
 ---
 
-My name is Chris Wellons, though I sometimes use the handle *skeeto*. I
-am a professional software engineer with a passion for software
-development. In my day job I regularly develop internal data processing
-and data reduction tools, optimize software performance, and [mentor
-students][mentor]. Occasionally I also do web development and data
-visualization.
-
-However, this blog — [ongoing since 2007][ten] — is largely about what I
-do *outside* of my day job. Here I explain topics that I've recently
-learned, share software development techniques I've discovered or even
-invented, [showcase cool demos][showcase], and discuss my contributions to
-open source.
+My name is Chris Wellons, though I sometimes use the handle *skeeto*. I am
+a professional software engineer with a passion for developing precise and
+efficient software. On this blog, [ongoing since 2007][ten], I explain
+topics that I've recently learned, share software development techniques
+I've discovered or even invented, [showcase cool demos][showcase], and
+discuss my contributions to open source.
 
 In general, each of my articles should be unique on the internet at the
 time they're published. I will not write a tutorial on some topic if
@@ -25,11 +19,6 @@ I'll fill that gap by publishing an article or two.
 This blog is 100% transparent. Its complete source [is in a Git
 repository][src]. From there you can see every single correction and
 update I make.
-
-### Interviews
-
-* [Sacha Chua's Emacs Chat][chat] (2014)
-* [Uses This][usesthis] (2019)
 
 ### Open Source Projects
 
@@ -65,8 +54,8 @@ Here are some of the more well known open source projects I've started.
   the repository. This was the first tool I ever wrote that was actually
   used productively by other people.
 
-I have [hundreds more open source projects][repos], but these are the
-most popular ones.
+I have [hundreds more open source projects][repos], but these are the most
+popular.
 
 ### Licensing
 
@@ -83,20 +72,23 @@ domain.
 If you use my work I do appreciate getting credit, but I do not legally
 mandate it.
 
-### Popular Articles
+### Favorite Articles
 
-Some of my most popular articles:
+My favorite articles explain some of my novel techniques and inventions:
 
-* [Arena allocator tips and tricks](/blog/2023/09/27/)
-* [Raw Linux Threads via System Calls](/blog/2015/05/15/)
-* [Interactive Programming in C](/blog/2014/12/23/)
-* [A GPU Approach to Path Finding](/blog/2014/06/22/)
-* [A GPU Approach to Particle Physics](/blog/2014/06/29/)
-* [C11 Lock-free Stack](/blog/2014/09/02/)
-* [Switching to the Mutt Email Client](/blog/2017/06/15/)
+* [Examples of quick hash tables and dynamic arrays in C](/blog/2025/01/19/)
+  * [Arena allocator tips and tricks](/blog/2023/09/27/)
+  * [An easy-to-implement, arena-friendly hash map](/blog/2023/09/30/)
+  * [The quick and practical "MSI" hash table](/blog/2022/08/08/)
+* [Robust Wavefront OBJ model parsing in C](/blog/2025/03/02/)
+* [So you want custom allocator support in your C library](/blog/2023/12/17/)
 * [Minimalist C Libraries](/blog/2018/06/10/)
-* [Small, Freestanding Windows Executables](/blog/2016/01/31/)
-* [A Basic Just-In-Time Compiler](/blog/2015/03/19/)
+* [Tips for more effective fuzz testing with AFL++](/blog/2025/02/05/)
+* [A GPU Approach to Path Finding](/blog/2014/06/22/)
+  * [A GPU Approach to Particle Physics](/blog/2014/06/29/)
+* ["Once" one-time concurrent initialization with an integer](/blog/2023/07/31/)
+  * [A flexible, lightweight, spin-lock barrier](/blog/2022/03/13/)
+  * [How to build a WaitGroup from a 32-bit integer](/blog/2022/10/05/)
 
 I also have a published paper: [ROP Gadget Prevalence and Survival under
 Compiler-based Binary Diversification Schemes][rop]
@@ -104,13 +96,12 @@ Compiler-based Binary Diversification Schemes][rop]
 ### Donations
 
 Occasionally someone is particularly happy with my open source work or
-articles, and they'll ask if they can somehow donate money in support. I
-make a very comfortable living outside of my blog, so such donations are
-neither needed nor motivating. I'd much prefer your donation go to more
-beneficial and effective causes than be wasted on a stingy miser like
-me. So, instead, [**donate to GiveWell**][givewell]. It's a sort of
-meta-charity that continuously analyzes where donations will have the
-greatest impact in the world and directs your money in that direction.
+writing, and they'll ask if they can somehow donate money in support. If
+that's you, [**donate to GiveWell**][givewell] and drop me a line that you
+did so because of my work. That's where your donation would ultimately go
+anyway. It's a meta-charity that continuously analyzes where donations
+will have the greatest impact in the world and directs your money in that
+direction.
 
 ### Software Preferences
 
@@ -224,7 +215,6 @@ It's wonderful having such concise keys and signatures!
 [binitools]: https://github.com/skeeto/binitools
 [c]: https://skeeto.s3.amazonaws.com/share/onward17-essays2.pdf
 [cc0]: https://web.archive.org/web/20150225160057/https://dancohen.org/2013/11/26/cc0-by/
-[chat]: https://sachachua.com/blog/2014/05/emacs-chat-christopher-wellons/
 [dotfiles]: https://github.com/skeeto/dotfiles
 [elfeed-meta]: /tags/elfeed/
 [elfeed]: https://github.com/skeeto/elfeed
@@ -235,7 +225,6 @@ It's wonderful having such concise keys and signatures!
 [fuzz]: /blog/2019/01/25/
 [givewell]: https://secure.givewell.org/
 [inbox]: https://lists.sr.ht/~skeeto/public-inbox
-[mentor]: /blog/2016/09/02/
 [mpv]: https://mpv.io/
 [mutt]: /blog/2017/06/15/
 [openbox]: http://openbox.org/wiki/Main_Page
@@ -253,7 +242,6 @@ It's wonderful having such concise keys and signatures!
 [ten]: /blog/2017/09/01/
 [u-config]: https://github.com/skeeto/u-config
 [unlicense]: http://unlicense.org/
-[usesthis]: https://usesthis.com/interviews/chris.wellons/
 [vim]: /blog/2017/04/01/
 [w64-all]: /blog/2020/09/25/
 [w64-game]: /blog/2021/03/11/
