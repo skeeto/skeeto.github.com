@@ -4,7 +4,11 @@ layout: post
 date: 2024-04-14T00:39:18Z
 tags: [c, cpp]
 uuid: 6b07a406-b303-4c2b-8afd-3e589b26eaa1
+excerpt_separator: <!--more-->
 ---
+
+*Update September 2025: This article [has a followup][followup] with
+corrections.*
 
 My techniques with [arena allocation][arena] and [strings][style] are
 oriented around C. I'm always looking for a better way, and lately I've
@@ -12,6 +16,8 @@ been experimenting with building them using C++ features. What are the
 trade-offs? Are the benefits worth the costs? In this article I lay out my
 goals, review implementation possibilities, and discuss my findings.
 Following along will require familiarity with those previous two articles.
+
+<!--more-->
 
 Some of C++ is beyond my mental capabilities, and so I cannot wield those
 parts effectively. Other parts I *can* wrap my head around, but it
@@ -449,6 +455,7 @@ sizable project.
 [arena]: /blog/2023/09/27/
 [buf]: /blog/2023/02/13/
 [debug]: https://vittorioromeo.info/index/blog/debug_performance_cpp.html
+[followup]: /blog/2025/09/30/
 [fuzz]: /blog/2019/01/25/
 [fwd]: https://www.foonathan.net/2020/09/move-forward/
 [hh]: https://www.youtube.com/watch?v=uHSLHvWFkto&t=4386s
