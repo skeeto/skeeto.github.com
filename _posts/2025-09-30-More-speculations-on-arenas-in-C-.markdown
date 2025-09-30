@@ -105,11 +105,11 @@ T *alloc(Arena *a, ptrdiff_t count = 1)
 }
 ```
 
-Wow… that's actually much better anyway. No cast, no loop. Why didn't I
-think of this in the first place? The catch is I can't forward constructor
-arguments, emplace-style — the part that gave me the trouble with perfect
-forwarding — but that's for the best. Forwarding more than once was
-unsound, made more obvious by the array new.
+Wow… that's actually much better anyway. No explicit casts, no loop. Why
+didn't I think of this in the first place? The catch is I can't forward
+constructor arguments, emplace-style — the part that gave me the trouble
+with perfect forwarding — but that's for the best. Forwarding more than
+once was unsound, made more obvious by the array new.
 
 Since I'm thinking about lifetimes, what about the other end? My arena
 does not call destructors, by design, and starts new lifetimes on top of
