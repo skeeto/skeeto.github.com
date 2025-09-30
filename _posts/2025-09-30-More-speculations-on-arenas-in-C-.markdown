@@ -46,7 +46,7 @@ int *newint(int v)
 {
     void *r = malloc(sizeof(int));
     if (r) {
-        return new (r) int{v};
+        return new(r) int{v};
     }
     return nullptr;
 }
@@ -79,7 +79,7 @@ T *alloc(Arena *a, ptrdiff_t count = 1)
     T *r = (T *)(a->beg + pad);
     a->beg += pad + count*size;
     for (ptrdiff_t i = 0; i < count; i++) {
-        new ((void *)&r[i]) T{};
+        new((void *)&r[i]) T{};
     }
     return r;
 }
@@ -101,7 +101,7 @@ T *alloc(Arena *a, ptrdiff_t count = 1)
     assert(count < (a->end - a->beg - pad)/size);  // OOM policy
     void *r = a->beg + pad;
     a->beg += pad + count*size;
-    return new (r) T[count]{};
+    return new(r) T[count]{};
 }
 ```
 
