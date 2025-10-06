@@ -109,7 +109,15 @@ Wow… that's actually much better anyway. No explicit casts, no loop. Why
 didn't I think of this in the first place? The catch is I can't forward
 constructor arguments, emplace-style — the part that gave me the trouble
 with perfect forwarding — but that's for the best. Forwarding more than
-once was unsound, made more obvious by the array new.
+once was unsound, made more obvious by `new[]`.
+
+Caveat: This only works starting in C++20, and strictly with `operator
+new[](size_t, void *)`. Any other placement `new[]` may require *array
+overhead* — e.g. it prepends an array size so that `delete[]` can run
+non-trivial destructors — which is unknowable and therefore impossible to
+provide or align correctly. Overhead for placement `new[]` is nonsense, of
+course, but as of this writing, *all three major C++ compilers do it* and
+essentially have broken custom placement `new[]`.
 
 Since I'm thinking about lifetimes, what about the other end? My arena
 does not call destructors, by design, and starts new lifetimes on top of
