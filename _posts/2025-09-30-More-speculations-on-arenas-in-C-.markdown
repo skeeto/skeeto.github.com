@@ -2,7 +2,7 @@
 title: More speculations on arenas in C++
 layout: post
 date: 2025-09-30T11:46:16Z
-tags: []
+tags: [cpp]
 uuid: ffce917f-c757-42e7-a4d1-55e8d80c5051
 ---
 
