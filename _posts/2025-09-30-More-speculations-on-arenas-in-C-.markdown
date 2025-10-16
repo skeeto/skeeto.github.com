@@ -4,7 +4,10 @@ layout: post
 date: 2025-09-30T11:46:16Z
 tags: [cpp]
 uuid: ffce917f-c757-42e7-a4d1-55e8d80c5051
+excerpt_separator: <!--more-->
 ---
+
+*Update October 2025: [further enhancements][followup]*.
 
 Patrice Roy's new book, [*C++ Memory Management*][mm], has made me more
 conscious of object lifetimes. C++ is stricter than C about lifetimes, and
@@ -16,6 +19,8 @@ lacking [the appropriate checks][z], and near the end has some [pointer
 overflows][po] invalidating the check.) However, I'm grateful for the new
 insights, and it's made me revisit [my own C++ arena allocation][prev]. In
 this new light I see I got it subtly wrong myself!
+
+<!--more-->
 
 Surprising to most C++ programmers, but not language lawyers, [idiomatic C
 memory allocation was ill-formed in C++ until recently][wg21]:
@@ -134,6 +139,7 @@ recommend both.
 
 
 [ca]: https://en.cppreference.com/w/cpp/memory/construct_at.html
+[followup]: /blog/2025/10/16/
 [io]: https://github.com/PacktPublishing/C-Plus-Plus-Memory-Management/blob/9e4c4ea7/chapter12/Vector-better.cpp#L45
 [jm]: https://www.youtube.com/watch?v=oZyhq4D-QL4
 [l]: https://en.cppreference.com/w/cpp/language/lifetime.html#Storage_reuse
