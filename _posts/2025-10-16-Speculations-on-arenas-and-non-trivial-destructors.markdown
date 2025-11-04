@@ -12,7 +12,7 @@ impact [my established arena usage][api]! That is, implicit RAII-style
 deallocation at scope termination, which works even in plain old C. With a
 small change we can safely place resource-managing objects in arenas, such
 as those owning file handles, sockets, threads, etc. (Though the ideal
-remains [resource management avoidance][swr] when possible.) We can also
+remains [resource management avoidance][srw] when possible.) We can also
 place traditional, memory-managing C++ objects in arenas, too. Their own
 allocations won't come from the arena — either because they [lack the
 interfaces][re] to do so, or they're simply ineffective at it ([pmr][]) —
