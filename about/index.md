@@ -222,7 +222,7 @@ It's wonderful having such concise keys and signatures!
 [enchive-meta]: /blog/2017/03/12/
 [enchive]: https://github.com/skeeto/enchive
 [endlessh]: https://github.com/skeeto/endlessh
-[fuzz]: /blog/2019/01/25/
+[fuzz]: /blog/2025/02/05/
 [givewell]: https://secure.givewell.org/
 [inbox]: https://lists.sr.ht/~skeeto/public-inbox
 [mpv]: https://mpv.io/
