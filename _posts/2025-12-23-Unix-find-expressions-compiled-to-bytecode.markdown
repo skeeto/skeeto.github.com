@@ -287,4 +287,4 @@ and could probably be an optimal program for this instruction set.
 [tw]: https://craftinginterpreters.com/a-tree-walk-interpreter.html
 [w64devkit]: https://github.com/skeeto/w64devkit
 [ww]: /blog/2022/02/18/
-[src]: https://github.com/skeeto/scratch/blob/master/parsers/findc.c
+[src]: https://github.com/skeeto/scratch/blob/c142e729/parsers/findc.c
