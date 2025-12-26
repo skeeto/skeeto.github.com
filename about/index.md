@@ -109,12 +109,11 @@ In general I stick to smaller, simpler tools — especially those I can
 modify and compile for myself. Sometimes this isn't possible (e.g. web
 browsers), so I just use what's popular despite it being neither.
 
-My preferred operating system is Debian. It has a great philosophy and
-rock solid package ecosystem. Since I don't like software changing
-underneath me, I strictly run the *stable* distribution. Of course I can
-still be productive on other Linux distributions or even any of the
-various BSDs. My dotfiles are quite portable and mostly work across all
-of them.
+My preferred Linux distribution is Debian. It has a great philosophy and
+rock solid package ecosystem. I don't like software changing underneath
+me, so I strictly run the *stable* distribution. Of course I can still be
+productive on other Linux distributions or even any of the various BSDs.
+My dotfiles are quite portable and mostly work across all of them.
 
 Contrast to earlier in my career, Windows has grown on me as a development
 platform. It's better than Linux on some dimensions, particularly as a
