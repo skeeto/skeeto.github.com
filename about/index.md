@@ -128,9 +128,6 @@ For text editing, I [exclusively use Vim][vim]. That includes composing
 blog articles and mail. I've never learned how to extend it, and probably
 never will.
 
-I use [Openbox][openbox] as my window manager, without adornments (panels,
-taskbar, etc.).
-
 My favorite programming language is C, and I've acquired [my own personal
 style][style]. It's [fast, simple][c], and compiles at lightning speed.
 Unlike most languages, it's quite reasonable for an individual to have a
@@ -227,7 +224,6 @@ It's wonderful having such concise keys and signatures!
 [inbox]: https://lists.sr.ht/~skeeto/public-inbox
 [mpv]: https://mpv.io/
 [mutt]: /blog/2017/06/15/
-[openbox]: http://openbox.org/wiki/Main_Page
 [p2p]: https://github.com/skeeto/passphrase2pgp
 [repos]: https://github.com/skeeto?tab=repositories
 [rop]: https://skeeto.s3.amazonaws.com/share/p15-coffman.pdf
