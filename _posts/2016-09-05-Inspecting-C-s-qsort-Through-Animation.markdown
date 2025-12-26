@@ -168,10 +168,10 @@ implementations.
 
 
 [source]: /download/qsort-animate.c
-[name]: http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.8162
+[name]: https://gallium.inria.fr/~maranget/X/421/09/bentley93engineering.pdf
 [shootout]: http://calmerthanyouare.org/2013/05/31/qsort-shootout.html
 [poor]: /blog/2011/11/28/
-[bug]: http://radiance-online.org:82/pipermail/radiance-dev/2016-March/001578.html
+[bug]: https://web.archive.org/web/20161126142829/http://radiance-online.org:82/pipermail/radiance-dev/2016-March/001578.html
 [diet]: https://www.fefe.de/dietlibc/
 [musl]: https://www.musl-libc.org/
 [ucrt]: https://web.archive.org/web/0/https://blogs.msdn.microsoft.com/vcblog/2015/03/03/introducing-the-universal-crt/
