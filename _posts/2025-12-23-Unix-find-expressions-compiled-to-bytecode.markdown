@@ -114,6 +114,9 @@ this opcode is a stand-in, and it kind of pretends based on looks. Each
 action sets the register, and actions like `-print` always set it to true.
 My compiler is [called **`findc` ("find compiler")**][src].
 
+**Update**: Or try [the **online demo**][demo] via Wasm! This version
+includes a peephole optimizer I wrote after publishing this article.
+
 I assume readers of this program are familiar with [`push` macro][push]
 and [`Slice` macro][slice]. Because of the latter it requires a very
 recent C compiler, like GCC 15 (e.g. via [w64devkit][]) or Clang 22. Try
@@ -278,13 +281,14 @@ its end, this `halt` is that branch target. A few peephole optimizations
 and could probably be an optimal program for this instruction set.
 
 
+[demo]: https://nullprogram.com/scratch/findc/
 [find]: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/find.html
 [peep]: https://en.wikipedia.org/wiki/Peephole_optimization
 [push]: /blog/2025/01/19/
 [slice]: /blog/2025/06/26/
+[src]: https://github.com/skeeto/scratch/blob/c142e729/parsers/findc.c
 [sya]: https://en.wikipedia.org/wiki/Shunting_yard_algorithm
 [tc]: /blog/2016/04/30/
 [tw]: https://craftinginterpreters.com/a-tree-walk-interpreter.html
 [w64devkit]: https://github.com/skeeto/w64devkit
 [ww]: /blog/2022/02/18/
-[src]: https://github.com/skeeto/scratch/blob/c142e729/parsers/findc.c
