@@ -26,7 +26,7 @@ is a valid, writable address, which resurfaces some, old school, high
 level language challenges regarding null pointers. There are 32-bit and
 64-bit flavors, though the latter remains experimental. That suits me: I
 appreciate smaller pointers on 64-bit hosts, and I wish I could opt into
-more often (e.g. x32).
+it more often (e.g. x32).
 
 As browser tech goes, they chose an apt name: WebAssembly is to the web as
 JavaScript is to Java.
@@ -97,7 +97,7 @@ with Wasm, particularly `wasm2wat` to inspect Wasm modules, sort of like
 `objdump` or `readelf`. It converts Wasm to the WebAssembly Text Format
 (WAT).
 
-Learning Wasm I had quite some difficultly finding information. Outside of
+Learning Wasm I had quite some difficulty finding information. Outside of
 the Wasm specification, which, despite its length, is merely a narrow
 slice of the ecosystem, important technical details are scattered all over
 the place. Some is only available as source code, some buried comments in
