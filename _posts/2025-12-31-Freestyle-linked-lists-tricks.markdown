@@ -222,9 +222,10 @@ EnvIter new_enviter(Env *env, Str key)
 
 Str enviter_next(EnvIter *it)
 {
-    for (; it->env; it->hash <<= 1) {
+    while (it->env) {
         Env *cur = it->env;
         it->env = it->env->child[it->hash>>63];
+        it->hash <<= 1;
         if (equals(it->key, cur->key)) {
             return cur->value;
         }
@@ -232,6 +233,8 @@ Str enviter_next(EnvIter *it)
     return (Str){};
 }
 ```
+
+**Update**: Thanks to [Daniel Kareh for a correction][fix].
 
 Then we can use a loop to visit every match in source order:
 
@@ -381,6 +384,7 @@ so it fits comfortably on embedded systems, tiny WebAssembly programs,
 etc.  All the above code is available ready to run: [`list.c`][src].
 
 
+[fix]: https://lists.sr.ht/~skeeto/public-inbox/%3CSJ2PR12MB79208563F4485DCAA27D5776A2BAA@SJ2PR12MB7920.namprd12.prod.outlook.com%3E?__goaway_challenge=meta-refresh&__goaway_id=5902363e020028d0488062799debf13b&__goaway_referer=https%3A%2F%2Flists.sr.ht%2F~skeeto%2Fpublic-inbox
 [msi]: /blog/2022/08/08/
 [obj]: /blog/2025/03/02/
 [quick]: /blog/2025/01/19/
