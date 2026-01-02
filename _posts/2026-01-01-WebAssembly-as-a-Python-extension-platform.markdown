@@ -233,8 +233,8 @@ a multi-threaded program perhaps these would be lazily-constructed thread
 locals. I haven't had to solve this yet.
 
 However, the weakness of the wasmtime "store" really shows: Notice how
-compilation and instantiation are bound together in one store? I cannot
-compile once and then create disposable instances on the fly, e.g. as
+compilation and instantiation are bound together in one store? ~~I cannot
+compile once and then create disposable instances on the fly~~, e.g. as
 required for each run of a WASI program. Every instance permanently
 extends the compilation store. In practice we must wastefully re-compile
 the Wasm program for each disposable instance. Despite appearances,
@@ -242,8 +242,14 @@ compilation and instantiation are not actually distinct steps, as they are
 in JavaScript's Wasm API. `wasmtime.Instance` accepts a store as its first
 argument, *suggesting* use of a different store for instantiation. That
 would solve this problem, but as of this writing it *must* be the same
-store used to compile the module. This is a fatal flaw for certain real
-use cases, particularly WASI.
+store used to compile the module. ~~This is a fatal flaw for certain real
+use cases, particularly WASI.~~
+
+**Update**: Wolfgang Meier points out the `serialize` and `deserialize`
+methods, which detaches a compiled module from its store, allowing for
+independent instantations. I tried it, and it's a practical workaround.
+Overhead is low; no validation when deserializing. My benchmark now does
+it for future reference, as I expect it to be my typical use case.
 
 ### WebAssembly as embedded capabilities
 
