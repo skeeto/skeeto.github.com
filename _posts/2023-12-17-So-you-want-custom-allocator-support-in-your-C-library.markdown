@@ -296,7 +296,8 @@ readily available that it can mostly be automated away. Notable exception:
 `operator new[]` and `operator delete[]` with trivial destructors. With
 non-trivial destructors, `operator new[]` must track the array length for
 its its own purposes *on top of libc bookkeeping*. In other words, array
-allocations have their size stored in at least three different places!
+allocations have their size stored in at least three different places! C23
+later gained [a similar `free_sized`][c23].
 
 That means the "free" interface should look like this:
 
@@ -416,6 +417,7 @@ simple allocator's best friend!
 
 [arena]: /blog/2023/09/27/
 [c++]: https://www.youtube.com/watch?v=LIb3L4vKZ7U
+[c23]: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2699.htm
 [closure]: /blog/2017/01/08/
 [hn]: https://news.ycombinator.com/item?id=38675379
 [libc]: /blog/2023/02/11/
