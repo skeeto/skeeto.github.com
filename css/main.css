@@ -299,13 +299,6 @@ main article .abstract {
     font-style: italic;
 }
 
-main article .short-term-notice {
-    margin-top: 0.2em;
-    color: #888;
-    font-style: italic;
-    text-align: center;
-}
-
 main article ul.tags li {
     list-style-type: none;
     display: inline-block;
