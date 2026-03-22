@@ -230,10 +230,12 @@ reverse the quoted regions.
 How can I "sign extend" a 1 into all bits set, or do nothing for zero?
 Negate it!
 
+```c
     uint32_t carry  = -(prev & 1);
     uint32_t quotes = find_quoted_regions(input) ^ carry;
     // ...
     prev = quotes;
+```
 
 That takes care of computing quoted regions and chaining them between
 chunks. The loop will unfortunately cause branch prediction penalties if
