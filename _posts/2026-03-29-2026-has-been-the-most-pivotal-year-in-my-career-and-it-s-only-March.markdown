@@ -242,9 +242,9 @@ Code by a small margin. It's immediately obvious that Cursor is better
 agent software than Claude Code. It's more robust, more featureful, and
 with a clearer UI than Claude Code. It has no trouble on Windows and can
 drive w64devkit flawlessly. It's also more expensive than Claude Code. My
-employer currently spends US$250/mo my AI tokens, dirt cheap considering
-what they're getting out of it. I have bottlenecks elsewhere that keep me
-from spending even more.
+employer currently spends ~US$250/mo on my AI tokens, dirt cheap
+considering what they're getting out of it. I have bottlenecks elsewhere
+that keep me from spending even more.
 
 Neither Cursor nor Claude Code are open source, so what are the purists to
 do, even if they're willing to pay API rates for tokens? Sadly I have no
