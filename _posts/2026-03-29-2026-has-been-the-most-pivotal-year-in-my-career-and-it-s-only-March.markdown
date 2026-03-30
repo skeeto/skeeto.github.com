@@ -251,12 +251,18 @@ do, even if they're willing to pay API rates for tokens? Sadly I have no
 answers for you. I haven't gotten any open source agent software actually
 working, and it seems they may lack the necessary secret sauce.
 
+Update: Several folks suggested I give [OpenCode][] another shot, and this
+time I got over the configuration hurdle. Single executable, slick
+interface, and unlike Claude Code, I observed no bugs in my brief trial.
+Give that a shot if you're looking for an open source client.
+
 The future is going to be weird. My experience is only a peek at what's to
 come, and my head is still spinning. However, the more I adapt to the
 changes, the better I feel. If you're feeling anxious like I was, don't
 flinch from improving your own AI knowledge and experience.
 
 
+[OpenCode]: https://opencode.ai/
 [Quilt.cpp]: https://github.com/skeeto/quilt.cpp
 [Quilt]: https://savannah.nongnu.org/projects/quilt
 [almost]: /blog/2020/09/25/
