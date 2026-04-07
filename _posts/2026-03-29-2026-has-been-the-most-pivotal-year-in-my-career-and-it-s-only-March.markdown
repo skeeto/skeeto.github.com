@@ -225,8 +225,8 @@ For agent software, on personal projects I'm using Claude Code. It's a
 great value, cheaper than paying API rates but requires working around
 5-hour limit windows. I started with Pro (US$20/mo), but I'm getting so
 much out of it that as of this writing I'm on 5x Max (US$100/mo) simply to
-have enough to explore all my ideas. Be warned: Anthropic software is
-quite buggy, more so than industry average, and it's obvious that they
+have enough to explore all my ideas. Be warned: **Anthropic software is
+quite buggy, more so than industry average**, and it's obvious that they
 never even *start*, let alone test, some of their released software on
 disfavored platforms (Windows, Android). Don't expect to use Claude Code
 effectively for native Windows platform development, which sadly includes
