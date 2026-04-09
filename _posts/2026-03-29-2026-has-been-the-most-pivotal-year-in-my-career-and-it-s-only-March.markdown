@@ -246,6 +246,11 @@ employer currently spends ~US$250/mo on my AI tokens, dirt cheap
 considering what they're getting out of it. I have bottlenecks elsewhere
 that keep me from spending even more.
 
+As a general rule, for software engineering always use the smartest model
+available. The cheaper, dumber models cost more in the long run. It takes
+more tokens to achieve worse results, which costs more human time to sort
+out.
+
 Neither Cursor nor Claude Code are open source, so what are the purists to
 do, even if they're willing to pay API rates for tokens? Sadly I have no
 answers for you. I haven't gotten any open source agent software actually
