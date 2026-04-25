@@ -18,6 +18,8 @@ to me only a year ago. Like it or not, this is the future of software
 engineering. Turns out I like it, and having tasted the future I don't
 want to go back to the old ways.
 
+![](/img/20x.png)
+
 In case you're worried, this is still me. These are my own words. [Writing
 is thinking][writes], and it would defeat the purpose for an AI to write
 in my place on my personal blog. That's not going to change.
