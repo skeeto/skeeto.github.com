@@ -2,7 +2,7 @@
 title: "My brave new code-signing world"
 layout: post
 date: 2026-04-25T18:12:29Z
-tags: [ai, c, cpp]
+tags: [ai, cpp, crypto]
 uuid: 9db72e48-92f3-4426-a18f-9a317354e2c8
 ---
 
