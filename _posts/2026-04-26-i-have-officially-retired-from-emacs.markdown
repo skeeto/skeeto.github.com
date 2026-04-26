@@ -3,7 +3,7 @@ title: I have officially retired from Emacs
 layout: post
 date: 2026-04-26T00:00:00Z
 tags: [ai, cpp, emacs, elfeed]
-uuid: 9db72e48-92f3-4426-a18f-9a317354e2c8
+uuid: 91357133-9d2d-4a6f-9b39-4bd1d35c814e
 ---
 
 This past Tuesday I typed `C-x C-c` in Emacs for the last time after 20
