@@ -4,7 +4,10 @@ layout: post
 date: 2026-04-26T00:00:00Z
 tags: [ai, cpp, emacs, elfeed]
 uuid: 91357133-9d2d-4a6f-9b39-4bd1d35c814e
+excerpt_separator: <!--more-->
 ---
+
+This article was discussed [on reddit][reddit] and [on Hacker News][hn].
 
 This past Tuesday I typed `C-x C-c` in Emacs for the last time after 20
 years of daily use. Though [nearly half that time][vim] was gradually
@@ -16,6 +19,8 @@ in a few days' work, namely [`M-x calc`][calc] with **[stackcalc][]** and
 [Elfeed][init] with **[Elfeed2][]**. I'm especially excited about the
 latter because it already exceeds the original. Both are multi-platform,
 native C++ GUI applications using native UI components.
+
+<!--more-->
 
 ![](/img/elfeed2.png)
 
@@ -94,11 +99,13 @@ come, except where something like Dear ImGui is a better git.
 [dcmake]: https://github.com/skeeto/dcmake
 [dtrace]: /blog/2018/01/17/
 [help]: https://github.com/skeeto/elfeed/discussions/563
+[hn]: https://news.ycombinator.com/item?id=47906651
 [init]: /blog/2013/09/04/
 [melpa]: https://melpa.org/#/?q=skeeto
+[reddit]: https://old.reddit.com/r/emacs/comments/1svziwa
+[sane]: /blog/2021/12/30/
 [sp]: /blog/2026/03/29/
 [stackcalc]: https://github.com/skeeto/stackcalc
 [vim]: /blog/2017/04/01/
 [w64devkit]: https://github.com/skeeto/w64devkit
 [wxWidgets]: https://wxwidgets.org/
-[sane]: /blog/2021/12/30/
