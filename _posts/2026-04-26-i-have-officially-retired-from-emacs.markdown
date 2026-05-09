@@ -28,17 +28,17 @@ These [actively-in-use][melpa] packages require new maintainers (apply on
 the project's issues/discussion):
 
 * [@](https://github.com/skeeto/at-el/) ([about](/blog/2013/04/07/))
-* [aio](https://github.com/skeeto/emacs-aio/) (probably covered; [about](/blog/2019/03/10/))
+* ~~[aio](https://github.com/skeeto/emacs-aio/) ([about](/blog/2019/03/10/))~~
 * [bitpack](https://github.com/skeeto/bitpack/)
-* [Elfeed](https://github.com/skeeto/elfeed/) ([apply here](https://github.com/skeeto/elfeed/discussions/563))
-* [Impatient](https://github.com/skeeto/impatient-mode/) ([about](/blog/2012/08/20/))
+* ~~[Elfeed](https://github.com/skeeto/elfeed/) ([apply here](https://github.com/skeeto/elfeed/discussions/563))~~
+* ~~[Impatient](https://github.com/skeeto/impatient-mode/) ([about](/blog/2012/08/20/))~~
 * [javadoc-lookup](https://github.com/skeeto/javadoc-lookup/) ([about](/blog/2013/01/30/))
 * [json-rpc](https://github.com/skeeto/elisp-json-rpc/)
 * [memoize](https://github.com/skeeto/emacs-memoize/) ([about](/blog/2010/07/26/))
-* [nasm-mode](https://github.com/skeeto/nasm-mode/) ([about](/blog/2015/04/19/))
-* [simple-httpd](https://github.com/skeeto/emacs-web-server/) ([about](/blog/2012/08/20/))
+* ~~[nasm-mode](https://github.com/skeeto/nasm-mode/) ([about](/blog/2015/04/19/))~~
+* ~~[simple-httpd](https://github.com/skeeto/emacs-web-server/) ([about](/blog/2012/08/20/))~~
 * [Skewer](https://github.com/skeeto/skewer-mode/) ([about](/blog/2012/10/31/))
-* [weak-ref](https://github.com/skeeto/elisp-weak-ref/) ([about](/blog/2012/12/17/))
+* ~~[weak-ref](https://github.com/skeeto/elisp-weak-ref/) ([about](/blog/2012/12/17/))~~
 * [x86-lookup](https://github.com/skeeto/x86-lookup/) ([about](/blog/2015/11/21/))
 
 No wonder it took so long for me to move on! I'm not handing these off to
