@@ -72,6 +72,11 @@ acknowledged by the Go developers:
 The story for native interop (cgo) [isn't great either][cgo] and
 requires trading away Go's biggest strengths.
 
+**Update 2026**: Go bootstrap is [now complicated][bs], and bootstraping
+from source is decreasingly practical. However, Peter0x44 has [scripts][]
+to help, which also patch Go's linker to support w64devkit's [more capable
+default object format][bigobj].
+
 ### Package Management
 
 Go has decentralized package management — or, more accurately, *module*
@@ -180,6 +185,8 @@ itself. It's an under-appreciated piece of technology!
 
 
 [amal]: https://www.sqlite.org/amalgamation.html
+[bigobj]: https://peter0x44.github.io/posts/bigobj_format_explained/
+[bs]: https://go.dev/doc/go1.22#bootstrap
 [build]: /blog/2017/03/30/
 [cgo]: https://dave.cheney.net/2016/01/18/cgo-is-not-go
 [dcss]: https://crawl.develz.org/
@@ -196,4 +203,5 @@ itself. It's an under-appreciated piece of technology!
 [pypi]: https://github.com/dateutil/dateutil/issues/984
 [r]: https://old.reddit.com/r/golang/comments/es621w/gos_tooling_is_an_undervalued_technology/
 [rs]: https://lobste.rs/s/vycqgn/go_s_tooling_is_undervalued_technology
+[script]: https://github.com/skeeto/w64devkit/tree/master/contrib/gobuild
 [stb]: https://github.com/nothings/stb
