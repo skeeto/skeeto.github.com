@@ -15,7 +15,7 @@ application: build [my pkg-config implementation][pc] such that on Windows
 `pkg-config.exe` behaves as a native pkg-config, but when run under Wine
 this same binary takes the persona of a Linux program and becomes a cross
 toolchain pkg-config, bypassing Win32 and talking directly with the Linux
-kernel. [Cosmopolitcan Libc][libc] cleverly does this out-of-the-box, but
+kernel. [Cosmopolitan Libc][libc] cleverly does this out-of-the-box, but
 in this article we'll mash together a couple existing sources with a bit
 of glue.
 
