@@ -152,8 +152,10 @@ Now that you've made it this far, here's an exercise for practice: Search
 online for "inline assembly tutorial" and count the defects you find by
 applying my 6 rules. You'll likely find at least one per result that isn't
 [official compiler documentation][docs]. Besides tutorials and reviewing
-real programs, you could [ask an LLM to generate inline assembly][llm], as
-they've been been trained to produce these common defects.
+real programs, ~~you could [ask an LLM to generate inline assembly][llm],
+as they've been been trained to produce these common defects.~~ (Update:
+No longer true for frontier models as of early 2026, and since mid 2026 AI
+solidly exceeds humans at inline assembly.)
 
 
 [docs]: https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
