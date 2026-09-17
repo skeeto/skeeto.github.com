@@ -38,8 +38,8 @@ have chosen a better name. I suggest using "stars 4x" in your searches.
 
 If you want to build from source and hack on the VM yourself, the best
 tool for the job is [w64devkit][], of course, because it [comes with
-everything you'll need][]. Plus the game itself: `stars.exe` from
-[`stars27jrc3.zip`][dl].
+everything you'll need][everything]. Plus the game itself: `stars.exe`
+from [`stars27jrc3.zip`][dl].
 
 ### Implementation details
 
