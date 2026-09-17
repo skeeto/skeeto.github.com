@@ -1,7 +1,7 @@
 ---
 title: A custom virtual machine for the Stars! 4X game
 layout: post
-date: 2026-06-17T02:00:00Z
+date: 2026-09-17T02:00:00Z
 tags: [c, game]
 uuid: 0b80f9d8-07a1-4d9f-a26d-f119b08364da
 ---
