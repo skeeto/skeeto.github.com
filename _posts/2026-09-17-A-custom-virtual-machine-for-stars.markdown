@@ -31,8 +31,8 @@ It doesn't dump a `Stars.ini` under `C:\WINDOWS`, it interacts properly
 with the task bar, and copy protection is neutralized via the OS bridge.
 
 If you ever been curious about Stars!, now's the time to try it. The game
-has a thorough, built-in tutorial, but also check out the [wiki][], the
-[official strategy guide][ssg], and [AutoHost][] (play-by-email service).
+has a thorough, built-in tutorial, but also check out the [manual][],
+[wiki][], [strategy guide][ssg], and [AutoHost][] (play-by-email service).
 The game predates the modern search engine concept, otherwise they might
 have chosen a better name. I suggest using "stars 4x" in your searches.
 
@@ -138,6 +138,7 @@ should open the game to easy modding, but I'm more engineer than modder.
 [buf]: /blog/2023/02/13/
 [dl]: https://wiki.starsautohost.org/wiki/Downloads
 [everything]: /blog/2020/09/25/
+[manual]: https://dn790003.ca.archive.org/0/items/manual_Stars/Stars.pdf
 [otvdm]: https://github.com/otya128/winevdm
 [poker]: /blog/2017/07/27/
 [signed]: /blog/2026/04/25/
