@@ -138,7 +138,7 @@ should open the game to easy modding, but I'm more engineer than modder.
 [buf]: /blog/2023/02/13/
 [dl]: https://wiki.starsautohost.org/wiki/Downloads
 [everything]: /blog/2020/09/25/
-[manual]: https://dn790003.ca.archive.org/0/items/manual_Stars/Stars.pdf
+[manual]: https://archive.org/download/manual_Stars/Stars.pdf
 [otvdm]: https://github.com/otya128/winevdm
 [poker]: /blog/2017/07/27/
 [signed]: /blog/2026/04/25/
