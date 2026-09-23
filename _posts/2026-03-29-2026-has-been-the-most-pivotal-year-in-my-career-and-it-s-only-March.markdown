@@ -253,6 +253,12 @@ available. The cheaper, dumber models cost more in the long run. It takes
 more tokens to achieve worse results, which costs more human time to sort
 out.
 
+(Update September 2026: This summer Claude Desktop drastically improved,
+and is currently the best publicly available coding harness. On the other
+hand Cursor degraded, adopted dark patterns, and is untrustworthy. With
+the OpenAI models no longer available on Cursor, there is no longer any
+reason whatsoever to use it.)
+
 Neither Cursor nor Claude Code are open source, so what are the purists to
 do, even if they're willing to pay API rates for tokens? Sadly I have no
 answers for you. I haven't gotten any open source agent software actually
