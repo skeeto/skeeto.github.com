@@ -6,7 +6,7 @@ tags: [c, cpp]
 uuid: 843e3ff4-8bd3-4106-bca9-608a80e66545
 ---
 
-The past year has been exciting for w64devkit, which like any software
+The past year has been exciting for [w64devkit][], which like any software
 distribution is never complete. [Peter0x44][] joined as co-maintainer, and
 has pushed the project in good, new directions, with ideas I would never
 have considered. Many of his improvements have gone back upstream, and so
@@ -250,3 +250,4 @@ already doing anyway.
 [srw]: /blog/2024/10/03/
 [uuidgen]: https://learn.microsoft.com/en-us/windows/win32/rpc/generating-interface-uuids
 [uuidgen.c]: https://github.com/skeeto/w64devkit/blob/master/src/uuidgen.c
+[w64devkit]: https://github.com/skeeto/w64devkit
