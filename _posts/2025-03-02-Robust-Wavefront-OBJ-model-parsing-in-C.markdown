@@ -105,7 +105,7 @@ To start off, we'll be [using an arena][arena] of course, trivializing
 memory management while swiping aside all hard-coded limits. A quick
 reminder of the interface:
 
-``` c
+```c
 #define new(a, n, t)    (t *)alloc(a, n, sizeof(t), _Alignof(t))
 
 typedef struct {

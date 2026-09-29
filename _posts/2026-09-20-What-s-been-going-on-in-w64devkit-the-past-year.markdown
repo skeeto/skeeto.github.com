@@ -16,20 +16,20 @@ various odds and ends from the past year.
 ### Release security
 
 In April I [announced that release packaging is now signed][sign]. Today
-_all_ EXEs and DLLS in w64devkit are code-signed with my key. My signing
+*all* EXEs and DLLS in w64devkit are code-signed with my key. My signing
 key established a good reputation thanks to thousands of unique signatures
 observed on the order of ~100,000 hosts — a pleasant side effect from
 including ~300 binaries in a release. Users should have fewer problems
 these days with security software. MSYS2 has also [adopted my signing
 tool][msys2], `aas-sign`, which is now included in w64devkit releases.
 
-Builds are now automated by GitHub Actions, triggered when I (and _only_
+Builds are now automated by GitHub Actions, triggered when I (and *only*
 I) push a new tag. That process code-signs and creates the release. Every
 step of the release process is transparent, derived strictly from source
 in the repository. Nowhere does it go behind a curtain and permit secret
 tampering.
 
-But that's not all. I enabled _release immutability_: On publish, release
+But that's not all. I enabled *release immutability*: On publish, release
 artifacts are locked in and nobody, not even me, can modify them. You can
 tell by the presence of a release attestation at the end of the artifacts
 listing. Nobody involved in the project down the road can go rogue and

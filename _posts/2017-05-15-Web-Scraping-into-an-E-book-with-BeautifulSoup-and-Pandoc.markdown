@@ -230,7 +230,7 @@ I don't have permission to share the resulting e-book, but I can share
 my script so that you can generate your own, at least as long as it's
 hosted at the same place with the same structure.
 
-* [extract.py](/download/leather/extract.py){: .download}
+* <a href="/download/leather/extract.py" class="download">extract.py</a>
 
 
 [bs4]: https://www.crummy.com/software/BeautifulSoup/

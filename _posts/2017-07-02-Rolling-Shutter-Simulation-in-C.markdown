@@ -3,6 +3,7 @@ title: Rolling Shutter Simulation in C
 layout: post
 date: 2017-07-02T18:35:16Z
 tags: [c, media, tutorial, trick]
+uuid: 6b865192-8490-44af-95fd-897957a46752
 ---
 
 The most recent [Smarter Every Day (#172)][sed] explains a phenomenon
@@ -256,7 +257,7 @@ to see the full resolution video.
 
 This post contains the full source in parts, but here it is all together:
 
-* [rshutter.c](/download/rshutter.c){: .download}
+* <a href="/download/rshutter.c" class="download">rshutter.c</a>
 
 Here's the original video, filmed by my wife using her Nikon D5500, in
 case you want to try it for yourself:

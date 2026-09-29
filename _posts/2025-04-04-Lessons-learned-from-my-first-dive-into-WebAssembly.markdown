@@ -133,7 +133,7 @@ The object file `example.o` is in Wasm format, so WABT can examine it.
 Here's the output of `wasm2wat -f`, where `-f` produces output in the
 "folded" format, which is how I prefer to read it.
 
-```racket
+```wat
 (module
   (type (;0;) (func (param f32 f32) (result f32)))
   (import "env" "__linear_memory" (memory (;0;) 0))
@@ -180,7 +180,7 @@ The `-nostdlib` is because we won't be using a language runtime, and
 with the Wasm *start function*, but `wasm-ld` does not support the *start
 section* at all! We'll have use for an entry point later. The folded WAT:
 
-```racket
+```wat
 (module $a.out
   (type (;0;) (func (param i32)))
   (import "env" "f" (func $f (type 0)))
@@ -245,7 +245,7 @@ int get(int *p)
 
 In WAT:
 
-```racket
+```wat
 (func $get (type 0) (param i32) (result i32)
   (i32.load
     (local.get 0)))
@@ -257,7 +257,7 @@ Since the "hardware" won't fault for us, ask Clang to do it instead:
 
 Now in WAT:
 
-```racket
+```wat
 (module
   (type (;0;) (func (param i32) (result i32)))
   (import "env" "__linear_memory" (memory (;0;) 0))
@@ -298,7 +298,7 @@ void clear(void *buf, long len)
 ([Below LLVM 20][llvm] you will need the undocumented `-mbulk-memory`
 option.) In WAT we see this as `memory.fill`:
 
-```racket
+```wat
 (module
   (type (;0;) (func (param i32 i32)))
   (import "env" "__linear_memory" (memory (;0;) 0))

@@ -279,7 +279,6 @@ it in the future, at least for non-graphical applications.
 [GetQueuedCompletionStatus]: https://learn.microsoft.com/en-us/windows/win32/api/ioapiset/nf-ioapiset-getqueuedcompletionstatus
 [OVERLAPPED]: https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-overlapped
 [WSAOVERLAPPED]: https://learn.microsoft.com/en-us/windows/win32/api/winsock2/ns-winsock2-wsaoverlapped
-[WSARecvFrom]: https://learn.microsoft.com/en-us/windows/win32/api/ioapiset/nf-ioapiset-getqueuedcompletionstatus
 [WSARecvFrom]: https://learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-wsarecvfrom
 [blast]: /blog/2018/04/13/
 [buf]: /blog/2023/02/13/

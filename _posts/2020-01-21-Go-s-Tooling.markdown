@@ -73,7 +73,7 @@ The story for native interop (cgo) [isn't great either][cgo] and
 requires trading away Go's biggest strengths.
 
 **Update 2026**: Go bootstrap is [now complicated][bs], and bootstraping
-from source is decreasingly practical. However, Peter0x44 has [scripts][]
+from source is decreasingly practical. However, Peter0x44 has [scripts][script]
 to help, which also patch Go's linker to support w64devkit's [more capable
 default object format][bigobj].
 

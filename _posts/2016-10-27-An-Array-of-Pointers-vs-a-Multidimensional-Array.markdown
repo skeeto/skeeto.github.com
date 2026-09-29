@@ -147,7 +147,7 @@ lea    rax, [rip + address]
 
 Or in AT&T syntax:
 
-~~~gas
+~~~att
 lea    address(%rip), %rax
 ~~~
 

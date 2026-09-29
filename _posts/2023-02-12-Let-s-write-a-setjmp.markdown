@@ -120,7 +120,7 @@ first, then the other registers in order. However, the current value of
 the stack by the caller. I'll read that off the stack into a scratch
 register, `rax`, and then store it in the first element of `buf`.
 
-```nasm
+```att
     mov (%rsp), %rax
     mov %rax,  0(%rcx)
 ```
@@ -131,14 +131,14 @@ before `rip` was pushed, as it would be just after a `ret`. I use a `lea`,
 placing the result in a scratch register, then write it into the second
 element of `buf` (i.e. 8 bytes into `%rcx`).
 
-```nasm
+```att
     lea 8(%rsp), %rax
     mov %rax,  8(%rcx)
 ```
 
 Everything else is a matter of elbow grease.
 
-```nasm
+```att
     mov %rbp, 16(%rcx)
     mov %rbx, 24(%rcx)
     mov %rdi, 32(%rcx)
@@ -151,7 +151,7 @@ Everything else is a matter of elbow grease.
 
 With all work complete, return zero to the caller.
 
-```nasm
+```att
     xor %eax, %eax
     ret
 ```
@@ -195,7 +195,7 @@ In `longjmp` we need to restore all those registers. For purely aesthetic
 reasons I've decided to do it in reverse order. Everything but `rip` is
 easy.
 
-```nasm
+```att
     mov 72(%rcx), %r15
     mov 64(%rcx), %r14
     mov 56(%rcx), %r13
@@ -213,7 +213,7 @@ return value. The x64 calling convention says the second argument is
 passed in `rdx`, so move that to `rax`, then `jmp` to the caller. It's
 only a 32-bit operand, C `int`, so `edx` instead of `rdx`.
 
-```nasm
+```att
     mov %edx, %eax
     jmp *0(%rcx)
 ```
@@ -302,7 +302,7 @@ the rest of the program with MSVC, which means I need two compilers.
 Instead, I'll move to pure assembly, assemble with GNU `as` (TODO: port
 to MASM?) so we'll only need a tiny piece of the GNU toolchain.
 
-```nasm
+```att
 	.global setjmp
 setjmp:
         mov (%rsp), %rax

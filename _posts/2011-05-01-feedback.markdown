@@ -56,20 +56,19 @@ factor (press g or G) while running the app. A couple of these were made
 using an experimental fractal-like image operator that can only be
 turned on in the source code.
 
-[![](/img/feedback/fractal-thumb.png)](/img/feedback/fractal.png)
-[![](/img/feedback/gimpy-thumb.png)](/img/feedback/gimpy.png)
-[![](/img/feedback/green-spots-thumb.png)](/img/feedback/green-spots.png)
-[![](/img/feedback/halo-thumb.png)](/img/feedback/halo.png)
-[![](/img/feedback/orange-star-thumb.png)](/img/feedback/orange-star.png)
-[![](/img/feedback/pink-spiral-thumb.png)](/img/feedback/pink-spiral.png)
-[![](/img/feedback/spin-blur-thumb.png)](/img/feedback/spin-blur.png)
-[![](/img/feedback/spin-spiral-thumb.png)](/img/feedback/spin-spiral.png)
-[![](/img/feedback/spiral-thumb.png)](/img/feedback/spiral.png)
-[![](/img/feedback/star-thumb.png)](/img/feedback/star.png)
-[![](/img/feedback/sun-thumb.png)](/img/feedback/sun.png)
-[![](/img/feedback/tunnel-thumb.png)](/img/feedback/tunnel.png)
-[![](/img/feedback/gear-thumb.png)](/img/feedback/gear.png)
-{: .grid}
+<p class="grid"><a href="/img/feedback/fractal.png"><img src="/img/feedback/fractal-thumb.png" alt="" /></a>
+<a href="/img/feedback/gimpy.png"><img src="/img/feedback/gimpy-thumb.png" alt="" /></a>
+<a href="/img/feedback/green-spots.png"><img src="/img/feedback/green-spots-thumb.png" alt="" /></a>
+<a href="/img/feedback/halo.png"><img src="/img/feedback/halo-thumb.png" alt="" /></a>
+<a href="/img/feedback/orange-star.png"><img src="/img/feedback/orange-star-thumb.png" alt="" /></a>
+<a href="/img/feedback/pink-spiral.png"><img src="/img/feedback/pink-spiral-thumb.png" alt="" /></a>
+<a href="/img/feedback/spin-blur.png"><img src="/img/feedback/spin-blur-thumb.png" alt="" /></a>
+<a href="/img/feedback/spin-spiral.png"><img src="/img/feedback/spin-spiral-thumb.png" alt="" /></a>
+<a href="/img/feedback/spiral.png"><img src="/img/feedback/spiral-thumb.png" alt="" /></a>
+<a href="/img/feedback/star.png"><img src="/img/feedback/star-thumb.png" alt="" /></a>
+<a href="/img/feedback/sun.png"><img src="/img/feedback/sun-thumb.png" alt="" /></a>
+<a href="/img/feedback/tunnel.png"><img src="/img/feedback/tunnel-thumb.png" alt="" /></a>
+<a href="/img/feedback/gear.png"><img src="/img/feedback/gear-thumb.png" alt="" /></a></p>
 
 
 [new]: /blog/2014/06/21/

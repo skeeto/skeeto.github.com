@@ -333,7 +333,7 @@ database transactions — shortsightedness on my part!
 
 [emacsql]: https://github.com/skeeto/emacsql
 [pastebin]: /blog/2012/12/29/
-[readable]: /blog/2013/12/30/#almost_everything_prints_readably
+[readable]: /blog/2013/12/30/#almost-everything-prints-readably
 [finalize]: /blog/2014/01/27/
 [elfeed]: /blog/2013/09/09/
 [buffer]: http://sqlite.1065341.n5.nabble.com/Command-line-shell-not-flushing-stderr-when-interactive-td73340.html

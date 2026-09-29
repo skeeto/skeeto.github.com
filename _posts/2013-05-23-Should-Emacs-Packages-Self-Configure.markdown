@@ -5,7 +5,7 @@ tags: [emacs]
 uuid: 3421bb8a-23e9-3f5f-3329-f3ec256a91af
 ---
 
-_Update 2013-06-01_: I ultimately decided that Skewer should *not*
+*Update 2013-06-01*: I ultimately decided that Skewer should *not*
 modify any mode hooks automatically. Instead the major mode hooks can
 be configured by putting `(skewer-setup)` in your initialization file.
 This function is designed to play well with autoloading, so using it

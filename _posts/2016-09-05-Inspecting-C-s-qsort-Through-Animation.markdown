@@ -43,7 +43,7 @@ To help you follow along, **clicking on any animation will restart it.**
 
 ### glibc
 
-![](/img/qsort/glibc.gif){: .resetable title="glibc"}
+<img src="/img/qsort/glibc.gif" alt="" class="resetable" title="glibc" />
 
 Sorted in **307 frames**. glibc prefers to use mergesort, which,
 unlike quicksort, isn't an in-place algorithm, so it has to allocate
@@ -59,7 +59,7 @@ standard library for Linux. It's optimized for size, which shows
 through its slower performance. It looks like a quicksort that always
 chooses the last element as the pivot.
 
-![](/img/qsort/diet.gif){: .resetable title="diet"}
+<img src="/img/qsort/diet.gif" alt="" class="resetable" title="diet" />
 
 Update: Felix von Leitner, the primary author of dietlibc, has alerted
 me that, as of version 0.33, it now chooses a random pivot. This
@@ -78,7 +78,7 @@ statically link Linux binaries. Its qsort() looks a lot like a heapsort,
 and with some research I see it's actually [smoothsort][smooth], a
 heapsort variant.
 
-![](/img/qsort/musl.gif){: .resetable title="musl"}
+<img src="/img/qsort/musl.gif" alt="" class="resetable" title="musl" />
 
 ### BSD
 
@@ -88,7 +88,7 @@ It's quicksort, and what's neat about it is at the beginning you can
 see it searching for a median for use as the pivot. This helps avoid
 the O(n^2) worst case.
 
-![](/img/qsort/bsd-qsort.gif){: .resetable title="BSD qsort"}
+<img src="/img/qsort/bsd-qsort.gif" alt="" class="resetable" title="BSD qsort" />
 
 BSD also includes a mergesort() with the same prototype, except with
 an `int` return for reporting failures. This one sorted in **247
@@ -97,14 +97,14 @@ captured. But even more, notice how the markers disappear during the
 merge? It's running the comparator against copies, stored outside the
 original array. Sneaky!
 
-![](/img/qsort/bsd-mergesort.gif){: .resetable title="BSD mergesort"}
+<img src="/img/qsort/bsd-mergesort.gif" alt="" class="resetable" title="BSD mergesort" />
 
 Again, BSD also includes heapsort(), so ran that too. It sorted in
 **418 frames**. It definitely looks like a heapsort, and the worse
 performance is similar to musl. It seems heapsort is a poor fit for
 this data.
 
-![](/img/qsort/bsd-heapsort.gif){: .resetable title="BSD heapsort"}
+<img src="/img/qsort/bsd-heapsort.gif" alt="" class="resetable" title="BSD heapsort" />
 
 ### Cygwin
 
@@ -112,7 +112,7 @@ It turns out Cygwin borrowed its qsort() from BSD. It's pixel
 identical to the above. I hadn't noticed until I looked at the frame
 counts.
 
-![](/img/qsort/cygwin.gif){: .resetable title="Cygwin (BSD)"}
+<img src="/img/qsort/cygwin.gif" alt="" class="resetable" title="Cygwin (BSD)" />
 
 ### MSVCRT.DLL (MinGW) and UCRT (Visual Studio)
 
@@ -128,7 +128,7 @@ median of the ends and the middle, swaps the pivot to the middle, then
 partitions. Looking to the middle for the pivot makes sorting
 pre-sorted arrays much more efficient.
 
-![](/img/qsort/ucrt.gif){: .resetable title="Microsoft UCRT"}
+<img src="/img/qsort/ucrt.gif" alt="" class="resetable" title="Microsoft UCRT" />
 
 ### Pelles C
 
@@ -140,7 +140,7 @@ pivot, partitions the elements, and if a partition is small enough, it
 switches to insertion sort. This should behave well on mostly-sorted
 arrays, but poorly on well-shuffled arrays (like this one).
 
-![](/img/qsort/pellesc.gif){: .resetable title="Pelles C"}
+<img src="/img/qsort/pellesc.gif" alt="" class="resetable" title="Pelles C" />
 
 ### More Implementations
 

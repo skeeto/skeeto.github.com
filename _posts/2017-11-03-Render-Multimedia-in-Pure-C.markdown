@@ -237,7 +237,7 @@ The first thing to do is extract the color components.
 ```c
     float fr, fg, fb;
     rgb_split(fgc, &fr, &fg, &fb);
-````
+```
 
 Next determine the range of pixels over which the dot will be draw.
 These are based on the two radii and will be used for looping.

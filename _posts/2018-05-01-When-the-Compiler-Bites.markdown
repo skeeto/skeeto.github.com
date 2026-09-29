@@ -142,7 +142,7 @@ this comparison returned 0 in my real world code.
 
 So what's going on here? The original ANSI C specification wasn't
 clear about how intermediate floating point values get rounded, and
-implementations [all did it differently][hn]. The C99 specification
+implementations [all did it differently][hn2017]. The C99 specification
 cleaned this all up and introduced [`FLT_EVAL_METHOD`][wflt].
 Implementations can still differ, but at least you can now determine
 at compile-time what the compiler would do by inspecting that macro.
@@ -372,7 +372,7 @@ Just before the end it would pause the game and wait… forever.
 [flt]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=323
 [fma]: https://en.wikipedia.org/wiki/Multiply–accumulate_operation#Fused_multiply–add
 [fround]: https://blog.mozilla.org/javascript/2013/11/07/efficient-float32-arithmetic-in-javascript/
-[hn]: https://news.ycombinator.com/item?id=13738880
+[hn2017]: https://news.ycombinator.com/item?id=13738880
 [hn]: https://news.ycombinator.com/item?id=16974770
 [icc]: https://web.archive.org/web/20180908113552/https://stackoverflow.com/a/36760539
 [mcts]: /blog/2017/04/27/

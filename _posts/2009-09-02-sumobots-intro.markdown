@@ -1,0 +1,87 @@
+---
+title: SumoBots Programming Game
+layout: post
+tags: [game, video]
+uuid: dcd695f6-8c7f-3fdd-5368-cbec6965764f
+---
+
+<!-- 2 September 2009 -->
+
+In the summer of 2007 my friend, Michael Abraham, and I wrote a robot
+programming game in Matlab. The idea came out of a little demo he
+wrote where one circle was chasing another circle. Eventually the
+circles could be run by their own functions, then they were shooting
+at each other, then dropping mines, and so on. It was dubbed
+"Matbots".
+
+It turned into a little programming competition among several of us at
+work. Someone would invent a new feature, like cooperative bots or
+bullet dodging, that would allow it to dominate for awhile. Then
+someone else would build on that and come up with some other killer
+feature. At one point we even hooked up a joystick so we could control
+our own bot live against our creations.
+
+I never shared that here. Someday I will.
+
+Anyway, Mike took a little bit of the Matbots code and design and came
+up with a new, similar game called SumoBots. Programmable bots are in
+a frictionless circular playing area with the ability to accelerate in
+any direction. Collisions between bots are governed by a spring force
+dynamics. Bots are out of the game when they leave the circular
+area. The goal is to knock out all the other bots. Here's a video,
+
+<p class="center">
+  <video src="/vid/sumobots/sumobot-party.ogv" controls
+         poster="/vid/sumobots/sumobot-party.png">
+    <i>You don't have an Ogg Theora capable HTML5 browser. Click this to
+    download the video:</i><br/>
+    <a href="/vid/sumobots/sumobot-party.ogv">
+      <img src="/vid/sumobots/sumobot-party.png" alt=""/>
+    </a>
+  </video>
+</p>
+
+I like how smooth and natural that looks.
+
+He got a number of people at his lab to code up some bots to
+compete. I threw the code up over at [ bitbucket](http://bitbucket.org/), a [ Mercurial](http://mercurial.selenic.com/wiki/) host, which you can checkout with,
+
+<pre>
+hg clone <a href="http://bitbucket.org/skeeto/sumobots/">http://bitbucket.org/skeeto/sumobots/</a>
+</pre>
+
+(I haven't convinced anyone else over there to use a version control
+repository, let alone this one, but here's hoping!)
+
+You can use either Matlab or Octave to program your bot. It works in
+both, with Octave being on the slow side. For Octave, you'll need to
+define a `cla` function as a call to `clf` (they
+don't define it for some reason). To start coding a bot, just look at
+the `samplebot` bot for information on programming a
+bot. Edit the players in `player_list.txt`, then launch it
+by running `engine` (`engine.m`).
+
+I wrote one bot so far called bully. It charges at the nearest bot,
+being careful to cancel out its own velocity. In the video above this
+bot is red.
+
+The other bots so far is kyleBot, blue in the video, which passively
+runs circles around the outside of the surface hoping to trick
+aggressive bots, like mine, into running out. The bot2fun bot, black
+in the video, is like bully, but tries to keep safely near the center
+of the playing area. The brick bot, green in the video, is a dummy,
+practice bot that just gets knocked around.
+
+The tricky part in writing a bot is managing the frictionless
+surface. Acceleration can't just be in the direction you want to
+travel, but also against the current velocity. You might want to set
+up some kind of [ process
+control](http://en.wikipedia.org/wiki/Process_control) for this.
+
+Right now I think there is a balance issue. Passive bots have an
+advantage, but the game won't progress if everyone takes this
+advantage and writes passive bots. It's like camping in a first-person
+shooter. As a partial solution to these stalemates, Mike has proposed
+that the playing surface should shrink over time.
+
+If you want to join in, grab the code and start coding.

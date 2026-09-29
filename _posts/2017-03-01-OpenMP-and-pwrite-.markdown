@@ -152,7 +152,7 @@ untouched.
 
 Here's an example in a real program:
 
-[julia.c][gist]{: .download}
+<a href="https://gist.github.com/skeeto/d7e17bb2aa40907a3405c3933cb1f936" class="download">julia.c</a>
 
 Notice because of `pwrite()` there's no piping directly into
 `ppmtoy4m`:
@@ -161,7 +161,7 @@ Notice because of `pwrite()` there's no piping directly into
     $ ppmtoy4m -F 60:1 < output.ppm > output.y4m
     $ x264 -o output.mp4 output.y4m
 
-[output.mp4][alt]{: .download}
+<a href="/video/?v=julia-256" class="download">output.mp4</a>
 
 <video src="https://skeeto.s3.amazonaws.com/share/julia-256.mp4"
        controls="" loop="" crossorigin="anonymous">

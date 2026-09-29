@@ -1,0 +1,125 @@
+---
+title: Distributed Computing with Emacs
+layout: post
+tags: [emacs, elisp]
+uuid: 9bc67be6-abda-37cd-d34f-ef0e4622358c
+---
+
+<!-- 7 August 2010 -->
+
+I got an Elisp idea today and even went as far as implementing a proof
+of concept for it: distributed computing with Emacs Lisp. As usual for
+me the idea takes advantage of Lisp features to make the task pretty
+simple, very specifically Elisp's implementation. In this case it's
+the Lisp reader, printer, and the fact that Elisp functions have a
+printed representation, both byte-compiled and not.
+
+Here's the proof of concept code: [dist-emacs.el](/download/dist-emacs.el)
+
+A central server listens for TCP connections. Clients offering their
+CPU for use connect to the server and await instructions. The server
+sends a single, no-argument, anonymous function to the client. The
+client calls the function, returning the resulting form back to the
+server. In order to transmit the function it's encoded into a string
+using the Lisp printer, and the client turns it back into an
+executable function with the Lisp reader.
+
+For some simple security there is a shared password between the client
+and server. When the server sends a function it includes a signature,
+and the client only runs code that matches the signature. To create a
+signature the string encoded version of the function is appended with
+the password (both strings) and hashed with a secure hashing
+algorithm. Only someone who knows the password — including other
+clients — can create the signature.
+
+```cl
+(defun sign-sexp (password sexp)
+  "Return signature of the given s-exp."
+  (sha1 (format "%s%s" password sexp))
+```
+
+To make it easy for the client to read in both the signature and the
+function we just cons them together before encoding them as text.
+
+```cl
+(defun encode (password sexp)
+  "Encode a s-exp for transmission to client."
+  (prin1-to-string (cons (sign-sexp password sexp) sexp)))
+```
+
+The client calls the Lisp reader on the string, then checks the
+signature in the `car` cell against the s-expression in
+the `cdr` cell. This will return the function if it's
+legitimate, otherwise `nil`.
+
+```cl
+(defun decode (password str)
+  "Decode string into s-exp, checking the signature in the process."
+  (let* ((cons (read str))
+         (sig  (car cons))
+         (sexp (cdr cons)))
+    (if (equal sig (sign-sexp password sexp))
+        sexp
+      nil)))
+```
+
+And that's the core of it. It just needs some network code to move the
+string between computers. That part can be found in the linked source
+above.
+
+To demo this, I'll use the `whiten` function from
+my [previous post](/blog/2010/07/26/). I'll run it with
+three different strings on three different computers. Assume we
+started the dist-emacs server (`dist-start`) and connected
+three clients (`dist-connect`) from three computers to
+it. The clients were fired up from scratch so there's
+no `whiten` function on them yet, but there *is* one
+defined on the server. First we'll send the function definition to the
+clients. The `dist-dist` function takes a list of functions
+and passes each one to a client. Ideally I'd want this function to be
+more intelligent, managing a work queue so that an arbitrary length
+list of functions will be fed one at a time to each client. That's not
+the case here.
+
+```cl
+(dist-dist (mapcar (lambda (p)
+                          `(lambda ()
+                             (fset 'whiten ,(symbol-function 'whiten))))
+                      dist-clients))
+```
+
+Also like in the previous post, this is an abstraction leak with the
+Emacs implementation. But I like this trick so I'm going to use it
+anyway. :-) Next we call it on each client with a different string.
+
+```cl
+(dist-dist (list (lambda () (whiten "good"))
+                 (lambda () (whiten "news"))
+                 (lambda () (whiten "everyone"))))
+```
+
+The way I have it set up for my proof of concept the results are just
+spit back into the server's `*Messages*` buffer. If we
+watch that buffer we can see each results come back in one at a time
+as each machine finishes. I can watch Emacs saturate the CPU on every
+client machine simultaneously as it works.
+
+```
+"2577343027adf7817185db876032d8ed"
+"46a65dac2c0040afde175adf1e9a81fd"
+"f39baf9e74475dd5be7d5495a025fe84"
+```
+
+This isn't the same order as the clients, but the order in which the
+jobs were completed.
+
+As for the practicality, I doubt there really is one. It's really only
+a neat concept (or maybe not even that). For almost the exact same
+reasons as my [distributed JavaScript](/blog/2009/06/09/)
+idea, this is a solution looking for a problem. The problem needs to
+be able to be broken into small computation units, because Emacs has
+no threading, and it has to be low bandwidth, because it has to be
+parsed all at once from a string. If you want to pass large data sets
+it needs to be done out-of-band, which probably defeats the
+purpose. There seem to be few to no problems that fit these
+limitations.

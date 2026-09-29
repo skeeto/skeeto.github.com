@@ -33,7 +33,7 @@ documentation frequently with ease, it's going to become familiar that
 much faster and I'll be reaching for it less and less, approaching the
 ideal.
 
-I picked up x86 assembly [about a year ago][x86] and for the first few
+I picked up x86 assembly [about a year ago][dos] and for the first few
 months I struggled to find a good online reference for the instruction
 set. There are little scraps here and there, but not much of
 substance. The big exception is [Félix Cloutier's reference][x86doc],

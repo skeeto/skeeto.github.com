@@ -1,0 +1,43 @@
+---
+title: Emacs Find All Files
+layout: post
+tags: [emacs, elisp]
+uuid: 6b914b5a-f8f8-3d5d-469d-5d2c25b909c8
+---
+
+<!-- 30 September 2010 -->
+
+Here's another bit of code I started using recently. I often find
+myself wanting to open — or reopen
+after `kill-matching-buffers` — all the files under a
+specific point in the file system. I'm using it at work now to open up
+all the source files in a deep Java source tree on small-ish
+project. Once it's all open I can switch to any file quickly
+with [ ido's fuzzy matching](http://www.emacswiki.org/emacs/InteractivelyDoThings), flattening out the directory structure a
+bit. (And the ridiculous "security" software at work imposes a
+3-second I/O block when opening files, so I get to pay this all up
+front at once rather than having it later
+[ break my
+flow](http://c2.com/cgi/wiki?MentalStateCalledFlow).)
+
+This just recursively travels down the sub-directories opening a
+buffer for everything it comes across. It ignores dot-files, like the
+ones your source control might litter.
+
+```cl
+;; ID: 72dc0a9e-c41c-31f8-c8f5-d9db8482de1e
+(defun find-all-files (dir)
+  "Open all files and sub-directories below the given directory."
+  (interactive "DBase directory: ")
+  (let* ((list (directory-files dir t "^[^.]"))
+         (files (remove-if 'file-directory-p list))
+         (dirs (remove-if-not 'file-directory-p list)))
+    (dolist (file files)
+      (find-file-noselect file))
+    (dolist (dir dirs)
+      (find-file-noselect dir)
+      (find-all-files dir))))
+```
+
+One caveat: if you have a symbolic link that creates a file system
+loop, this will probably get hung on it.

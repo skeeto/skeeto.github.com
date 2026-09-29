@@ -71,9 +71,9 @@ be packed up into a single `.jar` file, including all the art assets,
 configuration XML, and so on, and distributed as a single file, which
 is *usually* easy to launch. Java provides special support for
 accessing those packed up resources right from the packaging:
-[`Class.getResource()`](http://download.oracle.com/javase/7/docs/api/java/lang/Class.html#getResource(java.lang.String%29)
+[`Class.getResource()`](http://download.oracle.com/javase/7/docs/api/java/lang/Class.html#getResource(java.lang.String))
 and
-[`Class.getResourceAsStream()`](http://download.oracle.com/javase/7/docs/api/java/lang/Class.html#getResourceAsStream(java.lang.String%29).
+[`Class.getResourceAsStream()`](http://download.oracle.com/javase/7/docs/api/java/lang/Class.html#getResourceAsStream(java.lang.String)).
 
 *However*, the same courtesy is not provided for packed up native
 libraries. There's no support for loading them from within a `.jar`

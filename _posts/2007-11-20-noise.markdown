@@ -92,7 +92,7 @@ water height and chopping off everything below it. I will choose
 `-0.1` as our water level.
 
     octave> w = m;
-    octave> w(w &lt; -0.01) = -0.01;
+    octave> w(w < -0.01) = -0.01;
     octave> mesh(w)
 
 ![](/img/noise/water.png)

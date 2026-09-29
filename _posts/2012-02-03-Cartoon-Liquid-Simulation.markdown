@@ -71,6 +71,7 @@ would be really good at.
 [mine]: /fun-liquid/
 [webgl]: /blog/2012/02/03/
 [jbox2d]: http://jbox2d.org/
+[fun]: https://github.com/skeeto/fun-liquid
 [box2d]: http://box2d.org/
 [kernel]: /blog/2008/02/22/
 [lwjgl]: /blog/2011/11/06/

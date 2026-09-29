@@ -1,0 +1,135 @@
+---
+title: Memoization
+layout: post
+tags: [perl]
+uuid: c9f47622-9893-377c-a28b-d1cdfe8850e8
+---
+
+<!-- 25 March 2008 -->
+
+I had written
+in [a
+previous post](/blog/2008/01/29#collatz) about a neat feature of Lua. I found out later that
+this is simply a form
+of [Memoization](http://en.wikipedia.org/wiki/Memoization). The
+idea is that you trade memory for speed by only doing calculations
+once and keeping track of previously calculated values. I had even
+complained about Perl hashes not being flexible enough (not true,
+thanks
+to [Tie::Hash](http://perldoc.perl.org/Tie/Hash.html)). Perl
+actually has something even cooler, which is the
+[Memoize
+module](http://search.cpan.org/~mjd/Memoize-1.01/Memoize.pm).
+
+The module can memoize any function, although it is only useful on
+"pure" functions: functions with no side effects and not dependant
+external data that will change. The official documentation contains a
+nice example demonstrating a recursive implementation of a Fibonacci
+sequence generator. My example is a little program I wrote the other
+day where the memoize module came in handy.
+
+You have coins valued at 1, 2, 5, 10, 20, 50, 100, and 200. How many
+different ways can 200 be made using any number of coins. A simple
+recursive solution is this: stick in each coin one at a time and ask
+the same question again. So, we use a coin worth 1, now the question
+is how many ways can we make change for 199. Then 198, then 195, then
+190, etc. Because the order of the coins is not important these two
+sets are identical: (1 1 5) (5 1 1). So, to avoid counting the same
+set twice, we also want to tell the function the largest size coin to
+use from then on. Our function may look like this now (Perl),
+
+```
+use List::Util qw(sum);
+
+sub count {
+    my ($s, $m) = @_;
+    return 1 if ($s == 0);
+
+    my @valid = grep {$_ <= $s and $_ >= $m} @coins;
+    return 0 if ($#valid == -1);
+
+    return sum map {count($s - $_, $_)} @valid;
+}
+```
+
+Where it is called as `count(total, max_coin_value)`.
+
+However, we will be calculating the same value twice many times
+over. For example, lets say we start filling the first 10 of 200 like
+this: (1 1 1 1 1 5) or (5 5). The next call to `count` will
+be `count(190, 5)` for both cases. Just like the recursive
+Fibonacci implementation, we are spending an enormous amount of time
+repeating ourselves. Running this for a value of 200 will take
+minutes. Running it for a value of 2000 may take days! Memoization to
+the rescue!
+
+We will now add this,
+
+```
+use Memoize;
+memoize('count');
+```
+
+The module has now transparently installed a new version of the
+function over our original. If we ever pass the same arguments that we
+already have passed, the module will look up the original calculated
+value and return it instead of calling the real function. It now can
+calculate the number of ways to make change for a value of 2000 in a
+couple seconds rather than days. That's how much redundant work the
+function was doing. Here is the whole thing,
+
+```
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+no warnings qw(recursion);
+use List::Util qw(sum);
+
+use Memoize;
+memoize('count');
+
+my @coins = (1, 2, 5, 10, 20, 50, 100, 200);
+
+print count(200, 1);
+print "\n";
+
+sub count {
+    my ($s, $m) = @_;
+    return 1 if ($s == 0);
+
+    my @valid = grep {$_ <= $s and $_ >= $m} @coins;
+    return 0 if ($#valid == -1);
+
+    return sum map {count($s - $_, $_)} @valid;
+}
+```
+
+Now, to apply it to the Collatz problem from my previous post we get a
+nice simple little program,
+
+```
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+no warnings qw(recursion);
+use List::Util qw(max);
+
+use Memoize;
+memoize('collatz');
+
+while (<>) {
+    my ($n, $m) = split;
+    printf("$n $m %d\n", max map { collatz($_) } ($n..$m));
+}
+
+sub collatz {
+    my $n = shift;
+    return 1 if ($n == 1);
+    return 1 + collatz(3*$n+1) if ($n & 1);
+    return 1 + collatz($n/2);
+}
+```
+
+I really do love Perl.

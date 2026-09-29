@@ -1,0 +1,27 @@
+---
+title: Converted to HTML 5
+layout: post
+tags: [meta]
+uuid: d3f1f505-10db-318e-8b7a-eda3894e1eaf
+---
+
+<!-- 30 June 2009 -->
+
+I converted this website to HTML 5 from its original XHTML 1.0
+Transitional. Because I was already valid, it was actually pretty
+easy. Well, I first converted it to XHTML 1.0 Strict by shifting some
+things into CSS that should have been that way in the first place
+(results of laziness). Then when that validated I just changed the
+DOCTYPE to HTML 5, added a new``  meta `` tag, checked
+*that* validation and that was it. Really simple.
+
+One of the main reasons was so that I could use the new
+`video` tag. From now on any posts with videos will display
+them as in-line videos (Ogg Vorbis), provided you are using a browser
+with HTML 5 support. In fact, I already did it with two older posts:
+[Knight's Tour](/blog/2009/05/27) and the [Mandelbrot set zoom videos](/blog/2007/10/01).
+
+HTML 5 is still a moving target, so I *may* have to do some
+keeping up over time. Probably not.
+
+Video is finally a first class web citizen and it is quite exciting.

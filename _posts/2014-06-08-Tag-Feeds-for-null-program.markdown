@@ -47,7 +47,7 @@ reader. Fortunately, this is where Atom saves the day! I'm leveraging
 Atom's prudent design to make this work cleanly. Articles' UUIDs are
 consistent across all of these feeds, so if your web feed reader is
 smart enough, it will recognize these as being the same article. For
-example, this article is `{{ page.uuid }}` regardless of which feed
+example, this article is `f47e5404-cc4a-3cc0-01ce-a844c04721b8` regardless of which feed
 you see it in.
 
 Unfortunately, [Elfeed][elfeed] isn't smart enough for this. Sorry! In

@@ -127,7 +127,7 @@ see something like this:
 
 Tweaking the input parameters, it scales up nicely:
 
-[![](/img/jq/mandel-thumb.gif)](/img/jq/mandel.gif){: .no-print}
+<a href="/img/jq/mandel.gif" class="no-print">![](/img/jq/mandel-thumb.gif)</a>
 
 [![](/img/jq/mandel-thumb.png)](/img/jq/mandel.png)
 

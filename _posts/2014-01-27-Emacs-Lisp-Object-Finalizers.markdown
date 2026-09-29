@@ -6,7 +6,7 @@ tags: [emacs, elisp]
 uuid: 48023a80-358c-39b4-371b-d74dfb248897
 ---
 
-***Update**: Emacs 25.1 (released Sept. 2016) formally introduced
+**Update**: Emacs 25.1 (released Sept. 2016) formally introduced
 finalizers to Emacs Lisp. This article is left here for historical
 purposes.
 
@@ -256,4 +256,4 @@ It's a small package but I think it can be quite handy.
 
 [finalizer]: http://en.wikipedia.org/wiki/Finalizer
 [weak]: /blog/2012/12/17/
-[closure]: /blog/2013/12/30/#the_readable_closures_catch
+[closure]: /blog/2013/12/30/#the-readable-closures-catch

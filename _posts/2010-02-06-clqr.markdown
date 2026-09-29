@@ -1,0 +1,23 @@
+---
+title: Common Lisp Quick Reference
+layout: post
+tags: [lisp, link, reddit]
+uuid: d74ba1a7-25bb-37f4-7b2e-46d2d56bfe36
+---
+
+<!-- 6 February 2010 -->
+
+I found this [ Common Lisp Quick
+Reference](http://clqr.berlios.de/) the other day
+from [ r/lisp](http://old.reddit.com/r/lisp/), and I think
+it's *fantastic*. It's a comprehensive, libre booklet of the
+symbols defined by the Common Lisp ANSI standard. Very slick!
+
+The main version is meant to be printed out and nested with a vertical
+fold, and it works quite well. If I ever get a chance to use Common
+Lisp at work (a man can dream), probably at a location without
+Internet access, this could come in handy. So I printed out one for
+myself,
+
+[![](/img/clqr/front-thumb.jpg)](/img/clqr/front.jpg)
+[![](/img/clqr/open-thumb.jpg)](/img/clqr/open.jpg)

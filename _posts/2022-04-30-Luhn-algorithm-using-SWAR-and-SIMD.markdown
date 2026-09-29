@@ -91,7 +91,7 @@ x86-64, just one instruction for each statement:
 
 Or, more impressively, loading both using a *single instruction* on ARM64:
 
-```nasm
+```aarch64
     ldp  x0, x1, [x0]
 ```
 

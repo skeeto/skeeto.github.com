@@ -1,0 +1,47 @@
+---
+title: Optimizing, Multi-threading Brainfuck to C Converter
+layout: post
+tags: [c]
+uuid: 48a1f67d-f523-38a6-015e-d023ba32a34c
+---
+
+<!-- 20 January 2008 -->
+
+[wbf2c](https://github.com/skeeto/bfc) converts an esoteric
+programming language
+called [brainfuck](http://en.wikipedia.org/wiki/Brainfuck)
+into C code which can be machine compiled. Several optimizations are
+done to make the resulting program extremely fast an efficient. The
+converter supports both a static (standard 30,000 cells) array or a
+dynamically-sized array. It also supports many different cell types,
+from the standard `char` to multi-precision cells
+using [GMP](http://gmplib.org/).
+
+The converter can also run several brainfuck programs on the same
+memory array at once by running each one in a thread. To make sure
+each brainfuck operation is atomic, each cell gets a mutex lock. The
+only other multi-threading brainfuck implementation I know of
+is [ Brainfork](http://www.clanpogo.dk/pogocms/index.php?action=bf).
+
+For an example of some brainfuck code I wrote,
+
+```
++>+<
+[
+[->>+>+<<<]>>>
+[-<<<+>>>]<<
+
+[->+>+<<]>>
+[-<<+>>]<<
+]
+```
+
+This program fills the memory with the Fibonacci series. Make sure you
+use the dynamically sized array, along with the bignum cell
+type. After two or three seconds of running, my laptop (unmodified
+Dell Inspiron 1000) can calculate and spit out a 140MB text file
+containing the first 50,000 numbers in the series. I used
+the `-d` dump option to see this output.
+
+Download information, as well as some more examples, including a
+multi-threaded one, are on the project website.

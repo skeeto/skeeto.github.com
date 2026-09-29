@@ -1,0 +1,100 @@
+---
+title: The Lazy Fibonacci List
+layout: post
+tags: [lisp]
+uuid: 2b973f3b-c231-39f2-6570-ead12ef963f5
+---
+
+<!-- 10 April 2009 -->
+
+In a project I am working on, I want to implement a large list using
+[lazy
+evaluation](http://en.wikipedia.org/wiki/Lazy_evaluation) in Scheme. The list is large enough to be too unwieldy
+to store entirely in memory, but I still want to represent it in my
+program as if it was. The solution is lazy evaluation.
+
+One use of lazy evaluation is allowing a program to have infinitely
+sized data structures without going into the impossible task of
+actually creating them. Instead, the structure is created on the fly
+as needed. As a prototype for getting it right, I made an infinitely
+long list in Scheme that contains the entire Fibonacci series.
+
+This function, given two numbers from the series, returns the lazy
+list. It uses `delay` to delay evaluation of the list.
+
+```scheme
+(define (fib f)
+  (cons (cadr f)
+        (delay (fib (list (cadr f)
+                          (apply + f))))))
+```
+
+Notice the recursion here as no *base case*, so without lazy
+evaluation it would continue along forever without halting. Now run
+it,
+
+```scheme
+> (fib '(0 1))
+(1 . #<promise>)
+```
+
+The rest of the list is stored as a *promise*, which will later
+be teased out using `force`. This forces evaluation of the
+promise. Here is a function to traverse the list to the
+`n`th element and return it. Notice, this does have a base
+case.
+
+```cl
+(define (nth-fib f n)
+  (if (= n 1) (car f)
+      (nth-fib (force (cdr f)) (- n 1))))
+```
+
+Here it is in action. It is retrieving the 30th element.
+
+```scheme
+> (define f (fib '(0 1)))
+> f
+(1 . #<promise>)
+> (nth-fib f 30)
+832040
+```
+
+If you examine `f`, it contains the first 30 numbers until
+running into an unevaluated promise. This behavior is very similar to
+[memoization](/blog/2008/03/25), as calculated values
+are stored instead of being recalculated later.
+
+These two functions are also behaving as [ coroutines](http://en.wikipedia.org/wiki/Coroutines). When
+`nth-fib` reaches a promise, it yields to `fib`,
+which continues its non-halting definition. After producing a new
+value in `f`, it yields back to `nth-fib`.
+
+The way I called these functions above, however, can lead to
+problems. We are storing all the calculated values in `f`,
+which can take up a lot of memory. For example, this probably won't
+work,
+
+```scheme
+> (nth-fib f 1000000)
+```
+
+We will run out of memory before it halts. Instead, we can do this,
+
+```scheme
+> (nth-fib (fib '(0 1)) 1000000)
+```
+
+Because `nth-fib` uses tail recursion as it traverses the
+list, unneeded calculated values are tossed (which the garbage
+collector will handle) and no additional function stack is used. All
+Scheme implementations optimize tail recursion in this way. This will
+continue along until it hits the millionth Fibonacci number, all while
+using a constant amount of memory.
+
+It turns out that Scheme calls this type of data structure a
+*stream*, and some implementations have functions and macros
+defined so that they are ready to use.
+
+So there you go: memoization, lazy evaluation, and coroutines all
+packed into one example.

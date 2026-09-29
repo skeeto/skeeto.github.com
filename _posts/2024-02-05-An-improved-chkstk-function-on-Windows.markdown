@@ -92,7 +92,7 @@ void example(void)
 
 Compiled with 64-bit `gcc -O`:
 
-```nasm
+```att
 example:
     movl    $1048616, %eax
     call    ___chkstk_ms
@@ -173,7 +173,7 @@ also chose smaller instructions in order to keep the function small and
 reduce instruction cache pressure. My x64 implementation as of this
 writing:
 
-```nasm
+```att
 ___chkstk_ms:
     push %rax              // 1.
     push %rcx              // 1.
@@ -238,7 +238,7 @@ pointer. The return pointer is initially *inside the new stack frame*, so
 chkstk must retrieve it and return by other means. It must also precisely
 compute the low frame address.
 
-```nasm
+```att
 __chkstk:
     push %ecx               // 1.
     neg  %eax               // 2.

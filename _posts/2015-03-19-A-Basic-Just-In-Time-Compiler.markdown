@@ -272,7 +272,7 @@ long operand;
 scanf("%ld", &operand);
 asmbuf_ins(buf, 2, 0x48bf);         // mov   rdi, operand
 asmbuf_immediate(buf, 8, &operand);
-~~~~
+~~~
 
 Apply the same discovery process individually for each operator you
 want to support, accumulating the result in `rax` for each.

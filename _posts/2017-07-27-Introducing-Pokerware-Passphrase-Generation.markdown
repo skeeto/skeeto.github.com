@@ -97,20 +97,17 @@ one:
 Suppose in step 2 you draw King of Hearts (KH/K♥) and Queen of Clubs
 (QC/Q♣).
 
-![](/img/pokerware/kh.png){: .card}
-![](/img/pokerware/qc.png){: .card}
-{: .grid}
+<p class="grid"><img src="/img/pokerware/kh.png" alt="" class="card" />
+<img src="/img/pokerware/qc.png" alt="" class="card" /></p>
 
 In step 3 you first draw King of Diamonds (KD/K♦), discarding it because
 it matches the face value of one of your cards from step 2.
 
-![](/img/pokerware/kd.png){: .card}
-{: .grid}
+<p class="grid"><img src="/img/pokerware/kd.png" alt="" class="card" /></p>
 
 Next you draw Four of Spades (4S/4♠), taking spades as your extra suit.
 
-![](/img/pokerware/4s.png){: .card}
-{: .grid}
+<p class="grid"><img src="/img/pokerware/4s.png" alt="" class="card" /></p>
 
 In order, this gives you Queen of Clubs, King of Hearts, and Spades:
 QCKHS or Q♣K♥♠. This corresponds to "wizard" in the formal word list and

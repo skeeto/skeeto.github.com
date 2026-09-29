@@ -115,7 +115,7 @@ compiler to assume [a small code model][cm].
 There are a number of ways to do this, and here's one way to do it with
 GNU-styled toolchains targeting COFF:
 
-```nasm
+```att
         .section .exebuf,"bwx"
         .globl exebuf
 exebuf:	.space 1<<21

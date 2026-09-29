@@ -1,0 +1,26 @@
+---
+title: "Another Perl One-liner: Byte Order"
+layout: post
+tags: [perl]
+uuid: cc019ed2-b329-333e-1625-2f0f8cd385fd
+---
+
+<!-- 20 May 2009 -->
+
+At work right now I am using two different machines. One is a 32-bit
+SPARC and the other is a very powerful SMP x86-64. Sometimes data are
+generated on one machine and used in a simulation on the other. There
+is a problem of byte-order, though. The SPARC is big-endian and the
+other is little-endian, and the programs on both sides don't pay
+attention to that small detail.
+
+Luckily, the data are all 4-byte aligned. That's perfect for a Perl
+one-liner byte order conversion,
+
+```
+perl -e 'print scalar reverse while read STDIN, $_, 4' < in.le > out.be
+```
+
+Perl is really great for concise hacks. I really like how this
+one-liner almost reads like a natural language sentence. Is there any
+other language that can do powerful one-liners like Perl?

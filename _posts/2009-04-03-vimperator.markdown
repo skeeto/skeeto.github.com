@@ -1,0 +1,116 @@
+---
+title: Vimperator Firefox Add-on
+layout: post
+tags: [web]
+uuid: 15997989-ff25-3106-8c2f-799007413e1b
+---
+
+<!-- 3 April 2009 -->
+
+<img src="/img/misc/no-mouse.jpg" alt="" class="left" title="Tastenmaus Microsoft by Darkone, cc-by-sa 2.5"/>
+I recently learned about an excellent Firefox add-on called [Vimperator](http://vimperator.org/trac/wiki/Vimperator),
+which I have been using for a few days now. It creates an extremely
+efficient Vim-like interface to Firefox. One of the main functions
+is to be able to browse completely mouseless.
+
+Why mouseless? Because the mouse is a bad input device for many uses
+of a computer. It's a good choice for many games, like first-person
+shooters, or graphic design, like Inkscape or GIMP. But for tasks like
+text editing, word processing, and data entry, the mouse one of the
+worst kinds of input device. The less you touch the mouse, the better.
+
+Vimperator's argument is that the browser is better as a pure keyboard
+interface.
+
+I am an Emacs person myself, which I use for text editing, file
+management, and IRC, but I appreciate the vi/Vim interface and accept
+it as being *almost* as good. Most of my vi experience actually
+comes from [NetHack](/blog/2008/09/17#nethack) and [Less](http://www.greenwoodsoftware.com/less/). My main use
+for vi is editing my Debian sources.list so I can install Emacs.
+
+Vimperator removes your toolbar, menu bar, and address bar. Then it
+transforms the status bar into the standard Vim status lines. This is
+because you don't need any of this stuff anymore with the Vim
+interface. It's traded for more browser real estate. This also
+creates the fun situation of watching your friends try to use your
+browser. At first, it really is pretty disorienting.
+
+There is handy built-in documentation, found by pressing F1 or calling
+the `:help` command. You'll want to read through these
+before trying to do anything.
+
+My problem right now is breaking my old Firefox keyboard muscle
+memory. Before Vimperator, my browsing was already fairly mouseless. I
+used keyboard shortcuts for everything. I had the [Mouseless
+Browsing](https://addons.mozilla.org/en-US/firefox/addon/879) add-on installed, and occasionally used. When not using
+Mouseless Browsing, it worked out well because my right hand did the
+mouse, while most of the keyboard shortcuts could easily be performed
+with my left hand (`C-tab`, `C-S-tab`,
+`C-t`, `C-w`).
+
+I think Vimperator has the potential to be even more efficient than
+that.
+
+Probably one of the biggest adjustments is following links without a
+mouse. Like the Mouseless Browsing add-on, Vimperator assigns numbers
+to the links to be typed out. It is less intrusive though, because it
+doesn't reformat the page to show the numbers. It has a "hint" mode
+you go into for that. This mode displays the numbers over the links as
+red markers.
+
+But even better than that, you don't generally even need those
+numbers. You can enter hint mode and begin typing the type of the link
+out. As soon as you reach a unique string prefix, it follows the
+link. This is the primary way I follow links, and I started doing this
+completely by accident. I wasn't even aware this was possible until I
+did it. Vimperator was completely natural in this respect.
+
+Probably my favorite feature so far is automatic page advancement. I
+use these all the time now. One set of commands is `C-a`
+and `C-x`. These increment and decrement the last number in
+a URL, handy for those annoying multi-page articles. If they number
+the pages in the URL, this should handle it automatically. The other
+form of page turning is `[[` and `]]`. These
+search for links labeled "next", "&gt;", "prev", "previous", and
+"&lt;" and follow them. This works in Google searches and many
+web comics.
+
+A potential use for macros is quick data scraping. You can write a
+macro to automatically perform a series of actions, like save the
+current page and move the next one, and have them repeat a number of
+times. It could also help in rapidly filling out the same form over
+and over, leaving only the CAPTCHA for manual input, if you were up to
+something mischievous.
+
+For example, here is a macro to open in a new tab the first result of
+a Google search on the current page, then move to the next page. If
+you repeat it, it will open the first result on page 1, then the first
+result on page 2, and so on.
+
+```
+q s F 2 8 ] ] q
+```
+
+Note, the "28" may be different for you. To open the first result on
+the next 15 search result pages,
+
+```
+1 5 @ s
+```
+
+It is pretty cool watching it work away.
+
+It's not perfect, though. Like Vim, you can prefix commands with
+numbers to repeat them, but this won't work with many commands, such
+as the page turning one above. You can get around it sometimes by
+placing the command in a macro.
+
+Also, Vimperator still requires a mouse for many actions, like saving
+images. The worst part about it is these actions cannot be used as
+part of a macro. Hopefully Vimperator will improve in the future and
+fix this.
+
+Give it a shot sometime. Like learning a good text editor for the
+first time, after you are set up, move your mouse out of reach so you
+are forced to use the keyboard. It slows you down in the short run,
+but you will be very fast later on down the road.

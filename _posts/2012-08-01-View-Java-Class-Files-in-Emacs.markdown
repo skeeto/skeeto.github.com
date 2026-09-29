@@ -14,7 +14,7 @@ sensible text form. He wanted to do the same with Java byte-compiled
 and transparently decompile the bytecode into Java source.
 
 He mentioned
-[JAD](http://en.wikipedia.org/wiki/JAD_(JAva_Decompiler%29)
+[JAD](http://en.wikipedia.org/wiki/JAD_(JAva_Decompiler))
 specifically, a popular, proprietary, but unmaintained and outdated
 Java bytecode decompiler. I've never used it and honestly I see no
 reason to start using it. Unfortunately there are no other decompilers

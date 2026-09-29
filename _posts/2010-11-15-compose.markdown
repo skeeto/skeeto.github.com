@@ -1,0 +1,34 @@
+---
+title: Elisp Function Composition
+layout: post
+tags: [elisp, emacs]
+uuid: 86809c4e-9f00-396d-71ab-b48d5950a343
+---
+
+<!-- 15 November 2010 -->
+
+During my recent Elisp hacking I've run into the situation enough
+times where I really wanted function composition that I officially
+implemented it for myself. While there is
+an [ `apply-partially`](/blog/2010/09/29/)
+function, Elisp does not currently come with a `compose`
+function. Here's an Elisp definition,
+
+```cl
+;; ID: f0c736a9-afec-3e3f-455c-40997023e130
+(defun compose (&rest funs)
+  "Return function composed of FUNS."
+  (lexical-let ((lex-funs funs))
+    (lambda (&rest args)
+      (reduce 'funcall (butlast lex-funs)
+              :from-end t
+              :initial-value (apply (car (last lex-funs)) args)))))
+```
+
+Here it is in action with three functions.
+
+```cl
+(funcall (compose 'prin1-to-string 'random* 'exp) 10)
+```
+
+I'll be using this in later posts (and linking back here when I do).

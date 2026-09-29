@@ -1,0 +1,27 @@
+---
+title: Java Applets Demo Page
+layout: post
+tags: [java, interactive, game]
+uuid: 0caa6106-7605-3b67-59c2-215e415f062f
+---
+
+<!-- 18 October 2010 -->
+
+*Update February 2013: Java Applets are a dead technology and using a
+Java web browser plugin is simply much too insecure. I strongly
+recommend against it. This applet page has since been moved to a
+more generally-named URL.*
+
+Because the two projects I announced over the weekend can be used as
+Java applets, I went back and upgraded [ two older](/blog/2007/10/08/) [projects](/blog/2009/12/13/) so that they
+could also behave as interactive applets. Now that I have several
+applets to show off I've collected them together onto a "Java Applet
+Demos" page.
+
+[ **Java Applet Demos**<br/>
+![](/img/applets/applets.png) ](/toys/)
+
+I intend on expanding this in the near future with improvements
+(Michael is unhappy with my integration function on the water wheel,
+for one) and new applets [while I'm on a
+roll](/blog/2010/10/15/). Swing is my oyster.

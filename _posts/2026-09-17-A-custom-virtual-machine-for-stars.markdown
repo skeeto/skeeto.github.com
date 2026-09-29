@@ -25,7 +25,7 @@ The [signed][] releases on GitHub embed a compressed copy of the original
 16-bit game, so that single EXE is ready to play out-of-the-box with no
 further setup or downloads. I'm distributing 32-bit builds (but requires
 SSE2) because there's no advantage to 64-bit here, and these builds work
-(almost) everywhere _except_ 16-bit Windows. 32-bit Windows could run the
+(almost) everywhere *except* 16-bit Windows. 32-bit Windows could run the
 original 16-bit game, but the VM-encapsulated version is better behaved.
 It doesn't dump a `Stars.ini` under `C:\WINDOWS`, it interacts properly
 with the task bar, and copy protection is neutralized via the OS bridge.

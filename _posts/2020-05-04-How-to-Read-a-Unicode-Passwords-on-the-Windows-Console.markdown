@@ -43,7 +43,7 @@ password and should not even approach `INT_MAX`.
 ### The correct way
 
 For the impatient:
-[**complete, working, ready-to-use example**][gist]{: .download}
+<a href="https://github.com/skeeto/scratch/blob/master/misc/read-password-w32.c" class="download">**complete, working, ready-to-use example**</a>
 
 On a unix-like system, the program would:
 

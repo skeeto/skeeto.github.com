@@ -1,0 +1,62 @@
+---
+title: Jump to Java Documentation from Emacs
+layout: post
+tags: [java, emacs]
+uuid: 4fe4bf26-5447-3337-33bd-1cb0647708b0
+---
+
+<!-- 14 October 2010 -->
+
+*Update January 2013: this package has been refined and formally
+renamed
+to [javadoc-lookup](https://github.com/skeeto/javadoc-lookup).
+The user interface is essentially the same — under different function
+names — but with some extra goodies. It's available for install from
+MELPA.*
+
+I keep running to either a search engine or, when offline, manually
+browsing to Java API documentation when I need to look something
+up. When I'm using Emacs this is stupid, so I fixed it. I put together
+a `java-docs` package that let's me quickly jump to
+documentation from within Emacs.
+
+Repository: <code>git clone <a href="https://github.com/skeeto/emacs-java">git://github.com/skeeto/javadoc-lookup.git</a></code>
+
+Unfortunately it launches it in a web browser right now because there
+doesn't seem to be a reasonable way to render the
+documentation *inside* Emacs itself. So
+you'll [ need to
+have `browse-url` set up properly](http://www.emacswiki.org/emacs/BrowseUrl) in your
+configuration.
+
+I strongly recommend you use this
+with [ Ido](http://www.emacswiki.org/emacs/InteractivelyDoThings), which comes with Emacs. If you do, you'll want to load
+it *after* you enable `ido-mode`, which will enable
+the Ido minibuffer completion in `java-docs`.
+
+So, after you `require` `java-docs`, you give it
+a list of places to look for documentation.
+
+```cl
+(require 'java-docs)
+(java-docs "/usr/share/doc/openjdk-6-jdk/api" "~/src/project/doc")
+```
+
+It will scan these locations and build up an index of
+classes. [If you're using a recent enough
+version of Emacs](/blog/2010/06/07/) it will cache that index for faster loading in
+the future, since on *certain* systems it can needlessly take a
+bit of time.
+
+After that you can jump to documentation with `C-h j`
+(`java-docs-lookup`). It will ask you what you want to look
+up and offer completion with your preferred completion function.
+
+[ ![](/img/emacs/java-import-thumb.png) ](/img/emacs/java-import.png)
+
+If you don't want to open it up in an external browser, you can set
+Emacs to run a text-based browser inside itself.
+
+```cl
+(setq browse-url-browser-function 'browse-url-text-emacs)
+```

@@ -1,0 +1,45 @@
+---
+title: Elisp Running Time Macro
+layout: post
+tags: [emacs, elisp]
+uuid: a693dd66-ee70-35ea-3140-6468705ee2d9
+---
+
+<!-- 28 May 2009 -->
+
+I wanted an elisp macro that could measure the running time of a block
+of code. Specifically, I wanted it to work like this,
+
+<pre>
+(measure-time
+  <i>...
+  body
+  ...</i>)
+</pre>
+
+And it would return the running time as seconds in floating
+point. Well, here's a macro that does it!
+
+```cl
+;; ID: 6a3f3d99-f0da-329a-c01c-bb6b868f3239
+(defmacro measure-time (&rest body)
+  "Measure and return the running time of the code block."
+  (declare (indent defun))
+  (let ((start (make-symbol "start")))
+    `(let ((,start (float-time)))
+       ,@body
+       (- (float-time) ,start))))
+```
+
+It's only good for up to around 18 hours, then the time integer
+overflows. If only Emacs had arbitrary precision numbers. Here it is
+in action using my [binomial function from
+last week](/blog/2009/05/23).
+
+```cl
+(measure-time
+  (nck 20 10)
+  (nck 30 7))
+```
+
+Which, just now, returned `3.643713` seconds when executed.

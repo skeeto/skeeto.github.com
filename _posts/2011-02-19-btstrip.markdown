@@ -1,0 +1,90 @@
+---
+title: Torrent File Strip
+layout: post
+tags: [perl]
+uuid: fa638343-71a9-3c3c-8e31-f7f8d83b55b4
+---
+
+<!-- 19 February 2011 -->
+
+*You can skip my explanation and download the tool here,*
+
+<pre>
+git clone <a href="https://github.com/skeeto/btstrip">git://github.com/skeeto/btstrip.git</a>
+</pre>
+
+My main computer recently stopped working for me, and, until I have a
+replacement, I've been using my wife's old 2004-era desktop, with only
+500MB of memory. That has required me to make use of a lighter-weight
+BitTorrent client than I have in the
+past: [rTorrent](http://libtorrent.rakshasa.no/).
+
+Because rTorrent's interface is built on ncurses, when combined
+with [GNU Screen](/blog/2009/03/05/) it behaves very much
+like a daemon. I have configured it to watch a certain directory for
+new torrent files. When I want to start downloading a new torrent, I
+just put the torrent file there and rTorrent gets to work on it. Share
+this watched directory on a network, and rTorrent becomes a network
+service.
+
+```
+# rTorrent configuration
+directory = /torrents/
+session = /torrents/.session/
+schedule = watch_directory,5,5,load_start=/torrents/watch/*.torrent
+schedule = untied_directory,5,5,stop_untied=
+schedule = tied_directory,5,5,start_tied=
+```
+
+Unfortunately, the rTorrent documentation has not been kept up to
+date, and appears to be inaccurate. I prefer to rely completely on
+the distributed hash table (DHT) rather than use normal trackers
+([so long as the torrent is free of
+DRM](/blog/2009/10/26/)). My last BitTorrent client allowed me to do this, but the
+documented rTorrent option for doing
+this, `enable_trackers`, doesn't seem to work at all.
+
+```
+enable_trackers = no
+```
+
+My current workaround is to strip away all of the tracker information
+from the torrent file before giving it to rTorrent. It's a Perl
+script, with all the hard work being done by
+the [ Bencode module](http://search.cpan.org/dist/Bencode/lib/Bencode.pm). Stripping out the trackers is trivial,
+
+```perl
+my $decoded = bdecode do { local $/; <STDIN> };
+$$decoded{'announce'} = "http://127.0.0.1/";
+delete $$decoded{'announce-list'};
+print( bencode $decoded );
+```
+
+The encoding of a torrent file is of critical importance, due to
+the `info_hash`: the hash of all of the torrent data and
+metadata, which uniquely identifies that torrent. If any aspect of
+the `info` field in the torrent file changes, you get a
+different hash and will not be able to participate in the original
+torrent. The reason the above code guaranteed to work properly is
+because, for any possible bencode data structure, there
+is *exactly* one possible way to bencode it.
+
+There are four data types in the bencode format: integers, byte
+strings, lists, and associative arrays. Integers are encoded in ASCII
+as base-10 (making it unaffected by endianess). Byte strings are
+stored as an integer indicating its length, followed by the literal
+string itself. Lists are stored as a list of objects in order, with
+sentinel. And associative arrays are stored as a list of key
+pairs. Most importantly, those key pairs are stored in alphabetical
+order, enforcing a single encoding for any given associative array.
+
+The simple code above only works on stdin to stdout, but it would be
+more convenient to edit torrent files in place. So I buffed it up a
+bit in my working version. It has two command line switches: one for
+operating on the file in-place (`-i`), and one for setting
+the tracker URL manually, rather than inserting a dummy value
+(`-t`). It also strips out some of the extra, optional
+fields, cutting the torrent file down to its minimal size.
+
+Once you've installed the Bencode module, drop that script in
+your `PATH` somewhere and you're ready to go.

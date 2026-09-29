@@ -18,7 +18,7 @@ dragonborn. Flip could always understand them when they spoke to each
 other. I was asked why my halfling would know Draconic, so here's his
 story.
 
-![](/img/rpg/dragon-slay-small.jpg){: .right}
+<img src="/img/rpg/dragon-slay-small.jpg" alt="" class="right" />
 
 Flip had made friends with a dragon — not a typical friendship,
 obviously. During their initial encounter this dragon realized a use for

@@ -20,7 +20,7 @@ may recall that [we developed a programming language
 together](/blog/2011/01/11/) so it was only natural we would take
 this class.
 
-[cs173]: (http://www.cs.brown.edu/courses/cs173/2012/)
+[cs173]: http://www.cs.brown.edu/courses/cs173/2012/
 
 The first part of the class is oriented around a small programming
 language created just for this class called [ParselTongue][spec].  It
@@ -204,7 +204,7 @@ bencode is *not* context-free so it can't be parsed purely by the
 grammar. I can work around it by having the parse tree function for
 strings consume input, since it's called during parsing.
 
-[bencode.el]: (https://github.com/skeeto/emacs-torrent/blob/master/bencode.el)
+[bencode.el]: https://github.com/skeeto/emacs-torrent/blob/master/bencode.el
 
 I'll be using rdp to parse many more things in the future, I'm
 sure. It's much more powerful than I expected.

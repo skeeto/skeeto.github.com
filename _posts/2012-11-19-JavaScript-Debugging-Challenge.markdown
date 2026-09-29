@@ -60,7 +60,7 @@ foo.push([]);  // foo = [1, 2, 3, []]
 ~~~
 
 The real quirk here is JavaScript's strange scoping rules. JavaScript
-only has *function* scope [^let], not *block* scope like most other
+only has *function* scope <sup id="fnref:let"><a href="#fn:let" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, not *block* scope like most other
 languages. A loop, including `for`, doesn't get its own scope so the
 looping variables are actually hoisted into the function scope. For
 the first two uses of `count`, it isn't actually a *free variable*
@@ -87,8 +87,13 @@ pushed onto it. In the final loop, the array doesn't have any elements
 to loop over so nothing happens and `[undefined]` is returned.
 
 
-[^let]: JavaScript 1.7 actually has [block scope when using `let`][let], but `let` is not widely supported
-yet.
-
 [imp]: http://50ply.com/blog/2012/08/13/introducing-impatient-mode/
 [let]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/let
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:let">
+      <p>JavaScript 1.7 actually has <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/let">block scope when using <code>let</code></a>, but <code>let</code> is not widely supported yet. <a href="#fnref:let" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

@@ -155,7 +155,7 @@ int main(void)
 
 The MSVCRT allocator justifiably panics over the bad pointer:
 
-```c
+```
 $ cc -g3 -o chaos.exe chaos.c ucrtbase.lib
 $ gdb -ex run chaos.exe
 Starting program: chaos.exe

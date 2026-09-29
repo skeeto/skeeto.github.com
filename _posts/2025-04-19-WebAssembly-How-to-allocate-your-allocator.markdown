@@ -170,7 +170,7 @@ void *sbrk(ptrdiff_t size)
 
 To which Clang compiles (note the `memory.grow`):
 
-```racket
+```wat
 (func $sbrk (param i32) (result i32)
   (select
     (i32.const 0)

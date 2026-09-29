@@ -1,0 +1,47 @@
+---
+title: A Modest Chess Engine
+layout: post
+tags: [java]
+uuid: 7e35b889-394e-3b57-3b32-f2bee090dddf
+---
+
+<!-- 17 October 2010 -->
+
+<pre>
+git clone <a href="https://github.com/skeeto/october-chess-engine">git://github.com/skeeto/october-chess-engine.git</a>
+</pre>
+
+![](/img/chess/chess-screenshot.png)
+
+Here's what I've been working on for about the last week: a little
+chess application in Java. It has a built-in AI you can play against
+and it's capable of playing both standard chess and Gothic chess right
+now. It's actually a chess framework, so it would be fairly easy for
+me to add new chess variants, and the AI would be able to play it
+automatically. The hardest part is handling a particular chess
+variant's castling rule, since that's the hardest rule to generalize.
+
+The AI is a minimax search over four full plies with a fairly
+simplistic heuristic (but more than just adding up material). It's
+probably not that great of a player, but it's good enough that none of
+my friends, nor I, are able to beat it. I concentrated more on making
+it flexible than fast, so it can't search more than five plies without
+taking unreasonably long. But it does use multiple threads to do the
+search, so it should be pretty speedy on an SMP system.
+
+![](/img/chess/gothic-screenshot.png)
+
+I thought about adding multiplayer capability and perhaps giving it
+the ability to interface with standalone chess engines (wow are those
+protocols ugly!),
+like [GNU
+Chess](http://en.wikipedia.org/wiki/GNU_Chess). But there are other programs that already do this better
+than I ever could. I've done about as much as I was interested in
+doing with it.
+
+Maybe you remember [that chess AI essay I
+wrote some years back](/blog/2007/10/24/)? I was talking about using a genetic
+algorithm to tweak the AI parameters. Well, I actually tried to do
+that here with this AI (see the `OptimizeGA` class in the
+code). Turns out it's not very useful anyway! :-P It wasn't getting
+anywhere useful in my experiments.

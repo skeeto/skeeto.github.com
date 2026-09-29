@@ -1,0 +1,80 @@
+---
+title: Tweaking Emacs for Ant and Java
+layout: post
+tags: [emacs, java, lisp]
+uuid: 42b07d86-b8d5-3992-5b5e-ad5c41b9256d
+---
+
+<!-- 6 December 2009 -->
+
+*Update: This is now part of my
+[ `java-mode-plus`](https://github.com/skeeto/emacs-java) Emacs extension.*
+
+Developing C in Emacs is a real joy, and it's mostly thanks to the
+compile command. Once you have your Makefile — or SConstruct or
+whatever build system you like — setup and you want to compile your
+latest changes, just run `M-x compile`, which will run your
+build system in a buffer. You can then step through the errors and
+warnings with `` C-x ` ``, and Emacs will take you to them.
+It's a very nice way to write code.
+
+I use the compile command so much that I bound it to `C-x C-k` (`C-k` tends to be part of compile key
+bindings),
+
+```cl
+(global-set-key "\C-x\C-k" 'compile)
+```
+
+Until recently, I didn't have as nice of a setup for Java. Since they
+generally force offensive IDEs onto me at work this wasn't something I
+needed yet anyway, but *I* get to choose my environment on a new
+project this time. If you're using Makefiles for some reason when
+building your Java project, it still works out fairly well because
+they're usually called recursively. It gets more complicated with [Ant](http://ant.apache.org/), where there is only one
+top-level build file. Emacs' compile command only runs the build
+command in the buffer's current directory.
+
+I know three solutions to this problem. One is to provide the build
+file's absolute path when `compile` asks for the command
+with the `-buildfile` (`-f`) option. You only
+need to type it once per Emacs session, so that's not *too* bad.
+
+```
+ant -emacs -buildfile /path/to/build.xml
+```
+
+It's not well documented, but there is a `-find` option
+that can be given to Ant that will cause it to search for the build
+file itself. This is even nicer than the previous solution. Just
+remember to place it last, unless you give it the build filename
+too. For example, if you wanted to run the `clean` target,
+
+```
+ant -emacs clean -find
+```
+
+To keep the actual call as simple as possible, I wrote a wrapper for
+`compile`, and put a hook in `java-mode` to
+change the local binding. The wrapper, `ant-compile`,
+searches for the build file the same way `-find` would do.
+
+```cl
+(defun ant-compile ()
+  "Traveling up the path, find build.xml file and run compile."
+  (interactive)
+  (with-temp-buffer
+    (while (and (not (file-exists-p "build.xml"))
+                (not (equal "/" default-directory)))
+      (cd ".."))
+    (call-interactively 'compile)))
+```
+
+So I can transparently keep using my muscle memory compile binding, I
+set up the key binding in a hook,
+
+```cl
+(add-hook 'java-mode-hook
+          (lambda () (local-set-key "\C-x\C-k" 'ant-compile)))
+```
+
+Voila! Java works looks a little bit more like C.

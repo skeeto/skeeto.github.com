@@ -159,4 +159,4 @@ that really *is* useful at work.
 
 
 [faq]: https://web.archive.org/web/20150304163452/http://webstaff.itn.liu.se/~stegu/TNM022-2005/perlinnoiselinks/perlin-noise-math-faq.html
-[machine]: (http://www.noisemachine.com/talk1/)
+[machine]: http://www.noisemachine.com/talk1/

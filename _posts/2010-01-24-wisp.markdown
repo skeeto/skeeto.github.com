@@ -1,0 +1,175 @@
+---
+title: Wisp Lisp
+layout: post
+tags: [lisp]
+uuid: f42662c9-f81e-361a-e342-58f9536ed0f8
+---
+
+<!-- 24 January 2010 -->
+
+*Update 2010-2-04: A lot of the information below is out of date. There
+is an update here: [Wisp Screencasts](/blog/2010/02/04/).*
+
+<img src="/img/wisp/wisp.png" alt="" title="A wisp of a lisp" class="right"/>
+This is a project I've been wanting to do for some time, and I finally
+got around to doing it. I spent the last few days implementing my own
+lisp interpreter in C. Today, after sinking in about 48 hours of work,
+I believe I completed enough of it to consider it in a working state,
+with a code base stable enough that other interested people could
+contribute. It was *really* exciting to see everything come together
+today.
+
+You can make a clone of the Wisp repository with Git. Go ahead; don't
+be shy,
+
+<pre>
+git clone <a href="https://github.com/skeeto/wisp">git://github.com/skeeto/wisp.git</a>
+</pre>
+
+To build it, all you need is a C99 compiler, make, yacc
+(i.e. [ Bison](http://www.gnu.org/software/bison/)), and
+lex (i.e. [ Flex](http://flex.sourceforge.net/)).
+
+It doesn't use the readline library or one of it's clones to make a
+nice interaction command line, so it's a good idea to run it
+with [rlwrap](http://utopia.knoware.nl/~hlub/uck/rlwrap/). That's
+what I've been doing. If you plan on writing Wisp code in Emacs,
+putting this in your `.emacs` will give you all the syntax
+niceties,
+
+```cl
+(add-to-list 'auto-mode-alist '(".wisp\\'" . lisp-mode))
+```
+
+You should also be able to run it as an inferior lisp and send code to
+it like a normal lisp. I haven't done this yet myself.
+
+I think the name is apt, because it really is a wisp of a lisp. As of
+this writing, it weighs in at 1500 lines of code and is still very
+feature-light. I haven't actually read any material about writing lisp
+interpreters, so I've been winging it based on my experience with
+it. It's already taught me a lot of subtle things about lisp that I
+hadn't been aware of before.
+
+Right know it's very simple. It doesn't yet support any syntax beyond
+parenthesis (no `'` quoting). No closures. No garbage
+collection, as I'm still working out how I'm going to do
+that. Dynamically scoped, since that's a lot easier to do. And, like
+Scheme, it's a lisp-1, meaning functions and variables share a common
+namespace. I hope to expand it to include some features from other
+lisps like Arc (particularly the anonymous function syntactical
+sugar), Common Lisp, and Scheme.
+
+However, it *does* have already anonymous functions, which many
+popular languages *still* don't have. :-) It's far enough along
+to let you define crazy stuff like this,
+
+```cl
+(defun example (n)
+  (if (<= n 0)
+      (lambda (x) (* x 10))
+    (lambda (x) (* x 2.0))))
+```
+
+Which you can call, interactively in this case, like so,
+
+```cl
+wisp> ((example  1) 20)
+40.000000
+wisp> ((example -1) 20)
+200
+```
+
+Because there's no garbage collection yet, it leaks memory like a
+sieve. For garbage collection, I think I'll do a mark-and-sweep,
+marking objects based on their reachability from the symbol table.
+That still leaves some corner cases — such as worrying about objects
+in limbo in the evaluator — that I'm not sure about. I need to be
+careful not to free objects still in use. Still working that one out.
+
+It has the multiplication, addition, subtraction, and division
+implemented, as well as the greater-than and less-than operators. Lisp
+macros are implemented. A number of special forms are defined, like
+let, if, set, defun, defmacro, car, cdr, not, progn, lambda, and
+while. All of the predicates are implemented. It has a C interface,
+which is how all the above got defined. I already have some functions
+and macros defined in terms of Wisp code, too. Most of the needed
+functions at this point are trivial to add, though a bit tedious, so
+I'm mostly trying to focus on the core parts of the interpreter right
+now.
+
+It's amazing how much the internal code looks like lisp written in a C
+dialect. I have CAR and CDR macros defined, which get used all over
+the place, and code frequently uses them to walk lists like lisp code
+would.
+
+The core struct that everything works with the the object struct. It's
+defined as such,
+
+```c
+typedef struct object
+{
+  type_t type;
+  void *val;
+} object_t;
+```
+
+The `type_t` field comes from this enumeration,
+
+```c
+typedef enum types
+  { INT, FLOAT, STRING, SYMBOL, CONS, CFUNC, SPECIAL } type_t;
+```
+
+The type indicates what type of data the void pointer points to,
+making it sort-of polymorphic. Note the CONS type, the cons cell, used
+to create lists,
+
+```c
+typedef struct cons
+{
+  object_t *car;
+  object_t *cdr;
+} cons_t;
+```
+
+There's the familiar car and cdr pointers. There are a bunch of helper
+functions to manipulate and build these. For
+example, `c_cons()` creates a cons cell,
+
+```c
+object_t *c_cons (object_t * car, object_t * cdr);
+```
+
+Look familiar? Yup, that's the lisp `cons` function. Since
+the `nil` symbol is available in C code as `NIL`
+you can chain these together in C to make a list,
+
+```c
+object_t *lst = c_cons (c_int(10), c_cons (c_str ("hello"), NIL));
+```
+
+Which puts together the simple list,
+
+```cl
+(10 "hello")
+```
+
+Since that's so cumbersome to write out, there's a parser that can
+read nice lisp code and use all those same functions to make the
+lists. Hence, the lisp reader.
+
+If you want to help, it's pretty easy to add more CFUNCs, C functions
+that are exposed to Wisp lisp code. Right now, I'd like to expose the
+whole C math.h library, provide a nice I/O interface, and expose a
+bunch of string functions. The `TODO` file in the
+repository contains more things to be done.
+
+Wisp will probably be getting it's own "project page" here at some
+point in the future. When it does, I'll update this post to point to
+it.
+
+Oh, and I decided to make this available under a 2-clause BSD license,
+so someone could easily plug it into another program as an extension
+language (once Wisp has matured first, of course). That would be
+cool.

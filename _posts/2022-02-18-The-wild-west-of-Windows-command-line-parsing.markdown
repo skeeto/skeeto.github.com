@@ -36,7 +36,7 @@ _start: mov   edi, [rsp]     ; argc
 
 It's 5 instructions (20 bytes) on ARM64:
 
-```nasm
+```aarch64
 _start: ldr  w0, [sp]        ; argc
         add  x1, sp, 8       ; argv
         bl   main

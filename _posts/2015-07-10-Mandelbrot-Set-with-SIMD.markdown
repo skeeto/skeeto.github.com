@@ -95,7 +95,7 @@ There's just one unusual part:
 for (int y = 0; y < s->height; y++) {
    /* ... */
 }
-~~~~
+~~~
 
 This is an Open Multi-Processing (OpenMP) pragma. It's a higher-level
 threading API than POSIX or Win32 threads. OpenMP takes care of all

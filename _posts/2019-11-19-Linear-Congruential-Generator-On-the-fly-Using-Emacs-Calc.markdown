@@ -29,7 +29,7 @@ Nearly every programming language comes with a pseudo-random number
 generation function or library. Unfortunately the language's standard
 PRNG is usually a poor choice (C, [C++][cpp], [C#][csharp], [Go][go]).
 It's probably mediocre quality, [slower than it needs to be][call]
-([also][go]), [lacks reliable semantics or behavior between
+([also][rng-go]), [lacks reliable semantics or behavior between
 implementations][bsd], or is missing some other property I want. So I've
 long been a fan of *BYOPRNG:* Bring Your Own Pseudo-random Number
 Generator. Just embed a generator with the desired properties directly
@@ -237,7 +237,7 @@ of the finer details of your target language.
 [csharp]: https://lowleveldesign.org/2018/08/15/randomness-in-net/
 [data]: /blog/2018/02/07/
 [ent]: /blog/2019/04/30/
-[go]: https://github.com/skeeto/rng-go
+[rng-go]: https://github.com/skeeto/rng-go
 [go]: https://grokbase.com/t/gg/golang-nuts/155f6kbb7a/go-nuts-why-are-high-bits-used-by-math-rand-helpers-instead-of-low-ones
 [hash]: /blog/2018/07/31/
 [lcg]: https://en.wikipedia.org/wiki/Linear_congruential_generator
