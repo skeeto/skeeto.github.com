@@ -57,10 +57,10 @@ walk on a frozen lake with too many people.
   description: >-
     As everyone steps out onto the frozen lake, the quiet, chilled air
     is disrupted by loud cracks of splits forming through the ice.
-    Frozen in place, {{"{{game.player.party.[0]"}}}} looks at you as if
+    Frozen in place, {{game.player.party.[0]}} looks at you as if
     asking you what should be done.
 
-    {{"{{game.player.party.[1]"}}}} says, "Perhaps we should leave some of
+    {{game.player.party.[1]}} says, "Perhaps we should leave some of
     this stuff behind to lighten load on the ice."
   options:
     - answer: Leave behind some supplies before moving further. (-10 supplies)

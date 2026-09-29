@@ -100,7 +100,6 @@ Action to code-sign with Azure, but it requires a Windows runner, fatally
 limiting for my own needs. So aas-sign also defines a code-signing action.
 The previous example would have this in its own action:
 
-{% raw %}
 ```yaml
   - name: Sign
     uses: skeeto/aas-sign@v1.0.0
@@ -114,7 +113,6 @@ The previous example would have this in its own action:
         myapp.exe
         myapp.dll
 ```
-{% endraw %}
 
 The secrets are bunch of strings you (or your AI agent) retrieve from the
 Azure portal. You also need to create Federated Identity Credential (FIC)

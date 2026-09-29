@@ -3,6 +3,8 @@
 name: pages
 
 on:
+  push:
+    branches: [master]
   workflow_dispatch:
 
 permissions:
