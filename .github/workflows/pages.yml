@@ -1,0 +1,43 @@
+# Build nullprogram.com with ssg (_ssg/) and deploy it to GitHub Pages.
+# Requires Settings > Pages > Source: "GitHub Actions".
+name: pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # -O0: one build for one run, so fast compilation beats fast code
+      - name: Build ssg
+        run: |
+          cmake -S _ssg -B _ssg/build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O0 -DNDEBUG"
+          cmake --build _ssg/build
+      - name: Test ssg
+        run: ctest --test-dir _ssg/build --output-on-failure
+      - name: Generate site
+        run: _ssg/build/ssg -o _site
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

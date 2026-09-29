@@ -1,1 +1,4 @@
+CLAUDE.md
 _site
+_ssg/build*/
+__pycache__/
