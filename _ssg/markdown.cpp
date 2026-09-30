@@ -192,8 +192,11 @@ static b32 blank(u8 c)  // [ \t]
 
 static iz lineend(Str s, iz i)
 {
-    for (; i<s.len && s.data[i]!='\n'; i++) {}
-    return i;
+    if (i >= s.len) {
+        return i;
+    }
+    u8 *p = (u8 *)__builtin_memchr(s.data+i, '\n', (uz)(s.len-i));
+    return p ? p-s.data : s.len;
 }
 
 static iz nextline(Str s, iz i)
@@ -2502,7 +2505,17 @@ static b32 parsespans(MdSpans *sp, MdFrame *f)
             u8 c = s.data[i];
             if (c>=0x80 && c<0xc0) continue;  // inside a code point
             if (f->stop && stopat(sp, f, i)) break;
-            if (f->raw ? c=='<' : f->table ? c=='<' || c=='`' : spanstart(s, i)) break;
+            if (f->raw ? c=='<' : f->table ? c=='<' || c=='`' : 0) break;
+            if (f->raw || f->table) continue;
+
+            // Fast path for most bytes: an alphanumeric or space that is
+            // neither a span start nor followed by a quote (see spanstart)
+            u8 n = i+1<s.len ? s.data[i+1] : 0;
+            if (n!='"' && n!='\'' && ((u32)(c|0x20)-'a'<26 || (u32)c-'0'<10 ||
+                    (c==' ' && n!=' ' && n!='<' && n!='>'))) {
+                continue;
+            }
+            if (spanstart(s, i)) break;
         }
         if (i >= s.len) {
             if (!f->stop) {

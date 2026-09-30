@@ -107,6 +107,17 @@ extern "C" void *memset(void *dst, i32 c, uz len)
     return r;
 }
 
+extern "C" void *memchr(void const *s, i32 c, uz len)
+{
+    u8 *p = (u8 *)s;
+    for (uz i = 0; i < len; i++) {
+        if (p[i] == (u8)c) {
+            return p + i;
+        }
+    }
+    return 0;
+}
+
 extern "C" i32 memcmp(void const *a, void const *b, uz len)
 {
     u8 *x = (u8 *)a;
