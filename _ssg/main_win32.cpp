@@ -11,6 +11,7 @@
 enum : i32 {
     CREATE_ALWAYS                 = 2,
     ERROR_ALREADY_EXISTS          = 183,
+    ERROR_INVALID_PARAMETER       = 87,
     FILE_ATTRIBUTE_DEVICE         = 0x40,
     FILE_ATTRIBUTE_DIRECTORY      = 0x10,
     FILE_ATTRIBUTE_NORMAL         = 0x80,
@@ -19,6 +20,7 @@ enum : i32 {
     FILE_TYPE_DISK                = 1,
     FIND_FIRST_EX_LARGE_FETCH     = 2,
     FindExInfoBasic               = 1,
+    FindExInfoStandard            = 0,
     FindExSearchNameMatch         = 0,
     GENERIC_READ                  = (i32)0x80000000,
     GENERIC_WRITE                 = 0x40000000,
@@ -278,6 +280,12 @@ static Dirent *os_list(Os *, Arena *a, Str path)
         pat, FindExInfoBasic, &fd, FindExSearchNameMatch, 0,
         FIND_FIRST_EX_LARGE_FETCH
     );
+    if (h==INVALID_HANDLE_VALUE && GetLastError()==ERROR_INVALID_PARAMETER) {
+        // Before Windows 7: no basic info level or large fetch
+        h = FindFirstFileExW(
+            pat, FindExInfoStandard, &fd, FindExSearchNameMatch, 0, 0
+        );
+    }
     if (h == INVALID_HANDLE_VALUE) {
         return 0;
     }

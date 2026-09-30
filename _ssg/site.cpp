@@ -493,6 +493,10 @@ static void loadposts(Ctx *c, Site *site, Arena scratch)
         *prev = p;
         site->posts = push(perm, site->posts, p);
     }
+    if (!site->posts.len) {
+        error(c->log, dir, 0, "no posts found");  // or could not list it
+        return;
+    }
 
     sort(site->posts.data, site->posts.len, postless, scratch);
     for (iz i = 0; i < site->posts.len; i++) {
