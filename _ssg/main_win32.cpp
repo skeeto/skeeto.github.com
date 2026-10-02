@@ -86,6 +86,8 @@ W32(i32,    GetFullPathNameW(c16 *, i32, c16 *, c16 **));
 W32(i32,    GetLastError());
 W32(uz,     GetStdHandle(i32));
 W32(void,   GetSystemTimeAsFileTime(Filetime *));
+W32(b32,    QueryPerformanceCounter(i64 *));
+W32(b32,    QueryPerformanceFrequency(i64 *));
 W32(b32,    ReadFile(uz, u8 *, i32, i32 *, uz));
 W32(void,   Sleep(i32));
 W32(byte *, VirtualAlloc(uz, iz, i32, i32));
@@ -348,6 +350,15 @@ static i64 os_now(Os *)
     Filetime ft = {};
     GetSystemTimeAsFileTime(&ft);
     return (i64)(ticks(ft)/10000000) - 11644473600;  // 1601 -> 1970
+}
+
+static i64 os_clock(Os *)
+{
+    i64 freq  = 0;
+    i64 count = 0;
+    QueryPerformanceFrequency(&freq);
+    QueryPerformanceCounter(&count);
+    return count/freq*1000 + count%freq*1000/freq;
 }
 
 static void os_sleep(Os *, i32 ms)

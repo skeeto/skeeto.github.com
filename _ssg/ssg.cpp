@@ -37,6 +37,8 @@ static Dirent *os_list(Os *, Arena *, Str path);
 static i32     os_copy(Os *, Arena, Str src, Str dst);
 // Current time in Unix epoch seconds.
 static i64     os_now(Os *);
+// Monotonic clock in milliseconds, only for measuring intervals.
+static i64     os_clock(Os *);
 // Write to standard output (1) or standard error (2).
 static b32     os_print(Os *, i32 fd, Str);
 // Pause for a number of milliseconds.
@@ -133,6 +135,7 @@ static Str stylesheet(Ctx *c, Arena *a)
 
 static i32 build(Os *os, Options *opt, Log *log, Arena *perm, Arena scratch)
 {
+    i64 start = os_clock(os);
     Ctx c  = {};
     c.os   = os;
     c.opt  = opt;
@@ -197,7 +200,9 @@ static i32 build(Os *os, Options *opt, Log *log, Arena *perm, Arena scratch)
         print(&b, (i64)c.copied);
         print(&b, " files copied, ");
         print(&b, (i64)c.skipped);
-        print(&b, " unchanged\n");
+        print(&b, " unchanged in ");
+        print(&b, os_clock(os) - start);
+        print(&b, " ms\n");
         os_print(os, 2, finish(&b));
     }
     return log->errors ? 1 : 0;

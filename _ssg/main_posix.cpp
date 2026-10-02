@@ -182,6 +182,13 @@ static i64 os_now(Os *)
     return (i64)time(0);
 }
 
+static i64 os_clock(Os *)
+{
+    struct timespec ts = {};
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return (i64)ts.tv_sec*1000 + ts.tv_nsec/1000000;
+}
+
 static b32 os_print(Os *, i32 fd, Str s)
 {
     return writeall(fd, s);

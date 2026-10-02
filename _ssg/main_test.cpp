@@ -12,6 +12,7 @@ static b32     os_mkdirs(Os *, Arena, Str) { return 0; }
 static Dirent *os_list(Os *, Arena *, Str) { return 0; }
 static i32     os_copy(Os *, Arena, Str, Str) { return COPY_FAILED; }
 static i64     os_now(Os *) { return 0; }
+static i64     os_clock(Os *) { return 0; }
 static b32     os_print(Os *, i32 fd, Str s)
 {
     return fwrite(s.data, 1, (uz)s.len, fd==1 ? stdout : stderr) == (uz)s.len;
