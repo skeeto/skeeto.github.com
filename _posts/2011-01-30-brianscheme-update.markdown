@@ -69,7 +69,7 @@ the first time. With that success the lengthy bootstrap process was no
 longer a big problem because it could be bypassed much of the
 time. Saving images is really simple to do, too.
 
-```
+```scheme
 (save-image "brianscheme.img")
 ```
 
@@ -96,7 +96,7 @@ make this more useful, a toplevel function can be selected to run
 after the image loads, rather than a REPL. If you wrote a game in BS
 and wanted to compile to a standalone program,
 
-```
+```scheme
 (load "my-game.sch")
 (save-image "my-game" 'executable #t 'toplevel play-my-game)
 ```

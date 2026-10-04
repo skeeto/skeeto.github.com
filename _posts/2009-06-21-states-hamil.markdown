@@ -23,7 +23,7 @@ is the graph as an S-expression [ alist](http://en.wikipedia.org/wiki/Associatio
 cdr (rest) is the unordered list of states that can be reached from
 it.
 
-```
+```elisp
 ((me nh)
  (nh vt ma me)
  (vt ny ma nh)

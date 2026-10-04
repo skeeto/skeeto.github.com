@@ -52,7 +52,7 @@ client so that no files underneath the serving root can be accessed.
 The server log is lisp itself. Here is an example log starting the
 server, serving one request, and halting,
 
-```
+```elisp
 '(log
   (start "Wed May 13 23:33:34 2009")
   (connection

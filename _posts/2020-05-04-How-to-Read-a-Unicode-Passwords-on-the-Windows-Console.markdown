@@ -172,7 +172,7 @@ Finally print a newline since the user-typed one wasn't echoed, restore
 the old console mode, close the console handles, and return the final
 encoded length:
 
-```
+```c
 WriteConsoleA(ho, "\n", 1, 0, 0);
 SetConsoleMode(hi, orig);
 CloseHandle(ho);

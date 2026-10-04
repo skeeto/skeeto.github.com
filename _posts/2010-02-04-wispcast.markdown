@@ -39,7 +39,7 @@ should have a function definition stored in it, and it will installed a
 wrapper around it. In the video I used the Fibonacci function from
 the `examples` library.
 
-```
+```lisp
 (require 'examples)
 (fib 30) ; Slooooow ...
 (memoize 'fib)
@@ -63,7 +63,7 @@ function. The `send` function can be called any number of
 times to continually send data back. The `receive` function
 will block if there is no lisp object to receive yet.
 
-```
+```lisp
 (require 'examples)
 (setq d (detach (lambda () (send (fib)))))
 (receive d) ; Gets value from child process

@@ -83,7 +83,7 @@ In future messages we can retrieve it with `GetWindowLongPtr`. Every time
 I go through this I wish there was a better way. What if there was a fifth
 window procedure parameter though which we could pass a context?
 
-```
+```c
 typedef LRESULT Wndproc5(HWND, UINT, WPARAM, LPARAM, void *);
 ```
 

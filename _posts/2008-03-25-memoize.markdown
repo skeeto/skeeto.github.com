@@ -38,7 +38,7 @@ sets are identical: (1 1 5) (5 1 1). So, to avoid counting the same
 set twice, we also want to tell the function the largest size coin to
 use from then on. Our function may look like this now (Perl),
 
-```
+```perl
 use List::Util qw(sum);
 
 sub count {
@@ -65,7 +65,7 @@ the rescue!
 
 We will now add this,
 
-```
+```perl
 use Memoize;
 memoize('count');
 ```
@@ -78,7 +78,7 @@ calculate the number of ways to make change for a value of 2000 in a
 couple seconds rather than days. That's how much redundant work the
 function was doing. Here is the whole thing,
 
-```
+```perl
 #!/usr/bin/perl
 
 use strict;
@@ -108,7 +108,7 @@ sub count {
 Now, to apply it to the Collatz problem from my previous post we get a
 nice simple little program,
 
-```
+```perl
 #!/usr/bin/perl
 
 use strict;

@@ -27,7 +27,7 @@ just put the torrent file there and rTorrent gets to work on it. Share
 this watched directory on a network, and rTorrent becomes a network
 service.
 
-```
+```ini
 # rTorrent configuration
 directory = /torrents/
 session = /torrents/.session/
@@ -44,7 +44,7 @@ DRM](/blog/2009/10/26/)). My last BitTorrent client allowed me to do this, but t
 documented rTorrent option for doing
 this, `enable_trackers`, doesn't seem to work at all.
 
-```
+```ini
 enable_trackers = no
 ```
 

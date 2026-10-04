@@ -68,13 +68,13 @@ cumbersome. Backslashes need extra escaping, for example. Instead, I
 would rather have a regex type like Perl and Javascript have. So
 instead of,
 
-```
+```elisp
 (string-match "\\w[0-9]+" "foo525")
 ```
 
 we have,
 
-```
+```elisp
 (string-match /\w[0-9]+/ "foo525")
 ```
 
@@ -83,7 +83,7 @@ its type. There could also be a function for compiling a regexp from a
 string into a regexp object. As a bonus, I would also like to use it
 directly as a function,
 
-```
+```elisp
 (/\w[0-9]+/ "foo525")
 ```
 

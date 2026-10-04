@@ -204,7 +204,7 @@ That is a syntax error:
 
 Or [in any version of Matlab][matlab]:
 
-```
+```matlab
     magic(4)(:)
 ```
 

@@ -279,7 +279,7 @@ set guioptions=ac
 Finally, since the development kit is oriented around C and C++, here's my
 own entire Vim configuration for C which makes it obey my own style:
 
-```
+```vim
 set cinoptions+=t0,l1,:0 cinkeys-=0#
 ```
 

@@ -49,7 +49,7 @@ The simple approach would be defining a function that returns the
 cycle length ([Lua](http://www.lua.org/) programming
 language),
 
-```
+```lua
 function collatz_len (n)
    local c = 1
 
@@ -68,7 +68,7 @@ end
 
 Then we have a function check over a range (assuming n &lt;= m here),
 
-```
+```lua
 function check_range (n, m)
    local largest = 0
 
@@ -88,7 +88,7 @@ end
 And top it off with the i/o. (I am just learning Lua, so I hope I did
 this part properly!)
 
-```
+```lua
 while not io.stdin.eof do
    n, m = io.stdin:read("*number", "*number")
 
@@ -147,7 +147,7 @@ is one of my favorite things about [ Haskell](http://www.haskell.org/)). We don'
 either. We just go along looking up values in the array as if they
 were always there. Here is how you do it,
 
-```
+```lua
 collatz_len = { 1 }
 
 setmetatable (collatz_len, {

@@ -23,7 +23,7 @@ put simply, a list of lists. There is no operator precedence because
 operators are treated just like functions. This leads to prefix
 notation for mathematical expressions,
 
-```
+```scheme
 (+ 4 5)
 => 9
 ```
@@ -31,14 +31,14 @@ notation for mathematical expressions,
 where the `=>` indicates the result of evaluating the
 expression. We can apply as many operands as we want,
 
-```
+```scheme
 (+ 2 3 4 5 10)
 => 24
 ```
 
 We can put another list right in there as an operand,
 
-```
+```scheme
 (+ 3 (* 2 5) 4)
 => 17
 ```
@@ -47,14 +47,14 @@ You get the idea. In a function, the value of the last expression is
 the return value. For example, here is the `square`
 function in Scheme, which squares its input,
 
-```
+```scheme
 (define (square x)
   (* x x))
 ```
 
 Then we can use it,
 
-```
+```scheme
 (+ (square 2) (square 5))
 => 29
 ```
@@ -67,7 +67,7 @@ the interpreter or compiler that the list is to be treated as data and
 not to be executed. This is shorthand, or syntactic sugar, for
 the `quote` operator: `(quote (stallman moglen))` is the same as `'(stallman moglen)`.
 
-```
+```scheme
 (car '(stallman moglen lessig))
 => stallman
 ```
@@ -76,7 +76,7 @@ the `quote` operator: `(quote (stallman moglen))` is the same as `'(stallman mog
 the `car` of the list). When passing a list with only one
 element `cdr` returns the empty list: `()`.
 
-```
+```scheme
 (cdr '(stallman moglen lessig))
 => (moglen lessig)
 (cdr '(stallman))
@@ -87,7 +87,7 @@ We can ask if a list is empty or not
 with `null?`. `#t` and `#f` are true
 and false.
 
-```
+```scheme
 (null? '(stallman moglen lessig))
 => #f
 (null? '())
@@ -98,7 +98,7 @@ And finally, for lists, we have `cons`. This function
 allows us to build a list. It glues the first argument to the front of
 the list in the second argument,
 
-```
+```scheme
 (cons 'stallman '(moglen lessig))
 => (stallman moglen lessig)
 (cons 'stallman '())
@@ -108,7 +108,7 @@ the list in the second argument,
 And one last function you need to know: `eq?`. It
 determines the two atoms are the same atom,
 
-```
+```scheme
 (eq? 'stallman 'moglen)
 => #f
 (eq? 'stallman 'stallman)
@@ -120,7 +120,7 @@ functions have not been defined for us. Instead all we have
 is `add1` and `sub1`, each of which adds or
 subtracts 1 from its argument respectively.
 
-```
+```scheme
 (add1 5)
 => 6
 (sub1 5)
@@ -132,7 +132,7 @@ defined for us, which tells us if its argument is 0 or not. Notice
 that functions that return true or false, called predicates, have
 a `?` on the end.
 
-```
+```scheme
 (zero? 2)
 => #f
 (zero? 0)
@@ -145,7 +145,7 @@ arguments) in terms of the three basic functions shown above. It might
 be interesting to try to write this yourself before you look any
 further. (Hint: define it recursively!)
 
-```
+```scheme
 ;; Adds together n and m
 (define (+ n m)
   (if (zero? m) n
@@ -155,7 +155,7 @@ further. (Hint: define it recursively!)
 If the second argument is 0 we are done and simply return the first
 argument. If not, we add 1 to `n + (m - 1)`. The `-` function is defined similarly.
 
-```
+```scheme
 ;; Subtracts m from n
 (define (- n m)
   (if (zero? m) n
@@ -165,7 +165,7 @@ argument. If not, we add 1 to `n + (m - 1)`. The `-` function is defined similar
 Multiplication is the act of performing addition many times. We can go
 on defining it in terms of addition,
 
-```
+```scheme
 (define (* n m)
   (if (zero? m) 0
       (+ n (* n (sub1 m)))))
@@ -193,13 +193,13 @@ facilities. The answer: we have to define our own representation for
 numbers! Let's try this, define a number as a list of empty lists. So,
 the number 3 is,
 
-```
+```scheme
 '(() () ())
 ```
 
 And here is 0, 2, and 4,
 
-```
+```scheme
 '()
 '(() ())
 '(() () () ())
@@ -214,7 +214,7 @@ numbers are defined as lists, so we can use our list operators. To add
 1 to a number, we append another empty list. Hey, that sounds a lot
 like `cons`!
 
-```
+```scheme
 (define (add1 n)
   (cons '() n))
 ```
@@ -222,7 +222,7 @@ like `cons`!
 Subtraction is removing an element from the list, which sounds a lot
 like `cdr`,
 
-```
+```scheme
 (define (sub1 n)
   (cdr n))
 ```
@@ -230,7 +230,7 @@ like `cdr`,
 And to define `zero?` we need to check for an empty
 list. Notice this will also be the definition for `null?`.
 
-```
+```scheme
 (define (zero? n)
   (eq? '() n))
 ```

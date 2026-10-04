@@ -133,7 +133,7 @@ Save that image (the PNG file, not the linked SVG file) where you can
 get to it in Octave. Now, let's load the image into Octave
 using `imread()`.
 
-```
+```octave
 m = imread("image-test.png");
 ```
 
@@ -141,7 +141,7 @@ The image is a grayscale image, so it has only one layer. The size
 of `m` should be 300x300. You can check this like so (note
 the lack of semicolon so we can see the output),
 
-```
+```octave
 size(m)
 ```
 
@@ -150,13 +150,13 @@ with `imshow`. It doesn't care about the image dimensions
 or size, so until you resize the plot window, it will probably be
 stretched.
 
-```
+```octave
 imshow(m);
 ```
 
 Now, let's make an extremely simple 5x5 filter mask.
 
-```
+```octave
 f = ones(5) * 1/25
 ```
 
@@ -178,14 +178,14 @@ out in the convolution). The effect will be to blur the image. It is
 important to note here that the sum of the elements is 1 (or 100% if
 you are thinking of averages). You can check it like so,
 
-```
+```octave
 sum(f(:))
 ```
 
 Now, to convolve the image with the filter mask
 using `filter2()`.
 
-```
+```octave
 ave_m = filter2(f, m);
 ```
 
@@ -194,7 +194,7 @@ except that we need to first convert the image matrix to a matrix of
 8-bit unsigned integers. It is kind of annoying that we need this, but
 this is the way it is as of this writing.
 
-```
+```octave
 ave_m = uint8(ave_m);
 imshow(ave_m);
 ```
@@ -203,7 +203,7 @@ Or, we can save this image to a file
 using `imwrite()`. Just like with `imshow()`,
 you will first need to convert the image to `uint8`.
 
-```
+```octave
 imwrite("averaged.png", ave_m);
 ```
 
@@ -236,7 +236,7 @@ function. We only want to pad the image by the amount that the mask
 will "hang off". Let's pad the original image for a 9x9 filter, which
 will hang off by 4 pixels each way,
 
-```
+```octave
 mpad = padarray(m, [4 4], "symmetric");
 ```
 
@@ -250,7 +250,7 @@ the result is 1. The easiest way to get the curve without having to
 type in the equation is using `fspecial()`: a special
 function for creating image filters.
 
-```
+```octave
 f_gauss = fspecial("gaussian", 9, 2);
 ```
 
@@ -267,7 +267,7 @@ the 9x9 filter looks like,
 
 And to filter with the Gaussian,
 
-```
+```octave
 gauss_m = filter2(f_gauss, mpad, "valid";
 gauss_m = uint8(guass_m);
 ```
@@ -299,7 +299,7 @@ this. Notice the flipping of the first two arguments
 from `filter2`, as well as the lack of converting
 to `uint8`.
 
-```
+```octave
 gauss_m = imfilter(m, f, "symmetric");
 imwrite("gauss.png", gauss_m);
 ```
@@ -326,7 +326,7 @@ ans =
 It is good at detecting edges in one direction. We can rotate this
 each way to detect edges all over the image.
 
-```
+```octave
 mf = uint8(zeros(size(m)));
 for i = 0:3
   mf += imfilter(m, rot90(fspecial("sobel"), i));
