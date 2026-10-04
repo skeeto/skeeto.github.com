@@ -1247,10 +1247,11 @@ static void lexpc(Hl *x, HlLang *)
         x->i = hlblank(s, x->i);
         iz end = x->i;
         for (; end<eol && (hlidchar(s.data[end]) || hlin(s.data[end], ".-")); end++) {}
+        u8 sep = hlat(s, hlblank(s, end));  // "name = value" is allowed
         if (hlat(s, x->i) == '#') {
             hltoken(x, HL_COMMENT, eol);
-        } else if (end<eol && (s.data[end]==':' || s.data[end]=='=')) {
-            hltoken(x, s.data[end]==':' ? HL_KEYWORD : HL_VAR, end);
+        } else if (end>x->i && (sep==':' || sep=='=')) {
+            hltoken(x, sep==':' ? HL_KEYWORD : HL_VAR, end);
         }
         while (x->i < eol) {
             iz i = x->i;

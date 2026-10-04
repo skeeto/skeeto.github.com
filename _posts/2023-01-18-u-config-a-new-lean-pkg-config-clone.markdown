@@ -32,7 +32,7 @@ level there's really not much to it.
 As a concrete example, here's a hypothetical `example.pc` which might live
 in `/usr/lib/pkgconfig`.
 
-```
+```pc
 prefix = /usr
 major = 1
 minor = 2
@@ -360,7 +360,7 @@ original `.pc` format has undocumented, arcane quoting syntax that sort of
 works like shell quotes. I tried to match this closely in u-config, while
 pkgconf tries to be more logical. For example, pkg-config allows this:
 
-```
+```pc
 quote = "
 Cflags: "-I${prefix}/include${quote}
 ```
@@ -373,7 +373,7 @@ but it's probably a mistake since they're used improperly. In theory,
 everyone should be quoting almost everything. For example, this is a very
 common `Cflags`:
 
-```
+```pc
 Cflags: -I${prefix}/include
 ```
 
@@ -393,7 +393,7 @@ Seeing this sort of thing repeatedly is why I have little concern with
 matching every last pkg-config nuance. Regardless, this parses as two
 arguments, but if written with quotes:
 
-```
+```pc
 Cflags: "-I${prefix}/include"
 ```
 
@@ -409,7 +409,7 @@ under a path containing a space.
 
 Here's a fun input. pkg-config has its own [billion laughs][b]:
 
-```
+```pc
 v9=lol
 v8=${v9}${v9}${v9}${v9}${v9}${v9}${v9}${v9}${v9}${v9}
 v7=${v8}${v8}${v8}${v8}${v8}${v8}${v8}${v8}${v8}${v8}
