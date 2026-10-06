@@ -8,15 +8,15 @@ uuid: bee8d4c0-5185-8d4b-b14a-4aba71276e87
 My blog began as a [blosxom][] (Perl) site running on a VPS. In 2011 I
 [moved to the new GitHub Pages][move], with the site generated statically
 by [Jekyll][] (Ruby) on a GitHub server. It was a no-brainer: easier,
-faster, and cheaper, better in every way. After 15 years of Jekyll, this
-week I replaced it with [a new, custom-built static site generator][ssg],
-dubbed *ssg*, in "C with templates" C++20. The ~8KLoC source [closely
-follows my personal coding style][style] including [templated arenas and
-slices][c++], zero dependencies, and a libc-free core. It's wicked fast,
-and a complete, cold generation of my blog takes 150ms on my MacBook. That
-is, *it's done before Ruby would even reach Jekyll's entry point*. It's a
-been a great, real-world demonstration of the effectiveness of my coding
-philosophy.
+faster, and cheaper, better in every way. After 15 years of Jekyll, and
+spurred by [a post on m4][m4], this week I replaced it with [a new,
+custom-built static site generator][ssg], dubbed *ssg*, in "C with
+templates" C++20. The ~8KLoC source [closely follows my personal coding
+style][style] including [templated arenas and slices][c++], zero
+dependencies, and a libc-free core. It's wicked fast, and a complete, cold
+generation of my blog takes 150ms on my MacBook. That is, *it's done
+before Ruby would even reach Jekyll's entry point*. It's a been a great,
+real-world demonstration of the effectiveness of my coding philosophy.
 
 Look around and you'll find almost nothing visually changed. Outside of
 syntax highlighting, the HTML is semantically identical. I did not try to
@@ -167,6 +167,7 @@ accurate impression of how I would have done your project.
 [fix-xp]: https://github.com/skeeto/skeeto.github.com/commit/35228acf
 [libc]: /blog/2023/02/11/
 [llm]: /blog/2024/11/10/
+[m4]: https://napcakes.nekoweb.org/posts/m4-is-nice/
 [macOS]: https://jekyllrb.com/docs/installation/macos/
 [move]: /blog/2011/08/05/
 [ssg]: https://github.com/skeeto/skeeto.github.com/tree/master/_ssg
