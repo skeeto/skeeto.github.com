@@ -64,7 +64,7 @@ program is a single file that could be copied to another system and run
 as-is. It's a unity build — I did say it closely follows my personal style
 — so you don't even need a build system. On [w64devkit][] that looks like:
 
-    $ cc -nostartfiles -o _ssg/ssg.exe _ssg/main_windows.cpp
+    $ cc -nostartfiles -o _ssg/ssg.exe _ssg/main_win32.cpp
 
 `cc` (or `gcc`) works because the compiler driver knows to invoke the C++
 front-end for this input. It doesn't use the C++ standard library, so the
