@@ -9,11 +9,11 @@ I spent a week creating a new [deflate][] implementation from scratch in C
 named **[tugz][]** to provide an [Info-ZIP][]-compatible `zip` program for
 [w64devkit][] 2.10.1 (released today). I also replaced [busybox-w32][]'s
 deflate-based `unzip`, `gzip`, `gunzip`, and `zcat` apps as well. My new
-deflate performs better than [zlib][] but worse than [libdeflate][] (*so
-far*). In general the new programs are substantially faster and produce
-slightly smaller outputs than the BusyBox equivalents, which is optimized
-for size than speed after all, but also compared to the original gzip and
-Info-ZIP you get in a typical Linux distribution. The tugz programs are
+deflate performs much better than [zlib][] and on par with [libdeflate][].
+In general the new programs are substantially faster and produce slightly
+smaller outputs than the BusyBox equivalents, which is optimized for size
+than speed after all, but also compared to the original gzip and Info-ZIP
+you get in a typical Linux distribution. The tugz programs are
 [CRT-free][] (inspect them with [peports][]!) with first-class Windows
 support and better Unicode handling.
 
@@ -58,6 +58,18 @@ flags is an error.
 Similarly, ZIP encryption features are deliberately left unimplemented.
 Attempting to use encryption is an error.
 
+One of my hard and fast rules was full support for Windows XP. This wasn't
+automatic, but nor was it difficult. tugz needs several `*ByHandle{Ex,}W`
+functions from Win32 that are unavailable in XP. When they're unavailable,
+it falls back to equivalent Nt functions via GetProcAddress. I also made a
+[lightwight SSH server][sshd] that is trivial to build and run on Windows
+XP, allowing coding agents to automatically test and verify tugz on my old
+systems. It's quite fascinating to watch it take control of my old laptop,
+and it's already proving useful in other projects, including w64devkit.
+
+**Update**: After [a request for `zipinfo` / `unzip -Z`][zipinfo], tugz
+nos has this utility as well. It will appear in the next w64devkit.
+
 ### Usage in w64devkit
 
 What does it mean for users? You can invoke `zip` in your build scripts or
@@ -90,14 +102,16 @@ shaped like this.
 [Makefile]: /blog/2017/08/20/
 [allocator callback]: /blog/2023/12/17/
 [arena allocation]: /blog/2025/01/19/
-[deflate bug]: https://github.com/ebiggers/libdeflate/issues/323
 [busybox-w32]: https://frippery.org/busybox/
+[deflate bug]: https://github.com/ebiggers/libdeflate/issues/323
 [deflate]: https://en.wikipedia.org/wiki/Deflate
 [fuzz testing]: /blog/2025/02/05/
 [libdeflate]: https://github.com/ebiggers/libdeflate
 [peports]: /blog/2024/06/30/
 [ssg]: /blog/2026/10/04/
+[sshd]: https://github.com/skeeto/sshd
 [tugz]: https://github.com/skeeto/tugz
 [u-config]: https://github.com/skeeto/u-config/blob/master/src/linux_noarch.c
 [w64devkit]: https://github.com/skeeto/w64devkit
+[zipinfo]: https://github.com/skeeto/tugz/issues/1
 [zlib]: https://zlib.net/
