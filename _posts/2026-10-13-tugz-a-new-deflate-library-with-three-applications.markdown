@@ -68,7 +68,10 @@ systems. It's quite fascinating to watch it take control of my old laptop,
 and it's already proving useful in other projects, including w64devkit.
 
 **Update**: After [a request for `zipinfo` / `unzip -Z`][zipinfo], tugz
-nos has this utility as well. It will appear in the next w64devkit.
+now has this utility as well. It will appear in the next w64devkit. It
+also gained a minimal, classic Win32 GUI:
+
+![](/img/tugz-gui.png)
 
 ### Usage in w64devkit
 
