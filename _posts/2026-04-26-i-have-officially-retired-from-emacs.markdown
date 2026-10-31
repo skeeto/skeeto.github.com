@@ -102,7 +102,7 @@ come, except where something like Dear ImGui is a better git.
 [hn]: https://news.ycombinator.com/item?id=47906651
 [init]: /blog/2013/09/04/
 [melpa]: https://melpa.org/#/?q=skeeto
-[reddit]: https://old.reddit.com/r/emacs/comments/1svziwa
+[reddit]: https://web.archive.org/web/20260627131659/https://old.reddit.com/r/emacs/comments/1svziwa/skeeto_i_have_officially_retired_from_emacs/
 [sane]: /blog/2021/12/30/
 [sp]: /blog/2026/03/29/
 [stackcalc]: https://github.com/skeeto/stackcalc

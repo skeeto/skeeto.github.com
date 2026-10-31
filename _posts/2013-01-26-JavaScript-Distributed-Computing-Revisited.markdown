@@ -170,7 +170,7 @@ participating.
 [skewer]: /blog/2012/10/31/
 [data-uri]: http://en.wikipedia.org/wiki/Data_URI_scheme
 [v8]: http://youtu.be/UJPdhx5zTaw
-[dp]: http://redd.it/178vsz
+[dp]: https://web.archive.org/web/20230602085737/https://old.reddit.com/r/dailyprogrammer/comments/178vsz/012513_challenge_118_hard_alphabetizing_cipher/
 [simple-httpd]: /blog/2012/08/20/
 [strict]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode
 [brian]: http://www.50ply.com/

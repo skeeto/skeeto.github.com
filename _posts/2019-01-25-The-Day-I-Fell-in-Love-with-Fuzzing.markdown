@@ -193,7 +193,7 @@ bugs. It's got a permanent slot on my software developer toolbelt.
 [msvc]: /blog/2016/06/13/
 [orig]: https://github.com/skeeto/binitools/tree/original
 [pdjson]: https://github.com/skeeto/pdjson
-[reddit]: https://old.reddit.com/r/programming/comments/akrcyp/the_day_i_fell_in_love_with_fuzzing/
+[reddit]: https://web.archive.org/web/20260101105214/https://old.reddit.com/r/programming/comments/akrcyp/the_day_i_fell_in_love_with_fuzzing/
 [simple]: /blog/2017/03/30/
 [stale]: https://github.com/skeeto/binitools/commit/b695aec7d0021299cbd83c8c6983055f16d11507
 [taoup]: http://www.catb.org/esr/writings/taoup/html/

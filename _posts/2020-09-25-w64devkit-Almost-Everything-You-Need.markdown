@@ -189,7 +189,7 @@ happy answers to all these questions.
 [hn]: https://news.ycombinator.com/item?id=24586556
 [intro]: /blog/2020/05/15/
 [jb]: https://www.youtube.com/watch?v=ZSRHeXYDLko
-[lsp]: https://old.reddit.com/r/vim/comments/b3yzq4/a_lsp_client_maintainers_view_of_the_lsp_protocol/
+[lsp]: https://web.archive.org/web/20251224181917/https://old.reddit.com/r/vim/comments/b3yzq4/a_lsp_client_maintainers_view_of_the_lsp_protocol/
 [lua]: https://www.lua.org/
 [make]: /blog/2016/04/30/
 [nhp]: https://bilious.alt.org/

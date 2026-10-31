@@ -232,6 +232,6 @@ pass each line to your JSON parser.
 [ndjson]: http://ndjson.org/
 [noggit]: https://github.com/yonik/noggit
 [pdjson]: https://github.com/skeeto/pdjson
-[r]: https://old.reddit.com/r/programming/comments/egvq11/unintuitive_json_parsing/
+[r]: https://web.archive.org/web/20231216100646/https://old.reddit.com/r/programming/comments/egvq11/unintuitive_json_parsing/
 [spec]: https://www.json.org/json-en.html
 [yajl]: https://lloyd.github.io/yajl/

@@ -226,5 +226,5 @@ chunk size is appropriate for the target.
 
 
 [gr]: https://www.youtube.com/watch?v=bTee6dKpDB0
-[reddit]: https://old.reddit.com/r/C_Programming/comments/e83jzk/strange_gcc_compiler_bug_when_using_o2_or_higher/
+[reddit]: https://web.archive.org/web/20231216094414/https://old.reddit.com/r/C_Programming/comments/e83jzk/strange_gcc_compiler_bug_when_using_o2_or_higher/
 [ub]: /blog/2018/07/20/#strict-aliasing

@@ -212,4 +212,4 @@ demo above I'm manipulating the DOM and waiting on a server response,
 so the performance penalties of threading should be negligible.
 
 
-[dp]: http://redd.it/1ceai7
+[dp]: https://web.archive.org/web/20230602055906/https://old.reddit.com/r/dailyprogrammer/comments/1ceai7/040113_challenge_122_intermediate_userspace/

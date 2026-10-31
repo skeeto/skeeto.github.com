@@ -323,7 +323,7 @@ after another kiloproject of fuzz testing I'll pick up more techniques.
 [paper]: https://lcamtuf.coredump.cx/afl/technical_details.txt
 [range]: https://man7.org/linux/man-pages/man2/close_range.2.html
 [read]: https://vimhelp.org/insert.txt.html#%3Aread
-[samples]: https://old.reddit.com/r/C_Programming/comments/15wouat/_/jx2ld4a/
+[samples]: https://web.archive.org/web/20260630141357/https://old.reddit.com/r/C_Programming/comments/15wouat/i_need_to_fuzz_my_program_but_i_have_never_done/jx2ld4a/
 [sdl2]: /blog/2023/01/08/
 [tips]: https://afl-1.readthedocs.io/en/latest/tips.html
 [unity]: https://en.wikipedia.org/wiki/Unity_build

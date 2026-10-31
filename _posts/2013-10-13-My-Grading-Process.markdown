@@ -152,6 +152,6 @@ for free.
 [findbugs]: http://findbugs.sourceforge.net/
 [checkstyle]: http://checkstyle.sourceforge.net/
 [build]: https://github.com/skeeto/sample-java-project/blob/master/build.xml
-[cr0]: http://old.reddit.com/r/javahelp/comments/1inzs7/_/cb6ojr2
-[cr1]: http://old.reddit.com/r/reviewmycode/comments/1a2fty/_/c8tpme2
-[cr2]: http://old.reddit.com/r/javahelp/comments/1balsp/_/c958num
+[cr0]: https://web.archive.org/web/20231216095044/https://old.reddit.com/r/javahelp/comments/1inzs7/looking_for_some_criticismpointers_on_my_game/cb6ojr2/
+[cr1]: https://web.archive.org/web/20231216095046/https://old.reddit.com/r/reviewmycode/comments/1a2fty/java_please_help_review_my_github_repo/c8tpme2/
+[cr2]: https://web.archive.org/web/20231216095048/https://old.reddit.com/r/javahelp/comments/1balsp/would_anybody_be_kind_enough_to_review_my_code/c958num/

@@ -172,6 +172,6 @@ behavior that I can rely upon for correctness?
 
 [es5ass]: https://es5.github.io/#x11.13.1
 [es5pre]: https://es5.github.io/#x11.4.4
-[matlab]: https://old.reddit.com/r/matlab/comments/ae68bh/_/edmysxr/
+[matlab]: https://web.archive.org/web/20231216095149/https://old.reddit.com/r/matlab/comments/ae68bh/for_loop_error/edmysxr/
 [ulidc]: https://github.com/skeeto/ulid-c
 [ulidjs]: https://github.com/skeeto/ulid-js

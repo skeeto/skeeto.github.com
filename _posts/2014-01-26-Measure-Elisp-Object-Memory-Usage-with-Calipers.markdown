@@ -309,7 +309,7 @@ About 44MB, down from JSON's 53MB. With `print-circle` set to nil it's about
 48MB.
 
 
-[reddit]: http://old.reddit.com/r/datasets/comments/1uyd0t/
+[reddit]: https://web.archive.org/web/20231216095654/https://old.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/
 [archive]: http://www.j-archive.com/
 [json]: https://skeeto.s3.amazonaws.com/share/JEOPARDY_QUESTIONS1.json.gz
 [skewer]: https://github.com/skeeto/skewer-mode

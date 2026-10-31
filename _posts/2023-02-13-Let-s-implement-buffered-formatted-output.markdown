@@ -355,4 +355,4 @@ Except for the lack of format DSL, this should feel familiar.
 [dtoa]: https://netlib.org/fp/dtoa.c
 [fmemopen]: https://man7.org/linux/man-pages/man3/fmemopen.3.html
 [libc]: /blog/2023/02/11/
-[r]: https://old.reddit.com/r/C_Programming/comments/111238u/lets_implement_buffered_formatted_output/
+[r]: https://web.archive.org/web/20260918150347/https://old.reddit.com/r/C_Programming/comments/111238u/lets_implement_buffered_formatted_output/

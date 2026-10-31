@@ -190,7 +190,7 @@ Travis Downs nicely summed up this article in the comments:
 > `const` *definitions* can.
 
 
-[reddit]: https://redd.it/4udqwj
+[reddit]: https://web.archive.org/web/20230605095416/https://old.reddit.com/r/C_Programming/comments/4udqwj/optimization_question_with_const/
 [const]: http://yarchive.net/comp/const.html
 [memory]: http://eli.thegreenplace.net/2012/01/03/understanding-the-x64-code-models
 [github]: https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0

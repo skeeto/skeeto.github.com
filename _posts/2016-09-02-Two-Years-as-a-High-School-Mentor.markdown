@@ -72,7 +72,7 @@ Once he got the hang of everything so far, I taught him Git and
 
 The first three months were spent on small exercises. He'd learn a
 little bit from K&R, describe to me what he learned, and I'd come up
-with related exercises, [not unlike those on DailyProgrammer][dp], to
+with related exercises, not unlike those on DailyProgrammer, to
 cement the concepts. I'd also translate concepts into modern C (e.g.
 C99).
 
@@ -176,7 +176,6 @@ As he moves on, I'll be starting all over again with a new student.
 
 
 [aspire]: https://secwww.jhuapl.edu/stem/aspire/
-[dp]: https://old.reddit.com/r/dailyprogrammer
 [fund]: http://www.skorks.com/2010/04/on-the-value-of-fundamentals-in-software-development/
 [kr]: https://en.wikipedia.org/wiki/The_C_Programming_Language
 [ppm]: https://en.wikipedia.org/wiki/Netpbm_format

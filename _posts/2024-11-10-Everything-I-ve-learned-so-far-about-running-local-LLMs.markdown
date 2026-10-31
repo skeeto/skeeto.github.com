@@ -36,7 +36,7 @@ I've found this experience reminiscent of the desktop computing revolution
 of the 1990s, where your newly purchased computer seemed obsolete by the
 time you got it home from the store. There are new developments each week,
 and as a rule I ignore almost any information more than a year old. The
-best way to keep up has been [r/LocalLLaMa][r]. Everything is hyped to the
+best way to keep up has been r/LocalLLaMa. Everything is hyped to the
 stratosphere, so take claims with a grain of salt.
 
 I'm wary of vendor lock-in, having experienced the rug pulled out from
@@ -586,7 +586,6 @@ I've been about a new technology in years!
 [mmap]: https://justine.lol/mmap/
 [moe]: https://mistral.ai/news/mixtral-of-experts/
 [poor]: https://huggingface.co/spaces/k-mktr/gpu-poor-llm-arena
-[r]: https://old.reddit.com/r/LocalLLaMA
 [rag]: https://en.wikipedia.org/wiki/Retrieval-augmented_generation
 [ruler]: https://github.com/NVIDIA/RULER
 [sdl2]: /blog/2023/01/08/

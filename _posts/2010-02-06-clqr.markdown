@@ -9,7 +9,7 @@ uuid: d74ba1a7-25bb-37f4-7b2e-46d2d56bfe36
 
 I found this [ Common Lisp Quick
 Reference](http://clqr.berlios.de/) the other day
-from [ r/lisp](http://old.reddit.com/r/lisp/), and I think
+from r/lisp, and I think
 it's *fantastic*. It's a comprehensive, libre booklet of the
 symbols defined by the Common Lisp ANSI standard. Very slick!
 

@@ -138,6 +138,6 @@ learn this?"
 
 
 [hn]: https://news.ycombinator.com/item?id=18349847
-[reddit]: https://redd.it/9td4qx
+[reddit]: https://web.archive.org/web/20230610085509/https://old.reddit.com/r/programming/comments/9td4qx/the_missing_computer_skills_of_high_school/
 [tt]: /blog/2017/04/01/
 [two]: /blog/2016/09/02/

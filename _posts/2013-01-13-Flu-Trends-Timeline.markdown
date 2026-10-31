@@ -94,5 +94,5 @@ platform on which to do it than the browser.
 [same-origin]: http://en.wikipedia.org/wiki/Same_origin_policy
 [jsonp]: http://en.wikipedia.org/wiki/JSONP
 [jquery-csv]: http://code.google.com/p/jquery-csv/
-[dp]: http://redd.it/yj38u
+[dp]: https://web.archive.org/web/20230602080940/https://old.reddit.com/r/dailyprogrammer/comments/yj38u/8202012_challenge_89_difficult_coloring_the/
 [jquery-ui]: http://jqueryui.com/slider/

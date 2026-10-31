@@ -7,7 +7,7 @@ uuid: 3362934d-9762-3f58-e05c-4d8b28175367
 ---
 
 A couple of months ago I wrote an Emacs Lisp wrapper for the
-[reddit API](http://old.reddit.com/dev/api). I didn't put it in MELPA,
+[reddit API](https://web.archive.org/web/20131215044608/http://www.reddit.com/dev/api). I didn't put it in MELPA,
 not yet anyway. If anyone is finding it useful I'll see about getting
 that done. My intention was give it some exercise and testing before
 putting it out there for people to use, locking down the API. You can
@@ -103,7 +103,7 @@ viewing image posts within Emacs, should be possible.
 
 ### Background
 
-For the last 3.5 years I've been a moderator of [/r/civ][civ],
+For the last 3.5 years I've been a moderator of /r/civ,
 [starting back when it had about 100 subscribers][mod]. As of this
 writing it's just short of 60k subscribers and we're now up to 9
 moderators.
@@ -129,8 +129,7 @@ I hope other people find this library useful!
 
 
 [oath2]: http://blog.jenkster.com/2013/10/an-oauth2-in-emacs-example.html
-[civ]: http://old.reddit.com/r/civ
-[mod]: http://old.reddit.com/r/civ/comments/clxj4/lets_tidy_rciv_up_a_bit/
+[mod]: https://web.archive.org/web/20260426050628/https://old.reddit.com/r/civ/comments/clxj4/lets_tidy_rciv_up_a_bit/
 [wrappers]: https://github.com/reddit/reddit/wiki/API-Wrappers
-[bug]: http://old.reddit.com/r/bugs/comments/1t162o/
+[bug]: https://web.archive.org/web/20260427150058/https://old.reddit.com/r/bugs/comments/1t162o/improper_ampersand_expansion_in_aboutjson/
 [elfeed]: /blog/2013/09/04/

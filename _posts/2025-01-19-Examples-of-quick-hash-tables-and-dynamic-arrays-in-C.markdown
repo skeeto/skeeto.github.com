@@ -630,9 +630,9 @@ Source from this article in runnable form, which I used to test my samples:
 [exec]: https://man7.org/linux/man-pages/man2/execve.2.html
 [fix]: https://developers.redhat.com/articles/2024/12/11/making-memcpynull-null-0-well-defined
 [msi]: /blog/2022/08/08/
-[nrk]: https://old.reddit.com/r/C_Programming/comments/1i74hii/_/m8l40fo/
+[nrk]: https://web.archive.org/web/20250603141735/https://old.reddit.com/r/C_Programming/comments/1i74hii/quick_hash_tables_and_dynamic_arrays_in_c/m8l40fo/
 [null]: /blog/2023/02/11/#strings
-[r]: https://old.reddit.com/r/C_Programming/comments/1hrvhfl/_/m51saq2/
+[r]: https://web.archive.org/web/20250404174457/https://old.reddit.com/r/C_Programming/comments/1hrvhfl/what_are_the_pure_c_options_of_obtaining/m51saq2/
 [size]: /blog/2024/05/24/
 [slice]: /blog/2023/10/05/
 [sso]: /blog/2016/10/07/

@@ -329,8 +329,8 @@ enough that I could, on some level, justify not using LLVM.
 
 
 [call]: http://en.wikipedia.org/wiki/X86_calling_conventions#x86-64_calling_conventions
-[cf]: https://old.reddit.com/r/dailyprogrammer/comments/2z68di/_/cpgkcx7
-[dp]: http://redd.it/2z68di
+[cf]: https://web.archive.org/web/20231216100021/https://old.reddit.com/r/dailyprogrammer/comments/2z68di/20150316_challenge_206_easy_recurrence_relations/cpgkcx7/
+[dp]: https://web.archive.org/web/20230604104402/https://old.reddit.com/r/dailyprogrammer/comments/2z68di/20150316_challenge_206_easy_recurrence_relations/
 [hn]: https://news.ycombinator.com/item?id=17747759
 [memory]: http://marek.vavrusa.com/c/memory/2015/02/20/memory/
 [mine2]: https://gist.github.com/anonymous/f7e4a5086a2b0acc83aa
@@ -339,7 +339,7 @@ enough that I could, on some level, justify not using LLVM.
 [mirror]: /download/jit.c
 [needle]: /blog/2016/11/17/
 [old]: /blog/2014/12/09/
-[part2]: http://redd.it/2zna5q
-[reddit]: https://old.reddit.com/r/programming/comments/akxq8q/a_basic_justintime_compiler/
+[part2]: https://web.archive.org/web/20230605050128/https://old.reddit.com/r/dailyprogrammer/comments/2zna5q/20140320_challenge_206_hard_recurrence_relations/
+[reddit]: https://web.archive.org/web/20240207195739/https://old.reddit.com/r/programming/comments/akxq8q/a_basic_justintime_compiler/
 [rop]: http://en.wikipedia.org/wiki/Return-oriented_programming
 [wx]: http://www.tedunangst.com/flak/post/now-or-never-exec

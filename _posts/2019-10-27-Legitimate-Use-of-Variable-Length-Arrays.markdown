@@ -334,6 +334,6 @@ VLAs.
 [clash]: /blog/2017/06/21/
 [hn]: https://news.ycombinator.com/item?id=21375580
 [linux]: https://www.phoronix.com/scan.php?page=news_item&px=Linux-Kills-The-VLA
-[rd]: https://old.reddit.com/r/programming/comments/dz1fau/variable_length_arrays_in_c_are_nearly_always_the/
+[rd]: https://web.archive.org/web/20231216100538/https://old.reddit.com/r/programming/comments/dz1fau/variable_length_arrays_in_c_are_nearly_always_the/
 [simple]: https://lists.sr.ht/~skeeto/public-inbox/%3CCAP-ht1CQKVByZt1EXOb3J7TF%3DMcCKi%3DEtzjEH+CaEsPtvY5%3Djg%40mail.gmail.com%3E
 [small]: /blog/2016/10/07/

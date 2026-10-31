@@ -138,6 +138,6 @@ Now it's time to [post it on reddit][reddit1] and
 
 
 [vtut]: /blog/2011/11/28/
-[reddit1]: http://old.reddit.com/r/funny/comments/s481d/
-[reddit2]: http://old.reddit.com/r/lolcats/comments/s47qa/
+[reddit1]: https://web.archive.org/web/20231216100230/https://old.reddit.com/r/funny/comments/s481d/hes_not_really_sure_how_this_works/
+[reddit2]: https://web.archive.org/web/20231216100229/https://old.reddit.com/r/lolcats/comments/s47qa/hes_not_really_sure_how_this_works/
 [imgur]: http://imgur.com/2WhBf

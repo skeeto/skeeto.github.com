@@ -201,7 +201,7 @@ itself. It's an under-appreciated piece of technology!
 [needle]: /blog/2016/11/17/
 [npm]: https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident
 [pypi]: https://github.com/dateutil/dateutil/issues/984
-[r]: https://old.reddit.com/r/golang/comments/es621w/gos_tooling_is_an_undervalued_technology/
+[r]: https://web.archive.org/web/20250730061906/https://old.reddit.com/r/golang/comments/es621w/gos_tooling_is_an_undervalued_technology/
 [rs]: https://lobste.rs/s/vycqgn/go_s_tooling_is_undervalued_technology
 [script]: https://github.com/skeeto/w64devkit/tree/master/contrib/gobuild
 [stb]: https://github.com/nothings/stb

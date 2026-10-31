@@ -80,5 +80,5 @@ very close to 80% rumor coverage. I don't understand (yet) why this
 is, but I find it very interesting.
 
 
-[reddit]: http://old.reddit.com/r/javahelp/comments/ngvp4/
+[reddit]: https://web.archive.org/web/20231216100424/https://old.reddit.com/r/javahelp/comments/ngvp4/hey_was_wondering_if_i_could_get_some_help_with/
 [videos]: /blog/2011/11/28/

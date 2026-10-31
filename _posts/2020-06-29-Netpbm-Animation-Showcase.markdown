@@ -149,7 +149,7 @@ small this can get!
 [colorsort-i]: /img/showcase/colorsort.jpg
 [colorsort-s]: https://github.com/skeeto/scratch/blob/master/animation/colorsort.c
 [colorsort-v]: https://nullprogram.com/video/?v=colors-odd-even
-[colorsort]: https://old.reddit.com/r/woahdude/comments/73oz1x/from_chaos_to_order/
+[colorsort]: https://web.archive.org/web/20250810100629/https://old.reddit.com/r/woahdude/comments/73oz1x/from_chaos_to_order/
 [fire-i]: /img/showcase/fire.jpg
 [fire-s]: https://github.com/skeeto/scratch/blob/master/animation/fire.c
 [fire-v]: https://nullprogram.com/video/?v=fire
@@ -173,7 +173,7 @@ small this can get!
 [pixelsort-i]: /img/showcase/pixelsort.jpg
 [pixelsort-s]: https://github.com/skeeto/scratch/blob/master/animation/pixelsort.c
 [pixelsort-v]: https://nullprogram.com/video/?v=pixelsort
-[pixelsort]: https://old.reddit.com/r/generative/comments/9o1plu/generative_pixel_sorting_variant/
+[pixelsort]: https://web.archive.org/web/20250810100629/https://old.reddit.com/r/generative/comments/9o1plu/generative_pixel_sorting_variant/
 [randu-i]: /img/showcase/randu.jpg
 [randu-s]: https://github.com/skeeto/scratch/blob/master/animation/randu.c
 [randu-v]: https://nullprogram.com/video/?v=randu
@@ -185,12 +185,12 @@ small this can get!
 [voronoi-i]: /img/showcase/voronoi.jpg
 [voronoi-s]: https://github.com/skeeto/scratch/blob/master/animation/voronoi.c
 [voronoi-v]: https://nullprogram.com/video/?v=voronoi
-[voronoi]: https://old.reddit.com/r/proceduralgeneration/comments/fuy6tk/voronoi_with_manhattan_distance_in_c/
+[voronoi]: https://web.archive.org/web/20250810100629/https://old.reddit.com/r/proceduralgeneration/comments/fuy6tk/voronoi_with_manhattan_distance_in_c/
 [walk3d-i]: /img/showcase/walk3d.jpg
 [walk3d-s]: https://github.com/skeeto/scratch/blob/master/animation/walk3d.c
 [walk3d-v]: https://nullprogram.com/video/?v=walk3d
-[walk3d]: https://old.reddit.com/r/proceduralgeneration/comments/geka1q/random_walking_in_3d/
+[walk3d]: https://web.archive.org/web/20250810100629/https://old.reddit.com/r/proceduralgeneration/comments/geka1q/random_walking_in_3d/
 [walkers-i]: /img/showcase/walkers.jpg
 [walkers-s]: https://github.com/skeeto/scratch/blob/master/animation/walkers.c
 [walkers-v]: https://nullprogram.com/video/?v=walk2d
-[walkers]: https://old.reddit.com/r/proceduralgeneration/comments/g49qwk/random_walkers_abstract_art/
+[walkers]: https://web.archive.org/web/20260128112322/https://old.reddit.com/r/proceduralgeneration/comments/g49qwk/random_walkers_abstract_art/

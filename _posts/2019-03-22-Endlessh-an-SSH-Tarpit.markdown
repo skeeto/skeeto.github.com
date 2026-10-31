@@ -272,8 +272,8 @@ TLS connections and testing it against real spammers.
 [hn2]: https://news.ycombinator.com/item?id=24491453
 [mail]: /blog/2017/06/15/
 [raw]: /blog/2015/05/15/
-[reddit]: https://old.reddit.com/r/programming/comments/b4iq00/endlessh_an_ssh_tarpit/
-[reddit2]: https://old.reddit.com/r/netsec/comments/b4dwjl/endlessh_an_ssh_tarpit/
+[reddit]: https://web.archive.org/web/20260315182210/https://old.reddit.com/r/programming/comments/b4iq00/endlessh_an_ssh_tarpit/
+[reddit2]: https://web.archive.org/web/20260315182210/https://old.reddit.com/r/netsec/comments/b4dwjl/endlessh_an_ssh_tarpit/
 [rfc]: https://tools.ietf.org/html/rfc4253#section-4.2
 [tarpit]: https://en.wikipedia.org/wiki/Tarpit_(networking)
 [tcp]: https://nyman.re/super-simple-ssh-tarpit/

@@ -335,7 +335,7 @@ some of those gaps.
 [man]: https://man7.org/linux/man-pages/man1/gcc.1.html
 [openmp]: /blog/2017/03/01/
 [opt]: https://www.openwall.com/lists/musl/2023/05/22/2/1
-[reddit]: https://old.reddit.com/r/C_Programming/comments/133bjlp
+[reddit]: https://web.archive.org/web/20241119232516/https://old.reddit.com/r/C_Programming/comments/133bjlp/uskeetos_blog_my_favorite_c_compiler_flags_during/
 [rtc]: https://learn.microsoft.com/en-us/cpp/build/reference/rtc-run-time-error-checks
 [size]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [w64]: https://github.com/skeeto/w64devkit

@@ -351,7 +351,7 @@ the very least I expect to use SDL increasingly in my own projects.
 [ods]: https://learn.microsoft.com/en-us/windows/win32/api/debugapi/nf-debugapi-outputdebugstringw
 [prng]: /blog/2017/09/21/
 [qoi]: /blog/2022/12/18/
-[r]: https://old.reddit.com/r/C_Programming/comments/106djd0/sdl2_common_mistakes_and_how_to_avoid_them/
+[r]: https://web.archive.org/web/20250810100637/https://old.reddit.com/r/C_Programming/comments/106djd0/sdl2_common_mistakes_and_how_to_avoid_them/
 [sdl]: https://www.libsdl.org/
 [sdlamp]: https://www.youtube.com/playlist?list=PL6m6sxLnXksbqdsAcpTh4znV9j70WkmqG
 [seed]: /blog/2019/04/30/

@@ -124,7 +124,7 @@ cases I need to shut down Wicd and go back to manual networking for
 awhile.
 
 The next issue was wallpapers. I've always liked having
-[natural landscape wallpapers](http://reddit.com/r/EarthPorn). So far,
+natural landscape wallpapers. So far,
 I could move onto a new computer and have everything functionally
 working, but I'd have a blank gray background. KDE 4 got me used to
 slideshow wallpaper, changing the landscape image to a new one every

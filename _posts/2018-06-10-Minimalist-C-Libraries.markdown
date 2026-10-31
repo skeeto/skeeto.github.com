@@ -205,7 +205,7 @@ are no validation checks on the buffer.
 ### 32-bit integer hash set library
 
 The second example is an integer hash set library. It uses closed
-hashing. I initially wrote this for [r/dailyprogrammer][dp] solution and
+hashing. I initially wrote this for r/dailyprogrammer solution and
 then formalized it into a little reusable library.
 
 **[C99 32-bit integer hash set header library][set32]**
@@ -512,7 +512,6 @@ Instead I'll save these for other articles!
 [bmp]: https://github.com/skeeto/bmp
 [buf]: https://github.com/skeeto/growable-buf
 [cpp]: https://github.com/skeeto/fantasyname/pull/2
-[dp]: https://old.reddit.com/r/dailyprogrammer/
 [endian]: https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html
 [flt]: https://www.exploringbinary.com/incorrectly-rounded-conversions-in-visual-c-plus-plus/
 [flush]: /blog/2016/09/09/

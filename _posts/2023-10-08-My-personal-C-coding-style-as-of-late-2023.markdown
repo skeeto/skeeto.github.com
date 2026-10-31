@@ -376,7 +376,7 @@ testing grounds for [hash-tries][ht], or for a slightly larger program,
 [hn]: https://news.ycombinator.com/item?id=37815674
 [ht]: /blog/2023/09/30/
 [null]: https://ljabl.com/nullptr.xhtml
-[reddit]: https://old.reddit.com/r/C_Programming/comments/173e0vn/
+[reddit]: https://web.archive.org/web/20250905081018/https://old.reddit.com/r/C_Programming/comments/173e0vn/nullprogram_my_personal_c_coding_style_as_of_late/
 [sign]: /blog/2023/09/27/
 [str]: /blog/2023/01/18/#implementation-highlights
 [w32]: /blog/2023/05/31/

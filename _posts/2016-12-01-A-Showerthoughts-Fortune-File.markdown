@@ -7,7 +7,7 @@ uuid: 0a266c4d-a224-3399-a851-848f71b47dc3
 ---
 
 I have created a [`fortune` file][fortune] for the all-time top 10,000
-[/r/Showerthoughts][sr] posts, as of October 2016. As a word of
+/r/Showerthoughts posts, as of October 2016. As a word of
 warning: Many of these entries are adult humor and may not be
 appropriate for your work computer. These fortunes would be
 categorized as "offensive" (`fortune -o`).
@@ -221,7 +221,6 @@ file from your own inputs!
 
 [fortune]: https://en.wikipedia.org/wiki/Fortune_(Unix)
 [dl]: https://skeeto.s3.amazonaws.com/share/showerthoughts
-[sr]: https://old.reddit.com/r/Showerthoughts/
 [db]: http://files.pushshift.io/reddit/
 [c2]: http://www.hardkernel.com/main/products/prdt_info.php
 [lbzip2]: http://lbzip2.org/

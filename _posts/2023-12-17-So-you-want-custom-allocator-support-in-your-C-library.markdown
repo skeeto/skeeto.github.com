@@ -423,7 +423,7 @@ simple allocator's best friend!
 [libc]: /blog/2023/02/11/
 [lua]: https://www.lua.org/manual/5.4/manual.html#lua_Alloc
 [mini]: /blog/2018/06/10/
-[reddit]: https://old.reddit.com/r/C_Programming/comments/18ks5qg/
+[reddit]: https://web.archive.org/web/20250323003101/https://old.reddit.com/r/C_Programming/comments/18ks5qg/so_you_want_custom_allocator_support_in_your_c/
 [sign]: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf
 [sized]: https://isocpp.org/files/papers/n3778.html
 [slice]: /blog/2023/10/05/#addendum-extend-the-last-allocation

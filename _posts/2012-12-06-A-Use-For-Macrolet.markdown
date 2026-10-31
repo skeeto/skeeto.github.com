@@ -93,7 +93,7 @@ Because the macro has no parameters I could have even more easily used
 `symbol-macrolet`. I just didn't think of it at the time.
 
 
-[bf]: http://redd.it/137f7h
+[bf]: https://web.archive.org/web/20230602003817/https://old.reddit.com/r/dailyprogrammer/comments/137f7h/11142012_challenge_112_difficultwhat_a_brainf/
 [ref]: http://www.lispworks.com/documentation/HyperSpec/Body/05_aa.htm
 [expand]: http://www.lispworks.com/documentation/lw60/CLHS/Body/05_abg.htm
 [anaphoric]: http://en.wikipedia.org/wiki/Anaphoric_macro
