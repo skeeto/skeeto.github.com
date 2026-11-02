@@ -15,6 +15,16 @@ Windows. It is distributed as a small 7z archive that unzips and runs in
 place ("portable") requiring no install nor uninstall. It has everything
 you need to develop robust, efficient, professional software on Windows.
 
+### [Prospero][]: a bloat-free, native AI coding harness with ImGui
+
+A native GUI application for Windows, macOS, and Linux allowing AI agents
+to drive your computers and develop software. Fully-featured, and the
+leanest and fastest coding harness available. It has desktop control and
+can deploy agents and subagents in containers and on remote hosts. It's
+distributed in two editions: Community and [Professional][itch].
+
+![](/img/prospero/screenshot-macos.png)
+
 ### [dcmake][]: a GUI debugger for CMake
 
 Prefix `cmake` with `d` when running a CMake configuration to drive the
@@ -53,14 +63,15 @@ the w64devkit toolchain, and a drop-in replacement on other platforms. It
 is the most robust, most performant, most tested pkg-config available.
 
 
-
-[Elfeed2]: https://github.com/skeeto/elfeed2
-[Elfeed]: https://github.com/emacs-elfeed/elfeed
 [aas-sign]: https://github.com/skeeto/aas-sign
 [dcmake-intro]: /blog/2026/04/07/
 [dcmake]: https://github.com/skeeto/dcmake
+[Elfeed2]: https://github.com/skeeto/elfeed2
+[Elfeed]: https://github.com/emacs-elfeed/elfeed
+[itch]: https://skeeto.itch.io/prospero
 [pkg-config]: https://www.freedesktop.org/wiki/Software/pkg-config/
 [pkgconf]: http://pkgconf.org/
+[Prospero]: https://github.com/skeeto/Prospero
 [u-config-intro]: /blog/2023/01/18/
 [u-config]: https://github.com/skeeto/u-config
 [w64devkit]: https://github.com/skeeto/w64devkit
