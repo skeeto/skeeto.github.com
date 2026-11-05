@@ -1355,6 +1355,68 @@ static void lexbat(Hl *x, HlLang *)
     }
 }
 
+// strace: the system call, arguments, and result, plus signal and exit
+// lines. Prefixes from -f and -t are plain apart from their numbers.
+static void lexstrace(Hl *x, HlLang *)
+{
+    Str s = x->s;
+    while (x->i < s.len) {
+        iz  eol    = hleol(s, x->i);
+        b32 call   = 0;  // system call name seen
+        b32 result = 0;  // past the " = "
+        i32 depth  = 0;  // parenthesis depth
+        while (x->i < eol) {
+            iz i = x->i;
+            u8 c = s.data[i];
+            if (!call && (hlhas(s, i, "--- ") || hlhas(s, i, "+++ "))) {
+                hltoken(x, HL_PREPROC, eol);  // signal or exit
+            } else if (!call && hlhas(s, i, "strace: ")) {
+                hltoken(x, HL_COMMENT, eol);
+            } else if (c == '"') {
+                iz j = i + 1;
+                for (; j<eol && s.data[j]!='"'; j++) {
+                    j += s.data[j]=='\\' && j+1<eol;
+                }
+                hltoken(x, HL_STRING, j + (j<eol));
+            } else if (c=='/' && hlat(s, i+1)=='*') {  // /* 25 vars */
+                iz end = find(span(s.data+i+2, s.data+eol), "*/");
+                hltoken(x, HL_COMMENT, end<0 ? eol : i+2+end+2);
+            } else if (c == '<') {  // <unfinished ...>, <... read resumed>
+                iz j = i + 1;
+                for (; j<eol && s.data[j]!='>'; j++) {}
+                call |= hlhas(s, i, "<... ");
+                hltoken(x, HL_COMMENT, j + (j<eol));
+            } else if (c=='(' && result) {  // (No such file or directory)
+                iz j = i + 1;
+                for (; j<eol && s.data[j]!=')'; j++) {}
+                hltoken(x, HL_COMMENT, j + (j<eol));
+            } else if (digit(c) || (c=='-' && digit(hlat(s, i+1)) && !hlidchar(hlat(s, i-1)))) {
+                hltoken(x, HL_NUMBER, hlnumber(s, i + (c=='-')));
+            } else if (hlidstart(c)) {
+                iz  end   = hlidend(s, i);
+                b32 upper = c>='A' && c<='Z';  // constant, like O_RDONLY
+                for (iz k = i; k < end; k++) {
+                    upper &= s.data[k]<'a' || s.data[k]>'z';
+                }
+                i32 cls = HL_PLAIN;
+                if (!call && hlat(s, end)=='(') {
+                    cls  = HL_FUNC;
+                    call = 1;
+                } else if (upper) {
+                    cls = result ? HL_KEYWORD : HL_VAR;  // errno, or flag
+                }
+                hltoken(x, cls, end);
+            } else {
+                depth  += (c=='(') - (c==')');
+                result |= c=='=' && depth<=0 && call &&
+                          hlat(s, i-1)==' ' && hlat(s, i+1)==' ';
+                x->i++;
+            }
+        }
+        x->i = eol + (eol < s.len);
+    }
+}
+
 // Tokens in a YAML value up to end.
 static void hlyamlvalue(Hl *x, iz end)
 {
@@ -1709,6 +1771,8 @@ static HlLang hllang(Str tag)
         l.lex = lexobj;
     } else if (tag == "bat") {
         l.lex = lexbat;
+    } else if (tag == "strace") {
+        l.lex = lexstrace;
 
     } else {
         l.lex = 0;

@@ -46,7 +46,7 @@ static Str hltags[] = {
     "elisp", "glsl", "gnuplot", "go", "html", "ini", "java",
     "javascript", "js", "json", "julia", "lisp", "make", "makefile",
     "matlab", "nasm", "obj", "octave", "pc", "perl", "php", "py", "python",
-    "qbasic", "ruby", "scheme", "sh", "sql", "udiff", "vim", "wat", "xml",
+    "qbasic", "ruby", "scheme", "sh", "sql", "strace", "udiff", "vim", "wat", "xml",
     "yaml", "lua",
 };
 
@@ -296,6 +296,21 @@ static void test_highlight(Test *t)
         {"bat", "@echo off\nrem comment\ncc %* %1 %PATH%", "%*", "v"},
         {"bat", "@echo off\nrem comment\ncc %* %1 %PATH%", "%1", "v"},
         {"bat", "@echo off\nrem comment\ncc %* %1 %PATH%", "%PATH%", "v"},
+        {"strace", "openat(AT_FDCWD, \"/etc/ld.so.cache\", O_RDONLY) = -1 ENOENT (No such file)", "openat", "f"},
+        {"strace", "openat(AT_FDCWD, \"/etc/ld.so.cache\", O_RDONLY) = -1 ENOENT (No such file)", "AT_FDCWD", "v"},
+        {"strace", "openat(AT_FDCWD, \"/etc/ld.so.cache\", O_RDONLY) = -1 ENOENT (No such file)", "\"/etc/ld.so.cache\"", "s"},
+        {"strace", "openat(AT_FDCWD, \"/etc/ld.so.cache\", O_RDONLY) = -1 ENOENT (No such file)", "-1", "m"},
+        {"strace", "openat(AT_FDCWD, \"/etc/ld.so.cache\", O_RDONLY) = -1 ENOENT (No such file)", "ENOENT", "k"},
+        {"strace", "openat(AT_FDCWD, \"/etc/ld.so.cache\", O_RDONLY) = -1 ENOENT (No such file)", "(No such file)", "c"},
+        {"strace", "[pid 12] read(0, <unfinished ...>\n<... read resumed>\"x\\n\"..., 9) = 1", "12", "m"},
+        {"strace", "[pid 12] read(0, <unfinished ...>\n<... read resumed>\"x\\n\"..., 9) = 1", "read", "f"},
+        {"strace", "[pid 12] read(0, <unfinished ...>\n<... read resumed>\"x\\n\"..., 9) = 1", "&lt;unfinished ...&gt;", "c"},
+        {"strace", "[pid 12] read(0, <unfinished ...>\n<... read resumed>\"x\\n\"..., 9) = 1", "&lt;... read resumed&gt;", "c"},
+        {"strace", "[pid 12] read(0, <unfinished ...>\n<... read resumed>\"x\\n\"..., 9) = 1", "\"x\\n\"", "s"},
+        {"strace", "execve(\"/bin/true\", [\"true\"], 0x7ffd /* 25 vars */) = 0", "/* 25 vars */", "c"},
+        {"strace", "execve(\"/bin/true\", [\"true\"], 0x7ffd /* 25 vars */) = 0", "0x7ffd", "m"},
+        {"strace", "--- SIGCHLD {si_signo=SIGCHLD} ---\n+++ exited with 0 +++", "--- SIGCHLD {si_signo=SIGCHLD} ---", "p"},
+        {"strace", "--- SIGCHLD {si_signo=SIGCHLD} ---\n+++ exited with 0 +++", "+++ exited with 0 +++", "p"},
     };
     for (iz i = 0; i < countof(cases); i++) {
         Arena a    = perm;
