@@ -1417,6 +1417,199 @@ static void lexstrace(Hl *x, HlLang *)
     }
 }
 
+// Dockerfile: instructions, with shell-form commands lexed as shell. An
+// instruction spans its continued lines and any heredoc bodies.
+
+// End of the instruction starting at s[i], through continued lines.
+// Comment and blank lines inside a continuation do not end it.
+static iz hldockerend(Str s, iz i, u8 esc)
+{
+    for (b32 more = 0;;) {
+        iz eol = hleol(s, i);
+        iz beg = hlblank(s, i);
+        if (!more || (beg<eol && s.data[beg]!='#')) {
+            iz end = eol;
+            for (; end>i && whitespace(s.data[end-1]); end--) {}
+            more = end>i && s.data[end-1]==esc;
+        }
+        if (!more || eol==s.len) {
+            return eol;
+        }
+        i = eol + 1;
+    }
+}
+
+// Extend the instruction head [beg, end) through its heredoc bodies,
+// like RUN <<EOF or COPY <<-"END" file.
+static iz hldockerheredocs(Str s, iz beg, iz end)
+{
+    iz last = end;
+    for (iz i = beg; i+2 < end; i++) {
+        if (s.data[i]!='<' || s.data[i+1]!='<') continue;
+        iz  j    = i + 2;
+        b32 tabs = hlat(s, j) == '-';
+        j += tabs;
+        u8 q = hlat(s, j);
+        j += q=='"' || q=='\'';
+        iz w = j;
+        for (; w<end && (hlidchar(s.data[w]) || s.data[w]=='-'); w++) {}
+        if (w == j) continue;
+        Str word = span(s.data+j, s.data+w);
+        while (last < s.len) {  // find the terminator line
+            iz  bol  = last + 1;
+            iz  eol  = hleol(s, bol);
+            Str line = span(s.data+bol, s.data+eol);
+            for (; tabs && line.len && line[0]=='\t'; line = cuthead(line, 1)) {}
+            last = eol;
+            if (line == word) break;
+        }
+        i = w - 1;
+    }
+    return last;
+}
+
+// Arguments as words, strings, and $ expansions up to the end of the
+// (truncated) code. NAME=value keys are variables when keys is set.
+static void hldockerargs(Hl *x, u8 esc, b32 keys, b32 from)
+{
+    Str s     = x->s;
+    b32 start = 1;  // at the start of a word
+    b32 first = 1;  // the first word
+    while (x->i < s.len) {
+        iz i = x->i;
+        u8 c = s.data[i];
+        if (c == '\n') {  // comment lines inside a continuation
+            iz b = hlblank(s, i+1);
+            x->i = b;
+            if (b<s.len && s.data[b]=='#') {
+                hltoken(x, HL_COMMENT, hleol(s, b));
+            }
+            start = 1;
+        } else if (whitespace(c)) {
+            x->i++;
+            start = 1;
+        } else if (c == esc) {  // but leave a newline for the above
+            x->i += 1 + (i+1<s.len && s.data[i+1]!='\n');
+        } else if (c == '"') {
+            hlshquote(x, HL_SHDEPTH);
+            start = first = 0;
+        } else if (c == '\'') {
+            iz end = i + 1;
+            for (; end<s.len && s.data[end]!='\''; end++) {}
+            hltoken(x, HL_STRING, end + (end<s.len));
+            start = first = 0;
+        } else if (c == '$') {
+            hlshdollar(x, HL_SHDEPTH);  // no $( ) substitutions
+            start = first = 0;
+        } else if (start) {
+            iz end = i;
+            for (; end<s.len && !whitespace(s.data[end]) && !hlin(s.data[end], "=\"'$"); end++) {}
+            Str w = span(s.data+i, s.data+end);
+            b32 bare = first && (end==s.len || whitespace(s.data[end]));
+            if (keys && end>i && (hlat(s, end)=='=' || bare)) {
+                hltoken(x, HL_VAR, end);  // NAME=value, or ARG NAME
+            } else if (from && (w=="AS" || w=="as")) {
+                hltoken(x, HL_KEYWORD, end);
+            }
+            x->i  = end;
+            start = first = 0;
+        } else {
+            x->i++;
+        }
+    }
+}
+
+// The instruction at the scan position, with its head ending at head.
+static void hldockerinst(Hl *x, iz head, iz end, u8 esc)
+{
+    Str s    = x->s;
+    iz  w    = hlidend(s, x->i);
+    Str word = span(s.data+x->i, s.data+w);
+    if (!hlword(HLWORDS(dockerinstructions), word, 1)) {
+        x->s.len = head;
+        hldockerargs(x, esc, 0, 0);
+        x->s = s;
+        x->i = end;
+        return;
+    }
+    hltoken(x, HL_KEYWORD, w);
+
+    u8 tmp[16] = {};
+    for (iz i = 0; i < word.len; i++) {
+        tmp[i] = lowercase(word[i]);
+    }
+    Str inst = {tmp, word.len};
+    x->i = hlblank(s, x->i);
+    if (inst == "onbuild") {
+        hldockerinst(x, head, end, esc);
+        return;
+    }
+
+    x->s.len = head;
+    while (hlhas(x->s, x->i, "--")) {  // flags, like --from=build
+        iz f = x->i;
+        for (; f<head && !whitespace(s.data[f]); f++) {}
+        x->s.len = f;
+        hldockerargs(x, esc, 0, 0);
+        x->s.len = head;
+        x->i = hlblank(s, x->i);
+    }
+
+    b32 shell = inst=="run" || inst=="cmd" || inst=="entrypoint";
+    if (inst == "healthcheck") {
+        w = hlidend(s, x->i);
+        if (w-x->i==3 && lowercase(s.data[x->i])=='c' &&
+            lowercase(s.data[x->i+1])=='m' && lowercase(s.data[x->i+2])=='d') {
+            hltoken(x, HL_KEYWORD, w);
+            shell = 1;
+        }
+    }
+
+    if (shell && esc=='\\' && hlat(s, hlblank(s, x->i))!='[') {
+        x->s.len = end;  // heredoc bodies are shell too
+        hlshcode(x, 0, 0);
+    } else {
+        b32 keys = inst=="env" || inst=="arg" || inst=="label";
+        hldockerargs(x, esc, keys, inst=="from");
+    }
+    x->s = s;
+    x->i = end;
+}
+
+static void lexdocker(Hl *x, HlLang *)
+{
+    Str s   = x->s;
+    u8  esc = '\\';
+    b32 top = 1;  // parser directives may appear
+    while (x->i < s.len) {
+        iz beg = hlblank(s, x->i);
+        iz eol = hleol(s, beg);
+        x->i = beg;
+        if (beg<eol && s.data[beg]=='#') {
+            iz  n    = hlblank(s, beg+1);
+            iz  ne   = hlidend(s, n);
+            iz  eq   = hlblank(s, ne);
+            Str name = span(s.data+n, s.data+ne);
+            top &= hlat(s, eq)=='=' &&
+                   (name=="syntax" || name=="escape" || name=="check");
+            if (top && name=="escape") {
+                u8 c = hlat(s, hlblank(s, eq+1));
+                esc  = c=='`' ? '`' : '\\';
+            }
+            hltoken(x, top ? HL_PREPROC : HL_COMMENT, eol);
+        } else if (beg < eol) {
+            top    = 0;
+            iz head = hldockerend(s, beg, esc);
+            iz end  = hldockerheredocs(s, beg, head);
+            hldockerinst(x, head, end, esc);
+            eol = end;
+        } else {
+            top = 0;
+        }
+        x->i = eol + (eol < s.len);
+    }
+}
+
 // Tokens in a YAML value up to end.
 static void hlyamlvalue(Hl *x, iz end)
 {
@@ -1773,6 +1966,8 @@ static HlLang hllang(Str tag)
         l.lex = lexbat;
     } else if (tag == "strace") {
         l.lex = lexstrace;
+    } else if (tag == "dockerfile") {
+        l.lex = lexdocker;
 
     } else {
         l.lex = 0;

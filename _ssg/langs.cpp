@@ -344,6 +344,12 @@ static Str makedirectives[] = {
     "undefine", "unexport", "vpath",
 };
 
+static Str dockerinstructions[] = {
+    "add", "arg", "cmd", "copy", "entrypoint", "env", "expose", "from",
+    "healthcheck", "label", "maintainer", "onbuild", "run", "shell",
+    "stopsignal", "user", "volume", "workdir",
+};
+
 static Str batkeywords[] = {
     "call", "cd", "copy", "defined", "del", "do", "echo", "else",
     "endlocal", "equ", "errorlevel", "exist", "exit", "for", "geq", "goto",

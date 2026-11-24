@@ -43,7 +43,7 @@ static iz hlcount(Str s, Str needle)
 
 static Str hltags[] = {
     "aarch64", "att", "bash", "bat", "c", "c++", "cl", "clojure", "cpp", "diff",
-    "elisp", "glsl", "gnuplot", "go", "html", "ini", "java",
+    "dockerfile", "elisp", "glsl", "gnuplot", "go", "html", "ini", "java",
     "javascript", "js", "json", "julia", "lisp", "make", "makefile",
     "matlab", "nasm", "obj", "octave", "pc", "perl", "php", "py", "python",
     "qbasic", "ruby", "scheme", "sh", "sql", "strace", "udiff", "vim", "wat", "xml",
@@ -311,6 +311,35 @@ static void test_highlight(Test *t)
         {"strace", "execve(\"/bin/true\", [\"true\"], 0x7ffd /* 25 vars */) = 0", "0x7ffd", "m"},
         {"strace", "--- SIGCHLD {si_signo=SIGCHLD} ---\n+++ exited with 0 +++", "--- SIGCHLD {si_signo=SIGCHLD} ---", "p"},
         {"strace", "--- SIGCHLD {si_signo=SIGCHLD} ---\n+++ exited with 0 +++", "+++ exited with 0 +++", "p"},
+#define DF "FROM ubuntu:26.04 AS base\nARG V=1.0\nENV A=1 \\\n    # note\n    B=\"$A\"\n" \
+           "RUN make -j\"$(nproc)\" \\\n # skip\n && echo ok\nCMD [\"/bin/bash\"]"
+        {"dockerfile", DF, "FROM", "k"},
+        {"dockerfile", DF, "AS", "k"},
+        {"dockerfile", DF, "ARG", "k"},
+        {"dockerfile", DF, "V", "v"},
+        {"dockerfile", DF, "A", "v"},
+        {"dockerfile", DF, "# note", "c"},
+        {"dockerfile", DF, "B", "v"},
+        {"dockerfile", DF, "$A", "v"},
+        {"dockerfile", DF, "RUN", "k"},
+        {"dockerfile", DF, "$(", "v"},
+        {"dockerfile", DF, "# skip", "c"},
+        {"dockerfile", DF, "echo", "k"},
+        {"dockerfile", DF, "CMD", "k"},
+        {"dockerfile", DF, "\"/bin/bash\"", "s"},
+#undef DF
+#define DF "# syntax=docker/dockerfile:1\nrun <<EOF\nif true; then\nEOF\n" \
+           "copy --from=base <<-END /x\n\tRUN no\n\tEND\nONBUILD RUN echo"
+        {"dockerfile", DF, "# syntax=docker/dockerfile:1", "p"},
+        {"dockerfile", DF, "run", "k"},
+        {"dockerfile", DF, "if", "k"},
+        {"dockerfile", DF, "copy", "k"},
+        {"dockerfile", DF, "RUN", "k"},
+        {"dockerfile", DF, "ONBUILD", "k"},
+#undef DF
+        {"dockerfile", "FROM x\n# escape=`", "# escape=`", "c"},
+        {"dockerfile", "HEALTHCHECK --interval=5m CMD curl $U || exit 1", "CMD", "k"},
+        {"dockerfile", "HEALTHCHECK --interval=5m CMD curl $U || exit 1", "exit", "k"},
     };
     for (iz i = 0; i < countof(cases); i++) {
         Arena a    = perm;
